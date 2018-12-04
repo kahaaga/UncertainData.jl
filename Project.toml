@@ -1,0 +1,12 @@
+name = "UncertainDatasets"
+uuid = "c87c18fc-f66f-11e8-39c0-ebf4b82ec4e5"
+authors = ["Kristian Agasøster Haaga <kahaaga@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
+IntervalArithmetic = "d1acc4aa-44c8-5952-acd4-ba5d80a2a253"
+RecipesBase = "3cdcf5f2-1ef4-517c-9805-6587b60abb01"
+Reexport = "189a3867-3050-52da-a836-e630ba90ab69"
+StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
+StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
