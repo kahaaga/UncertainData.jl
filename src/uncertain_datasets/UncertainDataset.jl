@@ -12,7 +12,9 @@ struct UncertainDataset <: AbstractUncertainDataset
     values::AbstractVector{AbstractUncertainValue}
 end
 
-
+##########################
+# Indexing and iteration
+#########################
 Base.getindex(ud::UncertainDataset, i) = ud.values[i]
 Base.length(ud::UncertainDataset) = length(ud.values)
 Base.size(ud::UncertainDataset) = length(ud)
@@ -23,6 +25,15 @@ Base.eachindex(ud::UncertainDataset) = Base.OneTo(length(ud.values))
 Base.iterate(ud::UncertainDataset, state = 1) = iterate(ud.values, state)
 
 
+
+##########################
+# Sorting
+#########################
+
+
+###################
+# Pretty printing
+###################
 function summarise(ud::UncertainDataset)
     _type = typeof(ud)
     n_values = length(ud.values)
