@@ -1,4 +1,4 @@
-include("AbstractEmpiricalValue.jl")
+include("AbstractEmpirical.jl")
 include("../distributions/empirical_distribution.jl")
 
 """

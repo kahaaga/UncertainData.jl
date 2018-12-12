@@ -1,4 +1,5 @@
 using Distributions
+import Printf.@sprintf
 
 abstract type AbstractUncertainValue end
 
@@ -70,11 +71,17 @@ export intersect
 ###################
 
 function summarise(o::AbstractUncertainValue)
-    value = o.value
-    lower = o.lower
-    upper = o.upper
+    value = @sprintf "%.3f" o.value
+    lower = @sprintf "%.3f" o.lower
+    upper = @sprintf "%.3f" o.upper
     dist = o.distribution
     _type = typeof(o)
     "$_type($value, $lower, $upper, $dist)"
 end
 Base.show(io::IO, q::AbstractUncertainValue) = print(io, summarise(q))
+
+
+
+dimension(usv::AbstractUncertainValue) = 1
+
+export dimension
