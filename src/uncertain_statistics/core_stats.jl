@@ -9,14 +9,49 @@ import Statistics.median
 import Statistics.middle
 import Statistics.quantile
 
-"""
-    std(d::UncertainDataset; kwargs...)
+#########################################
+# Statistics on `UncertainValue`s
+#########################################
 
-Compute the standard deviation of an `UncertainDataset` by realising it once.
+mean(uv::AbstractUncertainValue, n::Int = 1000) = mean(resample(uv, n))
+median(uv::AbstractUncertainValue, n::Int = 1000) = median(resample(uv, n))
+middle(uv::AbstractUncertainValue, n::Int = 1000) = middle(resample(uv, n))
+quantile(uv::AbstractUncertainValue, p, n::Int = 1000) = quantile(resample(uv, n), p)
+std(uv::AbstractUncertainValue, n::Int = 1000) = std(resample(uv))
+var(uv::AbstractUncertainValue, n::Int = 1000) = var(resample(uv))
+
+
+#########################################
+# Statistics on `UncertainDataset`s
+#########################################
 """
-function std(d::UncertainDataset; kwargs...)
-    std(realise(d), kwargs...)
-end
+    mean(d::UncertainDataset, n::Int)
+
+Compute the means of `n` realisations of an `UncertainDataset`.
+"""
+mean(d::UncertainDataset, n::Int = 1000; kwargs...) = mean.(d, n, kwargs...)
+
+"""
+    median(d::UncertainDataset, n::Int)
+
+Compute the median of `n` realisations of an `UncertainDataset`.
+"""
+median(d::UncertainDataset, n::Int = 1000; kwargs...) = median.(d, n, kwargs...)
+
+"""
+    middle(d::UncertainDataset, n::Int)
+
+Compute the middle of `n` realisations of an `UncertainDataset`.
+"""
+middle(d::UncertainDataset, n::Int = 1000; kwargs...) = middle.(d, n, kwargs...)
+
+"""
+    quantile(d::UncertainDataset, p, n::Int; kwargs...)
+
+Compute the quantile(s) of a `n` realisations of an `UncertainDataset`.
+"""
+quantile(d::UncertainDataset, p, n::Int = 1000; kwargs...) =
+    quantile.(d, p, n, kwargs...)
 
 """
     std(d::UncertainDataset, n::Int; kwargs...)
@@ -24,39 +59,15 @@ end
 Compute the standard deviation of an `UncertainDataset` by realising it
 `n` times.
 """
-function std(d::UncertainDataset, n::Int; kwargs...)
-    std.(realise(d, n), kwargs...)
-end
-
-
-"""
-    var(d::UncertainDataset; kwargs...)
-
-Compute the sample variance of an `UncertainDataset` by realising it once.
-"""
-function var(d::UncertainDataset; kwargs...)
-    var(realise(d), kwargs...)
-end
+std(d::UncertainDataset, n::Int = 1000; kwargs...) = std.(d, n, kwargs...)
 
 """
     var(d::UncertainDataset, n::Int; kwargs...)
 
 Compute the sample variance of an `UncertainDataset` by realising it `n` times.
 """
-function var(d::UncertainDataset, n::Int; kwargs...)
-    var(realise(d, n), kwargs...)
-end
+var(d::UncertainDataset, n::Int = 1000; kwargs...) = var.(d, n, kwargs...)
 
-
-"""
-    cor(d1::UncertainDataset, d2::UncertainDataset; kwargs...)
-
-Compute the Pearson correlation between two `UncertainDataset`s by realising
-both datasets once.
-"""
-function cor(d1::UncertainDataset, d2::UncertainDataset; kwargs...)
-    cor(realise(d1), realise(d2), kwargs...)
-end
 
 """
     cor(d1::UncertainDataset, d2::UncertainDataset, n::Int; kwargs...)
@@ -64,18 +75,8 @@ end
 Compute the Pearson correlation between two `UncertainDataset`s by realising
 both datasets `n` times.
 """
-function cor(d1::UncertainDataset, d2::UncertainDataset, n::Int; kwargs...)
-    [cor(realise(d1), realise(d2), kwargs...) for i = 1:n]
-end
-
-"""
-    cov(d1::UncertainDataset, d2::UncertainDataset; kwargs...)
-
-Compute the covariance between two `UncertainDataset`s by realising both
-datasets once.
-"""
-function cov(d1::UncertainDataset, d2::UncertainDataset; kwargs...)
-    cov(realise(d1), realise(d2), kwargs...)
+function cor(d1::UncertainDataset, d2::UncertainDataset, n::Int = 1000; kwargs...)
+    [cor(resample(d1), resample(d2), kwargs...) for i = 1:n]
 end
 
 """
@@ -84,76 +85,9 @@ end
 Compute the covariance between two `UncertainDataset`s by realising
 both datasets `n` times.
 """
-function cov(d1::UncertainDataset, d2::UncertainDataset, n::Int; kwargs...)
-    [cov(realise(d1), realise(d2), kwargs...) for i = 1:n]
+function cov(d1::UncertainDataset, d2::UncertainDataset, n::Int = 1000; kwargs...)
+    [cov(resample(d1), resample(d2), kwargs...) for i = 1:n]
 end
-
-"""
-    mean(d::UncertainDataset)
-
-Compute the mean of a single realisation of an `UncertainDataset`.
-"""
-function mean(d::UncertainDataset)
-    mean(realise(d))
-end
-
-"""
-    mean(d::UncertainDataset, n::Int)
-
-Compute the means of `n` realisations of an `UncertainDataset`.
-"""
-function mean(d::UncertainDataset, n::Int)
-    mean.(realise(d, n))
-end
-
-"""
-    median(d::UncertainDataset)
-
-Compute the median of a single realisation of an `UncertainDataset`.
-"""
-function median(d::UncertainDataset)
-    median(realise(d))
-end
-
-"""
-    median(d::UncertainDataset, n::Int)
-
-Compute the median of `n` realisations of an `UncertainDataset`.
-"""
-function median(d::UncertainDataset, n::Int)
-    median.(realise(d, n))
-end
-
-
-"""
-    middle(d::UncertainDataset)
-
-Compute the middle of a single realisation of an `UncertainDataset`.
-"""
-function middle(d::UncertainDataset)
-    middle(realise(d))
-end
-
-
-"""
-    quantile(d::UncertainDataset, p; kwargs...)
-
-Compute the quantile(s) of a realisation of an `UncertainDataset`.
-"""
-function quantile(d::UncertainDataset, p; kwargs...)
-    quantile(realise(d), kwargs...)
-end
-
-"""
-    quantile(d::UncertainDataset, p, n::Int; kwargs...)
-
-Compute the quantile(s) of a `n` realisations of an `UncertainDataset`.
-"""
-function quantile(d::UncertainDataset, p, n::Int; kwargs...)
-    [quantile(realise(d), kwargs...) for i = 1:n]
-end
-
-
 
 export
 std,
