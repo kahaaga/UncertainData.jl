@@ -1,4 +1,4 @@
-using UncertainDatasets
+using UncertainData
 using Test
 using Distributions
 

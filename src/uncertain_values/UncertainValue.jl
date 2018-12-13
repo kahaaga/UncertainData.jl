@@ -143,25 +143,25 @@ end
 #macro uncertainvalue(empiricaldata, dist)
 #    return :(UncertainValue($empiricaldata, $dist))
 #end
-
-"""
-A macro for the construction of uncertain values. Calls
-    [`UncertainValue`](@ref) with the provided arguments.
-
-- **`@uncertainvalue(μ, lower, upper, dist, kwargs...)`**:
-    Fit a distribution of type `dist` to `μ` and `lower`/`upper` uncertainty
-    bounds.
-- **`@uncertainvalue(empiricaldata, dist)`**:
-    Fit a distribution of type `dist` to a vector of empirical data.
-"""
+#
+# """
+# A macro for the construction of uncertain values. Calls
+#     [`UncertainValue`](@ref) with the provided arguments.
+#
+# - **`@uncertainvalue(μ, lower, upper, dist, kwargs...)`**:
+#     Fit a distribution of type `dist` to `μ` and `lower`/`upper` uncertainty
+#     bounds.
+# - **`@uncertainvalue(empiricaldata, dist)`**:
+#     Fit a distribution of type `dist` to a vector of empirical data.
+# """
 #:(@uncertainvalue)
-
-
-"""
-    @evalue(values, d)
-
-Construct an uncertain value from an empirical distribution.
-"""
+#
+#
+# """
+#     @evalue(values, d)
+#
+# Construct an uncertain value from an empirical distribution.
+# """
 #macro uncertain(values::AbstractVector, d)
 #    :(UncertainScalarEmpiricallyDistributed($values, $d))
 #end
