@@ -6,6 +6,6 @@ struct UncertainVectorValue{T1<:Number, T2<:Number, T3<:Number,
     upper::AbstractVector{T3}
 end
 
-dimension(usv::UncertainScalarValue) = length(distribution)
+dimension(usv::UncertainVectorValue) = length(distribution)
 
 export UncertainVectorValue

@@ -25,14 +25,14 @@ end
 
 Draw a realisation of an `UncertainEmpiricalScalarValue`.
 """
-realise(ev::UncertainEmpiricalScalarValue) = rand(ev.distribution)
+realise(ev::UncertainScalarEmpiricallyDistributed) = rand(ev.distribution)
 
 """
 	realise(ev::UncertainEmpiricalScalarValue) -> Vector{Float64
 
 Draw `n` realisations of an `UncertainEmpiricalScalarValue`.
 """
-realise(ev::UncertainEmpiricalScalarValue, n::Int) =
+realise(ev::UncertainScalarEmpiricallyDistributed, n::Int) =
 	SVector{n}(rand(ev.distribution, n))
 
 

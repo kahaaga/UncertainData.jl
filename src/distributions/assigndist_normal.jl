@@ -12,7 +12,7 @@ distribution if specified (defaults to `-Inf` and `Inf`).
 """
 function assigndist_normal(μ, lower, upper; nσ = 1,
         trunc_lower = -Inf, trunc_upper = Inf,
-        tolerance = 1e-2μ)
+        tolerance = 1e-7)
 
     dist_from_μ_upper = upper - μ
     dist_from_μ_lower = μ - lower
@@ -23,3 +23,12 @@ function assigndist_normal(μ, lower, upper; nσ = 1,
     σ_estim = dist_from_μ_upper/nσ
     Truncated(Normal(μ, σ_estim), trunc_lower, trunc_upper)
 end
+
+function assigndist_normal(μ, σ; nσ = 1, trunc_lower = -Inf, trunc_upper = Inf,
+        tolerance = 1e-7)
+
+    σ_estim = σ/nσ
+    Truncated(Normal(μ, σ_estim), trunc_lower, trunc_upper)
+end
+
+export assigndist_normal
