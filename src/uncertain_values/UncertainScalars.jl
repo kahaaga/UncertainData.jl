@@ -13,6 +13,9 @@ struct UncertainScalarGenericThreeParameter{T1<:Number, T2<:Number, T3<:Number,
     c::T3
 end
 
+resample(uv::UncertainScalarGenericThreeParameter) = rand(uv.distribution)
+
+
 """
 Uncertain value represented by a generic two-parameter distribution.
 """
@@ -23,6 +26,9 @@ struct UncertainScalarGenericTwoParameter{T1<:Number, T2<:Number,
     b::T2
 end
 
+resample(uv::UncertainScalarGenericTwoParameter) = rand(uv.distribution)
+
+
 """
 Uncertain value represented by a normal distribution.
 """
@@ -32,6 +38,9 @@ struct UncertainScalarNormallyDistributed{T1<:Number, T2<:Number,
     μ::T1
     σ::T2
 end
+
+resample(uv::UncertainScalarNormallyDistributed) = rand(uv.distribution)
+
 
 
 """
@@ -44,6 +53,9 @@ struct UncertainScalarUniformlyDistributed{T1<:Number, T2<:Number,
     upper::T2
 end
 
+resample(uv::UncertainScalarUniformlyDistributed) = rand(uv.distribution)
+
+
 
 """
 Uncertain value represented by a beta distribution.
@@ -55,6 +67,9 @@ struct UncertainScalarBetaDistributed{T1<:Number, T2<:Number,
     β::T2
 end
 
+resample(uv::UncertainScalarBetaDistributed) = rand(uv.distribution)
+
+
 """
 Uncertain value represented by a beta prime distribution.
 """
@@ -64,6 +79,9 @@ struct UncertainScalarBetaPrimeDistributed{T1<:Number, T2<:Number,
     α::T1
     β::T2
 end
+
+resample(uv::UncertainScalarBetaPrimeDistributed) = rand(uv.distribution)
+
 
 """
 Uncertain value represented by a beta binomial distribution.
@@ -76,6 +94,9 @@ struct UncertainScalarBetaBinomialDistributed{T1<:Number, T2<:Number,
     β::T3
 end
 
+resample(uv::UncertainScalarBetaBinomialDistributed) = rand(uv.distribution)
+
+
 
 """
 Uncertain value represented by a gamma distribution.
@@ -86,6 +107,9 @@ struct UncertainScalarGammaDistributed{T1<:Number, T2<:Number,
     α::T1
     θ::T2
 end
+
+resample(uv::UncertainScalarGammaDistributed) = rand(uv.distribution)
+
 
 
 """
@@ -98,6 +122,8 @@ struct UncertainScalarFrechetDistributed{T1<:Number, T2<:Number,
     θ::T2
 end
 
+resample(uv::UncertainScalarFrechetDistributed) = rand(uv.distribution)
+
 
 
 """
@@ -109,6 +135,9 @@ struct UncertainScalarBinomialDistributed{T1<:Number, T2<:Number,
     n::T1
     p::T2
 end
+
+resample(uv::UncertainScalarBinomialDistributed) = rand(uv.distribution)
+
 
 
 ###################
@@ -237,4 +266,5 @@ UncertainScalarBetaPrimeDistributed,
 UncertainScalarBetaBinomialDistributed,
 UncertainScalarBinomialDistributed,
 UncertainScalarGammaDistributed,
-UncertainScalarFrechetDistributed
+UncertainScalarFrechetDistributed,
+resample

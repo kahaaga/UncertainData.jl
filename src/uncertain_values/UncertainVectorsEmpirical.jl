@@ -1,5 +1,5 @@
 include("AbstractEmpirical.jl")
-include("../distributions/empirical_distribution.jl")
+include("distributions/empirical_distribution.jl")
 
 """
     UncertainEmpiricalVectorValue
