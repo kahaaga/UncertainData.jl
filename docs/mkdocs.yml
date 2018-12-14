@@ -22,3 +22,5 @@ docs_dir: 'build'
 
 pages:
   - Home: index.md
+  - Ensemble statistics: ensemble_statistics.md
+  - Implementing algorithms for uncertain data: implementing_algorithms_for_uncertaindata.md

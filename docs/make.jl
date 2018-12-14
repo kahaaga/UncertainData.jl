@@ -4,7 +4,9 @@ using DocumenterMarkdown
 using UncertainData
 
 PAGES = [
-    "index.md"
+    "index.md",
+    "ensemble_statistics.md",
+    "Implementing algorithms for uncertain data" => "implementing_algorithms_for_uncertaindata.md"
 ]
 
 makedocs(
