@@ -1,13 +1,13 @@
-o1 = UncertainValue(0, 0.5, Normal)
-o2 = UncertainValue(2.0, 0.1, Normal)
-o3 = UncertainValue(0, 4, Uniform)
-o4 = UncertainValue(rand(100), Uniform)
-o5 = UncertainValue(4, 5, Beta)
-o6 = UncertainValue(4, 5, Gamma)
-o7 = UncertainValue(1, 2, Frechet)
-o8 = UncertainValue(1, 2, BetaPrime)
-o9 = UncertainValue(10, 3, 2, BetaBinomial)
-o10 = UncertainValue(10, 0.3, Binomial)
+o1 = UncertainValue(Normal, 0, 0.5)
+o2 = UncertainValue(Normal, 2.0, 0.1)
+o3 = UncertainValue(Uniform, 0, 4)
+o4 = UncertainValue(Uniform, rand(100))
+o5 = UncertainValue(Beta, 4, 5)
+o6 = UncertainValue(Gamma, 4, 5)
+o7 = UncertainValue(Frechet, 1, 2)
+o8 = UncertainValue(BetaPrime, 1, 2)
+o9 = UncertainValue(BetaBinomial, 10, 3, 2)
+o10 = UncertainValue(Binomial, 10, 0.3)
 
 
 @test resample(o1) isa Float64
