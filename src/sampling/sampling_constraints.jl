@@ -40,6 +40,34 @@ struct TruncateQuantiles <: ValueSamplingConstraint
     upper_quantile::Float64
 end
 
+"""
+A constraint indicating that, when sampling an `AbstractUncertainDataset`, the
+distributions should be truncated at `nσ` (`n` standard deviations).
+quantile.
+"""
+struct TruncateStd <: ValueSamplingConstraint
+    nσ::Int
+end
+
+"""
+A constraint indicating that, when sampling an `AbstractUncertainDataset`, the
+distributions for each uncertain value should be truncated below at some
+specified value.
+"""
+struct TruncateMinimum{T<:Number} <: ValueSamplingConstraint
+    min::T
+end
+
+"""
+A constraint indicating that, when sampling an `AbstractUncertainDataset`,
+the distributions for each uncertain value should be truncated above at some
+specified value.
+"""
+struct TruncateMaximum{T<:Number} <: ValueSamplingConstraint
+    max::T
+end
+
+
 
 
 #########################################################################
@@ -265,12 +293,166 @@ function resample(uv::AbstractUncertainValue, constraint::TruncateQuantiles, n::
 end
 
 
+"""
+resample(uv::AbstractUncertainValue, constraint::TruncateStd)
+
+Resample by first truncating the distribution representing the value at ``\\pm``
+`nσ`, then performing the resampling.
+
+
+## Example
+
+```julia
+uncertainval = UncertainValue(0, 1, Uniform)
+constraint = TruncateStd(2) # truncate at 2 standard deviations
+
+# Resample the uncertain value by truncating the distribution furnishing it,
+# then resampling the new distribution once times.
+resample(uncertainval, constraint)
+"""
+function resample(uv::AbstractUncertainValue, constraint::TruncateStd)
+    σ, nσ = std(uv.distribution), constraint.nσ
+
+    # Apply (another level of) truncation, then sample
+    lower_bound = mean(uv.distribution) - σ * nσ
+    upper_bound = mean(uv.distribution) + σ * nσ
+    rand(Truncated(uv.distribution, lower_bound, upper_bound))
+end
+
+"""
+resample(uv::AbstractUncertainValue, constraint::TruncateStd, n::Int)
+
+Resample by first truncating the distribution representing the value at ``\\pm``
+`nσ`, then performing the resampling.
+
+
+## Example
+
+```julia
+uncertainval = UncertainValue(0, 1, Uniform)
+constraint = TruncateStd(0.3, 2) # truncate at 2σ = 2*0.3
+
+# Resample the uncertain value by truncating the distribution furnishing it,
+# then resampling the new distribution 1000 times.
+resample(uncertainval, constraint, 1000)
+"""
+function resample(uv::AbstractUncertainValue, constraint::TruncateStd, n::Int)
+    σ, nσ = std(uv.distribution), constraint.nσ
+
+    # Apply (another level of) truncation, then sample
+    lower_bound = mean(uv.distribution) - σ * nσ
+    upper_bound = mean(uv.distribution) + σ * nσ
+    rand(Truncated(uv.distribution, lower_bound, upper_bound), n)
+end
+
+
+"""
+    resample(uv::AbstractUncertainValue, constraint::TruncateMinimum)
+
+Resample by first truncating the distribution representing the value at some
+minimum value, then performing the resampling.
+
+## Example
+
+```julia
+uncertainval = UncertainValue(0, 0.2, Normal)
+constraint = TruncateMinimum(-0.5) # accept no values less than -0.5
+
+# Resample the uncertain value by truncating the distribution furnishing it,
+# then resampling the new distribution once.
+resample(uncertainval, constraint)
+```
+"""
+function resample(uv::AbstractUncertainValue, constraint::TruncateMinimum)
+    # Apply (another level of) truncation, then sample
+    lower_bound = constraint.min
+    upper_bound = support(uv.distribution).ub
+    rand(Truncated(uv.distribution, lower_bound, upper_bound))
+end
+
+"""
+    resample(uv::AbstractUncertainValue, constraint::TruncateMinimum, n::Int)
+
+Resample by first truncating the distribution representing the value at some
+minimum value, then performing the resampling.
+
+## Example
+
+```julia
+uncertainval = UncertainValue(0, 0.2, Normal)
+constraint = TruncateMinimum(-0.5)
+
+# Resample the uncertain value by truncating the distribution furnishing it,
+# then resampling the new distribution 1000 times.
+resample(uncertainval, constraint, 1000)
+```
+"""
+function resample(uv::AbstractUncertainValue, constraint::TruncateMinimum, n::Int)
+    # Apply (another level of) truncation, then sample
+    lower_bound = constraint.min
+    upper_bound = support(uv.distribution).ub
+    rand(Truncated(uv.distribution, lower_bound, upper_bound), n)
+end
+
+
+
+"""
+    resample(uv::AbstractUncertainValue, constraint::TruncateMaximum)
+
+Resample by first truncating the distribution representing the value at some
+minimum value, then performing the resampling.
+
+## Example
+
+```julia
+uncertainval = UncertainValue(0, 0.8, Normal)
+constraint = TruncateMaximum(1.1) # accept no values larger than 1.1
+
+# Resample the uncertain value by truncating the distribution furnishing it,
+# then resampling the new distribution once.
+resample(uncertainval, constraint)
+```
+"""
+function resample(uv::AbstractUncertainValue, constraint::TruncateMaximum)
+    # Apply (another level of) truncation, then sample
+    upper_bound = constraint.max
+    lower_bound = support(uv.distribution).lb
+    rand(Truncated(uv.distribution, lower_bound, upper_bound))
+end
+
+"""
+    resample(uv::AbstractUncertainValue, constraint::TruncateMaximum, n::Int)
+
+Resample by first truncating the distribution representing the value at some
+minimum value, then performing the resampling.
+
+## Example
+
+```julia
+uncertainval = UncertainValue(0, 0.8, Normal)
+constraint = TruncateMaximum(1.1) # accept no values larger than 1.1
+
+# Resample the uncertain value by truncating the distribution furnishing it,
+# then resampling the new distribution 1000 times.
+resample(uncertainval, constraint, 1000)
+```
+"""
+function resample(uv::AbstractUncertainValue, constraint::TruncateMaximum, n::Int)
+    # Apply (another level of) truncation, then sample
+    upper_bound = constraint.max
+    lower_bound = support(uv.distribution).lb
+    rand(Truncated(uv.distribution, lower_bound, upper_bound), n)
+end
+
 export
 SamplingConstraint,
 ValueSamplingConstraint,
 NoConstraint,
 TruncateLowerQuantile,
 TruncateUpperQuantile,
+TruncateMaximum,
+TruncateMinimum,
+TruncateStd,
 TruncateQuantiles,
 IndexSamplingConstraint,
 StrictlyIncreasing,
