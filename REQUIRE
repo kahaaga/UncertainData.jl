@@ -3,4 +3,5 @@ StaticArrays
 Distributions
 IntervalArithmetic
 StatsBase
+HypothesisTests
 RecipesBase

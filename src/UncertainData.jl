@@ -10,21 +10,17 @@ using Statistics
 # UncertainValues submodule
 include("uncertain_values/uncertain_values.jl")
 
-
 # UncertainDataset submodule
 include("uncertain_datasets/uncertain_datasets.jl")
 
-resample(uv::AbstractUncertainValue) = UncertainValues.resample(uv)
-resample(uv::AbstractUncertainValue, n::Int) = UncertainValues.resample(uv, n)
-resample(uv::AbstractUncertainDataset) = UncertainDatasets.resample(uv)
-resample(uv::AbstractUncertainDataset, n::Int) = UncertainDatasets.resample(uv, n)
+# Resampling
+include("sampling/sampling.jl")
 
-# Uncertain statistics 
+# Uncertain statistics
 include("uncertain_statistics/UncertainStatistics.jl")
 
+# Plot recipes
+include("plot_recipes/recipes_uncertainvalues.jl")
 
-export resample
-# Uncertain statistics
-#include("uncertain_statistics/UncertainStatistics.jl")
 
 end # module

@@ -1,9 +1,11 @@
 name = "UncertainData"
 uuid = "c87c18fc-f66f-11e8-39c0-ebf4b82ec4e5"
 authors = ["Kristian Agasøster Haaga <kahaaga@gmail.com>"]
+repo = "https://github.com/kahaaga/UncertainData.jl.git"
 
 [deps]
 Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
+HypothesisTests = "09f84164-cd44-5f33-b23f-e6b0d136a0d5"
 IntervalArithmetic = "d1acc4aa-44c8-5952-acd4-ba5d80a2a253"
 Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
 RecipesBase = "3cdcf5f2-1ef4-517c-9805-6587b60abb01"

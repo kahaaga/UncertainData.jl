@@ -1,2 +1,10 @@
 # UncertainData.jl
-A Julia package for dealing with uncertain datasets.
+A Julia package for dealing with data values with associated uncertainties and datasets consisting of uncertain values.
+
+## Goals
+
+1. Systematic and intuitive ways of representing uncertain data.
+2. Provide a framework for robust computation of ensemble statistics for uncertain data.
+
+
+Please check out the [documentation](https://kahaaga.github.io/UncertainData.jl/dev) for more information.
