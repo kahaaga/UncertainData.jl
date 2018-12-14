@@ -1,19 +1,30 @@
 # UncertainData.jl
 
-## Goals
 
-1. Provide a systematic and intuitive way of representing uncertain data.
-2. Robust computation of ensemble statistics.
-3. Speed up analyses involving uncertain data. Observations stored as probability distributions takes up minimal memory and are only realised when necessary for computations.
+## Motivation
+UncertainData.jl was born to systematically deal with uncertain data, and to sample uncertain dataset more rigorously. It makes workflows involving uncertain data significantly easier.
 
-<!-- 2. Make it easier to translate assumptions about the reliability of observations into a probabilistic framework. -->
-<!-- 3. Isolate the assumption part of statistical analyses to the pre-processing stage.
-    - Once an `UncertainObservation` or an `UncertainDataset` has been constructed, you no longer have to deal with the uncertainty in your data explicitly. The statistical algorithms you know and love dispatch on the `UncertainDataset` type and returns an `UncertainEstimate`, which completely specifies the uncertainty of your analysis based on the prior information you provided. -->
+## Probabilistic representation of uncertain observations
+Way too often in data analysis the uncertainties in observational data are ignored or not dealt with in a systematic manner. The core concept of the package is that uncertain data should live in the probability domain, not as single value representations of the data (e.g. the mean).
+
+## Uncertain values and datasets of uncertain values
+In this package, data values are stored as probability distributions.
+Likewise, indices (e.g. time, depth or any other index) of observations are
+also represented as probability distributions.
+
+Individual uncertain observations may be collected in `UncertainDatasets`, which can be sampled according to user-provided sampling constraints.
 
 
+## Basic workflow
+### Creating uncertain values
+Uncertain values are created by using the `UncertainValue` constructor.
 
+There are two ways to construct uncertain values:
 
-This package was born to systematically deal with uncertain data,
-and to sample uncertain dataset more rigorously. To do so, it uses some machinery `IntervalArithmetic.jl` and `Distributions.jl`,
-which makes speaking about probability distributions and their
-    overlap (or lack thereof) much easier.
+1. Fitting a distribution to empirical data
+2. Specifying a probability distribution with parameters.
+
+### Creating uncertain datasets
+Blabla.
+
+## Resampling
