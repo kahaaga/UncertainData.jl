@@ -22,5 +22,4 @@ using Reexport
     # Common constructors
     include("UncertainValue.jl")
 
-
 end #module

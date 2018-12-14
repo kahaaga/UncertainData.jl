@@ -1,6 +1,6 @@
 include("AbstractUncertainValue.jl")
 
-abstract type AbstractEmpiricalValue{S} <: AbstractUncertainValue end
+abstract type AbstractEmpiricalValue <: AbstractUncertainValue end
 
 function summarise(ed::AbstractEmpiricalValue)
     _type = typeof(ed)
