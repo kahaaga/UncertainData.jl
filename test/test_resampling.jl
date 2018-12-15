@@ -17,12 +17,12 @@ c = resample(u, TruncateStd(1))
 @test minimum(c) >= 0 - 1
 
 # range truncation
-c = resample(u, TruncateStd(-0.2, 0.2))
+c = resample(u, TruncateRange(-0.2, 0.2))
 @test maximum(c) <= 0.2
 @test minimum(c) >= -0.2
 
 # range truncation
-c = resample(u, TruncateStd(-0.2, 0.2), 100)
+c = resample(u, TruncateRange(-0.2, 0.2), 100)
 @test maximum(c) <= 0.2
 @test minimum(c) >= -0.2
 
