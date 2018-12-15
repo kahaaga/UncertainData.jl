@@ -94,7 +94,7 @@ export intersect
 function summarise(o::AbstractUncertainValue)
     dist = o.distribution
     _type = typeof(o)
-    "$_type($value, $lower, $upper, $dist)"
+    "$_type"
 end
 Base.show(io::IO, q::AbstractUncertainValue) = print(io, summarise(q))
 
