@@ -20,59 +20,72 @@ abstract type ValueSamplingConstraint <: SamplingConstraint end
 
 
 """
-A (non)constraint indicating that, when sampling an `AbstractUncertainDataset`,
-the full distributions for each uncertain value should be sampled fully.
-"""
-struct NoConstraint <: ValueSamplingConstraint end
+    TruncateLowerQuantile <: ValueSamplingConstraint
 
-
-"""
-A constraint indicating that, when sampling an `AbstractUncertainDataset`, the
+A constraint indicating that the
 distributions for each uncertain value should be truncated below at some
-quantile.
+quantile when sampling an `AbstractUncertainValue` or
+an `UncertainDataset`.
 """
 struct TruncateLowerQuantile <: ValueSamplingConstraint
     lower_quantile::Float64
 end
 
 """
-A constraint indicating that, when sampling an `AbstractUncertainDataset`,
+    TruncateUpperQuantile <: ValueSamplingConstraint
+
+A constraint indicating that
 the distributions for each uncertain value should be truncated above at some
-quantile.
+quantile when sampling an `AbstractUncertainValue` or
+an `UncertainDataset`.
 """
 struct TruncateUpperQuantile <: ValueSamplingConstraint
     upper_quantile::Float64
 end
 
-""" A (non)constraint indicating that the distributions for each uncertain
-value should be truncated below at some quantile. """
+"""
+    TruncateQuantiles <: ValueSamplingConstraint
+
+A constraint indicating that
+the distributions for each uncertain value should be truncated above at some
+quantile when sampling an `AbstractUncertainValue` or
+an `UncertainDataset`.
+"""
 struct TruncateQuantiles <: ValueSamplingConstraint
     lower_quantile::Float64
     upper_quantile::Float64
 end
 
 """
-A constraint indicating that, when sampling an `AbstractUncertainDataset`, the
+    TruncateStd <: ValueSamplingConstraint
+
+A constraint indicating that
 distributions should be truncated at `nσ` (`n` standard deviations).
-quantile.
+quantile when sampling an `AbstractUncertainValue` or an `UncertainDataset`.
 """
 struct TruncateStd <: ValueSamplingConstraint
     nσ::Int
 end
 
 """
-A constraint indicating that, when sampling an `AbstractUncertainDataset`, the
+    TruncateMinimum{T<:Number} <: ValueSamplingConstraint
+
+A constraint indicating that the
 distributions for each uncertain value should be truncated below at some
-specified value.
+specified minimum value when sampling an `AbstractUncertainValue` or an
+`UncertainDataset`.
 """
 struct TruncateMinimum{T<:Number} <: ValueSamplingConstraint
     min::T
 end
 
 """
-A constraint indicating that, when sampling an `AbstractUncertainDataset`,
+    TruncateMaximum{T<:Number} <: ValueSamplingConstraint
+
+A constraint indicating that
 the distributions for each uncertain value should be truncated above at some
-specified value.
+specified maximum value when sampling an `AbstractUncertainValue` or an
+`UncertainDataset`.
 """
 struct TruncateMaximum{T<:Number} <: ValueSamplingConstraint
     max::T
@@ -519,15 +532,19 @@ end
 
 export
 SamplingConstraint,
-ValueSamplingConstraint,
 NoConstraint,
+
+ValueSamplingConstraint,
 TruncateLowerQuantile,
 TruncateUpperQuantile,
+TruncateQuantiles,
+TruncateMinimum,
 TruncateMaximum,
 TruncateRange,
 TruncateStd,
-TruncateQuantiles,
+
 IndexSamplingConstraint,
 StrictlyIncreasing,
 StrictlyDecreasing,
+
 resample
