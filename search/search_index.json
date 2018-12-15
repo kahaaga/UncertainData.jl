@@ -1,0 +1,79 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "UncertainData.jl\n\n\n\n\nMotivation\n\n\nUncertainData.jl was born to systematically deal with uncertain data, and to sample uncertain dataset more rigorously. It makes workflows involving uncertain data significantly easier.\n\n\n\n\nProbabilistic representation of uncertain observations\n\n\nWay too often in data analysis the uncertainties in observational data are ignored or not dealt with in a systematic manner. The core concept of the package is that uncertain data should live in the probability domain, not as single value representations of the data (e.g. the mean).\n\n\n\n\nUncertain values and datasets of uncertain values\n\n\nIn this package, data values are stored as probability distributions. Likewise, indices (e.g. time, depth or any other index) of observations are also represented as probability distributions.\n\n\nIndividual uncertain observations may be collected in \nUncertainDatasets\n, which can be sampled according to user-provided sampling constraints.\n\n\n\n\nBasic workflow\n\n\n\n\nCreating uncertain values\n\n\nUncertain values are created by using the \nUncertainValue\n constructor.\n\n\nThere are two ways to construct uncertain values:\n\n\n\n\nFitting a distribution to empirical data\n\n\nSpecifying a probability distribution with parameters.\n\n\n\n\n\n\nCreating uncertain datasets\n\n\nBlabla.\n\n\n\n\nResampling",
+            "title": "Home"
+        },
+        {
+            "location": "/#uncertaindatajl",
+            "text": "",
+            "title": "UncertainData.jl"
+        },
+        {
+            "location": "/#motivation",
+            "text": "UncertainData.jl was born to systematically deal with uncertain data, and to sample uncertain dataset more rigorously. It makes workflows involving uncertain data significantly easier.",
+            "title": "Motivation"
+        },
+        {
+            "location": "/#probabilistic-representation-of-uncertain-observations",
+            "text": "Way too often in data analysis the uncertainties in observational data are ignored or not dealt with in a systematic manner. The core concept of the package is that uncertain data should live in the probability domain, not as single value representations of the data (e.g. the mean).",
+            "title": "Probabilistic representation of uncertain observations"
+        },
+        {
+            "location": "/#uncertain-values-and-datasets-of-uncertain-values",
+            "text": "In this package, data values are stored as probability distributions. Likewise, indices (e.g. time, depth or any other index) of observations are also represented as probability distributions.  Individual uncertain observations may be collected in  UncertainDatasets , which can be sampled according to user-provided sampling constraints.",
+            "title": "Uncertain values and datasets of uncertain values"
+        },
+        {
+            "location": "/#basic-workflow",
+            "text": "",
+            "title": "Basic workflow"
+        },
+        {
+            "location": "/#creating-uncertain-values",
+            "text": "Uncertain values are created by using the  UncertainValue  constructor.  There are two ways to construct uncertain values:   Fitting a distribution to empirical data  Specifying a probability distribution with parameters.",
+            "title": "Creating uncertain values"
+        },
+        {
+            "location": "/#creating-uncertain-datasets",
+            "text": "Blabla.",
+            "title": "Creating uncertain datasets"
+        },
+        {
+            "location": "/#resampling",
+            "text": "",
+            "title": "Resampling"
+        },
+        {
+            "location": "/ensemble_statistics/",
+            "text": "Examples of uncertainty ensemble statistics\n\n\nThis package implements most of the statistical algorithms in \nStatsBase\n for uncertain values and uncertain datasets.\n\n\nThe syntax for calling the algorithms is the same as in \nStatsBase\n, but the functions here accept an additional positional argument \nn\n, which controls how many times the uncertain values are resampled to compute the statistics. The default number of times to resample is \nn = 1000\n.\n\n\n\n\nStatistics of single uncertain values\n\n\n\n\nmean(d::AbstractUncertainValue, n::Int = 1000)\n. Computes the mean of an uncertain value.\n\n\nmedian(d::AbstractUncertainValue, n::Int = 1000)\n. Computes the median of an uncertain value.\n\n\nmiddle(d::AbstractUncertainValue, n::Int = 1000)\n. Computes the middle of an uncertain value.\n\n\nstd(d::AbstractUncertainValue, n::Int = 1000)\n. Computes the standard deviation of an uncertain value.\n\n\nvar(d::AbstractUncertainValue, n::Int = 1000)\n. Computes the variance of an uncertain value.\n\n\nquantile(d::AbstractUncertainValue, p, n::Int = 1000)\n. Computes the \np\n-th quantile(s) of an uncertain value.\n\n\n\n\n\n\nStatistics on datasets of uncertain values\n\n\nThe following statistics are available for uncertain datasets (collections of uncertain values). \n\n\n\n\nmean(d::UncertainDataset\n). Computes the element-wise mean of a dataset of uncertain values.\n\n\nmedian(d::UncertainDataset\n). Computes the element-wise median of a dataset of uncertain values.\n\n\nmiddle(d::UncertainDataset\n). Computes the element-wise middle of a dataset of uncertain values.\n\n\nstd(d::UncertainDataset\n). Computes the element-wise standard deviation of a dataset of uncertain values.\n\n\nvar(d::UncertainDataset\n). Computes the element-wise variance of a dataset of uncertain values.\n\n\nquantile(d::UncertainDataset, p, n::Int = 1000)\n. Computes the element-wise \np\n-th quantile(s) of a dataset of uncertain values.\n\n\ncor(d1::UncertainDataset, d2::UncertainDataset, n::Int = 1000)\n. Compute the correlation between two datasets consisting of uncertain values.\n\n\ncov(d1::UncertainDataset, d2::UncertainDataset, n::Int = 1000)\n. Compute the correlation between two datasets consisting of uncertain values.",
+            "title": "Ensemble statistics"
+        },
+        {
+            "location": "/ensemble_statistics/#examples-of-uncertainty-ensemble-statistics",
+            "text": "This package implements most of the statistical algorithms in  StatsBase  for uncertain values and uncertain datasets.  The syntax for calling the algorithms is the same as in  StatsBase , but the functions here accept an additional positional argument  n , which controls how many times the uncertain values are resampled to compute the statistics. The default number of times to resample is  n = 1000 .",
+            "title": "Examples of uncertainty ensemble statistics"
+        },
+        {
+            "location": "/ensemble_statistics/#statistics-of-single-uncertain-values",
+            "text": "mean(d::AbstractUncertainValue, n::Int = 1000) . Computes the mean of an uncertain value.  median(d::AbstractUncertainValue, n::Int = 1000) . Computes the median of an uncertain value.  middle(d::AbstractUncertainValue, n::Int = 1000) . Computes the middle of an uncertain value.  std(d::AbstractUncertainValue, n::Int = 1000) . Computes the standard deviation of an uncertain value.  var(d::AbstractUncertainValue, n::Int = 1000) . Computes the variance of an uncertain value.  quantile(d::AbstractUncertainValue, p, n::Int = 1000) . Computes the  p -th quantile(s) of an uncertain value.",
+            "title": "Statistics of single uncertain values"
+        },
+        {
+            "location": "/ensemble_statistics/#statistics-on-datasets-of-uncertain-values",
+            "text": "The following statistics are available for uncertain datasets (collections of uncertain values).    mean(d::UncertainDataset ). Computes the element-wise mean of a dataset of uncertain values.  median(d::UncertainDataset ). Computes the element-wise median of a dataset of uncertain values.  middle(d::UncertainDataset ). Computes the element-wise middle of a dataset of uncertain values.  std(d::UncertainDataset ). Computes the element-wise standard deviation of a dataset of uncertain values.  var(d::UncertainDataset ). Computes the element-wise variance of a dataset of uncertain values.  quantile(d::UncertainDataset, p, n::Int = 1000) . Computes the element-wise  p -th quantile(s) of a dataset of uncertain values.  cor(d1::UncertainDataset, d2::UncertainDataset, n::Int = 1000) . Compute the correlation between two datasets consisting of uncertain values.  cov(d1::UncertainDataset, d2::UncertainDataset, n::Int = 1000) . Compute the correlation between two datasets consisting of uncertain values.",
+            "title": "Statistics on datasets of uncertain values"
+        },
+        {
+            "location": "/implementing_algorithms_for_uncertaindata/",
+            "text": "Implementing algorithms for uncertain data\n\n\nDo you already have an algorithm computing some statistic that you want to obtain uncertainty estimates for? Simply use Julia's multiple dispatch and create a version of the algorithm function that accepts the \nAbstractUncertainValue\n and \nAbstractUncertainDataset\n types, along with a \nSamplingConstraints\n specifying how the uncertain values are should be resampled.\n\n\nA basic function skeleton could be\n\n\n# Some algorithm computing a statistic for a scalar-valued vector\nfunction myalgorithm(dataset::Vector{T}; kwargs...) where T\n    # some algorithm returning a single-valued statistic\nend\n\n# Applying the algorithm to an ensemble of realisations from\n# an uncertain dataset, given a sampling constraint.\nfunction myalgorithm(d::UncertainDataset, constraint::C;\n        n_ensemble_realisations = 100, kwargs...)\n        where {C <: SamplingConstraint}\n\n    ensemble_stats = zeros(n_ensemble_realisations)\n\n    for i in 1:n_ensemble_realisations\n        ensemble_stats[i] = myalgorithm(resample(d, constraint); kwargs...)\n    end\n\n    return ensemble_stats\nend",
+            "title": "Implementing algorithms for uncertain data"
+        },
+        {
+            "location": "/implementing_algorithms_for_uncertaindata/#implementing-algorithms-for-uncertain-data",
+            "text": "Do you already have an algorithm computing some statistic that you want to obtain uncertainty estimates for? Simply use Julia's multiple dispatch and create a version of the algorithm function that accepts the  AbstractUncertainValue  and  AbstractUncertainDataset  types, along with a  SamplingConstraints  specifying how the uncertain values are should be resampled.  A basic function skeleton could be  # Some algorithm computing a statistic for a scalar-valued vector\nfunction myalgorithm(dataset::Vector{T}; kwargs...) where T\n    # some algorithm returning a single-valued statistic\nend\n\n# Applying the algorithm to an ensemble of realisations from\n# an uncertain dataset, given a sampling constraint.\nfunction myalgorithm(d::UncertainDataset, constraint::C;\n        n_ensemble_realisations = 100, kwargs...)\n        where {C <: SamplingConstraint}\n\n    ensemble_stats = zeros(n_ensemble_realisations)\n\n    for i in 1:n_ensemble_realisations\n        ensemble_stats[i] = myalgorithm(resample(d, constraint); kwargs...)\n    end\n\n    return ensemble_stats\nend",
+            "title": "Implementing algorithms for uncertain data"
+        }
+    ]
+}
