@@ -1,6 +1,13 @@
 abstract type AbstractUncertainTwoParameterScalarValue <: AbstractUncertainValue end
 abstract type AbstractUncertainThreeParameterScalarValue <: AbstractUncertainValue end
 
+import Distributions.Normal
+import Distributions.Uniform
+import Distributions.Beta
+import Distributions.BetaPrime
+import Distributions.BetaBinomial
+import Distributions.Gamma
+import Distributions.Frechet
 
 """
 Uncertain value represented by a generic three-parameter distribution.
@@ -267,4 +274,11 @@ UncertainScalarBetaBinomialDistributed,
 UncertainScalarBinomialDistributed,
 UncertainScalarGammaDistributed,
 UncertainScalarFrechetDistributed,
+Normal,
+Uniform,
+Beta,
+BetaPrime,
+BetaBinomial,
+Gamma,
+Frechet,
 resample

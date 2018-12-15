@@ -3,19 +3,22 @@ include("UncertainScalars.jl")
 
 
 """
-    UncertainValue(empiricaldata::AbstractVector{T}, distribution) where {T <: Number}
+    UncertainValue(empiricaldata::AbstractVector{T}, d::Type{D}) where {D <: Distribution}
 
-# Constructor for empirical distributions
+# Constructor for empirical distributions.
+
+Fits a distribution of
 
 ## Arguments
 - **`empiricaldata`**: The data for which to fit the `distribution`.
 - **`distribution`**: A valid univariate distribution from `Distributions.jl`.
 
 """
-function UncertainValue(empiricaldata::AbstractVector{T},
-        distribution) where {T<:Number}
-    UncertainScalarEmpiricallyDistributed(empiricaldata, distribution)
+function UncertainValue(d::Type{D}, empiricaldata) where {D<:Distribution}
+    distribution = FittedDistribution(Distributions.fit(d, empiricaldata))
+    UncertainScalarEmpiricallyDistributed(distribution, empiricaldata)
 end
+
 
 """
 
@@ -77,8 +80,8 @@ UncertainValue(-2, 3, Uniform)
 ```
 
 """
-function UncertainValue(a::T1, b::T2, distribution;
-        kwargs...) where {T1<:Number, T2 <: Number}
+function UncertainValue(distribution::Type{D}, a::T1, b::T2;
+        kwargs...) where {T1<:Number, T2 <: Number, D<:Distribution}
     if distribution == Uniform
         dist = assigndist_uniform(a, b)
         UncertainScalarUniformlyDistributed(dist, a, b)
@@ -107,7 +110,7 @@ end
 
 
 """
-    UncertainValue(a, b, c, distribution; kwargs...)
+    UncertainValue(distribution, a, b, c; kwargs...)
 
 ## Constructor for three-parameter distributions
 
@@ -129,9 +132,22 @@ Currently implemented distributions are `BetaBinomial`.
     support. Defaults to `-Inf`.
 - **`trunc_upper`**: Upper truncation bound for distributions with infinite
     support. Defaults to `Inf`.
+
+## Examples
+### BetaBinomial distribution
+
+Normal distributions are formed by using the constructor
+`UncertainValue(μ, σ, Normal; kwargs...)`. This gives a normal distribution with
+mean μ and standard deviation σ/nσ (nσ must be given as a keyword argument).
+
+```julia
+# A beta binomial distribution with n = 100 trials and parameters α = 2.3 and
+# β = 5
+UncertainValue(100, 2.3, 5, BetaBinomial)
+```
 """
-function UncertainValue(a::T1, b::T2, c::T3, distribution;
-            kwargs...) where {T1 <: Number, T2 <: Number, T3 <: Number, S}
+function UncertainValue(distribution::Type{D}, a::T1, b::T2, c::T3;
+            kwargs...) where {T1 <: Number, T2 <: Number, T3 <: Number, D <: Distribution}
 
     if distribution == BetaBinomial
         dist = assigndist_betabinomial(a, b, c; kwargs...)

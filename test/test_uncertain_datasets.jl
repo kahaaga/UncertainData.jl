@@ -1,7 +1,7 @@
-o1 = UncertainValue(0, 0.5, Normal)
-o2 = UncertainValue(2, 0.3, Normal)
-o3 = UncertainValue(0, 4, Uniform)
-o4 = UncertainValue(rand(100), Uniform)
+o1 = UncertainValue(Normal, 0, 0.5)
+o2 = UncertainValue(Normal, 2, 0.3)
+o3 = UncertainValue(Uniform, 0, 4)
+o4 = UncertainValue(Uniform, rand(100))
 
 
 #####################
