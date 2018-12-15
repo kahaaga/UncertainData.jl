@@ -78,6 +78,18 @@ struct TruncateMaximum{T<:Number} <: ValueSamplingConstraint
     max::T
 end
 
+"""
+    TruncateRange{T<:Number} <: ValueSamplingConstraint
+
+A constraint indicating that
+the distributions for each uncertain value should be truncated at some range
+`[min, max]`  when sampling an `AbstractUncertainValue` or an
+`UncertainDataset`.
+"""
+struct TruncateRange{T} <: ValueSamplingConstraint
+    min::T
+    max::T
+end
 
 
 
@@ -455,6 +467,56 @@ function resample(uv::AbstractUncertainValue, constraint::TruncateMaximum, n::In
     rand(Truncated(uv.distribution, lower_bound, upper_bound), n)
 end
 
+
+
+"""
+    resample(uv::AbstractUncertainValue, constraint::TruncateRange)
+
+Resample by first truncating the distribution representing the value at some
+minimum value, then performing the resampling.
+
+## Example
+
+```julia
+uncertainval = UncertainValue(0, 0.8, Normal)
+constraint = TruncateRange(-0.7, 1.1) # accept values only in range [-0.7, 1.1]
+
+# Resample the uncertain value by truncating the distribution furnishing it,
+# then resampling the new distribution once.
+resample(uncertainval, constraint)
+```
+"""
+function resample(uv::AbstractUncertainValue, constraint::TruncateRange)
+    # Apply (another level of) truncation, then sample
+    upper_bound = constraint.max
+    lower_bound = constraint.min
+    rand(Truncated(uv.distribution, lower_bound, upper_bound))
+end
+
+"""
+    resample(uv::AbstractUncertainValue, constraint::TruncateRange, n::Int)
+
+Resample by first truncating the distribution representing the value at some
+minimum value, then performing the resampling.
+
+## Example
+
+```julia
+uncertainval = UncertainValue(0, 0.8, Normal)
+constraint = TruncateRange(-0.7, 1.1) # accept values only in range [-0.7, 1.1]
+
+# Resample the uncertain value by truncating the distribution furnishing it,
+# then resampling the new distribution 1000 times.
+resample(uncertainval, constraint, 1000)
+```
+"""
+function resample(uv::AbstractUncertainValue, constraint::TruncateRange, n::Int)
+    # Apply (another level of) truncation, then sample
+    upper_bound = constraint.max
+    lower_bound = constraint.min
+    rand(Truncated(uv.distribution, lower_bound, upper_bound), n)
+end
+
 export
 SamplingConstraint,
 ValueSamplingConstraint,
@@ -462,7 +524,7 @@ NoConstraint,
 TruncateLowerQuantile,
 TruncateUpperQuantile,
 TruncateMaximum,
-TruncateMinimum,
+TruncateRange,
 TruncateStd,
 TruncateQuantiles,
 IndexSamplingConstraint,

@@ -13,9 +13,18 @@ c = resample(u, TruncateQuantiles(0.3, 0.9), 1000)
 
 # standard deviation truncation
 c = resample(u, TruncateStd(1))
-
 @test maximum(c) <= 0 + 1
 @test minimum(c) >= 0 - 1
+
+# range truncation
+c = resample(u, TruncateStd(-0.2, 0.2))
+@test maximum(c) <= 0.2
+@test minimum(c) >= -0.2
+
+# range truncation
+c = resample(u, TruncateStd(-0.2, 0.2), 100)
+@test maximum(c) <= 0.2
+@test minimum(c) >= -0.2
 
 
 # Resampling once
