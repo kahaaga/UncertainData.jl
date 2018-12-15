@@ -6,6 +6,16 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>/uncertain_values/</loc>
+     <lastmod>2018-12-15</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>/resampling/</loc>
+     <lastmod>2018-12-15</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>/ensemble_statistics/</loc>
      <lastmod>2018-12-15</lastmod>
      <changefreq>daily</changefreq>

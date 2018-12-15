@@ -40,7 +40,7 @@
     
     
       
-        <title>Extending existing algorithms for uncertain data types - UncertainData.jl</title>
+        <title>Uncertain values - UncertainData.jl</title>
       
     
     
@@ -96,7 +96,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#implementing-algorithms-for-uncertain-data" tabindex="1" class="md-skip">
+      <a href="#from-distributions-with-known-parameters" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -122,7 +122,7 @@
                 UncertainData.jl
               </span>
               <span class="md-header-nav__topic">
-                Extending existing algorithms for uncertain data types
+                Uncertain values
               </span>
             
           
@@ -249,11 +249,52 @@
       
       
 
+  
 
-  <li class="md-nav__item">
-    <a href="../uncertain_values/" title="Uncertain values" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Uncertain values
+      </label>
+    
+    <a href="./" title="Uncertain values" class="md-nav__link md-nav__link--active">
       Uncertain values
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#from-distributions-with-known-parameters" title="From distributions with known parameters" class="md-nav__link">
+    From distributions with known parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-empirical-distributions" title="From empirical distributions" class="md-nav__link">
+    From empirical distributions
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
     
@@ -285,45 +326,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Extending existing algorithms for uncertain data types
-      </label>
-    
-    <a href="./" title="Extending existing algorithms for uncertain data types" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../implementing_algorithms_for_uncertaindata/" title="Extending existing algorithms for uncertain data types" class="md-nav__link">
       Extending existing algorithms for uncertain data types
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#implementing-algorithms-for-uncertain-data" title="Implementing algorithms for uncertain data" class="md-nav__link">
-    Implementing algorithms for uncertain data
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
     
@@ -346,8 +353,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#implementing-algorithms-for-uncertain-data" title="Implementing algorithms for uncertain data" class="md-nav__link">
-    Implementing algorithms for uncertain data
+  <a href="#from-distributions-with-known-parameters" title="From distributions with known parameters" class="md-nav__link">
+    From distributions with known parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-empirical-distributions" title="From empirical distributions" class="md-nav__link">
+    From empirical distributions
   </a>
   
 </li>
@@ -368,35 +382,52 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/kahaaga/UncertainData.jl/edit/master/docs/implementing_algorithms_for_uncertaindata.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/kahaaga/UncertainData.jl/edit/master/docs/uncertain_values.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>Extending existing algorithms for uncertain data types</h1>
+                  <h1>Uncertain values</h1>
                 
-                <p><a id='Implementing-algorithms-for-uncertain-data-1'></a></p>
-<h2 id="implementing-algorithms-for-uncertain-data">Implementing algorithms for uncertain data</h2>
-<p>Do you already have an algorithm computing some statistic that you want to obtain uncertainty estimates for? Simply use Julia's multiple dispatch and create a version of the algorithm function that accepts the <code>AbstractUncertainValue</code> and <code>AbstractUncertainDataset</code> types, along with a <code>SamplingConstraints</code> specifying how the uncertain values are should be resampled.</p>
-<p>A basic function skeleton could be</p>
-<pre><code class="julia"># Some algorithm computing a statistic for a scalar-valued vector
-function myalgorithm(dataset::Vector{T}; kwargs...) where T
-    # some algorithm returning a single-valued statistic
-end
-
-# Applying the algorithm to an ensemble of realisations from
-# an uncertain dataset, given a sampling constraint.
-function myalgorithm(d::UncertainDataset, constraint::C;
-        n_ensemble_realisations = 100, kwargs...)
-        where {C &lt;: SamplingConstraint}
-
-    ensemble_stats = zeros(n_ensemble_realisations)
-
-    for i in 1:n_ensemble_realisations
-        ensemble_stats[i] = myalgorithm(resample(d, constraint); kwargs...)
-    end
-
-    return ensemble_stats
-end
-</code></pre>
+                <p><a id='From-distributions-with-known-parameters-1'></a></p>
+<h2 id="from-distributions-with-known-parameters">From distributions with known parameters</h2>
+<p>To construct uncertain values represented by probability distributions with known parameters, the following constructors are used. The order the parameters are provided to the constructor is the same as for constructing the equivalent distributions in <code>Distributions.jl</code>.</p>
+<ul>
+<li><code>UncertainValue(d::Type{D}, a&lt;:Number, b&lt;:Number) where {D&lt;:Distributions.Distribution}</code>. Creates an uncertain value consisting of a two-parameter distribution of type <code>d</code> with parameters <code>a</code> and <code>b</code>. Precisely what <code>a</code> and <code>b</code> are depends on which distribution is provided.</li>
+<li><code>UncertainValue(d::Type{D}, a&lt;:Number, b&lt;:Number, c&lt;:Number) where {D&lt;:Distributions.Distribution}</code>. Creates an uncertain value consisting of a three-parameter distribution of type <code>d</code> with parameters <code>a</code> and <code>b</code>. Precisely what <code>a</code>, <code>b</code> and <code>c</code> are depends on which distribution is provided.</li>
+</ul>
+<p><strong>Supported distributions</strong>:</p>
+<ul>
+<li><code>UncertainValue(Uniform, -5.0, 5.1)</code>.  Creates an uncertain value generated by uniform distribution on <code>[-5.0, 5.1]</code>.</li>
+<li><code>UncertainValue(Normal, -2, 0.5)</code>.  Creates an uncertain value generated by normal distribution with parameters <code>μ = -2</code> and <code>σ = 0.5</code>.</li>
+<li><code>UncertainValue(Gamma, 2.2, 3)</code>.  Creates an uncertain value generated by gamma distribution with parameters <code>α  = 2.2</code> and <code>θ = 3</code>.</li>
+<li><code>UncertainValue(Beta, 1.5, 3.5)</code>.  Creates an uncertain value generated by beta distribution with parameters <code>α  = 1.5</code> and <code>β = 3.5</code>.</li>
+<li><code>UncertainValue(BetaPrime, 1.5, 3.5)</code>.  Creates an uncertain value generated by beta distribution with parameters <code>α  = 1.5</code> and <code>β = 3.5</code>.</li>
+<li><code>UncertainValue(Frechet, 2.2, 3)</code>.  Creates an uncertain value generated by Fréchet distribution with parameters <code>α  = 2.2</code> and <code>θ = 3</code>.</li>
+<li><code>UncertainValue(Binomial, 28, 0.2)</code>.  Creates an uncertain value generated by binomial distribution with <code>n = 28</code> trials and probability <code>p = 0.2</code> of success in individual trials.</li>
+<li><code>UncertainValue(BetaBinomial, 28, 3.3, 4.4)</code>.  Creates an uncertain value generated by a beta-binomial distribution with <code>n = 28</code> trials, and parameters <code>α  = 1.5</code> and <code>β = 3.5</code>.</li>
+</ul>
+<p><a id='From-empirical-distributions-1'></a></p>
+<h2 id="from-empirical-distributions">From empirical distributions</h2>
+<p>To construct uncertain values represented by empirical distributions, use the following constructor.</p>
+<ul>
+<li><code>UncertainValue(d::Type{D}, empiricaldata) where {D&lt;:Distributions.Distribution}</code>. This will fit a distribution of type <code>d</code> to the data and keep that as the representation of the empirical distribution. Calls <code>Distributions.fit</code> behind the scenes.</li>
+</ul>
+<p>This is the constructor you would use when you have empirical data that has a histogram close to one of the supported theoretical distributions. <em>Be sure to actually look at you data before deciding on an appropriate distribution to fit, though! You won't get any error messages if you try to fit a distribution that does not match your data!</em></p>
+<p><strong>Supported distributions</strong>:</p>
+<ul>
+<li><code>UncertainValue(Uniform, empiricaldata)</code>.  Creates an uncertain value generated by a uniform distribution fitted to <code>empiricaldata</code>.</li>
+<li><code>UncertainValue(Normal, empiricaldata)</code>. Creates an uncertain value generated by a normal distribution fitted to <code>empiricaldata</code>.</li>
+<li><code>UncertainValue(Gamma, empiricaldata)</code>. Creates an uncertain value generated by a gamma distribution fitted to <code>empiricaldata</code>.</li>
+<li><code>UncertainValue(Beta, empiricaldata)</code>. Creates an uncertain value generated by a beta distribution fitted to <code>empiricaldata</code>.</li>
+<li><code>UncertainValue(BetaPrime, empiricaldata)</code>. Creates an uncertain value generated by a beta prime distribution fitted to <code>empiricaldata</code>.</li>
+<li><code>UncertainValue(Frechet, empiricaldata)</code>.  Creates an uncertain value generated by a Fréchet distribution fitted to <code>empiricaldata</code>.</li>
+<li><code>UncertainValue(Binomial, empiricaldata)</code>.  Creates an uncertain value generated by a binomial distribution fitted to <code>empiricaldata</code>.</li>
+<li><code>UncertainValue(BetaBinomial, empiricaldata)</code>.  Creates an uncertain value generated by a beta-binomial distribution fitted to <code>empiricaldata</code>.</li>
+</ul>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li><code>UncertainValue(Uniform, rand(Uniform(-2, 3), 1000))</code>.  Fits a uniform distribution to 1000 values generated uniformly on the interval <code>[-2, 3]</code>.</li>
+<li><code>UncertainValue(Normal, rand(Normal(), 1000))</code>.  Fits a uniform distribution to 1000 values generated from a normal distribution.</li>
+</ul>
                 
                   
                 
@@ -417,7 +448,7 @@ end
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../ensemble_statistics/" title="Ensemble statistics" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href=".." title="Home" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -426,11 +457,25 @@ end
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Ensemble statistics
+                Home
               </span>
             </div>
           </a>
         
+        
+          <a href="../resampling/" title="Resampling" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Resampling
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
         
       </nav>
     </div>
