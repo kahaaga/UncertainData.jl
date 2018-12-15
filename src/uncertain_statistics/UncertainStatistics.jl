@@ -3,15 +3,23 @@ using Reexport
 @reexport module UncertainStatistics
     using StatsBase
     using Distributions
+
+    # Uncertain values and datasets types
     using ..UncertainValues
     using ..UncertainDatasets
+
+    # Sampling constraints and resampling functions
+    using ..Resampling
 
     # Definitions of statistical methods for UncertainDatasets
     include("statsbase/core_stats.jl")
     include("hypothesis_tests/mann_whitney.jl")
     include("hypothesis_tests/t_tests.jl")
-    include("hypothesis_tests/HypothesisTests.jl")
-    include("hypothesis_tests/HypothesisTests_timeseries.jl")
+    include("hypothesis_tests/anderson_darling.jl")
+    include("hypothesis_tests/kolmogorov_smirnov.jl")
+    include("hypothesis_tests/jarque_bera.jl")
+
+    include("hypothesis_tests/timeseries_tests.jl")
 
     #include("StatsBase_meanfunctions.jl")
     #include("StatsBase_scalarstatistics_moments.jl")
