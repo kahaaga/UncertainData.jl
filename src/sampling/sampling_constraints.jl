@@ -1,5 +1,16 @@
 abstract type SamplingConstraint end
 
+
+"""
+    NoConstraint <: SamplingConstraint
+
+A (non)constraint indicating that
+the full distributions for each uncertain value should be sampled fully
+when sampling an `AbstractUncertainValue` or an `UncertainDataset`.
+"""
+struct NoConstraint <: SamplingConstraint end
+
+
 #########################################################################
 # Sampling constraints for regular data (i.e. not age/depth/time index...,
 # but the values associated to those indices).
