@@ -17,10 +17,33 @@ markdown_extensions:
   - tables
   - fenced_code
   - mdx_math
+  - codehilite:
+      linenums: true
+  - admonition
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
 
 docs_dir: 'build'
 
 pages:
   - Home: index.md
-  - Ensemble statistics: ensemble_statistics.md
+  - Uncertain values: uncertainvalue.md
+  - Uncertain statistics:
+    - Overview: ensemble_statistics.md
+    - Hypothesis tests: hypthesis_tests.md
+  - Resampling: resampling.md
   - Implementing algorithms for uncertain data: implementing_algorithms_for_uncertaindata.md

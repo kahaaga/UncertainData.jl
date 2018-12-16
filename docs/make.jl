@@ -5,8 +5,11 @@ using UncertainData
 
 PAGES = [
     "index.md",
+    "uncertainvalue.md", 
     "ensemble_statistics.md",
-    "Implementing algorithms for uncertain data" => "implementing_algorithms_for_uncertaindata.md"
+	"resampling.md",
+    "hypothesis_tests.md",
+    "implementing_algorithms_for_uncertaindata.md"
 ]
 
 makedocs(
