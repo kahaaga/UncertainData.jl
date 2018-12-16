@@ -71,12 +71,9 @@ export intersect
 ###################
 
 function summarise(o::AbstractUncertainValue)
-    value = @sprintf "%.3f" o.value
-    lower = @sprintf "%.3f" o.lower
-    upper = @sprintf "%.3f" o.upper
     dist = o.distribution
     _type = typeof(o)
-    "$_type($value, $lower, $upper, $dist)"
+    "$_type"
 end
 Base.show(io::IO, q::AbstractUncertainValue) = print(io, summarise(q))
 

@@ -42,8 +42,6 @@ y = UncertainDataset(ys)
 @test pvalue(ExactOneSampleKSTest(uval1, Normal())) isa Float64
 @test pvalue(OneSampleADTest(uval1, Normal())) isa Float64
 
-@test pvalue(JarqueBeraTest(uval1)) isa Float64
-
 
 #######################
 # On uncertain datasets
