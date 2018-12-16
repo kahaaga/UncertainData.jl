@@ -6,27 +6,6 @@ abstract type AbstractUncertainValue end
 
 export AbstractUncertainValue
 
-##########################################################################
-# Draw realisations of the uncertain value according to its distribution.
-##########################################################################
-"""
-	resample(uv::AbstractUncertainValue)
-
-Draw a realisation of an uncertain value according to its distribution.
-"""
-resample(uv::AbstractUncertainValue) = rand(uv.distribution)
-
-"""
-	resample(uv::AbstractUncertainValue, n::Int)
-
-Draw `n` realisations of an uncertain value according to its distribution.
-"""
-resample(uv::AbstractUncertainValue, n::Int) =
-    rand(uv.distribution, n)
-
-export resample
-
-
 ##############################
 # Support of an observation
 ##############################

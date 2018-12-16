@@ -18,10 +18,6 @@ struct UncertainScalarEmpiricallyDistributed{D <: Distribution, T} <: AbstractEm
     values::AbstractVector{T}
 end
 
-resample(ue::UncertainScalarEmpiricallyDistributed) = rand(ue.distribution.distribution)
-resample(ue::UncertainScalarEmpiricallyDistributed, n::Int) = rand(ue.distribution.distribution, n)
-
-
 export
-UncertainScalarEmpiricallyDistributed,
-resample
+AbstractEmpiricalScalarValue,
+UncertainScalarEmpiricallyDistributed
