@@ -1,156 +1,58 @@
-abstract type SamplingConstraint end
+import ..UncertainValues:
+    AbstractUncertainValue,
+    FittedDistribution,
+    UncertainScalarEmpiricallyDistributed
 
+import Distributions:
+    Truncated
 
-"""
-    NoConstraint <: SamplingConstraint
+import StatsBase:
+    quantile, std, mean
 
-A (non)constraint indicating that
-the full distributions for each uncertain value should be sampled fully
-when sampling an `AbstractUncertainValue` or an `UncertainDataset`.
-"""
-struct NoConstraint <: SamplingConstraint end
+import Distributions:
+    support
 
-
-#########################################################################
-# Sampling constraints for regular data (i.e. not age/depth/time index...,
-# but the values associated to those indices).
-#########################################################################
-
-abstract type ValueSamplingConstraint <: SamplingConstraint end
-
+########################################################################
+# Resampling without constraints
+########################################################################
 
 """
-    TruncateLowerQuantile <: ValueSamplingConstraint
+	resample(uv::AbstractUncertainValue)
 
-A constraint indicating that the
-distributions for each uncertain value should be truncated below at some
-quantile when sampling an `AbstractUncertainValue` or
-an `UncertainDataset`.
+Draw a realisation of an uncertain value according to its distribution.
 """
-struct TruncateLowerQuantile <: ValueSamplingConstraint
-    lower_quantile::Float64
-end
+resample(uv::AbstractUncertainValue) = rand(uv.distribution)
 
 """
-    TruncateUpperQuantile <: ValueSamplingConstraint
+	resample(uv::AbstractUncertainValue, n::Int)
 
-A constraint indicating that
-the distributions for each uncertain value should be truncated above at some
-quantile when sampling an `AbstractUncertainValue` or
-an `UncertainDataset`.
+Draw `n` realisations of an uncertain value according to its distribution.
 """
-struct TruncateUpperQuantile <: ValueSamplingConstraint
-    upper_quantile::Float64
-end
+resample(uv::AbstractUncertainValue, n::Int) =
+    rand(uv.distribution, n)
 
-"""
-    TruncateQuantiles <: ValueSamplingConstraint
+resample(ue::UncertainScalarEmpiricallyDistributed) =
+    rand(ue.distribution.distribution)
+resample(ue::UncertainScalarEmpiricallyDistributed, n::Int) =
+    rand(ue.distribution.distribution, n)
 
-A constraint indicating that
-the distributions for each uncertain value should be truncated above at some
-quantile when sampling an `AbstractUncertainValue` or
-an `UncertainDataset`.
-"""
-struct TruncateQuantiles <: ValueSamplingConstraint
-    lower_quantile::Float64
-    upper_quantile::Float64
-end
+resample(fd::FittedDistribution) = rand(fd.distribution)
+resample(fd::FittedDistribution, n::Int) = rand(fd.distribution, n)
 
-"""
-    TruncateStd <: ValueSamplingConstraint
-
-A constraint indicating that
-distributions should be truncated at `nσ` (`n` standard deviations).
-quantile when sampling an `AbstractUncertainValue` or an `UncertainDataset`.
-"""
-struct TruncateStd <: ValueSamplingConstraint
-    nσ::Int
-end
-
-"""
-    TruncateMinimum{T<:Number} <: ValueSamplingConstraint
-
-A constraint indicating that the
-distributions for each uncertain value should be truncated below at some
-specified minimum value when sampling an `AbstractUncertainValue` or an
-`UncertainDataset`.
-"""
-struct TruncateMinimum{T<:Number} <: ValueSamplingConstraint
-    min::T
-end
-
-"""
-    TruncateMaximum{T<:Number} <: ValueSamplingConstraint
-
-A constraint indicating that
-the distributions for each uncertain value should be truncated above at some
-specified maximum value when sampling an `AbstractUncertainValue` or an
-`UncertainDataset`.
-"""
-struct TruncateMaximum{T<:Number} <: ValueSamplingConstraint
-    max::T
-end
-
-"""
-    TruncateRange{T<:Number} <: ValueSamplingConstraint
-
-A constraint indicating that
-the distributions for each uncertain value should be truncated at some range
-`[min, max]`  when sampling an `AbstractUncertainValue` or an
-`UncertainDataset`.
-"""
-struct TruncateRange{T} <: ValueSamplingConstraint
-    min::T
-    max::T
-end
+resample(uv::UncertainScalarEmpiricallyDistributed) =
+    rand(uv.distribution.distribution)
+resample(uv::UncertainScalarEmpiricallyDistributed, n::Int) =
+    rand(uv.distribution.distribution, n)
 
 
-
-#########################################################################
-# Sampling constraints for sample indices (time index, age, depth, etc...)
-# Often, these need to be sampled to obey some physical criteria (i.e.,
-# observations are from physical samples lying above each other, so the order
-# of the observations cannot be mixed).
-#########################################################################
-
-abstract type IndexSamplingConstraint <: SamplingConstraint end
-
-struct StrictlyIncreasing <: IndexSamplingConstraint end
-
-struct StrictlyDecreasing <: IndexSamplingConstraint end
-
-struct StrictlyIncreasingWherePossible <: IndexSamplingConstraint end
-
-struct StrictlyDecreasingWherePossible<: IndexSamplingConstraint end
-
-
-
-
-struct ConstrainedUncertainValueDataset <: AbstractUncertainValueDataset
-    values::UncertainDataset
-    constraints::Vector{SamplingConstraint}
-end
-
-
-"""
-    apply_constraint(d::UncertainValueDataset,
-            constraints::Vector{SamplingConstraint})
-
-Apply sampling constraints to an UncertainValueDataset.
-"""
-function apply_constraint(d::UncertainValueDataset,
-            constraints::Vector{SamplingConstraint})
-end
-
-function realisations_possible()
-    nothing
-end
-
-
+########################################################################
+# Resampling with constraints
+########################################################################
 """
 Resample an uncertain value given a sampling constraint.
 """
-function resample(uv::AbstractUncertainValue, constraint::C) where {C<:SamplingConstraint} end
+function resample(uv::AbstractUncertainValue,
+        constraint::C) where {C<:SamplingConstraint} end
 
 """
     resample(uv::AbstractUncertainValue, constraint::NoConstraint)
@@ -430,8 +332,6 @@ function resample(uv::AbstractUncertainValue, constraint::TruncateMinimum, n::In
     rand(Truncated(uv.distribution, lower_bound, upper_bound), n)
 end
 
-
-
 """
     resample(uv::AbstractUncertainValue, constraint::TruncateMaximum)
 
@@ -529,22 +429,3 @@ function resample(uv::AbstractUncertainValue, constraint::TruncateRange, n::Int)
     lower_bound = constraint.min
     rand(Truncated(uv.distribution, lower_bound, upper_bound), n)
 end
-
-export
-SamplingConstraint,
-NoConstraint,
-
-ValueSamplingConstraint,
-TruncateLowerQuantile,
-TruncateUpperQuantile,
-TruncateQuantiles,
-TruncateMinimum,
-TruncateMaximum,
-TruncateRange,
-TruncateStd,
-
-IndexSamplingConstraint,
-StrictlyIncreasing,
-StrictlyDecreasing,
-
-resample
