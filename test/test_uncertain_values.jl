@@ -44,8 +44,9 @@
 # Uncertain Binomial-distributed values
 @test UncertainValue(Binomial, 50, 0.4) isa UncertainScalarBinomialDistributed
 
-
+################################################
 # Uncertain values from empirical distributions
+################################################
 empirical_uniform = rand(Uniform(), 100)
 empirical_normal = rand(Normal(), 100)
 empirical_beta = rand(Beta(), 100)
@@ -53,3 +54,33 @@ empirical_beta = rand(Beta(), 100)
 @test UncertainValue(Uniform, empirical_uniform) isa UncertainScalarEmpiricallyDistributed
 @test UncertainValue(Normal, empirical_normal) isa UncertainScalarEmpiricallyDistributed
 @test UncertainValue(Beta, empirical_beta) isa UncertainScalarEmpiricallyDistributed
+
+##################################################
+# Uncertain values from kernel density estimates
+################################################
+
+# Implicit constructor
+@test UncertainValue(empirical_uniform) isa UncertainScalarKDE
+@test UncertainValue(empirical_normal) isa UncertainScalarKDE
+@test UncertainValue(empirical_beta) isa UncertainScalarKDE
+
+# Explicit constructor
+@test UncertainValue(UnivariateKDE, empirical_uniform) isa UncertainScalarKDE
+@test UncertainValue(UnivariateKDE, empirical_normal) isa UncertainScalarKDE
+@test UncertainValue(UnivariateKDE, empirical_beta) isa UncertainScalarKDE
+
+# Empirical cumulative distribution function
+d = Normal()
+some_sample = rand(d, 1000)
+uv = UncertainValue(some_sample)
+uv_ecdf = UncertainData.UncertainValues.ecdf(uv)
+
+tol = 1e-7
+@test all(uv_ecdf .>= 0.0 - tol)
+@test all(uv_ecdf .<= 1.0 + tol)
+
+
+# Quantiles (empirical and true qantiles should be close for large samples)
+large_sample = rand(d, Int(1e6))
+uv = UncertainValue(UnivariateKDE, large_sample)
+@test abs(quantile(uv, 0.8) - quantile(d, 0.8)) < 1e-2
