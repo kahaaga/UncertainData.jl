@@ -6,27 +6,6 @@ abstract type AbstractUncertainValue end
 
 export AbstractUncertainValue
 
-##########################################################################
-# Draw realisations of the uncertain value according to its distribution.
-##########################################################################
-"""
-	resample(uv::AbstractUncertainValue)
-
-Draw a realisation of an uncertain value according to its distribution.
-"""
-resample(uv::AbstractUncertainValue) = rand(uv.distribution)
-
-"""
-	resample(uv::AbstractUncertainValue, n::Int)
-
-Draw `n` realisations of an uncertain value according to its distribution.
-"""
-resample(uv::AbstractUncertainValue, n::Int) =
-    rand(uv.distribution, n)
-
-export resample
-
-
 ##############################
 # Support of an observation
 ##############################
@@ -92,12 +71,9 @@ export intersect
 ###################
 
 function summarise(o::AbstractUncertainValue)
-    value = @sprintf "%.3f" o.value
-    lower = @sprintf "%.3f" o.lower
-    upper = @sprintf "%.3f" o.upper
     dist = o.distribution
     _type = typeof(o)
-    "$_type($value, $lower, $upper, $dist)"
+    "$_type"
 end
 Base.show(io::IO, q::AbstractUncertainValue) = print(io, summarise(q))
 

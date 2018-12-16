@@ -16,9 +16,9 @@ import Statistics.quantile
 mean(uv::AbstractUncertainValue, n::Int = 1000) = mean(resample(uv, n))
 median(uv::AbstractUncertainValue, n::Int = 1000) = median(resample(uv, n))
 middle(uv::AbstractUncertainValue, n::Int = 1000) = middle(resample(uv, n))
-quantile(uv::AbstractUncertainValue, p, n::Int = 1000) = quantile(resample(uv, n), p)
-std(uv::AbstractUncertainValue, n::Int = 1000) = std(resample(uv))
-var(uv::AbstractUncertainValue, n::Int = 1000) = var(resample(uv))
+quantile(uv::AbstractUncertainValue, q, n::Int = 1000) = quantile(resample(uv, n), q)
+std(uv::AbstractUncertainValue, n::Int = 1000) = std(resample(uv, n))
+var(uv::AbstractUncertainValue, n::Int = 1000) = var(resample(uv, n))
 
 
 #########################################

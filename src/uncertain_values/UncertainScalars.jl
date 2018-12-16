@@ -1,6 +1,13 @@
 abstract type AbstractUncertainTwoParameterScalarValue <: AbstractUncertainValue end
 abstract type AbstractUncertainThreeParameterScalarValue <: AbstractUncertainValue end
 
+import Distributions.Normal
+import Distributions.Uniform
+import Distributions.Beta
+import Distributions.BetaPrime
+import Distributions.BetaBinomial
+import Distributions.Gamma
+import Distributions.Frechet
 
 """
 Uncertain value represented by a generic three-parameter distribution.
@@ -13,9 +20,6 @@ struct UncertainScalarGenericThreeParameter{T1<:Number, T2<:Number, T3<:Number,
     c::T3
 end
 
-resample(uv::UncertainScalarGenericThreeParameter) = rand(uv.distribution)
-
-
 """
 Uncertain value represented by a generic two-parameter distribution.
 """
@@ -25,8 +29,6 @@ struct UncertainScalarGenericTwoParameter{T1<:Number, T2<:Number,
     a::T1
     b::T2
 end
-
-resample(uv::UncertainScalarGenericTwoParameter) = rand(uv.distribution)
 
 
 """
@@ -39,9 +41,6 @@ struct UncertainScalarNormallyDistributed{T1<:Number, T2<:Number,
     σ::T2
 end
 
-resample(uv::UncertainScalarNormallyDistributed) = rand(uv.distribution)
-
-
 
 """
 Uncertain value represented by a uniform distribution.
@@ -52,9 +51,6 @@ struct UncertainScalarUniformlyDistributed{T1<:Number, T2<:Number,
     lower::T1
     upper::T2
 end
-
-resample(uv::UncertainScalarUniformlyDistributed) = rand(uv.distribution)
-
 
 
 """
@@ -67,8 +63,6 @@ struct UncertainScalarBetaDistributed{T1<:Number, T2<:Number,
     β::T2
 end
 
-resample(uv::UncertainScalarBetaDistributed) = rand(uv.distribution)
-
 
 """
 Uncertain value represented by a beta prime distribution.
@@ -80,7 +74,6 @@ struct UncertainScalarBetaPrimeDistributed{T1<:Number, T2<:Number,
     β::T2
 end
 
-resample(uv::UncertainScalarBetaPrimeDistributed) = rand(uv.distribution)
 
 
 """
@@ -94,7 +87,6 @@ struct UncertainScalarBetaBinomialDistributed{T1<:Number, T2<:Number,
     β::T3
 end
 
-resample(uv::UncertainScalarBetaBinomialDistributed) = rand(uv.distribution)
 
 
 
@@ -108,7 +100,6 @@ struct UncertainScalarGammaDistributed{T1<:Number, T2<:Number,
     θ::T2
 end
 
-resample(uv::UncertainScalarGammaDistributed) = rand(uv.distribution)
 
 
 
@@ -122,7 +113,6 @@ struct UncertainScalarFrechetDistributed{T1<:Number, T2<:Number,
     θ::T2
 end
 
-resample(uv::UncertainScalarFrechetDistributed) = rand(uv.distribution)
 
 
 
@@ -136,7 +126,6 @@ struct UncertainScalarBinomialDistributed{T1<:Number, T2<:Number,
     p::T2
 end
 
-resample(uv::UncertainScalarBinomialDistributed) = rand(uv.distribution)
 
 
 
@@ -267,4 +256,10 @@ UncertainScalarBetaBinomialDistributed,
 UncertainScalarBinomialDistributed,
 UncertainScalarGammaDistributed,
 UncertainScalarFrechetDistributed,
-resample
+Normal,
+Uniform,
+Beta,
+BetaPrime,
+BetaBinomial,
+Gamma,
+Frechet

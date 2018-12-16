@@ -1,7 +1,7 @@
-o1 = UncertainValue(0, 0.2, Normal)
-o2 = UncertainValue(1, 0.3, Normal)
-o3 = UncertainValue(0, 4, Uniform)
-o4 = UncertainValue(rand(100), Uniform)
+o1 = UncertainValue(Normal, 0, 0.2)
+o2 = UncertainValue(Normal, 1, 0.3)
+o3 = UncertainValue(Uniform, 0, 4)
+o4 = UncertainValue(Uniform, rand(100))
 D1 = UncertainDataset([o1, o2, o3,])
 D2 = UncertainDataset([o1, o2, o4])
 
@@ -14,6 +14,12 @@ D2 = UncertainDataset([o1, o2, o4])
 @test quantile(o1, 0.86) isa Float64
 @test std(o1) isa Float64
 @test var(o1) isa Float64
+@test mean(o1, 10) isa Float64
+@test median(o1, 10) isa Float64
+@test middle(o1, 10) isa Float64
+@test quantile(o1, 0.86, 10) isa Float64
+@test std(o1, 10) isa Float64
+@test var(o1, 10) isa Float64
 
 #####################
 ## Uncertain datasets

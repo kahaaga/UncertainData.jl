@@ -5,6 +5,8 @@ using Reexport
     using Distributions
     using RecipesBase
     using StaticArrays
+    using KernelDensity
+    using StatsBase
 
     # Distributions
     include("distributions/assign_dist.jl")
@@ -17,10 +19,10 @@ using Reexport
     include("UncertainScalars.jl")
     include("UncertainVectors.jl")
     include("UncertainScalarsEmpirical.jl")
+    include("UncertainScalarKDE.jl")
     include("UncertainVectorsEmpirical.jl")
 
     # Common constructors
     include("UncertainValue.jl")
-
 
 end #module
