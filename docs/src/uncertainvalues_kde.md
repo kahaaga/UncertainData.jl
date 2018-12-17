@@ -1,7 +1,7 @@
 
 # Uncertain value from KDE estimate
 
-```
+```@docs
 UncertainValue(::UnivariateKDE, ::Vector)
 ```
 

@@ -1,4 +1,6 @@
-## Examples of uncertainty ensemble statistics
+# Uncertain statistics
+
+## Core statistics
 
 This package implements most of the statistical algorithms in `StatsBase` for uncertain values and uncertain datasets.
 
@@ -19,7 +21,7 @@ The default number of times to resample is `n = 1000`.
 ### Statistics on datasets of uncertain values
 
 The following statistics are available for uncertain datasets (collections
-of uncertain values). 
+of uncertain values).
 
 - `mean(d::UncertainDataset`). Computes the element-wise mean of a dataset of uncertain values.
 - `median(d::UncertainDataset`). Computes the element-wise median of a dataset of uncertain values.

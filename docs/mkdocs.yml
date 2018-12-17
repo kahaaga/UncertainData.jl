@@ -45,11 +45,11 @@ nav:
   - Home: index.md
   - Uncertain values:
     - Overview: uncertainvalues_overview.md
+    - Kernel density estimates (KDE): uncertainvalues_kde.md
     - Theoretical distributions: uncertainvalues_theoreticaldistributions.md
     - Fitted distributions: uncertainvalues_fitted.md
-    - Kernel density estimates (KDE): uncertainvalues_kde.md
   - Uncertain statistics:
-    - Overview: ensemble_statistics.md
+    - Core statistics: ensemble_statistics.md
     - Hypothesis tests: hypothesis_tests.md
   - Resampling: resampling.md
   - Implementing algorithms for uncertain data: implementing_algorithms_for_uncertaindata.md

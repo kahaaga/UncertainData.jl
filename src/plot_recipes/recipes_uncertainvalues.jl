@@ -1,14 +1,23 @@
 using RecipesBase
 using StatsBase
-
 @recipe function fsingle(o::AbstractUncertainValue;
 		n_samples = 10000, nbins = 50)
     @series begin
-        label --> "$d"
         seriestype := :bar
         fα --> 0.5
         fc --> :green
-        fit(Histogram, resample(d, n_samples), nbins = nbins)
+        fit(Histogram, resample(o, n_samples), nbins = nbins)
+    end
+end
+
+@recipe function fsingle(o::UncertainScalarEmpiricallyDistributed;
+		n_samples = 10000, nbins = 50)
+
+    @series begin
+        seriestype := :bar
+        fα --> 0.5
+        fc --> :green
+        fit(Histogram, resample(o, n_samples), nbins = nbins)
     end
 end
 
@@ -17,6 +26,8 @@ end
                             mix = false,
                             n_samples = 10000, nbins = 50)
     size --> (300, 400)
+    d1 = o1.distribution
+    d2 = o1.distribution
     @series begin
         label --> "P1, $d1"
         seriestype := :bar
