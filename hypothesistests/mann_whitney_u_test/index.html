@@ -35,21 +35,21 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="./assets/images/favicon.png">
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-2.9.4">
     
     
       
-        <title>UncertainData.jl</title>
+        <title>Mann-Whitney u-test - UncertainData.jl</title>
       
     
     
-      <link rel="stylesheet" href="./assets/stylesheets/application.451f80e5.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
       
       
     
     
-      <script src="./assets/javascripts/modernizr.1aa3b519.js"></script>
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
     
     
       <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -58,9 +58,9 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="./assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
-      <link rel="stylesheet" href="assets/Documenter.css">
+      <link rel="stylesheet" href="../../assets/Documenter.css">
     
     
   </head>
@@ -96,7 +96,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#uncertaindatajl" tabindex="1" class="md-skip">
+      <a href="#mann-whitney-u-test" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -122,7 +122,7 @@
                 UncertainData.jl
               </span>
               <span class="md-header-nav__topic">
-                Home
+                Mann-Whitney u-test
               </span>
             
           
@@ -237,90 +237,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Home
-      </label>
-    
-    <a href="" title="Home" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="" title="Home" class="md-nav__link">
       Home
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#motivation" title="Motivation" class="md-nav__link">
-    Motivation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#probabilistic-representation-of-uncertain-observations" title="Probabilistic representation of uncertain observations" class="md-nav__link">
-    Probabilistic representation of uncertain observations
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#uncertain-values-and-datasets-of-uncertain-values" title="Uncertain values and datasets of uncertain values" class="md-nav__link">
-    Uncertain values and datasets of uncertain values
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#basic-workflow" title="Basic workflow" class="md-nav__link">
-    Basic workflow
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#creating-uncertain-values" title="Creating uncertain values" class="md-nav__link">
-    Creating uncertain values
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resampling" title="Resampling" class="md-nav__link">
-    Resampling
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
     
@@ -400,10 +321,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Uncertain statistics
@@ -431,10 +354,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2" checked>
     
     <label class="md-nav__link" for="nav-3-2">
       Hypothesis tests
@@ -534,11 +459,59 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="hypothesistests/mann_whitney_u_test/" title="Mann-Whitney u-test" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Mann-Whitney u-test
+      </label>
+    
+    <a href="hypothesistests/mann_whitney_u_test/" title="Mann-Whitney u-test" class="md-nav__link md-nav__link--active">
       Mann-Whitney u-test
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mann-whitney-u-test" title="Mann-Whitney u-test" class="md-nav__link">
+    Mann-Whitney u-test
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pooled-mann-whitney-u-test" title="Pooled Mann-Whitney u-test" class="md-nav__link">
+    Pooled Mann-Whitney u-test
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#element-wise-mann-whitney-u-test" title="Element-wise Mann-Whitney u-test" class="md-nav__link">
+    Element-wise Mann-Whitney u-test
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -590,56 +563,27 @@
 <nav class="md-nav md-nav--secondary">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#motivation" title="Motivation" class="md-nav__link">
-    Motivation
+  <a href="#mann-whitney-u-test" title="Mann-Whitney u-test" class="md-nav__link">
+    Mann-Whitney u-test
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#probabilistic-representation-of-uncertain-observations" title="Probabilistic representation of uncertain observations" class="md-nav__link">
-    Probabilistic representation of uncertain observations
+  <a href="#pooled-mann-whitney-u-test" title="Pooled Mann-Whitney u-test" class="md-nav__link">
+    Pooled Mann-Whitney u-test
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#uncertain-values-and-datasets-of-uncertain-values" title="Uncertain values and datasets of uncertain values" class="md-nav__link">
-    Uncertain values and datasets of uncertain values
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#basic-workflow" title="Basic workflow" class="md-nav__link">
-    Basic workflow
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#creating-uncertain-values" title="Creating uncertain values" class="md-nav__link">
-    Creating uncertain values
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resampling" title="Resampling" class="md-nav__link">
-    Resampling
+  <a href="#element-wise-mann-whitney-u-test" title="Element-wise Mann-Whitney u-test" class="md-nav__link">
+    Element-wise Mann-Whitney u-test
   </a>
   
 </li>
@@ -660,35 +604,53 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/kahaaga/UncertainData.jl/edit/master/docs/index.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/kahaaga/UncertainData.jl/edit/master/docs/hypothesistests/mann_whitney_u_test.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <p><a id='UncertainData.jl-1'></a></p>
-<h1 id="uncertaindatajl">UncertainData.jl</h1>
-<p><a id='Motivation-1'></a></p>
-<h2 id="motivation">Motivation</h2>
-<p>UncertainData.jl was born to systematically deal with uncertain data, and to sample uncertain dataset more rigorously. It makes workflows involving uncertain data significantly easier.</p>
-<p><a id='Probabilistic-representation-of-uncertain-observations-1'></a></p>
-<h2 id="probabilistic-representation-of-uncertain-observations">Probabilistic representation of uncertain observations</h2>
-<p>Way too often in data analysis the uncertainties in observational data are ignored or not dealt with in a systematic manner. The core concept of the package is that uncertain data should live in the probability domain, not as single value representations of the data (e.g. the mean).</p>
-<p><a id='Uncertain-values-and-datasets-of-uncertain-values-1'></a></p>
-<h2 id="uncertain-values-and-datasets-of-uncertain-values">Uncertain values and datasets of uncertain values</h2>
-<p>In this package, data values are stored as probability distributions. Individual uncertain observations may be collected in <code class="codehilite">UncertainDatasets</code>, which can be sampled according to user-provided sampling constraints.</p>
-<p>Likewise, indices (e.g. time, depth or any other index) of observations are also represented as probability distributions. Indices may also be sampled using constraints, for example enforcing strictly increasing values.</p>
-<p><a id='Basic-workflow-1'></a></p>
-<h2 id="basic-workflow">Basic workflow</h2>
-<p><a id='Creating-uncertain-values-1'></a></p>
-<h3 id="creating-uncertain-values">Creating uncertain values</h3>
-<p>Uncertain values are created by using the <code class="codehilite">UncertainValue</code> constructor.</p>
-<p>There are currently three ways to construct uncertain values:</p>
-<ol>
-<li>Estimating the distribution of your data using kernel density estimation.</li>
-<li>Fitting a distribution to empirical data (if you know roughly what type  of distribution is appropriate).</li>
-<li>Specifying a probability distribution with known parameters (if you want  to represent data found in the literature, for example normally distributed  values with some standard deviation).</li>
-</ol>
-<p><a id='Resampling-1'></a></p>
-<h2 id="resampling">Resampling</h2>
-<p>Uncertain values may be resampled using the <code class="codehilite">resample(uv::UncertainValue)</code> function, which has methods for all the different types of uncertain values. </p>
+                  <h1>Mann-Whitney u-test</h1>
+                
+                <p><a id='Mann-Whitney-u-test-1'></a></p>
+<h2 id="mann-whitney-u-test">Mann-Whitney u-test</h2>
+<p><a id='HypothesisTests.MannWhitneyUTest' href='#HypothesisTests.MannWhitneyUTest'>#</a>
+<strong><code class="codehilite">HypothesisTests.MannWhitneyUTest</code></strong> &mdash; <em>Function</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>MannWhitneyUTest(d1::AbstractUncertainValue, d2::AbstractUncertainValue,
+    n::Int = 1000) -&gt; MannWhitneyUTest
+</pre></div>
+</td></tr></table>
+
+<p>Let <code class="codehilite">s1</code> and <code class="codehilite">s2</code> be samples of <code class="codehilite">n</code> realisations from the distributions furnishing the uncertain values <code class="codehilite">d1</code> and <code class="codehilite">d2</code>.</p>
+<p>Perform a Mann-Whitney U test of the null hypothesis that the probability that an observation drawn from the same population as <code class="codehilite">s1</code> is greater than an observation drawn from the same population as <code class="codehilite">s2</code> is equal to the probability that an observation drawn from the same population as <code class="codehilite">s2</code> is greater than an observation drawn from the same population as <code class="codehilite">s1</code> against the alternative hypothesis that these probabilities are not equal.</p>
+<p>The Mann-Whitney U test is sometimes known as the Wilcoxon rank-sum test. When there are no tied ranks and ≤50 samples, or tied ranks and ≤10 samples, <code class="codehilite">MannWhitneyUTest</code> performs an exact Mann-Whitney U test. In all other cases, <code class="codehilite">MannWhitneyUTest</code> performs an approximate Mann-Whitney U test.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainDatasets/blob/737cf3623506fd55ee38f4a69ceb3d06dc0abe86/src/uncertain_statistics/hypothesis_tests/mann_whitney.jl#L32-L50' class='documenter-source'>source</a><br></p>
+<p><a id='Pooled-Mann-Whitney-u-test-1'></a></p>
+<h2 id="pooled-mann-whitney-u-test">Pooled Mann-Whitney u-test</h2>
+<p><a id='UncertainData.UncertainStatistics.MannWhitneyUTestPooled' href='#UncertainData.UncertainStatistics.MannWhitneyUTestPooled'>#</a>
+<strong><code class="codehilite">UncertainData.UncertainStatistics.MannWhitneyUTestPooled</code></strong> &mdash; <em>Function</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>MannWhitneyUTest(d1::UncertainDataset, d2::UncertainDataset,
+    n::Int = 1000) -&gt; MannWhitneyUTest
+</pre></div>
+</td></tr></table>
+
+<p>Let <span><span class="MathJax_Preview">s_{1_{i}}</span><script type="math/tex">s_{1_{i}}</script></span> be a sample of <code class="codehilite">n</code> realisations of the distribution furnishing the uncertain value <code class="codehilite">d1[i]</code>, where <span><span class="MathJax_Preview">i \in [1, 2, \ldots, N]</span><script type="math/tex">i \in [1, 2, \ldots, N]</script></span> and <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> is the number of uncertain values in <code class="codehilite">d1</code>.  Next, gather the samples for all <span><span class="MathJax_Preview">s_{1_{i}}</span><script type="math/tex">s_{1_{i}}</script></span> in a pooled sample <span><span class="MathJax_Preview">S_1</span><script type="math/tex">S_1</script></span>.  Do the same for the second uncertain dataset <code class="codehilite">d2</code>, yielding the pooled sample  <span><span class="MathJax_Preview">S_2</span><script type="math/tex">S_2</script></span>.</p>
+<p>Perform a Mann-Whitney U test of the null hypothesis that the probability that an observation drawn from the same population as <span><span class="MathJax_Preview">S_1</span><script type="math/tex">S_1</script></span> is greater than an observation drawn from the same population as <span><span class="MathJax_Preview">S_2</span><script type="math/tex">S_2</script></span> is equal to the probability that an observation drawn from the same population as <span><span class="MathJax_Preview">S_2</span><script type="math/tex">S_2</script></span> is greater than an observation drawn from the same population as <span><span class="MathJax_Preview">S_1</span><script type="math/tex">S_1</script></span> against the alternative hypothesis that these probabilities are not equal.</p>
+<p>The Mann-Whitney U test is sometimes known as the Wilcoxon rank-sum test. When there are no tied ranks and ≤50 samples, or tied ranks and ≤10 samples, <code class="codehilite">MannWhitneyUTest</code> performs an exact Mann-Whitney U test. In all other cases, <code class="codehilite">MannWhitneyUTest</code> performs an approximate Mann-Whitney U test.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainDatasets/blob/737cf3623506fd55ee38f4a69ceb3d06dc0abe86/src/uncertain_statistics/hypothesis_tests/mann_whitney.jl#L60-L81' class='documenter-source'>source</a><br></p>
+<p><a id='Element-wise-Mann-Whitney-u-test-1'></a></p>
+<h2 id="element-wise-mann-whitney-u-test">Element-wise Mann-Whitney u-test</h2>
+<p><a id='UncertainData.UncertainStatistics.MannWhitneyUTestElementWise' href='#UncertainData.UncertainStatistics.MannWhitneyUTestElementWise'>#</a>
+<strong><code class="codehilite">UncertainData.UncertainStatistics.MannWhitneyUTestElementWise</code></strong> &mdash; <em>Function</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>MannWhitneyUTest(d1::UncertainDataset, d2::UncertainDataset,
+    n::Int = 1000) -&gt; Vector{MannWhitneyUTest}
+</pre></div>
+</td></tr></table>
+
+<p>Assume <code class="codehilite">d1</code> and <code class="codehilite">d2</code> consist of the same number of uncertain values. Let <span><span class="MathJax_Preview">s_{1_{i}}</span><script type="math/tex">s_{1_{i}}</script></span> be a sample of <code class="codehilite">n</code> realisations of the distribution furnishing the uncertain value <code class="codehilite">d1[i]</code>, where <span><span class="MathJax_Preview">i \in [1, 2, \ldots, N]</span><script type="math/tex">i \in [1, 2, \ldots, N]</script></span> and <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> is the number of uncertain values in <code class="codehilite">d1</code>. Let <span><span class="MathJax_Preview">s_{2_{i}}</span><script type="math/tex">s_{2_{i}}</script></span> be the corresponding sample for <code class="codehilite">d2[i]</code>. This function</p>
+<p>Perform an element-wise Mann-Whitney U test of the null hypothesis that the probability that an observation drawn from the same population as <span><span class="MathJax_Preview">s_{1_{i}}</span><script type="math/tex">s_{1_{i}}</script></span> is greater than an observation drawn from the same population as <span><span class="MathJax_Preview">s_{2_{i}}</span><script type="math/tex">s_{2_{i}}</script></span> is equal to the probability that an observation drawn from the same population as <span><span class="MathJax_Preview">s_{2_{i}}</span><script type="math/tex">s_{2_{i}}</script></span> is greater than an observation drawn from the same population as <span><span class="MathJax_Preview">s_{1_{i}}</span><script type="math/tex">s_{1_{i}}</script></span> against the alternative hypothesis that these probabilities are not equal.</p>
+<p>The Mann-Whitney U test is sometimes known as the Wilcoxon rank-sum test. When there are no tied ranks and ≤50 samples, or tied ranks and ≤10 samples, <code class="codehilite">MannWhitneyUTest</code> performs an exact Mann-Whitney U test. In all other cases, <code class="codehilite">MannWhitneyUTest</code> performs an approximate Mann-Whitney U test.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainDatasets/blob/737cf3623506fd55ee38f4a69ceb3d06dc0abe86/src/uncertain_statistics/hypothesis_tests/mann_whitney.jl#L92-L115' class='documenter-source'>source</a><br></p>
                 
                   
                 
@@ -709,14 +671,28 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
+          <a href="hypothesistests/jarque_bera_test/" title="Jarque-Bera test" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Jarque-Bera test
+              </span>
+            </div>
+          </a>
         
-          <a href="uncertainvalues_overview/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+        
+          <a href="resampling/" title="Resampling" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Overview
+                Resampling
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -746,13 +722,13 @@
       
     </div>
     
-      <script src="./assets/javascripts/application.30f6b8b1.js"></script>
+      <script src="../../assets/javascripts/application.30f6b8b1.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
       
-        <script src="assets/mathjaxhelper.js"></script>
+        <script src="../../assets/mathjaxhelper.js"></script>
       
     
     

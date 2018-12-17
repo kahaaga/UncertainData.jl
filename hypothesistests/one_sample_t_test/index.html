@@ -35,21 +35,21 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="./assets/images/favicon.png">
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-2.9.4">
     
     
       
-        <title>UncertainData.jl</title>
+        <title>One sample t-test - UncertainData.jl</title>
       
     
     
-      <link rel="stylesheet" href="./assets/stylesheets/application.451f80e5.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
       
       
     
     
-      <script src="./assets/javascripts/modernizr.1aa3b519.js"></script>
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
     
     
       <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -58,9 +58,9 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="./assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
-      <link rel="stylesheet" href="assets/Documenter.css">
+      <link rel="stylesheet" href="../../assets/Documenter.css">
     
     
   </head>
@@ -96,7 +96,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#uncertaindatajl" tabindex="1" class="md-skip">
+      <a href="#one-sample-t-test" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -122,7 +122,7 @@
                 UncertainData.jl
               </span>
               <span class="md-header-nav__topic">
-                Home
+                One sample t-test
               </span>
             
           
@@ -237,90 +237,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Home
-      </label>
-    
-    <a href="" title="Home" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="" title="Home" class="md-nav__link">
       Home
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#motivation" title="Motivation" class="md-nav__link">
-    Motivation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#probabilistic-representation-of-uncertain-observations" title="Probabilistic representation of uncertain observations" class="md-nav__link">
-    Probabilistic representation of uncertain observations
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#uncertain-values-and-datasets-of-uncertain-values" title="Uncertain values and datasets of uncertain values" class="md-nav__link">
-    Uncertain values and datasets of uncertain values
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#basic-workflow" title="Basic workflow" class="md-nav__link">
-    Basic workflow
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#creating-uncertain-values" title="Creating uncertain values" class="md-nav__link">
-    Creating uncertain values
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resampling" title="Resampling" class="md-nav__link">
-    Resampling
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
     
@@ -400,10 +321,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Uncertain statistics
@@ -431,10 +354,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2" checked>
     
     <label class="md-nav__link" for="nav-3-2">
       Hypothesis tests
@@ -462,11 +387,59 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="hypothesistests/one_sample_t_test/" title="One sample t-test" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        One sample t-test
+      </label>
+    
+    <a href="hypothesistests/one_sample_t_test/" title="One sample t-test" class="md-nav__link md-nav__link--active">
       One sample t-test
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#one-sample-t-test" title="One-sample t-test" class="md-nav__link">
+    One-sample t-test
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pooled-one-sample-t-test" title="Pooled one-sample t-test" class="md-nav__link">
+    Pooled one-sample t-test
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#element-wise-one-sample-t-test" title="Element-wise one-sample t-test" class="md-nav__link">
+    Element-wise one-sample t-test
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -590,56 +563,27 @@
 <nav class="md-nav md-nav--secondary">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#motivation" title="Motivation" class="md-nav__link">
-    Motivation
+  <a href="#one-sample-t-test" title="One-sample t-test" class="md-nav__link">
+    One-sample t-test
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#probabilistic-representation-of-uncertain-observations" title="Probabilistic representation of uncertain observations" class="md-nav__link">
-    Probabilistic representation of uncertain observations
+  <a href="#pooled-one-sample-t-test" title="Pooled one-sample t-test" class="md-nav__link">
+    Pooled one-sample t-test
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#uncertain-values-and-datasets-of-uncertain-values" title="Uncertain values and datasets of uncertain values" class="md-nav__link">
-    Uncertain values and datasets of uncertain values
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#basic-workflow" title="Basic workflow" class="md-nav__link">
-    Basic workflow
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#creating-uncertain-values" title="Creating uncertain values" class="md-nav__link">
-    Creating uncertain values
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resampling" title="Resampling" class="md-nav__link">
-    Resampling
+  <a href="#element-wise-one-sample-t-test" title="Element-wise one-sample t-test" class="md-nav__link">
+    Element-wise one-sample t-test
   </a>
   
 </li>
@@ -660,35 +604,107 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/kahaaga/UncertainData.jl/edit/master/docs/index.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/kahaaga/UncertainData.jl/edit/master/docs/hypothesistests/one_sample_t_test.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <p><a id='UncertainData.jl-1'></a></p>
-<h1 id="uncertaindatajl">UncertainData.jl</h1>
-<p><a id='Motivation-1'></a></p>
-<h2 id="motivation">Motivation</h2>
-<p>UncertainData.jl was born to systematically deal with uncertain data, and to sample uncertain dataset more rigorously. It makes workflows involving uncertain data significantly easier.</p>
-<p><a id='Probabilistic-representation-of-uncertain-observations-1'></a></p>
-<h2 id="probabilistic-representation-of-uncertain-observations">Probabilistic representation of uncertain observations</h2>
-<p>Way too often in data analysis the uncertainties in observational data are ignored or not dealt with in a systematic manner. The core concept of the package is that uncertain data should live in the probability domain, not as single value representations of the data (e.g. the mean).</p>
-<p><a id='Uncertain-values-and-datasets-of-uncertain-values-1'></a></p>
-<h2 id="uncertain-values-and-datasets-of-uncertain-values">Uncertain values and datasets of uncertain values</h2>
-<p>In this package, data values are stored as probability distributions. Individual uncertain observations may be collected in <code class="codehilite">UncertainDatasets</code>, which can be sampled according to user-provided sampling constraints.</p>
-<p>Likewise, indices (e.g. time, depth or any other index) of observations are also represented as probability distributions. Indices may also be sampled using constraints, for example enforcing strictly increasing values.</p>
-<p><a id='Basic-workflow-1'></a></p>
-<h2 id="basic-workflow">Basic workflow</h2>
-<p><a id='Creating-uncertain-values-1'></a></p>
-<h3 id="creating-uncertain-values">Creating uncertain values</h3>
-<p>Uncertain values are created by using the <code class="codehilite">UncertainValue</code> constructor.</p>
-<p>There are currently three ways to construct uncertain values:</p>
-<ol>
-<li>Estimating the distribution of your data using kernel density estimation.</li>
-<li>Fitting a distribution to empirical data (if you know roughly what type  of distribution is appropriate).</li>
-<li>Specifying a probability distribution with known parameters (if you want  to represent data found in the literature, for example normally distributed  values with some standard deviation).</li>
-</ol>
-<p><a id='Resampling-1'></a></p>
-<h2 id="resampling">Resampling</h2>
-<p>Uncertain values may be resampled using the <code class="codehilite">resample(uv::UncertainValue)</code> function, which has methods for all the different types of uncertain values. </p>
+                  <h1>One sample t-test</h1>
+                
+                <p><a id='One-sample-t-test-1'></a></p>
+<h2 id="one-sample-t-test">One-sample t-test</h2>
+<p><a id='HypothesisTests.OneSampleTTest' href='#HypothesisTests.OneSampleTTest'>#</a>
+<strong><code class="codehilite">HypothesisTests.OneSampleTTest</code></strong> &mdash; <em>Type</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">OneSampleTTest</span><span class="o">(</span><span class="nt">d</span><span class="p">::</span><span class="nd">AbstractUncertainValue</span><span class="o">,</span> <span class="nt">n</span><span class="p">::</span><span class="nd">Int</span> <span class="o">=</span> <span class="nt">1000</span><span class="o">;</span>
+    <span class="nt">μ0</span><span class="p">::</span><span class="nd">Real</span> <span class="o">=</span> <span class="nt">0</span><span class="o">)</span> <span class="nt">-</span><span class="o">&gt;</span> <span class="nt">OneSampleTTest</span>
+</pre></div>
+</td></tr></table>
+
+<p>Perform a one sample t-test of the null hypothesis that the uncertain value has a distribution with mean <code class="codehilite">μ0</code> against the alternative hypothesis that its distribution does not have mean <code class="codehilite">μ0</code>. <code class="codehilite">n</code> indicates the number of draws during resampling.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainDatasets/blob/737cf3623506fd55ee38f4a69ceb3d06dc0abe86/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L185-L193' class='documenter-source'>source</a><br></p>
+<p><strong>Example:</strong></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c"># Normally distributed uncertain observation with mean = 2.1</span>
+<span class="n">uv</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">Normal</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+
+<span class="c"># Perform a one-sample t-test to test the null hypothesis that</span>
+<span class="c"># the sample comes from a distribution with mean μ0</span>
+<span class="n">OneSampleTTest</span><span class="p">(</span><span class="n">uv</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">μ0</span> <span class="o">=</span> <span class="mf">2.1</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Which gives the following output:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c"># Which results in</span>
+<span class="n">One</span> <span class="n">sample</span> <span class="n">t</span><span class="o">-</span><span class="n">test</span>
+<span class="o">-----------------</span>
+<span class="n">Population</span> <span class="n">details</span><span class="o">:</span>
+    <span class="n">parameter</span> <span class="n">of</span> <span class="n">interest</span><span class="o">:</span>   <span class="n">Mean</span>
+    <span class="n">value</span> <span class="n">under</span> <span class="n">h_0</span><span class="o">:</span>         <span class="mf">2.1</span>
+    <span class="n">point</span> <span class="n">estimate</span><span class="o">:</span>          <span class="mf">2.1031909275381566</span>
+    <span class="mi">95</span><span class="o">%</span> <span class="n">confidence</span> <span class="n">interval</span><span class="o">:</span> <span class="p">(</span><span class="mf">2.091</span><span class="p">,</span> <span class="mf">2.1154</span><span class="p">)</span>
+
+<span class="n">Test</span> <span class="n">summary</span><span class="o">:</span>
+    <span class="n">outcome</span> <span class="n">with</span> <span class="mi">95</span><span class="o">%</span> <span class="n">confidence</span><span class="o">:</span> <span class="n">fail</span> <span class="n">to</span> <span class="n">reject</span> <span class="n">h_0</span>
+    <span class="n">two</span><span class="o">-</span><span class="n">sided</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span><span class="o">:</span>           <span class="mf">0.6089</span>
+
+<span class="n">Details</span><span class="o">:</span>
+    <span class="n">number</span> <span class="n">of</span> <span class="n">observations</span><span class="o">:</span>   <span class="mi">1000</span>
+    <span class="n">t</span><span class="o">-</span><span class="n">statistic</span><span class="o">:</span>              <span class="mf">0.5117722099885472</span>
+    <span class="n">degrees</span> <span class="n">of</span> <span class="n">freedom</span><span class="o">:</span>       <span class="mi">999</span>
+    <span class="n">empirical</span> <span class="n">standard</span> <span class="n">error</span><span class="o">:</span> <span class="mf">0.00623505433839</span>
+</pre></div>
+</td></tr></table>
+
+<p>Thus, we cannot reject the null-hypothesis that the sample comes from a distribution with mean = 2.1. Therefore, we accept the alternative hypothesis that our sample <em>does</em> in fact come from such a distribution. This is of course true, because we defined the uncertain value as a normal distribution with mean 2.1.</p>
+<p><a id='Pooled-one-sample-t-test-1'></a></p>
+<h2 id="pooled-one-sample-t-test">Pooled one-sample t-test</h2>
+<p><a id='UncertainData.UncertainStatistics.OneSampleTTestPooled' href='#UncertainData.UncertainStatistics.OneSampleTTestPooled'>#</a>
+<strong><code class="codehilite">UncertainData.UncertainStatistics.OneSampleTTestPooled</code></strong> &mdash; <em>Function</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">OneSampleTTestPooled</span><span class="o">(</span><span class="nt">d1</span><span class="p">::</span><span class="nd">UncertainDataset</span><span class="o">,</span>
+    <span class="nt">d2</span><span class="p">::</span><span class="nd">UncertainDataset</span><span class="o">,</span>
+    <span class="nt">n</span><span class="p">::</span><span class="nd">Int</span> <span class="o">=</span> <span class="nt">1000</span><span class="o">;</span> <span class="nt">μ0</span><span class="p">::</span><span class="nd">Real</span> <span class="o">=</span> <span class="nt">0</span><span class="o">)</span> <span class="nt">-</span><span class="o">&gt;</span> <span class="nt">OneSampleTTest</span>
+</pre></div>
+</td></tr></table>
+
+<p>First, sample <code class="codehilite">n</code> draws of each uncertain value in each dataset, pooling the draws from the elements of <code class="codehilite">d1</code> and the draws from the elements of <code class="codehilite">d2</code> separately. Then, perform a paired sample t-test of the null hypothesis that the differences between pairs of uncertain values in <code class="codehilite">d1</code> and <code class="codehilite">d2</code> come from a distribution with mean <code class="codehilite">μ0</code> against the alternative hypothesis that the distribution does not have mean <code class="codehilite">μ0</code>.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainDatasets/blob/737cf3623506fd55ee38f4a69ceb3d06dc0abe86/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L246-L257' class='documenter-source'>source</a><br></p>
+<p><a id='Element-wise-one-sample-t-test-1'></a></p>
+<h2 id="element-wise-one-sample-t-test">Element-wise one-sample t-test</h2>
+<p><a id='UncertainData.UncertainStatistics.OneSampleTTestElementWise' href='#UncertainData.UncertainStatistics.OneSampleTTestElementWise'>#</a>
+<strong><code class="codehilite">UncertainData.UncertainStatistics.OneSampleTTestElementWise</code></strong> &mdash; <em>Function</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">OneSampleTTestElementWise</span><span class="o">(</span><span class="nt">d1</span><span class="p">::</span><span class="nd">UncertainDataset</span><span class="o">,</span>
+    <span class="nt">d2</span><span class="p">::</span><span class="nd">UncertainDataset</span><span class="o">,</span>
+    <span class="nt">n</span><span class="p">::</span><span class="nd">Int</span> <span class="o">=</span> <span class="nt">1000</span><span class="o">;</span> <span class="nt">μ0</span><span class="p">::</span><span class="nd">Real</span> <span class="o">=</span> <span class="nt">0</span><span class="o">)</span> <span class="nt">-</span><span class="o">&gt;</span> <span class="nt">Vector</span><span class="p">{</span><span class="err">OneSampleTTest</span><span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>Perform a one sample t-test of the null hypothesis that the uncertain value has a distribution with mean <code class="codehilite">μ0</code> against the alternative hypothesis that its distribution does not have mean <code class="codehilite">μ0</code> for uncertain value in <code class="codehilite">d</code>.</p>
+<p><code class="codehilite">n</code> indicates the number of draws during resampling.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainDatasets/blob/737cf3623506fd55ee38f4a69ceb3d06dc0abe86/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L266-L276' class='documenter-source'>source</a><br></p>
                 
                   
                 
@@ -709,14 +725,28 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
+          <a href="hypothesistests/hypothesis_tests_overview/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Overview
+              </span>
+            </div>
+          </a>
         
-          <a href="uncertainvalues_overview/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+        
+          <a href="hypothesistests/equal_variance_t_test/" title="Equal variance t-test" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Overview
+                Equal variance t-test
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -746,13 +776,13 @@
       
     </div>
     
-      <script src="./assets/javascripts/application.30f6b8b1.js"></script>
+      <script src="../../assets/javascripts/application.30f6b8b1.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
       
-        <script src="assets/mathjaxhelper.js"></script>
+        <script src="../../assets/mathjaxhelper.js"></script>
       
     
     
