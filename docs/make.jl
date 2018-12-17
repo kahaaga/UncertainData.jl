@@ -2,11 +2,23 @@
 using Documenter
 using DocumenterMarkdown
 using UncertainData
+using Distributions
+using KernelDensity
 
 PAGES = [
-    "index.md",
-    "ensemble_statistics.md",
-    "Implementing algorithms for uncertain data" => "implementing_algorithms_for_uncertaindata.md"
+    "Home" => "index.md",
+    "Uncertain values" => [
+        "Overview" => "uncertainvalues_overview.md",
+        "Kernel density estimates (KDE)" => "uncertainvalues_kde.md",
+        "Fitted distributions" => "uncertainvalues_fitted.md",
+        "Theoretical distributions" => "uncertainvalues_theoreticaldistributions.md"
+    ],
+    "Uncertain statistics" => [
+        "Overview" => "ensemble_statistics.md",
+        "Hypothesis tests" => "hypothesis_tests.md"
+    ],
+    "Resampling" => "resampling.md",
+    "implementing_algorithms_for_uncertaindata.md"
 ]
 
 makedocs(
@@ -17,6 +29,6 @@ makedocs(
 )
 
 
-#deploydocs(
-#    repo = "github.com/kahaaga/CausalityTools.jl.git",
-#)
+deploydocs(
+    repo = "github.com/kahaaga/UncertainData.jl.git",
+)
