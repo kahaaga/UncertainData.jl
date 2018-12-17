@@ -64,3 +64,10 @@ r1b = resample(uv, TruncateRange(-0.5, 0.5), 10)
 @test r1b isa Vector{Float64}
 @test -0.5 - tol <= r1a <= 0.5 + tol
 @test all(-0.5 - tol .<= r1b .<= 0.5 + tol)
+
+# TruncateStd will not work, but with the default fallback we should still be able
+# to resample.
+r1a = resample(uv, TruncateStd(1))
+r1b = resample(uv, TruncateStd(1), 10)
+@test r1a isa Float64
+@test r1b isa Vector{Float64}

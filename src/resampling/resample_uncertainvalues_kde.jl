@@ -599,3 +599,14 @@ function resample(uv::UncertainScalarKDE, constraint::TruncateRange, n::Int)
     # Sample uniformly from within each box
     [rand(Uniform(sampled_vals[i], sampled_vals[i] + δ)) for i = 1:n]
 end
+
+
+# Resampling UncertainScalarKDE with TruncateStd is undefined, so fall back to quantiles
+function resample(uv::UncertainScalarKDE, constraint::TruncateStd)
+    resample(uv, fallback(uv, constraint))
+end
+
+# Resampling UncertainScalarKDE with TruncateStd is undefined, so fall back to quantiles
+function resample(uv::UncertainScalarKDE, constraint::TruncateStd, n::Int)
+    resample(uv, fallback(uv, constraint), n)
+end
