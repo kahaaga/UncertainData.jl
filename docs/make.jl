@@ -39,7 +39,7 @@ makedocs(
 
 if !Sys.iswindows()
     deploydocs(
-        deps   = Deps.pip("mkdocs==1.0.4", "mkdocs-material==3.1.0,
+        deps   = Deps.pip("mkdocs==1.0.4", "mkdocs-material==3.1.0",
         "python-markdown-math", "pygments", "pymdown-extensions"),
         repo   = "github.com/kahaaga/UncertainData.jl.git",
         target = "site",
