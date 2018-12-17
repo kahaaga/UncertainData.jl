@@ -11,6 +11,6 @@ function fallback(s::SamplingConstraint, v::AbstractUncertainValue)
 end
 
 function fallback(uv::UncertainScalarKDE, constraint::TruncateStd)
-    @warn "TruncateStd constraint not compatible with UncertainScalarKDE. Using an (arbitrary) TruncateQuantiles(0.25, 0.75) instead."
+    @warn "TruncateStd constraint is incompatible with UncertainScalarKDE. Falling back to TruncateQuantiles(0.25, 0.75)."
     TruncateQuantiles(0.25, 0.75)
 end
