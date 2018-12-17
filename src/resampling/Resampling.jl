@@ -160,6 +160,11 @@ using Reexport
     include("fallback_constraints.jl")
 
     ###################################
+    # Constrain uncertain values
+    ###################################
+    include("constrain_uncertainvalue.jl")
+
+    ###################################
     # Resampling uncertain values
     ###################################
     # Uncertain values based on distributions

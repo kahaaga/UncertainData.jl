@@ -1,5 +1,77 @@
-abstract type AbstractUncertainTwoParameterScalarValue <: AbstractUncertainValue end
-abstract type AbstractUncertainThreeParameterScalarValue <: AbstractUncertainValue end
+abstract type TheoreticalDistributionScalarValue <: AbstractUncertainValue end
+
+
+abstract type AbstractUncertainOneParameterScalarValue <: TheoreticalDistributionScalarValue end
+abstract type AbstractUncertainTwoParameterScalarValue <: TheoreticalDistributionScalarValue end
+abstract type AbstractUncertainThreeParameterScalarValue <: TheoreticalDistributionScalarValue end
+
+"""
+    struct ConstrainedUncertainScalarValueOneParameter{S, T1 <: Number}
+        distribution::Distribution{Univariate, S}
+        a::T1
+    end
+
+A constrained uncertain value represented by a one-parameter distribution,
+where the original distribution has been truncated.
+
+## Fields:
+- **`distribution`**: The truncated version of the original distribution.
+- **`a`**: The original value of the parameter of the original distribution.
+"""
+struct ConstrainedUncertainScalarValueOneParameter{S,
+        T1 <: Number} <: AbstractUncertainOneParameterScalarValue
+    distribution::Distribution{Univariate, S}
+    a::T1
+end
+
+"""
+    struct ConstrainedUncertainScalarValueTwoParameter{S, T1 <: Number, T2 <: Number}
+        distribution::Distribution{Univariate, S}
+        a::T1
+        b::T2
+    end
+
+A constrained uncertain value represented by a two-parameter distribution,
+where the original distribution has been truncated.
+
+## Fields:
+- **`distribution`**: The truncated version of the original distribution.
+- **`a`**: The original value of the first parameter of the original distribution.
+- **`b`**: The original value of the second parameter of the original distribution.
+"""
+struct ConstrainedUncertainScalarValueTwoParameter{S, T1 <: Number,
+        T2 <: Number} <: AbstractUncertainTwoParameterScalarValue
+    distribution::Distribution{Univariate, S}
+    a::T1
+    b::T2
+end
+
+"""
+    struct ConstrainedUncertainScalarValueThreeParameter{S, T1 <: Number, T2 <: Number, T3 <: Number}
+        distribution::Distribution{Univariate, S}
+        a::T1
+        b::T2
+        c::T3
+    end
+
+A constrained uncertain value represented by a two-parameter distribution,
+where the original distribution has been truncated.
+
+## Fields:
+- **`distribution`**: The truncated version of the original distribution.
+- **`a`**: The original value of the first parameter of the original distribution.
+- **`b`**: The original value of the second parameter of the original distribution.
+- **`c`**: The original value of the third parameter of the original distribution.
+
+"""
+struct ConstrainedUncertainScalarValueThreeParameter{S, T1 <: Number, T2 <: Number, T3 <: Number} <: AbstractUncertainTwoParameterScalarValue
+    distribution::Distribution{Univariate, S}
+    a::T1
+    b::T2
+    c::T3
+end
+
+
 
 import Distributions.Normal
 import Distributions.Uniform
@@ -29,6 +101,16 @@ struct UncertainScalarGenericTwoParameter{T1<:Number, T2<:Number,
     a::T1
     b::T2
 end
+
+"""
+Uncertain value represented by a generic one-parameter distribution.
+"""
+struct UncertainScalarGenericOneParameter{T1<:Number,
+        S<:ValueSupport} <: AbstractUncertainTwoParameterScalarValue
+    distribution::Distribution{Univariate, S}
+    a::T1
+end
+
 
 
 """
@@ -125,6 +207,7 @@ struct UncertainScalarBinomialDistributed{T1<:Number, T2<:Number,
     n::T1
     p::T2
 end
+
 
 
 
@@ -239,13 +322,19 @@ end
 Base.show(io::IO, q::UncertainScalarBinomialDistributed) = print(io, summarise(q))
 
 
-###################
-# Pretty printing
-###################
 
 export
+TheoreticalDistributionScalarValue,
+
+AbstractUncertainOneParameterScalarValue,
 AbstractUncertainTwoParameterScalarValue,
 AbstractUncertainThreeParameterScalarValue,
+
+ConstrainedUncertainScalarValueOneParameter,
+ConstrainedUncertainScalarValueTwoParameter,
+ConstrainedUncertainScalarValueThreeParameter,
+
+UncertainScalarGenericOneParameter,
 UncertainScalarGenericTwoParameter,
 UncertainScalarGenericThreeParameter,
 UncertainScalarNormallyDistributed,
@@ -256,6 +345,7 @@ UncertainScalarBetaBinomialDistributed,
 UncertainScalarBinomialDistributed,
 UncertainScalarGammaDistributed,
 UncertainScalarFrechetDistributed,
+
 Normal,
 Uniform,
 Beta,
