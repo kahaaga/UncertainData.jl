@@ -15,7 +15,18 @@ PAGES = [
     ],
     "Uncertain statistics" => [
         "Overview" => "ensemble_statistics.md",
-        "Hypothesis tests" => "hypothesis_tests.md"
+        "Hypothesis tests" => [
+			"hypothesistests/hypothesis_tests_overview.md",
+            "hypothesistests/one_sample_t_test.md",
+            "hypothesistests/equal_variance_t_test.md",
+            "hypothesistests/unequal_variance_t_test.md",
+            "hypothesistests/exact_kolmogorov_smirnov_test.md",
+            "hypothesistests/approximate_twosample_kolmogorov_smirnov_test.md",
+            "hypothesistests/jarque_bera_test.md",
+            "hypothesistests/mann_whitney_u_test.md",
+            "hypothesistests/anderson_darling_test.md"
+
+		]
     ],
     "Resampling" => "resampling.md",
     "implementing_algorithms_for_uncertaindata.md"

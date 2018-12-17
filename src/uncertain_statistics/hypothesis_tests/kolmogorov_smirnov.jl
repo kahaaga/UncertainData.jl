@@ -30,8 +30,8 @@ import HypothesisTests.ExactOneSampleKSTest
 import HypothesisTests.ApproximateTwoSampleKSTest
 
 """
-    ExactOneSampleKSTest(uv::UncertainValue,
-        d::UnivariateDistribution) -> ExactOneSampleKSTest
+    ExactOneSampleKSTest(uv::AbstractUncertainValue,
+        d::UnivariateDistribution, n::Int = 1000) -> ExactOneSampleKSTest
 
 Perform a one-sample exact Kolmogorov–Smirnov test of the null hypothesis that
 a draw of `n` realisations of the uncertain value `uv` comes from the
@@ -46,7 +46,7 @@ end
 
 """
     ExactOneSampleKSTestPooled(ud::UncertainDataset,
-        d::UnivariateDistribution) -> ExactOneSampleKSTest
+        d::UnivariateDistribution, n::Int = 1000) -> ExactOneSampleKSTest
 
 First, draw `n` realisations of each uncertain value in `ud` and pool them
 together. Then perform a one-sample exact Kolmogorov–Smirnov test of the null
@@ -61,7 +61,7 @@ end
 
 """
     ExactOneSampleKSTestElementWise(ud::UncertainDataset,
-        d::UnivariateDistribution) -> Vector{ExactOneSampleKSTest}
+        d::UnivariateDistribution, n::Int = 1000) -> Vector{ExactOneSampleKSTest}
 
 First, draw `n` realisations of each uncertain value in `ud`, keeping one
 pool of values for each uncertain value.
