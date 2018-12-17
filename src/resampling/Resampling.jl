@@ -154,13 +154,17 @@ using Reexport
     StrictlyIncreasing,
     StrictlyDecreasing
 
+	#####################################################################
+	# Fallbacks when encountering incompatible sampling constraints
+	#####################################################################
+    include("fallback_constraints.jl")
 
     ###################################
     # Resampling uncertain values
     ###################################
     # Uncertain values based on distributions
     include("resample_uncertainvalues_distributions.jl")
-    
+
     # Without constraints
     include("resample_uncertainvalues_noconstraints.jl")
 
