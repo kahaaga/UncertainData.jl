@@ -16,9 +16,9 @@ D = UncertainDataset([o1, o2, o3])
 # Indexing
 @test D[1] isa AbstractUncertainValue
 @test D[end] isa AbstractUncertainValue
-@test D[1:end] isa AbstractVector{AbstractUncertainValue}
-@test D[[1, 2]] isa AbstractVector{AbstractUncertainValue}
-@test D[:] isa AbstractVector{AbstractUncertainValue}
+@test D[1:end] isa AbstractVector{<:AbstractUncertainValue}
+@test D[[1, 2]] isa AbstractVector{<:AbstractUncertainValue}
+@test D[:] isa AbstractVector{<:AbstractUncertainValue}
 
 ########################
 # UncertainValueDataset
@@ -35,9 +35,9 @@ UV = UncertainValueDataset(D)
 # Indexing
 @test UV[1] isa AbstractUncertainValue
 @test UV[end] isa AbstractUncertainValue
-@test UV[1:end] isa AbstractVector{AbstractUncertainValue}
-@test UV[[1, 2]] isa AbstractVector{AbstractUncertainValue}
-@test UV[:] isa AbstractVector{AbstractUncertainValue}
+@test UV[1:end] isa AbstractVector{<:AbstractUncertainValue}
+@test UV[[1, 2]] isa AbstractVector{<:AbstractUncertainValue}
+@test UV[:] isa AbstractVector{<:AbstractUncertainValue}
 
 #############################
 # UncertainIndexValueDataset
@@ -48,15 +48,15 @@ UIV = UncertainIndexValueDataset(D, D)
 # Iteration
 @test length(UIV) == 3
 @test length([x for x in UIV]) == 3
-@test UIV[1] isa Tuple{AbstractUncertainValue, AbstractUncertainValue}
+@test UIV[1] isa Tuple{<:AbstractUncertainValue, <:AbstractUncertainValue}
 
 
 # Indexing
-@test UIV[1] isa Tuple{AbstractUncertainValue, AbstractUncertainValue}
-@test UIV[end] isa Tuple{AbstractUncertainValue, AbstractUncertainValue}
+@test UIV[1] isa Tuple{<:AbstractUncertainValue, <:AbstractUncertainValue}
+@test UIV[end] isa Tuple{<:AbstractUncertainValue, <:AbstractUncertainValue}
 @test UIV[1:end] isa AbstractVector
 @test UIV[[1, 2]] isa AbstractVector
 @test UIV[:] isa AbstractVector
 
 @test index(UIV, 1) isa AbstractUncertainValue
-@test index(UIV, 1:2) isa AbstractVector{AbstractUncertainValue}
+@test index(UIV, 1:2) isa AbstractVector{<:AbstractUncertainValue}
