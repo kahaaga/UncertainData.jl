@@ -1,8 +1,9 @@
 import ..UncertainValues:
-    getquantileindex
+    getquantileindex,
+    support
 
 import StatsBase:
-    sample,
+    sample, sample!,
     Weights
 
 import Distributions:
@@ -61,16 +62,15 @@ uncertainval = UncertainValue(some_sample) # -> UncertainScalarKDE
 resample(uncertainval, NoConstraint(), n)
 ```
 """
-resample(uv::UncertainScalarKDE, constraint::NoConstraint, n::Int) =
-    resample(uv, n)
+resample(uv::UncertainScalarKDE, constraint::NoConstraint, n::Int) = resample(uv, n)
 
 
 """
-    resample(uv::UncertainScalarKDE, constraint::TruncateUpperQuantile)
+    resample(uv::UncertainScalarKDE, constraint::TruncateLowerQuantile)
 
-Resample by first truncating the distribution representing the value at a lower
-quantile,  then resample one draw from the kernel density estimate of the
-distribution furnishing the value.
+Resample `uv` by first truncating below the kernel density estimate of the
+distribution furnishing the value at some lower quantile, then resampling
+it once.
 
 ## Example
 
@@ -98,22 +98,23 @@ function resample(uv::UncertainScalarKDE, constraint::TruncateLowerQuantile)
     δ = step(uv.range)
 
     # Subset the values and weights (values of the pdf at those values)
-    range = uv.range[idx_lower_quantile:end]
-    wts = uv.pdf[idx_lower_quantile:end]
+    range = uv.range[idx_lower_quantile:end] |> collect
+    wts = Weights(uv.pdf[idx_lower_quantile:end])
+
     # Sample a box
-    sampled_val = sample(range |> collect, Weights(wts))
+    sampled_val = sample(range, wts)
 
     # Sample uniformly from within the box
     rand(Uniform(sampled_val, sampled_val + δ))
 end
 
 """
-    resample(uv::UncertainScalarKDE, constraint::TruncateUpperQuantile,
-        n::Int = 1000)
+    resample(uv::UncertainScalarKDE, constraint::TruncateLowerQuantile,
+        n::Int)
 
-Resample by first truncating the distribution representing the value at a lower
-quantile, then resample `n` draws from the kernel density estimate of the
-distribution furnishing the value.
+Resample `uv` by first truncating below the kernel density estimate of the
+distribution furnishing the value at some lower quantile, then resampling
+it `n` times.
 
 ## Example
 
@@ -133,7 +134,7 @@ resample(uncertainval, constraint, 500)
 ```
 """
 function resample(uv::UncertainScalarKDE, constraint::TruncateLowerQuantile,
-        n::Int = 1000)
+        n::Int)
     # Find the index of the kernel density estimated distribution
     # corresponding to the lower quantile at which we want to truncate.
     idx_lower_quantile = getquantileindex(uv, constraint.lower_quantile)
@@ -142,12 +143,12 @@ function resample(uv::UncertainScalarKDE, constraint::TruncateLowerQuantile,
     δ = step(uv.range)
 
     # Subset the values and weights (values of the pdf at those values)
-    range = uv.range[idx_lower_quantile:end]
-    wts = uv.pdf[idx_lower_quantile:end]
+    range = uv.range[idx_lower_quantile:end] |> collect
+    wts = Weights(uv.pdf[idx_lower_quantile:end])
 
     # Sample n boxes according to estimated weights (pdf)
     sampled_vals = Vector{Float64}(undef, n)
-    StatsBase.sample!(range, wts, sampled_vals)
+    sample!(range, wts, sampled_vals)
 
     # Sample uniformly from within each box
     [rand(Uniform(sampled_vals[i], sampled_vals[i] + δ)) for i = 1:n]
@@ -157,9 +158,9 @@ end
 """
     resample(uv::UncertainScalarKDE, constraint::TruncateUpperQuantile)
 
-Resample by first truncating the distribution representing the value at a lower
-quantile, then resample one draw from the kernel density estimate of the
-distribution furnishing the value.
+Resample `uv` by first truncating above the kernel density estimate of the
+distribution furnishing the value at some upper quantile, then resampling
+it once.
 
 ## Example
 
@@ -181,17 +182,17 @@ resample(uncertainval, constraint)
 function resample(uv::UncertainScalarKDE, constraint::TruncateUpperQuantile)
     # Find the index of the kernel density estimated distribution
     # corresponding to the lower quantile at which we want to truncate.
-    idx_lower_quantile = getquantileindex(uv, constraint.upper_quantile)
+    idx_upper_quantile = getquantileindex(uv, constraint.upper_quantile)
 
     # Box width
     δ = step(uv.range)
 
     # Subset the values and weights (values of the pdf at those values)
-    range = uv.range[1:idx_upper_quantile]
-    wts = uv.pdf[1:idx_upper_quantile]
+    range = uv.range[1:idx_upper_quantile] |> collect
+    wts = Weights(uv.pdf[1:idx_upper_quantile])
 
     # Sample a box
-    sampled_val = sample(range |> collect, Weights(wts))
+    sampled_val = sample(range, wts)
 
     # Sample uniformly from within the box
     rand(Uniform(sampled_val, sampled_val + δ))
@@ -199,11 +200,11 @@ end
 
 """
     resample(uv::UncertainScalarKDE, constraint::TruncateUpperQuantile,
-        n::Int = 1000)
+        n::Int)
 
-Resample by first truncating the distribution representing the value at a lower
-quantile, then resample `n` draws from the kernel density estimate of the
-distribution furnishing the value.
+Resample `uv` by first truncating above the kernel density estimate of the
+distribution furnishing the value at some upper quantile, then resampling
+it `n` times.
 
 ## Example
 
@@ -223,21 +224,21 @@ resample(uncertainval, constraint, 500)
 ```
 """
 function resample(uv::UncertainScalarKDE, constraint::TruncateUpperQuantile,
-        n::Int = 1000)
+        n::Int)
     # Find the index of the kernel density estimated distribution
     # corresponding to the lower quantile at which we want to truncate.
-    idx_lower_quantile = getquantileindex(uv, constraint.upper_quantile)
+    idx_upper_quantile = getquantileindex(uv, constraint.upper_quantile)
 
     # Box width
     δ = step(uv.range)
 
     # Subset the values and weights (values of the pdf at those values)
-    range = uv.range[1:idx_upper_quantile]
-    wts = uv.pdf[1:idx_upper_quantile]
+    range = uv.range[1:idx_upper_quantile] |> collect
+    wts = Weights(uv.pdf[1:idx_upper_quantile])
 
     # Sample n boxes according to estimated weights (pdf)
     sampled_vals = Vector{Float64}(undef, n)
-    StatsBase.sample!(range, wts, sampled_vals)
+    sample!(range, wts, sampled_vals)
 
     # Sample uniformly from within each box
     [rand(Uniform(sampled_vals[i], sampled_vals[i] + δ)) for i = 1:n]
@@ -248,9 +249,9 @@ end
 """
     resample(uv::UncertainScalarKDE, constraint::TruncateUpperQuantile)
 
-Resample by first truncating the distribution at both lower and upper
-quantiles, then resample one draw from the kernel density estimate of the
-distribution furnishing the value.
+Resample `uv` by first truncating the kernel density estimate of the
+distribution furnishing the value both above and below at some quantile range,
+then resampling it once.
 
 ## Example
 
@@ -279,11 +280,11 @@ function resample(uv::UncertainScalarKDE, constraint::TruncateQuantiles)
     δ = step(uv.range)
 
     # Subset the values and weights (values of the pdf at those values)
-    range = uv.range[idx_lower_quantile:idx_upper_quantile]
-    wts = uv.pdf[idx_lower_quantile:idx_upper_quantile]
+    range = uv.range[idx_lower_quantile:idx_upper_quantile] |> collect
+    wts = Weights(uv.pdf[idx_lower_quantile:idx_upper_quantile])
 
     # Sample a box
-    sampled_val = sample(range |> collect, Weights(wts))
+    sampled_val = sample(range, wts)
 
     # Sample uniformly from within the box
     rand(Uniform(sampled_val, sampled_val + δ))
@@ -293,11 +294,11 @@ end
 
 """
     resample(uv::UncertainScalarKDE, constraint::TruncateQuantiles,
-        n::Int = 1000)
+        n::Int)
 
-Resample by first truncating the distribution at both lower and upper
-quantiles, then resample `n` draws from the kernel density estimate of the
-distribution furnishing the value.
+Resample `uv` by first truncating the kernel density estimate of the
+distribution furnishing the value both above and below at some quantile range,
+then resampling it `n` times.
 
 ## Example
 
@@ -317,7 +318,7 @@ resample(uncertainval, constraint, 500)
 ```
 """
 function resample(uv::UncertainScalarKDE, constraint::TruncateQuantiles,
-        n::Int = 1000)
+        n::Int)
     # Find the index of the kernel density estimated distribution
     # corresponding to the lower quantile at which we want to truncate.
     idx_upper_quantile = getquantileindex(uv, constraint.upper_quantile)
@@ -327,12 +328,273 @@ function resample(uv::UncertainScalarKDE, constraint::TruncateQuantiles,
     δ = step(uv.range)
 
     # Subset the values and weights (values of the pdf at those values)
-    range = uv.range[idx_lower_quantile:idx_upper_quantile]
-    wts = uv.pdf[idx_lower_quantile:idx_upper_quantile]
+    range = uv.range[idx_lower_quantile:idx_upper_quantile] |> collect
+    wts = Weights(uv.pdf[idx_lower_quantile:idx_upper_quantile])
 
     # Sample n boxes according to estimated weights (pdf)
     sampled_vals = Vector{Float64}(undef, n)
-    StatsBase.sample!(range, wts, sampled_vals)
+    sample!(range, wts, sampled_vals)
+
+    # Sample uniformly from within each box
+    [rand(Uniform(sampled_vals[i], sampled_vals[i] + δ)) for i = 1:n]
+end
+
+
+
+"""
+    resample(uv::UncertainScalarKDE, constraint::TruncateMaximum)
+
+Resample `uv` by first truncating the kernel density estimate of the
+distribution furnishing the value at some maximum value,
+then resampling it once.
+
+## Example
+
+```julia
+# Uncertain value represented by a normal distribution with mean = 0 and
+# standard deviation = 1.
+uncertainval = UncertainValue(rand(Normal(0, 1), 1000))
+
+constraint = TruncateMaximum(0.8) # accept no values larger than 1.1
+
+# Resample the uncertain value by truncating the distribution furnishing it,
+# then resampling the new distribution 700 times.
+resample(uncertainval, constraint, 700)
+```
+"""
+function resample(uv::UncertainScalarKDE, constraint::TruncateMaximum)
+    # Box width
+    δ = step(uv.range)
+
+    upper_bound = constraint.max
+    lower_bound = minimum(uv.range)
+
+    idx_max = findlast(uv.range .<= upper_bound)
+
+    # Subset the values and weights (values of the pdf at those values)
+    range = uv.range[1:idx_max] |> collect
+    wts = Weights(uv.pdf[1:idx_max])
+
+    # Sample a box
+    sampled_val = sample(range, wts)
+
+    # Sample uniformly from within the box
+    rand(Uniform(sampled_val, sampled_val + δ))
+end
+
+"""
+    resample(uv::UncertainScalarKDE, constraint::TruncateMaximum, n::Int)
+
+Resample `uv` by first truncating the kernel density estimate of the
+distribution furnishing the value at some minimum value,
+then resampling it `n` times.
+
+
+## Example
+
+```julia
+# Uncertain value represented by a normal distribution with mean = 0 and
+# standard deviation = 1.
+uncertainval = UncertainValue(rand(Normal(0, 1), 1000))
+
+constraint = TruncateMaximum(0.8) # accept no values larger than 1.1
+
+# Resample the uncertain value by truncating the distribution furnishing it,
+# then resampling the new distribution 700 times.
+resample(uncertainval, constraint, 700)
+```
+"""
+function resample(uv::UncertainScalarKDE, constraint::TruncateMaximum, n::Int)
+    # Box width
+    δ = step(uv.range)
+
+    upper_bound = constraint.max
+    lower_bound = minimum(uv.range)
+
+    idx_max = findlast(uv.range .<= upper_bound)
+
+    # Subset the values and weights (values of the pdf at those values)
+    range = uv.range[1:idx_max] |> collect
+    wts = Weights(uv.pdf[1:idx_max])
+
+    # Sample n boxes according to estimated pdf
+    sampled_vals = Vector{Float64}(undef, n)
+    sample!(range, wts, sampled_vals)
+
+    # Sample uniformly from within each box
+    [rand(Uniform(sampled_vals[i], sampled_vals[i] + δ)) for i = 1:n]
+end
+
+
+"""
+    resample(uv::UncertainScalarKDE, constraint::TruncateMinimum)
+
+Resample `uv` by first truncating the kernel density estimate of the
+distribution furnishing the value at some minimum value,
+then resampling it once.
+
+## Example
+
+```julia
+# Uncertain value represented by a normal distribution with mean = 0 and
+# standard deviation = 1.
+uncertainval = UncertainValue(rand(Normal(0, 1), 1000))
+
+constraint = TruncateMinimum(0.2) # accept no values smaller than 0.2
+
+# Resample the uncertain value by truncating the distribution furnishing it,
+# then resampling the new distribution 700 times.
+resample(uncertainval, constraint, 700)
+```
+"""
+function resample(uv::UncertainScalarKDE, constraint::TruncateMinimum)
+    # Box width
+    δ = step(uv.range)
+
+    lower_bound = constraint.min
+    upper_bound = maximum(uv.range)
+
+    idx_min = findfirst(uv.range .>= lower_bound)
+
+    # Subset the values and weights (values of the pdf at those values)
+    range = uv.range[idx_min:end] |> collect
+    wts = Weights(uv.pdf[idx_min:end])
+
+    # Sample a box
+    sampled_val = sample(range, wts)
+
+    # Sample uniformly from within the box
+    rand(Uniform(sampled_val, sampled_val + δ))
+end
+
+
+
+"""
+    resample(uv::UncertainScalarKDE, constraint::TruncateMinimum, n::Int)
+
+Resample `uv` by first truncating the kernel density estimate of the
+distribution furnishing the value at some minimum value,
+then resampling it `n` times.
+
+## Example
+
+```julia
+# Uncertain value represented by a normal distribution with mean = 0 and
+# standard deviation = 1.
+uncertainval = UncertainValue(rand(Normal(0, 1), 1000))
+
+constraint = TruncateMinimum(0.2) # accept no values smaller than 0.2
+
+# Resample the uncertain value by truncating the distribution furnishing it,
+# then resampling the new distribution 700 times.
+resample(uncertainval, constraint, 700)
+```
+"""
+function resample(uv::UncertainScalarKDE, constraint::TruncateMinimum, n::Int)
+    # Box width
+    δ = step(uv.range)
+
+    lower_bound = constraint.min
+    upper_bound = maximum(uv.range)
+
+    idx_min = findfirst(uv.range .>= lower_bound)
+
+    # Subset the values and weights (values of the pdf at those values)
+    range = uv.range[idx_min:end] |> collect
+    wts = Weights(uv.pdf[idx_min:end])
+
+    # Sample n boxes according to estimated pdf
+    sampled_vals = Vector{Float64}(undef, n)
+    sample!(range, wts, sampled_vals)
+
+    # Sample uniformly from within each box
+    [rand(Uniform(sampled_vals[i], sampled_vals[i] + δ)) for i = 1:n]
+end
+
+
+"""
+    resample(uv::UncertainScalarKDE, constraint::TruncateRange)
+
+Resample `uv` by first truncating the kernel density estimate of the
+distribution furnishing the value at some minimum and maximum values,
+then resampling it once.
+
+## Example
+
+```julia
+# Uncertain value represented by a normal distribution with mean = 0 and
+# standard deviation = 1.
+uncertainval = UncertainValue(rand(Normal(0, 1), 1000))
+
+# Only accept values in the range [-0.9, 1.2]
+constraint = TruncateRange(-0.9, 1.2)
+
+# Resample the uncertain value by truncating the distribution furnishing it,
+# then resampling the new distribution 300 times.
+resample(uncertainval, constraint, 300)
+```
+"""
+function resample(uv::UncertainScalarKDE, constraint::TruncateRange)
+    # Box width
+    δ = step(uv.range)
+
+    lower_bound = constraint.min
+    upper_bound = constraint.max
+
+    idx_min = findfirst(uv.range .>= lower_bound)
+    idx_max = findlast(uv.range .<= upper_bound)
+
+    # Subset the values and weights (values of the pdf at those values)
+    range = uv.range[idx_min:idx_max] |> collect
+    wts = Weights(uv.pdf[idx_min:idx_max])
+
+    # Sample a box
+    sampled_val = sample(range, wts)
+
+    # Sample uniformly from within the box
+    rand(Uniform(sampled_val, sampled_val + δ))
+end
+
+
+"""
+    resample(uv::UncertainScalarKDE, constraint::TruncateRange, n::Int)
+
+Resample `uv` by first truncating the kernel density estimate of the
+distribution furnishing the value at some minimum and maximum values,
+then resampling it `n` times.
+
+## Example
+
+```julia
+# Uncertain value represented by a normal distribution with mean = 0 and
+# standard deviation = 1.
+uncertainval = UncertainValue(rand(Normal(0, 1), 1000))
+
+# Only accept values in the range [-0.9, 1.2]
+constraint = TruncateRange(-0.9, 1.2)
+
+# Resample the uncertain value by truncating the distribution furnishing it,
+# then resampling the new distribution 300 times.
+resample(uncertainval, constraint, 300)
+```
+"""
+function resample(uv::UncertainScalarKDE, constraint::TruncateRange, n::Int)
+    # Box width
+    δ = step(uv.range)
+
+    lower_bound = constraint.min
+    upper_bound = constraint.max
+
+    idx_min = findfirst(uv.range .>= lower_bound)
+    idx_max = findlast(uv.range .<= upper_bound)
+
+    # Subset the values and weights (values of the pdf at those values)
+    range = uv.range[idx_min:idx_max] |> collect
+    wts = Weights(uv.pdf[idx_min:idx_max])
+
+    # Sample n boxes according to estimated pdf
+    sampled_vals = Vector{Float64}(undef, n)
+    sample!(range, wts, sampled_vals)
 
     # Sample uniformly from within each box
     [rand(Uniform(sampled_vals[i], sampled_vals[i] + δ)) for i = 1:n]

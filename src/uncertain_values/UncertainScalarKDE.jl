@@ -2,6 +2,8 @@ import Base.rand
 
 import StatsBase.quantile
 import StatsBase.median
+import StatsBase.support
+
 import Distributions.ecdf
 import Distributions.support
 
@@ -148,11 +150,11 @@ mode(uv::UncertainScalarKDE) = uv.range(findmax(uv.distribution.density)[2])
 
 Return the `q`-th quantile of the distribution furnishing the uncertain value.
 """
-function quantile(uv::UncertainScalarKDE, q)
+function quantile(uv::UncertainScalarKDE{T}, q) where T
     uv.range[findfirst(ecdf(uv) .> q)]
 end
 
-median(uv::UncertainScalarKDE) = quantile(uv, 0.5)
+median(uv::UncertainScalarKDE{T}) where T = quantile(uv, 0.5)
 
 
 """
@@ -161,7 +163,7 @@ median(uv::UncertainScalarKDE) = quantile(uv, 0.5)
 Return the support of an uncertain value furnished by a kernel density
 estimate.
 """
-support(uv::UncertainScalarKDE) = (minimum(uv.range), maximum(uv.range))
+support(uv::UncertainScalarKDE{T}) where T = (minimum(uv.range), maximum(uv.range))
 
 """
     getrangeindex(uv::UncertainScalarKDE, q::Float64)
@@ -169,7 +171,7 @@ support(uv::UncertainScalarKDE) = (minimum(uv.range), maximum(uv.range))
 Return the index of the range/density value corresponding to the `q`-th quantile
 of an uncertain value furnished by a kernel density estimate.
 """
-function getquantileindex(uv::UncertainScalarKDE, q::Float64)
+function getquantileindex(uv::UncertainScalarKDE{T}, q::Float64) where T
     findfirst(ecdf(uv) .> q)
 end
 

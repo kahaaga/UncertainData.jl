@@ -2,6 +2,7 @@ using Test
 using UncertainData
 using Distributions
 using StaticArrays
+using StatsBase
 using KernelDensity
 
 include("test_assign_distributions.jl")
