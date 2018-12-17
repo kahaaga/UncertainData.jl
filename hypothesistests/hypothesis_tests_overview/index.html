@@ -35,21 +35,21 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="./assets/images/favicon.png">
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-2.9.4">
     
     
       
-        <title>Implementing algorithms for uncertain data - UncertainData.jl</title>
+        <title>Overview - UncertainData.jl</title>
       
     
     
-      <link rel="stylesheet" href="./assets/stylesheets/application.451f80e5.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
       
       
     
     
-      <script src="./assets/javascripts/modernizr.1aa3b519.js"></script>
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
     
     
       <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -58,9 +58,9 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="./assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
-      <link rel="stylesheet" href="assets/Documenter.css">
+      <link rel="stylesheet" href="../../assets/Documenter.css">
     
     
   </head>
@@ -96,7 +96,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#extending-existing-algorithms-for-uncertain-data-types" tabindex="1" class="md-skip">
+      <a href="#hypothesis-tests" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -105,7 +105,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="index.html" title="UncertainData.jl" class="md-header-nav__button md-logo">
+        <a href="" title="UncertainData.jl" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -122,7 +122,7 @@
                 UncertainData.jl
               </span>
               <span class="md-header-nav__topic">
-                Implementing algorithms for uncertain data
+                Overview
               </span>
             
           
@@ -201,7 +201,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="index.html" title="UncertainData.jl" class="md-nav__button md-logo">
+    <a href="" title="UncertainData.jl" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
@@ -239,7 +239,7 @@
 
 
   <li class="md-nav__item">
-    <a href="index.html" title="Home" class="md-nav__link">
+    <a href="" title="Home" class="md-nav__link">
       Home
     </a>
   </li>
@@ -270,7 +270,7 @@
 
 
   <li class="md-nav__item">
-    <a href="uncertainvalues_overview.html" title="Overview" class="md-nav__link">
+    <a href="uncertainvalues_overview/" title="Overview" class="md-nav__link">
       Overview
     </a>
   </li>
@@ -282,7 +282,7 @@
 
 
   <li class="md-nav__item">
-    <a href="uncertainvalues_kde.html" title="Kernel density estimates (KDE)" class="md-nav__link">
+    <a href="uncertainvalues_kde/" title="Kernel density estimates (KDE)" class="md-nav__link">
       Kernel density estimates (KDE)
     </a>
   </li>
@@ -294,7 +294,7 @@
 
 
   <li class="md-nav__item">
-    <a href="uncertainvalues_theoreticaldistributions.html" title="Theoretical distributions" class="md-nav__link">
+    <a href="uncertainvalues_theoreticaldistributions/" title="Theoretical distributions" class="md-nav__link">
       Theoretical distributions
     </a>
   </li>
@@ -306,7 +306,7 @@
 
 
   <li class="md-nav__item">
-    <a href="uncertainvalues_fitted.html" title="Fitted distributions" class="md-nav__link">
+    <a href="uncertainvalues_fitted/" title="Fitted distributions" class="md-nav__link">
       Fitted distributions
     </a>
   </li>
@@ -321,10 +321,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Uncertain statistics
@@ -342,7 +344,7 @@
 
 
   <li class="md-nav__item">
-    <a href="ensemble_statistics.html" title="Core statistics" class="md-nav__link">
+    <a href="ensemble_statistics/" title="Core statistics" class="md-nav__link">
       Core statistics
     </a>
   </li>
@@ -352,10 +354,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2" checked>
     
     <label class="md-nav__link" for="nav-3-2">
       Hypothesis tests
@@ -371,11 +375,56 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="hypothesistests/hypothesis_tests_overview.html" title="Overview" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Overview
+      </label>
+    
+    <a href="hypothesistests/hypothesis_tests_overview/" title="Overview" class="md-nav__link md-nav__link--active">
       Overview
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#implemented-hypothesis-tests" title="Implemented hypothesis tests" class="md-nav__link">
+    Implemented hypothesis tests
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminology" title="Terminology" class="md-nav__link">
+    Terminology
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -385,7 +434,7 @@
 
 
   <li class="md-nav__item">
-    <a href="hypothesistests/one_sample_t_test.html" title="One sample t-test" class="md-nav__link">
+    <a href="hypothesistests/one_sample_t_test/" title="One sample t-test" class="md-nav__link">
       One sample t-test
     </a>
   </li>
@@ -397,7 +446,7 @@
 
 
   <li class="md-nav__item">
-    <a href="hypothesistests/equal_variance_t_test.html" title="Equal variance t-test" class="md-nav__link">
+    <a href="hypothesistests/equal_variance_t_test/" title="Equal variance t-test" class="md-nav__link">
       Equal variance t-test
     </a>
   </li>
@@ -409,7 +458,7 @@
 
 
   <li class="md-nav__item">
-    <a href="hypothesistests/unequal_variance_t_test.html" title="Unequal variance t-test" class="md-nav__link">
+    <a href="hypothesistests/unequal_variance_t_test/" title="Unequal variance t-test" class="md-nav__link">
       Unequal variance t-test
     </a>
   </li>
@@ -421,7 +470,7 @@
 
 
   <li class="md-nav__item">
-    <a href="hypothesistests/exact_kolmogorov_smirnov_test.html" title="Exact Kolmogorov-Smirnov test" class="md-nav__link">
+    <a href="hypothesistests/exact_kolmogorov_smirnov_test/" title="Exact Kolmogorov-Smirnov test" class="md-nav__link">
       Exact Kolmogorov-Smirnov test
     </a>
   </li>
@@ -433,7 +482,7 @@
 
 
   <li class="md-nav__item">
-    <a href="hypothesistests/approximate_twosample_kolmogorov_smirnov_test.html" title="Approximate two-sample Kolmogorov-Smirnov test" class="md-nav__link">
+    <a href="hypothesistests/approximate_twosample_kolmogorov_smirnov_test/" title="Approximate two-sample Kolmogorov-Smirnov test" class="md-nav__link">
       Approximate two-sample Kolmogorov-Smirnov test
     </a>
   </li>
@@ -445,7 +494,7 @@
 
 
   <li class="md-nav__item">
-    <a href="hypothesistests/jarque_bera_test.html" title="Jarque-Bera test" class="md-nav__link">
+    <a href="hypothesistests/jarque_bera_test/" title="Jarque-Bera test" class="md-nav__link">
       Jarque-Bera test
     </a>
   </li>
@@ -457,7 +506,7 @@
 
 
   <li class="md-nav__item">
-    <a href="hypothesistests/mann_whitney_u_test.html" title="Mann-Whitney u-test" class="md-nav__link">
+    <a href="hypothesistests/mann_whitney_u_test/" title="Mann-Whitney u-test" class="md-nav__link">
       Mann-Whitney u-test
     </a>
   </li>
@@ -469,7 +518,7 @@
 
 
   <li class="md-nav__item">
-    <a href="hypothesistests/anderson_darling_test.html" title="Anderson-Darling test" class="md-nav__link">
+    <a href="hypothesistests/anderson_darling_test/" title="Anderson-Darling test" class="md-nav__link">
       Anderson-Darling test
     </a>
   </li>
@@ -491,7 +540,7 @@
 
 
   <li class="md-nav__item">
-    <a href="resampling.html" title="Resampling" class="md-nav__link">
+    <a href="resampling/" title="Resampling" class="md-nav__link">
       Resampling
     </a>
   </li>
@@ -501,45 +550,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Implementing algorithms for uncertain data
-      </label>
-    
-    <a href="implementing_algorithms_for_uncertaindata.html" title="Implementing algorithms for uncertain data" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="implementing_algorithms_for_uncertaindata/" title="Implementing algorithms for uncertain data" class="md-nav__link">
       Implementing algorithms for uncertain data
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#extending-existing-algorithms-for-uncertain-data-types" title="Extending existing algorithms for uncertain data types" class="md-nav__link">
-    Extending existing algorithms for uncertain data types
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
     
@@ -557,13 +572,22 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#extending-existing-algorithms-for-uncertain-data-types" title="Extending existing algorithms for uncertain data types" class="md-nav__link">
-    Extending existing algorithms for uncertain data types
+  <a href="#implemented-hypothesis-tests" title="Implemented hypothesis tests" class="md-nav__link">
+    Implemented hypothesis tests
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminology" title="Terminology" class="md-nav__link">
+    Terminology
   </a>
   
 </li>
@@ -584,54 +608,28 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/kahaaga/UncertainData.jl/edit/master/docs/implementing_algorithms_for_uncertaindata.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/kahaaga/UncertainData.jl/edit/master/docs/hypothesistests/hypothesis_tests_overview.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>Implementing algorithms for uncertain data</h1>
-                
-                <p><a id='Extending-existing-algorithms-for-uncertain-data-types-1'></a></p>
-<h2 id="extending-existing-algorithms-for-uncertain-data-types">Extending existing algorithms for uncertain data types</h2>
-<p>Do you already have an algorithm computing some statistic that you want to obtain uncertainty estimates for? Simply use Julia's multiple dispatch and create a version of the algorithm function that accepts the <code class="codehilite">AbstractUncertainValue</code> and <code class="codehilite">AbstractUncertainDataset</code> types, along with a <code class="codehilite">SamplingConstraints</code> specifying how the uncertain values are should be resampled.</p>
-<p>A basic function skeleton could be</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c"># Some algorithm computing a statistic for a scalar-valued vector</span>
-<span class="k">function</span> <span class="n">myalgorithm</span><span class="p">(</span><span class="n">dataset</span><span class="o">::</span><span class="kt">Vector</span><span class="p">{</span><span class="n">T</span><span class="p">};</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span> <span class="n">where</span> <span class="n">T</span>
-    <span class="c"># some algorithm returning a single-valued statistic</span>
-<span class="k">end</span>
-
-<span class="c"># Applying the algorithm to an ensemble of realisations from</span>
-<span class="c"># an uncertain dataset, given a sampling constraint.</span>
-<span class="k">function</span> <span class="n">myalgorithm</span><span class="p">(</span><span class="n">d</span><span class="o">::</span><span class="n">UncertainDataset</span><span class="p">,</span> <span class="n">constraint</span><span class="o">::</span><span class="n">C</span><span class="p">;</span>
-        <span class="n">n_ensemble_realisations</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span>
-        <span class="n">where</span> <span class="p">{</span><span class="n">C</span> <span class="o">&lt;:</span> <span class="n">SamplingConstraint</span><span class="p">}</span>
-
-    <span class="n">ensemble_stats</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">n_ensemble_realisations</span><span class="p">)</span>
-
-    <span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">n_ensemble_realisations</span>
-        <span class="n">ensemble_stats</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">myalgorithm</span><span class="p">(</span><span class="n">resample</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">constraint</span><span class="p">);</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span>
-    <span class="k">end</span>
-
-    <span class="k">return</span> <span class="n">ensemble_stats</span>
-<span class="k">end</span>
-</pre></div>
-</td></tr></table>
+                <p><a id='Hypothesis-tests-1'></a></p>
+<h1 id="hypothesis-tests">Hypothesis tests</h1>
+<p>In addition to providing ensemble computation of basic statistic measures, this package also wraps various hypothesis tests from <code class="codehilite">HypothesisTests.jl</code>. This allows us to perform hypothesis testing on ensemble realisations of the data.</p>
+<p><a id='Implemented-hypothesis-tests-1'></a></p>
+<h2 id="implemented-hypothesis-tests">Implemented hypothesis tests</h2>
+<p>The following hypothesis tests are implemented for uncertain data types.</p>
+<ul>
+<li><a href="../one_sample_t_test/">One sample t-test</a>.</li>
+<li><a href="../equal_variance_t_test/">Equal variance t-test</a>.</li>
+<li><a href="../unequal_variance_t_test/">Unequal variance t-test</a>.</li>
+<li><a href="../exact_kolmogorov_smirnov_test/">Exact Kolmogorov-Smirnov test</a>.</li>
+<li><a href="../approximate_twosample_kolmogorov_smirnov_test/">Approximate two-sample Kolmogorov-Smirnov test</a>.</li>
+<li><a href="../anderson_darling_test/">One-sample Anderson–Darling test</a>.</li>
+<li><a href="../jarque_bera_test/">Jarque-Bera test</a>.</li>
+</ul>
+<p><a id='Terminology-1'></a></p>
+<h2 id="terminology">Terminology</h2>
+<p><strong>Pooled statistics</strong> are computed by sampling all uncertain values comprising the dataset n times, pooling the values together and treating them as one variable, then computing the statistic.</p>
+<p><strong>Element-wise statistics</strong> are computed by sampling each uncertain value n times, keeping the data generated from each uncertain value separate. The statistics are the computed separately for each sample.</p>
                 
                   
                 
@@ -652,7 +650,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="resampling.html" title="Resampling" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="ensemble_statistics/" title="Core statistics" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -661,11 +659,25 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Resampling
+                Core statistics
               </span>
             </div>
           </a>
         
+        
+          <a href="hypothesistests/one_sample_t_test/" title="One sample t-test" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                One sample t-test
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
         
       </nav>
     </div>
@@ -689,13 +701,13 @@
       
     </div>
     
-      <script src="./assets/javascripts/application.30f6b8b1.js"></script>
+      <script src="../../assets/javascripts/application.30f6b8b1.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
       
-        <script src="assets/mathjaxhelper.js"></script>
+        <script src="../../assets/mathjaxhelper.js"></script>
       
     
     
