@@ -35,21 +35,21 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-0.17.5, mkdocs-material-2.9.4">
+      <link rel="shortcut icon" href="./assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-2.9.4">
     
     
       
-        <title>Ensemble statistics - UncertainData.jl</title>
+        <title>Resampling - UncertainData.jl</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
+      <link rel="stylesheet" href="./assets/stylesheets/application.451f80e5.css">
       
       
     
     
-      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+      <script src="./assets/javascripts/modernizr.1aa3b519.js"></script>
     
     
       <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -58,9 +58,9 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="./assets/fonts/material-icons.css">
     
-      <link rel="stylesheet" href="../assets/Documenter.css">
+      <link rel="stylesheet" href="assets/Documenter.css">
     
     
   </head>
@@ -96,7 +96,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#examples-of-uncertainty-ensemble-statistics" tabindex="1" class="md-skip">
+      <a href="#resampling" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -105,7 +105,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href=".." title="UncertainData.jl" class="md-header-nav__button md-logo">
+        <a href="index.html" title="UncertainData.jl" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -122,7 +122,7 @@
                 UncertainData.jl
               </span>
               <span class="md-header-nav__topic">
-                Ensemble statistics
+                Resampling
               </span>
             
           
@@ -201,7 +201,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href=".." title="UncertainData.jl" class="md-nav__button md-logo">
+    <a href="index.html" title="UncertainData.jl" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
@@ -239,7 +239,7 @@
 
 
   <li class="md-nav__item">
-    <a href=".." title="Home" class="md-nav__link">
+    <a href="index.html" title="Home" class="md-nav__link">
       Home
     </a>
   </li>
@@ -250,10 +250,70 @@
       
 
 
-  <li class="md-nav__item">
-    <a href="../uncertain_values/" title="Uncertain values" class="md-nav__link">
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
       Uncertain values
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Uncertain values
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="uncertainvalues_overview.html" title="Overview" class="md-nav__link">
+      Overview
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="uncertainvalues_kde.html" title="Kernel density estimates (KDE)" class="md-nav__link">
+      Kernel density estimates (KDE)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="uncertainvalues_theoreticaldistributions.html" title="Theoretical distributions" class="md-nav__link">
+      Theoretical distributions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="uncertainvalues_fitted.html" title="Fitted distributions" class="md-nav__link">
+      Fitted distributions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
     
@@ -262,10 +322,46 @@
       
 
 
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Uncertain statistics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Uncertain statistics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
   <li class="md-nav__item">
-    <a href="../resampling/" title="Resampling" class="md-nav__link">
-      Resampling
+    <a href="ensemble_statistics.html" title="Core statistics" class="md-nav__link">
+      Core statistics
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="hypothesis_tests.html" title="Hypothesis tests" class="md-nav__link">
+      Hypothesis tests
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
     
@@ -280,47 +376,38 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
+      
+    
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Ensemble statistics
+        Resampling
       </label>
     
-    <a href="./" title="Ensemble statistics" class="md-nav__link md-nav__link--active">
-      Ensemble statistics
+    <a href="resampling.html" title="Resampling" class="md-nav__link md-nav__link--active">
+      Resampling
     </a>
     
       
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#examples-of-uncertainty-ensemble-statistics" title="Examples of uncertainty ensemble statistics" class="md-nav__link">
-    Examples of uncertainty ensemble statistics
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#statistics-of-single-uncertain-values" title="Statistics of single uncertain values" class="md-nav__link">
-    Statistics of single uncertain values
+  <a href="#without-constraints" title="Without constraints" class="md-nav__link">
+    Without constraints
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#statistics-on-datasets-of-uncertain-values" title="Statistics on datasets of uncertain values" class="md-nav__link">
-    Statistics on datasets of uncertain values
+      
+        <li class="md-nav__item">
+  <a href="#with-constraints" title="With constraints" class="md-nav__link">
+    With constraints
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -341,8 +428,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../implementing_algorithms_for_uncertaindata/" title="Extending existing algorithms for uncertain data types" class="md-nav__link">
-      Extending existing algorithms for uncertain data types
+    <a href="implementing_algorithms_for_uncertaindata.html" title="Implementing algorithms for uncertain data" class="md-nav__link">
+      Implementing algorithms for uncertain data
     </a>
   </li>
 
@@ -361,34 +448,23 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#examples-of-uncertainty-ensemble-statistics" title="Examples of uncertainty ensemble statistics" class="md-nav__link">
-    Examples of uncertainty ensemble statistics
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#statistics-of-single-uncertain-values" title="Statistics of single uncertain values" class="md-nav__link">
-    Statistics of single uncertain values
+  <a href="#without-constraints" title="Without constraints" class="md-nav__link">
+    Without constraints
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#statistics-on-datasets-of-uncertain-values" title="Statistics on datasets of uncertain values" class="md-nav__link">
-    Statistics on datasets of uncertain values
+      
+        <li class="md-nav__item">
+  <a href="#with-constraints" title="With constraints" class="md-nav__link">
+    With constraints
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -408,37 +484,41 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/kahaaga/UncertainData.jl/edit/master/docs/ensemble_statistics.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/kahaaga/UncertainData.jl/edit/master/docs/resampling.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>Ensemble statistics</h1>
-                
-                <p><a id='Examples-of-uncertainty-ensemble-statistics-1'></a></p>
-<h2 id="examples-of-uncertainty-ensemble-statistics">Examples of uncertainty ensemble statistics</h2>
-<p>This package implements most of the statistical algorithms in <code>StatsBase</code> for uncertain values and uncertain datasets.</p>
-<p>The syntax for calling the algorithms is the same as in <code>StatsBase</code>, but the functions here accept an additional positional argument <code>n</code>, which controls how many times the uncertain values are resampled to compute the statistics. The default number of times to resample is <code>n = 1000</code>.</p>
-<p><a id='Statistics-of-single-uncertain-values-1'></a></p>
-<h3 id="statistics-of-single-uncertain-values">Statistics of single uncertain values</h3>
+                <p><a id='Resampling-1'></a></p>
+<h1 id="resampling">Resampling</h1>
+<p><a id='Without-constraints-1'></a></p>
+<h2 id="without-constraints">Without constraints</h2>
+<p>Regular resampling is done by drawing random number from the entire probability distributions furnishing the uncertain values.</p>
+<p><a id='With-constraints-1'></a></p>
+<h2 id="with-constraints">With constraints</h2>
+<p>The following syntax is used to resample uncertain values.</p>
 <ul>
-<li><code>mean(d::AbstractUncertainValue, n::Int = 1000)</code>. Computes the mean of an uncertain value.</li>
-<li><code>median(d::AbstractUncertainValue, n::Int = 1000)</code>. Computes the median of an uncertain value.</li>
-<li><code>middle(d::AbstractUncertainValue, n::Int = 1000)</code>. Computes the middle of an uncertain value.</li>
-<li><code>std(d::AbstractUncertainValue, n::Int = 1000)</code>. Computes the standard deviation of an uncertain value.</li>
-<li><code>var(d::AbstractUncertainValue, n::Int = 1000)</code>. Computes the variance of an uncertain value.</li>
-<li><code>quantile(d::AbstractUncertainValue, p, n::Int = 1000)</code>. Computes the <code>p</code>-th quantile(s) of an uncertain value.</li>
+<li><code class="codehilite">resample(uv::AbstractUncertainValue, constraint::SamplingConstraint)</code>. Resample the uncertain value once within the restrictions imposed by the sampling constraint.</li>
+<li><code class="codehilite">resample(uv::AbstractUncertainValue, constraint::SamplingConstraint, n::Int)</code>. Resample the uncertain value <code class="codehilite">n</code> times within the restrictions imposed by the sampling constraint.</li>
 </ul>
-<p><a id='Statistics-on-datasets-of-uncertain-values-1'></a></p>
-<h3 id="statistics-on-datasets-of-uncertain-values">Statistics on datasets of uncertain values</h3>
-<p>The following statistics are available for uncertain datasets (collections of uncertain values). </p>
+<p><a id='Sampling-constraints-1'></a></p>
+<h1 id="sampling-constraints">Sampling constraints</h1>
+<p>The following sampling constraints are available:</p>
 <ul>
-<li><code>mean(d::UncertainDataset</code>). Computes the element-wise mean of a dataset of uncertain values.</li>
-<li><code>median(d::UncertainDataset</code>). Computes the element-wise median of a dataset of uncertain values.</li>
-<li><code>middle(d::UncertainDataset</code>). Computes the element-wise middle of a dataset of uncertain values.</li>
-<li><code>std(d::UncertainDataset</code>). Computes the element-wise standard deviation of a dataset of uncertain values.</li>
-<li><code>var(d::UncertainDataset</code>). Computes the element-wise variance of a dataset of uncertain values.</li>
-<li><code>quantile(d::UncertainDataset, p, n::Int = 1000)</code>. Computes the element-wise <code>p</code>-th quantile(s) of a dataset of uncertain values.</li>
-<li><code>cor(d1::UncertainDataset, d2::UncertainDataset, n::Int = 1000)</code>. Compute the correlation between two datasets consisting of uncertain values.</li>
-<li><code>cov(d1::UncertainDataset, d2::UncertainDataset, n::Int = 1000)</code>. Compute the correlation between two datasets consisting of uncertain values.</li>
+<li><code class="codehilite">TruncateStd(nσ::Int)</code>. Truncate the distribution furnishing the uncertain data point(s) at n times the standard deviation of the distribution.</li>
+<li><code class="codehilite">TruncateMinimum(min&lt;:Number)</code>. Truncate the distribution furnishing the uncertain data point(s) at some minimum value.</li>
+<li><code class="codehilite">TruncateMaximum(max&lt;:Number)</code>. Truncate the distribution furnishing the uncertain data point(s) at some maximum value.</li>
+<li><code class="codehilite">TruncateRange(min&lt;:Number, max&lt;:Number)</code>. Truncate the distribution furnishing the uncertain data point(s) at some range.</li>
+<li><code class="codehilite">TruncateLowerQuantile(lower_quantile::Float64)</code>. Truncate the distribution furnishing the uncertain data point(s) at some lower quantile of the distribution.</li>
+<li><code class="codehilite">TruncateUpperQuantile(upper_quantile::Float64)</code>. Truncate the distribution furnishing the uncertain data point(s) at some upper quantile of the distribution.</li>
+<li><code class="codehilite">TruncateQuantiles(lower_quantile::Float64, upper_quantile::Float64)</code>. Truncate the distribution furnishing the uncertain data point(s) at a <code class="codehilite">lower_quantile</code></li>
+</ul>
+<p>and an <code class="codehilite">upper_quantile</code> of the distribution.</p>
+<p><a id='Examples-1'></a></p>
+<h2 id="examples">Examples</h2>
+<p>Let <code class="codehilite">uv = UncertainValue(Normal, 1, 0.2)</code>. One may, for example, impose the following sampling constraints:</p>
+<ul>
+<li><code class="codehilite">resample(uv, TruncateLowerQuantile(0.2))</code>. Resamples <code class="codehilite">uv</code> 100 times, drawing values strictly larger than the 0.2-th quantile of the distribution furnishing the uncertain data point.</li>
+<li><code class="codehilite">resample(uv, TruncateStd(1), 100)</code>. Resamples <code class="codehilite">uv</code> 100 times, drawing values falling within one standard deviation of the distribution furnishing the uncertain value.</li>
+<li><code class="codehilite">resample(uv, TruncateRange(-0.5, 1), 100)</code>. Resamples <code class="codehilite">uv</code> 100 times, drawing values from the distribution furnishing the uncertain value within the interval <code class="codehilite">[-0.5, 1]</code>.</li>
 </ul>
                 
                   
@@ -460,7 +540,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../resampling/" title="Resampling" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="hypothesis_tests.html" title="Hypothesis tests" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -469,19 +549,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Resampling
+                Hypothesis tests
               </span>
             </div>
           </a>
         
         
-          <a href="../implementing_algorithms_for_uncertaindata/" title="Extending existing algorithms for uncertain data types" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="implementing_algorithms_for_uncertaindata.html" title="Implementing algorithms for uncertain data" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Extending existing algorithms for uncertain data types
+                Implementing algorithms for uncertain data
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -511,13 +591,13 @@
       
     </div>
     
-      <script src="../assets/javascripts/application.30f6b8b1.js"></script>
+      <script src="./assets/javascripts/application.30f6b8b1.js"></script>
       
-      <script>app.initialize({version:"0.17.5",url:{base:".."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"."}})</script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
       
-        <script src="../assets/mathjaxhelper.js"></script>
+        <script src="assets/mathjaxhelper.js"></script>
       
     
     
