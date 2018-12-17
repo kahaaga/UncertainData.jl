@@ -25,9 +25,7 @@ PAGES = [
             "hypothesistests/jarque_bera_test.md",
             "hypothesistests/mann_whitney_u_test.md",
             "hypothesistests/anderson_darling_test.md"
-
-		]
-    ],
+     ],
     "Resampling" => "resampling.md",
     "implementing_algorithms_for_uncertaindata.md"
 ]
