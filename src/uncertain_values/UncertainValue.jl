@@ -14,7 +14,7 @@ Fits a distribution of
 - **`distribution`**: A valid univariate distribution from `Distributions.jl`.
 
 """
-function UncertainValue(d::Type{D}, empiricaldata) where {D<:Distribution}
+function UncertainValue(d::Type{D}, empiricaldata::Vector{T}) where {D<:Distribution, T}
     distribution = FittedDistribution(Distributions.fit(d, empiricaldata))
     UncertainScalarEmpiricallyDistributed(distribution, empiricaldata)
 end
