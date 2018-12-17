@@ -138,6 +138,12 @@ by kernel density estimation.
 ecdf(uv::UncertainScalarKDE) = cumsum(uv.pdf)
 
 """
+The mode (most likely value) of an uncertain value represented by a
+kernel density estimate.
+"""
+mode(uv::UncertainScalarKDE) = uv.range(findmax(uv.distribution.density)[2])
+
+"""
     quantile(uv::UncertainScalarKDE, q)
 
 Return the `q`-th quantile of the distribution furnishing the uncertain value.
