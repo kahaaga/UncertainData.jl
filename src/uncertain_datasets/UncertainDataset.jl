@@ -8,8 +8,8 @@ Generic dataset containing uncertain values.
 ## Fields
 - **`values::AbstractVector{AbstractUncertainValue}`**: The uncertain values.
 """
-struct UncertainDataset <: AbstractUncertainDataset
-    values::AbstractVector{AbstractUncertainValue}
+struct UncertainDataset{T <: AbstractUncertainValue} <: AbstractUncertainDataset
+    values::AbstractVector{T}
 end
 
 """
@@ -20,9 +20,11 @@ Generic dataset containing uncertain values.
 ## Fields
 - **`values::AbstractVector{AbstractUncertainValue}`**: The uncertain values.
 """
-struct UncertainIndexDataset <: AbstractUncertainDataset
-    values::AbstractVector{AbstractUncertainValue}
+struct UncertainIndexDataset{T <: AbstractUncertainValue} <: AbstractUncertainDataset
+    values::AbstractVector{T}
 end
+
+UncertainDataset(uv::AbstractUncertainValue) = UncertainDataset([uv])
 
 ##########################
 # Indexing and iteration
