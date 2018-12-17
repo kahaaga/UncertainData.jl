@@ -10,6 +10,7 @@ include("test_uncertain_values.jl")
 include("test_uncertain_datasets.jl")
 
 include("test_constrain_uncertainvalues.jl")
+include("test_constrain_uncertainvalues_kde.jl")
 
 include("test_resampling_uncertainvalues.jl")
 include("test_resampling_uncertainvalues_kde.jl")
