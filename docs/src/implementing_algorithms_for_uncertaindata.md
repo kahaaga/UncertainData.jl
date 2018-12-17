@@ -1,4 +1,4 @@
-## Implementing algorithms for uncertain data
+## Extending existing algorithms for uncertain data types
 
 Do you already have an algorithm computing some statistic that you want to obtain uncertainty estimates for? Simply use Julia's multiple dispatch and create a version of the algorithm function that accepts the `AbstractUncertainValue` and `AbstractUncertainDataset` types, along with a `SamplingConstraints` specifying how the uncertain values are should be resampled.
 
