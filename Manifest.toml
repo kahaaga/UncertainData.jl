@@ -109,6 +109,18 @@ git-tree-sha1 = "c24e9b6500c037673f0241a2783472b8c3d080c7"
 uuid = "31c24e10-a181-5473-b8eb-7969acd0382f"
 version = "0.16.4"
 
+[[DocStringExtensions]]
+deps = ["LibGit2", "Markdown", "Pkg", "Test"]
+git-tree-sha1 = "1df01539a1c952cef21f2d2d1c092c2bcf0177d7"
+uuid = "ffbed154-4ef7-542d-bbb7-c09d3a79fcae"
+version = "0.6.0"
+
+[[DocumenterTools]]
+deps = ["Base64", "DocStringExtensions", "LibGit2", "Pkg", "Test"]
+git-tree-sha1 = "f5803a9c2c23ff226e8eab2df7ac4c75e77a0d53"
+uuid = "35a29f4d-8980-5a13-9543-d66fff28ecb8"
+version = "0.1.0"
+
 [[ErrorfreeArithmetic]]
 deps = ["Test"]
 git-tree-sha1 = "071677938ef6e8f2a51ec0fedf5c312af88e26dc"

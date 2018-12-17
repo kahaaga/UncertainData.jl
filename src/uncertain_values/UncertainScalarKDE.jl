@@ -112,7 +112,7 @@ end
 
 
 """
-    rand(uv::UncertainScalarKDE)
+    rand(uv::AbstractUncertainScalarKDE)
 
 Sample a random number from an uncertain value represented by a kernel
 density estimate.
@@ -129,7 +129,7 @@ function rand(uv::AbstractUncertainScalarKDE)
 end
 
 """
-    rand(uv::UncertainScalarKDE, n::Int)
+    rand(uv::AbstractUncertainScalarKDE, n::Int)
 
 Sample a random number from an uncertain value represented by a kernel
 density estimate.
@@ -147,12 +147,18 @@ function rand(uv::AbstractUncertainScalarKDE, n::Int)
 end
 
 """
-    ecdf(uv::UncertainScalarKDE)
+    ecdf(uv::AbstractUncertainScalarKDE)
 
 Empirical cumulative distribution function for an uncertain value approximated
 by kernel density estimation.
 """
 ecdf(uv::AbstractUncertainScalarKDE) = cumsum(uv.pdf)
+
+"""
+The mode (most likely value) of an uncertain value represented by a
+kernel density estimate.
+"""
+mode(uv::AbstractUncertainScalarKDE) = uv.range(findmax(uv.distribution.density)[2])
 
 """
 The mode (most likely value) of an uncertain value represented by a
@@ -171,6 +177,12 @@ end
 
 median(uv::AbstractUncertainScalarKDE{T}) where T = quantile(uv, 0.5)
 
+function quantile(uv::AbstractUncertainScalarKDE{T}, q) where T
+    uv.range[findfirst(ecdf(uv) .> q)]
+end
+
+median(uv::AbstractUncertainScalarKDE{T}) where T = quantile(uv, 0.5)
+
 
 """
     support(uv::UncertainScalarKDE)
@@ -180,8 +192,9 @@ estimate.
 """
 support(uv::AbstractUncertainScalarKDE{T}) where T = (minimum(uv.range), maximum(uv.range))
 
+
 """
-    getrangeindex(uv::UncertainScalarKDE, q::Float64)
+    getrangeindex(uv::AbstractUncertainScalarKDE, q::Float64)
 
 Return the index of the range/density value corresponding to the `q`-th quantile
 of an uncertain value furnished by a kernel density estimate.
