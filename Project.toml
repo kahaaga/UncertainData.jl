@@ -5,6 +5,7 @@ repo = "https://github.com/kahaaga/UncertainData.jl.git"
 
 [deps]
 Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
+DocumenterTools = "35a29f4d-8980-5a13-9543-d66fff28ecb8"
 HypothesisTests = "09f84164-cd44-5f33-b23f-e6b0d136a0d5"
 IntervalArithmetic = "d1acc4aa-44c8-5952-acd4-ba5d80a2a253"
 KernelDensity = "5ab0869b-81aa-558d-bb23-cbf5423bbe9b"
