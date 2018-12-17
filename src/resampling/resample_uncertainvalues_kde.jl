@@ -15,19 +15,19 @@ import Distributions:
 Resample an uncertain value whose distribution is approximated using a
 kernel density estimate once.
 """
-resample(uv::UncertainScalarKDE) = rand(uv)
+resample(uv::AbstractUncertainScalarKDE) = rand(uv)
 
 """
-    resample(uv::UncertainScalarKDE)
+    resample(uv::AbstractUncertainScalarKDE)
 
 Resample an uncertain value whose distribution is approximated using a
 kernel density estimate `n` times.
 """
-resample(uv::UncertainScalarKDE, n::Int) = rand(uv, n)
+resample(uv::AbstractUncertainScalarKDE, n::Int) = rand(uv, n)
 
 
 """
-    resample(uv::UncertainScalarKDE, constraint::NoConstraint)
+    resample(uv::AbstractUncertainScalarKDE, constraint::NoConstraint)
 
 Resample without contraints (use the full distribution representing the value)
 
@@ -43,10 +43,10 @@ uncertainval = UncertainValue(some_sample) # -> UncertainScalarKDE
 resample(uncertainval, NoConstraint())
 ```
 """
-resample(uv::UncertainScalarKDE, constraint::NoConstraint) = resample(uv)
+resample(uv::AbstractUncertainScalarKDE, constraint::NoConstraint) = resample(uv)
 
 """
-    resample(uv::UncertainScalarKDE, constraint::NoConstraint, n::Int)
+    resample(uv::AbstractUncertainScalarKDE, constraint::NoConstraint, n::Int)
 
 Resample without contraints (use the full distribution representing the value)
 
@@ -62,11 +62,11 @@ uncertainval = UncertainValue(some_sample) # -> UncertainScalarKDE
 resample(uncertainval, NoConstraint(), n)
 ```
 """
-resample(uv::UncertainScalarKDE, constraint::NoConstraint, n::Int) = resample(uv, n)
+resample(uv::AbstractUncertainScalarKDE, constraint::NoConstraint, n::Int) = resample(uv, n)
 
 
 """
-    resample(uv::UncertainScalarKDE, constraint::TruncateLowerQuantile)
+    resample(uv::AbstractUncertainScalarKDE, constraint::TruncateLowerQuantile)
 
 Resample `uv` by first truncating below the kernel density estimate of the
 distribution furnishing the value at some lower quantile, then resampling
@@ -89,7 +89,7 @@ constraint = TruncateLowerQuantile(0.16)
 resample(uncertainval, constraint)
 ```
 """
-function resample(uv::UncertainScalarKDE, constraint::TruncateLowerQuantile)
+function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateLowerQuantile)
     # Find the index of the kernel density estimated distribution
     # corresponding to the lower quantile at which we want to truncate.
     idx_lower_quantile = getquantileindex(uv, constraint.lower_quantile)
@@ -109,7 +109,7 @@ function resample(uv::UncertainScalarKDE, constraint::TruncateLowerQuantile)
 end
 
 """
-    resample(uv::UncertainScalarKDE, constraint::TruncateLowerQuantile,
+    resample(uv::AbstractUncertainScalarKDE, constraint::TruncateLowerQuantile,
         n::Int)
 
 Resample `uv` by first truncating below the kernel density estimate of the
@@ -133,7 +133,7 @@ constraint = TruncateLowerQuantile(0.16)
 resample(uncertainval, constraint, 500)
 ```
 """
-function resample(uv::UncertainScalarKDE, constraint::TruncateLowerQuantile,
+function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateLowerQuantile,
         n::Int)
     # Find the index of the kernel density estimated distribution
     # corresponding to the lower quantile at which we want to truncate.
@@ -156,7 +156,7 @@ end
 
 
 """
-    resample(uv::UncertainScalarKDE, constraint::TruncateUpperQuantile)
+    resample(uv::AbstractUncertainScalarKDE, constraint::TruncateUpperQuantile)
 
 Resample `uv` by first truncating above the kernel density estimate of the
 distribution furnishing the value at some upper quantile, then resampling
@@ -179,7 +179,7 @@ constraint = TruncateUpperQuantile(0.78)
 resample(uncertainval, constraint)
 ```
 """
-function resample(uv::UncertainScalarKDE, constraint::TruncateUpperQuantile)
+function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateUpperQuantile)
     # Find the index of the kernel density estimated distribution
     # corresponding to the lower quantile at which we want to truncate.
     idx_upper_quantile = getquantileindex(uv, constraint.upper_quantile)
@@ -199,7 +199,7 @@ function resample(uv::UncertainScalarKDE, constraint::TruncateUpperQuantile)
 end
 
 """
-    resample(uv::UncertainScalarKDE, constraint::TruncateUpperQuantile,
+    resample(uv::AbstractUncertainScalarKDE, constraint::TruncateUpperQuantile,
         n::Int)
 
 Resample `uv` by first truncating above the kernel density estimate of the
@@ -223,7 +223,7 @@ constraint = TruncateLowerQuantile(0.16)
 resample(uncertainval, constraint, 500)
 ```
 """
-function resample(uv::UncertainScalarKDE, constraint::TruncateUpperQuantile,
+function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateUpperQuantile,
         n::Int)
     # Find the index of the kernel density estimated distribution
     # corresponding to the lower quantile at which we want to truncate.
@@ -247,7 +247,7 @@ end
 
 
 """
-    resample(uv::UncertainScalarKDE, constraint::TruncateUpperQuantile)
+    resample(uv::AbstractUncertainScalarKDE, constraint::TruncateUpperQuantile)
 
 Resample `uv` by first truncating the kernel density estimate of the
 distribution furnishing the value both above and below at some quantile range,
@@ -270,7 +270,7 @@ constraint = TruncateQuantiles(0.1, 0.9)
 resample(uncertainval, constraint)
 ```
 """
-function resample(uv::UncertainScalarKDE, constraint::TruncateQuantiles)
+function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateQuantiles)
     # Find the index of the kernel density estimated distribution
     # corresponding to the lower quantile at which we want to truncate.
     idx_upper_quantile = getquantileindex(uv, constraint.upper_quantile)
@@ -293,7 +293,7 @@ end
 
 
 """
-    resample(uv::UncertainScalarKDE, constraint::TruncateQuantiles,
+    resample(uv::AbstractUncertainScalarKDE, constraint::TruncateQuantiles,
         n::Int)
 
 Resample `uv` by first truncating the kernel density estimate of the
@@ -317,7 +317,7 @@ constraint = TruncateQuantiles(0.1, 0.9)
 resample(uncertainval, constraint, 500)
 ```
 """
-function resample(uv::UncertainScalarKDE, constraint::TruncateQuantiles,
+function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateQuantiles,
         n::Int)
     # Find the index of the kernel density estimated distribution
     # corresponding to the lower quantile at which we want to truncate.
@@ -342,7 +342,7 @@ end
 
 
 """
-    resample(uv::UncertainScalarKDE, constraint::TruncateMaximum)
+    resample(uv::AbstractUncertainScalarKDE, constraint::TruncateMaximum)
 
 Resample `uv` by first truncating the kernel density estimate of the
 distribution furnishing the value at some maximum value,
@@ -362,7 +362,7 @@ constraint = TruncateMaximum(0.8) # accept no values larger than 1.1
 resample(uncertainval, constraint, 700)
 ```
 """
-function resample(uv::UncertainScalarKDE, constraint::TruncateMaximum)
+function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateMaximum)
     # Box width
     δ = step(uv.range)
 
@@ -383,7 +383,7 @@ function resample(uv::UncertainScalarKDE, constraint::TruncateMaximum)
 end
 
 """
-    resample(uv::UncertainScalarKDE, constraint::TruncateMaximum, n::Int)
+    resample(uv::AbstractUncertainScalarKDE, constraint::TruncateMaximum, n::Int)
 
 Resample `uv` by first truncating the kernel density estimate of the
 distribution furnishing the value at some minimum value,
@@ -404,7 +404,7 @@ constraint = TruncateMaximum(0.8) # accept no values larger than 1.1
 resample(uncertainval, constraint, 700)
 ```
 """
-function resample(uv::UncertainScalarKDE, constraint::TruncateMaximum, n::Int)
+function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateMaximum, n::Int)
     # Box width
     δ = step(uv.range)
 
@@ -427,7 +427,7 @@ end
 
 
 """
-    resample(uv::UncertainScalarKDE, constraint::TruncateMinimum)
+    resample(uv::AbstractUncertainScalarKDE, constraint::TruncateMinimum)
 
 Resample `uv` by first truncating the kernel density estimate of the
 distribution furnishing the value at some minimum value,
@@ -447,7 +447,7 @@ constraint = TruncateMinimum(0.2) # accept no values smaller than 0.2
 resample(uncertainval, constraint, 700)
 ```
 """
-function resample(uv::UncertainScalarKDE, constraint::TruncateMinimum)
+function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateMinimum)
     # Box width
     δ = step(uv.range)
 
@@ -470,7 +470,7 @@ end
 
 
 """
-    resample(uv::UncertainScalarKDE, constraint::TruncateMinimum, n::Int)
+    resample(uv::AbstractUncertainScalarKDE, constraint::TruncateMinimum, n::Int)
 
 Resample `uv` by first truncating the kernel density estimate of the
 distribution furnishing the value at some minimum value,
@@ -490,7 +490,7 @@ constraint = TruncateMinimum(0.2) # accept no values smaller than 0.2
 resample(uncertainval, constraint, 700)
 ```
 """
-function resample(uv::UncertainScalarKDE, constraint::TruncateMinimum, n::Int)
+function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateMinimum, n::Int)
     # Box width
     δ = step(uv.range)
 
@@ -513,7 +513,7 @@ end
 
 
 """
-    resample(uv::UncertainScalarKDE, constraint::TruncateRange)
+    resample(uv::AbstractUncertainScalarKDE, constraint::TruncateRange)
 
 Resample `uv` by first truncating the kernel density estimate of the
 distribution furnishing the value at some minimum and maximum values,
@@ -534,7 +534,7 @@ constraint = TruncateRange(-0.9, 1.2)
 resample(uncertainval, constraint, 300)
 ```
 """
-function resample(uv::UncertainScalarKDE, constraint::TruncateRange)
+function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateRange)
     # Box width
     δ = step(uv.range)
 
@@ -557,7 +557,7 @@ end
 
 
 """
-    resample(uv::UncertainScalarKDE, constraint::TruncateRange, n::Int)
+    resample(uv::AbstractUncertainScalarKDE, constraint::TruncateRange, n::Int)
 
 Resample `uv` by first truncating the kernel density estimate of the
 distribution furnishing the value at some minimum and maximum values,
@@ -578,7 +578,7 @@ constraint = TruncateRange(-0.9, 1.2)
 resample(uncertainval, constraint, 300)
 ```
 """
-function resample(uv::UncertainScalarKDE, constraint::TruncateRange, n::Int)
+function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateRange, n::Int)
     # Box width
     δ = step(uv.range)
 
@@ -602,11 +602,11 @@ end
 
 
 # Resampling UncertainScalarKDE with TruncateStd is undefined, so fall back to quantiles
-function resample(uv::UncertainScalarKDE, constraint::TruncateStd)
+function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateStd)
     resample(uv, fallback(uv, constraint))
 end
 
 # Resampling UncertainScalarKDE with TruncateStd is undefined, so fall back to quantiles
-function resample(uv::UncertainScalarKDE, constraint::TruncateStd, n::Int)
+function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateStd, n::Int)
     resample(uv, fallback(uv, constraint), n)
 end

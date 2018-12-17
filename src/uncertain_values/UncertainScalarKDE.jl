@@ -8,6 +8,8 @@ import Distributions.ecdf
 import Distributions.support
 
 
+abstract type AbstractUncertainScalarKDE{T} <: AbstractEmpiricalValue end
+
 """
     UncertainScalarKDE
 
@@ -20,7 +22,7 @@ An empirical value represented by a distribution estimated from actual data.
 - **`pdf`**: The values of the pdf at each point in `range`.
 
 """
-struct UncertainScalarKDE{T} <: AbstractEmpiricalValue
+struct UncertainScalarKDE{T} <: AbstractUncertainScalarKDE{T}
     distribution::KernelDensity.UnivariateKDE
     values::AbstractVector{T}
     range
@@ -28,7 +30,20 @@ struct UncertainScalarKDE{T} <: AbstractEmpiricalValue
 end
 
 
-function summarise(uv::UncertainScalarKDE{T}) where {T}
+"""
+    TruncatedUncertainScalarKDE
+
+A truncated UncertainScalarKDE.
+"""
+struct TruncatedUncertainScalarKDE{T} <: AbstractUncertainScalarKDE{T}
+    distribution::KernelDensity.UnivariateKDE
+    values::AbstractVector{T}
+    range
+    pdf::StatsBase.Weights
+end
+
+
+function summarise(uv::AbstractUncertainScalarKDE{T}) where {T}
     dist = uv.distribution
     range = uv.range
     dist = typeof(uv.distribution)
@@ -36,7 +51,7 @@ function summarise(uv::UncertainScalarKDE{T}) where {T}
     "$_type($dist, range = $range)"
 end
 
-Base.show(io::IO, uv::UncertainScalarKDE{T}) where {T} = print(io, summarise(uv))
+Base.show(io::IO, uv::AbstractUncertainScalarKDE{T}) where {T} = print(io, summarise(uv))
 
 
 """
@@ -97,12 +112,12 @@ end
 
 
 """
-    rand(uv::UncertainScalarKDE)
+    rand(uv::AbstractUncertainScalarKDE)
 
 Sample a random number from an uncertain value represented by a kernel
 density estimate.
 """
-function rand(uv::UncertainScalarKDE)
+function rand(uv::AbstractUncertainScalarKDE)
     # Box width
     δ = step(uv.range)
 
@@ -114,12 +129,12 @@ function rand(uv::UncertainScalarKDE)
 end
 
 """
-    rand(uv::UncertainScalarKDE, n::Int)
+    rand(uv::AbstractUncertainScalarKDE, n::Int)
 
 Sample a random number from an uncertain value represented by a kernel
 density estimate.
 """
-function rand(uv::UncertainScalarKDE, n::Int)
+function rand(uv::AbstractUncertainScalarKDE, n::Int)
     # Box width
     δ = step(uv.range)
 
@@ -132,29 +147,41 @@ function rand(uv::UncertainScalarKDE, n::Int)
 end
 
 """
-    ecdf(uv::UncertainScalarKDE)
+    ecdf(uv::AbstractUncertainScalarKDE)
 
 Empirical cumulative distribution function for an uncertain value approximated
 by kernel density estimation.
 """
-ecdf(uv::UncertainScalarKDE) = cumsum(uv.pdf)
+ecdf(uv::AbstractUncertainScalarKDE) = cumsum(uv.pdf)
 
 """
 The mode (most likely value) of an uncertain value represented by a
 kernel density estimate.
 """
-mode(uv::UncertainScalarKDE) = uv.range(findmax(uv.distribution.density)[2])
+mode(uv::AbstractUncertainScalarKDE) = uv.range(findmax(uv.distribution.density)[2])
+
+"""
+The mode (most likely value) of an uncertain value represented by a
+kernel density estimate.
+"""
+mode(uv::AbstractUncertainScalarKDE) = uv.range(findmax(uv.distribution.density)[2])
 
 """
     quantile(uv::UncertainScalarKDE, q)
 
 Return the `q`-th quantile of the distribution furnishing the uncertain value.
 """
-function quantile(uv::UncertainScalarKDE{T}, q) where T
+function quantile(uv::AbstractUncertainScalarKDE{T}, q) where T
     uv.range[findfirst(ecdf(uv) .> q)]
 end
 
-median(uv::UncertainScalarKDE{T}) where T = quantile(uv, 0.5)
+median(uv::AbstractUncertainScalarKDE{T}) where T = quantile(uv, 0.5)
+
+function quantile(uv::AbstractUncertainScalarKDE{T}, q) where T
+    uv.range[findfirst(ecdf(uv) .> q)]
+end
+
+median(uv::AbstractUncertainScalarKDE{T}) where T = quantile(uv, 0.5)
 
 
 """
@@ -163,15 +190,16 @@ median(uv::UncertainScalarKDE{T}) where T = quantile(uv, 0.5)
 Return the support of an uncertain value furnished by a kernel density
 estimate.
 """
-support(uv::UncertainScalarKDE{T}) where T = (minimum(uv.range), maximum(uv.range))
+support(uv::AbstractUncertainScalarKDE{T}) where T = (minimum(uv.range), maximum(uv.range))
+
 
 """
-    getrangeindex(uv::UncertainScalarKDE, q::Float64)
+    getrangeindex(uv::AbstractUncertainScalarKDE, q::Float64)
 
 Return the index of the range/density value corresponding to the `q`-th quantile
 of an uncertain value furnished by a kernel density estimate.
 """
-function getquantileindex(uv::UncertainScalarKDE{T}, q::Float64) where T
+function getquantileindex(uv::AbstractUncertainScalarKDE{T}, q::Float64) where T
     findfirst(ecdf(uv) .> q)
 end
 

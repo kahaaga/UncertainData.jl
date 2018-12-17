@@ -31,5 +31,7 @@ D2 = UncertainDataset([o1, o2, o4])
 @test var(D1, 10) isa Vector{Float64}
 @test quantile(D1, 0.4, 10) isa Vector{Float64}
 
-@test cor(D1, D2) isa Vector{Float64}
-@test cov(D1, D2) isa Vector{Float64}
+@test cor(D1, D2) isa Float64
+@test cov(D1, D2) isa Float64
+@test cor(D1, D2, 10) isa Vector{Float64}
+@test cov(D1, D2, 10) isa Vector{Float64}
