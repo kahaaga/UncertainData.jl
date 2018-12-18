@@ -39,7 +39,7 @@ markdown_extensions:
 
 docs_dir: 'build'
 
-nav:
+pages:
   - Home: index.md
   - Uncertain values:
     - Overview: uncertainvalues_overview.md
@@ -49,14 +49,14 @@ nav:
   - Uncertain statistics:
     - Core statistics: ensemble_statistics.md
     - Hypothesis tests:
-        Overview: hypothesistests/hypothesis_tests_overview.md
-        One sample t-test: hypothesistests/one_sample_t_test.md
-        Equal variance t-test: hypothesistests/equal_variance_t_test.md
-        Unequal variance t-test: hypothesistests/unequal_variance_t_test.md
-        Exact Kolmogorov-Smirnov test: hypothesistests/exact_kolmogorov_smirnov_test.md
-        Approximate two-sample Kolmogorov-Smirnov test: hypothesistests/approximate_twosample_kolmogorov_smirnov_test.md
-        Jarque-Bera test: hypothesistests/jarque_bera_test.md
-        Mann-Whitney u-test: hypothesistests/mann_whitney_u_test.md
-        Anderson-Darling test: hypothesistests/anderson_darling_test.md
+      - Overview: hypothesistests/hypothesis_tests_overview.md
+      - One sample t-test: hypothesistests/one_sample_t_test.md
+      - Equal variance t-test: hypothesistests/equal_variance_t_test.md
+      - Unequal variance t-test: hypothesistests/unequal_variance_t_test.md
+      - Exact Kolmogorov-Smirnov test: hypothesistests/exact_kolmogorov_smirnov_test.md
+      - Approximate two-sample Kolmogorov-Smirnov test: hypothesistests/approximate_twosample_kolmogorov_smirnov_test.md
+      - Jarque-Bera test: hypothesistests/jarque_bera_test.md
+      - Mann-Whitney u-test: hypothesistests/mann_whitney_u_test.md
+      - Anderson-Darling test: hypothesistests/anderson_darling_test.md
   - Resampling: resampling.md
   - Implementing algorithms for uncertain data: implementing_algorithms_for_uncertaindata.md
