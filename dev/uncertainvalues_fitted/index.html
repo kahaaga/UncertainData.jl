@@ -40,7 +40,7 @@
     
     
       
-        <title>Fitted distributions - UncertainData.jl</title>
+        <title>Fit theoretical distributions - UncertainData.jl</title>
       
     
     
@@ -96,7 +96,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#uncertain-values-from-fitted-distributions" tabindex="1" class="md-skip">
+      <a href="#examples" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -122,7 +122,7 @@
                 UncertainData.jl
               </span>
               <span class="md-header-nav__topic">
-                Fitted distributions
+                Fit theoretical distributions
               </span>
             
           
@@ -272,8 +272,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../uncertainvalues_overview/" title="Overview" class="md-nav__link">
-      Overview
+    <a href="../uncertainvalues_overview/" title="Quickstart" class="md-nav__link">
+      Quickstart
     </a>
   </li>
 
@@ -313,22 +313,18 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
-      
-    
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Fitted distributions
+        Fit theoretical distributions
       </label>
     
-    <a href="./" title="Fitted distributions" class="md-nav__link md-nav__link--active">
-      Fitted distributions
+    <a href="./" title="Fit theoretical distributions" class="md-nav__link md-nav__link--active">
+      Fit theoretical distributions
     </a>
     
       
 <nav class="md-nav md-nav--secondary">
   
-  
-    
   
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
@@ -342,14 +338,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#supported-distributions" title="Supported distributions" class="md-nav__link">
-    Supported distributions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#beware-fitting-distributions-may-lead-to-nonsensical-results" title="Beware: fitting distributions may lead to nonsensical results!" class="md-nav__link">
+  <a href="#beware_fitting_distributions_may_lead_to_nonsensical_results" title="Beware: fitting distributions may lead to nonsensical results!" class="md-nav__link">
     Beware: fitting distributions may lead to nonsensical results!
   </a>
   
@@ -584,8 +573,6 @@
 <nav class="md-nav md-nav--secondary">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
@@ -598,14 +585,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#supported-distributions" title="Supported distributions" class="md-nav__link">
-    Supported distributions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#beware-fitting-distributions-may-lead-to-nonsensical-results" title="Beware: fitting distributions may lead to nonsensical results!" class="md-nav__link">
+  <a href="#beware_fitting_distributions_may_lead_to_nonsensical_results" title="Beware: fitting distributions may lead to nonsensical results!" class="md-nav__link">
     Beware: fitting distributions may lead to nonsensical results!
   </a>
   
@@ -637,12 +617,11 @@
                   <a href="https://github.com/kahaaga/UncertainData.jl/edit/master/docs/uncertainvalues_fitted.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <p><a id='Uncertain-values-from-fitted-distributions-1'></a></p>
-<h1 id="uncertain-values-from-fitted-distributions">Uncertain values from fitted distributions</h1>
-<p>For data values with histograms close to some known distribution, the user may choose to represent the data by fitting a theoretical distribution to the values. This will only work well if the histogram closely resembles a theoretical distribution.</p>
+                  <h1>Fit theoretical distributions</h1>
+                
+                <p>For data values with histograms close to some known distribution, the user may choose to represent the data by fitting a theoretical distribution to the values. This will only work well if the histogram closely resembles a theoretical distribution.</p>
 <p><a id='Examples-1'></a></p>
-<h2 id="examples">Examples</h2>
-<p>In the following examples, we're trying to fit the same distribution to our sample as the distribution from which we draw the sample. Thus, we will get good fits.</p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <div class="superfences-tabs">
 <input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
 <label for="__tab_1_0">Uniform</label>
@@ -710,11 +689,9 @@
 </pre></div>
 </td></tr></table></div>
 </div>
-<p><a id='Supported-distributions-1'></a></p>
-<h2 id="supported-distributions">Supported distributions</h2>
-<p>Supported distributions are <code class="codehilite">Uniform</code>, <code class="codehilite">Normal</code>, <code class="codehilite">Gamma</code>, <code class="codehilite">Beta</code>, <code class="codehilite">BetaPrime</code>, <code class="codehilite">Frechet</code>, <code class="codehilite">Binomial</code>, <code class="codehilite">BetaBinomial</code>.</p>
+<p>In these examples we're trying to fit the same distribution to our sample as the distribution from which we draw the sample. Thus, we will get good fits. In real applications, make sure to always visually investigate the histogram of your data!</p>
 <p><a id='Beware:-fitting-distributions-may-lead-to-nonsensical-results!-1'></a></p>
-<h2 id="beware-fitting-distributions-may-lead-to-nonsensical-results">Beware: fitting distributions may lead to nonsensical results!</h2>
+<h2 id="beware_fitting_distributions_may_lead_to_nonsensical_results">Beware: fitting distributions may lead to nonsensical results!<a class="headerlink" href="#beware_fitting_distributions_may_lead_to_nonsensical_results" title="Permanent link">&para;</a></h2>
 <p>In a less contrived example, we may try to fit a beta distribution to a sample generated from a gamma distribution.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -735,17 +712,25 @@
 </td></tr></table>
 
 <p>This is obviously not a good idea. Always visualise your distribution before deciding on which distribution to fit! You won't get any error messages if you try to fit a distribution that does not match your data.</p>
-<p>If the data do not follow an obvious theoretical distribution, it is better to use kernel density estimation to define the uncertain value.</p>
+<p>If the data do not follow an obvious theoretical distribution, it is better to use <a href="uncertainvalue_kde.md">kernel density estimation</a> to define the uncertain value.</p>
 <p><a id='Constructor-1'></a></p>
-<h2 id="constructor">Constructor</h2>
-<p>To construct uncertain values represented by empirical distributions, use the following constructor.</p>
+<h2 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h2>
+<p><a id='UncertainData.UncertainValues.UncertainValue-Union{Tuple{T}, Tuple{D}, Tuple{Type{D},Array{T,1}}} where T where D<:Distribution' href='#UncertainData.UncertainValues.UncertainValue-Union{Tuple{T}, Tuple{D}, Tuple{Type{D},Array{T,1}}} where T where D<:Distribution'>#</a>
+<strong><code class="codehilite">UncertainData.UncertainValues.UncertainValue</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">UncertainValue</span><span class="p">(</span><span class="n">d</span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="n">D</span><span class="p">},</span> <span class="n">empiricaldata</span><span class="p">)</span> <span class="n">where</span>
-    <span class="p">{</span><span class="n">D</span><span class="o">&lt;:</span><span class="n">Distributions</span><span class="o">.</span><span class="n">Distribution</span><span class="p">}</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>UncertainValue(d::Type{D},
+    empiricaldata::Vector{T}) where {D&lt;:Distribution, T}
 </pre></div>
 </td></tr></table>
 
-<p>This will fit a distribution of type <code class="codehilite">d</code> to the data and keep that as the representation of the empirical distribution. Calls <code class="codehilite">Distributions.fit</code> behind the scenes.</p>
+<p><strong>Constructor for empirical distributions.</strong></p>
+<p>Fit a distribution of type <code class="codehilite">d</code> to the data and use that as the representation of the empirical distribution. Calls <code class="codehilite">Distributions.fit</code> behind the scenes.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong><code class="codehilite">empiricaldata</code></strong>: The data for which to fit the <code class="codehilite">distribution</code>.</li>
+<li><strong><code class="codehilite">distribution</code></strong>: A valid univariate distribution from <code class="codehilite">Distributions.jl</code>.</li>
+</ul>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/49310f7fb77d4e777992c82065d8eb8244b2db22/src/uncertain_values/UncertainValue.jl#L5-L19' class='documenter-source'>source</a><br></p>
                 
                   
                 

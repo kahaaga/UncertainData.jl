@@ -96,7 +96,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#uncertain-values-from-theoretical-distributions" tabindex="1" class="md-skip">
+      <a href="#supported_distributions" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -272,8 +272,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../uncertainvalues_overview/" title="Overview" class="md-nav__link">
-      Overview
+    <a href="../uncertainvalues_overview/" title="Quickstart" class="md-nav__link">
+      Quickstart
     </a>
   </li>
 
@@ -301,8 +301,6 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
-      
-    
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
         Theoretical distributions
@@ -316,15 +314,20 @@
 <nav class="md-nav md-nav--secondary">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#supported-distributions" title="Supported distributions" class="md-nav__link">
+  <a href="#supported_distributions" title="Supported distributions" class="md-nav__link">
     Supported distributions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" title="Examples" class="md-nav__link">
+    Examples
   </a>
   
 </li>
@@ -338,14 +341,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#two-parameter-distributions" title="Two-parameter distributions" class="md-nav__link">
+  <a href="#two-parameter_distributions" title="Two-parameter distributions" class="md-nav__link">
     Two-parameter distributions
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#three-parameter-distributions" title="Three-parameter distributions" class="md-nav__link">
+  <a href="#three-parameter_distributions" title="Three-parameter distributions" class="md-nav__link">
     Three-parameter distributions
   </a>
   
@@ -373,8 +376,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../uncertainvalues_fitted/" title="Fitted distributions" class="md-nav__link">
-      Fitted distributions
+    <a href="../uncertainvalues_fitted/" title="Fit theoretical distributions" class="md-nav__link">
+      Fit theoretical distributions
     </a>
   </li>
 
@@ -590,15 +593,20 @@
 <nav class="md-nav md-nav--secondary">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#supported-distributions" title="Supported distributions" class="md-nav__link">
+  <a href="#supported_distributions" title="Supported distributions" class="md-nav__link">
     Supported distributions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" title="Examples" class="md-nav__link">
+    Examples
   </a>
   
 </li>
@@ -612,14 +620,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#two-parameter-distributions" title="Two-parameter distributions" class="md-nav__link">
+  <a href="#two-parameter_distributions" title="Two-parameter distributions" class="md-nav__link">
     Two-parameter distributions
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#three-parameter-distributions" title="Three-parameter distributions" class="md-nav__link">
+  <a href="#three-parameter_distributions" title="Three-parameter distributions" class="md-nav__link">
     Three-parameter distributions
   </a>
   
@@ -649,12 +657,14 @@
                   <a href="https://github.com/kahaaga/UncertainData.jl/edit/master/docs/uncertainvalues_theoreticaldistributions.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <p><a id='Uncertain-values-from-theoretical-distributions-1'></a></p>
-<h1 id="uncertain-values-from-theoretical-distributions">Uncertain values from theoretical distributions</h1>
-<p>It is common in the scientific literature to encounter uncertain data values which are reported as following a specific distribution. Perhaps the authors report the mean and standard deviation of a value stated to follow a normal distribution. <code class="codehilite">UncertainData</code> makes it easy to represent such values!</p>
+                  <h1>Theoretical distributions</h1>
+                
+                <p>It is common in the scientific literature to encounter uncertain data values which are reported as following a specific distribution. For example, an author report the mean and standard deviation of a value stated to follow a normal distribution. <code class="codehilite">UncertainData</code> makes it easy to represent such values!</p>
 <p><a id='Supported-distributions-1'></a></p>
-<h2 id="supported-distributions">Supported distributions</h2>
-<p>Uncertain values may be constructed from theoretical distribution using any of the following distributions (more distributions will be added in the future!).</p>
+<h2 id="supported_distributions">Supported distributions<a class="headerlink" href="#supported_distributions" title="Permanent link">&para;</a></h2>
+<p>Supported distributions are <code class="codehilite">Uniform</code>, <code class="codehilite">Normal</code>, <code class="codehilite">Gamma</code>, <code class="codehilite">Beta</code>, <code class="codehilite">BetaPrime</code>, <code class="codehilite">Frechet</code>, <code class="codehilite">Binomial</code>, <code class="codehilite">BetaBinomial</code> (more distributions will be added in the future!).</p>
+<p><a id='Examples-1'></a></p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <div class="superfences-tabs">
 <input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
 <label for="__tab_1_0">Uniform</label>
@@ -728,38 +738,115 @@
 </td></tr></table></div>
 </div>
 <p><a id='Constructors-1'></a></p>
-<h2 id="constructors">Constructors</h2>
-<p>In this package, there are two constructors that creates uncertain values represented by theoretical distributions. The order the parameters are provided to the constructor is the same as for constructing the equivalent distributions in <code class="codehilite">Distributions.jl</code>.</p>
+<h2 id="constructors">Constructors<a class="headerlink" href="#constructors" title="Permanent link">&para;</a></h2>
+<p>There are two constructors that creates uncertain values represented by theoretical distributions. Parameters are provided to the constructor in the same order as for constructing the equivalent distributions in <code class="codehilite">Distributions.jl</code>.</p>
+<p>Uncertain values represented by theoretical distributions may be constructed using the two-parameter or three-parameter constructors <code class="codehilite">UncertainValue(d::Type{D}, a&lt;:Number, b&lt;:Number)</code> or <code class="codehilite">UncertainValue(d::Type{D}, a&lt;:Number, b&lt;:Number, c&lt;:Number)</code> (see below).</p>
 <p><a id='Two-parameter-distributions-1'></a></p>
-<h3 id="two-parameter-distributions">Two-parameter distributions</h3>
+<h3 id="two-parameter_distributions">Two-parameter distributions<a class="headerlink" href="#two-parameter_distributions" title="Permanent link">&para;</a></h3>
+<p><a id='UncertainData.UncertainValues.UncertainValue-Union{Tuple{D}, Tuple{T2}, Tuple{T1}, Tuple{Type{D},T1,T2}} where D<:Distribution where T2<:Number where T1<:Number' href='#UncertainData.UncertainValues.UncertainValue-Union{Tuple{D}, Tuple{T2}, Tuple{T1}, Tuple{Type{D},T1,T2}} where D<:Distribution where T2<:Number where T1<:Number'>#</a>
+<strong><code class="codehilite">UncertainData.UncertainValues.UncertainValue</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">UncertainValue</span><span class="p">(</span><span class="n">d</span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="n">D</span><span class="p">},</span> <span class="n">a</span><span class="o">&lt;:</span><span class="kt">Number</span><span class="p">,</span> <span class="n">b</span><span class="o">&lt;:</span><span class="kt">Number</span><span class="p">)</span>
-    <span class="n">where</span> <span class="p">{</span><span class="n">D</span><span class="o">&lt;:</span><span class="n">Distributions</span><span class="o">.</span><span class="n">Distribution</span><span class="p">}</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">UncertainValue</span><span class="o">(</span><span class="nt">distribution</span><span class="p">::</span><span class="nd">Type</span><span class="p">{</span><span class="err">D</span><span class="p">}</span><span class="o">,</span> <span class="nt">a</span><span class="p">::</span><span class="nd">T1</span><span class="o">,</span> <span class="nt">b</span><span class="p">::</span><span class="nd">T2</span><span class="o">;</span>
+    <span class="nt">kwargs</span><span class="o">...)</span> <span class="nt">where</span> <span class="p">{</span><span class="err">T1&lt;:Number,</span> <span class="err">T2</span> <span class="err">&lt;:</span> <span class="err">Number,</span> <span class="err">D&lt;:Distribution</span><span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
-<p>Creates an uncertain value consisting of a two-parameter distribution of type <code class="codehilite">d</code> with parameters <code class="codehilite">a</code> and <code class="codehilite">b</code>. Precisely what  <code class="codehilite">a</code> and <code class="codehilite">b</code> are depends on which distribution is provided.</p>
+<p><strong>Constructor for two-parameter distributions</strong></p>
+<p><code class="codehilite">UncertainValue</code>s are currently implemented for the following two-parameter distributions: <code class="codehilite">Uniform</code>, <code class="codehilite">Normal</code>, <code class="codehilite">Binomial</code>, <code class="codehilite">Beta</code>, <code class="codehilite">BetaPrime</code>, <code class="codehilite">Gamma</code>, and <code class="codehilite">Frechet</code>.</p>
+<p><strong>Arguments</strong></p>
 <ul>
-<li><code class="codehilite">UncertainValue(Normal, μ, σ)</code> creates an <code class="codehilite">UncertainScalarNormallyDistributed</code> instance.</li>
-<li><code class="codehilite">UncertainValue(Uniform, lower, upper)</code> creates an <code class="codehilite">UncertainScalarUniformlyDistributed</code> instance.</li>
-<li><code class="codehilite">UncertainValue(Beta, α, β)</code> creates an <code class="codehilite">UncertainScalarBetaDistributed</code> instance.</li>
-<li><code class="codehilite">UncertainValue(BetaPrime, α, β)</code> creates an <code class="codehilite">UncertainScalarBetaPrimeDistributed</code> instance.</li>
-<li><code class="codehilite">UncertainValue(Gamma, α, θ)</code> creates an <code class="codehilite">UncertainScalarGammaDistributed</code> instance.</li>
-<li><code class="codehilite">UncertainValue(Frechet, α, θ)</code> creates an <code class="codehilite">UncertainScalarFrechetDistributed</code> instance.</li>
-<li><code class="codehilite">UncertainValue(Binomial, n, p)</code> creates an <code class="codehilite">UncertainScalarBinomialDistributed</code> instance.</li>
+<li><strong><code class="codehilite">a</code>, <code class="codehilite">b</code></strong>: Generic parameters whose meaning varies depending   on what <code class="codehilite">distribution</code> is provided. See the list below.</li>
+<li><strong><code class="codehilite">distribution</code></strong>: A valid univariate distribution from <code class="codehilite">Distributions.jl</code>.</li>
 </ul>
+<p>Precisely what  <code class="codehilite">a</code> and <code class="codehilite">b</code> are depends on which distribution is provided.</p>
+<ul>
+<li><code class="codehilite">UncertainValue(Normal, μ, σ)</code> returns an <code class="codehilite">UncertainScalarNormallyDistributed</code> instance.</li>
+<li><code class="codehilite">UncertainValue(Uniform, lower, upper)</code> returns an <code class="codehilite">UncertainScalarUniformlyDistributed</code> instance.</li>
+<li><code class="codehilite">UncertainValue(Beta, α, β)</code> returns an <code class="codehilite">UncertainScalarBetaDistributed</code> instance.</li>
+<li><code class="codehilite">UncertainValue(BetaPrime, α, β)</code> returns an <code class="codehilite">UncertainScalarBetaPrimeDistributed</code> instance.</li>
+<li><code class="codehilite">UncertainValue(Gamma, α, θ)</code> returns an <code class="codehilite">UncertainScalarGammaDistributed</code> instance.</li>
+<li><code class="codehilite">UncertainValue(Frechet, α, θ)</code> returns an <code class="codehilite">UncertainScalarFrechetDistributed</code> instance.</li>
+<li><code class="codehilite">UncertainValue(Binomial, n, p)</code> returns an <code class="codehilite">UncertainScalarBinomialDistributed</code> instance.</li>
+</ul>
+<p><strong>Keyword arguments</strong></p>
+<ul>
+<li><strong><code class="codehilite">nσ</code></strong>: If <code class="codehilite">distribution &lt;: Distributions.Normal</code>, then how many standard   deviations away from <code class="codehilite">μ</code> does <code class="codehilite">lower</code> and <code class="codehilite">upper</code> (i.e. both, because   they are the same distance away from <code class="codehilite">μ</code>) represent?</li>
+<li><strong><code class="codehilite">tolerance</code></strong>: A threshold determining how symmetric the uncertainties   must be in order to allow the construction of  Normal distribution   (<code class="codehilite">upper - lower &gt; threshold</code> is required).</li>
+<li><strong><code class="codehilite">trunc_lower</code></strong>: Lower truncation bound for distributions with infinite   support. Defaults to <code class="codehilite">-Inf</code>.</li>
+<li><strong><code class="codehilite">trunc_upper</code></strong>: Upper truncation bound for distributions with infinite   support. Defaults to <code class="codehilite">Inf</code>.</li>
+</ul>
+<p><strong>Examples</strong></p>
+<p><strong>Normal distribution</strong></p>
+<p>Normal distributions are formed by using the constructor <code class="codehilite">UncertainValue(μ, σ, Normal; kwargs...)</code>. This gives a normal distribution with mean μ and standard deviation σ/nσ (nσ must be given as a keyword argument).</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c"># A normal distribution with mean = 2.3 and standard deviation 0.3.</span>
+<span class="n">UncertainValue</span><span class="p">(</span><span class="mf">2.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">Normal</span><span class="p">)</span>
+
+<span class="c"># A normal distribution with mean 2.3 and standard deviation 0.3/2.</span>
+<span class="n">UncertainValue</span><span class="p">(</span><span class="mf">2.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">Normal</span><span class="p">,</span> <span class="n">nσ</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c"># A normal distribution with mean 2.3 and standard deviation = 0.3,</span>
+<span class="n">truncated</span> <span class="n">to</span> <span class="n">the</span> <span class="n">interval</span> <span class="sb">`[1, 3]`</span><span class="o">.</span>
+<span class="n">UncertainValue</span><span class="p">(</span><span class="mf">2.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">Normal</span><span class="p">,</span> <span class="n">trunc_lower</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">trunc_upper</span> <span class="o">=</span> <span class="mf">3.0</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p><strong>Uniform distribution</strong></p>
+<p>Uniform distributions are formed using the <code class="codehilite">UncertainValue(lower, upper, Uniform)</code> constructor.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">#  A uniform distribution on `[2, 3]`</span>
+<span class="n">UncertainValue</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">Uniform</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/49310f7fb77d4e777992c82065d8eb8244b2db22/src/uncertain_values/UncertainValue.jl#L28-L98' class='documenter-source'>source</a><br></p>
 <p><a id='Three-parameter-distributions-1'></a></p>
-<h3 id="three-parameter-distributions">Three-parameter distributions</h3>
+<h3 id="three-parameter_distributions">Three-parameter distributions<a class="headerlink" href="#three-parameter_distributions" title="Permanent link">&para;</a></h3>
+<p><a id='UncertainData.UncertainValues.UncertainValue-Union{Tuple{D}, Tuple{T3}, Tuple{T2}, Tuple{T1}, Tuple{Type{D},T1,T2,T3}} where D<:Distribution where T3<:Number where T2<:Number where T1<:Number' href='#UncertainData.UncertainValues.UncertainValue-Union{Tuple{D}, Tuple{T3}, Tuple{T2}, Tuple{T1}, Tuple{Type{D},T1,T2,T3}} where D<:Distribution where T3<:Number where T2<:Number where T1<:Number'>#</a>
+<strong><code class="codehilite">UncertainData.UncertainValues.UncertainValue</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">UncertainValue</span><span class="p">(</span><span class="n">d</span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="n">D</span><span class="p">},</span> <span class="n">a</span><span class="o">&lt;:</span><span class="kt">Number</span><span class="p">,</span> <span class="n">b</span><span class="o">&lt;:</span><span class="kt">Number</span><span class="p">,</span> <span class="n">c</span><span class="o">&lt;:</span><span class="kt">Number</span><span class="p">)</span>
-    <span class="n">where</span> <span class="p">{</span><span class="n">D</span><span class="o">&lt;:</span><span class="n">Distributions</span><span class="o">.</span><span class="n">Distribution</span><span class="p">}</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">UncertainValue</span><span class="o">(</span><span class="nt">distribution</span><span class="p">::</span><span class="nd">Type</span><span class="p">{</span><span class="err">D</span><span class="p">}</span><span class="o">,</span> <span class="nt">a</span><span class="p">::</span><span class="nd">T1</span><span class="o">,</span> <span class="nt">b</span><span class="p">::</span><span class="nd">T2</span><span class="o">,</span> <span class="nt">c</span><span class="p">::</span><span class="nd">T3</span><span class="o">;</span>
+    <span class="nt">kwargs</span><span class="o">...)</span> <span class="nt">where</span> <span class="p">{</span><span class="err">T1&lt;:Number,</span> <span class="err">T2&lt;:Number,</span> <span class="err">T3&lt;:Number,</span> <span class="err">D&lt;:Distribution</span><span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
-<p>Creates an uncertain value consisting of a three-parameter distribution of type <code class="codehilite">d</code> with parameters <code class="codehilite">a</code>, <code class="codehilite">b</code> and <code class="codehilite">c</code>. Precisely what <code class="codehilite">a</code>, <code class="codehilite">b</code> and <code class="codehilite">c</code> are depends on which distribution is provided.</p>
+<p><strong>Constructor for three-parameter distributions</strong></p>
+<p>Currently implemented distributions are <code class="codehilite">BetaBinomial</code>.</p>
+<p><strong>Arguments</strong></p>
 <ul>
-<li><code class="codehilite">UncertainValue(BetaBinomial, n, α, β)</code> creates an <code class="codehilite">UncertainScalarBetaBinomialDistributed</code> instance.</li>
+<li><strong><code class="codehilite">a</code>, <code class="codehilite">b</code>, <code class="codehilite">c</code></strong>: Generic parameters whose meaning varies depending   on what <code class="codehilite">distribution</code> is provided. See the list below.</li>
+<li><strong><code class="codehilite">distribution</code></strong>: A valid univariate distribution from <code class="codehilite">Distributions.jl</code>.</li>
 </ul>
+<p>Precisely what <code class="codehilite">a</code>, <code class="codehilite">b</code> and <code class="codehilite">c</code> are depends on which distribution is provided.</p>
+<ul>
+<li><code class="codehilite">UncertainValue(BetaBinomial, n, α, β)</code> returns an <code class="codehilite">UncertainScalarBetaBinomialDistributed</code> instance.</li>
+</ul>
+<p><strong>Keyword arguments</strong></p>
+<ul>
+<li><strong><code class="codehilite">nσ</code></strong>: If <code class="codehilite">distribution &lt;: Distributions.Normal</code>, then how many standard   deviations away from <code class="codehilite">μ</code> does <code class="codehilite">lower</code> and <code class="codehilite">upper</code> (i.e. both, because   they are the same distance away from <code class="codehilite">μ</code>) represent?</li>
+<li><strong><code class="codehilite">tolerance</code></strong>: A threshold determining how symmetric the uncertainties   must be in order to allow the construction of  Normal distribution   (<code class="codehilite">upper - lower &gt; threshold</code> is required).</li>
+<li><strong><code class="codehilite">trunc_lower</code></strong>: Lower truncation bound for distributions with infinite   support. Defaults to <code class="codehilite">-Inf</code>.</li>
+<li><strong><code class="codehilite">trunc_upper</code></strong>: Upper truncation bound for distributions with infinite   support. Defaults to <code class="codehilite">Inf</code>.</li>
+</ul>
+<p><strong>Examples</strong></p>
+<p><strong>BetaBinomial distribution</strong></p>
+<p>Normal distributions are formed by using the constructor <code class="codehilite">UncertainValue(μ, σ, Normal; kwargs...)</code>. This gives a normal distribution with mean μ and standard deviation σ/nσ (nσ must be given as a keyword argument).</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c"># A beta binomial distribution with n = 100 trials and parameters α = 2.3 and</span>
+<span class="c"># β = 5</span>
+<span class="n">UncertainValue</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">BetaBinomial</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/49310f7fb77d4e777992c82065d8eb8244b2db22/src/uncertain_values/UncertainValue.jl#L129-L171' class='documenter-source'>source</a><br></p>
                 
                   
                 
@@ -795,13 +882,13 @@
           </a>
         
         
-          <a href="../uncertainvalues_fitted/" title="Fitted distributions" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../uncertainvalues_fitted/" title="Fit theoretical distributions" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Fitted distributions
+                Fit theoretical distributions
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

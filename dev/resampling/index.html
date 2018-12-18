@@ -270,8 +270,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../uncertainvalues_overview/" title="Overview" class="md-nav__link">
-      Overview
+    <a href="../uncertainvalues_overview/" title="Quickstart" class="md-nav__link">
+      Quickstart
     </a>
   </li>
 
@@ -306,8 +306,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../uncertainvalues_fitted/" title="Fitted distributions" class="md-nav__link">
-      Fitted distributions
+    <a href="../uncertainvalues_fitted/" title="Fit theoretical distributions" class="md-nav__link">
+      Fit theoretical distributions
     </a>
   </li>
 
@@ -518,14 +518,14 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#without-constraints" title="Without constraints" class="md-nav__link">
+  <a href="#without_constraints" title="Without constraints" class="md-nav__link">
     Without constraints
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#with-constraints" title="With constraints" class="md-nav__link">
+  <a href="#with_constraints" title="With constraints" class="md-nav__link">
     With constraints
   </a>
   
@@ -575,14 +575,14 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#without-constraints" title="Without constraints" class="md-nav__link">
+  <a href="#without_constraints" title="Without constraints" class="md-nav__link">
     Without constraints
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#with-constraints" title="With constraints" class="md-nav__link">
+  <a href="#with_constraints" title="With constraints" class="md-nav__link">
     With constraints
   </a>
   
@@ -608,19 +608,19 @@
                 
                 
                 <p><a id='Resampling-1'></a></p>
-<h1 id="resampling">Resampling</h1>
+<h1 id="resampling">Resampling<a class="headerlink" href="#resampling" title="Permanent link">&para;</a></h1>
 <p><a id='Without-constraints-1'></a></p>
-<h2 id="without-constraints">Without constraints</h2>
+<h2 id="without_constraints">Without constraints<a class="headerlink" href="#without_constraints" title="Permanent link">&para;</a></h2>
 <p>Regular resampling is done by drawing random number from the entire probability distributions furnishing the uncertain values.</p>
 <p><a id='With-constraints-1'></a></p>
-<h2 id="with-constraints">With constraints</h2>
+<h2 id="with_constraints">With constraints<a class="headerlink" href="#with_constraints" title="Permanent link">&para;</a></h2>
 <p>The following syntax is used to resample uncertain values.</p>
 <ul>
 <li><code class="codehilite">resample(uv::AbstractUncertainValue, constraint::SamplingConstraint)</code>. Resample the uncertain value once within the restrictions imposed by the sampling constraint.</li>
 <li><code class="codehilite">resample(uv::AbstractUncertainValue, constraint::SamplingConstraint, n::Int)</code>. Resample the uncertain value <code class="codehilite">n</code> times within the restrictions imposed by the sampling constraint.</li>
 </ul>
 <p><a id='Sampling-constraints-1'></a></p>
-<h1 id="sampling-constraints">Sampling constraints</h1>
+<h1 id="sampling_constraints">Sampling constraints<a class="headerlink" href="#sampling_constraints" title="Permanent link">&para;</a></h1>
 <p>The following sampling constraints are available:</p>
 <ul>
 <li><code class="codehilite">TruncateStd(nσ::Int)</code>. Truncate the distribution furnishing the uncertain data point(s) at n times the standard deviation of the distribution.</li>
@@ -633,7 +633,7 @@
 </ul>
 <p>and an <code class="codehilite">upper_quantile</code> of the distribution.</p>
 <p><a id='Examples-1'></a></p>
-<h2 id="examples">Examples</h2>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <p>Let <code class="codehilite">uv = UncertainValue(Normal, 1, 0.2)</code>. One may, for example, impose the following sampling constraints:</p>
 <ul>
 <li><code class="codehilite">resample(uv, TruncateLowerQuantile(0.2))</code>. Resamples <code class="codehilite">uv</code> 100 times, drawing values strictly larger than the 0.2-th quantile of the distribution furnishing the uncertain data point.</li>

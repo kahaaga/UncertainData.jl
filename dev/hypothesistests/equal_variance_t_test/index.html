@@ -96,7 +96,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#equal-variance-t-test" tabindex="1" class="md-skip">
+      <a href="#regular_test" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -270,8 +270,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../uncertainvalues_overview/" title="Overview" class="md-nav__link">
-      Overview
+    <a href="../../uncertainvalues_overview/" title="Quickstart" class="md-nav__link">
+      Quickstart
     </a>
   </li>
 
@@ -306,8 +306,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../uncertainvalues_fitted/" title="Fitted distributions" class="md-nav__link">
-      Fitted distributions
+    <a href="../../uncertainvalues_fitted/" title="Fit theoretical distributions" class="md-nav__link">
+      Fit theoretical distributions
     </a>
   </li>
 
@@ -424,22 +424,22 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#equal-variance-t-test" title="Equal variance t-test" class="md-nav__link">
-    Equal variance t-test
+  <a href="#regular_test" title="Regular test" class="md-nav__link">
+    Regular test
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#pooled-equal-variance-t-test" title="Pooled equal variance t-test" class="md-nav__link">
-    Pooled equal variance t-test
+  <a href="#pooled_test" title="Pooled test" class="md-nav__link">
+    Pooled test
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#element-wise-equal-variance-t-test" title="Element-wise equal variance t-test" class="md-nav__link">
-    Element-wise equal variance t-test
+  <a href="#element-wise_test" title="Element-wise test" class="md-nav__link">
+    Element-wise test
   </a>
   
 </li>
@@ -580,22 +580,22 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#equal-variance-t-test" title="Equal variance t-test" class="md-nav__link">
-    Equal variance t-test
+  <a href="#regular_test" title="Regular test" class="md-nav__link">
+    Regular test
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#pooled-equal-variance-t-test" title="Pooled equal variance t-test" class="md-nav__link">
-    Pooled equal variance t-test
+  <a href="#pooled_test" title="Pooled test" class="md-nav__link">
+    Pooled test
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#element-wise-equal-variance-t-test" title="Element-wise equal variance t-test" class="md-nav__link">
-    Element-wise equal variance t-test
+  <a href="#element-wise_test" title="Element-wise test" class="md-nav__link">
+    Element-wise test
   </a>
   
 </li>
@@ -621,8 +621,8 @@
                 
                   <h1>Equal variance t-test</h1>
                 
-                <p><a id='Equal-variance-t-test-1'></a></p>
-<h2 id="equal-variance-t-test">Equal variance t-test</h2>
+                <p><a id='Regular-test-1'></a></p>
+<h2 id="regular_test">Regular test<a class="headerlink" href="#regular_test" title="Permanent link">&para;</a></h2>
 <p><a id='HypothesisTests.EqualVarianceTTest' href='#HypothesisTests.EqualVarianceTTest'>#</a>
 <strong><code class="codehilite">HypothesisTests.EqualVarianceTTest</code></strong> &mdash; <em>Type</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -633,7 +633,7 @@
 
 <p>Consider two samples <code class="codehilite">s1</code> and <code class="codehilite">s2</code>, each consisting of <code class="codehilite">n</code> random draws from the distributions furnishing <code class="codehilite">d1</code> and <code class="codehilite">d2</code>, respectively.</p>
 <p>This function performs a two-sample t-test of the null hypothesis that <code class="codehilite">s1</code> and <code class="codehilite">s2</code> come from distributions with equal means and variances against the alternative hypothesis that the distributions have different means but equal variances.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2d1f9f85e4a37a6ac696789e154ce78019e76abc/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L34-L45' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/49310f7fb77d4e777992c82065d8eb8244b2db22/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L34-L45' class='documenter-source'>source</a><br></p>
 <p><strong>Example</strong></p>
 <p>Let's create two uncertain values furnished by distributions of different types. We'll perform the equal variance t-test to check if there is support for the null-hypothesis that the distributions furnishing the uncertain values come from distributions with equal means and variances.</p>
 <p>We expect the test to reject this null-hypothesis, because we've created two very different distributions.</p>
@@ -687,8 +687,8 @@
 </td></tr></table>
 
 <p>The test rejects the null-hypothesis, so we accept the alternative hypothesis that the samples come from distributions with different means and variances.</p>
-<p><a id='Pooled-equal-variance-t-test-1'></a></p>
-<h2 id="pooled-equal-variance-t-test">Pooled equal variance t-test</h2>
+<p><a id='Pooled-test-1'></a></p>
+<h2 id="pooled_test">Pooled test<a class="headerlink" href="#pooled_test" title="Permanent link">&para;</a></h2>
 <p><a id='UncertainData.UncertainStatistics.EqualVarianceTTestPooled' href='#UncertainData.UncertainStatistics.EqualVarianceTTestPooled'>#</a>
 <strong><code class="codehilite">UncertainData.UncertainStatistics.EqualVarianceTTestPooled</code></strong> &mdash; <em>Function</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -699,9 +699,9 @@
 
 <p>Consider two samples <code class="codehilite">s1[i]</code> and <code class="codehilite">s2[i]</code>, each consisting of <code class="codehilite">n</code> random draws from the distributions furnishing the uncertain values <code class="codehilite">d1[i]</code> and <code class="codehilite">d2[i]</code>, respectively. Gather all <code class="codehilite">s1[i]</code> in a pooled sample <code class="codehilite">S1</code>, and all <code class="codehilite">s2[i]</code> in a pooled sample <code class="codehilite">S2</code>.</p>
 <p>Perform a two-sample t-test of the null hypothesis that <code class="codehilite">S1</code> and <code class="codehilite">S2</code> come from distributions with equal means and variances against the alternative hypothesis that the distributions have different means but equal variances.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2d1f9f85e4a37a6ac696789e154ce78019e76abc/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L56-L68' class='documenter-source'>source</a><br></p>
-<p><a id='Element-wise-equal-variance-t-test-1'></a></p>
-<h2 id="element-wise-equal-variance-t-test">Element-wise equal variance t-test</h2>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/49310f7fb77d4e777992c82065d8eb8244b2db22/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L56-L68' class='documenter-source'>source</a><br></p>
+<p><a id='Element-wise-test-1'></a></p>
+<h2 id="element-wise_test">Element-wise test<a class="headerlink" href="#element-wise_test" title="Permanent link">&para;</a></h2>
 <p><a id='UncertainData.UncertainStatistics.EqualVarianceTTestElementWise' href='#UncertainData.UncertainStatistics.EqualVarianceTTestElementWise'>#</a>
 <strong><code class="codehilite">UncertainData.UncertainStatistics.EqualVarianceTTestElementWise</code></strong> &mdash; <em>Function</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -712,7 +712,7 @@
 
 <p>Consider two samples <code class="codehilite">s1[i]</code> and <code class="codehilite">s2[i]</code>, each consisting of <code class="codehilite">n</code> random draws from the distributions furnishing the uncertain values <code class="codehilite">d1[i]</code> and <code class="codehilite">d2[i]</code>, respectively. This function performs an elementwise <code class="codehilite">EqualVarianceTTest</code> on the pairs <code class="codehilite">(s1[i], s2[i])</code>. Specifically:</p>
 <p>Performs an pairwise two-sample t-test of the null hypothesis that <code class="codehilite">s1[i]</code> and <code class="codehilite">s2[i]</code> come from distributions with equal means and variances against the alternative hypothesis that the distributions have different means but equal variances.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2d1f9f85e4a37a6ac696789e154ce78019e76abc/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L81-L94' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/49310f7fb77d4e777992c82065d8eb8244b2db22/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L81-L94' class='documenter-source'>source</a><br></p>
                 
                   
                 
