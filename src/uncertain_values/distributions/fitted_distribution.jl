@@ -8,4 +8,5 @@ end
 
 export
 AbstractEmpiricalDistribution,
-FittedDistribution
+FittedDistribution,
+distribution

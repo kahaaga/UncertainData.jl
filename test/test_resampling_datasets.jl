@@ -10,3 +10,13 @@ n = length(D)
 @test resample(D, 10) isa Vector
 @test resample(UV, 10) isa Vector
 #@test resample(UIV, 10) isa Vector
+
+
+# resampling constrained datasets
+measurements = [UncertainValue(Normal, 0, 0.1) for i = 1:5]
+measurements = [measurements; UncertainValue(rand(100))]
+
+d = UncertainDataset(measurements)
+
+@test resample(d) isa Float64
+@test resample(d, 10) isa Vector{Float64}

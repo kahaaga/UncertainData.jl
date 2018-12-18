@@ -282,6 +282,13 @@ function constrain(uv::TheoreticalDistributionScalarValue,
     constrain_theoretical_distribution(uv, truncate(uv, constraint))
 end
 
+function constrain(uv::TheoreticalDistributionScalarValue,
+        constraint::SamplingConstraint)
+    constrain_theoretical_distribution(uv, truncate(uv, constraint))
+end
+
+
+
 function constrain(uv::AbstractUncertainScalarKDE,
         constraint::SamplingConstraint)
     constrain_empirical_distribution(uv, constraint)

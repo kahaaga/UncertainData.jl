@@ -1,6 +1,8 @@
 include("AbstractEmpirical.jl")
 include("distributions/fitted_distribution.jl")
 
+import Distributions.Truncated
+
 
 abstract type AbstractEmpiricalScalarValue <: AbstractUncertainValue end
 
@@ -17,6 +19,12 @@ struct UncertainScalarEmpiricallyDistributed{D <: Distribution, T} <: AbstractEm
     distribution::FittedDistribution{D} # S may be Continuous or Discrete
     values::AbstractVector{T}
 end
+
+
+
+Truncated(fd::FittedDistribution, lower, upper) =
+    Distributions.Truncated(fd.distribution, lower, upper)
+
 
 export
 AbstractEmpiricalScalarValue,

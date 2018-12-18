@@ -165,6 +165,13 @@ using Reexport
     include("constrain_uncertainvalue.jl")
 
     ###################################
+    # Constrain uncertain datasets
+    ###################################
+    include("constrain_uncertaindataset.jl")
+
+
+
+    ###################################
     # Resampling uncertain values
     ###################################
     # Uncertain values based on distributions

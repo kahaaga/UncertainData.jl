@@ -1,5 +1,8 @@
 include("AbstractUncertainDataset.jl")
 
+abstract type AbstractUncertainValueDataset <: AbstractUncertainDataset end
+abstract type AbstractUncertainIndexDataset <: AbstractUncertainDataset end
+
 """
     UncertainDataset
 
@@ -8,23 +11,52 @@ Generic dataset containing uncertain values.
 ## Fields
 - **`values::AbstractVector{AbstractUncertainValue}`**: The uncertain values.
 """
-struct UncertainDataset{T <: AbstractUncertainValue} <: AbstractUncertainDataset
+struct UncertainDataset{T <: AbstractUncertainValue} <: AbstractUncertainValueDataset
     values::AbstractVector{T}
 end
 
 """
-    UncertainIndexDataset
+    ConstrainedUncertainDataset
+
+Generic constrained dataset containing uncertain values.
+
+## Fields
+- **`values::AbstractVector{AbstractUncertainValue}`**: The uncertain values.
+"""
+struct ConstrainedUncertainDataset{T <: AbstractUncertainValue} <: AbstractUncertainValueDataset
+    values::AbstractVector{T}
+end
+
+
+"""
+    UncertainIndices
 
 Generic dataset containing uncertain values.
 
 ## Fields
 - **`values::AbstractVector{AbstractUncertainValue}`**: The uncertain values.
 """
-struct UncertainIndexDataset{T <: AbstractUncertainValue} <: AbstractUncertainDataset
+struct UncertainIndices{T <: AbstractUncertainValue} <: AbstractUncertainIndexDataset
     values::AbstractVector{T}
 end
 
+
+"""
+    ConstrainedUncertainIndices
+
+Generic constrained dataset containing uncertain values.
+
+## Fields
+- **`values::AbstractVector{AbstractUncertainValue}`**: The uncertain values.
+"""
+struct ConstrainedUncertainIndices{T <: AbstractUncertainValue} <: AbstractUncertainIndexDataset
+    values::AbstractVector{T}
+end
+
+
+
 UncertainDataset(uv::AbstractUncertainValue) = UncertainDataset([uv])
+ConstrainedUncertainDataset(uv::AbstractUncertainValue) = ConstrainedUncertainDataset([uv])
 
 ##########################
 # Indexing and iteration
@@ -68,4 +100,7 @@ distributions(ud::UncertainDataset) = [ud[i].distribution for i = 1:length(ud)]
 
 export
 UncertainDataset,
+ConstrainedUncertainDataset,
+UncertainIndices,
+ConstrainedUncertainIndices,
 distributions
