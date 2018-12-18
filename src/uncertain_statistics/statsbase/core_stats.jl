@@ -22,11 +22,48 @@ StatsBase.var(uv::AbstractUncertainValue) = var(uv.distribution)
 
 
 # Providing an extra integer argument n triggers resampling.
+"""
+	mean(uv::AbstractUncertainValue, n::Int)
+
+Compute the mean of an uncertain value over an `n`-draw sample of it.
+"""
 mean(uv::AbstractUncertainValue, n::Int) = mean(resample(uv, n))
+
+"""
+	median(uv::AbstractUncertainValue, n::Int)
+
+Compute the median of an uncertain value over an `n`-draw sample of it.
+"""
 median(uv::AbstractUncertainValue, n::Int) = median(resample(uv, n))
+
+"""
+	middle(uv::AbstractUncertainValue, n::Int)
+
+Compute the middle of an uncertain value over an `n`-draw sample of it.
+"""
 middle(uv::AbstractUncertainValue, n::Int = 1000) = middle(resample(uv, n))
+
+"""
+	quantile(uv::AbstractUncertainValue, q, n::Int)
+
+Compute the quantile(s) `q` of an uncertain value over an `n`-draw sample of it.
+"""
 quantile(uv::AbstractUncertainValue, q, n::Int) = quantile(resample(uv, n), q)
+
+
+"""
+	std(uv::AbstractUncertainValue, n::Int)
+
+Compute the standard deviation of an uncertain value over an `n`-draw sample of it.
+"""
 std(uv::AbstractUncertainValue, n::Int) = std(resample(uv, n))
+
+
+"""
+	variance(uv::AbstractUncertainValue, n::Int)
+
+Compute the variance of an uncertain value over an `n`-draw sample of it.
+"""
 var(uv::AbstractUncertainValue, n::Int) = var(resample(uv, n))
 
 
@@ -36,8 +73,7 @@ var(uv::AbstractUncertainValue, n::Int) = var(resample(uv, n))
 """
     mean(d::UncertainDataset)
 
-Compute the means of an `UncertainDataset` by finding the mean of
-the distribution furnishing each of the uncertain values in it.
+Computes the element-wise mean of a dataset of uncertain values.
 """
 mean(d::UncertainDataset) = mean.(d)
 
@@ -45,15 +81,15 @@ mean(d::UncertainDataset) = mean.(d)
 """
     mean(d::UncertainDataset, n::Int)
 
-Compute the means of `n` realisations of an `UncertainDataset`.
+Computes the element-wise mean of a dataset of uncertain values. Takes
+the mean of an `n`-draw sample for each element.
 """
 mean(d::UncertainDataset, n::Int; kwargs...) = mean.(d, n, kwargs...)
 
 """
     median(d::UncertainDataset)
 
-Compute the medians of an `UncertainDataset` by finding the mean of
-the distribution furnishing each of the uncertain values in it.
+Computes the element-wise median of a dataset of uncertain values.
 """
 medians(d::UncertainDataset) = median.(d)
 
@@ -61,7 +97,8 @@ medians(d::UncertainDataset) = median.(d)
 """
     median(d::UncertainDataset, n::Int)
 
-Compute the median of `n` realisations of an `UncertainDataset`.
+Computes the element-wise median of a dataset of uncertain values. Takes
+the median of an `n`-draw sample for each element.
 """
 median(d::UncertainDataset, n::Int; kwargs...) = median.(d, n, kwargs...)
 
@@ -69,8 +106,7 @@ median(d::UncertainDataset, n::Int; kwargs...) = median.(d, n, kwargs...)
 """
     middle(d::UncertainDataset)
 
-Compute the middle values of an `UncertainDataset` by finding the mean of
-the distribution furnishing each of the uncertain values in it.
+Computes the element-wise middle of a dataset of uncertain values.
 """
 middle(d::UncertainDataset) = middle.(d)
 
@@ -86,25 +122,17 @@ middle(d::UncertainDataset, n::Int; kwargs...) = middle.(d, n, kwargs...)
 """
     quantile(d::UncertainDataset, p)
 
-Compute the quantile(s) `p `of an `UncertainDataset` by finding the quantiles
-of the distributions furnishing each of the uncertain values in it.
+Compute element-wise quantile(s) `p `of a dataset consisting of uncertain
+values. 
 """
 quantile(d::UncertainDataset, p) = quantile.(d, p)
 
 
 """
-    middle(d::UncertainDataset)
-
-Compute the middle values of an `UncertainDataset` by finding the mean of
-the distribution furnishing each of the uncertain values in it.
-"""
-middle(d::UncertainDataset) = middle.(d)
-
-
-"""
     quantile(d::UncertainDataset, p, n::Int; kwargs...)
 
-Compute the quantile(s) of a `n` realisations of an `UncertainDataset`.
+Compute element-wise quantile(s) `p `of a dataset consisting of uncertain
+values. Takes the quantiles of an `n`-draw sample for each element.
 """
 quantile(d::UncertainDataset, p, n::Int; kwargs...) =
     quantile.(d, p, n, kwargs...)
@@ -113,8 +141,7 @@ quantile(d::UncertainDataset, p, n::Int; kwargs...) =
 """
     std(d::UncertainDataset)
 
-Compute the standard deviations of an `UncertainDataset` by finding the standard
-deviation for each of the distributions furnishing the uncertain values in it.
+Computes the element-wise standard deviation of a dataset of uncertain values.
 """
 std(d::UncertainDataset) = std.(d)
 
@@ -122,16 +149,15 @@ std(d::UncertainDataset) = std.(d)
 """
     std(d::UncertainDataset, n::Int; kwargs...)
 
-Compute the standard deviation of an `UncertainDataset` by realising it
-`n` times.
+Computes the element-wise standard deviation of a dataset of uncertain values.
+Takes the standard deviation of an `n`-draw sample for each element.
 """
 std(d::UncertainDataset, n::Int; kwargs...) = std.(d, n, kwargs...)
 
 """
     var(d::UncertainDataset)
 
-Compute the variance of an `UncertainDataset` by finding the variance for each
-of the distributions furnishing the uncertain values in it.
+Computess the element-wise sample variance of a dataset of uncertain values.
 """
 var(d::UncertainDataset) = var.(d)
 
@@ -139,7 +165,8 @@ var(d::UncertainDataset) = var.(d)
 """
     var(d::UncertainDataset, n::Int; kwargs...)
 
-Compute the sample variance of an `UncertainDataset` by realising it `n` times.
+Computes the element-wise sample variance of a dataset of uncertain values.
+Takes the sample variance of an `n`-draw sample for each element.
 """
 var(d::UncertainDataset, n::Int; kwargs...) = var.(d, n, kwargs...)
 

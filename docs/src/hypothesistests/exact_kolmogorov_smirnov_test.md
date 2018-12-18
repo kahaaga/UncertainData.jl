@@ -1,4 +1,4 @@
-## Exact one-sample Kolmogorov-Smirnov test
+## Regular test
 
 ```@docs
 ExactOneSampleKSTest(uv::AbstractUncertainValue, d::UnivariateDistribution, n::Int = 1000)
@@ -41,14 +41,14 @@ comes from the theoretical distribution `Gamma(2, 4)`, precisely because
 it does.
 
 
-## Pooled exact one-sample Kolmogorov-Smirnov test
+## Pooled test
 
 ```@docs
 ExactOneSampleKSTestPooled(ud::UncertainDataset, d::UnivariateDistribution, n::Int = 1000)
 ```
 
 
-## Element-wise exact one-sample Kolmogorov-Smirnov test
+## Element-wise test
 
 ```@docs
 ExactOneSampleKSTestElementWise(ud::UncertainDataset, d::UnivariateDistribution, n::Int = 1000)

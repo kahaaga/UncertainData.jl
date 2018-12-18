@@ -1,4 +1,4 @@
-## One-sample t-test
+## Regular test
 
 ```@docs
 OneSampleTTest(d::AbstractUncertainValue, n::Int = 1000; μ0::Real = 0)
@@ -44,13 +44,13 @@ with mean = 2.1. Therefore, we accept the alternative hypothesis that our sample
 we defined the uncertain value as a normal distribution with mean 2.1.
 
 
-## Pooled one-sample t-test
+## Pooled test
 
 ```@docs
 OneSampleTTestPooled(d1::UncertainDataset, d2::UncertainDataset, n::Int = 1000; μ0::Real = 0)
 ```
 
-## Element-wise one-sample t-test
+## Element-wise test
 
 ```@docs
 OneSampleTTestElementWise(d1::UncertainDataset, d2::UncertainDataset, n::Int = 1000; μ0::Real = 0)

@@ -6,7 +6,7 @@ import StatsBase.support
 
 import Distributions.ecdf
 import Distributions.support
-
+import Distributions.Distribution
 
 abstract type AbstractUncertainScalarKDE{T} <: AbstractEmpiricalValue end
 
@@ -55,18 +55,20 @@ Base.show(io::IO, uv::AbstractUncertainScalarKDE{T}) where {T} = print(io, summa
 
 
 """
-    UncertainValue(data::Vector{T};
-        kernel::Type{D} = Normal,
-        npoints::Int=2048) where {K <: KernelDensity.UnivariateKDE, D <: Distributions.Distribution, T}
+    UncertainValue(data::Vector{T}; kernel::Type{D} = Normal, npoints::Int=2048)
+        where {D <: Distribution, T}
 
 Construct an uncertain value by a kernel density estimate to `data`.
 
-Fast Fourier transforms are used in the kernel density estimation, so the
-number of points should be a power of 2 (default = 2048).
+## Arguments:
+- **`kernel`**: The kernel to use. Defaults to `Distributions.Normal`. Must be
+    a valid family from `Distributions.jl`.
+- **`npoints`**: The number of points to use for the kernel density estimation.
+    Fast Fourier transforms are used, so the number of points should be a power
+    of 2 (default = 2048).
 """
-function UncertainValue(data::Vector{T};
-        kernel::Type{D} = Normal,
-        npoints::Int = 2048) where {D <: Distributions.Distribution, T}
+function UncertainValue(data::Vector{T}; kernel::Type{D} = Normal,
+        npoints::Int = 2048) where {D <: Distribution, T}
 
     # Kernel density estimation
     KDE = kde(data, npoints = npoints, kernel = kernel)
@@ -84,8 +86,8 @@ end
 
 """
     UncertainValue(kerneldensity::Type{K}, data::Vector{T};
-        kernel::Type{D} = Normal,
-        npoints::Int=2048) where {K <: KernelDensity.UnivariateKDE, D <: Distributions.Distribution, T}
+        kernel::Type{D} = Normal, npoints::Int = 2048)
+            where {K <: UnivariateKDE, D <: Distribution, T}
 
 Construct an uncertain value by a kernel density estimate to `data`.
 
@@ -93,8 +95,8 @@ Fast Fourier transforms are used in the kernel density estimation, so the
 number of points should be a power of 2 (default = 2048).
 """
 function UncertainValue(kerneldensity::Type{K}, data::Vector{T};
-        kernel::Type{D} = Normal,
-        npoints::Int = 2048) where {K <: KernelDensity.UnivariateKDE, D <: Distributions.Distribution, T}
+        kernel::Type{D} = Normal, npoints::Int = 2048) where
+            {K <: UnivariateKDE, D <: Distribution, T}
 
     # Kernel density estimation
     KDE = kde(data, npoints = npoints, kernel = kernel)

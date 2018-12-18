@@ -1,4 +1,4 @@
-## Equal variance t-test
+## Regular test
 
 ```@docs
 EqualVarianceTTest(d1::AbstractUncertainValue, d2::AbstractUncertainValue, n::Int = 1000; μ0::Real = 0)
@@ -48,13 +48,13 @@ The test rejects the null-hypothesis, so we accept the alternative hypothesis
 that the samples come from distributions with different means and variances.
 
 
-## Pooled equal variance t-test
+## Pooled test
 
 ```@docs
 EqualVarianceTTestPooled(d1::UncertainDataset, d2::UncertainDataset, n::Int = 1000; μ0::Real = 0)
 ```
 
-## Element-wise equal variance t-test
+## Element-wise test
 
 ```@docs
 EqualVarianceTTestElementWise(d1::UncertainDataset, d2::UncertainDataset, n::Int = 1000; μ0::Real = 0)
