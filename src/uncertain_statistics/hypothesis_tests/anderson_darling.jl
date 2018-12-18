@@ -1,7 +1,8 @@
 import HypothesisTests.OneSampleADTest
 
 """
-    OneSampleADTest(uv::UncertainValue, d::UnivariateDistribution) -> OneSampleADTest
+    OneSampleADTest(uv::UncertainValue, d::UnivariateDistribution,
+        n::Int = 1000) -> OneSampleADTest
 
 Perform a one-sample Anderson–Darling test of the null hypothesis that
 a draw of `n` realisations of the uncertain value `uv` comes from the
@@ -14,7 +15,8 @@ function OneSampleADTest(uv::AbstractUncertainValue, d::UnivariateDistribution, 
 end
 
 """
-    OneSampleADTestPooled(ud::UncertainDataset, d::UnivariateDistribution) -> OneSampleADTest
+    OneSampleADTestPooled(ud::UncertainDataset, d::UnivariateDistribution,
+        n::Int = 1000)) -> OneSampleADTest
 
 First, draw `n` realisations of each uncertain value in `ud` and pool them
 together. Then perform a one-sample Anderson–Darling test of the null
@@ -27,7 +29,8 @@ function OneSampleADTestPooled(ud::UncertainDataset, d::UnivariateDistribution, 
 end
 
 """
-    OneSampleADTestElementWise(ud::UncertainDataset, d::UnivariateDistribution) -> Vector{OneSampleADTest}
+    OneSampleADTestElementWise(ud::UncertainDataset, d::UnivariateDistribution,
+        n::Int = 1000)) -> Vector{OneSampleADTest}
 First, draw `n` realisations of each uncertain value in `ud`, keeping one
 pool of values for each uncertain value.
 Then, perform an element-wise (pool-wise) one-sample Anderson–Darling test of

@@ -36,16 +36,20 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+  - toc:
+      permalink: true
+      baselevel: 1
+      separator: "_"
 
 docs_dir: 'build'
 
 pages:
   - Home: index.md
   - Uncertain values:
-    - Overview: uncertainvalues_overview.md
+    - Quickstart: uncertainvalues_overview.md
     - Kernel density estimates (KDE): uncertainvalues_kde.md
     - Theoretical distributions: uncertainvalues_theoreticaldistributions.md
-    - Fitted distributions: uncertainvalues_fitted.md
+    - Fit theoretical distributions: uncertainvalues_fitted.md
   - Uncertain statistics:
     - Core statistics: ensemble_statistics.md
     - Hypothesis tests:

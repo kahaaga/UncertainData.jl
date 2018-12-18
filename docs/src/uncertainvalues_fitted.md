@@ -1,16 +1,10 @@
-# Uncertain values from fitted distributions
-
-
 For data values with histograms close to some known distribution, the user
 may choose to represent the data by fitting a theoretical distribution to the
 values. This will only work well if the histogram closely resembles a
 theoretical distribution.
 
+
 ## Examples
-
-In the following examples, we're trying to fit the same distribution to our sample
-as the distribution from which we draw the sample. Thus, we will get good fits.
-
 
 ``` julia tab="Uniform"
 using Distributions, UncertainData
@@ -48,13 +42,10 @@ some_sample = rand(Gamma(2.1, 5.2), 1000)
 # Represent the uncertain value by a fitted gamma distribution.
 uv = UncertainValue(Gamma, some_sample)
 ```
-
-
-
-## Supported distributions
-
-Supported distributions are `Uniform`, `Normal`, `Gamma`, `Beta`, `BetaPrime`,
-`Frechet`, `Binomial`, `BetaBinomial`.
+In these examples we're trying to fit the same distribution to our sample
+as the distribution from which we draw the sample. Thus, we will get good fits.
+In real applications, make sure to always visually investigate the histogram
+of your data!
 
 
 ## Beware: fitting distributions may lead to nonsensical results!
@@ -78,18 +69,13 @@ deciding on which distribution to fit! You won't get any error messages if you
 try to fit a distribution that does not match your data.
 
 If the data do not follow an obvious theoretical distribution, it is better to
-use kernel density estimation to define the uncertain value.
+use [kernel density estimation](uncertainvalue_kde.md) to define the uncertain
+value.
 
 
 ## Constructor
-To construct uncertain values represented by empirical distributions, use the
-following constructor.
 
-```julia
-UncertainValue(d::Type{D}, empiricaldata) where
-    {D<:Distributions.Distribution}
+
+```@docs
+UncertainValue(d::Type{D}, empiricaldata::Vector{T}) where {D<:Distribution, T}
 ```
-
-This will fit a distribution of type `d` to the data and keep that as the
-representation of the empirical distribution. Calls `Distributions.fit` behind
-the scenes.

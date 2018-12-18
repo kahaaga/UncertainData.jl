@@ -30,4 +30,4 @@ There are currently three ways to construct uncertain values:
 ## Resampling
 
 Uncertain values may be resampled using the `resample(uv::UncertainValue)`
-function, which has methods for all the different types of uncertain values. 
+function, which has methods for all the different types of uncertain values.

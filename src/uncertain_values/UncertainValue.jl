@@ -3,18 +3,23 @@ include("UncertainScalars.jl")
 
 
 """
-    UncertainValue(empiricaldata::AbstractVector{T}, d::Type{D}) where {D <: Distribution}
+    UncertainValue(d::Type{D},
+        empiricaldata::Vector{T}) where {D<:Distribution, T}
 
 # Constructor for empirical distributions.
 
-Fits a distribution of
+Fit a distribution of type `d` to the data and use that as the
+representation of the empirical distribution. Calls `Distributions.fit` behind
+the scenes.
 
 ## Arguments
 - **`empiricaldata`**: The data for which to fit the `distribution`.
 - **`distribution`**: A valid univariate distribution from `Distributions.jl`.
 
 """
-function UncertainValue(d::Type{D}, empiricaldata::Vector{T}) where {D<:Distribution, T}
+function UncertainValue(d::Type{D},
+        empiricaldata::Vector{T}) where {D<:Distribution, T}
+
     distribution = FittedDistribution(Distributions.fit(d, empiricaldata))
     UncertainScalarEmpiricallyDistributed(distribution, empiricaldata)
 end
@@ -22,7 +27,8 @@ end
 
 """
 
-     UncertainValue(a, b, distribution; kwargs...)
+    UncertainValue(distribution::Type{D}, a::T1, b::T2;
+        kwargs...) where {T1<:Number, T2 <: Number, D<:Distribution}
 
 # Constructor for two-parameter distributions
 
@@ -33,8 +39,18 @@ and `Frechet`.
 ### Arguments
 
 - **`a`, `b`**: Generic parameters whose meaning varies depending
-    on what `distribution` is provided. See the list above.
+    on what `distribution` is provided. See the list below.
 - **`distribution`**: A valid univariate distribution from `Distributions.jl`.
+
+Precisely what  `a` and `b` are depends on which distribution is provided.
+
+- `UncertainValue(Normal, μ, σ)` returns an `UncertainScalarNormallyDistributed` instance.
+- `UncertainValue(Uniform, lower, upper)` returns an `UncertainScalarUniformlyDistributed` instance.
+- `UncertainValue(Beta, α, β)` returns an `UncertainScalarBetaDistributed` instance.
+- `UncertainValue(BetaPrime, α, β)` returns an `UncertainScalarBetaPrimeDistributed` instance.
+- `UncertainValue(Gamma, α, θ)` returns an `UncertainScalarGammaDistributed` instance.
+- `UncertainValue(Frechet, α, θ)` returns an `UncertainScalarFrechetDistributed` instance.
+- `UncertainValue(Binomial, n, p)` returns an `UncertainScalarBinomialDistributed` instance.
 
 ### Keyword arguments
 
@@ -69,7 +85,7 @@ truncated to the interval `[1, 3]`.
 UncertainValue(2.3, 0.3, Normal, trunc_lower = 1.0, trunc_upper = 3.0)
 ```
 
-#### Uniform distribution
+### Uniform distribution
 
 Uniform distributions are formed using the
 `UncertainValue(lower, upper, Uniform)` constructor.
@@ -82,6 +98,7 @@ UncertainValue(-2, 3, Uniform)
 """
 function UncertainValue(distribution::Type{D}, a::T1, b::T2;
         kwargs...) where {T1<:Number, T2 <: Number, D<:Distribution}
+
     if distribution == Uniform
         dist = assigndist_uniform(a, b)
         UncertainScalarUniformlyDistributed(dist, a, b)
@@ -110,7 +127,8 @@ end
 
 
 """
-    UncertainValue(distribution, a, b, c; kwargs...)
+    UncertainValue(distribution::Type{D}, a::T1, b::T2, c::T3;
+        kwargs...) where {T1<:Number, T2<:Number, T3<:Number, D<:Distribution}
 
 ## Constructor for three-parameter distributions
 
@@ -118,8 +136,13 @@ Currently implemented distributions are `BetaBinomial`.
 
 ### Arguments
 - **`a`, `b`, `c`**: Generic parameters whose meaning varies depending
-    on what `distribution` is provided. See the list above.
+    on what `distribution` is provided. See the list below.
 - **`distribution`**: A valid univariate distribution from `Distributions.jl`.
+
+Precisely what `a`, `b` and `c` are depends on which distribution is provided.
+
+- `UncertainValue(BetaBinomial, n, α, β)` returns an `UncertainScalarBetaBinomialDistributed` instance.
+
 
 ### Keyword arguments
 - **`nσ`**: If `distribution <: Distributions.Normal`, then how many standard
@@ -147,7 +170,7 @@ UncertainValue(100, 2.3, 5, BetaBinomial)
 ```
 """
 function UncertainValue(distribution::Type{D}, a::T1, b::T2, c::T3;
-            kwargs...) where {T1 <: Number, T2 <: Number, T3 <: Number, D <: Distribution}
+        kwargs...) where {T1<:Number, T2<:Number, T3<:Number, D<:Distribution}
 
     if distribution == BetaBinomial
         dist = assigndist_betabinomial(a, b, c; kwargs...)
