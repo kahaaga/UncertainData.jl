@@ -46,21 +46,25 @@ docs_dir: 'build'
 pages:
   - Home: index.md
   - Uncertain values:
-    - Quickstart: uncertainvalues_overview.md
-    - Kernel density estimates (KDE): uncertainvalues_kde.md
-    - Theoretical distributions: uncertainvalues_theoreticaldistributions.md
-    - Fit theoretical distributions: uncertainvalues_fitted.md
+    - Quickstart: uncertain_values/uncertainvalues_overview.md
+    - Kernel density estimates (KDE): uncertain_values/uncertainvalues_kde.md
+    - Theoretical distributions: uncertain_values/uncertainvalues_theoreticaldistributions.md
+    - Fit theoretical distributions: uncertain_values/uncertainvalues_fitted.md
+  - Sampling constraints:
+      - Available constraints: sampling_constraints/available_constraints.md
+      - Constraining uncertain values: sampling_constraints/constrain_uncertain_values.md
+  - Resampling:
+      - Resampling uncertain values: resampling/resampling_uncertain_values.md
   - Uncertain statistics:
-    - Core statistics: ensemble_statistics.md
+    - Core statistics: uncertain_statistics/core_stats/core_statistics.md
     - Hypothesis tests:
-      - Overview: hypothesistests/hypothesis_tests_overview.md
-      - One sample t-test: hypothesistests/one_sample_t_test.md
-      - Equal variance t-test: hypothesistests/equal_variance_t_test.md
-      - Unequal variance t-test: hypothesistests/unequal_variance_t_test.md
-      - Exact Kolmogorov-Smirnov test: hypothesistests/exact_kolmogorov_smirnov_test.md
-      - Approximate two-sample Kolmogorov-Smirnov test: hypothesistests/approximate_twosample_kolmogorov_smirnov_test.md
-      - Jarque-Bera test: hypothesistests/jarque_bera_test.md
-      - Mann-Whitney u-test: hypothesistests/mann_whitney_u_test.md
-      - Anderson-Darling test: hypothesistests/anderson_darling_test.md
-  - Resampling: resampling.md
+      - Overview: uncertain_statistics/hypothesistests/hypothesis_tests_overview.md
+      - One sample t-test: uncertain_statistics/hypothesistests/one_sample_t_test.md
+      - Equal variance t-test: uncertain_statistics/hypothesistests/equal_variance_t_test.md
+      - Unequal variance t-test: uncertain_statistics/hypothesistests/unequal_variance_t_test.md
+      - Exact Kolmogorov-Smirnov test: uncertain_statistics/hypothesistests/exact_kolmogorov_smirnov_test.md
+      - Approximate two-sample Kolmogorov-Smirnov test: uncertain_statistics/hypothesistests/approximate_twosample_kolmogorov_smirnov_test.md
+      - Jarque-Bera test: uncertain_statistics/hypothesistests/jarque_bera_test.md
+      - Mann-Whitney u-test: uncertain_statistics/hypothesistests/mann_whitney_u_test.md
+      - Anderson-Darling test: uncertain_statistics/hypothesistests/anderson_darling_test.md
   - Implementing algorithms for uncertain data: implementing_algorithms_for_uncertaindata.md

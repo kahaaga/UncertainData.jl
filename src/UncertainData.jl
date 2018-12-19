@@ -8,15 +8,17 @@ using StaticArrays
 using Statistics
 using KernelDensity
 
-# UncertainValues submodule
-include("uncertain_values/uncertain_values.jl")
+# Uncertain values
+include("uncertain_values/UncertainValues.jl")
 
-# UncertainDataset submodule
-include("uncertain_datasets/uncertain_datasets.jl")
+# Uncertain datasets
+include("uncertain_datasets/UncertainDatasets.jl")
+
+# Sampling constraints
+include("sampling_constraints/SamplingConstraints.jl")
 
 # Resampling
 include("resampling/Resampling.jl")
-
 
 # Uncertain statistics
 include("uncertain_statistics/UncertainStatistics.jl")

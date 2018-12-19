@@ -16,3 +16,11 @@ using Reexport
     include("UncertainValueDataset.jl")
     include("UncertainIndexValueDataset.jl")
 end # module
+
+"""
+	UncertainDatasets
+
+A module defining uncertain datasets, which are collections of uncertain values
+defined in the `UncertainValues` module.
+"""
+UncertainDatasets

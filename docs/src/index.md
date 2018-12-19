@@ -15,19 +15,11 @@ also represented as probability distributions. Indices may also be sampled using
 
 ## Basic workflow
 
-### Creating uncertain values
-Uncertain values are created by using the `UncertainValue` constructor.
-
-There are currently three ways to construct uncertain values:
-
-1. Estimating the distribution of your data using kernel density estimation.
-1. Fitting a distribution to empirical data (if you know roughly what type
-    of distribution is appropriate).
-2. Specifying a probability distribution with known parameters (if you want
-    to represent data found in the literature, for example normally distributed
-    values with some standard deviation).
-
-## Resampling
-
-Uncertain values may be resampled using the `resample(uv::UncertainValue)`
-function, which has methods for all the different types of uncertain values.
+1. **Define uncertain values** using the `UncertainValue` constructor. This
+    will represent the uncertain value a probability distribution.
+2. **Collect uncertain values** in an `UncertainDataset`.
+3. **Define sampling constraints** for the distributions furnishing the uncertain
+    values (i.e. restrict their support).
+4. **Resample** the uncertain values/datasets.
+5. **Extend existing algorithm** to accept uncertain values/datasets.
+6. **Obtain uncertainty ensemble statistics**.

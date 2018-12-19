@@ -1,7 +1,3 @@
-# Uncertain statistics
-
-## Core statistics
-
 This package implements most of the statistical algorithms in `StatsBase` for uncertain values and uncertain datasets.
 
 The syntax for calling the algorithms is the same as in `StatsBase`, but

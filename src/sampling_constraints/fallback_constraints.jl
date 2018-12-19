@@ -1,4 +1,5 @@
 import ..UncertainValues.AbstractUncertainValue
+import ..UncertainValues.UncertainScalarKDE
 
 """
 Fallback constraints. This is necessary when sampling constraints are not compatible. For example,
@@ -10,6 +11,12 @@ function fallback(s::SamplingConstraint, v::AbstractUncertainValue)
     NoConstraint()
 end
 
+"""
+    fallback(uv::UncertainScalarKDE, constraint::TruncateStd)
+
+Fallback constraint for a `TruncateStd` constraint applied to an
+`UncertainScalarKDE` instance.
+"""
 function fallback(uv::UncertainScalarKDE, constraint::TruncateStd)
     @warn "TruncateStd constraint is incompatible with UncertainScalarKDE. Falling back to TruncateQuantiles(0.25, 0.75)."
     TruncateQuantiles(0.25, 0.75)

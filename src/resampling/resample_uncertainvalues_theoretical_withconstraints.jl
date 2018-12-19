@@ -1,17 +1,25 @@
-resample(fd::FittedDistribution) = UncertainValues.resample(fd)
-resample(uv::AbstractUncertainValue) = UncertainValues.resample(uv)
-resample(uv::AbstractUncertainValue, n::Int) =
-    UncertainValues.resample(uv, n)
+import ..UncertainValues.AbstractUncertainValue
+import ..SamplingConstraints:
+    SamplingConstraint,
+	NoConstraint,
+	TruncateLowerQuantile,
+	TruncateUpperQuantile,
+	TruncateQuantiles,
+	TruncateMinimum,
+	TruncateMaximum,
+	TruncateRange,
+    TruncateStd
+import Distributions: Truncated
 
-resample(uv::UncertainScalarTheoreticalFit) =
-    UncertainValues.resample(uv)
-resample(uv::UncertainScalarTheoreticalFit, n::Int) =
-    UncertainValues.resample(uv, n)
 
+########################################################################
+# Resampling with constraints
+########################################################################
 """
 Resample an uncertain value given a sampling constraint.
 """
-function resample(uv::AbstractUncertainValue, constraint::C) where {C<:SamplingConstraint} end
+function resample(uv::AbstractUncertainValue,
+        constraint::C) where {C<:SamplingConstraint} end
 
 """
     resample(uv::AbstractUncertainValue, constraint::NoConstraint)
@@ -291,8 +299,6 @@ function resample(uv::AbstractUncertainValue, constraint::TruncateMinimum, n::In
     rand(Truncated(uv.distribution, lower_bound, upper_bound), n)
 end
 
-
-
 """
     resample(uv::AbstractUncertainValue, constraint::TruncateMaximum)
 
@@ -390,5 +396,3 @@ function resample(uv::AbstractUncertainValue, constraint::TruncateRange, n::Int)
     lower_bound = constraint.min
     rand(Truncated(uv.distribution, lower_bound, upper_bound), n)
 end
-
-export resample

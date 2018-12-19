@@ -69,8 +69,7 @@ deciding on which distribution to fit! You won't get any error messages if you
 try to fit a distribution that does not match your data.
 
 If the data do not follow an obvious theoretical distribution, it is better to
-use [kernel density estimation](uncertainvalue_kde.md) to define the uncertain
-value.
+use kernel density estimation to define the uncertain value.
 
 
 ## Constructor
