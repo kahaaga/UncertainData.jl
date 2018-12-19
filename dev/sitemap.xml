@@ -6,77 +6,87 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/uncertainvalues_overview/</loc>
+     <loc>/uncertain_values/uncertainvalues_overview/</loc>
      <lastmod>2018-12-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/uncertainvalues_kde/</loc>
+     <loc>/uncertain_values/uncertainvalues_kde/</loc>
      <lastmod>2018-12-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/uncertainvalues_theoreticaldistributions/</loc>
+     <loc>/uncertain_values/uncertainvalues_theoreticaldistributions/</loc>
      <lastmod>2018-12-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/uncertainvalues_fitted/</loc>
+     <loc>/uncertain_values/uncertainvalues_fitted/</loc>
      <lastmod>2018-12-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/ensemble_statistics/</loc>
+     <loc>/sampling_constraints/available_constraints/</loc>
      <lastmod>2018-12-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/hypothesistests/hypothesis_tests_overview/</loc>
+     <loc>/sampling_constraints/constrain_uncertain_values/</loc>
      <lastmod>2018-12-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/hypothesistests/one_sample_t_test/</loc>
+     <loc>/resampling/resampling_uncertain_values/</loc>
      <lastmod>2018-12-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/hypothesistests/equal_variance_t_test/</loc>
+     <loc>/uncertain_statistics/core_stats/core_statistics/</loc>
      <lastmod>2018-12-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/hypothesistests/unequal_variance_t_test/</loc>
+     <loc>/uncertain_statistics/hypothesistests/hypothesis_tests_overview/</loc>
      <lastmod>2018-12-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/hypothesistests/exact_kolmogorov_smirnov_test/</loc>
+     <loc>/uncertain_statistics/hypothesistests/one_sample_t_test/</loc>
      <lastmod>2018-12-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/hypothesistests/approximate_twosample_kolmogorov_smirnov_test/</loc>
+     <loc>/uncertain_statistics/hypothesistests/equal_variance_t_test/</loc>
      <lastmod>2018-12-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/hypothesistests/jarque_bera_test/</loc>
+     <loc>/uncertain_statistics/hypothesistests/unequal_variance_t_test/</loc>
      <lastmod>2018-12-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/hypothesistests/mann_whitney_u_test/</loc>
+     <loc>/uncertain_statistics/hypothesistests/exact_kolmogorov_smirnov_test/</loc>
      <lastmod>2018-12-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/hypothesistests/anderson_darling_test/</loc>
+     <loc>/uncertain_statistics/hypothesistests/approximate_twosample_kolmogorov_smirnov_test/</loc>
      <lastmod>2018-12-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/resampling/</loc>
+     <loc>/uncertain_statistics/hypothesistests/jarque_bera_test/</loc>
+     <lastmod>2018-12-19</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>/uncertain_statistics/hypothesistests/mann_whitney_u_test/</loc>
+     <lastmod>2018-12-19</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>/uncertain_statistics/hypothesistests/anderson_darling_test/</loc>
      <lastmod>2018-12-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
