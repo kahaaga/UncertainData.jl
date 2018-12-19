@@ -51,9 +51,9 @@ empirical_uniform = rand(Uniform(), 100)
 empirical_normal = rand(Normal(), 100)
 empirical_beta = rand(Beta(), 100)
 
-@test UncertainValue(Uniform, empirical_uniform) isa UncertainScalarEmpiricallyDistributed
-@test UncertainValue(Normal, empirical_normal) isa UncertainScalarEmpiricallyDistributed
-@test UncertainValue(Beta, empirical_beta) isa UncertainScalarEmpiricallyDistributed
+@test UncertainValue(Uniform, empirical_uniform) isa UncertainScalarTheoreticalFit
+@test UncertainValue(Normal, empirical_normal) isa UncertainScalarTheoreticalFit
+@test UncertainValue(Beta, empirical_beta) isa UncertainScalarTheoreticalFit
 
 ##################################################
 # Uncertain values from kernel density estimates

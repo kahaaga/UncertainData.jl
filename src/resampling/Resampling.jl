@@ -6,7 +6,6 @@ using Reexport
     import ..UncertainDatasets.UncertainDataset
     import ..UncertainValues.UncertainScalarKDE
 
-
     abstract type SamplingConstraint end
 
     """
@@ -177,11 +176,8 @@ using Reexport
     # Uncertain values based on distributions
     include("resample_uncertainvalues_distributions.jl")
 
-    # Without constraints
-    include("resample_uncertainvalues_noconstraints.jl")
-
     # With constraints
-    include("resample_uncertainvalues.jl")
+    include("resample_uncertainvalues_theoretical.jl")
     include("resample_uncertainvalues_kde.jl")
 
     ###################################

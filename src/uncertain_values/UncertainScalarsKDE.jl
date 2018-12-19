@@ -54,61 +54,6 @@ end
 Base.show(io::IO, uv::AbstractUncertainScalarKDE{T}) where {T} = print(io, summarise(uv))
 
 
-"""
-    UncertainValue(data::Vector{T};
-        kernel::Type{D} = Normal,
-        npoints::Int=2048) where {K <: KernelDensity.UnivariateKDE, D <: Distributions.Distribution, T}
-
-Construct an uncertain value by a kernel density estimate to `data`.
-
-Fast Fourier transforms are used in the kernel density estimation, so the
-number of points should be a power of 2 (default = 2048).
-"""
-function UncertainValue(data::Vector{T};
-        kernel::Type{D} = Normal,
-        npoints::Int = 2048) where {D <: Distributions.Distribution, T}
-
-    # Kernel density estimation
-    KDE = kde(data, npoints = npoints, kernel = kernel)
-
-    # Get the x value for which the density is estimated.
-    xrange = KDE.x
-
-    # Normalise estimated density
-    density = KDE.density ./ sum(KDE.density)
-
-    # Create an uncertain value
-    UncertainScalarKDE(KDE, data, xrange, Weights(density))
-end
-
-
-"""
-    UncertainValue(kerneldensity::Type{K}, data::Vector{T};
-        kernel::Type{D} = Normal,
-        npoints::Int=2048) where {K <: KernelDensity.UnivariateKDE, D <: Distributions.Distribution, T}
-
-Construct an uncertain value by a kernel density estimate to `data`.
-
-Fast Fourier transforms are used in the kernel density estimation, so the
-number of points should be a power of 2 (default = 2048).
-"""
-function UncertainValue(kerneldensity::Type{K}, data::Vector{T};
-        kernel::Type{D} = Normal,
-        npoints::Int = 2048) where {K <: KernelDensity.UnivariateKDE, D <: Distributions.Distribution, T}
-
-    # Kernel density estimation
-    KDE = kde(data, npoints = npoints, kernel = kernel)
-
-    # Get the x value for which the density is estimated.
-    xrange = KDE.x
-
-    # Normalise estimated density
-    density = KDE.density ./ sum(KDE.density)
-
-    # Create an uncertain value
-    UncertainScalarKDE(KDE, data, xrange, Weights(density))
-end
-
 
 
 """
@@ -208,7 +153,7 @@ end
 
 export
 UncertainScalarKDE
-UncertainValue,
 ecdf,
 support,
-getquantileindex
+getquantileindex,
+UnivariateKDE

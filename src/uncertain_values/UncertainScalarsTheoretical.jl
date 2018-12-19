@@ -1,5 +1,10 @@
+import Base.rand
+
+
 abstract type TheoreticalDistributionScalarValue <: AbstractUncertainValue end
 
+Base.rand(uv::AbstractUncertainValue) = rand(uv.distribution)
+Base.rand(uv::AbstractUncertainValue, n::Int) = [rand(uv) for i = 1:n]
 
 abstract type AbstractUncertainOneParameterScalarValue <: TheoreticalDistributionScalarValue end
 abstract type AbstractUncertainTwoParameterScalarValue <: TheoreticalDistributionScalarValue end
@@ -84,7 +89,7 @@ import Distributions.Frechet
 """
 Uncertain value represented by a generic three-parameter distribution.
 """
-struct UncertainScalarGenericThreeParameter{T1<:Number, T2<:Number, T3<:Number,
+struct UncertainScalarTheoreticalThreeParameter{T1<:Number, T2<:Number, T3<:Number,
         S<:ValueSupport} <: AbstractUncertainThreeParameterScalarValue
     distribution::Distribution{Univariate, S}
     a::T1
@@ -95,7 +100,7 @@ end
 """
 Uncertain value represented by a generic two-parameter distribution.
 """
-struct UncertainScalarGenericTwoParameter{T1<:Number, T2<:Number,
+struct UncertainScalarTheoreticalTwoParameter{T1<:Number, T2<:Number,
         S<:ValueSupport} <: AbstractUncertainTwoParameterScalarValue
     distribution::Distribution{Univariate, S}
     a::T1
@@ -335,8 +340,8 @@ ConstrainedUncertainScalarValueTwoParameter,
 ConstrainedUncertainScalarValueThreeParameter,
 
 UncertainScalarGenericOneParameter,
-UncertainScalarGenericTwoParameter,
-UncertainScalarGenericThreeParameter,
+UncertainScalarTheoreticalTwoParameter,
+UncertainScalarTheoreticalThreeParameter,
 UncertainScalarNormallyDistributed,
 UncertainScalarUniformlyDistributed,
 UncertainScalarBetaDistributed,

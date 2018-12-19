@@ -13,16 +13,20 @@ using Reexport
 
     # Abstract types and common methods
     include("AbstractUncertainValue.jl")
-    include("AbstractEmpirical.jl")
+    #include("AbstractEmpirical.jl")
 
-    # Composite types
-    include("UncertainScalars.jl")
-    include("UncertainVectors.jl")
-    include("UncertainScalarsEmpirical.jl")
-    include("UncertainScalarKDE.jl")
-    include("UncertainVectorsEmpirical.jl")
+    # Composite uncertain scalar types
+    include("UncertainScalarsTheoretical.jl")
+    include("UncertainScalarsTheoreticalFitted.jl")
+    include("UncertainScalarsKDE.jl")
 
-    # Common constructors
+    # Composite uncertain vector types
+    include("UncertainVectorsTheoretical.jl")
+    include("UncertainVectorsTheoreticalFitted.jl")
+    include("UncertainVectorsKDE.jl")
+
+    # Define common constructor, so a similar syntax may be used to construct
+    # all types of uncertain values.
     include("UncertainValue.jl")
 
 end #module

@@ -3,9 +3,9 @@ resample(uv::AbstractUncertainValue) = UncertainValues.resample(uv)
 resample(uv::AbstractUncertainValue, n::Int) =
     UncertainValues.resample(uv, n)
 
-resample(uv::UncertainScalarEmpiricallyDistributed) =
+resample(uv::UncertainScalarTheoreticalFit) =
     UncertainValues.resample(uv)
-resample(uv::UncertainScalarEmpiricallyDistributed, n::Int) =
+resample(uv::UncertainScalarTheoreticalFit, n::Int) =
     UncertainValues.resample(uv, n)
 
 """

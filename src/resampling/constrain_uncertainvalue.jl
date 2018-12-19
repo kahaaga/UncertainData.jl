@@ -10,6 +10,9 @@ import ..UncertainValues.ConstrainedUncertainScalarValueThreeParameter
 import ..UncertainValues.TruncatedUncertainScalarKDE
 import ..UncertainValues.AbstractUncertainScalarKDE
 
+import ..UncertainValues.TheoreticalFittedUncertainScalar
+import ..UncertainValues.ConstrainedUncertainScalarTheoreticalFit
+
 import Distributions.ValueSupport
 import Distributions.Univariate
 import Distributions.Distribution
@@ -18,8 +21,67 @@ import KernelDensity.UnivariateKDE
 import Base.truncate
 
 ################################################################
-# Truncating uncertain values based on theoretical distributions
+# Verify that support is not empty after applying constraints
 ################################################################
+
+function verify_nonempty_support(uv::AbstractUncertainScalarKDE,
+        constraint::TruncateMaximum)
+    if constraint.max < minimum(uv.range)
+        minrange = minimum(uv.range)
+        truncmax = constraint.max
+
+        e = "constraint.max = $truncmax < minimum(uv.range) = $minrange"
+        throw(ArgumentError(e))
+    end
+end
+
+function verify_nonempty_support(uv::AbstractUncertainScalarKDE,
+        constraint::TruncateMinimum)
+
+    if constraint.min > maximum(uv.range)
+        truncmin = constraint.min
+        maxrange = maximum(uv.range)
+
+        e = "maximum(uv.range) = $maxrange < constraint.min = $truncmin"
+        throw(ArgumentError(e))
+    end
+end
+
+function verify_nonempty_support(uv::AbstractUncertainScalarKDE,
+        constraint::TruncateRange)
+    truncmin = constraint.min
+    truncmax = constraint.max
+    minrange = minimum(uv.range)
+    maxrange = maximum(uv.range)
+
+    if maxrange < truncmin && minrange > truncmax
+        e1 = "maximum(uv.range) = $maxrange < TruncateMinimum.min = $truncmin and "
+        e2 = "TruncateMaximum.max = $truncmax < minimum(uv.range) = $minrange"
+        throw(ArgumentError(string(e1, e2)))
+    elseif maxrange < truncmin
+        e = "maximum(uv.range) = $maxrange < TruncateMinimum.min = $truncmin"
+        throw(ArgumentError(e))
+    elseif minrange > truncmax
+        e = "TruncateMaximum.max = $truncmax < minimum(uv.range) = $minrange"
+        throw(ArgumentError(e))
+    end
+end
+
+################################################################
+# Truncating uncertain values based on theoretical distributions
+# Operating on the union of both TheoreticalFittedUncertainScalar
+# and TheoreticalDistributionScalarValue as the type of the
+# uncertain value is ok, because Truncated is defined for
+# FittedDistribution, which is the .distribution fild for
+# fitted scalars.
+################################################################
+"""
+    truncate(uv::TheoreticalDistributionScalarValue, constraint::SamplingConstraint)
+
+Truncate an uncertain value `uv` represented by a theoretical distribution
+according to the sampling `constraint`.
+"""
+truncate(uv::TheoreticalDistributionScalarValue, constraint::SamplingConstraint)
 
 function truncate(uv::TheoreticalDistributionScalarValue,
         constraint::NoConstraint)
@@ -80,26 +142,17 @@ end
 # Truncating uncertain values based on kernel density estimates
 ################################################################
 
-function uncertainscalarKDE(range_subset, pdf_subset, uv::AbstractUncertainScalarKDE)
-    TruncatedUncertainScalarKDE(
-        UnivariateKDE(range_subset, pdf_subset),
-        uv.values,
-        range_subset,
-        Weights(pdf_subset)
-    )
-end
-
 function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateLowerQuantile)
 
     idx_lower_quantile = getquantileindex(uv, constraint.lower_quantile)
 
     # Subset the values and weights (values of the pdf at those values)
-    range_subset = uv.range[idx_lower_quantile:end]
-    pdf_subset = uv.pdf[idx_lower_quantile:end]
-
     idx_min = idx_lower_quantile
     idx_max = length(uv.pdf)
+    range_subset = uv.range[idx_min:idx_max]
+    pdf_subset = uv.pdf[idx_min:idx_max]
 
+    # Return truncated KDE and the indices used to subset
     range_subset, pdf_subset, idx_min, idx_max
 end
 
@@ -109,12 +162,12 @@ function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateUpperQuant
     idx_upper_quantile = getquantileindex(uv, constraint.upper_quantile)
 
     # Subset the values and weights (values of the pdf at those values)
-    range_subset = uv.range[1:idx_upper_quantile]
-    pdf_subset = uv.pdf[1:idx_upper_quantile]
-
     idx_min = 1
     idx_max = idx_upper_quantile
+    range_subset = uv.range[idx_min:idx_max]
+    pdf_subset = uv.pdf[idx_min:idx_max]
 
+    # Return truncated KDE and the indices used to subset
     range_subset, pdf_subset, idx_min, idx_max
 end
 
@@ -124,47 +177,61 @@ function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateQuantiles)
     idx_upper_quantile = getquantileindex(uv, constraint.upper_quantile)
 
     # Subset the values and weights (values of the pdf at those values)
-    range_subset = uv.range[idx_lower_quantile:idx_upper_quantile]
-    pdf_subset = uv.pdf[idx_lower_quantile:idx_upper_quantile]
-
     idx_min = idx_lower_quantile
     idx_max = idx_upper_quantile
-
-    range_subset, pdf_subset, idx_min, idx_max
-end
-
-function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateMinimum)
-    idx_min = findfirst(uv.range .>= constraint.min)
-
-    # Subset the values and weights (values of the pdf at those values)
-    range_subset = uv.range[idx_min:end]
-    pdf_subset = uv.pdf[idx_min:end]
-
-    idx_max = length(uv.pdf)
-
-    range_subset, pdf_subset, idx_min, idx_max
-end
-
-function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateMaximum)
-    idx_max = findlast(uv.range .<= constraint.max)
-
-    # Subset the values and weights (values of the pdf at those values)
-    range_subset = uv.range[1:idx_max]
-    pdf_subset = uv.pdf[1:idx_max]
-
-    idx_min = 1
-
-    range_subset, pdf_subset, idx_min, idx_max
-end
-
-function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateRange)
-    idx_min = findfirst(uv.range .>= constraint.min)
-    idx_max = findlast(uv.range .<= constraint.max)
-
-    # Subset the values and weights (values of the pdf at those values)
     range_subset = uv.range[idx_min:idx_max]
     pdf_subset = uv.pdf[idx_min:idx_max]
 
+    # Return truncated KDE and the indices used to subset
+    range_subset, pdf_subset, idx_min, idx_max
+end
+
+function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateMinimum;
+        test_support = true)
+
+    # Is the support empty after applying the constraint? If so, throw error.
+    test_support ? verify_nonempty_support(uv, constraint) : nothing
+
+    # Subset the values and weights (values of the pdf at those values)
+    idx_min = findfirst(uv.range .>= constraint.min)
+    idx_max = length(uv.pdf)
+    range_subset = uv.range[idx_min:idx_max]
+    pdf_subset = uv.pdf[idx_min:idx_max]
+
+    # Return truncated KDE and the indices used to subset
+    range_subset, pdf_subset, idx_min, idx_max
+end
+
+
+function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateMaximum;
+        test_support = true)
+
+    # Is the support empty after applying the constraint? If so, throw error.
+    test_support ? verify_nonempty_support(uv, constraint) : nothing
+
+    # Subset the values and weights (values of the pdf at those values)
+    idx_min = 1
+    idx_max = findlast(uv.range .<= constraint.max)
+    range_subset = uv.range[idx_min:idx_max]
+    pdf_subset = uv.pdf[idx_min:idx_max]
+
+    # Return truncated KDE and the indices used to subset
+    range_subset, pdf_subset, idx_min, idx_max
+end
+
+function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateRange;
+        test_support = true)
+
+    # Is the support empty after applying the constraint? If so, throw error.
+    test_support ? verify_nonempty_support(uv, constraint) : nothing
+
+    # Subset the values and weights (values of the pdf at those values)
+    idx_min = findfirst(uv.range .>= constraint.min)
+    idx_max = findlast(uv.range .<= constraint.max)
+    range_subset = uv.range[idx_min:idx_max]
+    pdf_subset = uv.pdf[idx_min:idx_max]
+
+    # Return truncated KDE and the indices used to subset
     range_subset, pdf_subset, idx_min, idx_max
 end
 
@@ -189,8 +256,7 @@ function constrain_theoretical_distribution(uv::AbstractUncertainValue,
 
 end
 
-
-function constrain_empirical_distribution(uv::AbstractUncertainScalarKDE,
+function constrain_kde_distribution(uv::AbstractUncertainScalarKDE,
         constraint::SamplingConstraint)
     range_subset, pdf_subset, idx_min, idx_max = truncate(uv, constraint)
 
@@ -202,6 +268,25 @@ function constrain_empirical_distribution(uv::AbstractUncertainScalarKDE,
         )
 end
 
+#############################################################
+# Uncertain values represented by theoretical distributions
+# with parameters fitted to empirical data
+############################################################
+
+"""
+    constrain_theoretical_fitted_distribution(
+        uv::TheoreticalFittedUncertainScalar,
+        truncated_dist::Distribution)
+
+Return a constrained (truncated) version of an uncertain value represented
+by a theoretical distribution with parameters fitted to empirical data.
+"""
+function constrain_theoretical_fitted_distribution(
+        uv::TheoreticalFittedUncertainScalar,
+        truncated_dist::Distribution)
+
+    ConstrainedUncertainScalarTheoreticalFit(FittedDistribution(truncated_dist), uv.values)
+end
 
 #############################################################
 # Uncertain values represented by theoretical distributions
@@ -274,25 +359,48 @@ function constrain_theoretical_distribution(
 end
 
 #############################################################
-# Generated functions to truncate uncertain values defined by
-# theoretical distributions
+# Truncate uncertain values
 ############################################################
+"""
+    constrain(uv::TheoreticalDistributionScalarValue,
+        constraint::SamplingConstraint)
+
+Constrain an uncertain value furnished by a theoretical distribution, given
+`constraint`.
+"""
 function constrain(uv::TheoreticalDistributionScalarValue,
         constraint::SamplingConstraint)
     constrain_theoretical_distribution(uv, truncate(uv, constraint))
 end
 
-function constrain(uv::TheoreticalDistributionScalarValue,
+
+"""
+    constrain(uv::TheoreticalFittedUncertainScalar,
         constraint::SamplingConstraint)
-    constrain_theoretical_distribution(uv, truncate(uv, constraint))
+
+Constrain an uncertain value furnished by a theoretical distribution with
+parameters fitted to empirical data, given `constraint`.
+"""
+function constrain(uv::TheoreticalFittedUncertainScalar,
+            constraint::SamplingConstraint)
+
+    truncated_dist = truncate(uv, constraint)
+    constrain_theoretical_fitted_distribution(uv, truncated_dist)
 end
 
 
+"""
+    constrain(uv::AbstractUncertainScalarKDE,
+        constraint::SamplingConstraint)
 
+Constrain an uncertain value `uv` represented by a kernel density estimate,
+given `constraint`.
+"""
 function constrain(uv::AbstractUncertainScalarKDE,
-        constraint::SamplingConstraint)
-    constrain_empirical_distribution(uv, constraint)
+            constraint::SamplingConstraint)
+    constrain_kde_distribution(uv, constraint)
 end
+
 
 export
 ConstrainedUncertainScalarValueTwoParameter,
