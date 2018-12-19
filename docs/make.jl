@@ -6,15 +6,15 @@ using Distributions
 using KernelDensity
 
 PAGES = [
-    "Home" => "index.md",
+    "index.md",
     "Uncertain values" => [
-        "Overview" => "uncertainvalues_overview.md",
-        "Kernel density estimates (KDE)" => "uncertainvalues_kde.md",
-        "Fitted distributions" => "uncertainvalues_fitted.md",
-        "Theoretical distributions" => "uncertainvalues_theoreticaldistributions.md"
+        "uncertainvalues_overview.md",
+        "uncertainvalues_kde.md",
+        "uncertainvalues_fitted.md",
+        "uncertainvalues_theoreticaldistributions.md"
     ],
     "Uncertain statistics" => [
-        "Overview" => "ensemble_statistics.md",
+        "ensemble_statistics.md",
         "Hypothesis tests" => [
 			"hypothesistests/hypothesis_tests_overview.md",
             "hypothesistests/one_sample_t_test.md",
@@ -27,7 +27,10 @@ PAGES = [
             "hypothesistests/anderson_darling_test.md"
         ],
     ],
-    "Resampling" => "resampling.md",
+    "Resampling" => [
+		"resampling/resampling_available_constraints.md",
+		"resampling/resampling_uncertain_values.md"
+	],
     "implementing_algorithms_for_uncertaindata.md"
 ]
 

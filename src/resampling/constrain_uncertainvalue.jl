@@ -23,6 +23,15 @@ import Base.truncate
 ################################################################
 # Verify that support is not empty after applying constraints
 ################################################################
+"""
+    verify_nonempty_support(uv::AbstractUncertainScalarKDE,
+        constraint::SamplingConstraint)
+
+Check if the support of the distribution furnishing the uncertain value
+is empty after applying the sampling constraint.
+"""
+verify_nonempty_support(uv::AbstractUncertainScalarKDE,
+    constraint::SamplingConstraint)
 
 function verify_nonempty_support(uv::AbstractUncertainScalarKDE,
         constraint::TruncateMaximum)
@@ -141,6 +150,14 @@ end
 ################################################################
 # Truncating uncertain values based on kernel density estimates
 ################################################################
+
+"""
+    truncate(uv::AbstractUncertainScalarKDE, constraint::SamplingConstraint)
+
+Truncate an uncertain value `uv` furnished by a kernel density estimated
+distribution using the supplied `constraint`.
+"""
+truncate(uv::AbstractUncertainScalarKDE, constraint::SamplingConstraint)
 
 function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateLowerQuantile)
 

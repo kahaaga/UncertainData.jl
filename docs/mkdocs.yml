@@ -58,5 +58,7 @@ nav:
         Jarque-Bera test: hypothesistests/jarque_bera_test.md
         Mann-Whitney u-test: hypothesistests/mann_whitney_u_test.md
         Anderson-Darling test: hypothesistests/anderson_darling_test.md
-  - Resampling: resampling.md
+  - Resampling:
+    - Available sampling constraints: resampling_available_constraints.md
+    - Resampling uncertain values: resampling_without_constraints.md
   - Implementing algorithms for uncertain data: implementing_algorithms_for_uncertaindata.md
