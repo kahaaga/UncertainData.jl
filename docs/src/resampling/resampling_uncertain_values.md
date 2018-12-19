@@ -1,4 +1,4 @@
-## Resampling without constraints
+## Without constraints
 
 
 Uncertain values may be resampled by drawing random number from the distributions
@@ -39,7 +39,7 @@ resample(uv_kde, n)
 ```
 
 
-## Resampling with constraints
+## With constraints
 
 Resampling can also be performed with constraints.
 
@@ -60,8 +60,8 @@ Available sampling constraints are:
 6. `TruncateUpperQuantile(upper_quantile::Float64)`
 7. `TruncateQuantiles(lower_quantile::Float64, upper_quantile::Float64)`
 
-For full documentation of the constraints, see the
-[available constraints](resampling_available_constraints.md).
+For full documentation of the constraints, see the available constraints
+in the menu.
 
 
 ``` julia tab="Lower quantile"

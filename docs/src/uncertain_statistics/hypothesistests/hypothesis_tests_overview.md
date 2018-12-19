@@ -1,4 +1,3 @@
-# Hypothesis tests
 In addition to providing ensemble computation of basic statistic measures, this package also wraps various hypothesis tests from `HypothesisTests.jl`. This allows us to perform hypothesis testing on ensemble realisations of the data.
 
 ## Implemented hypothesis tests

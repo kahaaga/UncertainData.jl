@@ -209,6 +209,7 @@ end
 
 
 export
+AbstractUncertainScalarKDE,
 UncertainScalarKDE
 UncertainValue,
 ecdf,

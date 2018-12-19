@@ -13,7 +13,7 @@ using Reexport
 
     # Abstract types and common methods
     include("AbstractUncertainValue.jl")
-    #include("AbstractEmpirical.jl")
+    include("AbstractEmpirical.jl")
 
     # Composite uncertain scalar types
     include("UncertainScalarsTheoretical.jl")
@@ -30,3 +30,10 @@ using Reexport
     include("UncertainValue.jl")
 
 end #module
+
+"""
+	UncertainValues
+
+A module defining uncertain value types.
+"""
+UncertainValues

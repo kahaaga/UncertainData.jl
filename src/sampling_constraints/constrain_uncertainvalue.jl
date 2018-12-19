@@ -12,12 +12,20 @@ import ..UncertainValues.AbstractUncertainScalarKDE
 
 import ..UncertainValues.TheoreticalFittedUncertainScalar
 import ..UncertainValues.ConstrainedUncertainScalarTheoreticalFit
+import ..UncertainValues.FittedDistribution
+
+import ..UncertainValues.getquantileindex
 
 import Distributions.ValueSupport
 import Distributions.Univariate
 import Distributions.Distribution
+import Distributions.support
+import Distributions.Truncated
+
 import KernelDensity.UnivariateKDE
 
+import StatsBase.quantile
+import StatsBase.Weights
 import Base.truncate
 
 ################################################################
@@ -32,6 +40,7 @@ is empty after applying the sampling constraint.
 """
 verify_nonempty_support(uv::AbstractUncertainScalarKDE,
     constraint::SamplingConstraint)
+
 
 function verify_nonempty_support(uv::AbstractUncertainScalarKDE,
         constraint::TruncateMaximum)
@@ -92,6 +101,14 @@ according to the sampling `constraint`.
 """
 truncate(uv::TheoreticalDistributionScalarValue, constraint::SamplingConstraint)
 
+
+"""
+    truncate(uv::TheoreticalDistributionScalarValue,
+        constraint::NoConstraint)
+
+Truncate the theoretical distribution furnishing `uv` using a
+`NoConstraint` sampling constraint.
+"""
 function truncate(uv::TheoreticalDistributionScalarValue,
         constraint::NoConstraint)
     s = support(uv.distribution)
@@ -99,6 +116,13 @@ function truncate(uv::TheoreticalDistributionScalarValue,
     return Truncated(uv.distribution, lower_bound, upper_bound)
 end
 
+"""
+    truncate(uv::TheoreticalDistributionScalarValue,
+        constraint::TruncateQuantiles)
+
+Truncate the theoretical distribution furnishing `uv` using a
+`TruncateQuantiles` sampling constraint.
+"""
 function truncate(uv::TheoreticalDistributionScalarValue,
         constraint::TruncateQuantiles)
     lower_bound = quantile(uv.distribution, constraint.lower_quantile)
@@ -107,6 +131,13 @@ function truncate(uv::TheoreticalDistributionScalarValue,
     Truncated(uv.distribution, lower_bound, upper_bound)
 end
 
+"""
+    truncate(uv::TheoreticalDistributionScalarValue,
+        constraint::TruncateLowerQuantile)
+
+Truncate the theoretical distribution furnishing `uv` using a
+`TruncateLowerQuantile` sampling constraint.
+"""
 function truncate(uv::TheoreticalDistributionScalarValue,
         constraint::TruncateLowerQuantile)
     lower_bound = quantile(uv.distribution, constraint.lower_quantile)
@@ -115,6 +146,13 @@ function truncate(uv::TheoreticalDistributionScalarValue,
     Truncated(uv.distribution, lower_bound, upper_bound)
 end
 
+"""
+    truncate(uv::TheoreticalDistributionScalarValue,
+        constraint::TruncateUpperQuantile)
+
+Truncate the theoretical distribution furnishing `uv` using a
+`TruncateUpperQuantile` sampling constraint.
+"""
 function truncate(uv::TheoreticalDistributionScalarValue,
         constraint::TruncateUpperQuantile)
     lower_bound = support(uv.distribution).lb
@@ -123,6 +161,14 @@ function truncate(uv::TheoreticalDistributionScalarValue,
     Truncated(uv.distribution, lower_bound, upper_bound)
 end
 
+
+"""
+    truncate(uv::TheoreticalDistributionScalarValue,
+        constraint::TruncateMinumum)
+
+Truncate the theoretical distribution furnishing `uv` using a
+`TruncateMinimum` sampling constraint.
+"""
 function truncate(uv::TheoreticalDistributionScalarValue,
         constraint::TruncateMinimum)
     lower_bound = constraint.min
@@ -131,6 +177,13 @@ function truncate(uv::TheoreticalDistributionScalarValue,
     Truncated(uv.distribution, lower_bound, upper_bound)
 end
 
+"""
+    truncate(uv::TheoreticalDistributionScalarValue,
+        constraint::TruncateMaximum)
+
+Truncate the theoretical distribution furnishing `uv` using a
+`TruncateMaximum` sampling constraint.
+"""
 function truncate(uv::TheoreticalDistributionScalarValue,
         constraint::TruncateMaximum)
     lower_bound = support(uv.distribution).lb
@@ -139,6 +192,13 @@ function truncate(uv::TheoreticalDistributionScalarValue,
     Truncated(uv.distribution, lower_bound, upper_bound)
 end
 
+"""
+    truncate(uv::TheoreticalDistributionScalarValue,
+        constraint::TruncateRange)
+
+Truncate the theoretical distribution furnishing `uv` using a
+`TruncateRange` sampling constraint.
+"""
 function truncate(uv::TheoreticalDistributionScalarValue,
         constraint::TruncateRange)
     lower_bound = constraint.min
@@ -159,6 +219,12 @@ distribution using the supplied `constraint`.
 """
 truncate(uv::AbstractUncertainScalarKDE, constraint::SamplingConstraint)
 
+"""
+    truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateLowerQuantile)
+
+Truncate the kernel density estimate to `uv`s distribution using a
+`TruncateLowerQuantile` sampling constraint.
+"""
 function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateLowerQuantile)
 
     idx_lower_quantile = getquantileindex(uv, constraint.lower_quantile)
@@ -173,7 +239,12 @@ function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateLowerQuant
     range_subset, pdf_subset, idx_min, idx_max
 end
 
+"""
+    truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateUpperQuantile)
 
+Truncate the kernel density estimate to `uv`s distribution using a
+`TruncateUpperQuantile` sampling constraint.
+"""
 function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateUpperQuantile)
 
     idx_upper_quantile = getquantileindex(uv, constraint.upper_quantile)
@@ -188,6 +259,12 @@ function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateUpperQuant
     range_subset, pdf_subset, idx_min, idx_max
 end
 
+"""
+    truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateQuantiles)
+
+Truncate the kernel density estimate to `uv`s distribution using a
+`TruncateQuantiles` sampling constraint.
+"""
 function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateQuantiles)
 
     idx_lower_quantile = getquantileindex(uv, constraint.lower_quantile)
@@ -203,6 +280,12 @@ function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateQuantiles)
     range_subset, pdf_subset, idx_min, idx_max
 end
 
+"""
+    truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateMinimum)
+
+Truncate the kernel density estimate to `uv`s distribution using a
+`TruncateMinimum` sampling constraint.
+"""
 function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateMinimum;
         test_support = true)
 
@@ -219,7 +302,12 @@ function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateMinimum;
     range_subset, pdf_subset, idx_min, idx_max
 end
 
+"""
+    truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateMaximum)
 
+Truncate the kernel density estimate to `uv`s distribution using a
+`TruncateMaximum` sampling constraint.
+"""
 function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateMaximum;
         test_support = true)
 
@@ -236,6 +324,12 @@ function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateMaximum;
     range_subset, pdf_subset, idx_min, idx_max
 end
 
+"""
+    truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateRange)
+
+Truncate the kernel density estimate to `uv`s distribution using a
+`TruncateRange` sampling constraint.
+"""
 function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateRange;
         test_support = true)
 
@@ -259,20 +353,12 @@ end
 # Constraining values
 ############################################################
 """
-    constrain(uv::AbstractUncertainValue, c::SamplingConstraint)
+    constrain_kde_distribution(uv::AbstractUncertainScalarKDE,
+        constraint::SamplingConstraint)
 
-Constrain an uncertain value.
-
-If the value `uv` is represented by a distribution, `constrain` returns a
-truncated version of the original distribution.  If the value is represented by
-a kernel density estimated distribution, then a new `UncertainScalarKDE`
-containing only a subset of the original KDE is returned.
+Return the TruncatedUncertainScalarKDE resulting from applying `constraint`
+to `uv`.
 """
-function constrain_theoretical_distribution(uv::AbstractUncertainValue,
-    c::SamplingConstraint)
-
-end
-
 function constrain_kde_distribution(uv::AbstractUncertainScalarKDE,
         constraint::SamplingConstraint)
     range_subset, pdf_subset, idx_min, idx_max = truncate(uv, constraint)
@@ -379,11 +465,20 @@ end
 # Truncate uncertain values
 ############################################################
 """
-    constrain(uv::TheoreticalDistributionScalarValue,
-        constraint::SamplingConstraint)
+	constrain(uv::AbstractUncertainValue, constraint::SamplingConstraint)
 
-Constrain an uncertain value furnished by a theoretical distribution, given
-`constraint`.
+Apply the `constraint` and truncate the support of the distribution
+furnishing the uncertain value `uv`. Returns a constrained uncertain value.
+"""
+constrain(uv::AbstractUncertainValue, constraint::SamplingConstraint)
+
+
+"""
+    constrain(uv::TheoreticalDistributionScalarValue,
+        constraint::SamplingConstraint) -> TheoreticalDistributionScalarValue
+
+Apply the `constraint` and truncate the support of an uncertain value `uv`
+furnished by a theoretical distribution.
 """
 function constrain(uv::TheoreticalDistributionScalarValue,
         constraint::SamplingConstraint)
@@ -393,10 +488,11 @@ end
 
 """
     constrain(uv::TheoreticalFittedUncertainScalar,
-        constraint::SamplingConstraint)
+        constraint::SamplingConstraint) -> ConstrainedUncertainScalarTheoreticalFit
 
-Constrain an uncertain value furnished by a theoretical distribution with
-parameters fitted to empirical data, given `constraint`.
+Apply the `constraint` and truncate the support of an uncertain value `uv`
+furnished by a theoretical distribution where parameters are fitted to empirical
+data.
 """
 function constrain(uv::TheoreticalFittedUncertainScalar,
             constraint::SamplingConstraint)
@@ -408,10 +504,10 @@ end
 
 """
     constrain(uv::AbstractUncertainScalarKDE,
-        constraint::SamplingConstraint)
+        constraint::SamplingConstraint) -> TruncatedUncertainScalarKDE
 
-Constrain an uncertain value `uv` represented by a kernel density estimate,
-given `constraint`.
+Apply the `constraint` and truncate the support of an uncertain value `uv`
+represented by a kernel density estimate.
 """
 function constrain(uv::AbstractUncertainScalarKDE,
             constraint::SamplingConstraint)

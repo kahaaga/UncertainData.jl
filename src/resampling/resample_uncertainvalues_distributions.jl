@@ -1,4 +1,5 @@
 import ..UncertainValues:
+	TheoreticalDistributionScalarValue,
     AbstractUncertainTwoParameterScalarValue,
     AbstractUncertainThreeParameterScalarValue,
     UncertainScalarTheoreticalTwoParameter,

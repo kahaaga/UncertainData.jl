@@ -28,3 +28,10 @@ using Reexport
     #include("StatsBase_entropies.jl")
     #include("StatsBase_quantiles.jl")
 end
+
+"""
+    UncertainStatistics
+
+A module defining function to compute various statistics for uncertain values
+and uncertain datasets.
+"""
