@@ -1,3 +1,5 @@
+import ..UncertainDatasets.AbstractUncertainValueDataset
+
 ##########################################################################
 # Draw realisations of the uncertain dataset according to the distributions
 # of the uncertain values comprising it.
@@ -8,7 +10,7 @@
 Draw a realisation of an `UncertainDataset` according to the distributions
 of the `UncertainValue`s comprising it.
 """
-function resample(uv::UncertainDataset)
+function resample(uv::AbstractUncertainValueDataset)
 	L = length(uv)
 	[resample(uv.values[i]) for i in 1:L]
 end
@@ -19,7 +21,7 @@ end
 Draw `n` realisations of an `UncertainDataset` according to the distributions
 of the `UncertainValue`s comprising it.
 """
-function resample(uv::UncertainDataset, n::Int)
+function resample(uv::AbstractUncertainValueDataset, n::Int)
 	L = length(uv)
 	[[resample(uv.values[i]) for i in 1:L] for k = 1:n]
 end

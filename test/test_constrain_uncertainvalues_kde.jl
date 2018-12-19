@@ -1,4 +1,3 @@
-tol = 1e-2
 
 uv = UncertainValue(rand(1000))
 

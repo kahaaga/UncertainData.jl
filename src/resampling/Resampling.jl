@@ -6,7 +6,6 @@ using Reexport
     import ..UncertainDatasets.UncertainDataset
     import ..UncertainValues.UncertainScalarKDE
 
-
     abstract type SamplingConstraint end
 
     """
@@ -28,36 +27,31 @@ using Reexport
 
 
     """
-        TruncateLowerQuantile <: ValueSamplingConstraint
+        TruncateLowerQuantile(lower_quantile::Float64)
 
-    A constraint indicating that the
-    distributions for each uncertain value should be truncated below at some
-    quantile when sampling an `AbstractUncertainValue` or
-    an `UncertainDataset`.
+    A constraint indicating that the distribution furnishing an uncertain value
+    should be truncated below at some quantile.
     """
     struct TruncateLowerQuantile <: ValueSamplingConstraint
         lower_quantile::Float64
     end
 
     """
-        TruncateUpperQuantile <: ValueSamplingConstraint
+        TruncateUpperQuantile(upper_quantile::Float64)
 
-    A constraint indicating that
-    the distributions for each uncertain value should be truncated above at some
-    quantile when sampling an `AbstractUncertainValue` or
-    an `UncertainDataset`.
+    A constraint indicating that the distribution furnishing an uncertain value
+    should be truncated above at some quantile.
     """
     struct TruncateUpperQuantile <: ValueSamplingConstraint
         upper_quantile::Float64
     end
 
     """
-        TruncateQuantiles <: ValueSamplingConstraint
+        TruncateQuantiles(lower_quantile::Float64, upper_quantile::Float64)
 
-    A constraint indicating that
-    the distributions for each uncertain value should be truncated above at some
-    quantile when sampling an `AbstractUncertainValue` or
-    an `UncertainDataset`.
+    A constraint indicating that the distribution furnishing an uncertain value
+    should be truncated at some quantile quantile
+    `(lower_quantile, upper_quantile)`.
     """
     struct TruncateQuantiles <: ValueSamplingConstraint
         lower_quantile::Float64
@@ -65,47 +59,40 @@ using Reexport
     end
 
     """
-        TruncateStd <: ValueSamplingConstraint
+        TruncateStd(nσ::Int)
 
-    A constraint indicating that
-    distributions should be truncated at `nσ` (`n` standard deviations).
-    quantile when sampling an `AbstractUncertainValue` or an `UncertainDataset`.
+    A constraint indicating that the distribution furnishing an uncertain value
+    should be truncated at `nσ` (`n` standard deviations).
     """
     struct TruncateStd <: ValueSamplingConstraint
         nσ::Int
     end
 
     """
-        TruncateMinimum{T<:Number} <: ValueSamplingConstraint
+        TruncateMinimum{min::Number}
 
-    A constraint indicating that the
-    distributions for each uncertain value should be truncated below at some
-    specified minimum value when sampling an `AbstractUncertainValue` or an
-    `UncertainDataset`.
+    A constraint indicating that the distribution furnishing an uncertain value
+    should be truncated below at some specified minimum value.
     """
     struct TruncateMinimum{T<:Number} <: ValueSamplingConstraint
         min::T
     end
 
     """
-        TruncateMaximum{T<:Number} <: ValueSamplingConstraint
+        TruncateMaximum{max::Number}
 
-    A constraint indicating that
-    the distributions for each uncertain value should be truncated above at some
-    specified maximum value when sampling an `AbstractUncertainValue` or an
-    `UncertainDataset`.
+    A constraint indicating that the distribution furnishing an uncertain value
+    should be truncated above at some specified maximum value.
     """
     struct TruncateMaximum{T<:Number} <: ValueSamplingConstraint
         max::T
     end
 
     """
-        TruncateRange{T<:Number} <: ValueSamplingConstraint
+        TruncateRange{min::Number, max::Number}
 
-    A constraint indicating that
-    the distributions for each uncertain value should be truncated at some range
-    `[min, max]`  when sampling an `AbstractUncertainValue` or an
-    `UncertainDataset`.
+    A constraint indicating that the distribution furnishing an uncertain value
+    should be truncated at some range `[min, max]`.
     """
     struct TruncateRange{T} <: ValueSamplingConstraint
         min::T
@@ -165,16 +152,20 @@ using Reexport
     include("constrain_uncertainvalue.jl")
 
     ###################################
+    # Constrain uncertain datasets
+    ###################################
+    include("constrain_uncertaindataset.jl")
+
+
+
+    ###################################
     # Resampling uncertain values
     ###################################
     # Uncertain values based on distributions
     include("resample_uncertainvalues_distributions.jl")
 
-    # Without constraints
-    include("resample_uncertainvalues_noconstraints.jl")
-
     # With constraints
-    include("resample_uncertainvalues.jl")
+    include("resample_uncertainvalues_theoretical.jl")
     include("resample_uncertainvalues_kde.jl")
 
     ###################################

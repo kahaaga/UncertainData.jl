@@ -1,10 +1,71 @@
-include("UncertainScalarsEmpirical.jl")
-include("UncertainScalars.jl")
+import KernelDensity.UnivariateKDE
+import Distributions.Distribution
+
+include("UncertainScalarsTheoreticalFitted.jl")
+include("UncertainScalarsTheoretical.jl")
 
 
 """
-    UncertainValue(d::Type{D},
-        empiricaldata::Vector{T}) where {D<:Distribution, T}
+    UncertainValue(data::Vector{T};
+        kernel::Type{D} = Normal,
+        npoints::Int=2048) where {D <: Distributions.Distribution, T}
+
+Construct an uncertain value by a kernel density estimate to `data`.
+
+Fast Fourier transforms are used in the kernel density estimation, so the
+number of points should be a power of 2 (default = 2048).
+"""
+function UncertainValue(data::Vector{T};
+        kernel::Type{D} = Normal,
+        bandwidth = KernelDensity.default_bandwidth(data),
+        npoints::Int = 2048) where {D <: Distributions.Distribution, T}
+
+    # Kernel density estimation
+    KDE = kde(data, npoints = npoints, kernel = kernel, bandwidth = bandwidth)
+
+    # Get the x value for which the density is estimated.
+    xrange = KDE.x
+
+    # Normalise estimated density
+    density = KDE.density ./ sum(KDE.density)
+
+    # Create an uncertain value
+    UncertainScalarKDE(KDE, data, xrange, Weights(density))
+end
+
+
+"""
+    UncertainValue(kerneldensity::Type{K}, data::Vector{T};
+        kernel::Type{D} = Normal,
+        npoints::Int=2048) where {K <: UnivariateKDE, D <: Distribution, T}
+
+Construct an uncertain value by a kernel density estimate to `data`.
+
+Fast Fourier transforms are used in the kernel density estimation, so the
+number of points should be a power of 2 (default = 2048).
+"""
+function UncertainValue(kerneldensity::Type{K}, data::Vector{T};
+        kernel::Type{D} = Normal,
+        bandwidth = KernelDensity.default_bandwidth(data),
+        npoints::Int = 2048) where {K <: UnivariateKDE, D <: Distribution, T}
+
+    # Kernel density estimation
+    KDE = kde(data, npoints = npoints, kernel = kernel, bandwidth = bandwidth)
+
+    # Get the x value for which the density is estimated.
+    xrange = KDE.x
+
+    # Normalise estimated density
+    density = KDE.density ./ sum(KDE.density)
+
+    # Create an uncertain value
+    UncertainScalarKDE(KDE, data, xrange, Weights(density))
+end
+
+
+"""
+    UncertainValue(empiricaldata::AbstractVector{T},
+        d::Type{D}) where {D <: Distribution}
 
 # Constructor for empirical distributions.
 
@@ -21,7 +82,7 @@ function UncertainValue(d::Type{D},
         empiricaldata::Vector{T}) where {D<:Distribution, T}
 
     distribution = FittedDistribution(Distributions.fit(d, empiricaldata))
-    UncertainScalarEmpiricallyDistributed(distribution, empiricaldata)
+    UncertainScalarTheoreticalFit(distribution, empiricaldata)
 end
 
 
@@ -217,7 +278,7 @@ end
 # Construct an uncertain value from an empirical distribution.
 # """
 #macro uncertain(values::AbstractVector, d)
-#    :(UncertainScalarEmpiricallyDistributed($values, $d))
+#    :(UncertainScalarTheoreticalFit($values, $d))
 #end
 #uncertain, @uncertain
 

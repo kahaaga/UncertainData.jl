@@ -1,24 +1,18 @@
 import ..UncertainValues.AbstractUncertainValue
-import ..UncertainValues.UncertainScalarEmpiricallyDistributed
+import ..UncertainValues.TheoreticalFittedUncertainScalar
+import ..UncertainValues.UncertainScalarTheoreticalFit
+
 import ..UncertainValues.FittedDistribution
-import Distributions.Truncated
 
 ########################################################################
 # Resampling without constraints
 ########################################################################
-resample(ue::UncertainScalarEmpiricallyDistributed) =
+
+
+resample(ue::UncertainScalarTheoreticalFit) =
     rand(ue.distribution.distribution)
-resample(ue::UncertainScalarEmpiricallyDistributed, n::Int) =
+resample(ue::UncertainScalarTheoreticalFit, n::Int) =
     rand(ue.distribution.distribution, n)
 
-resample(fd::FittedDistribution) = UncertainValues.resample(fd)
-resample(fd::FittedDistribution, n::Int) = UncertainValues.resample(fd, n)
-
-resample(uv::AbstractUncertainValue) = UncertainValues.resample(uv)
-resample(uv::AbstractUncertainValue, n::Int) =
-    UncertainValues.resample(uv, n)
-
-resample(uv::UncertainScalarEmpiricallyDistributed) =
-    UncertainValues.resample(uv)
-resample(uv::UncertainScalarEmpiricallyDistributed, n::Int) =
-    UncertainValues.resample(uv, n)
+resample(fd::FittedDistribution) = rand(fd.distribution)
+resample(fd::FittedDistribution, n::Int) = rand(fd.distribution, n)

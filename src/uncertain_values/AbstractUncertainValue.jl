@@ -2,9 +2,9 @@ using Distributions
 using StaticArrays
 import Printf.@sprintf
 
+
 abstract type AbstractUncertainValue end
 
-export AbstractUncertainValue
 
 ##############################
 # Support of an observation
@@ -81,4 +81,6 @@ Base.show(io::IO, q::AbstractUncertainValue) = print(io, summarise(q))
 
 dimension(usv::AbstractUncertainValue) = 1
 
-export dimension
+export
+AbstractUncertainValue,
+dimension
