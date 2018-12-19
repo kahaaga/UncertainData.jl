@@ -1,4 +1,6 @@
 import ..UncertainValues.TheoreticalDistributionScalarValue
+import ..UncertainValues.UncertainScalarBinomialDistributed
+import ..UncertainValues.UncertainScalarBetaBinomialDistributed
 
 import Distributions.pdf
 
@@ -8,6 +10,28 @@ function get_density(uv::TheoreticalDistributionScalarValue)
 	xmax = maximum(some_sample) * 1.05
 
 	xvals = xmin:0.01:xmax
+	density = pdf.(uv.distribution, xvals)
+
+	xvals, density ./ sum(density)
+end
+
+function get_density(uv::UncertainScalarBinomialDistributed)
+	some_sample = resample(uv, 10000)
+	xmin = minimum(some_sample)
+	xmax = maximum(some_sample)
+
+	xvals = xmin:1:xmax
+	density = pdf.(uv.distribution, xvals)
+
+	xvals, density ./ sum(density)
+end
+
+function get_density(uv::UncertainScalarBetaBinomialDistributed)
+	some_sample = resample(uv, 10000)
+	xmin = minimum(some_sample)
+	xmax = maximum(some_sample)
+
+	xvals = xmin:1:xmax
 	density = pdf.(uv.distribution, xvals)
 
 	xvals, density ./ sum(density)

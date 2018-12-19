@@ -6,6 +6,7 @@ import Distributions.Truncated
 
 abstract type TheoreticalFittedUncertainScalar <: TheoreticalDistributionScalarValue end
 
+Broadcast.broadcastable(d::TheoreticalFittedUncertainScalar) = Ref(d)
 
 """
     UncertainEmpiricalScalarValue

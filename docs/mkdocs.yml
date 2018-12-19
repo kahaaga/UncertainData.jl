@@ -44,12 +44,15 @@ markdown_extensions:
 docs_dir: 'build'
 
 pages:
-  - Home: index.md
+  - UncertainData.jl: index.md
   - Uncertain values:
+    - Examples: uncertain_values/uncertainvalues_examples.md
     - Quickstart: uncertain_values/uncertainvalues_overview.md
     - Kernel density estimates (KDE): uncertain_values/uncertainvalues_kde.md
     - Theoretical distributions: uncertain_values/uncertainvalues_theoreticaldistributions.md
     - Fit theoretical distributions: uncertain_values/uncertainvalues_fitted.md
+  - Uncertain datasets:
+      - Overview: uncertain_datasets/uncertain_datasets_overview.md
   - Sampling constraints:
       - Available constraints: sampling_constraints/available_constraints.md
       - Constraining uncertain values: sampling_constraints/constrain_uncertain_values.md
