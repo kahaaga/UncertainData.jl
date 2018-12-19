@@ -6,6 +6,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>/uncertain_values/uncertainvalues_examples/</loc>
+     <lastmod>2018-12-19</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>/uncertain_values/uncertainvalues_overview/</loc>
      <lastmod>2018-12-19</lastmod>
      <changefreq>daily</changefreq>
@@ -22,6 +27,11 @@
     </url>
     <url>
      <loc>/uncertain_values/uncertainvalues_fitted/</loc>
+     <lastmod>2018-12-19</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>/uncertain_datasets/uncertain_datasets_overview/</loc>
      <lastmod>2018-12-19</lastmod>
      <changefreq>daily</changefreq>
     </url>

@@ -239,8 +239,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="Home" class="md-nav__link">
-      Home
+    <a href="../.." title="UncertainData.jl" class="md-nav__link">
+      UncertainData.jl
     </a>
   </li>
 
@@ -265,6 +265,18 @@
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../uncertainvalues_examples/" title="Examples" class="md-nav__link">
+      Examples
+    </a>
+  </li>
+
         
           
           
@@ -390,10 +402,46 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
-      Sampling constraints
+      Uncertain datasets
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-3">
+        Uncertain datasets
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_datasets/uncertain_datasets_overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Sampling constraints
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
         Sampling constraints
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -435,13 +483,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
-    <label class="md-nav__link" for="nav-4">
+    <label class="md-nav__link" for="nav-5">
       Resampling
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
+      <label class="md-nav__title" for="nav-5">
         Resampling
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -471,13 +519,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
-    <label class="md-nav__link" for="nav-5">
+    <label class="md-nav__link" for="nav-6">
       Uncertain statistics
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
+      <label class="md-nav__title" for="nav-6">
         Uncertain statistics
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -502,13 +550,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
     
-    <label class="md-nav__link" for="nav-5-2">
+    <label class="md-nav__link" for="nav-6-2">
       Hypothesis tests
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-5-2">
+      <label class="md-nav__title" for="nav-6-2">
         Hypothesis tests
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -897,7 +945,7 @@
 
 <p>Construct an uncertain value by a kernel density estimate to <code class="codehilite">data</code>.</p>
 <p>Fast Fourier transforms are used in the kernel density estimation, so the number of points should be a power of 2 (default = 2048).</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3d872964c2aa2f4984319e6c2f46827308128ae5/src/uncertain_values/UncertainValue.jl#L8-L17' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/f07575c2d1c1d541a70d79ccb400b195350abf8c/src/uncertain_values/UncertainValue.jl#L8-L17' class='documenter-source'>source</a><br></p>
 <p><a id='Additional-keyword-arguments-and-examples-1'></a></p>
 <h3 id="additional_keyword_arguments_and_examples">Additional keyword arguments and examples<a class="headerlink" href="#additional_keyword_arguments_and_examples" title="Permanent link">&para;</a></h3>
 <p>If the only argument to the <code class="codehilite">UncertainValue</code> constructor is a vector of values, the default behaviour is to represent the distribution by a kernel density estimate (KDE), i.e. <code class="codehilite">UncertainValue(data)</code>. Gaussian kernels are used by default. The syntax <code class="codehilite">UncertainValue(UnivariateKDE, data)</code> will also work if <code class="codehilite">KernelDensity.jl</code> is loaded.</p>

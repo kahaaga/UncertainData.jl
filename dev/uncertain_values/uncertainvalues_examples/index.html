@@ -40,7 +40,7 @@
     
     
       
-        <title>Fit theoretical distributions - UncertainData.jl</title>
+        <title>Examples - UncertainData.jl</title>
       
     
     
@@ -96,7 +96,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#examples" tabindex="1" class="md-skip">
+      <a href="#uncertain_values_defined_by_theoretical_distributions" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -122,7 +122,7 @@
                 UncertainData.jl
               </span>
               <span class="md-header-nav__topic">
-                Fit theoretical distributions
+                Examples
               </span>
             
           
@@ -270,11 +270,79 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../uncertainvalues_examples/" title="Examples" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Examples
+      </label>
+    
+    <a href="./" title="Examples" class="md-nav__link md-nav__link--active">
       Examples
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#uncertain_values_defined_by_theoretical_distributions" title="Uncertain values defined by theoretical distributions" class="md-nav__link">
+    Uncertain values defined by theoretical distributions
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a_uniformly_distributed_uncertain_value" title="A uniformly distributed uncertain value" class="md-nav__link">
+    A uniformly distributed uncertain value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a_normally_distributed_uncertain_value" title="A normally distributed uncertain value" class="md-nav__link">
+    A normally distributed uncertain value
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uncertain_values_defined_by_kernel_density_estimated_distributions" title="Uncertain values defined by kernel density estimated distributions" class="md-nav__link">
+    Uncertain values defined by kernel density estimated distributions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uncertain_values_defined_by_theoretical_distributions_fitted_to_empirical_data" title="Uncertain values defined by theoretical distributions fitted to empirical data" class="md-nav__link">
+    Uncertain values defined by theoretical distributions fitted to empirical data
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -318,59 +386,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Fit theoretical distributions
-      </label>
-    
-    <a href="./" title="Fit theoretical distributions" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../uncertainvalues_fitted/" title="Fit theoretical distributions" class="md-nav__link">
       Fit theoretical distributions
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#examples" title="Examples" class="md-nav__link">
-    Examples
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#beware_fitting_distributions_may_lead_to_nonsensical_results" title="Beware: fitting distributions may lead to nonsensical results!" class="md-nav__link">
-    Beware: fitting distributions may lead to nonsensical results!
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#constructor" title="Constructor" class="md-nav__link">
-    Constructor
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -698,22 +718,42 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#examples" title="Examples" class="md-nav__link">
-    Examples
+  <a href="#uncertain_values_defined_by_theoretical_distributions" title="Uncertain values defined by theoretical distributions" class="md-nav__link">
+    Uncertain values defined by theoretical distributions
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a_uniformly_distributed_uncertain_value" title="A uniformly distributed uncertain value" class="md-nav__link">
+    A uniformly distributed uncertain value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a_normally_distributed_uncertain_value" title="A normally distributed uncertain value" class="md-nav__link">
+    A normally distributed uncertain value
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uncertain_values_defined_by_kernel_density_estimated_distributions" title="Uncertain values defined by kernel density estimated distributions" class="md-nav__link">
+    Uncertain values defined by kernel density estimated distributions
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#beware_fitting_distributions_may_lead_to_nonsensical_results" title="Beware: fitting distributions may lead to nonsensical results!" class="md-nav__link">
-    Beware: fitting distributions may lead to nonsensical results!
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#constructor" title="Constructor" class="md-nav__link">
-    Constructor
+  <a href="#uncertain_values_defined_by_theoretical_distributions_fitted_to_empirical_data" title="Uncertain values defined by theoretical distributions fitted to empirical data" class="md-nav__link">
+    Uncertain values defined by theoretical distributions fitted to empirical data
   </a>
   
 </li>
@@ -734,123 +774,100 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/kahaaga/UncertainData.jl/edit/master/docs/uncertain_values/uncertainvalues_fitted.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/kahaaga/UncertainData.jl/edit/master/docs/uncertain_values/uncertainvalues_examples.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>Fit theoretical distributions</h1>
+                  <h1>Examples</h1>
                 
-                <p>For data values with histograms close to some known distribution, the user may choose to represent the data by fitting a theoretical distribution to the values. This will only work well if the histogram closely resembles a theoretical distribution.</p>
-<p><a id='Examples-1'></a></p>
-<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
-<div class="superfences-tabs">
-<input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
-<label for="__tab_1_0">Uniform</label>
-<div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">Distributions</span><span class="p">,</span> <span class="n">UncertainData</span>
-
-<span class="c"># Create a normal distribution</span>
-<span class="n">d</span> <span class="o">=</span> <span class="n">Uniform</span><span class="p">()</span>
-
-<span class="c"># Draw a 1000-point sample from the distribution.</span>
-<span class="n">some_sample</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-
-<span class="c"># Define an uncertain value by fitting a uniform distribution to the sample.</span>
-<span class="n">uv</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">Uniform</span><span class="p">,</span> <span class="n">some_sample</span><span class="p">)</span>
+                <p>This packages facilitates working with datasets with uncertainties. The core concept of <code class="codehilite">UncertainDatasets</code> is to replace an uncertain data value with a probability distribution describing the point's uncertainty.</p>
+<p>There are currently three ways of doing that: by <a href="uncertain_values/uncertainvalues_theoreticaldistributions.md">theoretical distributions</a>, <a href="uncertain_values/uncertainvalues_fitted.md">theoretical distributions with parameters fitted to empirical data</a>, or <a href="uncertain_values/uncertainvalued_kde.md">kernel density estimations to the distributions of empirical data</a>. Check out the examples below and the documentation in the sidebar!</p>
+<p><a id='Uncertain-values-defined-by-theoretical-distributions-1'></a></p>
+<h3 id="uncertain_values_defined_by_theoretical_distributions">Uncertain values defined by theoretical distributions<a class="headerlink" href="#uncertain_values_defined_by_theoretical_distributions" title="Permanent link">&para;</a></h3>
+<p>First, load the necessary packages:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">UncertainData</span><span class="p">,</span> <span class="n">Distributions</span><span class="p">,</span> <span class="n">KernelDensity</span><span class="p">,</span> <span class="n">Plots</span>
 </pre></div>
-</td></tr></table></div>
-<input name="__tabs_1" type="radio" id="__tab_1_1" />
-<label for="__tab_1_1">Normal</label>
-<div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">Distributions</span><span class="p">,</span> <span class="n">UncertainData</span>
+</td></tr></table>
 
-<span class="c"># Create a normal distribution</span>
-<span class="n">d</span> <span class="o">=</span> <span class="n">Normal</span><span class="p">()</span>
+<p><a id='A-uniformly-distributed-uncertain-value-1'></a></p>
+<h4 id="a_uniformly_distributed_uncertain_value">A uniformly distributed uncertain value<a class="headerlink" href="#a_uniformly_distributed_uncertain_value" title="Permanent link">&para;</a></h4>
+<p>Now, consider the following trivial example. We've measure a data value with a poor instrument that tells us that the value lies between <code class="codehilite">-2</code> and <code class="codehilite">3</code>. However, we but that we know nothing more about how the value is distributed on that interval. Then it may be reasonable to represent that value as a uniform distribution on <code class="codehilite">[-2, 3]</code>.</p>
+<p>Define the uncertain value:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">Uniform</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
-<span class="c"># Draw a 1000-point sample from the distribution.</span>
-<span class="n">some_sample</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-
-<span class="c"># Represent the uncertain value by a fitted normal distribution.</span>
-<span class="n">uv</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">Normal</span><span class="p">,</span> <span class="n">some_sample</span><span class="p">)</span>
+<span class="c"># Plot the estimated density</span>
+<span class="n">bar</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">xlabel</span> <span class="o">=</span> <span class="s">&quot;value&quot;</span><span class="p">,</span> <span class="n">ylabel</span> <span class="o">=</span> <span class="s">&quot;probability density&quot;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
-<input name="__tabs_1" type="radio" id="__tab_1_2" />
-<label for="__tab_1_2">Gamma</label>
-<div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+</td></tr></table>
+
+<p><img alt="" src="../uncertainvalue_theoretical_uniform.svg" /></p>
+<p><a id='A-normally-distributed-uncertain-value-1'></a></p>
+<h4 id="a_normally_distributed_uncertain_value">A normally distributed uncertain value<a class="headerlink" href="#a_normally_distributed_uncertain_value" title="Permanent link">&para;</a></h4>
+<p>Another common example is to use someone else's data from a publication. Usually, these values are reported as the mean or median, with some associated uncertainty. Say we want to use an uncertain value which is normally distributed with mean <code class="codehilite">2.1</code> and standard deviation <code class="codehilite">0.3</code>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">Normal</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+
+<span class="c"># Plot the estimated density</span>
+<span class="n">bar</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">xlabel</span> <span class="o">=</span> <span class="s">&quot;value&quot;</span><span class="p">,</span> <span class="n">ylabel</span> <span class="o">=</span> <span class="s">&quot;probability density&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p><img alt="" src="../uncertainvalue_theoretical_normal.svg" /></p>
+<p><a id='Uncertain-values-defined-by-kernel-density-estimated-distributions-1'></a></p>
+<h3 id="uncertain_values_defined_by_kernel_density_estimated_distributions">Uncertain values defined by kernel density estimated distributions<a class="headerlink" href="#uncertain_values_defined_by_kernel_density_estimated_distributions" title="Permanent link">&para;</a></h3>
+<p>One may also be given a a distribution of numbers that's not quite normally distributed. How to represent this uncertainty? Easy: we use a kernel density estimate to the distribution.</p>
+<p>In the following example, we generate some random numbers from a mixture of two normal distributions.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">Distributions</span><span class="p">,</span> <span class="n">UncertainData</span>
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">MixtureModel</span><span class="p">([</span><span class="n">Normal</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">Normal</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)])</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">UnivariateKDE</span><span class="p">,</span> <span class="n">rand</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="mi">250</span><span class="p">))</span>
 
-<span class="c"># Generate 1000 values from a gamma distribution with parameters α = 2.1,</span>
-<span class="c"># θ = 5.2.</span>
-<span class="n">some_sample</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">Gamma</span><span class="p">(</span><span class="mf">2.1</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">),</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="c"># Plot the estimated distribution.</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">xlabel</span> <span class="o">=</span> <span class="s">&quot;Value&quot;</span><span class="p">,</span> <span class="n">ylabel</span> <span class="o">=</span> <span class="s">&quot;Probability density&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
 
-<span class="c"># Represent the uncertain value by a fitted gamma distribution.</span>
+<p><img alt="" src="../uncertainvalue_kde_bimodal.svg" /></p>
+<p><a id='Uncertain-values-defined-by-theoretical-distributions-fitted-to-empirical-data-1'></a></p>
+<h3 id="uncertain_values_defined_by_theoretical_distributions_fitted_to_empirical_data">Uncertain values defined by theoretical distributions fitted to empirical data<a class="headerlink" href="#uncertain_values_defined_by_theoretical_distributions_fitted_to_empirical_data" title="Permanent link">&para;</a></h3>
+<p>One may also be given a dataset whose histogram looks a lot like a theoretical distribution. We may then select a theoretical distribution and fit its parameters to the empirical data.</p>
+<p>In the example below, we <a href="../../resampling/resampling_uncertain_values/">resample</a> the estimated distribution to obtain a histogram we can compare to the original data.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c"># Take a sample from a Gamma distribution with parameters α = 1.7 and θ = 5.5</span>
+<span class="n">some_sample</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">Gamma</span><span class="p">(</span><span class="mf">1.7</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">),</span> <span class="mi">2000</span><span class="p">)</span>
 <span class="n">uv</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">Gamma</span><span class="p">,</span> <span class="n">some_sample</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></div>
-</div>
-<p>In these examples we're trying to fit the same distribution to our sample as the distribution from which we draw the sample. Thus, we will get good fits. In real applications, make sure to always visually investigate the histogram of your data!</p>
-<p><a id='Beware:-fitting-distributions-may-lead-to-nonsensical-results!-1'></a></p>
-<h2 id="beware_fitting_distributions_may_lead_to_nonsensical_results">Beware: fitting distributions may lead to nonsensical results!<a class="headerlink" href="#beware_fitting_distributions_may_lead_to_nonsensical_results" title="Permanent link">&para;</a></h2>
-<p>In a less contrived example, we may try to fit a beta distribution to a sample generated from a gamma distribution.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">Distributions</span><span class="p">,</span> <span class="n">UncertainData</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">histogram</span><span class="p">(</span><span class="n">some_sample</span><span class="p">,</span> <span class="n">normalize</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="n">fc</span> <span class="o">=</span> <span class="o">:</span><span class="n">black</span><span class="p">,</span> <span class="n">lc</span> <span class="o">=</span> <span class="o">:</span><span class="n">black</span><span class="p">,</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">xlabel</span> <span class="o">=</span> <span class="s">&quot;value&quot;</span><span class="p">,</span> <span class="n">ylabel</span> <span class="o">=</span> <span class="s">&quot;density&quot;</span><span class="p">)</span>
 
-<span class="c"># Generate 1000 values from a gamma distribution with parameters α = 2.1,</span>
-<span class="c"># θ = 5.2.</span>
-<span class="n">some_sample</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">Gamma</span><span class="p">(</span><span class="mf">2.1</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">),</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="c"># Resample the fitted theoretical distribution</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">histogram</span><span class="p">(</span><span class="n">resample</span><span class="p">(</span><span class="n">uv</span><span class="p">,</span> <span class="mi">10000</span><span class="p">),</span> <span class="n">normalize</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="n">fc</span> <span class="o">=</span> <span class="o">:</span><span class="n">blue</span><span class="p">,</span> <span class="n">lc</span> <span class="o">=</span> <span class="o">:</span><span class="n">blue</span><span class="p">,</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">xlabel</span> <span class="o">=</span> <span class="s">&quot;value&quot;</span><span class="p">,</span> <span class="n">ylabel</span> <span class="o">=</span> <span class="s">&quot;density&quot;</span><span class="p">)</span>
 
-<span class="c"># Represent the uncertain value by a fitted beta distribution.</span>
-<span class="n">uv</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">Beta</span><span class="p">,</span> <span class="n">some_sample</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">layout</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">link</span> <span class="o">=</span> <span class="o">:</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
-<p>This is obviously not a good idea. Always visualise your distribution before deciding on which distribution to fit! You won't get any error messages if you try to fit a distribution that does not match your data.</p>
-<p>If the data do not follow an obvious theoretical distribution, it is better to use kernel density estimation to define the uncertain value.</p>
-<p><a id='Constructor-1'></a></p>
-<h2 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h2>
-<p><a id='UncertainData.UncertainValues.UncertainValue-Union{Tuple{T}, Tuple{D}, Tuple{Type{D},Array{T,1}}} where T where D<:Distribution' href='#UncertainData.UncertainValues.UncertainValue-Union{Tuple{T}, Tuple{D}, Tuple{Type{D},Array{T,1}}} where T where D<:Distribution'>#</a>
-<strong><code class="codehilite">UncertainData.UncertainValues.UncertainValue</code></strong> &mdash; <em>Method</em>.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>UncertainValue(empiricaldata::AbstractVector{T},
-    d::Type{D}) where {D &lt;: Distribution}
-</pre></div>
-</td></tr></table>
-
-<p><strong>Constructor for empirical distributions.</strong></p>
-<p>Fit a distribution of type <code class="codehilite">d</code> to the data and use that as the representation of the empirical distribution. Calls <code class="codehilite">Distributions.fit</code> behind the scenes.</p>
-<p><strong>Arguments</strong></p>
-<ul>
-<li><strong><code class="codehilite">empiricaldata</code></strong>: The data for which to fit the <code class="codehilite">distribution</code>.</li>
-<li><strong><code class="codehilite">distribution</code></strong>: A valid univariate distribution from <code class="codehilite">Distributions.jl</code>.</li>
-</ul>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/f07575c2d1c1d541a70d79ccb400b195350abf8c/src/uncertain_values/UncertainValue.jl#L66-L80' class='documenter-source'>source</a><br></p>
+<p>As expected, the histograms closely match (but are not exact because we estimated the distribution using a limited sample).</p>
+<p><img alt="" src="../uncertainvalue_theoretical_fitted_gamma.svg" /></p>
                 
                   
                 
@@ -871,7 +888,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../uncertainvalues_theoreticaldistributions/" title="Theoretical distributions" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../.." title="UncertainData.jl" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -880,19 +897,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Theoretical distributions
+                UncertainData.jl
               </span>
             </div>
           </a>
         
         
-          <a href="../../uncertain_datasets/uncertain_datasets_overview/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../uncertainvalues_overview/" title="Quickstart" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Overview
+                Quickstart
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
