@@ -26,4 +26,7 @@ include("uncertain_statistics/UncertainStatistics.jl")
 # Plot recipes
 include("plot_recipes/UncertainDataPlotRecipes.jl")
 
+
+export UncertainScalarBinomialDistributed
+
 end # module

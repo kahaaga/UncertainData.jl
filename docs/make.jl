@@ -8,11 +8,15 @@ using KernelDensity
 PAGES = [
     "index.md",
     "Uncertain values" => [
+        "uncertain_values/uncertainvalues_examples.md",
         "uncertain_values/uncertainvalues_overview.md",
         "uncertain_values/uncertainvalues_kde.md",
         "uncertain_values/uncertainvalues_fitted.md",
         "uncertain_values/uncertainvalues_theoreticaldistributions.md"
     ],
+	"Uncertain datasets" => [
+		"uncertain_datasets/uncertain_datasets_overview.md"
+	],
     "Uncertain statistics" => [
         "Core statistics" => [
             "uncertain_statistics/core_stats/core_statistics.md"

@@ -13,7 +13,8 @@ using UncertainData, Distributions
 # Define an uncertain value furnished by a theoretical distribution
 uv = UncertainValue(Normal, 1, 0.5)
 
-# Constrain the support of the furnishing distribution using various constraints
+# Constrain the support of the furnishing distribution using various
+# constraints
 uvc_lq = constrain(uv, TruncateLowerQuantile(0.2))
 uvc_uq = constrain(uv, TruncateUpperQuantile(0.8))
 uvc_q = constrain(uv, TruncateQuantiles(0.2, 0.8))
@@ -29,7 +30,8 @@ using UncertainData, Distributions
 # parameters fitted to empirical data
 uv = UncertainValue(Normal, rand(Normal(-1, 0.2), 1000))
 
-# Constrain the support of the furnishing distribution using various constraints
+# Constrain the support of the furnishing distribution using various
+# constraints
 uvc_lq = constrain(uv, TruncateLowerQuantile(0.2))
 uvc_uq = constrain(uv, TruncateUpperQuantile(0.8))
 uvc_q = constrain(uv, TruncateQuantiles(0.2, 0.8))
@@ -43,7 +45,8 @@ uvc_range = constrain(uv, TruncateRange(0.5, 1.5))
 # distribution of the empirical data
 uv = UncertainValue(UnivariateKDE, rand(Uniform(10, 15), 1000))
 
-# Constrain the support of the furnishing distribution using various constraints
+# Constrain the support of the furnishing distribution using various
+# constraints
 uvc_lq = constrain(uv, TruncateLowerQuantile(0.2))
 uvc_uq = constrain(uv, TruncateUpperQuantile(0.8))
 uvc_q = constrain(uv, TruncateQuantiles(0.2, 0.8))

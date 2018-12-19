@@ -5,6 +5,7 @@ import Printf.@sprintf
 
 abstract type AbstractUncertainValue end
 
+Broadcast.broadcastable(d::AbstractUncertainValue) = Ref(d)
 
 ##############################
 # Support of an observation
