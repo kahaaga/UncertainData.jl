@@ -75,11 +75,6 @@ M2 = MixtureModel([Normal(-2, 0.1), Normal(1, 0.2)])
 o6 = UncertainValue(rand(M1, 1000))
 o7 = UncertainValue(rand(M2, 1000))
 
-#####################
-# UncertainDataset
-####################
-
-# Iteration
 D = UncertainDataset([o1, o2, o3, o4, o5, o6, o7])
 ```
 
