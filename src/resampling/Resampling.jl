@@ -20,6 +20,8 @@ using Reexport
     # Resampling uncertain datasets
     ###################################
     include("resample_uncertaindataset.jl")
+	include("resample_uncertaindataset_withconstraint.jl")
+
     include("resample_uncertaindataset_value.jl")
     include("resample_uncertaindataset_indexvalue.jl")
 

@@ -357,4 +357,5 @@ Beta,
 BetaPrime,
 BetaBinomial,
 Gamma,
-Frechet
+Frechet,
+Binomial
