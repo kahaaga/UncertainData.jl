@@ -21,11 +21,12 @@ import Distributions.Univariate
 import Distributions.Distribution
 import Distributions.support
 import Distributions.Truncated
+import Distributions: mean, std
 
 import KernelDensity.UnivariateKDE
 
-import StatsBase.quantile
-import StatsBase.Weights
+import StatsBase: quantile, Weights, mean, std
+
 import Base.truncate
 
 ################################################################
@@ -207,6 +208,23 @@ function truncate(uv::TheoreticalDistributionScalarValue,
     Truncated(uv.distribution, lower_bound, upper_bound)
 end
 
+"""
+    truncate(uv::TheoreticalDistributionScalarValue,
+        constraint::TruncateRange)
+
+Truncate the theoretical distribution furnishing `uv` using a
+`TruncateRange` sampling constraint.
+"""
+function truncate(uv::TheoreticalDistributionScalarValue,
+        constraint::TruncateStd)
+    m = mean(uv.distribution)
+    s = std(uv.distribution)
+    lower_bound = m - s
+    upper_bound = m + s
+
+    Truncated(uv.distribution, lower_bound, upper_bound)
+end
+
 ################################################################
 # Truncating uncertain values based on kernel density estimates
 ################################################################
@@ -218,6 +236,8 @@ Truncate an uncertain value `uv` furnished by a kernel density estimated
 distribution using the supplied `constraint`.
 """
 truncate(uv::AbstractUncertainScalarKDE, constraint::SamplingConstraint)
+
+truncate(uv::AbstractUncertainScalarKDE, constraint::NoConstraint) = uv
 
 """
     truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateLowerQuantile)
@@ -346,6 +366,31 @@ function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateRange;
     range_subset, pdf_subset, idx_min, idx_max
 end
 
+# """
+#     truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateStd)
+
+# Truncate the kernel density estimate to `uv`s distribution using a
+# `TruncateStd` sampling constraint. Finds the standard deviation by sampling the 
+# distribution `n` times and taking the standard deviation of the result.
+# """
+# function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateStd; n = 10000)
+
+#     # Subset the values and weights (values of the pdf at those values)
+#     s = rand(uv, n)
+#     uv_mean = mean(s)
+#     uv_stdev = std(s)*constraint.nσ
+
+#     idx_min = findfirst(uv.range .>= uv_mean - uv_stdev)
+#     idx_max = findlast(uv.range .<= uv_mean + uv_stdev)
+#     range_subset = uv.range[idx_min:idx_max]
+#     pdf_subset = uv.pdf[idx_min:idx_max]
+
+#     # Return truncated KDE and the indices used to subset
+#     range_subset, pdf_subset, idx_min, idx_max
+# end
+
+truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateStd) = 
+    truncate(uv, fallback(uv, constraint))
 
 
 
@@ -370,6 +415,8 @@ function constrain_kde_distribution(uv::AbstractUncertainScalarKDE,
         Weights(pdf_subset)
         )
 end
+
+constrain_kde_distribution(uv::AbstractUncertainScalarKDE, constraint::NoConstraint) = uv
 
 #############################################################
 # Uncertain values represented by theoretical distributions
@@ -514,6 +561,15 @@ function constrain(uv::AbstractUncertainScalarKDE,
     constrain_kde_distribution(uv, constraint)
 end
 
+
+constrain(uvals::Vector{AbstractUncertainValue}, constraint::SamplingConstraint) = 
+    [constrain(uval, constraint) for uval in uvals]
+
+
+function constrain(uvals::Vector{AbstractUncertainValue}, 
+                constraints::Vector{SamplingConstraint})
+    [constrain(uvals[i], constraints[i]) for i = 1:length(uvals)]
+end
 
 export
 ConstrainedUncertainScalarValueTwoParameter,

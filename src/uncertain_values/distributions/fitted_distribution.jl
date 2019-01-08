@@ -16,7 +16,6 @@ struct FittedDistribution{D <: Distribution} <: AbstractEmpiricalDistribution
 end
 
 Broadcast.broadcastable(fd::FittedDistribution) = Ref(fd)
-
 Distributions.rand(fd::FittedDistribution) = rand(fd.distribution)
 Distributions.rand(fd::FittedDistribution, n::Int) = rand(fd.distribution, n)
 Distributions.support(fd::FittedDistribution) = support(fd.distribution)

@@ -24,3 +24,5 @@ function constrain(d::UncertainValueDataset, s::Vector{SamplingConstraint})
 
 	[constrain(d[i], s[i]) for i in 1:length(d)]
 end
+
+export constrain

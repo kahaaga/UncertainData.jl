@@ -14,6 +14,8 @@ include("uncertain_datasets/test_uncertain_datasets.jl")
 
 # SamplingConstraints module tests
 include("sampling_constraints/test_constrain_uncertainvalues.jl")
+include("sampling_constraints/test_constrain_uncertainvalues_kde.jl")
+include("sampling_constraints/test_constrain_uncertaindatasets.jl")
 
 # Resampling module tests
 include("resampling/test_resampling_uncertainvalues.jl")

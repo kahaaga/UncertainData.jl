@@ -37,6 +37,7 @@ Statistics.var(uv::AbstractUncertainValue) = var(uv.distribution)
 Compute the mean of an uncertain value over an `n`-draw sample of it.
 """
 Statistics.mean(uv::AbstractUncertainValue, n::Int) = mean(resample(uv, n))
+Statistics.mean(uv::AbstractUncertainValue, n::Int) = mean(resample(uv, n))
 
 """
 	mode(uv::AbstractUncertainValue, n::Int)
