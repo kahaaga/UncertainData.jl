@@ -17,3 +17,12 @@ also represented as probability distributions. Indices may also be sampled using
 4. [**Resample the the uncertain values**](resampling/resampling_uncertain_values.md) or uncertain datasets.
 5. [**Extend existing algorithm**](implementing_algorithms_for_uncertaindata.md) to accept uncertain values/datasets.
 6. [**Quantify the uncertainty**](uncertain_statistics/core_stats/core_statistics.md) in your dataset or on whatever measure your algorithm computes.
+
+
+
+## Related software
+
+[Measurements.jl](https://github.com/JuliaPhysics/Measurements.jl) also deals with 
+uncertainty handling, propagates errors in computations, and deals with functional 
+correlations out of the box. At the moment, it only handles normally distributed 
+data. 
