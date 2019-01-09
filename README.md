@@ -14,5 +14,5 @@ uncertain data.
 
 
 Please check out the
-[documentation](https://kahaaga.github.io/UncertainData.jl/) for more
+[documentation](https://kahaaga.github.io/UncertainData.jl/dev) for more
 information.
