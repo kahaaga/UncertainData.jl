@@ -1,9 +1,9 @@
 This packages facilitates working with datasets with uncertainties. The core concept of `UncertainDatasets` is to replace an uncertain data value with a probability distribution describing the point's uncertainty.
 
 
-There are currently three ways of doing that: by [theoretical distributions](uncertain_values/uncertainvalues_theoreticaldistributions.md),
-[theoretical distributions with parameters fitted to empirical data](uncertain_values/uncertainvalues_fitted.md), or
-[kernel density estimations to the distributions of empirical data](uncertain_values/uncertainvalued_kde.md). Check out the examples below
+There are currently three ways of doing that: by [theoretical distributions](uncertainvalues_theoreticaldistributions.md),
+[theoretical distributions with parameters fitted to empirical data](uncertainvalues_fitted.md), or
+[kernel density estimations to the distributions of empirical data](uncertainvalued_kde.md). Check out the examples below
 and the documentation in the sidebar!
 
 ### Uncertain values defined by theoretical distributions

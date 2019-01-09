@@ -1,3 +1,4 @@
+
 """
     AbstractUncertainValueDataset
 
@@ -23,9 +24,14 @@ Base.getindex(uvd::AbstractUncertainValueDataset, i) = uvd.values[i]
 
 Base.length(uvd::AbstractUncertainValueDataset) = length(uvd.values)
 Base.size(uvd::AbstractUncertainValueDataset) = length(uvd)
-Base.firstindex(uvd::AbstractUncertainValueDataset) = length(uvd.values)
+Base.firstindex(uvd::AbstractUncertainValueDataset) = 1
 Base.lastindex(uvd::AbstractUncertainValueDataset) = length(uvd.values)
 
+
+import ..UncertainValues: minimum, maximum
+
+Base.minimum(udata::AbstractUncertainValueDataset) = [minimum(uval) for uval in udata]
+Base.maximum(udata::AbstractUncertainValueDataset) = [maximum(uval) for uval in udata]
 
 
 export AbstractUncertainValueDataset

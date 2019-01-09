@@ -6,6 +6,12 @@ using Reexport
 
     include("recipes_uncertainvalues_theoretical.jl")
     include("recipes_uncertainvalues_kde.jl")
+    include("recipes_uncertaindatasets.jl")
+
+    # Uncertainties for values with uncertainties both in index and value
+    include("recipes_uncertain_index_and_value.jl")
+    include("recipes_uncertainindexvaluedataset.jl")
+    
 end # module
 
 """
@@ -13,3 +19,4 @@ end # module
 
 Plot recipes for uncertain values and uncertain datasets.
 """
+UncertainDataPlotRecipes

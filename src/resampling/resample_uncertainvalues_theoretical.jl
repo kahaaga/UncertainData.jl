@@ -13,7 +13,8 @@ import Distributions: support
 """
 	resample(uv::AbstractUncertainValue)
 
-Draw a realisation of an uncertain value according to its distribution.
+Sample the uncertain value once, drawing values from the entire support of the probability 
+distribution furnishing it.
 """
 resample(uv::AbstractUncertainValue) = rand(uv.distribution)
 
@@ -21,7 +22,8 @@ resample(uv::AbstractUncertainValue) = rand(uv.distribution)
 """
 	resample(uv::AbstractUncertainValue, n::Int)
 
-Draw `n` realisations of an uncertain value according to its distribution.
+Sample the uncertain value `n` times, drawing values from the entire support of the 
+probability distribution furnishing it.
 """
 resample(uv::AbstractUncertainValue, n::Int) =
     rand(uv.distribution, n)

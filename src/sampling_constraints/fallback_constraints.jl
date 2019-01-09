@@ -18,6 +18,6 @@ Fallback constraint for a `TruncateStd` constraint applied to an
 `UncertainScalarKDE` instance.
 """
 function fallback(uv::UncertainScalarKDE, constraint::TruncateStd)
-    @warn "TruncateStd constraint is incompatible with UncertainScalarKDE. Falling back to TruncateQuantiles(0.25, 0.75)."
-    TruncateQuantiles(0.25, 0.75)
+    @warn "TruncateStd constraint is incompatible with UncertainScalarKDE. Falling back to TruncateQuantiles(0.33, 0.67)."
+    TruncateQuantiles(0.33, 0.67)
 end

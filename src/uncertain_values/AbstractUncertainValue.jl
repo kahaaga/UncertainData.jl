@@ -1,6 +1,7 @@
 using Distributions
 using StaticArrays
 import Printf.@sprintf
+import Distributions.RealInterval
 
 
 abstract type AbstractUncertainValue end
@@ -35,9 +36,19 @@ export support
 
 Compute the overlap in the supports of two uncertain observations.
 """
-function support_overlap(o1::AbstractUncertainValue,
-                        o2::AbstractUncertainValue)
-    intersect(support(o1), support(o2))
+
+function support_overlap(uval1::AbstractUncertainValue, uval2::AbstractUncertainValue)
+    s1 = support(uval1)
+    s2 = support(uval2)
+    
+    if s1 isa RealInterval 
+        s1 = interval(s1...)
+    end
+    
+    if s2 isa RealInterval
+        s2 = interval(s2...)
+    end
+    s1 ∩ s2
 end
 
 export support_overlap

@@ -15,16 +15,17 @@ import Distributions: Truncated
 ########################################################################
 # Resampling with constraints
 ########################################################################
+
 """
-Resample an uncertain value given a sampling constraint.
+Resample an uncertain value by first truncating its furnishing distribution with the 
+provided sampling `constraint`.
 """
-function resample(uv::AbstractUncertainValue,
-        constraint::C) where {C<:SamplingConstraint} end
+function resample(uv::AbstractUncertainValue, constraint::SamplingConstraint) end
 
 """
     resample(uv::AbstractUncertainValue, constraint::NoConstraint)
 
-Resample without contraints (use the full distribution representing the value)
+Resample an uncertain value without contraints (use the full furnishing distribution).
 
 ## Example
 
@@ -40,7 +41,7 @@ resample(uv::AbstractUncertainValue, constraint::NoConstraint) = resample(uv)
 """
     resample(uv::AbstractUncertainValue, constraint::NoConstraint, n::Int)
 
-Resample without contraints (use the full distribution representing the value)
+Resample an uncertain value without contraints (use the full furnishing distribution).
 
 ## Example
 

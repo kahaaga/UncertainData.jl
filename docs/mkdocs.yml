@@ -44,7 +44,7 @@ markdown_extensions:
 docs_dir: 'build'
 
 pages:
-  - UncertainData.jl: index.md
+  - Overview: index.md
   - Uncertain values:
     - Examples: uncertain_values/uncertainvalues_examples.md
     - Quickstart: uncertain_values/uncertainvalues_overview.md
@@ -52,12 +52,16 @@ pages:
     - Theoretical distributions: uncertain_values/uncertainvalues_theoreticaldistributions.md
     - Fit theoretical distributions: uncertain_values/uncertainvalues_fitted.md
   - Uncertain datasets:
-      - Overview: uncertain_datasets/uncertain_datasets_overview.md
+      - Overview, simple example with resampling : uncertain_datasets/uncertain_datasets_overview.md
+      - Uncertain value datasets: uncertain_datasets/uncertain_value_dataset.md
+      - Uncertain index-value datasets: uncertain_datasets/uncertain_indexvalue_dataset.md
   - Sampling constraints:
-      - Available constraints: sampling_constraints/available_constraints.md
+      - List of constraints: sampling_constraints/available_constraints.md
       - Constraining uncertain values: sampling_constraints/constrain_uncertain_values.md
   - Resampling:
       - Resampling uncertain values: resampling/resampling_uncertain_values.md
+      - Resampling uncertain value datasets: resampling/resampling_uncertain_datasets.md
+      - Resampling uncertain index-value datasets: resampling/resampling_uncertain_indexvalue_datasets.md
   - Uncertain statistics:
     - Core statistics: uncertain_statistics/core_stats/core_statistics.md
     - Hypothesis tests:
@@ -71,3 +75,4 @@ pages:
       - Mann-Whitney u-test: uncertain_statistics/hypothesistests/mann_whitney_u_test.md
       - Anderson-Darling test: uncertain_statistics/hypothesistests/anderson_darling_test.md
   - Implementing algorithms for uncertain data: implementing_algorithms_for_uncertaindata.md
+  - Changelog: changelog.md

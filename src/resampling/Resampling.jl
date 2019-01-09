@@ -25,7 +25,6 @@ using Reexport
     include("resample_uncertaindataset_value.jl")
     include("resample_uncertaindataset_indexvalue.jl")
 
-
     export resample
 end # module
 

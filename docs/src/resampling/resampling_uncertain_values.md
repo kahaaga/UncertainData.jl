@@ -1,15 +1,17 @@
-## Without constraints
-
-
 Uncertain values may be resampled by drawing random number from the distributions
 furnishing them.
 
-- `resample(uv::AbstractUncertainValue)` samples the uncertain value once,
-    drawing values from the entire support of the probability distribution
-    furnishing it.
-- `resample(uv::AbstractUncertainValuen, n::Int)` samples the uncertain value
-    `n` times, drawing values from the entire support of the probability
-    distribution furnishing it.
+## Documentation
+
+```@docs 
+resample(uv::AbstractUncertainValue)
+```
+
+```@docs 
+resample(uv::AbstractUncertainValue, n::Int)
+```
+
+## Examples
 
 ``` julia tab="Resample once"
 using Distributions, UncertainData
@@ -38,9 +40,6 @@ resample(uv_theoretical_fitted, n)
 resample(uv_kde, n)
 ```
 
-
-## With constraints
-
 Resampling can also be performed with constraints.
 
 - `resample(uv::AbstractUncertainValue, constraint::SamplingConstraint)`
@@ -60,8 +59,8 @@ Available sampling constraints are:
 6. `TruncateUpperQuantile(upper_quantile::Float64)`
 7. `TruncateQuantiles(lower_quantile::Float64, upper_quantile::Float64)`
 
-For full documentation of the constraints, see the available constraints
-in the menu.
+For full documentation of the constraints, see the 
+[available constraints](../sampling_constraints/available_constraints.md) in the menu.
 
 
 ``` julia tab="Lower quantile"
