@@ -9,13 +9,16 @@ import StatsBase.quantile
 
 import Distributions.pdf
 
+import Base: minimum, maximum 
+
 abstract type AbstractEmpiricalDistribution end
 
 struct FittedDistribution{D <: Distribution} <: AbstractEmpiricalDistribution
     distribution::D
 end
 
-Broadcast.broadcastable(fd::FittedDistribution) = Ref(fd)
+Broadcast.broadcastable(fd::FittedDistribution) = Ref(fd.distribution)
+
 Distributions.rand(fd::FittedDistribution) = rand(fd.distribution)
 Distributions.rand(fd::FittedDistribution, n::Int) = rand(fd.distribution, n)
 Distributions.support(fd::FittedDistribution) = support(fd.distribution)
@@ -24,6 +27,10 @@ StatsBase.mean(fd::FittedDistribution) = mean(fd.distribution)
 StatsBase.median(fd::FittedDistribution) = median(fd.distribution)
 StatsBase.middle(fd::FittedDistribution) = middle(fd.distribution)
 StatsBase.quantile(fd::FittedDistribution, q) = quantile(fd.distribution, q)
+
+
+Base.minimum(uv::FittedDistribution) = minimum(uv.distribution)
+Base.maximum(uv::FittedDistribution) = maximum(uv.distribution)
 
 export
 AbstractEmpiricalDistribution,

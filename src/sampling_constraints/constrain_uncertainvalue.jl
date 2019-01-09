@@ -86,6 +86,8 @@ function verify_nonempty_support(uv::AbstractUncertainScalarKDE,
     end
 end
 
+export verify_nonempty_support
+
 ################################################################
 # Truncating uncertain values based on theoretical distributions
 # Operating on the union of both TheoreticalFittedUncertainScalar
@@ -219,6 +221,16 @@ function truncate(uv::TheoreticalDistributionScalarValue,
         constraint::TruncateStd)
     m = mean(uv.distribution)
     s = std(uv.distribution)
+    lower_bound = m - s
+    upper_bound = m + s
+
+    Truncated(uv.distribution, lower_bound, upper_bound)
+end
+
+function truncate(uv::TheoreticalFittedUncertainScalar,
+    constraint::TruncateStd)
+    m = mean(uv.distribution.distribution)
+    s = std(uv.distribution.distribution)
     lower_bound = m - s
     upper_bound = m + s
 
@@ -365,29 +377,6 @@ function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateRange;
     # Return truncated KDE and the indices used to subset
     range_subset, pdf_subset, idx_min, idx_max
 end
-
-# """
-#     truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateStd)
-
-# Truncate the kernel density estimate to `uv`s distribution using a
-# `TruncateStd` sampling constraint. Finds the standard deviation by sampling the 
-# distribution `n` times and taking the standard deviation of the result.
-# """
-# function truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateStd; n = 10000)
-
-#     # Subset the values and weights (values of the pdf at those values)
-#     s = rand(uv, n)
-#     uv_mean = mean(s)
-#     uv_stdev = std(s)*constraint.nσ
-
-#     idx_min = findfirst(uv.range .>= uv_mean - uv_stdev)
-#     idx_max = findlast(uv.range .<= uv_mean + uv_stdev)
-#     range_subset = uv.range[idx_min:idx_max]
-#     pdf_subset = uv.pdf[idx_min:idx_max]
-
-#     # Return truncated KDE and the indices used to subset
-#     range_subset, pdf_subset, idx_min, idx_max
-# end
 
 truncate(uv::AbstractUncertainScalarKDE, constraint::TruncateStd) = 
     truncate(uv, fallback(uv, constraint))

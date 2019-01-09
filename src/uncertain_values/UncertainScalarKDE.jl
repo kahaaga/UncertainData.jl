@@ -42,6 +42,8 @@ struct TruncatedUncertainScalarKDE{T} <: AbstractUncertainScalarKDE{T}
     pdf::StatsBase.Weights
 end
 
+support(uv::TruncatedUncertainScalarKDE) = interval(minimum(uv.range), maximum(uv.range))
+
 
 function summarise(uv::AbstractUncertainScalarKDE{T}) where {T}
     dist = uv.distribution
@@ -187,12 +189,25 @@ median(uv::AbstractUncertainScalarKDE{T}) where T = quantile(uv, 0.5)
 
 
 """
+    support(uv::AbstractUncertainScalarKDE)
+
+Return the support of an uncertain value furnished by a kernel density
+estimate.
+"""
+function support(uv::AbstractUncertainScalarKDE) 
+    interval(minimum(uv.range), maximum(uv.range))
+end
+
+
+"""
     support(uv::UncertainScalarKDE)
 
 Return the support of an uncertain value furnished by a kernel density
 estimate.
 """
-support(uv::AbstractUncertainScalarKDE{T}) where T = (minimum(uv.range), maximum(uv.range))
+function support(uv::UncertainScalarKDE) 
+    interval(minimum(uv.range), maximum(uv.range))
+end
 
 
 """
@@ -201,7 +216,7 @@ support(uv::AbstractUncertainScalarKDE{T}) where T = (minimum(uv.range), maximum
 Return the index of the range/density value corresponding to the `q`-th quantile
 of an uncertain value furnished by a kernel density estimate.
 """
-function getquantileindex(uv::AbstractUncertainScalarKDE{T}, q::Float64) where T
+function getquantileindex(uv::AbstractUncertainScalarKDE, q::Float64)
     findfirst(ecdf(uv) .> q)
 end
 

@@ -25,6 +25,8 @@ getvalues(u::UncertainValueDataset, i) = u.values
 getvalue(u::UncertainValueDataset, i) = u.values[i]
 
 
+UncertainValueDataset(uv::AbstractUncertainValue) = UncertainValueDataset(UncertainDataset([uv]))
+
 export
 UncertainValueDataset,
 getvalue,

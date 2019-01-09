@@ -15,7 +15,9 @@ PAGES = [
         "uncertain_values/uncertainvalues_theoreticaldistributions.md"
     ],
 	"Uncertain datasets" => [
-		"uncertain_datasets/uncertain_datasets_overview.md"
+        "uncertain_datasets/uncertain_datasets_overview.md",
+        "uncertain_datasets/uncertain_value_dataset.md",
+        "uncertain_datasets/uncertain_indexvalue_dataset.md"
 	],
     "Uncertain statistics" => [
         "Core statistics" => [
@@ -39,9 +41,13 @@ PAGES = [
         "sampling_constraints/constrain_uncertain_values.md"
     ],
     "Resampling" => [
-		"resampling/resampling_uncertain_values.md"
+        "resampling/resampling_uncertain_values.md",
+        "resampling/resampling_uncertain_datasets.md",
+        "resampling/resampling_uncertain_indexvalue_datasets.md"
 	],
-    "implementing_algorithms_for_uncertaindata.md"
+    "implementing_algorithms_for_uncertaindata.md",
+    
+    "changelog.md"
 ]
 
 makedocs(

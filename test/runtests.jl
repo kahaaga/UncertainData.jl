@@ -8,6 +8,7 @@ using KernelDensity
 # UncertainValues module tests
 include("uncertain_values/test_assign_distributions.jl")
 include("uncertain_values/test_uncertain_values.jl")
+include("uncertain_values/test_minmax.jl")
 
 # UncertainDatasets module tests
 include("uncertain_datasets/test_uncertain_datasets.jl")
@@ -21,6 +22,8 @@ include("sampling_constraints/test_constrain_uncertaindatasets.jl")
 include("resampling/test_resampling_uncertainvalues.jl")
 include("resampling/test_resampling_uncertainvalues_kde.jl")
 include("resampling/test_resampling_datasets.jl")
+include("resampling/test_resampling_with_constraints.jl")
+
 
 # UncertainStatistics tests
 include("uncertain_statistics/test_UncertainStatistics.jl")

@@ -1,9 +1,9 @@
 import ..UncertainDatasets.UncertainDataset
 import ..SamplingConstraints:
 	NoConstraint,
-	LowerQuantile,
-	UpperQuantile,
-	QuantileRange
+	TruncateLowerQuantile,
+	TruncateUpperQuantile,
+	TruncateQuantiles
 
 ##########################################################################
 # Draw realisations of the uncertain dataset according to the distributions

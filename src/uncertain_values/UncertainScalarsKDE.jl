@@ -135,7 +135,8 @@ median(uv::AbstractUncertainScalarKDE{T}) where T = quantile(uv, 0.5)
 Return the support of an uncertain value furnished by a kernel density
 estimate.
 """
-support(uv::AbstractUncertainScalarKDE{T}) where T = (minimum(uv.range), maximum(uv.range))
+support(uv::AbstractUncertainScalarKDE{T}) where T = 
+    interval(minimum(uv.range), maximum(uv.range))
 
 
 """

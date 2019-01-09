@@ -269,8 +269,8 @@ resample(uncertainval, constraint)
 function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateQuantiles)
     # Find the index of the kernel density estimated distribution
     # corresponding to the lower quantile at which we want to truncate.
-    idx_upper_quantile = getquantileindex(uv, constraint.upper_quantile)
     idx_lower_quantile = getquantileindex(uv, constraint.lower_quantile)
+    idx_upper_quantile = getquantileindex(uv, constraint.upper_quantile)
 
     # Box width
     δ = step(uv.range)
