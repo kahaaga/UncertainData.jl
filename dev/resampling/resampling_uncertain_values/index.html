@@ -96,7 +96,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#without_constraints" tabindex="1" class="md-skip">
+      <a href="#documentation" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -239,8 +239,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="UncertainData.jl" class="md-nav__link">
-      UncertainData.jl
+    <a href="../.." title="Overview" class="md-nav__link">
+      Overview
     </a>
   </li>
 
@@ -354,8 +354,32 @@
 
 
   <li class="md-nav__item">
-    <a href="../../uncertain_datasets/uncertain_datasets_overview/" title="Overview" class="md-nav__link">
-      Overview
+    <a href="../../uncertain_datasets/uncertain_datasets_overview/" title="Overview, simple example with resampling" class="md-nav__link">
+      Overview, simple example with resampling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_datasets/uncertain_value_dataset/" title="Uncertain value datasets" class="md-nav__link">
+      Uncertain value datasets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_datasets/uncertain_indexvalue_dataset/" title="Uncertain index-value datasets" class="md-nav__link">
+      Uncertain index-value datasets
     </a>
   </li>
 
@@ -390,8 +414,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../sampling_constraints/available_constraints/" title="Available constraints" class="md-nav__link">
-      Available constraints
+    <a href="../../sampling_constraints/available_constraints/" title="List of constraints" class="md-nav__link">
+      List of constraints
     </a>
   </li>
 
@@ -463,15 +487,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#without_constraints" title="Without constraints" class="md-nav__link">
-    Without constraints
+  <a href="#documentation" title="Documentation" class="md-nav__link">
+    Documentation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#with_constraints" title="With constraints" class="md-nav__link">
-    With constraints
+  <a href="#examples" title="Examples" class="md-nav__link">
+    Examples
   </a>
   
 </li>
@@ -484,6 +508,30 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../resampling_uncertain_datasets/" title="Resampling uncertain value datasets" class="md-nav__link">
+      Resampling uncertain value datasets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../resampling_uncertain_indexvalue_datasets/" title="Resampling uncertain index-value datasets" class="md-nav__link">
+      Resampling uncertain index-value datasets
+    </a>
   </li>
 
         
@@ -672,6 +720,18 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../changelog/" title="Changelog" class="md-nav__link">
+      Changelog
+    </a>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -691,15 +751,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#without_constraints" title="Without constraints" class="md-nav__link">
-    Without constraints
+  <a href="#documentation" title="Documentation" class="md-nav__link">
+    Documentation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#with_constraints" title="With constraints" class="md-nav__link">
-    With constraints
+  <a href="#examples" title="Examples" class="md-nav__link">
+    Examples
   </a>
   
 </li>
@@ -725,13 +785,27 @@
                 
                   <h1>Resampling uncertain values</h1>
                 
-                <p><a id='Without-constraints-1'></a></p>
-<h2 id="without_constraints">Without constraints<a class="headerlink" href="#without_constraints" title="Permanent link">&para;</a></h2>
-<p>Uncertain values may be resampled by drawing random number from the distributions furnishing them.</p>
-<ul>
-<li><code class="codehilite">resample(uv::AbstractUncertainValue)</code> samples the uncertain value once,   drawing values from the entire support of the probability distribution   furnishing it.</li>
-<li><code class="codehilite">resample(uv::AbstractUncertainValuen, n::Int)</code> samples the uncertain value   <code class="codehilite">n</code> times, drawing values from the entire support of the probability   distribution furnishing it.</li>
-</ul>
+                <p>Uncertain values may be resampled by drawing random number from the distributions furnishing them.</p>
+<p><a id='Documentation-1'></a></p>
+<h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h2>
+<p><a id='UncertainData.Resampling.resample-Tuple{AbstractUncertainValue}' href='#UncertainData.Resampling.resample-Tuple{AbstractUncertainValue}'>#</a>
+<strong><code class="codehilite">UncertainData.Resampling.resample</code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>resample(uv::AbstractUncertainValue)
+</pre></div>
+</td></tr></table>
+
+<p>Sample the uncertain value once, drawing values from the entire support of the probability  distribution furnishing it.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/a8a86083e6fe628e97c9e92501fcae828eeecd54/src/resampling/resample_uncertainvalues_theoretical.jl#L13-L18' class='documenter-source'>source</a><br></p>
+<p><a id='UncertainData.Resampling.resample-Tuple{AbstractUncertainValue,Int64}' href='#UncertainData.Resampling.resample-Tuple{AbstractUncertainValue,Int64}'>#</a>
+<strong><code class="codehilite">UncertainData.Resampling.resample</code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>resample(uv::AbstractUncertainValue, n::Int)
+</pre></div>
+</td></tr></table>
+
+<p>Sample the uncertain value <code class="codehilite">n</code> times, drawing values from the entire support of the  probability distribution furnishing it.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/a8a86083e6fe628e97c9e92501fcae828eeecd54/src/resampling/resample_uncertainvalues_theoretical.jl#L22-L27' class='documenter-source'>source</a><br></p>
+<p><a id='Examples-1'></a></p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <div class="superfences-tabs">
 <input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
 <label for="__tab_1_0">Resample once</label>
@@ -782,8 +856,6 @@
 </pre></div>
 </td></tr></table></div>
 </div>
-<p><a id='With-constraints-1'></a></p>
-<h2 id="with_constraints">With constraints<a class="headerlink" href="#with_constraints" title="Permanent link">&para;</a></h2>
 <p>Resampling can also be performed with constraints.</p>
 <ul>
 <li><code class="codehilite">resample(uv::AbstractUncertainValue, constraint::SamplingConstraint)</code>   samples the uncertain value once, drawing from a restricted   range of the support of the the probability distribution furnishing it.</li>
@@ -799,7 +871,7 @@
 <li><code class="codehilite">TruncateUpperQuantile(upper_quantile::Float64)</code></li>
 <li><code class="codehilite">TruncateQuantiles(lower_quantile::Float64, upper_quantile::Float64)</code></li>
 </ol>
-<p>For full documentation of the constraints, see the available constraints in the menu.</p>
+<p>For full documentation of the constraints, see the  <a href="../../sampling_constraints/available_constraints/">available constraints</a> in the menu.</p>
 <div class="superfences-tabs">
 <input name="__tabs_2" type="radio" id="__tab_2_0" checked="checked" />
 <label for="__tab_2_0">Lower quantile</label>
@@ -1065,13 +1137,13 @@
           </a>
         
         
-          <a href="../../uncertain_statistics/core_stats/core_statistics/" title="Core statistics" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../resampling_uncertain_datasets/" title="Resampling uncertain value datasets" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Core statistics
+                Resampling uncertain value datasets
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

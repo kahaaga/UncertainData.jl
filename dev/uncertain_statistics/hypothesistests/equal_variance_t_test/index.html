@@ -239,8 +239,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../.." title="UncertainData.jl" class="md-nav__link">
-      UncertainData.jl
+    <a href="../../.." title="Overview" class="md-nav__link">
+      Overview
     </a>
   </li>
 
@@ -354,8 +354,32 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../uncertain_datasets/uncertain_datasets_overview/" title="Overview" class="md-nav__link">
-      Overview
+    <a href="../../../uncertain_datasets/uncertain_datasets_overview/" title="Overview, simple example with resampling" class="md-nav__link">
+      Overview, simple example with resampling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_datasets/uncertain_value_dataset/" title="Uncertain value datasets" class="md-nav__link">
+      Uncertain value datasets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_datasets/uncertain_indexvalue_dataset/" title="Uncertain index-value datasets" class="md-nav__link">
+      Uncertain index-value datasets
     </a>
   </li>
 
@@ -390,8 +414,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../sampling_constraints/available_constraints/" title="Available constraints" class="md-nav__link">
-      Available constraints
+    <a href="../../../sampling_constraints/available_constraints/" title="List of constraints" class="md-nav__link">
+      List of constraints
     </a>
   </li>
 
@@ -440,6 +464,30 @@
   <li class="md-nav__item">
     <a href="../../../resampling/resampling_uncertain_values/" title="Resampling uncertain values" class="md-nav__link">
       Resampling uncertain values
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_uncertain_datasets/" title="Resampling uncertain value datasets" class="md-nav__link">
+      Resampling uncertain value datasets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_uncertain_indexvalue_datasets/" title="Resampling uncertain index-value datasets" class="md-nav__link">
+      Resampling uncertain index-value datasets
     </a>
   </li>
 
@@ -681,6 +729,18 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../changelog/" title="Changelog" class="md-nav__link">
+      Changelog
+    </a>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -753,7 +813,7 @@
 
 <p>Consider two samples <code class="codehilite">s1</code> and <code class="codehilite">s2</code>, each consisting of <code class="codehilite">n</code> random draws from the distributions furnishing <code class="codehilite">d1</code> and <code class="codehilite">d2</code>, respectively.</p>
 <p>This function performs a two-sample t-test of the null hypothesis that <code class="codehilite">s1</code> and <code class="codehilite">s2</code> come from distributions with equal means and variances against the alternative hypothesis that the distributions have different means but equal variances.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/067f445dcec2f8e55e123a43d306e0214876ad4d/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L34-L45' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/a8a86083e6fe628e97c9e92501fcae828eeecd54/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L34-L45' class='documenter-source'>source</a><br></p>
 <p><strong>Example</strong></p>
 <p>Let's create two uncertain values furnished by distributions of different types. We'll perform the equal variance t-test to check if there is support for the null-hypothesis that the distributions furnishing the uncertain values come from distributions with equal means and variances.</p>
 <p>We expect the test to reject this null-hypothesis, because we've created two very different distributions.</p>
@@ -819,7 +879,7 @@
 
 <p>Consider two samples <code class="codehilite">s1[i]</code> and <code class="codehilite">s2[i]</code>, each consisting of <code class="codehilite">n</code> random draws from the distributions furnishing the uncertain values <code class="codehilite">d1[i]</code> and <code class="codehilite">d2[i]</code>, respectively. Gather all <code class="codehilite">s1[i]</code> in a pooled sample <code class="codehilite">S1</code>, and all <code class="codehilite">s2[i]</code> in a pooled sample <code class="codehilite">S2</code>.</p>
 <p>Perform a two-sample t-test of the null hypothesis that <code class="codehilite">S1</code> and <code class="codehilite">S2</code> come from distributions with equal means and variances against the alternative hypothesis that the distributions have different means but equal variances.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/067f445dcec2f8e55e123a43d306e0214876ad4d/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L56-L68' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/a8a86083e6fe628e97c9e92501fcae828eeecd54/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L56-L68' class='documenter-source'>source</a><br></p>
 <p><a id='Element-wise-test-1'></a></p>
 <h2 id="element-wise_test">Element-wise test<a class="headerlink" href="#element-wise_test" title="Permanent link">&para;</a></h2>
 <p><a id='UncertainData.UncertainStatistics.EqualVarianceTTestElementWise' href='#UncertainData.UncertainStatistics.EqualVarianceTTestElementWise'>#</a>
@@ -832,7 +892,7 @@
 
 <p>Consider two samples <code class="codehilite">s1[i]</code> and <code class="codehilite">s2[i]</code>, each consisting of <code class="codehilite">n</code> random draws from the distributions furnishing the uncertain values <code class="codehilite">d1[i]</code> and <code class="codehilite">d2[i]</code>, respectively. This function performs an elementwise <code class="codehilite">EqualVarianceTTest</code> on the pairs <code class="codehilite">(s1[i], s2[i])</code>. Specifically:</p>
 <p>Performs an pairwise two-sample t-test of the null hypothesis that <code class="codehilite">s1[i]</code> and <code class="codehilite">s2[i]</code> come from distributions with equal means and variances against the alternative hypothesis that the distributions have different means but equal variances.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/067f445dcec2f8e55e123a43d306e0214876ad4d/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L81-L94' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/a8a86083e6fe628e97c9e92501fcae828eeecd54/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L81-L94' class='documenter-source'>source</a><br></p>
                 
                   
                 
