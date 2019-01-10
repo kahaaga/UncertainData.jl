@@ -96,7 +96,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#resampling_uncertain_datasets_subject_to_sampling_constraints" tabindex="1" class="md-skip">
+      <a href="#documentation" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -499,16 +499,36 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#resampling_uncertain_datasets_subject_to_sampling_constraints" title="Resampling uncertain datasets subject to sampling constraints" class="md-nav__link">
-    Resampling uncertain datasets subject to sampling constraints
+  <a href="#documentation" title="Documentation" class="md-nav__link">
+    Documentation
   </a>
   
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" title="Examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resampling_with_sampling_constraints" title="Resampling with sampling constraints" class="md-nav__link">
+    Resampling with sampling constraints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#what_happens_when_applying_invalid_constraints_to_a_dataset" title="What happens when applying invalid constraints to a dataset?" class="md-nav__link">
     What happens when applying invalid constraints to a dataset?
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -799,16 +819,36 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#resampling_uncertain_datasets_subject_to_sampling_constraints" title="Resampling uncertain datasets subject to sampling constraints" class="md-nav__link">
-    Resampling uncertain datasets subject to sampling constraints
+  <a href="#documentation" title="Documentation" class="md-nav__link">
+    Documentation
   </a>
   
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" title="Examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resampling_with_sampling_constraints" title="Resampling with sampling constraints" class="md-nav__link">
+    Resampling with sampling constraints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#what_happens_when_applying_invalid_constraints_to_a_dataset" title="What happens when applying invalid constraints to a dataset?" class="md-nav__link">
     What happens when applying invalid constraints to a dataset?
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -833,10 +873,59 @@
                 
                   <h1>Resampling uncertain value datasets</h1>
                 
-                <p>Uncertain datasets are resampled by element-wise sampling the furnishing distributions  of the uncertain values in the dataset. You may sample the dataset as it is, or apply  <a href="../../sampling_constraints/available_constraints/">sampling constraints</a> that limit the  support of the individual data value distributions.</p>
+                <p>Uncertain datasets are resampled by element-wise sampling the furnishing distributions  of the uncertain values in the dataset. </p>
+<p>You may sample the dataset as it is, or apply  <a href="../../sampling_constraints/available_constraints/">sampling constraints</a> that limit the  support of the individual data value distributions.</p>
 <p><strong>Note: for datasets where both indices and values are uncertain, see  <a href="../resampling_uncertain_indexvalue_datasets/">uncertain index-value datasets</a>.</strong></p>
-<p><a id='Resampling-uncertain-datasets-subject-to-sampling-constraints-1'></a></p>
-<h2 id="resampling_uncertain_datasets_subject_to_sampling_constraints">Resampling uncertain datasets subject to sampling constraints<a class="headerlink" href="#resampling_uncertain_datasets_subject_to_sampling_constraints" title="Permanent link">&para;</a></h2>
+<p><a id='Documentation-1'></a></p>
+<h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h2>
+<p><a id='UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset}' href='#UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset}'>#</a>
+<strong><code class="codehilite">UncertainData.Resampling.resample</code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>resample(uv::UncertainDataset) -&gt; Vector{Float64}
+</pre></div>
+</td></tr></table>
+
+<p>Resample an uncertain value dataset in an element-wise manner. </p>
+<p>Draws values from the entire support of the furnishing distributions.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/504a4e0fa6147a08d847fb480ed48d85c8ddb954/src/resampling/resample_uncertaindataset.jl#L23-L29' class='documenter-source'>source</a><br></p>
+<p><a id='UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset,Int64}' href='#UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset,Int64}'>#</a>
+<strong><code class="codehilite">UncertainData.Resampling.resample</code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>resample(uv::UncertainDataset, n::Int) -&gt; Vector{Vector{Float64}}
+</pre></div>
+</td></tr></table>
+
+<p>Resample <code class="codehilite">n</code> realizations of an uncertain value dataset in an element-wise manner. </p>
+<p>Draws values from the entire support of the furnishing distributions.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/504a4e0fa6147a08d847fb480ed48d85c8ddb954/src/resampling/resample_uncertaindataset.jl#L35-L41' class='documenter-source'>source</a><br></p>
+<p><a id='UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint}}' href='#UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint}}'>#</a>
+<strong><code class="codehilite">UncertainData.Resampling.resample</code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>resample(udata::AbstractUncertainValueDataset, 
+    constraint::Union{SamplingConstraint, Vector{SamplingConstraint}}) -&gt; Vector{Float64}
+</pre></div>
+</td></tr></table>
+
+<p>Resample an uncertain value dataset in an element-wise manner. </p>
+<p>Enforces the provided sampling <code class="codehilite">constraint</code>(s) to each of the data values, possibly  truncating the support of the furnishing distributions from which values are drawn.</p>
+<p>If a single constraint is provided, then that constraint will be applied to all values. If a  vector of constraints (as many as there are values) is provided, then the constraints are  applied element-wise to the data values.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/504a4e0fa6147a08d847fb480ed48d85c8ddb954/src/resampling/resample_uncertaindataset.jl#L47-L59' class='documenter-source'>source</a><br></p>
+<p><a id='UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint},Int64}' href='#UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint},Int64}'>#</a>
+<strong><code class="codehilite">UncertainData.Resampling.resample</code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>resample(udata::AbstractUncertainValueDataset, 
+    constraint::Union{SamplingConstraint, Vector{SamplingConstraint}},
+    n::Int) -&gt; Vector{Vector{Float64}}
+</pre></div>
+</td></tr></table>
+
+<p>Resample <code class="codehilite">n</code> realizations of an uncertain value dataset in an element-wise manner. </p>
+<p>Enforces the provided sampling <code class="codehilite">constraint</code>(s) to each of the data values, possibly  truncating the support of the furnishing distributions from which values are drawn.</p>
+<p>If a single constraint is provided, then that constraint will be applied to all values. If a  vector of constraints (as many as there are values) is provided, then the constraints are  applied element-wise to the data values.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/504a4e0fa6147a08d847fb480ed48d85c8ddb954/src/resampling/resample_uncertaindataset.jl#L63-L76' class='documenter-source'>source</a><br></p>
+<p><a id='Examples-1'></a></p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<p><a id='Resampling-with-sampling-constraints-1'></a></p>
+<h3 id="resampling_with_sampling_constraints">Resampling with sampling constraints<a class="headerlink" href="#resampling_with_sampling_constraints" title="Permanent link">&para;</a></h3>
 <p>Consider the following example where we had a bunch of different measurements. </p>
 <p>The first ten measurements (<code class="codehilite">r1</code>) are normally distributed values with mean <code class="codehilite">μ = 0 ± 0.4</code>  and standard deviation <code class="codehilite">σ = 0.5 ± 0.1</code>. The next measurement <code class="codehilite">r2</code> is actually a sample  consisting of 9850 replicates. Upon plotting it, we see that it has some complex  distribution which  we have to estimate using a kernel density approach (calling  <code class="codehilite">UncertainValue</code> without any additional argument triggers kernel density estimation).  Next, we have distribution <code class="codehilite">r3</code> that upon plotting looks uniform, so we approximate it by a  uniform distribution. Finally, the last two uncertain values <code class="codehilite">r4</code> and <code class="codehilite">r5</code> are represented  by a normal and a gamma distribution with known parameters.</p>
 <p>To plot these data, we gather them in an <code class="codehilite">UncertainDataset</code>.</p>
@@ -919,7 +1008,7 @@
 <p>This produces the following plot:</p>
 <p><img alt="" src="../resampling_uncertain_datasets.png" /></p>
 <p><a id='What-happens-when-applying-invalid-constraints-to-a-dataset?-1'></a></p>
-<h2 id="what_happens_when_applying_invalid_constraints_to_a_dataset">What happens when applying invalid constraints to a dataset?<a class="headerlink" href="#what_happens_when_applying_invalid_constraints_to_a_dataset" title="Permanent link">&para;</a></h2>
+<h3 id="what_happens_when_applying_invalid_constraints_to_a_dataset">What happens when applying invalid constraints to a dataset?<a class="headerlink" href="#what_happens_when_applying_invalid_constraints_to_a_dataset" title="Permanent link">&para;</a></h3>
 <p>In the example above, the resampling worked fine because all the constraints were  applicable to the data. However, it could happen that the constraint is not applicable  to all uncertain values in the dataset. For example, applying a <code class="codehilite">TruncateMaximum(2)</code>  constraint to an uncertain value <code class="codehilite">u</code> defined by <code class="codehilite">u = UncertainValue(Uniform, 4, 5)</code> would  not work, because the support of <code class="codehilite">u</code> would be empty after applying the constraint.</p>
 <p>To check if a constraint yields a nonempty truncated uncertain value, use the  <code class="codehilite">support_intersection</code> function. If the result of <code class="codehilite">`support_intersection(uval1, uval2)</code>  for two uncertain values <code class="codehilite">uval1</code> and <code class="codehilite">uval2</code> is the empty set <code class="codehilite">∅</code>, then you'll run into  trouble.</p>
 <p>To check for such cases for an entire dataset, you can use the  <code class="codehilite">verify_constraints(udata::AbstractUncertainValueDataset, constraint::SamplingConstraint)</code>  function. It will apply the constraint to each value and return the indices of the values  for which applying the constraint would result in a furnishing distribution whose support  is the empty set.</p>
