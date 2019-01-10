@@ -1,4 +1,4 @@
-a, b, c = [UncertainValue(Normal, 1, 0.5) for i = 1:20], 
+a, b, c = [UncertainValue(Normal, 1, 0.5) for i = 1:10], 
             UncertainValue(rand(1000)), 
             UncertainValue(Uniform, rand(10000))
 uvals = [a; b; c]

@@ -212,15 +212,19 @@ end
 
 """
     truncate(uv::TheoreticalDistributionScalarValue,
-        constraint::TruncateStd)
+        constraint::TruncateStd, n::Int = 10000)
 
 Truncate the theoretical distribution furnishing `uv` using a
-`TruncateStd` sampling constraint.
+`TruncateStd` sampling constraint. 
+
+This functions needs to compute the mean and standard deviation 
+of a truncated distribution, so takes an extra optional argument `n_draws` to allow 
+this.
 """
 function truncate(uv::TheoreticalDistributionScalarValue,
-        constraint::TruncateStd)
-    m = mean(uv.distribution)
-    s = std(uv.distribution)
+        constraint::TruncateStd; n_draws::Int = 10000)
+    m = mean(rand(uv.distribution, n_draws))
+    s = std(rand(uv.distribution, n_draws))
     lower_bound = m - s
     upper_bound = m + s
 

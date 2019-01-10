@@ -1,7 +1,7 @@
 
 ## UncertainData.jl v0.1.2
 
-- Support elementary mathematical operations (`+`, `-`, `*` and `^`) between arbitrary 
+- Support elementary mathematical operations (`+`, `-`, `*` and `/`) between arbitrary 
     uncertain values of different types. Also works with the combination of scalars and 
     uncertain values. Because elementary operations should work on arbitrary uncertain 
     values, a resampling approach is used to perform the mathematical operations. This 
@@ -25,8 +25,18 @@
     These also use a resampling approach, using `10000` realizations by default. 
     Use either the `sin(uval)` syntax for the default, and `sin(uval, n::Int)` to tune the 
     number of samples.
-
+- Support non-integer multiples of the standard deviation in the `TruncateStd` sampling 
+    constraint.
 - Fixed bug in resampling of index-value datasets, where the `n` arguments wasn't used. 
+- Bugfix: due to `StatsBase.std` not being defined for `FittedDistribution` instances, 
+    uncertain values represented by `UncertainScalarTheoreticalFit` instances were not 
+    compatible with the `TruncateStd` sampling constraint. Now fixed!
+- Improved documentation for resampling for `UncertainIndexValueDataset`s. Now shows 
+    the documentation for the main methods, as well as examples of how to use different sampling constraints for each individual index and data value.
+- Improved documentation for resampling for `UncertainDataset`s. Now shows 
+    the documentation for the main methods.
+- Added missing `resample(uv::AbstractUncertainValue, constraint::TruncateRange, n::Int)` 
+    method.
 
 ## UncertainData.jl v0.1.1
 

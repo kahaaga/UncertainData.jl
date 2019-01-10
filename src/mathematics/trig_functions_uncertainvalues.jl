@@ -4,136 +4,624 @@ import ..Resampling:
     resample
 
 # Cosine functions 
-Base.cos(a::AbstractUncertainValue) = cos.(resample(a, 10000))
-Base.cos(a::AbstractUncertainValue, n::Int) = cos.(resample(a, n))
+""" 
+    Base.cos(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
 
-Base.cosd(a::AbstractUncertainValue) = cosd.(resample(a, 10000))
-Base.cosd(a::AbstractUncertainValue, n::Int) = cosd.(resample(a, n))
+Compute the cosine of the uncertain value `x`, where `x` is in radians. Computes the 
+element-wise cosine for `n` realizations.
+""" 
+Base.cos(x::AbstractUncertainValue; n::Int = 10000) = cos.(resample(x, n))
 
-Base.cosh(a::AbstractUncertainValue) = cosh.(resample(a, 10000))
-Base.cosh(a::AbstractUncertainValue, n::Int) = cosh.(resample(a, n))
+""" 
+    Base.cos(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the cosine of the uncertain value `x`, where `x` is in radians. Computes the 
+element-wise cosine for `n` realizations.
+""" 
+Base.cos(x::AbstractUncertainValue, n::Int) = cos.(resample(x, n))
+
+""" 
+    Base.cos(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the cosine of the uncertain value `x`, where `x` is in degrees. Computes the 
+element-wise cosine for `n` realizations.
+""" 
+Base.cosd(x::AbstractUncertainValue; n::Int = 10000) = cosd.(resample(x, n))
+
+""" 
+    Base.cos(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the cosine of the uncertain value `x`, where `x` is in degrees. Computes the 
+element-wise cosine for `n` realizations.
+""" 
+Base.cosd(x::AbstractUncertainValue, n::Int) = cosd.(resample(x, n))
+
+""" 
+    Base.cos(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the hyperbolic cosine of the uncertain value `x`.
+Computes the element-wise hyperbolic cosine for `n` realizations.
+""" 
+Base.cosh(x::AbstractUncertainValue; n::Int = 10000) = cosh.(resample(x, n))
+
+""" 
+    Base.cos(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the hyperbolic cosine of the uncertain value `x`.
+Computes the element-wise hyperbolic cosine for `n` realizations.
+""" 
+Base.cosh(x::AbstractUncertainValue, n::Int) = cosh.(resample(x, n))
 
 # Sine functions 
-Base.sin(a::AbstractUncertainValue) = sin.(resample(a, 10000))
-Base.sin(a::AbstractUncertainValue, n::Int) = sin.(resample(a, n))
+""" 
+    Base.sin(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
 
-Base.sind(a::AbstractUncertainValue) = sind.(resample(a, 10000))
-Base.sind(a::AbstractUncertainValue, n::Int) = sind.(resample(a, n))
+Compute the sine of the uncertain value `x`, where `x` is in radians. Computes the 
+element-wise sine for `n` realizations.
+""" 
+Base.sin(x::AbstractUncertainValue; n::Int = 10000) = sin.(resample(x, n))
 
-Base.sinh(a::AbstractUncertainValue) = sinh.(resample(a, 10000))
-Base.sinh(a::AbstractUncertainValue, n::Int) = sinh.(resample(a, n))
+""" 
+    Base.sin(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the sine of the uncertain value `x`, where `x` is in radians. Computes the 
+element-wise sine for `n` realizations.
+""" 
+Base.sin(x::AbstractUncertainValue, n::Int) = sin.(resample(x, n))
+
+""" 
+    Base.sind(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the sine of the uncertain value `x`, where `x` is in degrees. Computes the 
+element-wise sine for `n` realizations.
+""" 
+Base.sind(x::AbstractUncertainValue; n::Int = 10000) = sind.(resample(x, n))
+
+""" 
+    Base.sind(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the sine of the uncertain value `x`, where `x` is in degrees. Computes the 
+element-wise sine for `n` realizations.
+""" 
+Base.sind(x::AbstractUncertainValue, n::Int) = sind.(resample(x, n))
+
+""" 
+    Base.sinh(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the hyperbolic sine of the uncertain value `x`.
+Computes the element-wise hyperbolic sine for `n` realizations.
+""" 
+Base.sinh(x::AbstractUncertainValue; n::Int = 10000) = sinh.(resample(x, n))
+
+""" 
+    Base.sinh(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the hyperbolic sine of the uncertain value `x`.
+Computes the element-wise hyperbolic sine for `n` realizations.
+""" 
+Base.sinh(x::AbstractUncertainValue, n::Int) = sinh.(resample(x, n))
 
 
 # Tan functions
-Base.tan(a::AbstractUncertainValue) = tan.(resample(a, 10000))
-Base.tan(a::AbstractUncertainValue, n::Int) = tan.(resample(a, n))
+""" 
+    Base.tan(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
 
-Base.tand(a::AbstractUncertainValue) = tand.(resample(a, 10000))
-Base.tand(a::AbstractUncertainValue, n::Int) = tand.(resample(a, n))
+Compute the tangent of the uncertain value `x`, where `x` is in radians. Computes the 
+element-wise tangent for `n` realizations.
+""" 
+Base.tan(x::AbstractUncertainValue; n::Int = 10000) = tan.(resample(x, n))
 
-Base.tanh(a::AbstractUncertainValue) = tanh.(resample(a, 10000))
-Base.tanh(a::AbstractUncertainValue, n::Int) = tanh.(resample(a, n))
+""" 
+    Base.tan(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the tangent of the uncertain value `x`, where `x` is in radians. Computes the 
+element-wise tangent for `n` realizations.
+""" 
+Base.tan(x::AbstractUncertainValue, n::Int) = tan.(resample(x, n))
+
+""" 
+    Base.tand(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the tangent of the uncertain value `x`, where `x` is in degrees. Computes the 
+element-wise tangent for `n` realizations.
+""" 
+Base.tand(x::AbstractUncertainValue; n::Int = 10000) = tand.(resample(x, n))
+
+""" 
+    Base.tand(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the tangent of the uncertain value `x`, where `x` is in degrees. Computes the 
+element-wise tangent for `n` realizations.
+""" 
+Base.tand(x::AbstractUncertainValue, n::Int) = tand.(resample(x, n))
+
+""" 
+    Base.tanh(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the hyperbolic tangent of the uncertain value `x`.
+Computes the element-wise hyperbolic tangent for `n` realizations.
+""" 
+Base.tanh(x::AbstractUncertainValue; n::Int = 10000) = tanh.(resample(x, n))
+
+""" 
+    Base.tanh(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the hyperbolic tangent of the uncertain value `x`. 
+Computes the element-wise hyperbolic tangent for `n` realizations.
+""" 
+Base.tanh(x::AbstractUncertainValue, n::Int) = tanh.(resample(x, n))
 
 
 # Other 
 
+""" 
+    Base.sincos(x::AbstractUncertainValue; n::Int = 10000)
 
-Base.sincos(a::AbstractUncertainValue) = sincos.(resample(a, 10000))
-Base.sincos(a::AbstractUncertainValue, n::Int) = sincos.(resample(a, n))
+Simultaneously compute the sine and cosine of the uncertain value `x`, where `x` is in 
+radians. Computes the element-wise `sincos` for `n` realizations.
+""" 
+Base.sincos(x::AbstractUncertainValue; n::Int = 10000) = sincos.(resample(x, n))
 
-Base.sinc(a::AbstractUncertainValue) = sinc.(resample(a, 10000))
-Base.sinc(a::AbstractUncertainValue, n::Int) = sinc.(resample(a, n))
+""" 
+    Base.sincos(x::AbstractUncertainValue, n::Int = 10000)
 
-Base.sinpi(a::AbstractUncertainValue) = sinpi.(resample(a, 10000))
-Base.sinpi(a::AbstractUncertainValue, n::Int) = sinpi.(resample(a, n))
+Simultaneously compute the sine and cosine of the uncertain value `x`, where `x` is in 
+radians. Computes the element-wise `sincos` for `n` realizations.
+""" 
+Base.sincos(x::AbstractUncertainValue, n::Int) = sincos.(resample(x, n))
 
-Base.cosc(a::AbstractUncertainValue) = cosc.(resample(a, 10000))
-Base.cosc(a::AbstractUncertainValue, n::Int) = cosc.(resample(a, n))
+Base.sinc(x::AbstractUncertainValue; n::Int = 10000) = sinc.(resample(x, n))
+Base.sinc(x::AbstractUncertainValue, n::Int) = sinc.(resample(x, n))
 
-Base.cospi(a::AbstractUncertainValue) = cospi.(resample(a, 10000))
-Base.cospi(a::AbstractUncertainValue, n::Int) = cospi.(resample(a, n))
+Base.sinpi(x::AbstractUncertainValue; n::Int = 10000) = sinpi.(resample(x, n))
+Base.sinpi(x::AbstractUncertainValue, n::Int) = sinpi.(resample(x, n))
+
+Base.cosc(x::AbstractUncertainValue; n::Int = 10000) = cosc.(resample(x, n))
+Base.cosc(x::AbstractUncertainValue, n::Int) = cosc.(resample(x, n))
+
+Base.cospi(x::AbstractUncertainValue; n::Int = 10000) = cospi.(resample(x, n))
+Base.cospi(x::AbstractUncertainValue, n::Int) = cospi.(resample(x, n))
 
 
 ############################
 # Inverse trig functions 
 ############################
-Base.acos(a::AbstractUncertainValue) = acos.(resample(a, 10000))
-Base.acos(a::AbstractUncertainValue, n::Int) = acos.(resample(a, n))
+""" 
+    Base.acos(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
 
-Base.acosd(a::AbstractUncertainValue) = acosd.(resample(a, 10000))
-Base.acosd(a::AbstractUncertainValue, n::Int) = acosd.(resample(a, n))
+Compute the inverse cosine of the uncertain value `x`, where `x` is in radians. Computes the 
+element-wise inverse cosine for `n` realizations.
+""" 
+Base.acos(x::AbstractUncertainValue; n::Int = 10000) = acos.(resample(x, n))
 
-Base.acosh(a::AbstractUncertainValue) = acosh.(resample(a, 10000))
-Base.acosh(a::AbstractUncertainValue, n::Int) = acosh.(resample(a, n))
+""" 
+    Base.acos(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
 
+Compute the inverse cosine of the uncertain value `x`, where `x` is in radians. Computes the 
+element-wise inverse cosine for `n` realizations.
+""" 
+Base.acos(x::AbstractUncertainValue, n::Int) = acos.(resample(x, n))
 
-Base.asin(a::AbstractUncertainValue) = asin.(resample(a, 10000))
-Base.asin(a::AbstractUncertainValue, n::Int) = asin.(resample(a, n))
+""" 
+    Base.acosd(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
 
-Base.asind(a::AbstractUncertainValue) = asind.(resample(a, 10000))
-Base.asind(a::AbstractUncertainValue, n::Int) = asind.(resample(a, n))
+Compute the inverse cosine of the uncertain value `x`, where `x` is in degrees. Computes the 
+element-wise inverse cosine for `n` realizations.
+""" 
+Base.acosd(x::AbstractUncertainValue; n::Int = 10000) = acosd.(resample(x, n))
 
-Base.asinh(a::AbstractUncertainValue) = asinh.(resample(a, 10000))
-Base.asinh(a::AbstractUncertainValue, n::Int) = asinh.(resample(a, n))
+""" 
+    Base.acosd(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
 
+Compute the inverse cosine of the uncertain value `x`, where `x` is in degrees. Computes the 
+element-wise inverse cosine for `n` realizations.
+""" 
+Base.acosd(x::AbstractUncertainValue, n::Int) = acosd.(resample(x, n))
 
-Base.atan(a::AbstractUncertainValue) = atan.(resample(a, 10000))
-Base.atan(a::AbstractUncertainValue, n::Int) = atan.(resample(a, n))
+""" 
+    Base.acosh(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
 
-Base.atand(a::AbstractUncertainValue) = atand.(resample(a, 10000))
-Base.atand(a::AbstractUncertainValue, n::Int) = atand.(resample(a, n))
+Compute the inverse hyperbolic cosine of the uncertain value `x`.
+Computes the element-wise inverse hyperbolic cosine for `n` realizations.
+""" 
+Base.acosh(x::AbstractUncertainValue; n::Int = 10000) = acosh.(resample(x, n))
 
-Base.atanh(a::AbstractUncertainValue) = atanh.(resample(a, 10000))
-Base.atanh(a::AbstractUncertainValue, n::Int) = atanh.(resample(a, n))
+""" 
+    Base.acosh(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
 
+Compute the inverse hyperbolic cosine of the uncertain value `x`.
+Computes the element-wise inverse hyperbolic cosine for `n` realizations.
+""" 
+Base.acosh(x::AbstractUncertainValue, n::Int) = acosh.(resample(x, n))
 
-Base.asec(a::AbstractUncertainValue) = asec.(resample(a, 10000))
-Base.asec(a::AbstractUncertainValue, n::Int) = asec.(resample(a, n))
+""" 
+    Base.asin(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
 
-Base.acsc(a::AbstractUncertainValue) = acsc.(resample(a, 10000))
-Base.acsc(a::AbstractUncertainValue, n::Int) = acsc.(resample(a, n))
+Compute the inverse sine of the uncertain value `x`, where `x` is in radians. Computes the 
+element-wise inverse sine for `n` realizations.
+""" 
+Base.asin(x::AbstractUncertainValue; n::Int = 10000) = asin.(resample(x, n))
 
-Base.acot(a::AbstractUncertainValue) = acot.(resample(a, 10000))
-Base.acot(a::AbstractUncertainValue, n::Int) = acot.(resample(a, n))
+""" 
+    Base.asin(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
 
-Base.asech(a::AbstractUncertainValue) = asech.(resample(a, 10000))
-Base.asech(a::AbstractUncertainValue, n::Int) = asech.(resample(a, n))
+Compute the inverse sine of the uncertain value `x`, where `x` is in radians. Computes the 
+element-wise inverse sine for `n` realizations.
+""" 
+Base.asin(x::AbstractUncertainValue, n::Int) = asin.(resample(x, n))
 
-Base.acsch(a::AbstractUncertainValue) = acsch.(resample(a, 10000))
-Base.acsch(a::AbstractUncertainValue, n::Int) = acsch.(resample(a, n))
+""" 
+    Base.asind(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
 
-Base.acoth(a::AbstractUncertainValue) = acoth.(resample(a, 10000))
-Base.acoth(a::AbstractUncertainValue, n::Int) = acoth.(resample(a, n))
+Compute the inverse sine of the uncertain value `x`, where `x` is in degrees. Computes the 
+element-wise inverse sine for `n` realizations.
+""" 
+Base.asind(x::AbstractUncertainValue; n::Int = 10000) = asind.(resample(x, n))
+
+""" 
+    Base.asind(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse sine of the uncertain value `x`, where `x` is in degrees. Computes the 
+element-wise inverse sine for `n` realizations.
+""" 
+Base.asind(x::AbstractUncertainValue, n::Int) = asind.(resample(x, n))
+
+""" 
+    Base.asinh(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse hyperbolic sine of the uncertain value `x`.
+Computes the element-wise inverse hyperbolic csine for `n` realizations.
+""" 
+Base.asinh(x::AbstractUncertainValue; n::Int = 10000) = asinh.(resample(x, n))
+
+""" 
+    Base.asinh(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse hyperbolic sine of the uncertain value `x`.
+Computes the element-wise inverse hyperbolic csine for `n` realizations.
+""" 
+Base.asinh(x::AbstractUncertainValue, n::Int) = asinh.(resample(x, n))
+
+""" 
+    Base.atan(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse tangent of the uncertain value `x`, where `x` is in radians. 
+Computes the element-wise inverse tangent for `n` realizations.
+""" 
+Base.atan(x::AbstractUncertainValue; n::Int = 10000) = atan.(resample(x, n))
+
+""" 
+    Base.atan(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse tangent of the uncertain value `x`, where `x` is in radians. 
+Computes the element-wise inverse tangent for `n` realizations.
+""" 
+Base.atan(x::AbstractUncertainValue, n::Int) = atan.(resample(x, n))
+
+""" 
+    Base.atand(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse tangent of the uncertain value `x`, where `x` is in degrees. 
+Computes the element-wise inverse tangent for `n` realizations.
+""" 
+Base.atand(x::AbstractUncertainValue; n::Int = 10000) = atand.(resample(x, n))
+
+""" 
+    Base.atand(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse tangent of the uncertain value `x`, where `x` is in degrees. 
+Computes the element-wise inverse tangent for `n` realizations.
+""" 
+Base.atand(x::AbstractUncertainValue, n::Int) = atand.(resample(x, n))
+
+""" 
+    Base.atanh(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse hypoerbolic tangent of the uncertain value `x`.
+Computes the element-wise inverse hypoerbolic tangent for `n` realizations.
+""" 
+Base.atanh(x::AbstractUncertainValue; n::Int = 10000) = atanh.(resample(x, n))
+
+""" 
+    Base.atanh(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse hypoerbolic tangent of the uncertain value `x`.
+Computes the element-wise inverse hypoerbolic tangent for `n` realizations.
+""" 
+Base.atanh(x::AbstractUncertainValue, n::Int) = atanh.(resample(x, n))
+
+""" 
+    Base.asec(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse secant of the uncertain value `x`, where `x` is in radians. 
+Computes the element-wise inverse secant for `n` realizations.
+""" 
+Base.asec(x::AbstractUncertainValue; n::Int = 10000) = asec.(resample(x, n))
+
+""" 
+    Base.asec(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse secant of the uncertain value `x`, where `x` is in radians. 
+Computes the element-wise inverse secant for `n` realizations.
+""" 
+Base.asec(x::AbstractUncertainValue, n::Int) = asec.(resample(x, n))
+
+""" 
+    Base.asecd(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse secant of the uncertain value `x`, where `x` is in degrees. 
+Computes the element-wise inverse secant for `n` realizations.
+""" 
+Base.asecd(x::AbstractUncertainValue; n::Int = 10000) = asec.(resample(x, n))
+
+""" 
+    Base.asecd(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse secant of the uncertain value `x`, where `x` is in degrees. 
+Computes the element-wise inverse secant for `n` realizations.
+""" 
+Base.asecd(x::AbstractUncertainValue, n::Int) = asec.(resample(x, n))
+
+""" 
+    Base.asech(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse hyperbolic secant of the uncertain value `x`.
+Computes the element-wise inverse hyperbolic secant for `n` realizations.
+""" 
+Base.asech(x::AbstractUncertainValue; n::Int = 10000) = asec.(resample(x, n))
+
+""" 
+    Base.asech(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse hyperbolic secant of the uncertain value `x`.
+Computes the element-wise inverse hyperbolic secant for `n` realizations.
+""" 
+Base.asech(x::AbstractUncertainValue, n::Int) = asec.(resample(x, n))
+
+""" 
+    Base.acsc(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse cosecant of the uncertain value `x`, where `x` is in radians. 
+Computes the element-wise inverse cosecant for `n` realizations.
+""" 
+Base.acsc(x::AbstractUncertainValue; n::Int = 10000) = acsc.(resample(x, n))
+
+""" 
+    Base.acsc(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse cosecant of the uncertain value `x`, where `x` is in radians. 
+Computes the element-wise inverse cosecant for `n` realizations.
+""" 
+Base.acsc(x::AbstractUncertainValue, n::Int) = acsc.(resample(x, n))
+
+""" 
+    Base.acscd(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse cosecant of the uncertain value `x`, where `x` is in degrees. 
+Computes the element-wise inverse cosecant for `n` realizations.
+""" 
+Base.acscd(x::AbstractUncertainValue; n::Int = 10000) = acsc.(resample(x, n))
+
+""" 
+    Base.acscd(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse cosecant of the uncertain value `x`, where `x` is in degrees. 
+Computes the element-wise inverse cosecant for `n` realizations.
+""" 
+Base.acscd(x::AbstractUncertainValue, n::Int) = acsc.(resample(x, n))
+
+""" 
+    Base.acscd(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse hyperbolic cosecant of the uncertain value `x`.
+Computes the element-wise inverse hypoerbolic cosecant for `n` realizations.
+""" 
+Base.acsch(x::AbstractUncertainValue; n::Int = 10000) = acsc.(resample(x, n))
+
+""" 
+    Base.acscd(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse hyperbolic cosecant of the uncertain value `x`.
+Computes the element-wise inverse hypoerbolic cosecant for `n` realizations.
+""" 
+Base.acsch(x::AbstractUncertainValue, n::Int) = acsc.(resample(x, n))
+
+""" 
+    Base.acot(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse cotangent of the uncertain value `x`, where `x` is in radians. 
+Computes the element-wise inverse secant for `n` realizations.
+""" 
+Base.acot(x::AbstractUncertainValue; n::Int = 10000) = acot.(resample(x, n))
+
+""" 
+    Base.acot(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse cotangent of the uncertain value `x`, where `x` is in radians. 
+Computes the element-wise inverse secant for `n` realizations.
+""" 
+Base.acot(x::AbstractUncertainValue, n::Int) = acot.(resample(x, n))
+
+""" 
+    Base.acotd(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse cotangent of the uncertain value `x`, where `x` is in degrees.
+Computes the element-wise inverse secant for `n` realizations.
+""" 
+Base.acotd(x::AbstractUncertainValue; n::Int = 10000) = acot.(resample(x, n))
+
+""" 
+    Base.acotd(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse cotangent of the uncertain value `x`, where `x` is in degrees.
+Computes the element-wise inverse secant for `n` realizations.
+""" 
+Base.acotd(x::AbstractUncertainValue, n::Int) = acot.(resample(x, n))
+
+""" 
+    Base.acoth(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse hyperbolic cotangent of the uncertain value `x`.
+Computes the element-wise inverse hyperbolic secant for `n` realizations.
+""" 
+Base.acoth(x::AbstractUncertainValue; n::Int = 10000) = acot.(resample(x, n))
+
+""" 
+    Base.acoth(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the inverse hyperbolic cotangent of the uncertain value `x`.
+Computes the element-wise inverse hyperbolic secant for `n` realizations.
+""" 
+Base.acoth(x::AbstractUncertainValue, n::Int) = acot.(resample(x, n))
+
 
 ############################
 # Reciprocal trig functions 
 ############################
 
-Base.csc(a::AbstractUncertainValue) = csc.(resample(a, 10000))
-Base.csc(a::AbstractUncertainValue, n::Int) = csc.(resample(a, n))
+""" 
+    Base.csc(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
 
-Base.cscd(a::AbstractUncertainValue) = cscd.(resample(a, 10000))
-Base.cscd(a::AbstractUncertainValue, n::Int) = cscd.(resample(a, n))
+Compute the cosecant of the uncertain value `x`, where `x` is in radians. Computes the 
+element-wise cosecant for `n` realizations.
+""" 
+Base.csc(x::AbstractUncertainValue; n::Int = 10000) = csc.(resample(x, n))
 
-Base.csch(a::AbstractUncertainValue) = csch.(resample(a, 10000))
-Base.csch(a::AbstractUncertainValue, n::Int) = csch.(resample(a, n))
+""" 
+    Base.csc(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the cosecant of the uncertain value `x`, where `x` is in radians. Computes the 
+element-wise cosecant for `n` realizations.
+""" 
+Base.csc(x::AbstractUncertainValue, n::Int) = csc.(resample(x, n))
+
+""" 
+    Base.cscd(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the cosecant of the uncertain value `x`, where `x` is in degrees. Computes the 
+element-wise cosecant for `n` realizations.
+""" 
+Base.cscd(x::AbstractUncertainValue; n::Int = 10000) = cscd.(resample(x, n))
+
+""" 
+    Base.cscd(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the cosecant of the uncertain value `x`, where `x` is in degrees. Computes the 
+element-wise cosecant for `n` realizations.
+""" 
+Base.cscd(x::AbstractUncertainValue, n::Int) = cscd.(resample(x, n))
+
+""" 
+    Base.cscd(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the hyperbolic cosecant of the uncertain value `x`, where `x` is in degrees. 
+Computes the element-wise hyperbolic cosecant for `n` realizations.
+""" 
+Base.csch(x::AbstractUncertainValue; n::Int = 10000) = csch.(resample(x, n))
+
+""" 
+    Base.cscd(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the hyperbolic cosecant of the uncertain value `x`, where `x` is in degrees. 
+Computes the element-wise hyperbolic cosecant for `n` realizations.
+""" 
+Base.csch(x::AbstractUncertainValue, n::Int) = csch.(resample(x, n))
 
 
-Base.sec(a::AbstractUncertainValue) = sec.(resample(a, 10000))
-Base.sec(a::AbstractUncertainValue, n::Int) = sec.(resample(a, n))
+""" 
+    Base.sec(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
 
-Base.secd(a::AbstractUncertainValue) = secd.(resample(a, 10000))
-Base.secd(a::AbstractUncertainValue, n::Int) = secd.(resample(a, n))
+Compute the secant of the uncertain value `x`, where `x` is in radians. Computes the 
+element-wise secant for `n` realizations.
+""" 
+Base.sec(x::AbstractUncertainValue; n::Int = 10000) = sec.(resample(x, n))
 
-Base.sech(a::AbstractUncertainValue) = sech.(resample(a, 10000))
-Base.sech(a::AbstractUncertainValue, n::Int) = sech.(resample(a, n))
+""" 
+    Base.sec(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the secant of the uncertain value `x`, where `x` is in radians. Computes the 
+element-wise secant for `n` realizations.
+""" 
+Base.sec(x::AbstractUncertainValue, n::Int) = sec.(resample(x, n))
+
+""" 
+    Base.secd(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the secant of the uncertain value `x`, where `x` is in degrees. Computes the 
+element-wise cosecant for `n` realizations.
+""" 
+Base.secd(x::AbstractUncertainValue; n::Int = 10000) = secd.(resample(x, n))
+
+""" 
+    Base.secd(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the secant of the uncertain value `x`, where `x` is in degrees. Computes the 
+element-wise cosecant for `n` realizations.
+""" 
+Base.secd(x::AbstractUncertainValue, n::Int) = secd.(resample(x, n))
+
+""" 
+    Base.sech(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the hyperbolic secant of the uncertain value `x`, where `x` is in degrees. 
+Computes the element-wise hyperbolic secant for `n` realizations.
+""" 
+Base.sech(x::AbstractUncertainValue; n::Int = 10000) = sech.(resample(x, n))
 
 
-Base.cot(a::AbstractUncertainValue) = cot.(resample(a, 10000))
-Base.cot(a::AbstractUncertainValue, n::Int) = cot.(resample(a, n))
+""" 
+    Base.sech(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
 
-Base.cotd(a::AbstractUncertainValue) = cotd.(resample(a, 10000))
-Base.cotd(a::AbstractUncertainValue, n::Int) = cotd.(resample(a, n))
+Compute the hyperbolic secant of the uncertain value `x`, where `x` is in degrees. 
+Computes the element-wise hyperbolic secant for `n` realizations.
+""" 
+Base.sech(x::AbstractUncertainValue, n::Int) = sech.(resample(x, n))
 
-Base.coth(a::AbstractUncertainValue) = coth.(resample(a, 10000))
-Base.coth(a::AbstractUncertainValue, n::Int) = coth.(resample(a, n))
+
+""" 
+    Base.cot(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the cotangent of the uncertain value `x`, where `x` is in radians. Computes the 
+element-wise cotangent for `n` realizations.
+""" 
+Base.cot(x::AbstractUncertainValue; n::Int = 10000) = cot.(resample(x, n))
+
+""" 
+    Base.cot(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the cotangent of the uncertain value `x`, where `x` is in radians. Computes the 
+element-wise cotangent for `n` realizations.
+""" 
+Base.cot(x::AbstractUncertainValue, n::Int) = cot.(resample(x, n))
+
+""" 
+    Base.cotd(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the cotangent of the uncertain value `x`, where `x` is in degrees. Computes the 
+element-wise cotangent for `n` realizations.
+""" 
+Base.cotd(x::AbstractUncertainValue; n::Int = 10000) = cotd.(resample(x, n))
+
+""" 
+    Base.cotd(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the cotangent of the uncertain value `x`, where `x` is in degrees. Computes the 
+element-wise cotangent for `n` realizations.
+""" 
+Base.cotd(x::AbstractUncertainValue, n::Int) = cotd.(resample(x, n))
+
+""" 
+    Base.coth(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
+
+Compute the hyperbolic cotangent of the uncertain value `x`, where `x` is in radians. 
+Computes the element-wise hyperbolic cotangent for `n` realizations.
+""" 
+Base.coth(x::AbstractUncertainValue; n::Int = 10000) = coth.(resample(x, n))
+
+""" 
+    Base.coth(x::AbstractUncertainValue, n::Int = 10000) -> Vector{Float64}
+
+Compute the hyperbolic cotangent of the uncertain value `x`, where `x` is in radians. 
+Computes the element-wise hyperbolic cotangent for `n` realizations.
+""" 
+Base.coth(x::AbstractUncertainValue, n::Int) = coth.(resample(x, n))
