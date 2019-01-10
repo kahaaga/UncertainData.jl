@@ -10,6 +10,9 @@ include("uncertain_values/test_assign_distributions.jl")
 include("uncertain_values/test_uncertain_values.jl")
 include("uncertain_values/test_minmax.jl")
 
+include("mathematics/test_elementary_mathetmatics_uncertainvalues.jl")
+include("mathematics/test_trig_funcs_uncertainvalues.jl")
+
 # UncertainDatasets module tests
 include("uncertain_datasets/test_uncertain_datasets.jl")
 

@@ -44,7 +44,13 @@ PAGES = [
         "resampling/resampling_uncertain_values.md",
         "resampling/resampling_uncertain_datasets.md",
         "resampling/resampling_uncertain_indexvalue_datasets.md"
-	],
+    ],
+    
+    "Mathematics" => [
+        "mathematics/elementary_operations.md",
+        "mathematics/trig_functions.md"
+    ],
+
     "implementing_algorithms_for_uncertaindata.md",
     
     "changelog.md"

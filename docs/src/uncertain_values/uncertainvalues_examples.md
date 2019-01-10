@@ -1,4 +1,5 @@
-This packages facilitates working with datasets with uncertainties. The core concept of `UncertainDatasets` is to replace an uncertain data value with a probability distribution describing the point's uncertainty.
+The core concept of `UncertainData` is to replace an uncertain data value with a 
+probability distribution describing the point's uncertainty.
 
 
 There are currently three ways of doing that: by [theoretical distributions](uncertainvalues_theoreticaldistributions.md),

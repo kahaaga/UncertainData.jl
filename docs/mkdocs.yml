@@ -46,8 +46,8 @@ docs_dir: 'build'
 pages:
   - Overview: index.md
   - Uncertain values:
-    - Examples: uncertain_values/uncertainvalues_examples.md
     - Quickstart: uncertain_values/uncertainvalues_overview.md
+    - Examples: uncertain_values/uncertainvalues_examples.md
     - Kernel density estimates (KDE): uncertain_values/uncertainvalues_kde.md
     - Theoretical distributions: uncertain_values/uncertainvalues_theoreticaldistributions.md
     - Fit theoretical distributions: uncertain_values/uncertainvalues_fitted.md
@@ -56,12 +56,15 @@ pages:
       - Uncertain value datasets: uncertain_datasets/uncertain_value_dataset.md
       - Uncertain index-value datasets: uncertain_datasets/uncertain_indexvalue_dataset.md
   - Sampling constraints:
-      - List of constraints: sampling_constraints/available_constraints.md
-      - Constraining uncertain values: sampling_constraints/constrain_uncertain_values.md
+    - List of constraints: sampling_constraints/available_constraints.md
+    - Constraining uncertain values: sampling_constraints/constrain_uncertain_values.md
   - Resampling:
-      - Resampling uncertain values: resampling/resampling_uncertain_values.md
-      - Resampling uncertain value datasets: resampling/resampling_uncertain_datasets.md
-      - Resampling uncertain index-value datasets: resampling/resampling_uncertain_indexvalue_datasets.md
+    - Resampling uncertain values: resampling/resampling_uncertain_values.md
+    - Resampling uncertain value datasets: resampling/resampling_uncertain_datasets.md
+    - Resampling uncertain index-value datasets: resampling/resampling_uncertain_indexvalue_datasets.md
+  - Mathematics: 
+      - Elementary operations: mathematics/elementary_operations.md
+      - Trigonometric functions: mathematics/trig_functions.md
   - Uncertain statistics:
     - Core statistics: uncertain_statistics/core_stats/core_statistics.md
     - Hypothesis tests:

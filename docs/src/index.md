@@ -19,6 +19,7 @@ user a consistent and easy way to define uncertain datasets, plot them and reaso
 by resampling techniques, possibly subject to sampling constraints.
 
 ## Package philosophy
+
 Way too often in data analysis the uncertainties in observational data are ignored or not 
 dealt with in a systematic manner. The core concept of the package is that uncertain data 
 should live in the probability domain, not as single value representations of the data 
@@ -34,6 +35,14 @@ depth or any other index) of observations can also be represented as probability
 distributions and may also sampled using constraints. This may be useful when you, for 
 example, want to draw realizations of your dataset while enforcing strictly increasing age 
 models.
+
+## Mathematical operations 
+
+Several [elementary mathematical operations](mathematics/elementary_operations.md) and 
+[trigonometric functions](mathematics/trig_functions.md) are supported 
+for uncertain values. Computations are done using a resampling approach, where the user 
+may choose to use the default number of realizations (`n = 10000`) or tune the number of 
+samples.
 
 
 ## Statistics on uncertain datasets

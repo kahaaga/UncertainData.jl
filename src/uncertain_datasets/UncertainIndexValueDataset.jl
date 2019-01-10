@@ -19,7 +19,7 @@ end
 
 
 Base.length(u::UncertainIndexValueDataset) = length(u.values)
-Base.size(u::UncertainIndexValueDataset) = (length(u), 2)
+Base.size(u::UncertainIndexValueDataset) = length(u.values)
 
 Base.getindex(u::UncertainIndexValueDataset, i) = (u.indices[i], u.values[i])
 Base.getindex(u::UncertainIndexValueDataset, i::AbstractVector) =
