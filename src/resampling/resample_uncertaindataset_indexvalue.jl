@@ -35,7 +35,7 @@ Draw a realisation of an `UncertainIndexValueDataset` according to the
 distributions of the `UncertainValue`s comprising the indices and data points.
 """
 function resample(udata::UncertainIndexValueDataset, n::Int) 
-	[resample(udata) for i = 1:length(udata)]
+	[resample(udata) for i = 1:n]
 end
 
 
@@ -54,6 +54,13 @@ function resample(udata::UncertainIndexValueDataset,
 	end 
 
 	indices, values
+end
+
+function resample(udata::UncertainIndexValueDataset, 
+	constraint_idxs::SamplingConstraint, 
+	constraint_vals::SamplingConstraint, n::Int)
+
+	[resample(udata, constraint_idxs, constraint_vals) for i = 1:n]
 end
 
 function resample(udata::UncertainIndexValueDataset, 
@@ -88,6 +95,12 @@ function resample(udata::UncertainIndexValueDataset,
 	indices, values
 end
 
+function resample(udata::UncertainIndexValueDataset, 
+	constraint::Vector{<:SamplingConstraint}, n::Int)
+	[resample(udata, constraint) for i = 1:n]
+end
+
+
 
 function resample(udata::UncertainIndexValueDataset, 
 	constraint_idxs::Vector{<:SamplingConstraint}, 
@@ -107,6 +120,13 @@ function resample(udata::UncertainIndexValueDataset,
 end
 
 function resample(udata::UncertainIndexValueDataset, 
+	constraint_idxs::Vector{<:SamplingConstraint},
+	constraint_vals::SamplingConstraint, n::Int)
+
+	[resample(udata, constraint_idxs, constraint_vals) for i = 1:n]
+end
+
+function resample(udata::UncertainIndexValueDataset, 
 	constraint_idxs::SamplingConstraint, 
 	constraint_vals::Vector{<:SamplingConstraint})
 
@@ -121,6 +141,14 @@ function resample(udata::UncertainIndexValueDataset,
 	end 
 
 	indices, values
+end
+
+
+function resample(udata::UncertainIndexValueDataset, 
+	constraint_idxs::SamplingConstraint, 
+	constraint_vals::Vector{<:SamplingConstraint}, n::Int)
+
+	[resample(udata, constraint_idxs, constraint_vals) for i = 1:n]
 end
 
 function resample(udata::UncertainIndexValueDataset, 
@@ -138,6 +166,13 @@ function resample(udata::UncertainIndexValueDataset,
 	end 
 
 	indices, values
+end
+
+function resample(udata::UncertainIndexValueDataset, 
+	constraint_idxs::Vector{<:SamplingConstraint}, 
+	constraint_vals::Vector{<:SamplingConstraint}, n::Int)
+
+	[resample(udata, constraint_idxs, constraint_vals) for i = 1:n]
 end
 
 export resample

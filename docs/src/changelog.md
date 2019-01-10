@@ -26,6 +26,8 @@
     Use either the `sin(uval)` syntax for the default, and `sin(uval, n::Int)` to tune the 
     number of samples.
 
+- Fixed bug in resampling of index-value datasets, where the `n` arguments wasn't used. 
+
 ## UncertainData.jl v0.1.1
 
 - Indexing implemented for `UncertainIndexValueDataset`. 
