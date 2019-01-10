@@ -270,8 +270,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../uncertain_values/uncertainvalues_examples/" title="Examples" class="md-nav__link">
-      Examples
+    <a href="../../../uncertain_values/uncertainvalues_overview/" title="Quickstart" class="md-nav__link">
+      Quickstart
     </a>
   </li>
 
@@ -282,8 +282,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../uncertain_values/uncertainvalues_overview/" title="Quickstart" class="md-nav__link">
-      Quickstart
+    <a href="../../../uncertain_values/uncertainvalues_examples/" title="Examples" class="md-nav__link">
+      Examples
     </a>
   </li>
 
@@ -501,18 +501,66 @@
       
       
 
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Mathematics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Mathematics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../mathematics/elementary_operations/" title="Elementary operations" class="md-nav__link">
+      Elementary operations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../mathematics/trig_functions/" title="Trigonometric functions" class="md-nav__link">
+      Trigonometric functions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
   
 
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
     
-    <label class="md-nav__link" for="nav-6">
+    <label class="md-nav__link" for="nav-7">
       Uncertain statistics
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+      <label class="md-nav__title" for="nav-7">
         Uncertain statistics
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -539,13 +587,13 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2" checked>
     
-    <label class="md-nav__link" for="nav-6-2">
+    <label class="md-nav__link" for="nav-7-2">
       Hypothesis tests
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-6-2">
+      <label class="md-nav__title" for="nav-7-2">
         Hypothesis tests
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -812,7 +860,7 @@
 </td></tr></table>
 
 <p>Perform a one sample t-test of the null hypothesis that the uncertain value has a distribution with mean <code class="codehilite">μ0</code> against the alternative hypothesis that its distribution does not have mean <code class="codehilite">μ0</code>. <code class="codehilite">n</code> indicates the number of draws during resampling.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L185-L193' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L185-L193' class='documenter-source'>source</a><br></p>
 <p><strong>Example:</strong></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -881,7 +929,7 @@
 </td></tr></table>
 
 <p>First, sample <code class="codehilite">n</code> draws of each uncertain value in each dataset, pooling the draws from the elements of <code class="codehilite">d1</code> and the draws from the elements of <code class="codehilite">d2</code> separately. Then, perform a paired sample t-test of the null hypothesis that the differences between pairs of uncertain values in <code class="codehilite">d1</code> and <code class="codehilite">d2</code> come from a distribution with mean <code class="codehilite">μ0</code> against the alternative hypothesis that the distribution does not have mean <code class="codehilite">μ0</code>.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L246-L257' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L246-L257' class='documenter-source'>source</a><br></p>
 <p><a id='Element-wise-test-1'></a></p>
 <h2 id="element-wise_test">Element-wise test<a class="headerlink" href="#element-wise_test" title="Permanent link">&para;</a></h2>
 <p><a id='UncertainData.UncertainStatistics.OneSampleTTestElementWise' href='#UncertainData.UncertainStatistics.OneSampleTTestElementWise'>#</a>
@@ -896,7 +944,7 @@
 
 <p>Perform a one sample t-test of the null hypothesis that the uncertain value has a distribution with mean <code class="codehilite">μ0</code> against the alternative hypothesis that its distribution does not have mean <code class="codehilite">μ0</code> for uncertain value in <code class="codehilite">d</code>.</p>
 <p><code class="codehilite">n</code> indicates the number of draws during resampling.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L266-L276' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L266-L276' class='documenter-source'>source</a><br></p>
                 
                   
                 

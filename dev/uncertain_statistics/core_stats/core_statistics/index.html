@@ -270,8 +270,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../uncertain_values/uncertainvalues_examples/" title="Examples" class="md-nav__link">
-      Examples
+    <a href="../../../uncertain_values/uncertainvalues_overview/" title="Quickstart" class="md-nav__link">
+      Quickstart
     </a>
   </li>
 
@@ -282,8 +282,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../uncertain_values/uncertainvalues_overview/" title="Quickstart" class="md-nav__link">
-      Quickstart
+    <a href="../../../uncertain_values/uncertainvalues_examples/" title="Examples" class="md-nav__link">
+      Examples
     </a>
   </li>
 
@@ -501,18 +501,66 @@
       
       
 
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Mathematics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Mathematics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../mathematics/elementary_operations/" title="Elementary operations" class="md-nav__link">
+      Elementary operations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../mathematics/trig_functions/" title="Trigonometric functions" class="md-nav__link">
+      Trigonometric functions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
   
 
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
     
-    <label class="md-nav__link" for="nav-6">
+    <label class="md-nav__link" for="nav-7">
       Uncertain statistics
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+      <label class="md-nav__title" for="nav-7">
         Uncertain statistics
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -578,13 +626,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
     
-    <label class="md-nav__link" for="nav-6-2">
+    <label class="md-nav__link" for="nav-7-2">
       Hypothesis tests
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-6-2">
+      <label class="md-nav__title" for="nav-7-2">
         Hypothesis tests
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -796,7 +844,7 @@
 </td></tr></table>
 
 <p>Compute the mean of an uncertain value over an <code class="codehilite">n</code>-draw sample of it.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/statsbase/core_stats_uncertainvalues.jl#L11-L15' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/statsbase/core_stats_uncertainvalues.jl#L11-L15' class='documenter-source'>source</a><br></p>
 <p><a id='Statistics.median-Tuple{AbstractUncertainValue,Int64}' href='#Statistics.median-Tuple{AbstractUncertainValue,Int64}'>#</a>
 <strong><code class="codehilite">Statistics.median</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>median(uv::AbstractUncertainValue, n::Int)
@@ -804,7 +852,7 @@
 </td></tr></table>
 
 <p>Compute the median of an uncertain value over an <code class="codehilite">n</code>-draw sample of it.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/statsbase/core_stats_uncertainvalues.jl#L25-L29' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/statsbase/core_stats_uncertainvalues.jl#L25-L29' class='documenter-source'>source</a><br></p>
 <p><a id='Statistics.middle-Tuple{AbstractUncertainValue,Int64}' href='#Statistics.middle-Tuple{AbstractUncertainValue,Int64}'>#</a>
 <strong><code class="codehilite">Statistics.middle</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>middle(uv::AbstractUncertainValue, n::Int)
@@ -812,7 +860,7 @@
 </td></tr></table>
 
 <p>Compute the middle of an uncertain value over an <code class="codehilite">n</code>-draw sample of it.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/statsbase/core_stats_uncertainvalues.jl#L32-L36' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/statsbase/core_stats_uncertainvalues.jl#L32-L36' class='documenter-source'>source</a><br></p>
 <p><a id='Statistics.std-Tuple{AbstractUncertainValue,Int64}' href='#Statistics.std-Tuple{AbstractUncertainValue,Int64}'>#</a>
 <strong><code class="codehilite">Statistics.std</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>std(uv::AbstractUncertainValue, n::Int)
@@ -820,7 +868,7 @@
 </td></tr></table>
 
 <p>Compute the standard deviation of an uncertain value over an <code class="codehilite">n</code>-draw sample of it.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/statsbase/core_stats_uncertainvalues.jl#L47-L51' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/statsbase/core_stats_uncertainvalues.jl#L47-L51' class='documenter-source'>source</a><br></p>
 <p><a id='Statistics.var-Tuple{AbstractUncertainValue,Int64}' href='#Statistics.var-Tuple{AbstractUncertainValue,Int64}'>#</a>
 <strong><code class="codehilite">Statistics.var</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>variance(uv::AbstractUncertainValue, n::Int)
@@ -828,7 +876,7 @@
 </td></tr></table>
 
 <p>Compute the variance of an uncertain value over an <code class="codehilite">n</code>-draw sample of it.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/statsbase/core_stats_uncertainvalues.jl#L55-L59' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/statsbase/core_stats_uncertainvalues.jl#L55-L59' class='documenter-source'>source</a><br></p>
 <p><a id='Statistics.quantile-Tuple{AbstractUncertainValue,Any,Int64}' href='#Statistics.quantile-Tuple{AbstractUncertainValue,Any,Int64}'>#</a>
 <strong><code class="codehilite">Statistics.quantile</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>quantile(uv::AbstractUncertainValue, q, n::Int)
@@ -836,7 +884,7 @@
 </td></tr></table>
 
 <p>Compute the quantile(s) <code class="codehilite">q</code> of an uncertain value over an <code class="codehilite">n</code>-draw sample of it.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/statsbase/core_stats_uncertainvalues.jl#L39-L43' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/statsbase/core_stats_uncertainvalues.jl#L39-L43' class='documenter-source'>source</a><br></p>
 <p><a id='Statistics-on-datasets-of-uncertain-values-1'></a></p>
 <h3 id="statistics_on_datasets_of_uncertain_values">Statistics on datasets of uncertain values<a class="headerlink" href="#statistics_on_datasets_of_uncertain_values" title="Permanent link">&para;</a></h3>
 <p>The following statistics are available for uncertain datasets (collections of uncertain values).</p>
@@ -847,7 +895,7 @@
 </td></tr></table>
 
 <p>Computes the element-wise mean of a dataset of uncertain values. Takes the mean of an <code class="codehilite">n</code>-draw sample for each element.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/statsbase/core_stats_uncertaindatasets.jl#L21-L26' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/statsbase/core_stats_uncertaindatasets.jl#L21-L26' class='documenter-source'>source</a><br></p>
 <p><a id='Statistics.median-Tuple{AbstractUncertainValueDataset,Int64}' href='#Statistics.median-Tuple{AbstractUncertainValueDataset,Int64}'>#</a>
 <strong><code class="codehilite">Statistics.median</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>median(d::AbstractUncertainValueDataset, n::Int)
@@ -855,7 +903,7 @@
 </td></tr></table>
 
 <p>Computes the element-wise median of a dataset of uncertain values. Takes the median of an <code class="codehilite">n</code>-draw sample for each element.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/statsbase/core_stats_uncertaindatasets.jl#L30-L35' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/statsbase/core_stats_uncertaindatasets.jl#L30-L35' class='documenter-source'>source</a><br></p>
 <p><a id='Statistics.middle-Tuple{AbstractUncertainValueDataset,Int64}' href='#Statistics.middle-Tuple{AbstractUncertainValueDataset,Int64}'>#</a>
 <strong><code class="codehilite">Statistics.middle</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>middle(d::AbstractUncertainValueDataset, n::Int)
@@ -863,7 +911,7 @@
 </td></tr></table>
 
 <p>Compute the middle of <code class="codehilite">n</code> realisations of an <code class="codehilite">AbstractUncertainValueDataset</code>.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/statsbase/core_stats_uncertaindatasets.jl#L39-L43' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/statsbase/core_stats_uncertaindatasets.jl#L39-L43' class='documenter-source'>source</a><br></p>
 <p><a id='Statistics.std-Tuple{AbstractUncertainValueDataset,Int64}' href='#Statistics.std-Tuple{AbstractUncertainValueDataset,Int64}'>#</a>
 <strong><code class="codehilite">Statistics.std</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">std</span><span class="o">(</span><span class="nt">d</span><span class="p">::</span><span class="nd">AbstractUncertainValueDataset</span><span class="o">,</span> <span class="nt">n</span><span class="p">::</span><span class="nd">Int</span><span class="o">;</span> <span class="nt">kwargs</span><span class="o">...)</span>
@@ -871,7 +919,7 @@
 </td></tr></table>
 
 <p>Computes the element-wise standard deviation of a dataset of uncertain values. Takes the standard deviation of an <code class="codehilite">n</code>-draw sample for each element.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/statsbase/core_stats_uncertaindatasets.jl#L57-L62' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/statsbase/core_stats_uncertaindatasets.jl#L57-L62' class='documenter-source'>source</a><br></p>
 <p><a id='Statistics.var-Tuple{AbstractUncertainValueDataset,Int64}' href='#Statistics.var-Tuple{AbstractUncertainValueDataset,Int64}'>#</a>
 <strong><code class="codehilite">Statistics.var</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">var</span><span class="o">(</span><span class="nt">d</span><span class="p">::</span><span class="nd">AbstractUncertainValueDataset</span><span class="o">,</span> <span class="nt">n</span><span class="p">::</span><span class="nd">Int</span><span class="o">;</span> <span class="nt">kwargs</span><span class="o">...)</span>
@@ -879,7 +927,7 @@
 </td></tr></table>
 
 <p>Computes the element-wise sample variance of a dataset of uncertain values. Takes the sample variance of an <code class="codehilite">n</code>-draw sample for each element.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/statsbase/core_stats_uncertaindatasets.jl#L66-L71' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/statsbase/core_stats_uncertaindatasets.jl#L66-L71' class='documenter-source'>source</a><br></p>
 <p><a id='Statistics.quantile-Tuple{AbstractUncertainValueDataset,Any,Int64}' href='#Statistics.quantile-Tuple{AbstractUncertainValueDataset,Any,Int64}'>#</a>
 <strong><code class="codehilite">Statistics.quantile</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">quantile</span><span class="o">(</span><span class="nt">d</span><span class="p">::</span><span class="nd">AbstractUncertainValueDataset</span><span class="o">,</span> <span class="nt">p</span><span class="o">,</span> <span class="nt">n</span><span class="p">::</span><span class="nd">Int</span><span class="o">;</span> <span class="nt">kwargs</span><span class="o">...)</span>
@@ -887,7 +935,7 @@
 </td></tr></table>
 
 <p>Compute element-wise quantile(s) <code class="codehilite">p</code>of a dataset consisting of uncertain values. Takes the quantiles of an <code class="codehilite">n</code>-draw sample for each element.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/statsbase/core_stats_uncertaindatasets.jl#L48-L53' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/statsbase/core_stats_uncertaindatasets.jl#L48-L53' class='documenter-source'>source</a><br></p>
 <p><a id='Statistics.cov-Tuple{AbstractUncertainValueDataset,AbstractUncertainValueDataset,Int64}' href='#Statistics.cov-Tuple{AbstractUncertainValueDataset,AbstractUncertainValueDataset,Int64}'>#</a>
 <strong><code class="codehilite">Statistics.cov</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">cov</span><span class="o">(</span><span class="nt">d1</span><span class="p">::</span><span class="nd">AbstractUncertainValueDataset</span><span class="o">,</span> <span class="nt">d2</span><span class="p">::</span><span class="nd">AbstractUncertainValueDataset</span><span class="o">,</span> <span class="nt">n</span><span class="p">::</span><span class="nd">Int</span><span class="o">;</span> <span class="nt">kwargs</span><span class="o">...)</span>
@@ -895,7 +943,7 @@
 </td></tr></table>
 
 <p>Compute the covariance between two <code class="codehilite">AbstractUncertainValueDataset</code>s by realising both datasets <code class="codehilite">n</code> times.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/statsbase/core_stats_uncertaindatasets.jl#L84-L89' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/statsbase/core_stats_uncertaindatasets.jl#L84-L89' class='documenter-source'>source</a><br></p>
 <p><a id='Statistics.cor-Tuple{AbstractUncertainValueDataset,AbstractUncertainValueDataset,Int64}' href='#Statistics.cor-Tuple{AbstractUncertainValueDataset,AbstractUncertainValueDataset,Int64}'>#</a>
 <strong><code class="codehilite">Statistics.cor</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">cor</span><span class="o">(</span><span class="nt">d1</span><span class="p">::</span><span class="nd">AbstractUncertainValueDataset</span><span class="o">,</span> <span class="nt">d2</span><span class="p">::</span><span class="nd">AbstractUncertainValueDataset</span><span class="o">,</span> <span class="nt">n</span><span class="p">::</span><span class="nd">Int</span><span class="o">;</span> <span class="nt">kwargs</span><span class="o">...)</span>
@@ -903,7 +951,7 @@
 </td></tr></table>
 
 <p>Compute the Pearson correlation between two <code class="codehilite">AbstractUncertainValueDataset</code>s by realising both datasets <code class="codehilite">n</code> times.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/statsbase/core_stats_uncertaindatasets.jl#L75-L80' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/statsbase/core_stats_uncertaindatasets.jl#L75-L80' class='documenter-source'>source</a><br></p>
                 
                   
                 
@@ -924,7 +972,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../../resampling/resampling_uncertain_indexvalue_datasets/" title="Resampling uncertain index-value datasets" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../../mathematics/trig_functions/" title="Trigonometric functions" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -933,7 +981,7 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Resampling uncertain index-value datasets
+                Trigonometric functions
               </span>
             </div>
           </a>

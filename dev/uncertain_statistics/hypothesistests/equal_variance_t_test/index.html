@@ -270,8 +270,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../uncertain_values/uncertainvalues_examples/" title="Examples" class="md-nav__link">
-      Examples
+    <a href="../../../uncertain_values/uncertainvalues_overview/" title="Quickstart" class="md-nav__link">
+      Quickstart
     </a>
   </li>
 
@@ -282,8 +282,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../uncertain_values/uncertainvalues_overview/" title="Quickstart" class="md-nav__link">
-      Quickstart
+    <a href="../../../uncertain_values/uncertainvalues_examples/" title="Examples" class="md-nav__link">
+      Examples
     </a>
   </li>
 
@@ -501,18 +501,66 @@
       
       
 
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Mathematics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Mathematics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../mathematics/elementary_operations/" title="Elementary operations" class="md-nav__link">
+      Elementary operations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../mathematics/trig_functions/" title="Trigonometric functions" class="md-nav__link">
+      Trigonometric functions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
   
 
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
     
-    <label class="md-nav__link" for="nav-6">
+    <label class="md-nav__link" for="nav-7">
       Uncertain statistics
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+      <label class="md-nav__title" for="nav-7">
         Uncertain statistics
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -539,13 +587,13 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2" checked>
     
-    <label class="md-nav__link" for="nav-6-2">
+    <label class="md-nav__link" for="nav-7-2">
       Hypothesis tests
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-6-2">
+      <label class="md-nav__title" for="nav-7-2">
         Hypothesis tests
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -813,7 +861,7 @@
 
 <p>Consider two samples <code class="codehilite">s1</code> and <code class="codehilite">s2</code>, each consisting of <code class="codehilite">n</code> random draws from the distributions furnishing <code class="codehilite">d1</code> and <code class="codehilite">d2</code>, respectively.</p>
 <p>This function performs a two-sample t-test of the null hypothesis that <code class="codehilite">s1</code> and <code class="codehilite">s2</code> come from distributions with equal means and variances against the alternative hypothesis that the distributions have different means but equal variances.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L34-L45' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L34-L45' class='documenter-source'>source</a><br></p>
 <p><strong>Example</strong></p>
 <p>Let's create two uncertain values furnished by distributions of different types. We'll perform the equal variance t-test to check if there is support for the null-hypothesis that the distributions furnishing the uncertain values come from distributions with equal means and variances.</p>
 <p>We expect the test to reject this null-hypothesis, because we've created two very different distributions.</p>
@@ -879,7 +927,7 @@
 
 <p>Consider two samples <code class="codehilite">s1[i]</code> and <code class="codehilite">s2[i]</code>, each consisting of <code class="codehilite">n</code> random draws from the distributions furnishing the uncertain values <code class="codehilite">d1[i]</code> and <code class="codehilite">d2[i]</code>, respectively. Gather all <code class="codehilite">s1[i]</code> in a pooled sample <code class="codehilite">S1</code>, and all <code class="codehilite">s2[i]</code> in a pooled sample <code class="codehilite">S2</code>.</p>
 <p>Perform a two-sample t-test of the null hypothesis that <code class="codehilite">S1</code> and <code class="codehilite">S2</code> come from distributions with equal means and variances against the alternative hypothesis that the distributions have different means but equal variances.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L56-L68' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L56-L68' class='documenter-source'>source</a><br></p>
 <p><a id='Element-wise-test-1'></a></p>
 <h2 id="element-wise_test">Element-wise test<a class="headerlink" href="#element-wise_test" title="Permanent link">&para;</a></h2>
 <p><a id='UncertainData.UncertainStatistics.EqualVarianceTTestElementWise' href='#UncertainData.UncertainStatistics.EqualVarianceTTestElementWise'>#</a>
@@ -892,7 +940,7 @@
 
 <p>Consider two samples <code class="codehilite">s1[i]</code> and <code class="codehilite">s2[i]</code>, each consisting of <code class="codehilite">n</code> random draws from the distributions furnishing the uncertain values <code class="codehilite">d1[i]</code> and <code class="codehilite">d2[i]</code>, respectively. This function performs an elementwise <code class="codehilite">EqualVarianceTTest</code> on the pairs <code class="codehilite">(s1[i], s2[i])</code>. Specifically:</p>
 <p>Performs an pairwise two-sample t-test of the null hypothesis that <code class="codehilite">s1[i]</code> and <code class="codehilite">s2[i]</code> come from distributions with equal means and variances against the alternative hypothesis that the distributions have different means but equal variances.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L81-L94' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L81-L94' class='documenter-source'>source</a><br></p>
                 
                   
                 

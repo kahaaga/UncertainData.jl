@@ -280,6 +280,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#mathematical_operations" title="Mathematical operations" class="md-nav__link">
+    Mathematical operations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#statistics_on_uncertain_datasets" title="Statistics on uncertain datasets" class="md-nav__link">
     Statistics on uncertain datasets
   </a>
@@ -336,8 +343,8 @@
 
 
   <li class="md-nav__item">
-    <a href="uncertain_values/uncertainvalues_examples/" title="Examples" class="md-nav__link">
-      Examples
+    <a href="uncertain_values/uncertainvalues_overview/" title="Quickstart" class="md-nav__link">
+      Quickstart
     </a>
   </li>
 
@@ -348,8 +355,8 @@
 
 
   <li class="md-nav__item">
-    <a href="uncertain_values/uncertainvalues_overview/" title="Quickstart" class="md-nav__link">
-      Quickstart
+    <a href="uncertain_values/uncertainvalues_examples/" title="Examples" class="md-nav__link">
+      Examples
     </a>
   </li>
 
@@ -573,10 +580,58 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
     <label class="md-nav__link" for="nav-6">
-      Uncertain statistics
+      Mathematics
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-6">
+        Mathematics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="mathematics/elementary_operations/" title="Elementary operations" class="md-nav__link">
+      Elementary operations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="mathematics/trig_functions/" title="Trigonometric functions" class="md-nav__link">
+      Trigonometric functions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Uncertain statistics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
         Uncertain statistics
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -601,13 +656,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
     
-    <label class="md-nav__link" for="nav-6-2">
+    <label class="md-nav__link" for="nav-7-2">
       Hypothesis tests
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-6-2">
+      <label class="md-nav__title" for="nav-7-2">
         Hypothesis tests
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -790,6 +845,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#mathematical_operations" title="Mathematical operations" class="md-nav__link">
+    Mathematical operations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#statistics_on_uncertain_datasets" title="Statistics on uncertain datasets" class="md-nav__link">
     Statistics on uncertain datasets
   </a>
@@ -846,6 +908,9 @@
 <p>Way too often in data analysis the uncertainties in observational data are ignored or not  dealt with in a systematic manner. The core concept of the package is that uncertain data  should live in the probability domain, not as single value representations of the data  (e.g. the mean).</p>
 <p>In this package, uncertain data values are thus stored as probability distributions.  Only when performing a computation or plotting, the uncertain values are realized by  resampling the probability distributions furnishing them. </p>
 <p>Individual uncertain observations may be collected in <code class="codehilite">UncertainDatasets</code>, which can be  sampled according to user-provided sampling constraints. Likewise, indices (e.g. time,  depth or any other index) of observations can also be represented as probability  distributions and may also sampled using constraints. This may be useful when you, for  example, want to draw realizations of your dataset while enforcing strictly increasing age  models.</p>
+<p><a id='Mathematical-operations-1'></a></p>
+<h2 id="mathematical_operations">Mathematical operations<a class="headerlink" href="#mathematical_operations" title="Permanent link">&para;</a></h2>
+<p>Several <a href="mathematics/elementary_operations/">elementary mathematical operations</a> and  <a href="mathematics/trig_functions/">trigonometric functions</a> are supported  for uncertain values. Computations are done using a resampling approach, where the user  may choose to use the default number of realizations (<code class="codehilite">n = 10000</code>) or tune the number of  samples.</p>
 <p><a id='Statistics-on-uncertain-datasets-1'></a></p>
 <h2 id="statistics_on_uncertain_datasets">Statistics on uncertain datasets<a class="headerlink" href="#statistics_on_uncertain_datasets" title="Permanent link">&para;</a></h2>
 <p><a href="uncertain_statistics/core_stats/core_statistics/">Statistics</a> on  uncertain observations and uncertain datasets are obtained using a resampling approach. </p>
@@ -883,13 +948,13 @@
       <nav class="md-footer-nav__inner md-grid">
         
         
-          <a href="uncertain_values/uncertainvalues_examples/" title="Examples" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="uncertain_values/uncertainvalues_overview/" title="Quickstart" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Examples
+                Quickstart
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

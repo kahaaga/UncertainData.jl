@@ -270,8 +270,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../uncertain_values/uncertainvalues_examples/" title="Examples" class="md-nav__link">
-      Examples
+    <a href="../../../uncertain_values/uncertainvalues_overview/" title="Quickstart" class="md-nav__link">
+      Quickstart
     </a>
   </li>
 
@@ -282,8 +282,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../uncertain_values/uncertainvalues_overview/" title="Quickstart" class="md-nav__link">
-      Quickstart
+    <a href="../../../uncertain_values/uncertainvalues_examples/" title="Examples" class="md-nav__link">
+      Examples
     </a>
   </li>
 
@@ -501,18 +501,66 @@
       
       
 
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Mathematics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Mathematics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../mathematics/elementary_operations/" title="Elementary operations" class="md-nav__link">
+      Elementary operations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../mathematics/trig_functions/" title="Trigonometric functions" class="md-nav__link">
+      Trigonometric functions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
   
 
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
     
-    <label class="md-nav__link" for="nav-6">
+    <label class="md-nav__link" for="nav-7">
       Uncertain statistics
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+      <label class="md-nav__title" for="nav-7">
         Uncertain statistics
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -539,13 +587,13 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2" checked>
     
-    <label class="md-nav__link" for="nav-6-2">
+    <label class="md-nav__link" for="nav-7-2">
       Hypothesis tests
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-6-2">
+      <label class="md-nav__title" for="nav-7-2">
         Hypothesis tests
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -799,7 +847,7 @@
 
 <p>First, draw <code class="codehilite">n</code> realisations of each uncertain value in <code class="codehilite">d1</code>, then separately draw <code class="codehilite">n</code> realisations of each uncertain value in <code class="codehilite">d2</code>. Then, pool all realisations for <code class="codehilite">d1</code> together and all realisations of <code class="codehilite">d2</code> together.</p>
 <p>On the pooled realisations, perform an asymptotic two-sample Kolmogorov–Smirnov-test of the null hypothesis that the distribution furnishing the <code class="codehilite">d1</code> value pool represents the same distribution as the distribution furnishing the <code class="codehilite">d2</code> value pool, against the alternative hypothesis that the furnishing distributions are different.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/hypothesis_tests/kolmogorov_smirnov.jl#L96-L109' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/hypothesis_tests/kolmogorov_smirnov.jl#L96-L109' class='documenter-source'>source</a><br></p>
 <p><a id='Element-wise-test-1'></a></p>
 <h2 id="element-wise_test">Element-wise test<a class="headerlink" href="#element-wise_test" title="Permanent link">&para;</a></h2>
 <p><a id='UncertainData.UncertainStatistics.ApproximateTwoSampleKSTestElementWise' href='#UncertainData.UncertainStatistics.ApproximateTwoSampleKSTestElementWise'>#</a>
@@ -813,7 +861,7 @@
 <p>Assuming <code class="codehilite">d1</code> and <code class="codehilite">d2</code> contain the same number of uncertain observations, draw <code class="codehilite">n</code> realisations of each uncertain value in <code class="codehilite">d1</code>, then separately and separately draw <code class="codehilite">n</code> realisations of each uncertain value in <code class="codehilite">d2</code>.</p>
 <p>Then, perform an asymptotic two-sample Kolmogorov–Smirnov-test of the null hypothesis that the uncertain values in <code class="codehilite">d1</code> and <code class="codehilite">d2</code> come from the same distribution against the alternative hypothesis that the (element-wise) values in  <code class="codehilite">d1</code> and <code class="codehilite">d2</code> come from different distributions.</p>
 <p>The test is performed pairwise, i.e. ApproximateTwoSampleKSTest(d1[i], d2[i]) with <code class="codehilite">n</code> draws for the <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>-ith pair of uncertain values.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/hypothesis_tests/kolmogorov_smirnov.jl#L118-L133' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/hypothesis_tests/kolmogorov_smirnov.jl#L118-L133' class='documenter-source'>source</a><br></p>
                 
                   
                 

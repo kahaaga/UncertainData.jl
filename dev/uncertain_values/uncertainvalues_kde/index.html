@@ -272,8 +272,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../uncertainvalues_examples/" title="Examples" class="md-nav__link">
-      Examples
+    <a href="../uncertainvalues_overview/" title="Quickstart" class="md-nav__link">
+      Quickstart
     </a>
   </li>
 
@@ -284,8 +284,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../uncertainvalues_overview/" title="Quickstart" class="md-nav__link">
-      Quickstart
+    <a href="../uncertainvalues_examples/" title="Examples" class="md-nav__link">
+      Examples
     </a>
   </li>
 
@@ -570,10 +570,58 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
     <label class="md-nav__link" for="nav-6">
-      Uncertain statistics
+      Mathematics
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-6">
+        Mathematics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../mathematics/elementary_operations/" title="Elementary operations" class="md-nav__link">
+      Elementary operations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../mathematics/trig_functions/" title="Trigonometric functions" class="md-nav__link">
+      Trigonometric functions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Uncertain statistics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
         Uncertain statistics
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -598,13 +646,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
     
-    <label class="md-nav__link" for="nav-6-2">
+    <label class="md-nav__link" for="nav-7-2">
       Hypothesis tests
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-6-2">
+      <label class="md-nav__title" for="nav-7-2">
         Hypothesis tests
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1005,7 +1053,7 @@
 
 <p>Construct an uncertain value by a kernel density estimate to <code class="codehilite">data</code>.</p>
 <p>Fast Fourier transforms are used in the kernel density estimation, so the number of points should be a power of 2 (default = 2048).</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_values/UncertainValue.jl#L10-L19' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_values/UncertainValue.jl#L10-L19' class='documenter-source'>source</a><br></p>
 <p><a id='Additional-keyword-arguments-and-examples-1'></a></p>
 <h3 id="additional_keyword_arguments_and_examples">Additional keyword arguments and examples<a class="headerlink" href="#additional_keyword_arguments_and_examples" title="Permanent link">&para;</a></h3>
 <p>If the only argument to the <code class="codehilite">UncertainValue</code> constructor is a vector of values, the default behaviour is to represent the distribution by a kernel density estimate (KDE), i.e. <code class="codehilite">UncertainValue(data)</code>. Gaussian kernels are used by default. The syntax <code class="codehilite">UncertainValue(UnivariateKDE, data)</code> will also work if <code class="codehilite">KernelDensity.jl</code> is loaded.</p>
@@ -1029,7 +1077,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../uncertainvalues_overview/" title="Quickstart" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../uncertainvalues_examples/" title="Examples" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1038,7 +1086,7 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Quickstart
+                Examples
               </span>
             </div>
           </a>

@@ -270,8 +270,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../uncertain_values/uncertainvalues_examples/" title="Examples" class="md-nav__link">
-      Examples
+    <a href="../../../uncertain_values/uncertainvalues_overview/" title="Quickstart" class="md-nav__link">
+      Quickstart
     </a>
   </li>
 
@@ -282,8 +282,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../uncertain_values/uncertainvalues_overview/" title="Quickstart" class="md-nav__link">
-      Quickstart
+    <a href="../../../uncertain_values/uncertainvalues_examples/" title="Examples" class="md-nav__link">
+      Examples
     </a>
   </li>
 
@@ -501,18 +501,66 @@
       
       
 
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Mathematics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Mathematics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../mathematics/elementary_operations/" title="Elementary operations" class="md-nav__link">
+      Elementary operations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../mathematics/trig_functions/" title="Trigonometric functions" class="md-nav__link">
+      Trigonometric functions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
   
 
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
     
-    <label class="md-nav__link" for="nav-6">
+    <label class="md-nav__link" for="nav-7">
       Uncertain statistics
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+      <label class="md-nav__title" for="nav-7">
         Uncertain statistics
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -539,13 +587,13 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2" checked>
     
-    <label class="md-nav__link" for="nav-6-2">
+    <label class="md-nav__link" for="nav-7-2">
       Hypothesis tests
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-6-2">
+      <label class="md-nav__title" for="nav-7-2">
         Hypothesis tests
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -814,7 +862,7 @@
 <p>Let <code class="codehilite">s1</code> and <code class="codehilite">s2</code> be samples of <code class="codehilite">n</code> realisations from the distributions furnishing the uncertain values <code class="codehilite">d1</code> and <code class="codehilite">d2</code>.</p>
 <p>Perform a Mann-Whitney U test of the null hypothesis that the probability that an observation drawn from the same population as <code class="codehilite">s1</code> is greater than an observation drawn from the same population as <code class="codehilite">s2</code> is equal to the probability that an observation drawn from the same population as <code class="codehilite">s2</code> is greater than an observation drawn from the same population as <code class="codehilite">s1</code> against the alternative hypothesis that these probabilities are not equal.</p>
 <p>The Mann-Whitney U test is sometimes known as the Wilcoxon rank-sum test. When there are no tied ranks and ≤50 samples, or tied ranks and ≤10 samples, <code class="codehilite">MannWhitneyUTest</code> performs an exact Mann-Whitney U test. In all other cases, <code class="codehilite">MannWhitneyUTest</code> performs an approximate Mann-Whitney U test.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/hypothesis_tests/mann_whitney.jl#L32-L50' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/hypothesis_tests/mann_whitney.jl#L32-L50' class='documenter-source'>source</a><br></p>
 <p><a id='Pooled-test-1'></a></p>
 <h2 id="pooled_test">Pooled test<a class="headerlink" href="#pooled_test" title="Permanent link">&para;</a></h2>
 <p><a id='UncertainData.UncertainStatistics.MannWhitneyUTestPooled' href='#UncertainData.UncertainStatistics.MannWhitneyUTestPooled'>#</a>
@@ -828,7 +876,7 @@
 <p>Let <span><span class="MathJax_Preview">s_{1_{i}}</span><script type="math/tex">s_{1_{i}}</script></span> be a sample of <code class="codehilite">n</code> realisations of the distribution furnishing the uncertain value <code class="codehilite">d1[i]</code>, where <span><span class="MathJax_Preview">i \in [1, 2, \ldots, N]</span><script type="math/tex">i \in [1, 2, \ldots, N]</script></span> and <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> is the number of uncertain values in <code class="codehilite">d1</code>.  Next, gather the samples for all <span><span class="MathJax_Preview">s_{1_{i}}</span><script type="math/tex">s_{1_{i}}</script></span> in a pooled sample <span><span class="MathJax_Preview">S_1</span><script type="math/tex">S_1</script></span>.  Do the same for the second uncertain dataset <code class="codehilite">d2</code>, yielding the pooled sample  <span><span class="MathJax_Preview">S_2</span><script type="math/tex">S_2</script></span>.</p>
 <p>Perform a Mann-Whitney U test of the null hypothesis that the probability that an observation drawn from the same population as <span><span class="MathJax_Preview">S_1</span><script type="math/tex">S_1</script></span> is greater than an observation drawn from the same population as <span><span class="MathJax_Preview">S_2</span><script type="math/tex">S_2</script></span> is equal to the probability that an observation drawn from the same population as <span><span class="MathJax_Preview">S_2</span><script type="math/tex">S_2</script></span> is greater than an observation drawn from the same population as <span><span class="MathJax_Preview">S_1</span><script type="math/tex">S_1</script></span> against the alternative hypothesis that these probabilities are not equal.</p>
 <p>The Mann-Whitney U test is sometimes known as the Wilcoxon rank-sum test. When there are no tied ranks and ≤50 samples, or tied ranks and ≤10 samples, <code class="codehilite">MannWhitneyUTest</code> performs an exact Mann-Whitney U test. In all other cases, <code class="codehilite">MannWhitneyUTest</code> performs an approximate Mann-Whitney U test.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/hypothesis_tests/mann_whitney.jl#L60-L81' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/hypothesis_tests/mann_whitney.jl#L60-L81' class='documenter-source'>source</a><br></p>
 <p><a id='Element-wise-test-1'></a></p>
 <h2 id="element-wise_test">Element-wise test<a class="headerlink" href="#element-wise_test" title="Permanent link">&para;</a></h2>
 <p><a id='UncertainData.UncertainStatistics.MannWhitneyUTestElementWise' href='#UncertainData.UncertainStatistics.MannWhitneyUTestElementWise'>#</a>
@@ -842,7 +890,7 @@
 <p>Assume <code class="codehilite">d1</code> and <code class="codehilite">d2</code> consist of the same number of uncertain values. Let <span><span class="MathJax_Preview">s_{1_{i}}</span><script type="math/tex">s_{1_{i}}</script></span> be a sample of <code class="codehilite">n</code> realisations of the distribution furnishing the uncertain value <code class="codehilite">d1[i]</code>, where <span><span class="MathJax_Preview">i \in [1, 2, \ldots, N]</span><script type="math/tex">i \in [1, 2, \ldots, N]</script></span> and <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> is the number of uncertain values in <code class="codehilite">d1</code>. Let <span><span class="MathJax_Preview">s_{2_{i}}</span><script type="math/tex">s_{2_{i}}</script></span> be the corresponding sample for <code class="codehilite">d2[i]</code>. This function</p>
 <p>Perform an element-wise Mann-Whitney U test of the null hypothesis that the probability that an observation drawn from the same population as <span><span class="MathJax_Preview">s_{1_{i}}</span><script type="math/tex">s_{1_{i}}</script></span> is greater than an observation drawn from the same population as <span><span class="MathJax_Preview">s_{2_{i}}</span><script type="math/tex">s_{2_{i}}</script></span> is equal to the probability that an observation drawn from the same population as <span><span class="MathJax_Preview">s_{2_{i}}</span><script type="math/tex">s_{2_{i}}</script></span> is greater than an observation drawn from the same population as <span><span class="MathJax_Preview">s_{1_{i}}</span><script type="math/tex">s_{1_{i}}</script></span> against the alternative hypothesis that these probabilities are not equal.</p>
 <p>The Mann-Whitney U test is sometimes known as the Wilcoxon rank-sum test. When there are no tied ranks and ≤50 samples, or tied ranks and ≤10 samples, <code class="codehilite">MannWhitneyUTest</code> performs an exact Mann-Whitney U test. In all other cases, <code class="codehilite">MannWhitneyUTest</code> performs an approximate Mann-Whitney U test.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e2da6038d559828039e0b509bbaba2798f282fb3/src/uncertain_statistics/hypothesis_tests/mann_whitney.jl#L92-L115' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1db21b19323c0ff5e1655570df6fb0566742e481/src/uncertain_statistics/hypothesis_tests/mann_whitney.jl#L92-L115' class='documenter-source'>source</a><br></p>
                 
                   
                 
