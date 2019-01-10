@@ -38,6 +38,10 @@ function resample(udata::UncertainIndexValueDataset, n::Int)
 	[resample(udata) for i = 1:n]
 end
 
+function resample(udata::UncertainIndexValueDataset,constraint::SamplingConstraint, n::Int) 
+	[resample(udata, constraint) for i = 1:n]
+end
+
 
 function resample(udata::UncertainIndexValueDataset, 
 		constraint_idxs::SamplingConstraint, 
