@@ -212,10 +212,10 @@ end
 
 """
     truncate(uv::TheoreticalDistributionScalarValue,
-        constraint::TruncateRange)
+        constraint::TruncateStd)
 
 Truncate the theoretical distribution furnishing `uv` using a
-`TruncateRange` sampling constraint.
+`TruncateStd` sampling constraint.
 """
 function truncate(uv::TheoreticalDistributionScalarValue,
         constraint::TruncateStd)
