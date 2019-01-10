@@ -1,10 +1,21 @@
 import Base.rand
-
+import Distributions, StatsBase
 
 abstract type TheoreticalDistributionScalarValue <: AbstractUncertainValue end
 
 Base.rand(uv::AbstractUncertainValue) = rand(uv.distribution)
 Base.rand(uv::AbstractUncertainValue, n::Int) = [rand(uv) for i = 1:n]
+
+Distributions.rand(fd::TheoreticalDistributionScalarValue) = rand(fd.distribution)
+Distributions.rand(fd::TheoreticalDistributionScalarValue, n::Int) = rand(fd.distribution, n)
+Distributions.support(fd::TheoreticalDistributionScalarValue) = support(fd.distribution)
+Distributions.pdf(fd::TheoreticalDistributionScalarValue, x) = pdf(fd.distribution, x)
+StatsBase.mean(fd::TheoreticalDistributionScalarValue) = mean(fd.distribution)
+StatsBase.median(fd::TheoreticalDistributionScalarValue) = median(fd.distribution)
+StatsBase.middle(fd::TheoreticalDistributionScalarValue) = middle(fd.distribution)
+StatsBase.quantile(fd::TheoreticalDistributionScalarValue, q) = quantile(fd.distribution, q)
+StatsBase.std(fd::TheoreticalDistributionScalarValue	) = std(fd.distribution)
+
 
 abstract type AbstractUncertainOneParameterScalarValue <: TheoreticalDistributionScalarValue end
 abstract type AbstractUncertainTwoParameterScalarValue <: TheoreticalDistributionScalarValue end

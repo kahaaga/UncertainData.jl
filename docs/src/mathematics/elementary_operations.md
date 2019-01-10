@@ -1,6 +1,6 @@
 # Elementary mathematical operations
 
-Elementary mathematical operations (`+`, `-`, `*`) between arbitrary 
+Elementary mathematical operations (`+`, `-`, `*`, and `/`) between arbitrary 
 uncertain values of different types and scalars are supported. 
 
 ### Syntax
@@ -74,4 +74,21 @@ Base.:*(a::Real, b::AbstractUncertainValue, n::Int)
 ```@docs 
 Base.:*(a::AbstractUncertainValue, b::Real)
 Base.:*(a::AbstractUncertainValue, b::Real, n::Int)
+```
+
+## Division
+
+```@docs 
+Base.:/(a::AbstractUncertainValue, b::AbstractUncertainValue)
+Base.:/(a::AbstractUncertainValue, b::AbstractUncertainValue, n::Int)
+```
+
+```@docs 
+Base.:/(a::Real, b::AbstractUncertainValue)
+Base.:/(a::Real, b::AbstractUncertainValue, n::Int)
+```
+
+```@docs 
+Base.:/(a::AbstractUncertainValue, b::Real)
+Base.:/(a::AbstractUncertainValue, b::Real, n::Int)
 ```

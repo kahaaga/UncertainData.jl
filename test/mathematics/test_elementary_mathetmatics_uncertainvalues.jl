@@ -47,6 +47,14 @@ for perm in perms
     @test *(x, r2, n) isa Vector{Float64}
     @test *(r1, x, n) isa Vector{Float64}
 
+    # Division
+    @test r1 / r2 isa Vector{Float64}
+    @test x / r2 isa Vector{Float64}
+    @test r1 / x isa Vector{Float64}
+    @test /(r1, r2, n) isa Vector{Float64}
+    @test /(x, r2, n) isa Vector{Float64}
+    @test /(r1, x, n) isa Vector{Float64}
+
     # Exponentiation
     #@test r1 ^ r2 isa Vector{Float64} # implement for complex numbers.
 end

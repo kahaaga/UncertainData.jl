@@ -1,13 +1,39 @@
 
 Uncertain datasets are resampled by element-wise sampling the furnishing distributions 
-of the uncertain values in the dataset. You may sample the dataset as it is, or apply 
+of the uncertain values in the dataset. 
+
+You may sample the dataset as it is, or apply 
 [sampling constraints](../sampling_constraints/available_constraints.md) that limit the 
 support of the individual data value distributions.
 
 **Note: for datasets where both indices and values are uncertain, see 
 [uncertain index-value datasets](resampling_uncertain_indexvalue_datasets.md).**
 
-## Resampling uncertain datasets subject to sampling constraints 
+
+## Documentation 
+
+```@docs 
+resample(uv::AbstractUncertainValueDataset)
+```
+
+```@docs 
+resample(uv::AbstractUncertainValueDataset, n::Int)
+```
+
+
+```@docs
+resample(udata::AbstractUncertainValueDataset, 
+	constraint::Union{SamplingConstraint, Vector{SamplingConstraint}})
+```
+
+```@docs
+resample(udata::AbstractUncertainValueDataset, 
+	constraint::Union{SamplingConstraint, Vector{SamplingConstraint}}, n::Int)
+```
+
+## Examples 
+
+###  Resampling with sampling constraints 
 
 Consider the following example where we had a bunch of different measurements. 
 
@@ -78,7 +104,7 @@ This produces the following plot:
 ![](resampling_uncertain_datasets.png)
 
 
-## What happens when applying invalid constraints to a dataset?
+### What happens when applying invalid constraints to a dataset?
 
 In the example above, the resampling worked fine because all the constraints were 
 applicable to the data. However, it could happen that the constraint is not applicable 

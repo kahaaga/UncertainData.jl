@@ -61,8 +61,8 @@ end
 A constraint indicating that the distribution furnishing an uncertain value
 should be truncated at `nσ` (`n` standard deviations).
 """
-struct TruncateStd <: ValueSamplingConstraint
-    nσ::Int
+struct TruncateStd{T<:Number} <: ValueSamplingConstraint
+    nσ::T
 end
 
 """

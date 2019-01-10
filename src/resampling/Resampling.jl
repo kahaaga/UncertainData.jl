@@ -2,7 +2,7 @@ using Reexport
 
 @reexport module Resampling
 
-
+    
     ###################################
     # Resampling uncertain values
     ###################################

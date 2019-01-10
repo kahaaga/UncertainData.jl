@@ -61,3 +61,10 @@ measurements = [UncertainValue(rand(100));
 d = UncertainDataset(measurements)
 @test resample(d) isa Vector{Float64}
 @test resample(d, 10) isa Vector{Vector{Float64}}
+
+
+iv = UncertainIndexValueDataset(d, d)
+
+@test resample(iv) isa Tuple{Vector{Float64}, Vector{Float64}}
+@test resample(iv, 5) isa  Vector{Tuple{Vector{Float64}, Vector{Float64}}}
+@test length(resample(iv, 5)) == 5
