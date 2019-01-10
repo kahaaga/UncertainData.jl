@@ -20,6 +20,9 @@ include("sampling_constraints/SamplingConstraints.jl")
 # Resampling
 include("resampling/Resampling.jl")
 
+# Mathematics 
+include("mathematics/UncertainMathematics.jl")
+
 # Uncertain statistics
 include("uncertain_statistics/UncertainStatistics.jl")
 
