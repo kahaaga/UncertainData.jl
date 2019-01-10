@@ -6,6 +6,8 @@ import StatsBase.mean
 import StatsBase.median
 import StatsBase.middle
 import StatsBase.quantile
+import StatsBase.std
+
 
 import Distributions.pdf
 
@@ -27,6 +29,7 @@ StatsBase.mean(fd::FittedDistribution) = mean(fd.distribution)
 StatsBase.median(fd::FittedDistribution) = median(fd.distribution)
 StatsBase.middle(fd::FittedDistribution) = middle(fd.distribution)
 StatsBase.quantile(fd::FittedDistribution, q) = quantile(fd.distribution, q)
+StatsBase.std(fd::FittedDistribution) = std(fd.distribution)
 
 
 Base.minimum(uv::FittedDistribution) = minimum(uv.distribution)
