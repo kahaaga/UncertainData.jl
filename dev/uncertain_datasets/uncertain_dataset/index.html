@@ -40,7 +40,7 @@
     
     
       
-        <title>Overview - UncertainData.jl</title>
+        <title>Generic uncertain dataset - UncertainData.jl</title>
       
     
     
@@ -96,7 +96,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#uncertain_index_datasets_and_data_value_datasets" tabindex="1" class="md-skip">
+      <a href="#documentation" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -122,7 +122,7 @@
                 UncertainData.jl
               </span>
               <span class="md-header-nav__topic">
-                Overview
+                Generic uncertain dataset
               </span>
             
           
@@ -378,6 +378,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../uncertain_datasets_overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -387,11 +399,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Overview
+        Generic uncertain dataset
       </label>
     
-    <a href="./" title="Overview" class="md-nav__link md-nav__link--active">
-      Overview
+    <a href="./" title="Generic uncertain dataset" class="md-nav__link md-nav__link--active">
+      Generic uncertain dataset
     </a>
     
       
@@ -403,15 +415,35 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#uncertain_index_datasets_and_data_value_datasets" title="Uncertain index datasets and data value datasets" class="md-nav__link">
-    Uncertain index datasets and data value datasets
+  <a href="#documentation" title="Documentation" class="md-nav__link">
+    Documentation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#generic_dataset_type" title="Generic dataset type" class="md-nav__link">
-    Generic dataset type
+  <a href="#examples" title="Examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_1_constructing_an_uncertaindataset_from_uncertain_values" title="Example 1: constructing an UncertainDataset from uncertain values" class="md-nav__link">
+    Example 1: constructing an UncertainDataset from uncertain values
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example_2_mixing_different_types_of_uncertain_values" title="Example 2: mixing different types of uncertain values" class="md-nav__link">
+    Example 2: mixing different types of uncertain values
   </a>
   
 </li>
@@ -424,18 +456,6 @@
   
 </nav>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../uncertain_dataset/" title="Generic uncertain dataset" class="md-nav__link">
-      Generic uncertain dataset
-    </a>
   </li>
 
         
@@ -883,15 +903,35 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#uncertain_index_datasets_and_data_value_datasets" title="Uncertain index datasets and data value datasets" class="md-nav__link">
-    Uncertain index datasets and data value datasets
+  <a href="#documentation" title="Documentation" class="md-nav__link">
+    Documentation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#generic_dataset_type" title="Generic dataset type" class="md-nav__link">
-    Generic dataset type
+  <a href="#examples" title="Examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_1_constructing_an_uncertaindataset_from_uncertain_values" title="Example 1: constructing an UncertainDataset from uncertain values" class="md-nav__link">
+    Example 1: constructing an UncertainDataset from uncertain values
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example_2_mixing_different_types_of_uncertain_values" title="Example 2: mixing different types of uncertain values" class="md-nav__link">
+    Example 2: mixing different types of uncertain values
   </a>
   
 </li>
@@ -912,26 +952,139 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/kahaaga/UncertainData.jl/edit/master/docs/uncertain_datasets/uncertain_datasets_overview.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/kahaaga/UncertainData.jl/edit/master/docs/uncertain_datasets/uncertain_dataset.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>Overview</h1>
+                  <h1>Generic uncertain dataset</h1>
                 
-                <p>If dealing with several uncertain values, it may be useful to represent them as an uncertain dataset. This way, one may trivially, for example, compute statistics for a dataset consisting of samples with different types of uncertainties.</p>
-<p><a id='Uncertain-index-datasets-and-data-value-datasets-1'></a></p>
-<h3 id="uncertain_index_datasets_and_data_value_datasets">Uncertain index datasets and data value datasets<a class="headerlink" href="#uncertain_index_datasets_and_data_value_datasets" title="Permanent link">&para;</a></h3>
-<p>There are three main types of uncertain datasets: </p>
+                <p><code class="codehilite">UncertainDataset</code>s is a generic uncertain dataset type that has no explicit index  associated with its uncertain values. </p>
+<p>It inherits all the behaviour of <code class="codehilite">AbstractUncertainValueDataset</code>, but may lack some  functionality that an <a href="../uncertain_value_dataset/">UncertainValueDataset</a> has. </p>
+<p>If you don't care about distinguishing between  indices and data values, constructing instances of this data type requires five less key  presses than <a href="../uncertain_value_dataset/">UncertainValueDataset</a>.</p>
+<p><a id='Documentation-1'></a></p>
+<h3 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h3>
+<p><a id='UncertainData.UncertainDatasets.UncertainDataset' href='#UncertainData.UncertainDatasets.UncertainDataset'>#</a>
+<strong><code class="codehilite">UncertainData.UncertainDatasets.UncertainDataset</code></strong> &mdash; <em>Type</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>UncertainDataset
+</pre></div>
+</td></tr></table>
+
+<p>Generic dataset containing uncertain values.</p>
+<p><strong>Fields</strong></p>
 <ul>
-<li><a href="../uncertain_index_dataset/">UncertainIndexDataset</a>s contain uncertain indices.</li>
-<li><a href="../uncertain_value_dataset/">UncertainValueDataset</a>s contain uncertain data values.</li>
-<li><a href="../uncertain_indexvalue_dataset/">UncertainIndexValueDataset</a>s represent datasets for    which both the indices and the data values are uncertain. It uses   <code class="codehilite">UncertainIndexDataset</code>s to represent the indices and <code class="codehilite">UncertainValueDataset</code>s   to represent the data values.</li>
+<li><strong><code class="codehilite">values::AbstractVector{AbstractUncertainValue}</code></strong>: The uncertain values.</li>
 </ul>
-<p><a id='Generic-dataset-type-1'></a></p>
-<h3 id="generic_dataset_type">Generic dataset type<a class="headerlink" href="#generic_dataset_type" title="Permanent link">&para;</a></h3>
-<p>There's also a generic uncertain dataset type for when you don't care about distinguishing  between indices and data values: </p>
-<ul>
-<li><a href="../uncertain_dataset/">UncertainDataset</a> contains uncertain indices.</li>
-</ul>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/c048f823f25731a4b578bd8d9c02eefe079d3363/src/uncertain_datasets/UncertainDataset.jl#L5-L12' class='documenter-source'>source</a><br></p>
+<p><a id='Examples-1'></a></p>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<p><a id='Example-1:-constructing-an-UncertainDataset-from-uncertain-values-1'></a></p>
+<h4 id="example_1_constructing_an_uncertaindataset_from_uncertain_values">Example 1: constructing an <code class="codehilite">UncertainDataset</code> from uncertain values<a class="headerlink" href="#example_1_constructing_an_uncertaindataset_from_uncertain_values" title="Permanent link">&para;</a></h4>
+<p>Let's create a random walk and pretend it represents fluctuations in the mean of an observed dataset. Assume that each data point is normally distributed, and that the <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>-th observation has standard deviation <span><span class="MathJax_Preview">\sigma_i \in [0.3, 0.5]</span><script type="math/tex">\sigma_i \in [0.3, 0.5]</script></span>.</p>
+<p>Representing these data as an <code class="codehilite">UncertainDataset</code> is done as follows:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">UncertainData</span><span class="p">,</span> <span class="n">Plots</span>
+
+<span class="c"># Create a random walk of 55 steps</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">55</span>
+<span class="n">rw</span> <span class="o">=</span> <span class="n">cumsum</span><span class="p">(</span><span class="n">rand</span><span class="p">(</span><span class="n">Normal</span><span class="p">(),</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="c"># Represent each value of the random walk as an uncertain value and</span>
+<span class="c"># collect them in an UncertainDataset</span>
+<span class="n">dist</span> <span class="o">=</span> <span class="n">Uniform</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">uncertainvals</span> <span class="o">=</span> <span class="p">[</span><span class="n">UncertainValue</span><span class="p">(</span><span class="n">Normal</span><span class="p">,</span> <span class="n">rw</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">rand</span><span class="p">(</span><span class="n">dist</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">:</span><span class="n">n</span><span class="p">]</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">UncertainDataset</span><span class="p">(</span><span class="n">uncertainvals</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>By default, plotting the dataset will plot the median values (only for scatter plots) along with the 33<sup>rd</sup> to 67<sup>th</sup> percentile range error bars. </p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>plot(D)
+</pre></div>
+</td></tr></table>
+
+<p><img alt="" src="../uncertain_value_dataset_plot_defaulterrorbars.svg" /></p>
+<p>You can customize the error bars by explicitly providing the quantiles:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>plot(D, [0.05, 0.95])
+</pre></div>
+</td></tr></table>
+
+<p><img alt="" src="../uncertain_value_dataset_plot_customerrorbars.svg" /></p>
+<p><a id='Example-2:-mixing-different-types-of-uncertain-values-1'></a></p>
+<h3 id="example_2_mixing_different_types_of_uncertain_values">Example 2: mixing different types of uncertain values<a class="headerlink" href="#example_2_mixing_different_types_of_uncertain_values" title="Permanent link">&para;</a></h3>
+<p>Mixing different types of uncertain values also works. Let's create a dataset of uncertain values constructed in different ways.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">UncertainData</span><span class="p">,</span> <span class="n">Distributions</span><span class="p">,</span> <span class="n">Plots</span>
+
+<span class="c"># Theoretical distributions</span>
+<span class="n">o1</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">Normal</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">o2</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">Normal</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">o3</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">Uniform</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="c"># Theoretical distributions fitted to data</span>
+<span class="n">o4</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">Uniform</span><span class="p">,</span> <span class="n">rand</span><span class="p">(</span><span class="n">Uniform</span><span class="p">(),</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">o5</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">Gamma</span><span class="p">,</span> <span class="n">rand</span><span class="p">(</span><span class="n">Gamma</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="mi">5000</span><span class="p">))</span>
+
+<span class="c"># Kernel density estimated distributions for some more complex data.</span>
+<span class="n">M1</span> <span class="o">=</span> <span class="n">MixtureModel</span><span class="p">([</span><span class="n">Normal</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">Gamma</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">Normal</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)])</span>
+<span class="n">M2</span> <span class="o">=</span> <span class="n">MixtureModel</span><span class="p">([</span><span class="n">Normal</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span> <span class="n">Normal</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)])</span>
+<span class="n">o6</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">rand</span><span class="p">(</span><span class="n">M1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
+<span class="n">o7</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">rand</span><span class="p">(</span><span class="n">M2</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
+
+<span class="n">D</span> <span class="o">=</span> <span class="n">UncertainDataset</span><span class="p">([</span><span class="n">o1</span><span class="p">,</span> <span class="n">o2</span><span class="p">,</span> <span class="n">o3</span><span class="p">,</span> <span class="n">o4</span><span class="p">,</span> <span class="n">o5</span><span class="p">,</span> <span class="n">o6</span><span class="p">,</span> <span class="n">o7</span><span class="p">])</span>
+</pre></div>
+</td></tr></table>
+
+<p>Now, plot the uncertain dataset.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">Plots</span>
+<span class="c"># Initialise the plot</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">legend</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">xlabel</span> <span class="o">=</span> <span class="s">&quot;time step&quot;</span><span class="p">,</span> <span class="n">ylabel</span> <span class="o">=</span> <span class="s">&quot;value&quot;</span><span class="p">)</span>
+
+<span class="c"># Plot the mean of the dataset</span>
+<span class="n">plot!</span><span class="p">([</span><span class="n">median</span><span class="p">(</span><span class="n">D</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">:</span><span class="n">length</span><span class="p">(</span><span class="n">D</span><span class="p">)],</span> <span class="n">label</span> <span class="o">=</span> <span class="s">&quot;mean&quot;</span><span class="p">,</span> <span class="n">lc</span> <span class="o">=</span> <span class="o">:</span><span class="n">blue</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">:</span><span class="mi">200</span>
+    <span class="n">plot!</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">resample</span><span class="p">(</span><span class="n">D</span><span class="p">),</span> <span class="n">lw</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">lα</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">lc</span> <span class="o">=</span> <span class="o">:</span><span class="n">black</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="n">p</span>
+</pre></div>
+</td></tr></table>
+
+<p><img alt="" src="../uncertaindatasets_differentuncertainvalues.svg" /></p>
                 
                   
                 
@@ -952,7 +1105,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../uncertain_values/uncertainvalues_fitted/" title="Theoretical distributions with fitted parameters" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../uncertain_datasets_overview/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -961,19 +1114,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Theoretical distributions with fitted parameters
+                Overview
               </span>
             </div>
           </a>
         
         
-          <a href="../uncertain_dataset/" title="Generic uncertain dataset" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../uncertain_index_dataset/" title="Uncertain index dataset" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Generic uncertain dataset
+                Uncertain index dataset
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

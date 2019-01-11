@@ -40,7 +40,7 @@
     
     
       
-        <title>Fit theoretical distributions - UncertainData.jl</title>
+        <title>Theoretical distributions with fitted parameters - UncertainData.jl</title>
       
     
     
@@ -96,7 +96,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#examples" tabindex="1" class="md-skip">
+      <a href="#constructor" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -122,7 +122,7 @@
                 UncertainData.jl
               </span>
               <span class="md-header-nav__topic">
-                Fit theoretical distributions
+                Theoretical distributions with fitted parameters
               </span>
             
           
@@ -272,8 +272,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../uncertainvalues_overview/" title="Quickstart" class="md-nav__link">
-      Quickstart
+    <a href="../uncertainvalues_overview/" title="Overview" class="md-nav__link">
+      Overview
     </a>
   </li>
 
@@ -284,11 +284,32 @@
 
 
   <li class="md-nav__item">
-    <a href="../uncertainvalues_examples/" title="Examples" class="md-nav__link">
-      Examples
+    <a href="../uncertainvalues_examples/" title="Extended examples" class="md-nav__link">
+      Extended examples
     </a>
   </li>
 
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3" checked>
+    
+    <label class="md-nav__link" for="nav-2-3">
+      Representations
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        Representations
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
         
           
           
@@ -308,8 +329,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../uncertainvalues_theoreticaldistributions/" title="Theoretical distributions" class="md-nav__link">
-      Theoretical distributions
+    <a href="../uncertainvalues_theoreticaldistributions/" title="Theoretical distributions with known parameters" class="md-nav__link">
+      Theoretical distributions with known parameters
     </a>
   </li>
 
@@ -327,11 +348,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Fit theoretical distributions
+        Theoretical distributions with fitted parameters
       </label>
     
-    <a href="./" title="Fit theoretical distributions" class="md-nav__link md-nav__link--active">
-      Fit theoretical distributions
+    <a href="./" title="Theoretical distributions with fitted parameters" class="md-nav__link md-nav__link--active">
+      Theoretical distributions with fitted parameters
     </a>
     
       
@@ -343,23 +364,29 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#examples" title="Examples" class="md-nav__link">
-    Examples
+  <a href="#constructor" title="Constructor" class="md-nav__link">
+    Constructor
   </a>
   
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" title="Examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#beware_fitting_distributions_may_lead_to_nonsensical_results" title="Beware: fitting distributions may lead to nonsensical results!" class="md-nav__link">
     Beware: fitting distributions may lead to nonsensical results!
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#constructor" title="Constructor" class="md-nav__link">
-    Constructor
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -371,6 +398,11 @@
   
 </nav>
     
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -404,8 +436,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../uncertain_datasets/uncertain_datasets_overview/" title="Overview, simple example with resampling" class="md-nav__link">
-      Overview, simple example with resampling
+    <a href="../../uncertain_datasets/uncertain_datasets_overview/" title="Overview" class="md-nav__link">
+      Overview
     </a>
   </li>
 
@@ -416,8 +448,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../uncertain_datasets/uncertain_value_dataset/" title="Uncertain value datasets" class="md-nav__link">
-      Uncertain value datasets
+    <a href="../../uncertain_datasets/uncertain_dataset/" title="Generic uncertain dataset" class="md-nav__link">
+      Generic uncertain dataset
     </a>
   </li>
 
@@ -428,8 +460,32 @@
 
 
   <li class="md-nav__item">
-    <a href="../../uncertain_datasets/uncertain_indexvalue_dataset/" title="Uncertain index-value datasets" class="md-nav__link">
-      Uncertain index-value datasets
+    <a href="../../uncertain_datasets/uncertain_index_dataset/" title="Uncertain index dataset" class="md-nav__link">
+      Uncertain index dataset
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_datasets/uncertain_value_dataset/" title="Uncertain value dataset" class="md-nav__link">
+      Uncertain value dataset
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_datasets/uncertain_indexvalue_dataset/" title="Uncertain index-value dataset" class="md-nav__link">
+      Uncertain index-value dataset
     </a>
   </li>
 
@@ -449,11 +505,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
-      Sampling constraints
+      Resampling
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-4">
-        Sampling constraints
+        Resampling
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -464,11 +520,30 @@
 
 
   <li class="md-nav__item">
-    <a href="../../sampling_constraints/available_constraints/" title="List of constraints" class="md-nav__link">
-      List of constraints
+    <a href="../../resampling/resampling_overview/" title="Overview" class="md-nav__link">
+      Overview
     </a>
   </li>
 
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
+    
+    <label class="md-nav__link" for="nav-4-2">
+      Constraints
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-2">
+        Constraints
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
         
           
           
@@ -482,26 +557,38 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../sampling_constraints/available_constraints/" title="List of constraints" class="md-nav__link">
+      List of constraints
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
 
-    
-      
-      
-      
+        
+          
+          
+          
 
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
     
-    <label class="md-nav__link" for="nav-5">
-      Resampling
+    <label class="md-nav__link" for="nav-4-3">
+      Resampling methods
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
-        Resampling
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        Resampling methods
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -546,6 +633,11 @@
     </nav>
   </li>
 
+        
+      </ul>
+    </nav>
+  </li>
+
     
       
       
@@ -554,13 +646,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
-    <label class="md-nav__link" for="nav-6">
+    <label class="md-nav__link" for="nav-5">
       Mathematics
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+      <label class="md-nav__title" for="nav-5">
         Mathematics
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -602,13 +694,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
-    <label class="md-nav__link" for="nav-7">
+    <label class="md-nav__link" for="nav-6">
       Uncertain statistics
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-7">
+      <label class="md-nav__title" for="nav-6">
         Uncertain statistics
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -633,13 +725,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
     
-    <label class="md-nav__link" for="nav-7-2">
+    <label class="md-nav__link" for="nav-6-2">
       Hypothesis tests
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-2">
+      <label class="md-nav__title" for="nav-6-2">
         Hypothesis tests
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -806,23 +898,29 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#examples" title="Examples" class="md-nav__link">
-    Examples
+  <a href="#constructor" title="Constructor" class="md-nav__link">
+    Constructor
   </a>
   
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" title="Examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#beware_fitting_distributions_may_lead_to_nonsensical_results" title="Beware: fitting distributions may lead to nonsensical results!" class="md-nav__link">
     Beware: fitting distributions may lead to nonsensical results!
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#constructor" title="Constructor" class="md-nav__link">
-    Constructor
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -845,11 +943,29 @@
                   <a href="https://github.com/kahaaga/UncertainData.jl/edit/master/docs/uncertain_values/uncertainvalues_fitted.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>Fit theoretical distributions</h1>
+                  <h1>Theoretical distributions with fitted parameters</h1>
                 
                 <p>For data values with histograms close to some known distribution, the user may choose to represent the data by fitting a theoretical distribution to the values. This will only work well if the histogram closely resembles a theoretical distribution.</p>
+<p><a id='Constructor-1'></a></p>
+<h3 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h3>
+<p><a id='UncertainData.UncertainValues.UncertainValue-Union{Tuple{T}, Tuple{D}, Tuple{Type{D},Array{T,1}}} where T where D<:Distribution' href='#UncertainData.UncertainValues.UncertainValue-Union{Tuple{T}, Tuple{D}, Tuple{Type{D},Array{T,1}}} where T where D<:Distribution'>#</a>
+<strong><code class="codehilite">UncertainData.UncertainValues.UncertainValue</code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>UncertainValue(empiricaldata::AbstractVector{T},
+    d::Type{D}) where {D &lt;: Distribution}
+</pre></div>
+</td></tr></table>
+
+<p><strong>Constructor for empirical distributions.</strong></p>
+<p>Fit a distribution of type <code class="codehilite">d</code> to the data and use that as the representation of the empirical distribution. Calls <code class="codehilite">Distributions.fit</code> behind the scenes.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong><code class="codehilite">empiricaldata</code></strong>: The data for which to fit the <code class="codehilite">distribution</code>.</li>
+<li><strong><code class="codehilite">distribution</code></strong>: A valid univariate distribution from <code class="codehilite">Distributions.jl</code>.</li>
+</ul>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/c048f823f25731a4b578bd8d9c02eefe079d3363/src/uncertain_values/UncertainValue.jl#L68-L82' class='documenter-source'>source</a><br></p>
 <p><a id='Examples-1'></a></p>
-<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
 <div class="superfences-tabs">
 <input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
 <label for="__tab_1_0">Uniform</label>
@@ -919,7 +1035,7 @@
 </div>
 <p>In these examples we're trying to fit the same distribution to our sample as the distribution from which we draw the sample. Thus, we will get good fits. In real applications, make sure to always visually investigate the histogram of your data!</p>
 <p><a id='Beware:-fitting-distributions-may-lead-to-nonsensical-results!-1'></a></p>
-<h2 id="beware_fitting_distributions_may_lead_to_nonsensical_results">Beware: fitting distributions may lead to nonsensical results!<a class="headerlink" href="#beware_fitting_distributions_may_lead_to_nonsensical_results" title="Permanent link">&para;</a></h2>
+<h4 id="beware_fitting_distributions_may_lead_to_nonsensical_results">Beware: fitting distributions may lead to nonsensical results!<a class="headerlink" href="#beware_fitting_distributions_may_lead_to_nonsensical_results" title="Permanent link">&para;</a></h4>
 <p>In a less contrived example, we may try to fit a beta distribution to a sample generated from a gamma distribution.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -941,24 +1057,6 @@
 
 <p>This is obviously not a good idea. Always visualise your distribution before deciding on which distribution to fit! You won't get any error messages if you try to fit a distribution that does not match your data.</p>
 <p>If the data do not follow an obvious theoretical distribution, it is better to use kernel density estimation to define the uncertain value.</p>
-<p><a id='Constructor-1'></a></p>
-<h2 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h2>
-<p><a id='UncertainData.UncertainValues.UncertainValue-Union{Tuple{T}, Tuple{D}, Tuple{Type{D},Array{T,1}}} where T where D<:Distribution' href='#UncertainData.UncertainValues.UncertainValue-Union{Tuple{T}, Tuple{D}, Tuple{Type{D},Array{T,1}}} where T where D<:Distribution'>#</a>
-<strong><code class="codehilite">UncertainData.UncertainValues.UncertainValue</code></strong> &mdash; <em>Method</em>.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>UncertainValue(empiricaldata::AbstractVector{T},
-    d::Type{D}) where {D &lt;: Distribution}
-</pre></div>
-</td></tr></table>
-
-<p><strong>Constructor for empirical distributions.</strong></p>
-<p>Fit a distribution of type <code class="codehilite">d</code> to the data and use that as the representation of the empirical distribution. Calls <code class="codehilite">Distributions.fit</code> behind the scenes.</p>
-<p><strong>Arguments</strong></p>
-<ul>
-<li><strong><code class="codehilite">empiricaldata</code></strong>: The data for which to fit the <code class="codehilite">distribution</code>.</li>
-<li><strong><code class="codehilite">distribution</code></strong>: A valid univariate distribution from <code class="codehilite">Distributions.jl</code>.</li>
-</ul>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/504a4e0fa6147a08d847fb480ed48d85c8ddb954/src/uncertain_values/UncertainValue.jl#L68-L82' class='documenter-source'>source</a><br></p>
                 
                   
                 
@@ -979,7 +1077,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../uncertainvalues_theoreticaldistributions/" title="Theoretical distributions" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../uncertainvalues_theoreticaldistributions/" title="Theoretical distributions with known parameters" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -988,19 +1086,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Theoretical distributions
+                Theoretical distributions with known parameters
               </span>
             </div>
           </a>
         
         
-          <a href="../../uncertain_datasets/uncertain_datasets_overview/" title="Overview, simple example with resampling" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../uncertain_datasets/uncertain_datasets_overview/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Overview, simple example with resampling
+                Overview
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
