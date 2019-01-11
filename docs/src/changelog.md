@@ -1,7 +1,26 @@
+## UncertainData.jl v0.1.3
+
+- Allow both the `indices` and `values` fields of `UncertainIndexValueDataset` to be any 
+    subtype of `AbstractUncertainValueDataset`. This way, you don't **have** to use an 
+    index dataset type for the indices if not necessary.
+- Improved documentation for `UncertainIndexDataset`, `UncertainValueDataset`, 
+    `UncertainDataset` and `UncertainIndexValueDataset` types and added an 
+    [overview page](uncertain_datasets/uncertain_datasets_overview.md) in the documentation 
+    to explain the difference between these types.
+- Added an [overview](resampling/resampling_overview.md) section for the resampling 
+    documentation.
+- Cleaned and improved [documentation for uncertain values](uncertainvalues_overview.md). 
+- Added separate [documentation for the uncertain index dataset type](uncertain_datasets/uncertain_index_dataset.md).
+- Added separate [documentation for the uncertain value dataset type](uncertain_datasets/uncertain_value_dataset.md).
+- Improved [documentation for the generic uncertain dataset type](uncertain_datasets/uncertain_dataset.md) 
+- Merged documentation for sampling constraints and resampling.
+- Added missing documentation for the `sinc`, `sincos`, `sinpi`, `cosc` and `cospi` trig 
+    functions.
 
 ## UncertainData.jl v0.1.2
 
-- Support elementary mathematical operations (`+`, `-`, `*` and `/`) between arbitrary 
+- Support [elementary mathematical operations](mathematics/elementary_operations.md) 
+    (`+`, `-`, `*` and `/`) between arbitrary 
     uncertain values of different types. Also works with the combination of scalars and 
     uncertain values. Because elementary operations should work on arbitrary uncertain 
     values, a resampling approach is used to perform the mathematical operations. This 
@@ -14,7 +33,7 @@
     future, elementary operations might be improved for certain combinations of uncertain
     values where exact expressions for error propagation are now, for example using the 
     machinery in `Measurements.jl` for normally distributed values.
-- Support for trigonometric functions added (`sin`, `sind`, `sinh`, `cos`,
+- Support for [trigonometric functions] (mathematics/trig_functions.md) added (`sin`, `sind`, `sinh`, `cos`,
     `cosd`, `cosh`, `tan`, `tand`, `tanh`, `csc`, `cscd`, `csch`, `csc`, `cscd`, `csch`, 
     `sec`, `secd`, `sech`, `cot`, `cotd`, `coth`, `sincos`, `sinc`, `sinpi`, `cosc`, 
     `cospi`). Inverses are also defined (`asin`, `asind`, `asinh`, `acos`,
@@ -31,9 +50,10 @@
 - Bugfix: due to `StatsBase.std` not being defined for `FittedDistribution` instances, 
     uncertain values represented by `UncertainScalarTheoreticalFit` instances were not 
     compatible with the `TruncateStd` sampling constraint. Now fixed!
-- Improved documentation for resampling for `UncertainIndexValueDataset`s. Now shows 
-    the documentation for the main methods, as well as examples of how to use different sampling constraints for each individual index and data value.
-- Improved documentation for resampling for `UncertainDataset`s. Now shows 
+- Improved resampling documentation for `UncertainIndexValueDataset`s. Now shows 
+    the documentation for the main methods, as well as examples of how to use different 
+    sampling constraints for each individual index and data value.
+- Improved resampling documentation for `UncertainDataset`s. Now shows 
     the documentation for the main methods.
 - Added missing `resample(uv::AbstractUncertainValue, constraint::TruncateRange, n::Int)` 
     method.

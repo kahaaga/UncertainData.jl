@@ -38,7 +38,7 @@ markdown_extensions:
   - pymdownx.tilde
   - toc:
       permalink: true
-      baselevel: 1
+      baselevel: 2
       separator: "_"
 
 docs_dir: 'build'
@@ -46,22 +46,27 @@ docs_dir: 'build'
 pages:
   - Overview: index.md
   - Uncertain values:
-    - Quickstart: uncertain_values/uncertainvalues_overview.md
-    - Examples: uncertain_values/uncertainvalues_examples.md
-    - Kernel density estimates (KDE): uncertain_values/uncertainvalues_kde.md
-    - Theoretical distributions: uncertain_values/uncertainvalues_theoreticaldistributions.md
-    - Fit theoretical distributions: uncertain_values/uncertainvalues_fitted.md
+    - Overview: uncertain_values/uncertainvalues_overview.md
+    - Extended examples: uncertain_values/uncertainvalues_examples.md
+    - Representations:
+      - Kernel density estimates (KDE): uncertain_values/uncertainvalues_kde.md
+      - Theoretical distributions with known parameters: uncertain_values/uncertainvalues_theoreticaldistributions.md
+      - Theoretical distributions with fitted parameters: uncertain_values/uncertainvalues_fitted.md
   - Uncertain datasets:
-      - Overview, simple example with resampling : uncertain_datasets/uncertain_datasets_overview.md
-      - Uncertain value datasets: uncertain_datasets/uncertain_value_dataset.md
-      - Uncertain index-value datasets: uncertain_datasets/uncertain_indexvalue_dataset.md
-  - Sampling constraints:
-    - List of constraints: sampling_constraints/available_constraints.md
-    - Constraining uncertain values: sampling_constraints/constrain_uncertain_values.md
+      - Overview: uncertain_datasets/uncertain_datasets_overview.md
+      - Generic uncertain dataset: uncertain_datasets/uncertain_dataset.md
+      - Uncertain index dataset: uncertain_datasets/uncertain_index_dataset.md 
+      - Uncertain value dataset: uncertain_datasets/uncertain_value_dataset.md
+      - Uncertain index-value dataset: uncertain_datasets/uncertain_indexvalue_dataset.md
   - Resampling:
-    - Resampling uncertain values: resampling/resampling_uncertain_values.md
-    - Resampling uncertain value datasets: resampling/resampling_uncertain_datasets.md
-    - Resampling uncertain index-value datasets: resampling/resampling_uncertain_indexvalue_datasets.md
+    - Overview: resampling/resampling_overview.md
+    - Constraints:
+        - Constraining uncertain values: sampling_constraints/constrain_uncertain_values.md
+        - List of constraints: sampling_constraints/available_constraints.md
+    - Resampling methods:
+        - Resampling uncertain values: resampling/resampling_uncertain_values.md
+        - Resampling uncertain value datasets: resampling/resampling_uncertain_datasets.md
+        - Resampling uncertain index-value datasets: resampling/resampling_uncertain_indexvalue_datasets.md
   - Mathematics: 
       - Elementary operations: mathematics/elementary_operations.md
       - Trigonometric functions: mathematics/trig_functions.md

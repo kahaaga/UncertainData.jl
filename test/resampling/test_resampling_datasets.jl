@@ -10,8 +10,9 @@ o8 = UncertainValue(BetaPrime, 1, 2)
 o9 = UncertainValue(BetaBinomial, 10, 3, 2)
 o10 = UncertainValue(Binomial, 10, 0.3)
 
-D = UncertainDataset([o1, o2, o3, o4, o5, o6, o7, o8, o9, o10])
-UV = UncertainValueDataset(D)
+uvals = [o1, o2, o3, o4, o5, o6, o7, o8, o9, o10]
+D = UncertainDataset(uvals)
+UV = UncertainValueDataset(uvals)
 UIV = UncertainIndexValueDataset(D, D)
 
 n = length(D)

@@ -16,7 +16,9 @@ PAGES = [
     ],
 	"Uncertain datasets" => [
         "uncertain_datasets/uncertain_datasets_overview.md",
+        "uncertain_datasets/uncertain_index_dataset.md",
         "uncertain_datasets/uncertain_value_dataset.md",
+        "uncertain_datasets/uncertain_dataset.md",
         "uncertain_datasets/uncertain_indexvalue_dataset.md"
 	],
     "Uncertain statistics" => [
@@ -41,6 +43,7 @@ PAGES = [
         "sampling_constraints/constrain_uncertain_values.md"
     ],
     "Resampling" => [
+        "resampling/resampling_overview.md",
         "resampling/resampling_uncertain_values.md",
         "resampling/resampling_uncertain_datasets.md",
         "resampling/resampling_uncertain_indexvalue_datasets.md"

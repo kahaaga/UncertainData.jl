@@ -170,16 +170,72 @@ radians. Computes the element-wise `sincos` for `n` realizations.
 """ 
 Base.sincos(x::AbstractUncertainValue, n::Int) = sincos.(resample(x, n))
 
+""" 
+    Base.sinc(x::AbstractUncertainValue; n::Int = 10000)
+
+In an element-wise manner for `n` realizations of the uncertain value `x`, compute 
+``\\sin(\\pi x) / (\\pi x)`` if ``x \\neq 0``, and ``1`` if ``x = 0``.
+""" 
 Base.sinc(x::AbstractUncertainValue; n::Int = 10000) = sinc.(resample(x, n))
+
+""" 
+    Base.sinc(x::AbstractUncertainValue, n::Int = 10000)
+
+Compute ``\\sin(\\pi x) / (\\pi x)`` if ``x \\neq 0``, and ``1`` if ``x = 0`` element-wise 
+over `n` realizations of the uncertain value `x`. 
+""" 
 Base.sinc(x::AbstractUncertainValue, n::Int) = sinc.(resample(x, n))
 
+""" 
+    Base.sinpi(x::AbstractUncertainValue; n::Int = 10000)
+
+Compute ``\\sin(\\pi x)`` more accurately than `sin(pi*x)`, especially for large `x`, 
+in an element-wise over `n` realizations of the uncertain value `x`. 
+""" 
 Base.sinpi(x::AbstractUncertainValue; n::Int = 10000) = sinpi.(resample(x, n))
+
+""" 
+    Base.sinpi(x::AbstractUncertainValue; n::Int = 10000)
+
+Compute ``\\sin(\\pi x)`` more accurately than `sin(pi*x)`, especially for large `x`, 
+in an element-wise over `n` realizations of the uncertain value `x`. 
+""" 
 Base.sinpi(x::AbstractUncertainValue, n::Int) = sinpi.(resample(x, n))
 
+""" 
+    Base.cosc(x::AbstractUncertainValue; n::Int = 10000)
+
+Compute ``\\cos(\\pi x) / x - \\sin(\\pi x) / (\\pi x^2)`` if ``x \\neq 0``, and ``0`` if
+``x = 0``, in an element-wise manner over `n` realizations of the uncertain value `x`. 
+
+This is the derivative of `sinc(x)`.
+""" 
 Base.cosc(x::AbstractUncertainValue; n::Int = 10000) = cosc.(resample(x, n))
+
+""" 
+    Base.cosc(x::AbstractUncertainValue, n::Int = 10000)
+
+Compute ``\\cos(\\pi x) / x - \\sin(\\pi x) / (\\pi x^2)`` if ``x \\neq 0``, and ``0`` if
+``x = 0``, in an element-wise manner over `n` realizations of the uncertain value `x`. 
+
+This is the derivative of `sinc(x)`.
+""" 
 Base.cosc(x::AbstractUncertainValue, n::Int) = cosc.(resample(x, n))
 
+""" 
+    Base.cospi(x::AbstractUncertainValue; n::Int = 10000)
+
+Compute ``\\cos(\\pi x)`` more accurately than `cos(pi*x)`, especially for large `x`, 
+in an element-wise over `n` realizations of the uncertain value `x`. 
+""" 
 Base.cospi(x::AbstractUncertainValue; n::Int = 10000) = cospi.(resample(x, n))
+
+""" 
+    Base.cospi(x::AbstractUncertainValue, n::Int = 10000)
+
+Compute ``\\cos(\\pi x)`` more accurately than `cos(pi*x)`, especially for large `x`, 
+in an element-wise over `n` realizations of the uncertain value `x`. 
+""" 
 Base.cospi(x::AbstractUncertainValue, n::Int) = cospi.(resample(x, n))
 
 

@@ -12,6 +12,34 @@ Supported distributions are `Uniform`, `Normal`, `Gamma`, `Beta`, `BetaPrime`,
 future!).
 
 
+
+## Constructors
+
+There are two constructors that creates uncertain values
+represented by theoretical distributions. Parameters are provided
+to the constructor in the same order as for constructing the equivalent
+distributions in `Distributions.jl`.
+
+Uncertain values represented by theoretical distributions may be constructed
+using the two-parameter or three-parameter constructors
+`UncertainValue(d::Type{D}, a<:Number, b<:Number)` or
+`UncertainValue(d::Type{D}, a<:Number, b<:Number, c<:Number)` (see below).
+
+
+### Two-parameter distributions
+
+```@docs
+UncertainValue(distribution::Type{D}, a::T1, b::T2; kwargs...) where {T1<:Number, T2 <: Number, D<:Distribution}
+```
+
+
+### Three-parameter distributions
+
+```@docs
+UncertainValue(distribution::Type{D}, a::T1, b::T2, c::T3; kwargs...) where {T1<:Number, T2<:Number, T3<:Number, D<:Distribution}
+```
+
+
 ## Examples
 
 ``` julia tab="Uniform"
@@ -61,29 +89,3 @@ uv = UncertainValue(Binomial, 28, 0.2)
 uv = UncertainValue(BetaBinomial, 28, 3.3, 4.4)
 ```
 
-
-## Constructors
-
-There are two constructors that creates uncertain values
-represented by theoretical distributions. Parameters are provided
-to the constructor in the same order as for constructing the equivalent
-distributions in `Distributions.jl`.
-
-Uncertain values represented by theoretical distributions may be constructed
-using the two-parameter or three-parameter constructors
-`UncertainValue(d::Type{D}, a<:Number, b<:Number)` or
-`UncertainValue(d::Type{D}, a<:Number, b<:Number, c<:Number)` (see below).
-
-
-### Two-parameter distributions
-
-```@docs
-UncertainValue(distribution::Type{D}, a::T1, b::T2; kwargs...) where {T1<:Number, T2 <: Number, D<:Distribution}
-```
-
-
-### Three-parameter distributions
-
-```@docs
-UncertainValue(distribution::Type{D}, a::T1, b::T2, c::T3; kwargs...) where {T1<:Number, T2<:Number, T3<:Number, D<:Distribution}
-```

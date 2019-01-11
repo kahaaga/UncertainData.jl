@@ -6,17 +6,19 @@ uncertain datasets more rigorously. It makes workflows involving uncertain data 
 different types and from different sources significantly easier. 
 
 The package allows handling of uncertain values of several different types:
-- theoretical distributions with known parameters
-- theoretical distributions with parameters estimated from experimental data
-- more complex distributions determined by kernel density estimates of experimental data. 
+- [theoretical distributions with known parameters](uncertain_values/uncertainvalues_theoreticaldistributions.md)
+- [theoretical distributions with parameters estimated from experimental data](uncertain_values/uncertainvalues_fitted.md)
+- [more complex distributions determined by kernel density estimates of experimental data](uncertain_values/uncertainvalues_kde.md)
 
 A related package is [Measurements.jl](https://github.com/JuliaPhysics/Measurements.jl),
 which propagates errors exactly and handles correlated uncertainties. However, 
 Measurements.jl accepts only normally distributed values. This package serves a slightly 
-different purpose: it was born to provide an easy way of handling uncertainties of any type,
-using a resampling approach to obtain statistics when needed. The goal is to give the 
-user a consistent and easy way to define uncertain datasets, plot them and reason about them 
-by resampling techniques, possibly subject to sampling constraints.
+different purpose: it was born to provide an easy way of handling uncertainties of **any** 
+type, using a [resampling](resampling/resampling_overview.md) approach to obtain 
+[statistics](uncertain_statistics/core_stats/core_statistics.md)
+when needed, and providing a rich set of 
+[sampling constraints](sampling_constraints/available_constraints.md) that makes it easy 
+for the user to reason about and plot their uncertain data under different assumptions.
 
 ## Package philosophy
 
@@ -25,25 +27,28 @@ dealt with in a systematic manner. The core concept of the package is that uncer
 should live in the probability domain, not as single value representations of the data 
 (e.g. the mean).
 
-In this package, uncertain data values are thus stored as probability distributions. 
+In this package, uncertain data values are thus 
+[stored as probability distributions](uncertain_values/uncertainvalues_overview.md). 
 Only when performing a computation or plotting, the uncertain values are realized by 
 resampling the probability distributions furnishing them. 
 
-Individual uncertain observations may be collected in `UncertainDatasets`, which can be 
+Individual uncertain observations may be collected in 
+[UncertainDatasets](uncertain_datasets/uncertain_datasets_overview.md), which can be 
 sampled according to user-provided sampling constraints. Likewise, indices (e.g. time, 
 depth or any other index) of observations can also be represented as probability 
-distributions and may also sampled using constraints. This may be useful when you, for 
-example, want to draw realizations of your dataset while enforcing strictly increasing age 
-models.
+distributions and may also sampled using constraints. 
+
+The [UncertainIndexValueDataset](uncertain_datasets/uncertain_indexvalue_dataset.md) type 
+allows you to work with datasets where both the indices and data values are uncertain.
+This may be useful when you, for example, want to draw realizations of your dataset while 
+simultaneously enforcing strictly increasing age models.
 
 ## Mathematical operations 
 
 Several [elementary mathematical operations](mathematics/elementary_operations.md) and 
 [trigonometric functions](mathematics/trig_functions.md) are supported 
-for uncertain values. Computations are done using a resampling approach, where the user 
-may choose to use the default number of realizations (`n = 10000`) or tune the number of 
-samples.
-
+for uncertain values. Computations are done using a 
+[resampling approach](resampling/resampling_overview).
 
 ## Statistics on uncertain datasets
 

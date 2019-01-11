@@ -1,11 +1,14 @@
 import Distributions
 
+using Distributions, UncertainData 
+
 # Create an uncertain dataset containing both theoretical values with known parameters, 
 # theoretical values with fitted parameters and kernel density estimated distributions.
-measurements = [[UncertainValue(Normal, 0, 0.1) for i = 1:5]
-                UncertainValue(rand(500))]; 
-                #UncertainValue(Normal, rand(Normal(2, 0.35), 10000))]
+u1 = UncertainValue(Gamma, rand(Gamma(), 500))
+u2 = UncertainValue(rand(MixtureModel([Normal(1, 0.3), Normal(-3, 3)]), 500))
+uvals3 = [UncertainValue(Normal, rand(), rand()) for i = 1:11]
 
+measurements = [u1; u2; uvals3]
 d = UncertainDataset(measurements)
 
 # Test that constraining work for all available constraints, applying the same 
