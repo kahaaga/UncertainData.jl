@@ -7,14 +7,15 @@ depth, order, etc...) are also uncertain value.
 
 ## Fields
 
-- **`values::UncertainDataset`**: The uncertain indices. Each index is
-    represented by an `AbstractUncertainValue`.
+- **`values::T` where {T <: AbstractUncertainValueDataset}**: The uncertain indices. 
+    Will in general be an `UncertainIndexDataset`, but does not necessarily have to be.  
+    Each index is represented by an `AbstractUncertainValue`.
 - **`values::UncertainDataset`**: The uncertain values. Each value is
     represented by an `AbstractUncertainValue`.
 """
 struct UncertainIndexValueDataset <: AbstractUncertainIndexValueDataset
-    indices::UncertainDataset
-    values::UncertainDataset
+    indices::AbstractUncertainValueDataset
+    values::AbstractUncertainValueDataset
 end
 
 

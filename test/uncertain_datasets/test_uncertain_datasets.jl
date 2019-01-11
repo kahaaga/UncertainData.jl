@@ -25,7 +25,7 @@ D = UncertainDataset([o1, o2, o3])
 ########################
 
 # Construction
-UV = UncertainValueDataset(D)
+UV = UncertainValueDataset(D.values)
 @test UV isa UncertainValueDataset
 
 # Iteration

@@ -4,6 +4,13 @@ values. This will only work well if the histogram closely resembles a
 theoretical distribution.
 
 
+## Constructor
+
+```@docs
+UncertainValue(d::Type{D}, empiricaldata::Vector{T}) where {D<:Distribution, T}
+```
+
+
 ## Examples
 
 ``` julia tab="Uniform"
@@ -48,7 +55,7 @@ In real applications, make sure to always visually investigate the histogram
 of your data!
 
 
-## Beware: fitting distributions may lead to nonsensical results!
+### Beware: fitting distributions may lead to nonsensical results!
 In a less contrived example, we may try to fit a beta distribution to a sample
 generated from a gamma distribution.
 
@@ -71,10 +78,3 @@ try to fit a distribution that does not match your data.
 If the data do not follow an obvious theoretical distribution, it is better to
 use kernel density estimation to define the uncertain value.
 
-
-## Constructor
-
-
-```@docs
-UncertainValue(d::Type{D}, empiricaldata::Vector{T}) where {D<:Distribution, T}
-```

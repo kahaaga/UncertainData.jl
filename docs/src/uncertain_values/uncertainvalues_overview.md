@@ -1,11 +1,19 @@
-Uncertain values may be constructed in three different ways, depending on what
-information you have available. You may represent an uncertain value by
+The core concept of `UncertainData` is to replace an uncertain data value with a 
+probability distribution describing the point's uncertainty.
 
-- [theoretical distributions with known parameters](uncertainvalues_theoreticaldistributions.md)
-- [theoretical distributions with parameters fitted to empirical data](uncertainvalues_fitted.md)
-- [kernel density estimates to empirical data](uncertainvalues_kde.md)
+There are currently three ways of doing so:
 
-## Examples
+- by [theoretical distributions with known parameters](uncertainvalues_theoreticaldistributions.md)
+- by [theoretical distributions with parameters fitted to empirical data](uncertainvalues_fitted.md)
+- by [kernel density estimates to empirical data](uncertainvalues_kde.md)
+
+
+## Some quick examples
+
+See also the [extended examples](uncertainvalues_examples.md)!
+
+
+### Kernel density estimation (KDE)
 
 If the data doesn't follow an obvious theoretical distribution, the recommended
 course of action is to represent the uncertain value with a kernel density
@@ -31,10 +39,11 @@ using Distributions, UncertainData
 some_sample = rand(Normal(), 1000)
 
 
-
 # Specify that we want a kernel density estimate representation
 uv = UncertainValue(UnivariateKDE, some_sample)
 ```
+
+### Fitting a theoretical distribution
 
 If your data has a histogram closely resembling some theoretical distribution,
 the uncertain value may be represented by fitting such a distribution to the data.
@@ -62,6 +71,8 @@ some_sample = rand(Gamma(), 1000)
 # parameters fitted to the data.
 uv = UncertainValue(Gamma, some_sample)
 ```
+
+### Theoretical distribution with known parameters
 
 It is common when working with uncertain data found in the scientific
 literature that data value are stated to follow a distribution with given
