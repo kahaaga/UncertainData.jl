@@ -17,7 +17,7 @@ Draw a realisation of an `UncertainDataset` where each uncertain value
 is truncated according to `constraint`. In the case of `NoConstraint`,
 no trucation is performed and the whole distribution is sampled.
 """
-function resample(uv::UncertainDataset, c::NoConstraint)
+function resample(uv::UncertainDataset, constraint::NoConstraint)
 	L = length(uv)
 	[resample(uv.values[i], constraint) for i in 1:L]
 end

@@ -1,0 +1,6 @@
+include("uncertain_values/test_elementary_maths_uncertainvalues.jl")
+include("uncertain_datasets/test_elementary_maths_uncertaindataset.jl")
+include("uncertain_datasets/test_elementary_maths_uncertainvaluedataset.jl")
+include("uncertain_datasets/test_elementary_maths_uncertainindexdataset.jl")
+
+include("test_trig_funcs_uncertainvalues.jl")

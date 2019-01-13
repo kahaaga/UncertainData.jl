@@ -13,6 +13,8 @@ using Reexport
 
     # Constrain uncertain datasets
     include("constrain_uncertaindataset.jl")
+    include("constrain_uncertainvaluedataset.jl")
+    include("constrain_uncertainindexdataset.jl")
 
 end # module
 

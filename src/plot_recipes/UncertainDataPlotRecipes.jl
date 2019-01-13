@@ -11,6 +11,8 @@ using Reexport
     # Uncertainties for values with uncertainties both in index and value
     include("recipes_uncertain_index_and_value.jl")
     include("recipes_uncertainindexvaluedataset.jl")
+
+    include("recipes_vectors_of_uncertainvalues.jl")
     
 end # module
 

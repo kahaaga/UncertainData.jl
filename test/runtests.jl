@@ -10,8 +10,7 @@ include("uncertain_values/test_assign_distributions.jl")
 include("uncertain_values/test_uncertain_values.jl")
 include("uncertain_values/test_minmax.jl")
 
-include("mathematics/test_elementary_mathetmatics_uncertainvalues.jl")
-include("mathematics/test_trig_funcs_uncertainvalues.jl")
+include("mathematics/test_mathematics.jl")
 
 # UncertainDatasets module tests
 include("uncertain_datasets/test_uncertain_datasets.jl")
@@ -20,6 +19,9 @@ include("uncertain_datasets/test_uncertain_datasets.jl")
 include("sampling_constraints/test_constrain_uncertainvalues.jl")
 include("sampling_constraints/test_constrain_uncertainvalues_kde.jl")
 include("sampling_constraints/test_constrain_uncertaindatasets.jl")
+include("sampling_constraints/test_constrain_uncertainvaluedatasets.jl")
+include("sampling_constraints/test_constrain_uncertainindexdatasets.jl")
+
 
 # Resampling module tests
 include("resampling/test_resampling_uncertainvalues.jl")

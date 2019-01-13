@@ -2,7 +2,7 @@ using Distributions
 using StaticArrays
 import Printf.@sprintf
 import Distributions.RealInterval
-
+import Base: minimum, maximum, max, min
 
 abstract type AbstractUncertainValue end
 
@@ -92,6 +92,17 @@ Base.show(io::IO, q::AbstractUncertainValue) = print(io, summarise(q))
 
 
 dimension(usv::AbstractUncertainValue) = 1
+
+
+Base.max(uv::AbstractUncertainValue) = maximum(uv.distribution)
+Base.min(uv::AbstractUncertainValue) = minimum(uv.distribution)
+Base.minimum(uv::AbstractUncertainValue) = minimum(uv.distribution)
+Base.maximum(uv::AbstractUncertainValue) = maximum(uv.distribution)
+
+Base.maximum(uvs::AbstractVector{AbstractUncertainValue}) = 
+    maximum([maximum(uv) for uv in uvs])
+Base.minimum(uvs::AbstractVector{AbstractUncertainValue}) = 
+    minimum([minimum(uv) for uv in uvs])
 
 export
 AbstractUncertainValue,

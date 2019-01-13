@@ -4,46 +4,67 @@ import ..UncertainDatasets:
 
 include("constrain_uncertainvalue.jl")
 
+import ..UncertainDatasets:ConstrainedUncertainValueDataset
+
 """
-	constrain(d::UncertainDataset, s::SamplingConstraint)
+	constrain(udata::UncertainValueDataset, 
+		s::SamplingConstraint) -> ConstrainedUncertainValueDataset
 
 Return a uncertain dataset by applying the constraint `s` to each
-uncertain value in `d`.
+uncertain value in `udata`.
 """
-function constrain(d::UncertainValueDataset, s::SamplingConstraint)
+constrain(udata::UncertainValueDataset, constraint::SamplingConstraint) = 
+	ConstrainedUncertainValueDataset([constrain(uval, constraint) for uval in udata])
 
-end
 
 """
-	constrain(d::UncertainValueDataset, s::SamplingConstraint)
+	constrain(udata::UncertainValueDataset, 
+		constraints::Vector{T}) where {T<:SamplingConstraint} -> ConstrainedUncertainValueDataset
 
-Return a uncertain dataset by applying the constraint `s` to each
-uncertain value in `d`.
+Return a uncertain dataset by applying a different sampling constraint to each uncertain 
+value in `udata`.
 """
-function constrain(d::UncertainValueDataset, s::Vector{SamplingConstraint})
-
-	if length(d) != length(s)
+function constrain(udata::UncertainValueDataset, constraints::Vector{T}) where {T<:SamplingConstraint}
+	if length(udata) != length(constraints)
 		error("Number of sampling constraints must match length of dataset.")
 	end
 
-	[constrain(d[i], s[i]) for i in 1:length(d)]
+	n_vals = length(udata)
+
+	ConstrainedUncertainValueDataset([constrain(udata[i], constraints[i]) for i in 1:n_vals])
 end
 
 
-function verify_constraints(udata::AbstractUncertainValueDataset, 
-	constraint::SamplingConstraint)
+"""
+	constrain(udata::ConstrainedUncertainValueDataset, 
+		constraint::SamplingConstraint) -> ConstrainedUncertainValueDataset
 
-	inds_empty_support = Int[]
+Return a uncertain dataset by applying the `constraint` to each
+uncertain value in `udata`.
+"""
+constrain(udata::ConstrainedUncertainValueDataset, constraint::SamplingConstraint) = 
+	ConstrainedUncertainValueDataset([constrain(uval, constraint) for uval in udata])
 
-	for i = 1:length(udata)
-		uval = udata[i]
-		try 
-			constrained_uval = constrain(uval, constraint)
-		catch err 
-			push!(inds_empty_support, i)
-		end
+
+"""
+	constrain(udata::ConstrainedUncertainValueDataset, 
+		constraints::Vector{T}) where {T<:SamplingConstraint} ->  ConstrainedUncertainValueDataset
+
+Return a uncertain dataset by applying a different sampling constraint to each uncertain 
+value in `udata`.
+"""
+function constrain(udata::ConstrainedUncertainValueDataset, 
+		constraints::Vector{T}) where {T<:SamplingConstraint}
+	if length(udata) != length(constraints)
+		error("Number of sampling constraints must match length of dataset.")
 	end
-	return inds_empty_support 
+
+	n_vals = length(udata)
+
+	ConstrainedUncertainValueDataset([constrain(udata[i], constraints[i]) for i in 1:n_vals])
 end
+
+
+
 
 export constrain, verify_constraints

@@ -7,34 +7,32 @@ using Distributions, UncertainData
 u1 = UncertainValue(Gamma, rand(Gamma(), 500))
 u2 = UncertainValue(rand(MixtureModel([Normal(1, 0.3), Normal(-3, 3)]), 500))
 uvals3 = [UncertainValue(Normal, rand(), rand()) for i = 1:11]
-
 measurements = [u1; u2; uvals3]
 d = UncertainDataset(measurements)
 
-# Test that constraining work for all available constraints, applying the same 
-# constraint to all uncertain values in the dataset
-@test constrain(d, NoConstraint()) isa ConstrainedUncertainDataset
-@test constrain(d, TruncateLowerQuantile(0.2)) isa ConstrainedUncertainDataset
-@test constrain(d, TruncateUpperQuantile(0.2)) isa ConstrainedUncertainDataset
-@test constrain(d, TruncateQuantiles(0.2, 0.6)) isa ConstrainedUncertainDataset
-@test constrain(d, TruncateMaximum(0.2)) isa ConstrainedUncertainDataset
-@test constrain(d, TruncateMinimum(0.2)) isa ConstrainedUncertainDataset
-@test constrain(d, TruncateRange(0.2, 0.6)) isa ConstrainedUncertainDataset
-@test constrain(d, TruncateStd(1)) isa ConstrainedUncertainDataset
+# Test all available constraints 
+constraints = [
+    NoConstraint(),
+    TruncateLowerQuantile(0.2),
+    TruncateUpperQuantile(0.3),
+    TruncateQuantiles(0.2, 0.6),
+    TruncateMaximum(0.2),
+    TruncateMinimum(0.2),
+    TruncateRange(0.2, 0.6),
+    TruncateStd(1)
+]
 
-n = length(d)
+for i = 1:length(constraints)
+    
+    # A single constraint applied to all values in the dataset 
+    @test constrain(d, constraints[i]) isa ConstrainedUncertainDataset
 
+    # Element-wise application of different constraints to the values in the dataset 
+    @test constrain(d, [constraints[i] for k = 1:length(d)]) isa ConstrainedUncertainDataset
 
-# Test that constraining work for all available constraints, applying a different constraint 
-# to each uncertain value in the dataset
-@test constrain(d, [NoConstraint() for i = 1:length(d)]) isa ConstrainedUncertainDataset
-@test constrain(d, [TruncateQuantiles(0.2, 0.8) for i = 1:length(d)]) isa ConstrainedUncertainDataset
-@test constrain(d, [TruncateLowerQuantile(0.2) for i = 1:length(d)]) isa ConstrainedUncertainDataset
-@test constrain(d, [TruncateUpperQuantile(0.2) for i = 1:length(d)]) isa ConstrainedUncertainDataset
-@test constrain(d, [TruncateMaximum(0.2) for i = 1:length(d)]) isa ConstrainedUncertainDataset
-@test constrain(d, [TruncateMinimum(0.2) for i = 1:length(d)]) isa ConstrainedUncertainDataset
-@test constrain(d, [TruncateRange(0.2, 0.6) for i = 1:length(d)]) isa ConstrainedUncertainDataset
-@test constrain(d, [TruncateStd(1) for i = 1:length(d)]) isa ConstrainedUncertainDataset
+    # Constraining constrained datasets (might be nested several times)
+    constrained_dataset = constrain(d, constraints[i])
+    @test constrain(constrained_dataset, constraints[i]) isa ConstrainedUncertainDataset
+    @test constrain(constrained_dataset, [constraints[i] for k = 1:length(d)]) isa ConstrainedUncertainDataset
 
-
-@test constrain(d, [NoConstraint(); [TruncateQuantiles(0.2, 0.8) for i = 1:(n-1)]]) isa ConstrainedUncertainDataset
+end

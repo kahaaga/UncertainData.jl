@@ -1,8 +1,44 @@
+## UncertainData.jl v0.1.4
+
+### Breaking changes 
+- Elementary operations for `(scalar, uncertain_value)`, `(uncertain_value, scalar)` and 
+    `(uncertain_value, uncertain_value)` pairs now returns an uncertain value instead of 
+    a vector of resampled realizations. The default behaviour is to perform a kernel 
+    density estimate over the vector of results of the element-wise operations (which 
+    was previously returned without representing it as an uncertain value).
+
+### New functionality 
+- Implemented constraints for datasets that have already been constrained. 
+    `constrain(udata::ConstrainedDataset, s::SamplingConstraint)` will now return another 
+    `ConstrainedDataset`. The same applies for `ConstrainedIndexDataset` and 
+    `ConstrainedValueDataset`.
+- Added `maximum(Vector{AbstractUncertainValue})` and 
+    `minimum(Vector{AbstractUncertainValue})` methods.
+- Added plot recipe for `Vector{AbstractUncertainValue}`s. Behaves just as plotting an
+    uncertain dataset, assuming an implicit indices `1:length(v)`. Error bars may be 
+    tuned by providing a second argument of quantiles to `plot`, e.g. `plot(v, [0.2, 0.8]`
+    gives error bars covering the 20th to 80th percentile range of the data.
+
+### Improvements 
+- Added documentation for `StrictlyIncreasing` and `StrictlyDecreasing` sampling 
+    constraints.
+- Added `show` function for `AbstractUncertainIndexDataset`. `show` errored previously, 
+    because it assumed the default behaviour of `AbstractUncertainValueDataset`, which 
+    does not have the `indices` field.
+
+### Bug fixes
+- Fixed bug when resampling an uncertain dataset using the `NoConstraint` constraint, 
+    which did not work to due to a reference to a non-existing variable.
+
+
 ## UncertainData.jl v0.1.3
 
+### New functionality 
 - Allow both the `indices` and `values` fields of `UncertainIndexValueDataset` to be any 
     subtype of `AbstractUncertainValueDataset`. This way, you don't **have** to use an 
     index dataset type for the indices if not necessary.
+
+### Improvements 
 - Improved documentation for `UncertainIndexDataset`, `UncertainValueDataset`, 
     `UncertainDataset` and `UncertainIndexValueDataset` types and added an 
     [overview page](uncertain_datasets/uncertain_datasets_overview.md) in the documentation 
@@ -19,6 +55,7 @@
 
 ## UncertainData.jl v0.1.2
 
+### New functionality
 - Support [elementary mathematical operations](mathematics/elementary_operations.md) 
     (`+`, `-`, `*` and `/`) between arbitrary 
     uncertain values of different types. Also works with the combination of scalars and 
@@ -46,20 +83,26 @@
     number of samples.
 - Support non-integer multiples of the standard deviation in the `TruncateStd` sampling 
     constraint.
+
+### Fixes 
 - Fixed bug in resampling of index-value datasets, where the `n` arguments wasn't used. 
 - Bugfix: due to `StatsBase.std` not being defined for `FittedDistribution` instances, 
     uncertain values represented by `UncertainScalarTheoreticalFit` instances were not 
     compatible with the `TruncateStd` sampling constraint. Now fixed!
+- Added missing `resample(uv::AbstractUncertainValue, constraint::TruncateRange, n::Int)` 
+    method.
+
+### Improvements 
 - Improved resampling documentation for `UncertainIndexValueDataset`s. Now shows 
     the documentation for the main methods, as well as examples of how to use different 
     sampling constraints for each individual index and data value.
 - Improved resampling documentation for `UncertainDataset`s. Now shows 
     the documentation for the main methods.
-- Added missing `resample(uv::AbstractUncertainValue, constraint::TruncateRange, n::Int)` 
-    method.
+
 
 ## UncertainData.jl v0.1.1
 
+### New functionality 
 - Indexing implemented for `UncertainIndexValueDataset`. 
 - Resampling implemented for `UncertainIndexValueDataset`.
 - Uncertain values and uncertain datasets now support `minimum` and `maximum`.
@@ -68,6 +111,8 @@
 - `support_overlap` now computes overlaps also for fitted theoretical distributions.
 - Added more plotting recipes. 
 - All implemented uncertain data types now support resampling. 
+
+### Improvements
 - Improved general documentation. Added a reference to [
     Measurements.jl](https://github.com/JuliaPhysics/Measurements.jl) and an explanation 
     for the differences between the packages.

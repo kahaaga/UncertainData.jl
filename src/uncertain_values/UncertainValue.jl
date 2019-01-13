@@ -1,8 +1,6 @@
 import KernelDensity.UnivariateKDE
 import Distributions.Distribution
-import Base:
-    maximum, 
-    minimum
+
 include("UncertainScalarsTheoreticalFitted.jl")
 include("UncertainScalarsTheoretical.jl")
 
@@ -242,13 +240,6 @@ function UncertainValue(distribution::Type{D}, a::T1, b::T2, c::T3;
         throw(DomainError("Three-parameter $dist is not implemented."))
     end
 end
-
-
-minimum(uv::AbstractUncertainValue) = minimum(uv.distribution)
-maximum(uv::AbstractUncertainValue) = maximum(uv.distribution)
-minimum(uv::UncertainScalarKDE) = minimum(uv.range)
-maximum(uv::UncertainScalarKDE) = maximum(uv.range)
-
 
 ##############################
 # Macro constructors
