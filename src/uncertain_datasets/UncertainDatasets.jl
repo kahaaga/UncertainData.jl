@@ -15,6 +15,8 @@ using Reexport
     # An abstract type for uncertain datasets containing uncertain values yielding scalar 
     # values when resampled. 
     include("AbstractUncertainValueDataset.jl")
+    include("AbstractUncertainIndexDataset.jl")
+
 
     # One composite type for indices, another one for values. This distinction allows more 
     # flexibility when applying sampling constraints (some constraints may be meaningful 
@@ -32,6 +34,10 @@ using Reexport
     # A composite type with two fields: `indices` and `values`. Both fields may be 
     # any subtype of AbstractUncertainValueDataset. 
     include("UncertainIndexValueDataset.jl")
+
+
+    # Conversion and promotion 
+    include("conversions.jl")
 
 end # module
 

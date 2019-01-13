@@ -343,8 +343,8 @@ resample(uncertainval, constraint, 1000)
 """
 function resample(uv::AbstractUncertainValue, constraint::TruncateMaximum, n::Int)
     # Apply (another level of) truncation, then sample
-    upper_bound = constraint.max
     lower_bound = support(uv.distribution).lb
+    upper_bound = constraint.max
     rand(Truncated(uv.distribution, lower_bound, upper_bound), n)
 end
 
@@ -369,8 +369,8 @@ resample(uncertainval, constraint)
 """
 function resample(uv::AbstractUncertainValue, constraint::TruncateRange)
     # Apply (another level of) truncation, then sample
-    upper_bound = constraint.max
     lower_bound = constraint.min
+    upper_bound = constraint.max
     rand(Truncated(uv.distribution, lower_bound, upper_bound))
 end
 
@@ -393,8 +393,8 @@ resample(uncertainval, constraint, 1000)
 """
 function resample(uv::AbstractUncertainValue, constraint::TruncateRange, n::Int)
     # Apply (another level of) truncation, then sample
-    upper_bound = constraint.max
     lower_bound = constraint.min
+    upper_bound = constraint.max
     rand(Truncated(uv.distribution, lower_bound, upper_bound), n)
 end
 

@@ -10,8 +10,8 @@ Generic dataset containing uncertain values.
 ## Fields
 - **`values::AbstractVector{AbstractUncertainValue}`**: The uncertain values.
 """
-struct UncertainDataset{T <: AbstractUncertainValue} <: AbstractUncertainValueDataset
-    values::AbstractVector{T}
+struct UncertainDataset <: AbstractUncertainValueDataset
+    values::AbstractVector{AbstractUncertainValue}
 end
 
 """
@@ -22,8 +22,8 @@ Generic constrained dataset containing uncertain values.
 ## Fields
 - **`values::AbstractVector{AbstractUncertainValue}`**: The uncertain values.
 """
-struct ConstrainedUncertainDataset{T <: AbstractUncertainValue} <: AbstractUncertainValueDataset
-    values::AbstractVector{T}
+struct ConstrainedUncertainDataset <: AbstractUncertainValueDataset
+    values::AbstractVector{AbstractUncertainValue}
 end
 
 

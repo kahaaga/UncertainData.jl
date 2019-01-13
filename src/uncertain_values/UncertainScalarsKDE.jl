@@ -6,7 +6,9 @@ import StatsBase.support
 
 import Distributions.ecdf
 import Distributions.support
-
+import Base:
+    minimum, maximum,
+    max, min
 
 abstract type AbstractUncertainScalarKDE{T} <: AbstractEmpiricalValue end
 
@@ -151,10 +153,23 @@ end
 
 
 
+minimum(uv::AbstractUncertainScalarKDE) = minimum(uv.range)
+maximum(uv::AbstractUncertainScalarKDE) = maximum(uv.range)
+
+
+min(uv::AbstractUncertainScalarKDE) = minimum(uv.range)
+max(uv::AbstractUncertainScalarKDE) = maximum(uv.range)
+
+
+
+
 
 export
+AbstractUncertainScalarKDE,
 UncertainScalarKDE
 ecdf,
 support,
 getquantileindex,
-UnivariateKDE
+UnivariateKDE,
+minimum,
+maximum
