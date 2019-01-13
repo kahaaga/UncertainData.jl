@@ -45,8 +45,8 @@ c = resample(u, TruncateQuantiles(0.3, 0.9), 1000)
 
 # standard deviation truncation
 c = resample(u, TruncateStd(1))
-@test maximum(c) <= 0 + 1
-@test minimum(c) >= 0 - 1
+@test maximum(c) <= 0 + std(u)
+@test minimum(c) >= 0 - std(u)
 
 # range truncation
 c = resample(u, TruncateRange(-0.2, 0.2))
