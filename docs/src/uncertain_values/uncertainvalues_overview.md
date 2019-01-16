@@ -6,6 +6,8 @@ There are currently three ways of doing so:
 - by [theoretical distributions with known parameters](uncertainvalues_theoreticaldistributions.md)
 - by [theoretical distributions with parameters fitted to empirical data](uncertainvalues_fitted.md)
 - by [kernel density estimates to empirical data](uncertainvalues_kde.md)
+- a type representing [values without uncertainty](certainvalue.md), so you can mix 
+    uncertain values with certain values
 
 
 ## Some quick examples

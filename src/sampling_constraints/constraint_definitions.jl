@@ -118,7 +118,7 @@ TruncateStd
 # observations are from physical samples lying above each other, so the order
 # of the observations cannot be mixed).
 #########################################################################
-include("ordered_sampling_algorithms.jl")
+include("ordered_sequences/ordered_sequence_algorithms.jl")
 
 """ 
     IndexSamplingConstraint
@@ -126,6 +126,18 @@ include("ordered_sampling_algorithms.jl")
 An abstract type for sampling constraints valid only for indices.
 """ 
 abstract type IndexSamplingConstraint <: SamplingConstraint end
+
+
+#########################################################################
+# Sequential sampling constraints
+#########################################################################
+
+abstract type SequentialSamplingConstraint end
+
+# Add the ordered sampling scheme to the seqential sampling constraints,
+# because that's all they affect. Defaults to `StartToEnd`.
+(::Type{SSC})() where SSC<:SequentialSamplingConstraint = SSC(StartToEnd())
+
 
 """ 
     StrictlyIncreasing
@@ -135,11 +147,12 @@ such that the values of the draw are strictly increasing in magnitude.
 
 Typically used when there are known, physical constraints on the measurements.
 For example, geochemical measurements of sediments at different depths of a sediment core 
-are taken at physically separate depths in the core. Thus, sampling the index value 
-of the measurement must obey the sampling scheme, so that the order of the indices is 
-not flipped.
+are taken at physically separate depths in the core. Thus, the order of the indices cannot
+be flipped, and must be strictly decreasing/increasing. 
 """ 
-struct StrictlyIncreasing <: SamplingConstraint end
+struct StrictlyIncreasing{OA<:OrderedSamplingAlgorithm} <: SequentialSamplingConstraint
+    ordered_sampling_algorithm::OA
+end
 
 """ 
     StrictlyDecreasing
@@ -149,18 +162,17 @@ such that the values of the draw are strictly decreasing in magnitude.
     
 Typically used when there are known, physical constraints on the measurements.
 For example, geochemical measurements of sediments at different depths of a sediment core 
-are taken at physically separate depths in the core. Thus, sampling the index value 
-of the measurement must obey the sampling scheme, so that the order of the indices is 
-not flipped.
+are taken at physically separate depths in the core. Thus, the order of the indices cannot
+be flipped, and must be strictly decreasing/increasing. 
 """ 
-struct StrictlyDecreasing <: SamplingConstraint end
+struct StrictlyDecreasing{OA<:OrderedSamplingAlgorithm} <: SequentialSamplingConstraint 
+    ordered_sampling_algorithm::OA
+end
 
-struct StrictlyIncreasingWherePossible <: SamplingConstraint end
-
-struct StrictlyDecreasingWherePossible<: SamplingConstraint end
 
 
 export 
 IndexSamplingConstraint,
+SequentialSamplingConstraint,
 StrictlyIncreasing,
 StrictlyDecreasing

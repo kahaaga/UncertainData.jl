@@ -7,10 +7,7 @@ import ..UncertainStatistics: quantile, median
     quants_values::Vector{Float64} = [0.33, 0.67])
 
     
-    legend --> false
     n_vals = length(uvals)
-    xlabel --> "Index"
-    ylabel --> "Value"
 
     for i = 1:n_vals
         idx, val = uvals[i]
@@ -26,6 +23,7 @@ import ..UncertainStatistics: quantile, median
 
         @series begin 
             #seriescolor --> :black
+            label --> ""
             xerr --> ([med_idx - lower_idx], [upper_idx - med_idx])
             yerr --> ([med_val - lower_val], [upper_val - med_val])
             [med_idx], [med_val]

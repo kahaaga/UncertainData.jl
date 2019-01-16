@@ -10,11 +10,15 @@ using Reexport
 
     # Constrain uncertain values
     include("constrain_uncertainvalue.jl")
+    include("constrain_certain_value.jl")
 
     # Constrain uncertain datasets
     include("constrain_uncertaindataset.jl")
     include("constrain_uncertainvaluedataset.jl")
     include("constrain_uncertainindexdataset.jl")
+
+    include("ordered_sequences/ordered_sequence_algorithms.jl")
+    include("ordered_sequences/ordered_sequences.jl")
 
 end # module
 

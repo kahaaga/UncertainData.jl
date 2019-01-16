@@ -3,6 +3,7 @@ import ..UncertainValues:
 import ..Resampling:
     resample
 
+
 # Cosine functions 
 """ 
     Base.cos(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
@@ -161,6 +162,7 @@ Simultaneously compute the sine and cosine of the uncertain value `x`, where `x`
 radians. Computes the element-wise `sincos` for `n` realizations.
 """ 
 Base.sincos(x::AbstractUncertainValue; n::Int = 10000) = sincos.(resample(x, n))
+
 
 """ 
     Base.sincos(x::AbstractUncertainValue, n::Int = 10000)
@@ -583,7 +585,6 @@ Computes the element-wise hyperbolic cosecant for `n` realizations.
 """ 
 Base.csch(x::AbstractUncertainValue, n::Int) = csch.(resample(x, n))
 
-
 """ 
     Base.sec(x::AbstractUncertainValue; n::Int = 10000) -> Vector{Float64}
 
@@ -681,3 +682,52 @@ Compute the hyperbolic cotangent of the uncertain value `x`, where `x` is in rad
 Computes the element-wise hyperbolic cotangent for `n` realizations.
 """ 
 Base.coth(x::AbstractUncertainValue, n::Int) = coth.(resample(x, n))
+
+
+#####################################################################################
+# Special cases 
+#####################################################################################
+
+trigfuncs = [:(cos), :(cosd), :(cosh), :(sin), :(sind), :(sinh), :(tan), :(tand), :(tanh), 
+    :(sincos), :(sinc), :(sinpi), :(cosc), :(cospi), :(acos), :(acosd), :(acosh), :(asin), 
+    :(asind), :(asinh), :(atan), :(atand), :(atanh), :(asec), :(asecd), :(asech), :(acsc), 
+    :(acscd), :(acsch), :(acot), :(acotd), :(acoth), :(csc), :(cscd), :(csch), :(sec), 
+    :(secd), :(sech), :(cot), :(cotd), :(coth)]
+
+##################
+# `CertainValue`s
+#################
+import ..UncertainValues: CertainValue
+
+"""
+    Base.:-(a::Union{CertainValue, Real}, b::Union{CertainValue, Real})
+
+Subtraction of certain values with themselves or scalars acts as regular subtraction, 
+but returns the result wrapped in a `CertainValue` instance.
+"""
+
+for trigfunc in trigfuncs
+    f = Meta.parse("Base.$(trigfunc)")
+
+    regular_func = quote 
+        """ 
+            $($f)(x::CertainValue)
+        
+        Compute `$($trigfunc)(x)`.
+        """
+        $(f)(x::CertainValue) = x.value
+    end
+
+    n_reps_func = quote 
+        """ 
+            $($f)(x::CertainValue, n::Int)
+        
+        Compute `$($trigfunc)(x)` `n` times and return the result(s) as a vector (just 
+        repeating the value `n` times).
+        """
+        $(f)(x::CertainValue, n::Int) = [x.value for i = 1:n]
+    end
+
+    eval(regular_func)
+    eval(n_reps_func)
+end

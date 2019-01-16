@@ -27,7 +27,7 @@ Resample an uncertain value dataset in an element-wise manner.
 
 Draws values from the entire support of the furnishing distributions.
 """
-function resample(uv::AbstractUncertainValueDataset)
+function resample(uv::DT) where {DT <: AbstractUncertainValueDataset}
 	L = length(uv)
 	[resample(uv.values[i]) for i in 1:L]
 end
@@ -39,7 +39,7 @@ Resample `n` realizations of an uncertain value dataset in an element-wise manne
 
 Draws values from the entire support of the furnishing distributions.
 """
-function resample(uv::AbstractUncertainValueDataset, n::Int)
+function resample(uv::DT, n::Int)  where {DT <: AbstractUncertainValueDataset}
 	L = length(uv)
 	[[resample(uv.values[i]) for i in 1:L] for k = 1:n]
 end
@@ -60,7 +60,7 @@ applied element-wise to the data values.
 resample(udata::AbstractUncertainValueDataset, 
 	constraint::Union{SamplingConstraint, Vector{SamplingConstraint}})
 
-	"""
+"""
 	resample(udata::AbstractUncertainValueDataset, 
 		constraint::Union{SamplingConstraint, Vector{SamplingConstraint}},
 		n::Int) -> Vector{Vector{Float64}}
@@ -84,7 +84,8 @@ resample(udata::AbstractUncertainValueDataset,
 Resample an uncertain dataset once after first limiting the support of the furnishing 
 distribution of each uncertain value by applying a sampling constraint.
 """
-function resample(udata::AbstractUncertainValueDataset, constraint::SamplingConstraint)
+function resample(udata::DT, 
+		constraint::SamplingConstraint) where {DT <: AbstractUncertainValueDataset}
     resample(constrain(udata, constraint))
 end
 
@@ -94,7 +95,8 @@ end
 Resample an uncertain dataset `n` times after first limiting the support of the furnishing 
 distribution of each uncertain value by applying a sampling constraint.
 """
-function resample(udata::AbstractUncertainValueDataset, constraint::SamplingConstraint, n::Int)
+function resample(udata::DT, constraint::SamplingConstraint, 
+		n::Int) where {DT <: AbstractUncertainValueDataset}
     resample(constrain(udata, constraint), n)
 end
 
@@ -105,8 +107,9 @@ Resample an uncertain dataset once after first limiting the support of the furni
 distribution of each uncertain value it the dataset, applying a different sampling 
 constraint to each value.
 """
-resample(udata::AbstractUncertainValueDataset, constraints::Vector{SamplingConstraint}) = 
-    resample(constrain(udata, constraints), n)
+resample(udata::DT, constraints::Vector{SamplingConstraint}, 
+		n) where {DT <: AbstractUncertainValueDataset} = 
+    resample(constrain(udata, constraints), n) 
 
 """
 	resample(udata::AbstractUncertainValueDataset, constraints::Vector{SamplingConstraint}, 
@@ -116,9 +119,9 @@ Resample an uncertain dataset `n` times after first limiting the support of the 
 distribution of each uncertain value it the dataset, applying a different sampling 
 constraint to each value.
 """
-function resample(udata::AbstractUncertainValueDataset, 
+function resample(udata::DT, 
 		constraints::Vector{SamplingConstraint}, 
-		n::Int)  
+		n::Int) where {DT <: AbstractUncertainValueDataset}
 	
     resample(constrain(udata, constraints), n)
 end

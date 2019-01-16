@@ -6,6 +6,8 @@ M = MixtureModel([Normal(3, 0.2), Normal(2, 1)])
 r1 = UncertainValue(Normal, rand(), rand())
 r2 = UncertainValue(rand(M, 10000))
 r3 = UncertainValue(Normal, rand(Normal(4, 3.2), 10000))
+r4 = CertainValue(2.2)
+r5 = CertainValue(2)
 
 uvals = [r1; r2; r3]
 

@@ -1,3 +1,46 @@
+## UncertainData.jl v0.1.5
+
+### Breaking changes 
+
+### New functionality 
+
+- Added `CertainValue <: AbstractUncertainValue` type to represent scalars without any 
+    uncertainty. Even though a scalar is not uncertain, we'll define it as subtype of `AbstractUncertainValue` to treat certain values alongside uncertain values in datasets. 
+- Added plot recipe for `CertainValue`s. They are just plotted as regular points.
+- Added method `resample(Vector{AbstractUncertainValue})` for resampling vectors of 
+    uncertain values. Operates element-wise, just as for an uncertain dataset. 
+- Added an abstract type `SequentialSamplingConstraint` to separate sequential constraints 
+    from general constraints that might be applied *before* resampling according to 
+    the sequential constraints.
+- Added abstract type (`OrderedSamplingAlgorithm`) and composite types 
+    (`StartToEnd`, `EndToStart`, `MidpointOutwards`, `ChunksForwards`, `ChunksBackwards`) 
+    which indicates how to sample sequential realizations when resampling an uncertain 
+    dataset. Only `StartToEnd` is used at the moment.
+- Added abstract type `SequentialSamplingConstraint` which is the supertype for all 
+    sequential constraints.
+- Added function to check if strictly increasing sequences through an uncertain dataset 
+    exist: `strictly_increasing_sequence_exists(udata::AbstractUncertainValueDataset`.
+- Added function to check if strictly decreasing sequences through an uncertain dataset 
+    exist: `strictly_increasing_sequence_exists(udata::AbstractUncertainValueDataset`.
+- Added the `StrictlyIncreasing{T} where {T<:OrderedSamplingAlgorithm}` sequential 
+    constraint for resampling uncertain datasets. 
+- Added the `StrictlyDecreasing{T} where {T<:OrderedSamplingAlgorithm}` sequential 
+    constraint for resampling uncertain datasets. 
+- Added resampling methods
+
+    1. `resample(udata, sequential_constraint::StrictlyIncreasing{T} where {T <: StartToEnd}`
+    2. `resample(udata, sequential_constraint::StrictlyDecreasing{T} where {T <: StartToEnd}`
+    3. `resample(udata, constraint::SamplingConstraint, sequential_constraint::StrictlyIncreasing{T} where {T <: StartToEnd}`
+    4. `resample(udata, constraint::SamplingConstraint, sequential_constraint::StrictlyDecreasing{T} where {T <: StartToEnd}`
+    5. `resample(udata, constraint::Vector{SamplingConstraint}, sequential_constraint::StrictlyIncreasing{T} where {T <: StartToEnd}`
+    6. `resample(udata, constraint::Vector{SamplingConstraint}, sequential_constraint::StrictlyDecreasing{T} where {T <: StartToEnd}`
+
+### Improvements 
+- Added [documentation on sequential constraints]("sampling_constraints/sequential_constraints.md"),
+    clearly separating it from the general constraints. 
+
+
+
 ## UncertainData.jl v0.1.4
 
 ### Breaking changes 
@@ -29,6 +72,9 @@
 ### Bug fixes
 - Fixed bug when resampling an uncertain dataset using the `NoConstraint` constraint, 
     which did not work to due to a reference to a non-existing variable.
+- Fixed test bug where when resampling an uncertain value with the `TruncateStd` sampling
+    constraint, the test compared the result to a fixed scalar, not the standar deviation 
+    of the value. This sometimes made the travis build fail.
 
 
 ## UncertainData.jl v0.1.3

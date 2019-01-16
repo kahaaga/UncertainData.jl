@@ -16,7 +16,6 @@ iv = UncertainIndexValueDataset(udata, udata)
 
 
 
-
 @test resample(iv, NoConstraint()) isa Tuple{Vector{Float64}, Vector{Float64}}
 @test resample(iv, TruncateLowerQuantile(0.2)) isa Tuple{Vector{Float64}, Vector{Float64}}
 @test resample(iv, TruncateUpperQuantile(0.2)) isa Tuple{Vector{Float64}, Vector{Float64}}
