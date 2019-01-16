@@ -16,6 +16,13 @@ using Reexport
     include("resample_uncertainvalues_kde.jl")
     include("resample_uncertainvalues_kde_withconstraints.jl")
 
+    include("resample_certainvalues.jl")
+
+    #########################################
+    # Resampling vectors of uncertain values
+    #########################################
+    include("resampling_vector_uncertainvalues.jl")
+
     ###################################
     # Resampling uncertain datasets
     ###################################
@@ -24,6 +31,11 @@ using Reexport
 
     include("resample_uncertaindataset_value.jl")
     include("resample_uncertaindataset_indexvalue.jl")
+
+    # Ordered resampling 
+    include("ordered_resampling/resample_sequential.jl")
+    include("ordered_resampling/resample_uncertaindataset_strictlyincreasing.jl")
+    include("ordered_resampling/resample_uncertaindataset_strictlydecreasing.jl")
 
     export resample
 end # module

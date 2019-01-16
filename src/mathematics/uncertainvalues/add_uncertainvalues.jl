@@ -90,7 +90,6 @@ Base.:+(a::AbstractUncertainValue, b::Real, n::Int) =
 
 
 
-
 #######################################
 # Adding vectors of uncertain values
 #######################################
@@ -124,3 +123,26 @@ function Base.:+(a::AbstractUncertainValue,
     
     [+(a, b[i], n) for i = 1:length(b)]
 end
+
+
+#####################################################################################
+# Special cases 
+#####################################################################################
+
+import ..UncertainValues: CertainValue
+
+##################
+# `CertainValue`s
+#################
+"""
+    Base.:+(a::Union{CertainValue, Real}, b::Union{CertainValue, Real})
+
+Addition of certain values with themselves or scalars acts as regular addition, but 
+returns the result wrapped in a `CertainValue` instance.
+"""
+Base.:+(a::Union{CertainValue, Real}, b::Union{CertainValue, Real}) 
+
+Base.:+(a::CertainValue, b::CertainValue) = CertainValue(a.value + b.value)
+Base.:+(a::CertainValue, b::Real) = CertainValue(a.value + b)
+Base.:+(a::Real, b::CertainValue) = CertainValue(a + b.value)
+

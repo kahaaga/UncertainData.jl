@@ -12,7 +12,8 @@ PAGES = [
         "uncertain_values/uncertainvalues_overview.md",
         "uncertain_values/uncertainvalues_kde.md",
         "uncertain_values/uncertainvalues_fitted.md",
-        "uncertain_values/uncertainvalues_theoreticaldistributions.md"
+        "uncertain_values/uncertainvalues_theoreticaldistributions.md",
+        "uncertain_values/certainvalue.md"
     ],
 	"Uncertain datasets" => [
         "uncertain_datasets/uncertain_datasets_overview.md",
@@ -40,13 +41,23 @@ PAGES = [
     ],
     "Sampling constraints" => [
         "sampling_constraints/available_constraints.md",
-        "sampling_constraints/constrain_uncertain_values.md"
+
+        "sampling_constraints/constrain_uncertain_values.md",
+
+        "sampling_constraints/ordered_sequence_exists.md",
+        "sampling_constraints/sequential_constraints.md"
     ],
     "Resampling" => [
         "resampling/resampling_overview.md",
         "resampling/resampling_uncertain_values.md",
         "resampling/resampling_uncertain_datasets.md",
-        "resampling/resampling_uncertain_indexvalue_datasets.md"
+        "resampling/resampling_uncertain_indexvalue_datasets.md",
+
+        "resampling/sequential/resampling_uncertaindatasets_sequential.md",
+        "resampling/sequential/strictly_increasing.md",
+        "resampling/sequential/strictly_decreasing.md",
+
+        "resampling/models/resampling_with_models.md"
     ],
     
     "Mathematics" => [

@@ -29,6 +29,9 @@ using Reexport
     # all types of uncertain values.
     include("UncertainValue.jl")
 
+    # Certain values (i.e. values without uncertainty)
+    include("CertainValue.jl")
+    
 end #module
 
 """

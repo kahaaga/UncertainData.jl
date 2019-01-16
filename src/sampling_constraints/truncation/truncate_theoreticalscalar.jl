@@ -121,7 +121,6 @@ function truncate(uv::TheoreticalDistributionScalarValue,
     
     lower_bound = constraint.min
     upper_bound = constraint.max
-
     Truncated(uv.distribution, lower_bound, upper_bound)
 end
 

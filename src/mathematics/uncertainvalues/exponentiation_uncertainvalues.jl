@@ -99,3 +99,26 @@ Call this function using the `^(a, b, n)` syntax.
 Base.:^(a::AbstractUncertainValue, b::Real, n::Int) = 
     UncertainValue(resample(a, n) .^ b)
 
+
+
+#####################################################################################
+# Special cases 
+#####################################################################################
+
+import ..UncertainValues: CertainValue
+
+##################
+# `CertainValue`s
+#################
+"""
+    Base.:^(a::Union{CertainValue, Real}, b::Union{CertainValue, Real})
+
+Exponentiation of certain values with themselves or scalars acts as regular exponentiation, 
+but returns the result wrapped in a `CertainValue` instance.
+"""
+Base.:^(a::Union{CertainValue, Real}, b::Union{CertainValue, Real}) 
+
+Base.:^(a::CertainValue, b::CertainValue) = CertainValue(a.value ^ b.value)
+Base.:^(a::CertainValue, b::Real) = CertainValue(a.value ^ b)
+Base.:^(a::Real, b::CertainValue) = CertainValue(a ^ b.value)
+
