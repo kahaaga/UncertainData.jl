@@ -343,6 +343,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_values/certainvalue/" title="Values without uncertainty" class="md-nav__link">
+      Values without uncertainty
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -507,9 +519,57 @@
 
 
   <li class="md-nav__item">
-    <a href="../../sampling_constraints/available_constraints/" title="List of constraints" class="md-nav__link">
-      List of constraints
+    <a href="../../sampling_constraints/available_constraints/" title="Generic constraints" class="md-nav__link">
+      Generic constraints
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2-3" type="checkbox" id="nav-4-2-3">
+    
+    <label class="md-nav__link" for="nav-4-2-3">
+      Sequential constraints
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-2-3">
+        Sequential constraints
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../sampling_constraints/sequential_constraints/" title="List of sequential constraints" class="md-nav__link">
+      List of sequential constraints
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../sampling_constraints/ordered_sequence_exists/" title="Existence of sequences" class="md-nav__link">
+      Existence of sequences
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -665,6 +725,78 @@
         
       </ul>
     </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+    
+    <label class="md-nav__link" for="nav-4-4">
+      Sequential resampling
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        Sequential resampling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sequential/resampling_uncertaindatasets_sequential/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sequential/strictly_increasing/" title="Strictly increasing" class="md-nav__link">
+      Strictly increasing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sequential/strictly_decreasing/" title="Strictly decreasing" class="md-nav__link">
+      Strictly decreasing
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../models/resampling_with_models/" title="Model resampling" class="md-nav__link">
+      Model resampling
+    </a>
   </li>
 
         
@@ -1026,7 +1158,7 @@
 </td></tr></table>
 
 <p>Resample an uncertain index-value dataset in an element-wise manner.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/da55413ff823e65cd9804980eeabeab5195d134c/src/resampling/resample_uncertaindataset_indexvalue.jl#L81-L85' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/resampling/resample_uncertaindataset_indexvalue.jl#L81-L85' class='documenter-source'>source</a><br></p>
 <p><a id='UncertainData.Resampling.resample-Tuple{UncertainIndexValueDataset,Int64}' href='#UncertainData.Resampling.resample-Tuple{UncertainIndexValueDataset,Int64}'>#</a>
 <strong><code class="codehilite">UncertainData.Resampling.resample</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -1036,7 +1168,7 @@
 </td></tr></table>
 
 <p>Resample <code class="codehilite">n</code> realizations an uncertain index-value dataset in an element-wise manner. </p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/da55413ff823e65cd9804980eeabeab5195d134c/src/resampling/resample_uncertaindataset_indexvalue.jl#L263-L268' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/resampling/resample_uncertaindataset_indexvalue.jl#L263-L268' class='documenter-source'>source</a><br></p>
 <p><a id='Same-constraint-to-both-indices-and-data-values-1'></a></p>
 <h4 id="same_constraint_to_both_indices_and_data_values">Same constraint to both indices and data values<a class="headerlink" href="#same_constraint_to_both_indices_and_data_values" title="Permanent link">&para;</a></h4>
 <p><a id='UncertainData.Resampling.resample-Tuple{UncertainIndexValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint}}' href='#UncertainData.Resampling.resample-Tuple{UncertainIndexValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint}}'>#</a>
@@ -1050,7 +1182,7 @@
 <p>Resample an uncertain index-value dataset in an element-wise manner. </p>
 <p>Enforces the provided sampling <code class="codehilite">constraint</code> to all uncertain values in the dataset, both  indices and data values.</p>
 <p>If a single constraint is provided, then that constraint will be applied to all values. If a  vector of constraints (as many as there are values) is provided, then the constraints are  applied element-wise to both the indices and the data values.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/da55413ff823e65cd9804980eeabeab5195d134c/src/resampling/resample_uncertaindataset_indexvalue.jl#L5-L18' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/resampling/resample_uncertaindataset_indexvalue.jl#L5-L18' class='documenter-source'>source</a><br></p>
 <p><a id='UncertainData.Resampling.resample-Tuple{UncertainIndexValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint},Int64}' href='#UncertainData.Resampling.resample-Tuple{UncertainIndexValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint},Int64}'>#</a>
 <strong><code class="codehilite">UncertainData.Resampling.resample</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -1064,7 +1196,7 @@
 <p>Resample <code class="codehilite">n</code> realizations of an uncertain index-value dataset in an element-wise manner. </p>
 <p>Enforces the provided sampling <code class="codehilite">constraint</code> to all uncertain values in the dataset, both  indices and data values.</p>
 <p>If a single constraint is provided, that constraint will be applied to all values. If a  vector of constraints (as many as there are values) is provided, then the constraints are  applied element-wise to both the indices and the data values.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/da55413ff823e65cd9804980eeabeab5195d134c/src/resampling/resample_uncertaindataset_indexvalue.jl#L21-L35' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/resampling/resample_uncertaindataset_indexvalue.jl#L21-L35' class='documenter-source'>source</a><br></p>
 <p><a id='Different-constraints-to-indices-and-data-values-1'></a></p>
 <h4 id="different_constraints_to_indices_and_data_values">Different constraints to indices and data values<a class="headerlink" href="#different_constraints_to_indices_and_data_values" title="Permanent link">&para;</a></h4>
 <p><a id='UncertainData.Resampling.resample-Tuple{UncertainIndexValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint},Union{Array{SamplingConstraint,1}, SamplingConstraint}}' href='#UncertainData.Resampling.resample-Tuple{UncertainIndexValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint},Union{Array{SamplingConstraint,1}, SamplingConstraint}}'>#</a>
@@ -1080,7 +1212,7 @@
 <p>Resample an uncertain index-value dataset in an element-wise manner. </p>
 <p>Enforces separate sampling constraints to the indices and to the data values. </p>
 <p>If a single constraint is provided, that constraint will be applied to all values. If a  vector of constraints (as many as there are values) is provided, then the constraints are  applied element-wise.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/da55413ff823e65cd9804980eeabeab5195d134c/src/resampling/resample_uncertaindataset_indexvalue.jl#L40-L53' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/resampling/resample_uncertaindataset_indexvalue.jl#L40-L53' class='documenter-source'>source</a><br></p>
 <p><a id='UncertainData.Resampling.resample-Tuple{UncertainIndexValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint},Union{Array{SamplingConstraint,1}, SamplingConstraint},Int64}' href='#UncertainData.Resampling.resample-Tuple{UncertainIndexValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint},Union{Array{SamplingConstraint,1}, SamplingConstraint},Int64}'>#</a>
 <strong><code class="codehilite">UncertainData.Resampling.resample</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -1096,7 +1228,7 @@
 <p>Resample <code class="codehilite">n</code> realizations of an uncertain index-value dataset in an element-wise manner. </p>
 <p>Enforces separate sampling constraints to the indices and to the data values. </p>
 <p>If a single constraint is provided, that constraint will be applied to all values. If a  vector of constraints (as many as there are values) is provided, then the constraints are  applied element-wise.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/da55413ff823e65cd9804980eeabeab5195d134c/src/resampling/resample_uncertaindataset_indexvalue.jl#L57-L71' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/resampling/resample_uncertaindataset_indexvalue.jl#L57-L71' class='documenter-source'>source</a><br></p>
 <p><a id='Examples-1'></a></p>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
 <p><a id='Same-constraint-for-all-uncertain-values-1'></a></p>
@@ -1289,13 +1421,13 @@
           </a>
         
         
-          <a href="../../mathematics/elementary_operations/" title="Elementary operations" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../sequential/resampling_uncertaindatasets_sequential/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Elementary operations
+                Overview
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

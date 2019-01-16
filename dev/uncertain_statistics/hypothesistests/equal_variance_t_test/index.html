@@ -343,6 +343,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/certainvalue/" title="Values without uncertainty" class="md-nav__link">
+      Values without uncertainty
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -505,9 +517,57 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../sampling_constraints/available_constraints/" title="List of constraints" class="md-nav__link">
-      List of constraints
+    <a href="../../../sampling_constraints/available_constraints/" title="Generic constraints" class="md-nav__link">
+      Generic constraints
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2-3" type="checkbox" id="nav-4-2-3">
+    
+    <label class="md-nav__link" for="nav-4-2-3">
+      Sequential constraints
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-2-3">
+        Sequential constraints
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../sampling_constraints/sequential_constraints/" title="List of sequential constraints" class="md-nav__link">
+      List of sequential constraints
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../sampling_constraints/ordered_sequence_exists/" title="Existence of sequences" class="md-nav__link">
+      Existence of sequences
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -573,6 +633,78 @@
         
       </ul>
     </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+    
+    <label class="md-nav__link" for="nav-4-4">
+      Sequential resampling
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        Sequential resampling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/sequential/resampling_uncertaindatasets_sequential/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/sequential/strictly_increasing/" title="Strictly increasing" class="md-nav__link">
+      Strictly increasing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/sequential/strictly_decreasing/" title="Strictly decreasing" class="md-nav__link">
+      Strictly decreasing
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/models/resampling_with_models/" title="Model resampling" class="md-nav__link">
+      Model resampling
+    </a>
   </li>
 
         
@@ -945,7 +1077,7 @@
 
 <p>Consider two samples <code class="codehilite">s1</code> and <code class="codehilite">s2</code>, each consisting of <code class="codehilite">n</code> random draws from the distributions furnishing <code class="codehilite">d1</code> and <code class="codehilite">d2</code>, respectively.</p>
 <p>This function performs a two-sample t-test of the null hypothesis that <code class="codehilite">s1</code> and <code class="codehilite">s2</code> come from distributions with equal means and variances against the alternative hypothesis that the distributions have different means but equal variances.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/da55413ff823e65cd9804980eeabeab5195d134c/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L34-L45' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L34-L45' class='documenter-source'>source</a><br></p>
 <p><strong>Example</strong></p>
 <p>Let's create two uncertain values furnished by distributions of different types. We'll perform the equal variance t-test to check if there is support for the null-hypothesis that the distributions furnishing the uncertain values come from distributions with equal means and variances.</p>
 <p>We expect the test to reject this null-hypothesis, because we've created two very different distributions.</p>
@@ -1011,7 +1143,7 @@
 
 <p>Consider two samples <code class="codehilite">s1[i]</code> and <code class="codehilite">s2[i]</code>, each consisting of <code class="codehilite">n</code> random draws from the distributions furnishing the uncertain values <code class="codehilite">d1[i]</code> and <code class="codehilite">d2[i]</code>, respectively. Gather all <code class="codehilite">s1[i]</code> in a pooled sample <code class="codehilite">S1</code>, and all <code class="codehilite">s2[i]</code> in a pooled sample <code class="codehilite">S2</code>.</p>
 <p>Perform a two-sample t-test of the null hypothesis that <code class="codehilite">S1</code> and <code class="codehilite">S2</code> come from distributions with equal means and variances against the alternative hypothesis that the distributions have different means but equal variances.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/da55413ff823e65cd9804980eeabeab5195d134c/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L56-L68' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L56-L68' class='documenter-source'>source</a><br></p>
 <p><a id='Element-wise-test-1'></a></p>
 <h3 id="element-wise_test">Element-wise test<a class="headerlink" href="#element-wise_test" title="Permanent link">&para;</a></h3>
 <p><a id='UncertainData.UncertainStatistics.EqualVarianceTTestElementWise' href='#UncertainData.UncertainStatistics.EqualVarianceTTestElementWise'>#</a>
@@ -1024,7 +1156,7 @@
 
 <p>Consider two samples <code class="codehilite">s1[i]</code> and <code class="codehilite">s2[i]</code>, each consisting of <code class="codehilite">n</code> random draws from the distributions furnishing the uncertain values <code class="codehilite">d1[i]</code> and <code class="codehilite">d2[i]</code>, respectively. This function performs an elementwise <code class="codehilite">EqualVarianceTTest</code> on the pairs <code class="codehilite">(s1[i], s2[i])</code>. Specifically:</p>
 <p>Performs an pairwise two-sample t-test of the null hypothesis that <code class="codehilite">s1[i]</code> and <code class="codehilite">s2[i]</code> come from distributions with equal means and variances against the alternative hypothesis that the distributions have different means but equal variances.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/da55413ff823e65cd9804980eeabeab5195d134c/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L81-L94' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/uncertain_statistics/hypothesis_tests/t_tests.jl#L81-L94' class='documenter-source'>source</a><br></p>
                 
                   
                 
