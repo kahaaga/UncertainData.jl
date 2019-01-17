@@ -29,8 +29,13 @@ using Reexport
     # all types of uncertain values.
     include("UncertainValue.jl")
 
+
+    # Populations with weighted probabilities
+    include("Population.jl")
+    
     # Certain values (i.e. values without uncertainty)
     include("CertainValue.jl")
+
     
 end #module
 

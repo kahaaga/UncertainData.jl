@@ -222,18 +222,18 @@ Base.asech(x::AbstractUncertainValue, n::Int)
 ### Inverse cotangent
 
 ```@docs 
-Base.cot(x::AbstractUncertainValue; n::Int)
-Base.cot(x::AbstractUncertainValue, n::Int)
+Base.acot(x::AbstractUncertainValue; n::Int)
+Base.acot(x::AbstractUncertainValue, n::Int)
 ```
 
 ```@docs 
-Base.cotd(x::AbstractUncertainValue; n::Int)
-Base.cotd(x::AbstractUncertainValue, n::Int)
+Base.acotd(x::AbstractUncertainValue; n::Int)
+Base.acotd(x::AbstractUncertainValue, n::Int)
 ```
 
 ```@docs 
-Base.coth(x::AbstractUncertainValue; n::Int)
-Base.coth(x::AbstractUncertainValue, n::Int)
+Base.acoth(x::AbstractUncertainValue; n::Int)
+Base.acoth(x::AbstractUncertainValue, n::Int)
 ```
 
 ## Other trig functions 
