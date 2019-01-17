@@ -355,6 +355,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_values/populations/" title="Populations" class="md-nav__link">
+      Populations
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -738,20 +750,20 @@
   </li>
 
         
-      </ul>
-    </nav>
-  </li>
-
-        
           
           
           
 
 
   <li class="md-nav__item">
-    <a href="../../resampling/models/resampling_with_models/" title="Model resampling" class="md-nav__link">
-      Model resampling
+    <a href="../../resampling/sequential/resampling_indexvalue_sequential/" title="Index-value datasets" class="md-nav__link">
+      Index-value datasets
     </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -1065,19 +1077,19 @@
 </td></tr></table>
 
 <p>Does a path through the dataset exist? I.e, check that a strictly  increasing sequence can be found after first  constraining each distribution to the provided quantile range (this  is necessary because some distributions may have infinite support).</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/sampling_constraints/ordered_sequences/ordered_sequences.jl#L29-L38' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/sampling_constraints/ordered_sequences/ordered_sequences.jl#L29-L38' class='documenter-source'>source</a><br></p>
 <p><a id='Strictly-decreasing-sequence-1'></a></p>
 <h3 id="strictly_decreasing_sequence">Strictly decreasing sequence<a class="headerlink" href="#strictly_decreasing_sequence" title="Permanent link">&para;</a></h3>
 <p><a id='UncertainData.SamplingConstraints.strictly_decreasing_sequence_exists' href='#UncertainData.SamplingConstraints.strictly_decreasing_sequence_exists'>#</a>
 <strong><code class="codehilite">UncertainData.SamplingConstraints.strictly_decreasing_sequence_exists</code></strong> &mdash; <em>Function</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>strictly_decreasing_sequence_exists(udata::AbstractUncertainValueDataset,
-    quantiles = [0.0001, 0.9999])
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">strictly_decreasing_sequence_exists</span><span class="o">(</span><span class="nt">udata</span><span class="p">::</span><span class="nd">AbstractUncertainValueDataset</span><span class="o">;</span>
+    <span class="nt">quantiles</span> <span class="o">=</span> <span class="cp">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.9999</span><span class="cp">]</span><span class="o">)</span>
 </pre></div>
 </td></tr></table>
 
-<p>Does a path through the dataset exist? I.e,  check that a strictly  increasing sequence can be found after first  constraining each distribution to the provided quantile range (this  is necessary because some distributions may have infinite support).</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/sampling_constraints/ordered_sequences/ordered_sequences.jl#L67-L75' class='documenter-source'>source</a><br></p>
+<p>Does a path through the dataset exist? I.e,  check that a strictly  decreasing sequence can be found after first  constraining each distribution to the provided quantile range (this  is necessary because some distributions may have infinite support).</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/sampling_constraints/ordered_sequences/ordered_sequences.jl#L67-L75' class='documenter-source'>source</a><br></p>
                 
                   
                 

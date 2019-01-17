@@ -355,6 +355,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/populations/" title="Populations" class="md-nav__link">
+      Populations
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -763,20 +775,20 @@
   </li>
 
         
-      </ul>
-    </nav>
-  </li>
-
-        
           
           
           
 
 
   <li class="md-nav__item">
-    <a href="../../models/resampling_with_models/" title="Model resampling" class="md-nav__link">
-      Model resampling
+    <a href="../resampling_indexvalue_sequential/" title="Index-value datasets" class="md-nav__link">
+      Index-value datasets
     </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -1105,10 +1117,10 @@
                 
                   <h1>Overview</h1>
                 
-                <p>In addition to the <a href="resampling_uncertain_datasets.md">generic sampling constraints</a>,  you may impose sequential sampling constraints when resampling an uncertain dataset. </p>
+                <p>In addition to the  <a href="../../../sampling_constraints/available_constraints/">generic sampling constraints</a>,  you may impose sequential sampling constraints when resampling an uncertain dataset. </p>
 <p><a id='Is-a-particular-constraint-applicable?-1'></a></p>
 <h2 id="is_a_particular_constraint_applicable">Is a particular constraint applicable?<a class="headerlink" href="#is_a_particular_constraint_applicable" title="Permanent link">&para;</a></h2>
-<p>Not all <a href="../sampling_constraints/available_constraints.md">sequential sampling constraints</a>  may be applicable to your dataset. Use  <a href="../sampling_constraints/ordered_sequence_exists.md">these functions</a> to check whether a  particular constraint is possible to apply to your dataset. </p>
+<p>Not all <a href="../../../sampling_constraints/sequential_constraints/">sequential sampling constraints</a>  may be applicable to your dataset. Use  <a href="../../../sampling_constraints/ordered_sequence_exists/">these functions</a> to check whether a  particular constraint is possible to apply to your dataset. </p>
 <p><a id='Syntax-1'></a></p>
 <h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
 <p><a id='Sequential-constraint-only-1'></a></p>
@@ -1126,7 +1138,7 @@
 
 <p>Resample a dataset by imposing a sequential sampling constraint. </p>
 <p>Before drawing the realization, all furnishing distributions are truncated to the provided  <code class="codehilite">quantiles</code> range. This is to avoid problems in case some distributions have infinite  support.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/resampling/ordered_resampling/resample_sequential.jl#L7-L20' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/resampling/ordered_resampling/resample_sequential.jl#L7-L20' class='documenter-source'>source</a><br></p>
 <p><a id='Regular-constraint(s)-sequential-constraint-1'></a></p>
 <h3 id="regular_constraints_sequential_constraint">Regular constraint(s) + sequential constraint<a class="headerlink" href="#regular_constraints_sequential_constraint" title="Permanent link">&para;</a></h3>
 <p>Another option is to first impose constraints on the furnishing distributions, then  applying the sequential sampling constraint.</p>
@@ -1144,7 +1156,7 @@
 
 <p>Resample a dataset by first imposing regular sampling constraints on the furnishing  distributions, then applying a sequential sampling constraint. </p>
 <p>Before drawing the realization, all furnishing distributions are truncated to the provided  <code class="codehilite">quantiles</code> range. This is to avoid problems in case some distributions have infinite  support.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/resampling/ordered_resampling/resample_sequential.jl#L25-L38' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/resampling/ordered_resampling/resample_sequential.jl#L25-L38' class='documenter-source'>source</a><br></p>
 <p><a id='List-of-sequential-resampling-schemes-1'></a></p>
 <h2 id="list_of_sequential_resampling_schemes">List of sequential resampling schemes<a class="headerlink" href="#list_of_sequential_resampling_schemes" title="Permanent link">&para;</a></h2>
 <ul>

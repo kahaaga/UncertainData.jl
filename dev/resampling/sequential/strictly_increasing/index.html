@@ -355,6 +355,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/populations/" title="Populations" class="md-nav__link">
+      Populations
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -763,20 +775,20 @@
   </li>
 
         
-      </ul>
-    </nav>
-  </li>
-
-        
           
           
           
 
 
   <li class="md-nav__item">
-    <a href="../../models/resampling_with_models/" title="Model resampling" class="md-nav__link">
-      Model resampling
+    <a href="../resampling_indexvalue_sequential/" title="Index-value datasets" class="md-nav__link">
+      Index-value datasets
     </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -1133,7 +1145,7 @@
 <li><strong><code class="codehilite">sequential_constraint</code></strong>: An instance of a <code class="codehilite">StrictlyIncreasing</code> sequential    sampling constraint. For example, <code class="codehilite">StrictlyIncreasing(StartToEnd())</code> indicates    that a strictly increasing sequence should be created in one go from start to    finish (as opposed to chunking the data set first, then gluing partial sequences    together afterwards).</li>
 <li><strong><code class="codehilite">quantiles</code></strong>: A two-element vector representing a quantile range which is used    to truncate the supports values in the dataset before drawing the sequence of    increasing values. This deals with distributions with infinite support.</li>
 </ul>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/resampling/ordered_resampling/resample_uncertaindataset_strictlyincreasing.jl#L111-L135' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/resampling/ordered_resampling/resample_uncertaindataset_strictlyincreasing.jl#L111-L135' class='documenter-source'>source</a><br></p>
 <p><a id='UncertainData.Resampling.resample-Union{Tuple{T}, Tuple{DT}, Tuple{DT,StrictlyIncreasing{T}}} where T<:StartToEnd where DT<:AbstractUncertainValueDataset' href='#UncertainData.Resampling.resample-Union{Tuple{T}, Tuple{DT}, Tuple{DT,StrictlyIncreasing{T}}} where T<:StartToEnd where DT<:AbstractUncertainValueDataset'>#</a>
 <strong><code class="codehilite">UncertainData.Resampling.resample</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -1150,7 +1162,7 @@
 <li><strong><code class="codehilite">ordered_sampling_alg</code></strong>: An instance of a <code class="codehilite">StartToEnd</code> ordered    sampling constraint, indicating that the sequence of increasing values should    be created in one go from start to finish (as opposed to chunking the data set    first, then gluing partial sequences together afterwards).</li>
 <li><strong><code class="codehilite">quantiles</code></strong>: A two-element vector representing a quantile range which is used    to truncate the supports values in the dataset before drawing the sequence of    increasing values. This deals with distributions with infinite support.</li>
 </ul>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/resampling/ordered_resampling/resample_uncertaindataset_strictlyincreasing.jl#L17-L37' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/resampling/ordered_resampling/resample_uncertaindataset_strictlyincreasing.jl#L17-L37' class='documenter-source'>source</a><br></p>
 <p><a id='Examples-1'></a></p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <p><a id='Example-1:-strictly-increasing-sequences-1'></a></p>

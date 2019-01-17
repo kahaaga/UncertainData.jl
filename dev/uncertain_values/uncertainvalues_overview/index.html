@@ -310,6 +310,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#populations" title="Populations" class="md-nav__link">
+    Populations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#fitting_a_theoretical_distribution" title="Fitting a theoretical distribution" class="md-nav__link">
     Fitting a theoretical distribution
   </a>
@@ -319,6 +326,13 @@
           <li class="md-nav__item">
   <a href="#theoretical_distribution_with_known_parameters" title="Theoretical distribution with known parameters" class="md-nav__link">
     Theoretical distribution with known parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#values_with_no_uncertainty" title="Values with no uncertainty" class="md-nav__link">
+    Values with no uncertainty
   </a>
   
 </li>
@@ -414,6 +428,18 @@
   <li class="md-nav__item">
     <a href="../certainvalue/" title="Values without uncertainty" class="md-nav__link">
       Values without uncertainty
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../populations/" title="Populations" class="md-nav__link">
+      Populations
     </a>
   </li>
 
@@ -754,20 +780,20 @@
   </li>
 
         
-      </ul>
-    </nav>
-  </li>
-
-        
           
           
           
 
 
   <li class="md-nav__item">
-    <a href="../../resampling/models/resampling_with_models/" title="Model resampling" class="md-nav__link">
-      Model resampling
+    <a href="../../resampling/sequential/resampling_indexvalue_sequential/" title="Index-value datasets" class="md-nav__link">
+      Index-value datasets
     </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -1050,6 +1076,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#populations" title="Populations" class="md-nav__link">
+    Populations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#fitting_a_theoretical_distribution" title="Fitting a theoretical distribution" class="md-nav__link">
     Fitting a theoretical distribution
   </a>
@@ -1059,6 +1092,13 @@
           <li class="md-nav__item">
   <a href="#theoretical_distribution_with_known_parameters" title="Theoretical distribution with known parameters" class="md-nav__link">
     Theoretical distribution with known parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#values_with_no_uncertainty" title="Values with no uncertainty" class="md-nav__link">
+    Values with no uncertainty
   </a>
   
 </li>
@@ -1095,6 +1135,7 @@
 <li>by <a href="../uncertainvalues_theoreticaldistributions/">theoretical distributions with known parameters</a></li>
 <li>by <a href="../uncertainvalues_fitted/">theoretical distributions with parameters fitted to empirical data</a></li>
 <li>by <a href="../uncertainvalues_kde/">kernel density estimates to empirical data</a></li>
+<li>by <a href="../populations/">weighted populations</a> where the probability of drawing values are    already known, so you can skip kernel density estimation.</li>
 <li>a type representing <a href="../certainvalue/">values without uncertainty</a>, so you can mix    uncertain values with certain values</li>
 </ul>
 <p><a id='Some-quick-examples-1'></a></p>
@@ -1147,6 +1188,17 @@
 </pre></div>
 </td></tr></table></div>
 </div>
+<p><a id='Populations-1'></a></p>
+<h4 id="populations">Populations<a class="headerlink" href="#populations" title="Permanent link">&para;</a></h4>
+<p>If you have a population of values where each value has a probability assigned to it,  you can construct an uncertain value by providing the values and uncertainties as  two equal-length vectors to the constructor. Weights are normalized by default.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">vals</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
 <p><a id='Fitting-a-theoretical-distribution-1'></a></p>
 <h4 id="fitting_a_theoretical_distribution">Fitting a theoretical distribution<a class="headerlink" href="#fitting_a_theoretical_distribution" title="Permanent link">&para;</a></h4>
 <p>If your data has a histogram closely resembling some theoretical distribution, the uncertain value may be represented by fitting such a distribution to the data.</p>
@@ -1226,6 +1278,12 @@
 </pre></div>
 </td></tr></table></div>
 </div>
+<p><a id='Values-with-no-uncertainty-1'></a></p>
+<h4 id="values_with_no_uncertainty">Values with no uncertainty<a class="headerlink" href="#values_with_no_uncertainty" title="Permanent link">&para;</a></h4>
+<p>Scalars with no uncertainty can also be represented. </p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="mf">2.2</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
                 
                   
                 

@@ -284,6 +284,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#organising_uncertain_data" title="Organising uncertain data" class="md-nav__link">
+    Organising uncertain data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#mathematical_operations" title="Mathematical operations" class="md-nav__link">
     Mathematical operations
   </a>
@@ -433,6 +440,18 @@
   <li class="md-nav__item">
     <a href="uncertain_values/certainvalue/" title="Values without uncertainty" class="md-nav__link">
       Values without uncertainty
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="uncertain_values/populations/" title="Populations" class="md-nav__link">
+      Populations
     </a>
   </li>
 
@@ -773,20 +792,20 @@
   </li>
 
         
-      </ul>
-    </nav>
-  </li>
-
-        
           
           
           
 
 
   <li class="md-nav__item">
-    <a href="resampling/models/resampling_with_models/" title="Model resampling" class="md-nav__link">
-      Model resampling
+    <a href="resampling/sequential/resampling_indexvalue_sequential/" title="Index-value datasets" class="md-nav__link">
+      Index-value datasets
     </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -1076,6 +1095,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#organising_uncertain_data" title="Organising uncertain data" class="md-nav__link">
+    Organising uncertain data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#mathematical_operations" title="Mathematical operations" class="md-nav__link">
     Mathematical operations
   </a>
@@ -1133,20 +1159,15 @@
 <h2 id="uncertaindatajl">UncertainData.jl<a class="headerlink" href="#uncertaindatajl" title="Permanent link">&para;</a></h2>
 <p><a id='Motivation-1'></a></p>
 <h3 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link">&para;</a></h3>
-<p>UncertainData.jl was born to systematically deal with uncertain data, and to sample  uncertain datasets more rigorously. It makes workflows involving uncertain data of  different types and from different sources significantly easier. </p>
-<p>The package allows handling of uncertain values of several different types:</p>
-<ul>
-<li><a href="uncertain_values/uncertainvalues_theoreticaldistributions/">theoretical distributions with known parameters</a></li>
-<li><a href="uncertain_values/uncertainvalues_fitted/">theoretical distributions with parameters estimated from experimental data</a></li>
-<li><a href="uncertain_values/uncertainvalues_kde/">more complex distributions determined by kernel density estimates of experimental data</a></li>
-</ul>
-<p>A related package is <a href="https://github.com/JuliaPhysics/Measurements.jl">Measurements.jl</a>, which propagates errors exactly and handles correlated uncertainties. However,  Measurements.jl accepts only normally distributed values. This package serves a slightly  different purpose: it was born to provide an easy way of handling uncertainties of <strong>any</strong>  type, using a <a href="resampling/resampling_overview/">resampling</a> approach to obtain  <a href="uncertain_statistics/core_stats/core_statistics/">statistics</a> when needed, and providing a rich set of  <a href="sampling_constraints/available_constraints/">sampling constraints</a> that makes it easy  for the user to reason about and plot their uncertain data under different assumptions.</p>
+<p>UncertainData.jl was born to systematically deal with uncertain data, and to  <a href="resampling/resampling_overview/">sample</a> from  <a href="uncertain_datasets/uncertain_datasets_overview/">uncertain datasets</a> more rigorously.  It makes workflows involving  <a href="uncertain_values/uncertainvalues_overview/">uncertain data of different types</a>  and from different sources significantly easier. </p>
 <p><a id='Package-philosophy-1'></a></p>
 <h3 id="package_philosophy">Package philosophy<a class="headerlink" href="#package_philosophy" title="Permanent link">&para;</a></h3>
 <p>Way too often in data analysis the uncertainties in observational data are ignored or not  dealt with in a systematic manner. The core concept of the package is that uncertain data  should live in the probability domain, not as single value representations of the data  (e.g. the mean).</p>
 <p>In this package, uncertain data values are thus  <a href="uncertain_values/uncertainvalues_overview/">stored as probability distributions</a>.  Only when performing a computation or plotting, the uncertain values are realized by  resampling the probability distributions furnishing them. </p>
+<p><a id='Organising-uncertain-data-1'></a></p>
+<h3 id="organising_uncertain_data">Organising uncertain data<a class="headerlink" href="#organising_uncertain_data" title="Permanent link">&para;</a></h3>
 <p>Individual uncertain observations may be collected in  <a href="uncertain_datasets/uncertain_datasets_overview/">UncertainDatasets</a>, which can be  sampled according to user-provided sampling constraints. Likewise, indices (e.g. time,  depth or any other index) of observations can also be represented as probability  distributions and may also sampled using constraints. </p>
-<p>The <a href="uncertain_datasets/uncertain_indexvalue_dataset/">UncertainIndexValueDataset</a> type  allows you to work with datasets where both the indices and data values are uncertain. This may be useful when you, for example, want to draw realizations of your dataset while  simultaneously enforcing strictly increasing age models.</p>
+<p>The <a href="uncertain_datasets/uncertain_indexvalue_dataset/">UncertainIndexValueDataset</a> type  allows you to work with datasets where both the  <a href="uncertain_datasets/uncertain_index_dataset/">indices</a> and the  <a href="uncertain_datasets/uncertain_value_dataset/">data values</a> are uncertain. This may be useful when you, for example, want to draw realizations of your dataset while  simultaneously enforcing  <a href="resampling/sequential/resampling_uncertaindatasets_sequential/">sequential resampling</a>,  for example  <a href="resampling/sequential/resampling_indexvalue_sequential/">strictly increasing</a> age models.</p>
 <p><a id='Mathematical-operations-1'></a></p>
 <h3 id="mathematical_operations">Mathematical operations<a class="headerlink" href="#mathematical_operations" title="Permanent link">&para;</a></h3>
 <p>Several <a href="mathematics/elementary_operations/">elementary mathematical operations</a> and  <a href="mathematics/trig_functions/">trigonometric functions</a> are supported  for uncertain values. Computations are done using a  <a href="./resampling/resampling_overview">resampling approach</a>.</p>
@@ -1165,7 +1186,8 @@
 </ol>
 <p><a id='Related-software-1'></a></p>
 <h3 id="related_software">Related software<a class="headerlink" href="#related_software" title="Permanent link">&para;</a></h3>
-<p><a href="https://github.com/JuliaPhysics/Measurements.jl">Measurements.jl</a> also deals with  uncertainty handling, propagates errors in computations, and deals with functional  correlations out of the box. At the moment, it only handles normally distributed  data. However, depending on your needs, it may be a better (and faster) choice if your data  satisfies the requirements for the package (normally distributed) and if your uncertainties  are correlated.</p>
+<p>A related package is <a href="https://github.com/JuliaPhysics/Measurements.jl">Measurements.jl</a>, which propagates errors exactly and handles correlated uncertainties. However,  Measurements.jl accepts only normally distributed values. This package serves a slightly  different purpose: it was born to provide an easy way of handling uncertainties of  <a href="uncertain_values/uncertainvalues_overview/">many different types</a>,  using a <a href="resampling/resampling_overview/">resampling</a> approach to obtain  <a href="uncertain_statistics/core_stats/core_statistics/">statistics</a> when needed, and providing a rich set of  <a href="sampling_constraints/available_constraints/">sampling constraints</a> that makes it easy  for the user to reason about and plot their uncertain data under different assumptions.</p>
+<p>Depending on your needs, <a href="https://github.com/JuliaPhysics/Measurements.jl"> Measurements.jl</a>  may be a better (and faster) choice if your data satisfies the requirements for the package  (normally distributed) and if your uncertainties are correlated.</p>
                 
                   
                 

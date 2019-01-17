@@ -355,6 +355,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_values/populations/" title="Populations" class="md-nav__link">
+      Populations
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -756,20 +768,20 @@
   </li>
 
         
-      </ul>
-    </nav>
-  </li>
-
-        
           
           
           
 
 
   <li class="md-nav__item">
-    <a href="../../resampling/models/resampling_with_models/" title="Model resampling" class="md-nav__link">
-      Model resampling
+    <a href="../../resampling/sequential/resampling_indexvalue_sequential/" title="Index-value datasets" class="md-nav__link">
+      Index-value datasets
     </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -1104,7 +1116,7 @@
 </td></tr></table>
 
 <p>A constraint indicating that the distribution furnishing an uncertain value should be truncated at <code class="codehilite">nσ</code> (<code class="codehilite">n</code> standard deviations).</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/sampling_constraints/constraint_definitions.jl#L58-L63' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/sampling_constraints/constraint_definitions.jl#L58-L63' class='documenter-source'>source</a><br></p>
 <p><a id='Value-range-1'></a></p>
 <h4 id="value_range">Value range<a class="headerlink" href="#value_range" title="Permanent link">&para;</a></h4>
 <p><a id='UncertainData.SamplingConstraints.TruncateMinimum' href='#UncertainData.SamplingConstraints.TruncateMinimum'>#</a>
@@ -1114,7 +1126,7 @@
 </td></tr></table>
 
 <p>A constraint indicating that the distribution furnishing an uncertain value should be truncated below at some specified minimum value.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/sampling_constraints/constraint_definitions.jl#L68-L73' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/sampling_constraints/constraint_definitions.jl#L68-L73' class='documenter-source'>source</a><br></p>
 <p><a id='UncertainData.SamplingConstraints.TruncateMaximum' href='#UncertainData.SamplingConstraints.TruncateMaximum'>#</a>
 <strong><code class="codehilite">UncertainData.SamplingConstraints.TruncateMaximum</code></strong> &mdash; <em>Type</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>TruncateMaximum(max::Number)
@@ -1122,7 +1134,7 @@
 </td></tr></table>
 
 <p>A constraint indicating that the distribution furnishing an uncertain value should be truncated above at some specified maximum value.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/sampling_constraints/constraint_definitions.jl#L78-L83' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/sampling_constraints/constraint_definitions.jl#L78-L83' class='documenter-source'>source</a><br></p>
 <p><a id='UncertainData.SamplingConstraints.TruncateRange' href='#UncertainData.SamplingConstraints.TruncateRange'>#</a>
 <strong><code class="codehilite">UncertainData.SamplingConstraints.TruncateRange</code></strong> &mdash; <em>Type</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>TruncateRange(min::Number, max::Number)
@@ -1130,7 +1142,7 @@
 </td></tr></table>
 
 <p>A constraint indicating that the distribution furnishing an uncertain value should be truncated at some range <code class="codehilite">[min, max]</code>.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/sampling_constraints/constraint_definitions.jl#L88-L93' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/sampling_constraints/constraint_definitions.jl#L88-L93' class='documenter-source'>source</a><br></p>
 <p><a id='Quantile-range-1'></a></p>
 <h4 id="quantile_range">Quantile range<a class="headerlink" href="#quantile_range" title="Permanent link">&para;</a></h4>
 <p><a id='UncertainData.SamplingConstraints.TruncateLowerQuantile' href='#UncertainData.SamplingConstraints.TruncateLowerQuantile'>#</a>
@@ -1140,7 +1152,7 @@
 </td></tr></table>
 
 <p>A constraint indicating that the distribution furnishing an uncertain value should be truncated below at some quantile.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/sampling_constraints/constraint_definitions.jl#L26-L31' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/sampling_constraints/constraint_definitions.jl#L26-L31' class='documenter-source'>source</a><br></p>
 <p><a id='UncertainData.SamplingConstraints.TruncateUpperQuantile' href='#UncertainData.SamplingConstraints.TruncateUpperQuantile'>#</a>
 <strong><code class="codehilite">UncertainData.SamplingConstraints.TruncateUpperQuantile</code></strong> &mdash; <em>Type</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>TruncateUpperQuantile(upper_quantile::Float64)
@@ -1148,7 +1160,7 @@
 </td></tr></table>
 
 <p>A constraint indicating that the distribution furnishing an uncertain value should be truncated above at some quantile.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/sampling_constraints/constraint_definitions.jl#L36-L41' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/sampling_constraints/constraint_definitions.jl#L36-L41' class='documenter-source'>source</a><br></p>
 <p><a id='UncertainData.SamplingConstraints.TruncateQuantiles' href='#UncertainData.SamplingConstraints.TruncateQuantiles'>#</a>
 <strong><code class="codehilite">UncertainData.SamplingConstraints.TruncateQuantiles</code></strong> &mdash; <em>Type</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>TruncateQuantiles(lower_quantile::Float64, upper_quantile::Float64)
@@ -1156,7 +1168,7 @@
 </td></tr></table>
 
 <p>A constraint indicating that the distribution furnishing an uncertain value should be truncated at some quantile quantile <code class="codehilite">(lower_quantile, upper_quantile)</code>.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/sampling_constraints/constraint_definitions.jl#L46-L52' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/sampling_constraints/constraint_definitions.jl#L46-L52' class='documenter-source'>source</a><br></p>
                 
                   
                 

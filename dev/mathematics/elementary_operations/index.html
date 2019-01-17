@@ -355,6 +355,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_values/populations/" title="Populations" class="md-nav__link">
+      Populations
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -691,20 +703,20 @@
   </li>
 
         
-      </ul>
-    </nav>
-  </li>
-
-        
           
           
           
 
 
   <li class="md-nav__item">
-    <a href="../../resampling/models/resampling_with_models/" title="Model resampling" class="md-nav__link">
-      Model resampling
+    <a href="../../resampling/sequential/resampling_indexvalue_sequential/" title="Index-value datasets" class="md-nav__link">
+      Index-value datasets
     </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -1220,7 +1232,7 @@
 <p>Addition operator for pairs of uncertain values. </p>
 <p>Computes the element-wise sum between for a default of <code class="codehilite">n = 10000</code> realizations of <code class="codehilite">a</code> and  <code class="codehilite">b</code>, then returns an uncertain value based on a kernel density estimate to the distribution  of the element-wise sums.</p>
 <p>Use the <code class="codehilite">+(a, b, n)</code> syntax to tune the number (<code class="codehilite">n</code>) of draws.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/mathematics/uncertainvalues/add_uncertainvalues.jl#L6-L16' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/mathematics/uncertainvalues/add_uncertainvalues.jl#L6-L16' class='documenter-source'>source</a><br></p>
 <p><a id='Base.:+-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}' href='#Base.:+-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}'>#</a>
 <strong><code class="codehilite">Base.:+</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Base.:+(a::AbstractUncertainValue, b::AbstractUncertainValue, n::Int) -&gt; UncertainValue
@@ -1230,7 +1242,7 @@
 <p>Addition operator for pairs of uncertain values. </p>
 <p>Computes the element-wise sum between <code class="codehilite">a</code> and <code class="codehilite">b</code> for <code class="codehilite">n</code> realizations of <code class="codehilite">a</code> and <code class="codehilite">b</code>, then returns an uncertain value based on a kernel density estimate to the  distribution of the element-wise sums.</p>
 <p>Call this function using the <code class="codehilite">+(a, b, n)</code> syntax.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/mathematics/uncertainvalues/add_uncertainvalues.jl#L49-L59' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/mathematics/uncertainvalues/add_uncertainvalues.jl#L49-L59' class='documenter-source'>source</a><br></p>
 <p><a id='Base.:+-Tuple{Real,AbstractUncertainValue}' href='#Base.:+-Tuple{Real,AbstractUncertainValue}'>#</a>
 <strong><code class="codehilite">Base.:+</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Base.:+(a::Real, b::AbstractUncertainValue) -&gt; UncertainValue
@@ -1240,7 +1252,7 @@
 <p>Addition operator for between scalars and uncertain values. </p>
 <p>Computes the element-wise sum between <code class="codehilite">a</code> and <code class="codehilite">b</code> for a default of <code class="codehilite">n = 10000</code> realizations of <code class="codehilite">b</code>, then returns an uncertain value based on a kernel density estimate to the  distribution of the element-wise sums.</p>
 <p>Use the <code class="codehilite">+(a, b, n)</code> syntax to tune the number (<code class="codehilite">n</code>) of draws.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/mathematics/uncertainvalues/add_uncertainvalues.jl#L21-L31' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/mathematics/uncertainvalues/add_uncertainvalues.jl#L21-L31' class='documenter-source'>source</a><br></p>
 <p><a id='Base.:+-Tuple{Real,AbstractUncertainValue,Int64}' href='#Base.:+-Tuple{Real,AbstractUncertainValue,Int64}'>#</a>
 <strong><code class="codehilite">Base.:+</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Base.:+(a::Real, b::AbstractUncertainValue, n::Int) -&gt; UncertainValue
@@ -1250,7 +1262,7 @@
 <p>Addition operator for scalar-uncertain value pairs. </p>
 <p>Computes the element-wise sum between <code class="codehilite">a</code> and <code class="codehilite">b</code> for <code class="codehilite">n</code> realizations of <code class="codehilite">b</code>, then returns an uncertain value based on a kernel density estimate to the  distribution of the element-wise sums.</p>
 <p>Call this function using the <code class="codehilite">+(a, b, n)</code> syntax.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/mathematics/uncertainvalues/add_uncertainvalues.jl#L63-L73' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/mathematics/uncertainvalues/add_uncertainvalues.jl#L63-L73' class='documenter-source'>source</a><br></p>
 <p><a id='Base.:+-Tuple{AbstractUncertainValue,Real}' href='#Base.:+-Tuple{AbstractUncertainValue,Real}'>#</a>
 <strong><code class="codehilite">Base.:+</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Base.:+(a::AbstractUncertainValue, b::Real) -&gt; UncertainValue
@@ -1260,7 +1272,7 @@
 <p>Addition operator for between uncertain values and scalars. </p>
 <p>Computes the element-wise sum between <code class="codehilite">a</code> and <code class="codehilite">b</code> for a default of <code class="codehilite">n = 10000</code> realizations of <code class="codehilite">a</code>, then returns an uncertain value based on a kernel density estimate to the  distribution of the element-wise sums.</p>
 <p>Use the <code class="codehilite">+(a, b, n)</code> syntax to tune the number (<code class="codehilite">n</code>) of draws.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/mathematics/uncertainvalues/add_uncertainvalues.jl#L35-L45' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/mathematics/uncertainvalues/add_uncertainvalues.jl#L35-L45' class='documenter-source'>source</a><br></p>
 <p><a id='Base.:+-Tuple{AbstractUncertainValue,Real,Int64}' href='#Base.:+-Tuple{AbstractUncertainValue,Real,Int64}'>#</a>
 <strong><code class="codehilite">Base.:+</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Base.:+(a::AbstractUncertainValue, b::Real, n::Int) -&gt; UncertainValue
@@ -1270,7 +1282,7 @@
 <p>Addition operator for scalar-uncertain value pairs. </p>
 <p>Computes the element-wise sum between <code class="codehilite">a</code> and <code class="codehilite">b</code> for <code class="codehilite">n</code> realizations of <code class="codehilite">a</code>, then returns an uncertain value based on a kernel density estimate to the  distribution of the element-wise sums.</p>
 <p>Call this function using the <code class="codehilite">+(a, b, n)</code> syntax.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/mathematics/uncertainvalues/add_uncertainvalues.jl#L77-L87' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/mathematics/uncertainvalues/add_uncertainvalues.jl#L77-L87' class='documenter-source'>source</a><br></p>
 <p><a id='Subtraction-1'></a></p>
 <h3 id="subtraction">Subtraction<a class="headerlink" href="#subtraction" title="Permanent link">&para;</a></h3>
 <p><a id='Base.:--Tuple{AbstractUncertainValue,AbstractUncertainValue}' href='#Base.:--Tuple{AbstractUncertainValue,AbstractUncertainValue}'>#</a>
@@ -1282,7 +1294,7 @@
 <p>Subtraction operator for pairs of uncertain values. </p>
 <p>Computes the element-wise differences between for a default of <code class="codehilite">n = 30000</code> realizations of <code class="codehilite">a</code> and  <code class="codehilite">b</code>, then returns an uncertain value based on a kernel density estimate to the distribution  of the element-wise differences.</p>
 <p>Use the <code class="codehilite">-(a, b, n)</code> syntax to tune the number (<code class="codehilite">n</code>) of draws.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/mathematics/uncertainvalues/subtract_uncertainvalues.jl#L10-L20' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/mathematics/uncertainvalues/subtract_uncertainvalues.jl#L10-L20' class='documenter-source'>source</a><br></p>
 <p><a id='Base.:--Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}' href='#Base.:--Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}'>#</a>
 <strong><code class="codehilite"><span class="nv">Base</span><span class="p">.:-</span></code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nv">Base</span><span class="p">.:-(</span><span class="nn">a</span><span class="p">:</span><span class="s s-Atom">:</span><span class="nv">AbstractUncertainValue</span><span class="p">,</span> <span class="nn">b</span><span class="p">:</span><span class="s s-Atom">:</span><span class="nv">AbstractUncertainValue</span><span class="p">,</span> <span class="nn">n</span><span class="p">:</span><span class="s s-Atom">:</span><span class="nv">Int</span><span class="p">)</span> <span class="s s-Atom">-&gt;</span> <span class="nv">UncertainValue</span>
@@ -1292,7 +1304,7 @@
 <p>Subtraction operator for pairs of uncertain values. </p>
 <p>Computes the element-wise differences between <code class="codehilite">a</code> and <code class="codehilite">b</code> for <code class="codehilite">n</code> realizations of <code class="codehilite">a</code> and <code class="codehilite">b</code>, then returns an uncertain value based on a kernel density estimate to the  distribution of the element-wise differences.</p>
 <p>Call this function using the <code class="codehilite">-(a, b, n)</code> syntax.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/mathematics/uncertainvalues/subtract_uncertainvalues.jl#L53-L63' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/mathematics/uncertainvalues/subtract_uncertainvalues.jl#L53-L63' class='documenter-source'>source</a><br></p>
 <p><a id='Base.:--Tuple{Real,AbstractUncertainValue}' href='#Base.:--Tuple{Real,AbstractUncertainValue}'>#</a>
 <strong><code class="codehilite"><span class="nv">Base</span><span class="p">.:-</span></code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nv">Base</span><span class="p">.:-(</span><span class="nn">a</span><span class="p">:</span><span class="s s-Atom">:</span><span class="nv">Real</span><span class="p">,</span> <span class="nn">b</span><span class="p">:</span><span class="s s-Atom">:</span><span class="nv">AbstractUncertainValue</span><span class="p">)</span> <span class="s s-Atom">-&gt;</span> <span class="nv">UncertainValue</span>
@@ -1302,7 +1314,7 @@
 <p>Subtraction operator for between scalars and uncertain values. </p>
 <p>Computes the element-wise differences between <code class="codehilite">a</code> and <code class="codehilite">b</code> for a default of <code class="codehilite">n = 30000</code> realizations of <code class="codehilite">b</code>, then returns an uncertain value based on a kernel density estimate to the  distribution of the element-wise differences.</p>
 <p>Use the <code class="codehilite">-(a, b, n)</code> syntax to tune the number (<code class="codehilite">n</code>) of draws.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/mathematics/uncertainvalues/subtract_uncertainvalues.jl#L25-L35' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/mathematics/uncertainvalues/subtract_uncertainvalues.jl#L25-L35' class='documenter-source'>source</a><br></p>
 <p><a id='Base.:--Tuple{Real,AbstractUncertainValue,Int64}' href='#Base.:--Tuple{Real,AbstractUncertainValue,Int64}'>#</a>
 <strong><code class="codehilite"><span class="nv">Base</span><span class="p">.:-</span></code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nv">Base</span><span class="p">.:-(</span><span class="nn">a</span><span class="p">:</span><span class="s s-Atom">:</span><span class="nv">Real</span><span class="p">,</span> <span class="nn">b</span><span class="p">:</span><span class="s s-Atom">:</span><span class="nv">AbstractUncertainValue</span><span class="p">,</span> <span class="nn">n</span><span class="p">:</span><span class="s s-Atom">:</span><span class="nv">Int</span><span class="p">)</span> <span class="s s-Atom">-&gt;</span> <span class="nv">UncertainValue</span>
@@ -1312,7 +1324,7 @@
 <p>Subtraction operator for scalar-uncertain value pairs. </p>
 <p>Computes the element-wise differences between <code class="codehilite">a</code> and <code class="codehilite">b</code> for <code class="codehilite">n</code> realizations of <code class="codehilite">b</code>, then returns an uncertain value based on a kernel density estimate to the  distribution of the element-wise differences.</p>
 <p>Call this function using the <code class="codehilite">-(a, b, n)</code> syntax.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/mathematics/uncertainvalues/subtract_uncertainvalues.jl#L67-L77' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/mathematics/uncertainvalues/subtract_uncertainvalues.jl#L67-L77' class='documenter-source'>source</a><br></p>
 <p><a id='Base.:--Tuple{AbstractUncertainValue,Real}' href='#Base.:--Tuple{AbstractUncertainValue,Real}'>#</a>
 <strong><code class="codehilite"><span class="nv">Base</span><span class="p">.:-</span></code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nv">Base</span><span class="p">.:-(</span><span class="nn">a</span><span class="p">:</span><span class="s s-Atom">:</span><span class="nv">AbstractUncertainValue</span><span class="p">,</span> <span class="nn">b</span><span class="p">:</span><span class="s s-Atom">:</span><span class="nv">Real</span><span class="p">)</span> <span class="s s-Atom">-&gt;</span> <span class="nv">UncertainValue</span>
@@ -1322,7 +1334,7 @@
 <p>Subtraction operator for between uncertain values and scalars. </p>
 <p>Computes the element-wise differences between <code class="codehilite">a</code> and <code class="codehilite">b</code> for a default of <code class="codehilite">n = 30000</code> realizations of <code class="codehilite">a</code>, then returns an uncertain value based on a kernel density estimate to the  distribution of the element-wise differences.</p>
 <p>Use the <code class="codehilite">-(a, b, n)</code> syntax to tune the number (<code class="codehilite">n</code>) of draws.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/mathematics/uncertainvalues/subtract_uncertainvalues.jl#L39-L49' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/mathematics/uncertainvalues/subtract_uncertainvalues.jl#L39-L49' class='documenter-source'>source</a><br></p>
 <p><a id='Base.:--Tuple{AbstractUncertainValue,Real,Int64}' href='#Base.:--Tuple{AbstractUncertainValue,Real,Int64}'>#</a>
 <strong><code class="codehilite"><span class="nv">Base</span><span class="p">.:-</span></code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nv">Base</span><span class="p">.:-(</span><span class="nn">a</span><span class="p">:</span><span class="s s-Atom">:</span><span class="nv">AbstractUncertainValue</span><span class="p">,</span> <span class="nn">b</span><span class="p">:</span><span class="s s-Atom">:</span><span class="nv">Real</span><span class="p">,</span> <span class="nn">n</span><span class="p">:</span><span class="s s-Atom">:</span><span class="nv">Int</span><span class="p">)</span> <span class="s s-Atom">-&gt;</span> <span class="nv">UncertainValue</span>
@@ -1332,7 +1344,7 @@
 <p>Subtraction operator for scalar-uncertain value pairs. </p>
 <p>Computes the element-wise differences between <code class="codehilite">a</code> and <code class="codehilite">b</code> for <code class="codehilite">n</code> realizations of <code class="codehilite">a</code>, then returns an uncertain value based on a kernel density estimate to the  distribution of the element-wise differences.</p>
 <p>Call this function using the <code class="codehilite">-(a, b, n)</code> syntax.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/mathematics/uncertainvalues/subtract_uncertainvalues.jl#L81-L91' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/mathematics/uncertainvalues/subtract_uncertainvalues.jl#L81-L91' class='documenter-source'>source</a><br></p>
 <p><a id='Multiplication-1'></a></p>
 <h3 id="multiplication">Multiplication<a class="headerlink" href="#multiplication" title="Permanent link">&para;</a></h3>
 <p><a id='Base.:*-Tuple{AbstractUncertainValue,AbstractUncertainValue}' href='#Base.:*-Tuple{AbstractUncertainValue,AbstractUncertainValue}'>#</a>
@@ -1344,7 +1356,7 @@
 <p>Multiplication operator for pairs of uncertain values. </p>
 <p>Computes the element-wise products between for a default of <code class="codehilite">n = 10000</code> realizations of <code class="codehilite">a</code> and  <code class="codehilite">b</code>, then returns an uncertain value based on a kernel density estimate to the distribution  of the element-wise products.</p>
 <p>Use the <code class="codehilite">*(a, b, n)</code> syntax to tune the number (<code class="codehilite">n</code>) of draws.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/mathematics/uncertainvalues/multiply_uncertainvalues.jl#L6-L16' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/mathematics/uncertainvalues/multiply_uncertainvalues.jl#L6-L16' class='documenter-source'>source</a><br></p>
 <p><a id='Base.:*-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}' href='#Base.:*-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}'>#</a>
 <strong><code class="codehilite">Base.:*</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Base.:*(a::AbstractUncertainValue, b::AbstractUncertainValue, n::Int) -&gt; UncertainValue
@@ -1354,7 +1366,7 @@
 <p>Multiplication operator for pairs of uncertain values. </p>
 <p>Computes the element-wise products between <code class="codehilite">a</code> and <code class="codehilite">b</code> for <code class="codehilite">n</code> realizations of <code class="codehilite">a</code> and <code class="codehilite">b</code>, then returns an uncertain value based on a kernel density estimate to the  distribution of the element-wise products.</p>
 <p>Call this function using the <code class="codehilite">*(a, b, n)</code> syntax.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/mathematics/uncertainvalues/multiply_uncertainvalues.jl#L49-L59' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/mathematics/uncertainvalues/multiply_uncertainvalues.jl#L49-L59' class='documenter-source'>source</a><br></p>
 <p><a id='Base.:*-Tuple{Real,AbstractUncertainValue}' href='#Base.:*-Tuple{Real,AbstractUncertainValue}'>#</a>
 <strong><code class="codehilite">Base.:*</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Base.:*(a::Real, b::AbstractUncertainValue) -&gt; UncertainValue
@@ -1364,7 +1376,7 @@
 <p>Multiplication operator for between scalars and uncertain values. </p>
 <p>Computes the element-wise products between <code class="codehilite">a</code> and <code class="codehilite">b</code> for a default of <code class="codehilite">n = 10000</code> realizations of <code class="codehilite">b</code>, then returns an uncertain value based on a kernel density estimate to the  distribution of the element-wise products.</p>
 <p>Use the <code class="codehilite">*(a, b, n)</code> syntax to tune the number (<code class="codehilite">n</code>) of draws.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/mathematics/uncertainvalues/multiply_uncertainvalues.jl#L21-L31' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/mathematics/uncertainvalues/multiply_uncertainvalues.jl#L21-L31' class='documenter-source'>source</a><br></p>
 <p><a id='Base.:*-Tuple{Real,AbstractUncertainValue,Int64}' href='#Base.:*-Tuple{Real,AbstractUncertainValue,Int64}'>#</a>
 <strong><code class="codehilite">Base.:*</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Base.:*(a::Real, b::AbstractUncertainValue, n::Int) -&gt; UncertainValue
@@ -1374,7 +1386,7 @@
 <p>Multiplication operator for scalar-uncertain value pairs. </p>
 <p>Computes the element-wise products between <code class="codehilite">a</code> and <code class="codehilite">b</code> for <code class="codehilite">n</code> realizations of <code class="codehilite">b</code>, then returns an uncertain value based on a kernel density estimate to the  distribution of the element-wise products.</p>
 <p>Call this function using the <code class="codehilite">*(a, b, n)</code> syntax.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/mathematics/uncertainvalues/multiply_uncertainvalues.jl#L63-L73' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/mathematics/uncertainvalues/multiply_uncertainvalues.jl#L63-L73' class='documenter-source'>source</a><br></p>
 <p><a id='Base.:*-Tuple{AbstractUncertainValue,Real}' href='#Base.:*-Tuple{AbstractUncertainValue,Real}'>#</a>
 <strong><code class="codehilite">Base.:*</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Base.:*(a::AbstractUncertainValue, b::Real) -&gt; UncertainValue
@@ -1384,7 +1396,7 @@
 <p>Multiplication operator for between uncertain values and scalars. </p>
 <p>Computes the element-wise products between <code class="codehilite">a</code> and <code class="codehilite">b</code> for a default of <code class="codehilite">n = 10000</code> realizations of <code class="codehilite">a</code>, then returns an uncertain value based on a kernel density estimate to the  distribution of the element-wise products.</p>
 <p>Use the <code class="codehilite">*(a, b, n)</code> syntax to tune the number (<code class="codehilite">n</code>) of draws.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/mathematics/uncertainvalues/multiply_uncertainvalues.jl#L35-L45' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/mathematics/uncertainvalues/multiply_uncertainvalues.jl#L35-L45' class='documenter-source'>source</a><br></p>
 <p><a id='Base.:*-Tuple{AbstractUncertainValue,Real,Int64}' href='#Base.:*-Tuple{AbstractUncertainValue,Real,Int64}'>#</a>
 <strong><code class="codehilite">Base.:*</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Base.:*(a::AbstractUncertainValue, b::Real, n::Int) -&gt; UncertainValue
@@ -1394,7 +1406,7 @@
 <p>Multiplication operator for scalar-uncertain value pairs. </p>
 <p>Computes the element-wise products between <code class="codehilite">a</code> and <code class="codehilite">b</code> for <code class="codehilite">n</code> realizations of <code class="codehilite">a</code>, then returns an uncertain value based on a kernel density estimate to the  distribution of the element-wise products.</p>
 <p>Call this function using the <code class="codehilite">*(a, b, n)</code> syntax.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/mathematics/uncertainvalues/multiply_uncertainvalues.jl#L77-L87' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/mathematics/uncertainvalues/multiply_uncertainvalues.jl#L77-L87' class='documenter-source'>source</a><br></p>
 <p><a id='Division-1'></a></p>
 <h3 id="division">Division<a class="headerlink" href="#division" title="Permanent link">&para;</a></h3>
 <p><a id='Base.:/-Tuple{AbstractUncertainValue,AbstractUncertainValue}' href='#Base.:/-Tuple{AbstractUncertainValue,AbstractUncertainValue}'>#</a>
@@ -1406,7 +1418,7 @@
 <p>Division operator for pairs of uncertain values. </p>
 <p>Computes the element-wise quotients between for a default of <code class="codehilite">n = 10000</code> realizations of <code class="codehilite">a</code> and  <code class="codehilite">b</code>, then returns an uncertain value based on a kernel density estimate to the distribution  of the element-wise quotients.</p>
 <p>Use the <code class="codehilite">/(a, b, n)</code> syntax to tune the number (<code class="codehilite">n</code>) of draws.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/mathematics/uncertainvalues/divide_uncertainvalues.jl#L5-L15' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/mathematics/uncertainvalues/divide_uncertainvalues.jl#L5-L15' class='documenter-source'>source</a><br></p>
 <p><a id='Base.:/-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}' href='#Base.:/-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}'>#</a>
 <strong><code class="codehilite">Base.:/</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Base.:/(a::AbstractUncertainValue, b::AbstractUncertainValue, n::Int) -&gt; UncertainValue
@@ -1416,7 +1428,7 @@
 <p>Division operator for pairs of uncertain values. </p>
 <p>Computes the element-wise quotients between <code class="codehilite">a</code> and <code class="codehilite">b</code> for <code class="codehilite">n</code> realizations of <code class="codehilite">a</code> and <code class="codehilite">b</code>, then returns an uncertain value based on a kernel density estimate to the  distribution of the element-wise quotients.</p>
 <p>Call this function using the <code class="codehilite">/(a, b, n)</code> syntax.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/mathematics/uncertainvalues/divide_uncertainvalues.jl#L48-L58' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/mathematics/uncertainvalues/divide_uncertainvalues.jl#L48-L58' class='documenter-source'>source</a><br></p>
 <p><a id='Base.:/-Tuple{Real,AbstractUncertainValue}' href='#Base.:/-Tuple{Real,AbstractUncertainValue}'>#</a>
 <strong><code class="codehilite">Base.:/</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Base.:/(a::Real, b::AbstractUncertainValue) -&gt; UncertainValue
@@ -1426,7 +1438,7 @@
 <p>Division operator for between scalars and uncertain values. </p>
 <p>Computes the element-wise quotients between <code class="codehilite">a</code> and <code class="codehilite">b</code> for a default of <code class="codehilite">n = 10000</code> realizations of <code class="codehilite">b</code>, then returns an uncertain value based on a kernel density estimate to the  distribution of the element-wise quotients.</p>
 <p>Use the <code class="codehilite">/(a, b, n)</code> syntax to tune the number (<code class="codehilite">n</code>) of draws.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/mathematics/uncertainvalues/divide_uncertainvalues.jl#L20-L30' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/mathematics/uncertainvalues/divide_uncertainvalues.jl#L20-L30' class='documenter-source'>source</a><br></p>
 <p><a id='Base.:/-Tuple{Real,AbstractUncertainValue,Int64}' href='#Base.:/-Tuple{Real,AbstractUncertainValue,Int64}'>#</a>
 <strong><code class="codehilite">Base.:/</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Base.:/(a::Real, b::AbstractUncertainValue, n::Int) -&gt; UncertainValue
@@ -1436,7 +1448,7 @@
 <p>Division operator for scalar-uncertain value pairs. </p>
 <p>Computes the element-wise quotients between <code class="codehilite">a</code> and <code class="codehilite">b</code> for <code class="codehilite">n</code> realizations of <code class="codehilite">b</code>, then returns an uncertain value based on a kernel density estimate to the  distribution of the element-wise quotients.</p>
 <p>Call this function using the <code class="codehilite">/(a, b, n)</code> syntax.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/mathematics/uncertainvalues/divide_uncertainvalues.jl#L62-L72' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/mathematics/uncertainvalues/divide_uncertainvalues.jl#L62-L72' class='documenter-source'>source</a><br></p>
 <p><a id='Base.:/-Tuple{AbstractUncertainValue,Real}' href='#Base.:/-Tuple{AbstractUncertainValue,Real}'>#</a>
 <strong><code class="codehilite">Base.:/</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Base.:/(a::AbstractUncertainValue, b::Real) -&gt; UncertainValue
@@ -1446,7 +1458,7 @@
 <p>Division operator for between uncertain values and scalars. </p>
 <p>Computes the element-wise quotients between <code class="codehilite">a</code> and <code class="codehilite">b</code> for a default of <code class="codehilite">n = 10000</code> realizations of <code class="codehilite">a</code>, then returns an uncertain value based on a kernel density estimate to the  distribution of the element-wise quotients.</p>
 <p>Use the <code class="codehilite">/(a, b, n)</code> syntax to tune the number (<code class="codehilite">n</code>) of draws.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/mathematics/uncertainvalues/divide_uncertainvalues.jl#L34-L44' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/mathematics/uncertainvalues/divide_uncertainvalues.jl#L34-L44' class='documenter-source'>source</a><br></p>
 <p><a id='Base.:/-Tuple{AbstractUncertainValue,Real,Int64}' href='#Base.:/-Tuple{AbstractUncertainValue,Real,Int64}'>#</a>
 <strong><code class="codehilite">Base.:/</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Base.:/(a::AbstractUncertainValue, b::Real, n::Int) -&gt; UncertainValue
@@ -1456,7 +1468,7 @@
 <p>Division operator for scalar-uncertain value pairs. </p>
 <p>Computes the element-wise quotients between <code class="codehilite">a</code> and <code class="codehilite">b</code> for <code class="codehilite">n</code> realizations of <code class="codehilite">a</code>, then returns an uncertain value based on a kernel density estimate to the  distribution of the element-wise quotients.</p>
 <p>Call this function using the <code class="codehilite">/(a, b, n)</code> syntax.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/188d7b56fcf4799f6df99acbfec5b1760dc2fa45/src/mathematics/uncertainvalues/divide_uncertainvalues.jl#L76-L86' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/mathematics/uncertainvalues/divide_uncertainvalues.jl#L76-L86' class='documenter-source'>source</a><br></p>
 <p><a id='Special-cases-1'></a></p>
 <h3 id="special_cases">Special cases<a class="headerlink" href="#special_cases" title="Permanent link">&para;</a></h3>
 <p><a id='CertainValues-1'></a></p>
@@ -1482,7 +1494,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../resampling/models/resampling_with_models/" title="Model resampling" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../resampling/sequential/resampling_indexvalue_sequential/" title="Index-value datasets" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1491,7 +1503,7 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Model resampling
+                Index-value datasets
               </span>
             </div>
           </a>
