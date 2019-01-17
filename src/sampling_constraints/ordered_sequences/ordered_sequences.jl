@@ -65,37 +65,18 @@ function strictly_increasing_sequence_exists(udata, quantiles = [0.0001, 0.9999]
 end
 
 """
-    strictly_decreasing_sequence_exists(udata::AbstractUncertainValueDataset,
+    strictly_decreasing_sequence_exists(udata::AbstractUncertainValueDataset;
         quantiles = [0.0001, 0.9999]) 
 
 Does a path through the dataset exist? I.e,  check that a strictly 
-increasing sequence can be found after first 
+decreasing sequence can be found after first 
 constraining each distribution to the provided quantile range (this 
 is necessary because some distributions may have infinite support).
 """ 
-function strictly_decreasing_sequence_exists(udata, quantiles = [0.0001, 0.9999])
-    # Just use the check for increasing sequence; he result will be the same, 
-    # just checking in reverse.
-    
-    n_vals = length(udata)
-    
-    supports = truncated_supports(udata, quantiles = quantiles)
-    
-    # Move through the dataset and verify that all intersections of the supports 
-    # of two consecutive values are nonempty. 
-    
-    decreasing_sequence_exists = true
-    
-    for i = 2:n_vals
-        prev = supports[i - 1]
-        next = supports[i]
-        if next.lo > prev.hi || prev ∩ next == ∅
-            decreasing_sequence_exists = false
-            break
-        end
-    end
-    
-    decreasing_sequence_exists
+function strictly_decreasing_sequence_exists(udata; quantiles = [0.0001, 0.9999])
+    # If a strictly increasing sequence exists for the reversed dataset, then a strictly 
+    # decreasing sequence exists for the original dataset.
+    strictly_increasing_sequence_exists(udata[end:-1:1], quantiles = quantiles)
 end
 
 

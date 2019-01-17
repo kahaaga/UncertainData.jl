@@ -2,7 +2,6 @@ using Distributions
 using StaticArrays
 import Printf.@sprintf
 import Distributions.RealInterval
-import Base: minimum, maximum, max, min
 
 abstract type AbstractUncertainValue end
 

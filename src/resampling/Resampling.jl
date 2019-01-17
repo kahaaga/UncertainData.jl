@@ -7,32 +7,35 @@ using Reexport
     # Resampling uncertain values
     ###################################
     # Uncertain values based on distributions
-    include("resample_uncertainvalues_distributions.jl")
+    include("uncertain_values/resample_uncertainvalues_distributions.jl")
 
     # With constraints
-    include("resample_uncertainvalues_theoretical.jl")
-    include("resample_uncertainvalues_theoretical_withconstraints.jl")
+    include("uncertain_values/resample_uncertainvalues_theoretical.jl")
+    include("uncertain_values/resample_uncertainvalues_theoretical_withconstraints.jl")
 
-    include("resample_uncertainvalues_kde.jl")
-    include("resample_uncertainvalues_kde_withconstraints.jl")
+    include("uncertain_values/resample_uncertainvalues_kde.jl")
+    include("uncertain_values/resample_uncertainvalues_kde_withconstraints.jl")
 
-    include("resample_certainvalues.jl")
+    include("uncertain_values/resample_certainvalues.jl")
+    include("uncertain_values/resample_uncertainvalues_populations.jl")
 
     #########################################
     # Resampling vectors of uncertain values
     #########################################
-    include("resampling_vector_uncertainvalues.jl")
+    include("uncertain_values/resampling_vector_uncertainvalues.jl")
 
     ###################################
     # Resampling uncertain datasets
     ###################################
-    include("resample_uncertaindataset.jl")
-	include("resample_uncertaindataset_withconstraint.jl")
+    include("uncertain_dataset/resample_uncertaindataset.jl")
+	include("uncertain_dataset/resample_uncertaindataset_withconstraint.jl")
 
-    include("resample_uncertaindataset_value.jl")
-    include("resample_uncertaindataset_indexvalue.jl")
+    include("uncertain_dataset/resample_uncertaindataset_value.jl")
+    include("uncertain_dataset/resample_uncertaindataset_indexvalue.jl")
 
-    # Ordered resampling 
+    #########################################
+    # Ordered resampling
+    #########################################
     include("ordered_resampling/resample_sequential.jl")
     include("ordered_resampling/resample_uncertaindataset_strictlyincreasing.jl")
     include("ordered_resampling/resample_uncertaindataset_strictlydecreasing.jl")

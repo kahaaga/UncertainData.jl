@@ -6,9 +6,10 @@ There are currently three ways of doing so:
 - by [theoretical distributions with known parameters](uncertainvalues_theoreticaldistributions.md)
 - by [theoretical distributions with parameters fitted to empirical data](uncertainvalues_fitted.md)
 - by [kernel density estimates to empirical data](uncertainvalues_kde.md)
+- by [weighted populations](populations.md) where the probability of drawing values are 
+    already known, so you can skip kernel density estimation.
 - a type representing [values without uncertainty](certainvalue.md), so you can mix 
     uncertain values with certain values
-
 
 ## Some quick examples
 
@@ -43,6 +44,18 @@ some_sample = rand(Normal(), 1000)
 
 # Specify that we want a kernel density estimate representation
 uv = UncertainValue(UnivariateKDE, some_sample)
+```
+
+### Populations 
+
+If you have a population of values where each value has a probability assigned to it, 
+you can construct an uncertain value by providing the values and uncertainties as 
+two equal-length vectors to the constructor. Weights are normalized by default.
+
+```julia
+vals = rand(100)
+weights = rand(100)
+p = UncertainValue(vals, weights)
 ```
 
 ### Fitting a theoretical distribution
@@ -98,4 +111,12 @@ uv = UncertainValue(Gamma, 2.1, 3.1)
 # Uncertain value represented by a theoretical binomial distribution with
 # known parameters p = 32 and p = 0.13
 uv = UncertainValue(Binomial, 32, 0.13)
+```
+
+### Values with no uncertainty 
+
+Scalars with no uncertainty can also be represented. 
+
+```julia 
+c1, c2 = UncertainValue(2), UncertainValue(2.2)
 ```

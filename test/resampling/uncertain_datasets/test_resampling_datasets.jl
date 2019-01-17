@@ -9,8 +9,13 @@ o7 = UncertainValue(Frechet, 1, 2)
 o8 = UncertainValue(BetaPrime, 1, 2)
 o9 = UncertainValue(BetaBinomial, 10, 3, 2)
 o10 = UncertainValue(Binomial, 10, 0.3)
+o11 = UncertainValue(rand(100), rand(100))
+o12 = UncertainValue(2)
+o13 = UncertainValue(2.3)
+o14 = UncertainValue([2, 3, 4], [0.3, 0.4, 0.1])
 
-uvals = [o1, o2, o3, o4, o5, o6, o7, o8, o9, o10]
+
+uvals = [o1, o2, o3, o4, o5, o6, o7, o8, o9, o11, o12, o13, o14]
 D = UncertainDataset(uvals)
 UV = UncertainValueDataset(uvals)
 UIV = UncertainIndexValueDataset(D, D)

@@ -13,7 +13,8 @@ PAGES = [
         "uncertain_values/uncertainvalues_kde.md",
         "uncertain_values/uncertainvalues_fitted.md",
         "uncertain_values/uncertainvalues_theoreticaldistributions.md",
-        "uncertain_values/certainvalue.md"
+        "uncertain_values/certainvalue.md",
+        "uncertain_values/populations.md"
     ],
 	"Uncertain datasets" => [
         "uncertain_datasets/uncertain_datasets_overview.md",
@@ -54,10 +55,11 @@ PAGES = [
         "resampling/resampling_uncertain_indexvalue_datasets.md",
 
         "resampling/sequential/resampling_uncertaindatasets_sequential.md",
+        "resampling/sequential/resampling_indexvalue_sequential.md",
         "resampling/sequential/strictly_increasing.md",
-        "resampling/sequential/strictly_decreasing.md",
+        "resampling/sequential/strictly_decreasing.md"
 
-        "resampling/models/resampling_with_models.md"
+        #"resampling/models/resampling_with_models.md"
     ],
     
     "Mathematics" => [

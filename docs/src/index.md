@@ -1,24 +1,13 @@
 # UncertainData.jl
 
 ## Motivation
-UncertainData.jl was born to systematically deal with uncertain data, and to sample 
-uncertain datasets more rigorously. It makes workflows involving uncertain data of 
-different types and from different sources significantly easier. 
 
-The package allows handling of uncertain values of several different types:
-- [theoretical distributions with known parameters](uncertain_values/uncertainvalues_theoreticaldistributions.md)
-- [theoretical distributions with parameters estimated from experimental data](uncertain_values/uncertainvalues_fitted.md)
-- [more complex distributions determined by kernel density estimates of experimental data](uncertain_values/uncertainvalues_kde.md)
-
-A related package is [Measurements.jl](https://github.com/JuliaPhysics/Measurements.jl),
-which propagates errors exactly and handles correlated uncertainties. However, 
-Measurements.jl accepts only normally distributed values. This package serves a slightly 
-different purpose: it was born to provide an easy way of handling uncertainties of **any** 
-type, using a [resampling](resampling/resampling_overview.md) approach to obtain 
-[statistics](uncertain_statistics/core_stats/core_statistics.md)
-when needed, and providing a rich set of 
-[sampling constraints](sampling_constraints/available_constraints.md) that makes it easy 
-for the user to reason about and plot their uncertain data under different assumptions.
+UncertainData.jl was born to systematically deal with uncertain data, and to 
+[sample](resampling/resampling_overview.md) from 
+[uncertain datasets](uncertain_datasets/uncertain_datasets_overview.md) more rigorously. 
+It makes workflows involving 
+[uncertain data of different types](uncertain_values/uncertainvalues_overview.md) 
+and from different sources significantly easier. 
 
 ## Package philosophy
 
@@ -32,6 +21,8 @@ In this package, uncertain data values are thus
 Only when performing a computation or plotting, the uncertain values are realized by 
 resampling the probability distributions furnishing them. 
 
+## Organising uncertain data
+
 Individual uncertain observations may be collected in 
 [UncertainDatasets](uncertain_datasets/uncertain_datasets_overview.md), which can be 
 sampled according to user-provided sampling constraints. Likewise, indices (e.g. time, 
@@ -39,9 +30,14 @@ depth or any other index) of observations can also be represented as probability
 distributions and may also sampled using constraints. 
 
 The [UncertainIndexValueDataset](uncertain_datasets/uncertain_indexvalue_dataset.md) type 
-allows you to work with datasets where both the indices and data values are uncertain.
+allows you to work with datasets where both the 
+[indices](uncertain_datasets/uncertain_index_dataset.md) and the 
+[data values](uncertain_datasets/uncertain_value_dataset.md) are uncertain.
 This may be useful when you, for example, want to draw realizations of your dataset while 
-simultaneously enforcing strictly increasing age models.
+simultaneously enforcing 
+[sequential resampling](resampling/sequential/resampling_uncertaindatasets_sequential.md), 
+for example 
+[strictly increasing](resampling/sequential/resampling_indexvalue_sequential.md) age models.
 
 ## Mathematical operations 
 
@@ -68,9 +64,17 @@ uncertain observations and uncertain datasets are obtained using a resampling ap
 
 ## Related software
 
-[Measurements.jl](https://github.com/JuliaPhysics/Measurements.jl) also deals with 
-uncertainty handling, propagates errors in computations, and deals with functional 
-correlations out of the box. At the moment, it only handles normally distributed 
-data. However, depending on your needs, it may be a better (and faster) choice if your data 
-satisfies the requirements for the package (normally distributed) and if your uncertainties 
-are correlated.
+A related package is [Measurements.jl](https://github.com/JuliaPhysics/Measurements.jl),
+which propagates errors exactly and handles correlated uncertainties. However, 
+Measurements.jl accepts only normally distributed values. This package serves a slightly 
+different purpose: it was born to provide an easy way of handling uncertainties of 
+[many different types](uncertain_values/uncertainvalues_overview.md), 
+using a [resampling](resampling/resampling_overview.md) approach to obtain 
+[statistics](uncertain_statistics/core_stats/core_statistics.md)
+when needed, and providing a rich set of 
+[sampling constraints](sampling_constraints/available_constraints.md) that makes it easy 
+for the user to reason about and plot their uncertain data under different assumptions.
+
+Depending on your needs, [ Measurements.jl](https://github.com/JuliaPhysics/Measurements.jl) 
+may be a better (and faster) choice if your data satisfies the requirements for the package 
+(normally distributed) and if your uncertainties are correlated.

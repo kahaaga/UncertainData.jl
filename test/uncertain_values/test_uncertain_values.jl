@@ -1,3 +1,10 @@
+##################################################
+# Uncertain populations 
+################################################
+vals = rand(10) 
+weights = rand(10)
+@test UncertainValue(vals, weights) isa UncertainScalarPopulation
+
 # Uncertain normally distributed values
 @test UncertainValue(Normal, 1, 0.2, nσ = 2, trunc_lower = -5) isa UncertainScalarNormallyDistributed
 @test UncertainValue(Normal, -3, 0.2) isa UncertainScalarNormallyDistributed

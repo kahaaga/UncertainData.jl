@@ -11,6 +11,7 @@ using Reexport
     # Constrain uncertain values
     include("constrain_uncertainvalue.jl")
     include("constrain_certain_value.jl")
+    include("constrain_population.jl")
 
     # Constrain uncertain datasets
     include("constrain_uncertaindataset.jl")

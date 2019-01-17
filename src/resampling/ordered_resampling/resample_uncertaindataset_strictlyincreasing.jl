@@ -137,3 +137,85 @@ resample(udata::AbstractUncertainValueDataset,
     sequential_constraint::StrictlyIncreasing{OrderedSamplingAlgorithm};
     quantiles = [0.0001, 0.9999])
 
+
+
+
+"""
+function resample(udata::UncertainIndexValueDataset,
+    sequential_constraint::StrictlyIncreasing, 
+    quantiles = [0.0001, 0.9999])
+
+Resample an uncertain index-value dataset by enforcing strictly increasing indices. 
+""" 
+function resample(udata::UncertainIndexValueDataset,
+        sequential_constraint::StrictlyIncreasing{<:OrderedSamplingAlgorithm})
+    resample(udata.indices, sequential_constraint), resample(udata.values)
+end
+
+
+function resample(udata::UncertainIndexValueDataset, 
+        constraint::SamplingConstraint,
+        sequential_constraint::StrictlyIncreasing{<:OrderedSamplingAlgorithm})
+
+    inds = resample(constrain(udata.indices, constraint), sequential_constraint)
+    vals = resample(constrain(udata.indices, constraint))
+
+    inds, vals
+end
+
+function resample(udata::UncertainIndexValueDataset, 
+        constraint::Vector{SamplingConstraint},
+        sequential_constraint::StrictlyIncreasing{<:OrderedSamplingAlgorithm})
+
+    inds = resample(constrain(udata.indices, constraint), sequential_constraint)
+    vals = resample(constrain(udata.indices, constraint))
+
+    inds, vals
+end
+
+
+function resample(udata::UncertainIndexValueDataset, 
+        idx_constraint::SamplingConstraint,
+        value_constraint::SamplingConstraint,
+        sequential_constraint::StrictlyIncreasing{<:OrderedSamplingAlgorithm})
+    
+    inds = resample(constrain(udata.indices, idx_constraint), sequential_constraint)
+    vals = resample(constrain(udata.indices, value_constraint))
+
+    inds, vals
+end
+
+
+function resample(udata::UncertainIndexValueDataset, 
+        idx_constraint::Vector{<:SamplingConstraint},
+        value_constraint::SamplingConstraint,
+        sequential_constraint::StrictlyIncreasing{<:OrderedSamplingAlgorithm})
+
+    inds = resample(constrain(udata.indices, idx_constraint), sequential_constraint)
+    vals = resample(constrain(udata.indices, value_constraint))
+
+    inds, vals
+end
+
+
+function resample(udata::UncertainIndexValueDataset, 
+        idx_constraint::SamplingConstraint,
+        value_constraint::Vector{<:SamplingConstraint},
+        sequential_constraint::StrictlyIncreasing{<:OrderedSamplingAlgorithm})
+
+    inds = resample(constrain(udata.indices, idx_constraint), sequential_constraint)
+    vals = resample(constrain(udata.indices, value_constraint))
+
+    inds, vals
+end
+
+function resample(udata::UncertainIndexValueDataset, 
+        idx_constraint::Vector{<:SamplingConstraint},
+        value_constraint::Vector{<:SamplingConstraint},
+        sequential_constraint::StrictlyIncreasing{<:OrderedSamplingAlgorithm})
+
+    inds = resample(constrain(udata.indices, idx_constraint), sequential_constraint)
+    vals = resample(constrain(udata.indices, value_constraint))
+
+    inds, vals
+end

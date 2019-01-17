@@ -1,11 +1,36 @@
-## UncertainData.jl v0.1.5
-
-### Breaking changes 
+## UncertainData.jl v0.1.6
 
 ### New functionality 
 
-- Added `CertainValue <: AbstractUncertainValue` type to represent scalars without any 
-    uncertainty. Even though a scalar is not uncertain, we'll define it as subtype of `AbstractUncertainValue` to treat certain values alongside uncertain values in datasets. 
+- Implemented sequential sampling constraints `StrictlyIncreasing` and `StrictlyDecreasing`
+    for `UncertainIndexValueDataset`s. 
+- Added [UncertainScalarPopulation](uncertain_values/populations.md) type, representing 
+    vectors of values that should be sampled according to a vector of probabilities. 
+    
+### Improvements 
+- Improved documentation for `CertainValue`s.
+- Added documentation for `UncertainScalarPopulation`.
+- Added `UncertainScalarPopulation` to uncertain value overview list in the documentation.
+- Fixed duplicate docs for `cot`, `cotd`, `coth` and added missing `acot`, `acotd`, `acoth`
+    docs.
+- Shortened and updated main documentation page with more links.
+
+### Bug fixes 
+
+- Import `Base` functions properly when defining `CertainValue`, so that no unexpected 
+    behaviour is introduced.
+- Fixed links in documentation that pointed to the wrong locations.
+- Remove model resampling docs which was not supposed to be published until the 
+    functionality is properly implemented.
+
+## UncertainData.jl v0.1.5
+
+
+### New functionality 
+
+- Added [CertainValue](uncertain_values/certainvalue.md) type to represent scalars without
+    any uncertainty. Even though a scalar is not uncertain, we'll define it as subtype of 
+    `AbstractUncertainValue` to treat certain values alongside uncertain values in datasets. 
 - Added plot recipe for `CertainValue`s. They are just plotted as regular points.
 - Added method `resample(Vector{AbstractUncertainValue})` for resampling vectors of 
     uncertain values. Operates element-wise, just as for an uncertain dataset. 
@@ -36,9 +61,7 @@
     6. `resample(udata, constraint::Vector{SamplingConstraint}, sequential_constraint::StrictlyDecreasing{T} where {T <: StartToEnd}`
 
 ### Improvements 
-- Added [documentation on sequential constraints]("sampling_constraints/sequential_constraints.md"),
-    clearly separating it from the general constraints. 
-
+- Added [documentation on sequential constraints]("sampling_constraints/sequential_constraints.md"), clearly separating it from the general constraints. 
 
 
 ## UncertainData.jl v0.1.4
@@ -91,7 +114,7 @@
     to explain the difference between these types.
 - Added an [overview](resampling/resampling_overview.md) section for the resampling 
     documentation.
-- Cleaned and improved [documentation for uncertain values](uncertainvalues_overview.md). 
+- Cleaned and improved [documentation for uncertain values](uncertain_values/uncertainvalues_overview.md). 
 - Added separate [documentation for the uncertain index dataset type](uncertain_datasets/uncertain_index_dataset.md).
 - Added separate [documentation for the uncertain value dataset type](uncertain_datasets/uncertain_value_dataset.md).
 - Improved [documentation for the generic uncertain dataset type](uncertain_datasets/uncertain_dataset.md) 

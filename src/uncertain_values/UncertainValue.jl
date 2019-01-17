@@ -3,7 +3,16 @@ import Distributions.Distribution
 
 include("UncertainScalarsTheoreticalFitted.jl")
 include("UncertainScalarsTheoretical.jl")
+include("Population.jl")
 
+""" 
+    UncertainValue(data::Vector{T}, probabilities::Vector{Real})
+
+Construct an uncertain value represented by a population that will be sampled according to
+the provided probabilities.
+""" 
+UncertainValue(data::Vector{T1}, probabilities::Vector{T2}) where {T1, T2} = 
+    UncertainScalarPopulation(data, probabilities)
 
 """
     UncertainValue(data::Vector{T};

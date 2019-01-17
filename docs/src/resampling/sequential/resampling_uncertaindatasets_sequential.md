@@ -1,11 +1,12 @@
-In addition to the [generic sampling constraints](resampling_uncertain_datasets.md), 
+In addition to the 
+[generic sampling constraints](../../sampling_constraints/available_constraints.md), 
 you may impose sequential sampling constraints when resampling an uncertain dataset. 
 
 # Is a particular constraint applicable? 
 
-Not all [sequential sampling constraints](../sampling_constraints/available_constraints.md) 
+Not all [sequential sampling constraints](../../sampling_constraints/sequential_constraints.md) 
 may be applicable to your dataset. Use 
-[these functions](../sampling_constraints/ordered_sequence_exists.md) to check whether a 
+[these functions](../../sampling_constraints/ordered_sequence_exists.md) to check whether a 
 particular constraint is possible to apply to your dataset. 
 
 # Syntax 

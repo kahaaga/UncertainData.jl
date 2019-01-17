@@ -53,6 +53,7 @@ pages:
       - Theoretical distributions with known parameters: uncertain_values/uncertainvalues_theoreticaldistributions.md
       - Theoretical distributions with fitted parameters: uncertain_values/uncertainvalues_fitted.md
       - Values without uncertainty: uncertain_values/certainvalue.md
+      - Populations: uncertain_values/populations.md
   - Uncertain datasets:
       - Overview: uncertain_datasets/uncertain_datasets_overview.md
       - Generic uncertain dataset: uncertain_datasets/uncertain_dataset.md
@@ -75,7 +76,7 @@ pages:
       - Overview: resampling/sequential/resampling_uncertaindatasets_sequential.md
       - Strictly increasing: resampling/sequential/strictly_increasing.md
       - Strictly decreasing: resampling/sequential/strictly_decreasing.md
-    - Model resampling: resampling/models/resampling_with_models.md
+      - Index-value datasets: resampling/sequential/resampling_indexvalue_sequential.md
   - Mathematics: 
       - Elementary operations: mathematics/elementary_operations.md
       - Trigonometric functions: mathematics/trig_functions.md

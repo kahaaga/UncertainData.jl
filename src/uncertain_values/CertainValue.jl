@@ -5,9 +5,14 @@
 A simple wrapper type for values with no uncertainty (i.e. represented by a scalar).
 
 ## Examples 
+The two following ways of constructing values without uncertainty are equivalent. 
+
 ```julia 
-uval = CertainValue(2)
-uval2 = CertainValue(2.2)
+u1, u2 = CertainValue(2.2), CertainValue(6)
+```
+
+```julia 
+w1, w2 = UncertainValue(2.2), UncertainValue(6)
 ```
 """
 struct CertainValue{T} <: AbstractUncertainValue
@@ -25,31 +30,32 @@ Base.show(io::IO, uval::CertainValue) = print(io, summarise(uval))
 
 eltype(v::CertainValue{T}) where {T} = T
 
-size(x::CertainValue) = ()
-size(x::CertainValue,d) = convert(Int,d)<1 ? throw(BoundsError()) : 1
-axes(x::CertainValue) = ()
-axes(x::CertainValue,d) = convert(Int,d)<1 ? throw(BoundsError()) : OneTo(1)
-ndims(x::CertainValue) = 0
-ndims(::Type{<:CertainValue}) = 0
-length(x::CertainValue) = 1
-firstindex(x::CertainValue) = 1
-lastindex(x::CertainValue) = 1
-IteratorSize(::Type{<:CertainValue}) = HasShape{0}()
-keys(::CertainValue) = OneTo(1)
-getindex(x::CertainValue) = x
-function getindex(x::CertainValue, i::Integer)
+Base.size(x::CertainValue) = ()
+Base.size(x::CertainValue,d) = convert(Int,d)<1 ? throw(BoundsError()) : 1
+Base.axes(x::CertainValue) = ()
+Base.axes(x::CertainValue,d) = convert(Int,d)<1 ? throw(BoundsError()) : Base.OneTo(1)
+Base.ndims(x::CertainValue) = 0
+Base.ndims(::Type{<:CertainValue}) = 0
+Base.length(x::CertainValue) = 1
+Base.firstindex(x::CertainValue) = 1
+Base.lastindex(x::CertainValue) = 1
+Base.IteratorSize(::Type{<:CertainValue}) = Base.HasShape{0}()
+Base.keys(::CertainValue) = Base.OneTo(1)
+Base.getindex(x::CertainValue) = x
+
+function Base.getindex(x::CertainValue, i::Integer)
     Base.@_inline_meta
     @boundscheck i == 1 || throw(BoundsError())
     x
 end
-function getindex(x::CertainValue, I::Integer...)
+function Base.getindex(x::CertainValue, I::Integer...)
     Base.@_inline_meta
     @boundscheck all([i == 1 for i in I]) || throw(BoundsError())
     x
 end
-first(x::CertainValue) = x
-last(x::CertainValue) = x
-copy(x::CertainValue) = x
+Base.first(x::CertainValue) = x
+Base.last(x::CertainValue) = x
+Base.copy(x::CertainValue) = x
 
 UncertainValue(value::T) where {T <: Real} = CertainValue{T}(value)
 
