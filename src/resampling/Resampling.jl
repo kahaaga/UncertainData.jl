@@ -40,6 +40,11 @@ using Reexport
     include("ordered_resampling/resample_uncertaindataset_strictlyincreasing.jl")
     include("ordered_resampling/resample_uncertaindataset_strictlydecreasing.jl")
 
+    #########################################
+    # Resampling with interpolation 
+    #########################################
+    include("resampling_with_interpolation/resample_linear_interpolation.jl")
+
     export resample
 end # module
 

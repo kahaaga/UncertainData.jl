@@ -10,19 +10,7 @@ import ..SamplingConstraints:
 # Draw realisations of the uncertain dataset according to the distributions
 # of the uncertain values comprising it.
 ##########################################################################
-"""
-	resample(uv::DT, constraint::SCT) -> Vector{Float64}
 
-Draw a realisation of an `UncertainDataset` where each uncertain value
-is truncated according to `constraint`. In the case of `NoConstraint`,
-no trucation is performed and the whole distribution is sampled.
-"""
-function resample(uv::DT, 
-		constraint::SCT) where {DT <: AbstractUncertainValueDataset,
-								SCT <: SamplingConstraint}
-	L = length(uv)
-	[resample(uv.values[i], constraint) for i in 1:L]
-end
 
 """
 	resample(uv::DT, constraint::NoConstraint) -> Vector{Float64}

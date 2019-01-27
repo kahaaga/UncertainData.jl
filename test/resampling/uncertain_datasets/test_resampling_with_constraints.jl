@@ -6,7 +6,7 @@ e = UncertainValue(s, rand(length(s)))
 f = UncertainValue(2)
 g = UncertainValue(3.1)
 
-uvals = [a; b; c; e]
+uvals = [a; b; c; e; f; g]
 udata = UncertainDataset(uvals)
 iv = UncertainIndexValueDataset(udata, udata)
 

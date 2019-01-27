@@ -1,25 +1,26 @@
 import Base.rand
 import Distributions, StatsBase
 import IntervalArithmetic: interval
+import Statistics 
 
 abstract type TheoreticalDistributionScalarValue <: AbstractUncertainValue end
 
 Base.rand(uv::AbstractUncertainValue) = rand(uv.distribution)
 Base.rand(uv::AbstractUncertainValue, n::Int) = [rand(uv) for i = 1:n]
 
-Distributions.rand(fd::TheoreticalDistributionScalarValue) = rand(fd.distribution)
-Distributions.rand(fd::TheoreticalDistributionScalarValue, n::Int) = rand(fd.distribution, n)
 function Distributions.support(fd::TheoreticalDistributionScalarValue)
     s = support(fd.distribution)
     interval(s.lb, s.ub)
 end
 
 Distributions.pdf(fd::TheoreticalDistributionScalarValue, x) = pdf(fd.distribution, x)
-StatsBase.mean(fd::TheoreticalDistributionScalarValue) = mean(fd.distribution)
-StatsBase.median(fd::TheoreticalDistributionScalarValue) = median(fd.distribution)
-StatsBase.middle(fd::TheoreticalDistributionScalarValue) = middle(fd.distribution)
-StatsBase.quantile(fd::TheoreticalDistributionScalarValue, q) = quantile(fd.distribution, q)
-StatsBase.std(fd::TheoreticalDistributionScalarValue	) = std(fd.distribution)
+Statistics.mean(fd::TheoreticalDistributionScalarValue) = mean(fd.distribution)
+Statistics.median(fd::TheoreticalDistributionScalarValue) = median(fd.distribution)
+Statistics.middle(fd::TheoreticalDistributionScalarValue) = middle(fd.distribution)
+Statistics.quantile(fd::TheoreticalDistributionScalarValue, q) = quantile(fd.distribution, q)
+Statistics.std(fd::TheoreticalDistributionScalarValue) = std(fd.distribution)
+Statistics.var(fd::TheoreticalDistributionScalarValue) = var(fd.distribution)
+StatsBase.mode(fd::TheoreticalDistributionScalarValue) = mode(fd.distribution)
 
 
 abstract type AbstractUncertainOneParameterScalarValue <: TheoreticalDistributionScalarValue end

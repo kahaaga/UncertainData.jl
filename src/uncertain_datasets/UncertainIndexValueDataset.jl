@@ -18,6 +18,14 @@ struct UncertainIndexValueDataset <: AbstractUncertainIndexValueDataset
     values::AbstractUncertainValueDataset
 end
 
+function UncertainIndexValueDataset(indices::Vector{<:AbstractUncertainValue},
+        values::Vector{<:AbstractUncertainValue})
+    
+    indices = UncertainIndexDataset(indices)
+    values = UncertainValueDataset(values)
+    UncertainIndexValueDataset(indices, values)
+end
+
 
 Base.length(u::UncertainIndexValueDataset) = length(u.values)
 Base.size(u::UncertainIndexValueDataset) = length(u.values)

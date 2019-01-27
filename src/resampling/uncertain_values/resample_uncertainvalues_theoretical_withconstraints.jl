@@ -200,54 +200,31 @@ end
 
 
 """
-resample(uv::AbstractUncertainValue, constraint::TruncateStd)
+    resample(uv::AbstractUncertainValue, constraint::TruncateStd, n::Int; 
+        n_draws::Int = 10000)
 
-Resample by first truncating the distribution representing the value at ``\\pm``
-`nσ`, then performing the resampling.
-
-
-## Example
-
-```julia
-uncertainval = UncertainValue(0, 1, Uniform)
-constraint = TruncateStd(2) # truncate at 2 standard deviations
-
-# Resample the uncertain value by truncating the distribution furnishing it,
-# then resampling the new distribution once times.
-resample(uncertainval, constraint)
-"""
-function resample(uv::AbstractUncertainValue, constraint::TruncateStd)
-    σ, nσ = std(uv.distribution), constraint.nσ
-
-    # Apply (another level of) truncation, then sample
-    lower_bound = mean(uv.distribution) - σ * nσ
-    upper_bound = mean(uv.distribution) + σ * nσ
-    rand(Truncated(uv.distribution, lower_bound, upper_bound))
-end
-
-"""
-resample(uv::AbstractUncertainValue, constraint::TruncateStd, n::Int)
-
-Resample by first truncating the distribution representing the value at ``\\pm``
-`nσ`, then performing the resampling.
-
+Resample by first truncating the distribution representing the value to some multiple 
+of its standard deviation around the mean.
 
 ## Example
 
 ```julia
-uncertainval = UncertainValue(0, 1, Uniform)
-constraint = TruncateStd(0.3, 2) # truncate at 2σ = 2*0.3
+uncertainval = UncertainValue(0, 0.8, Normal)
+constraint = TruncateStd(1.1) # accept values only in range 1.1*stdev around the mean
 
 # Resample the uncertain value by truncating the distribution furnishing it,
 # then resampling the new distribution 1000 times.
 resample(uncertainval, constraint, 1000)
+```
 """
-function resample(uv::AbstractUncertainValue, constraint::TruncateStd, n::Int)
-    σ, nσ = std(uv.distribution), constraint.nσ
-
+function resample(uv::AbstractUncertainValue, constraint::TruncateStd, n::Int; 
+        n_draws::Int = 10000)
     # Apply (another level of) truncation, then sample
-    lower_bound = mean(uv.distribution) - σ * nσ
-    upper_bound = mean(uv.distribution) + σ * nσ
+    stdev = std(resample(uv, n_draws))
+    m = mean(resample(uv, n_draws))
+    lower_bound = m - stdev
+    upper_bound = m + stdev
+
     rand(Truncated(uv.distribution, lower_bound, upper_bound), n)
 end
 
@@ -423,35 +400,6 @@ function resample(uv::AbstractUncertainValue, constraint::TruncateStd; n_draws::
     upper_bound = m + stdev
 
     rand(Truncated(uv.distribution, lower_bound, upper_bound))
-end
-
-"""
-    resample(uv::AbstractUncertainValue, constraint::TruncateStd, n::Int; 
-        n_draws::Int = 10000)
-
-Resample by first truncating the distribution representing the value to some multiple 
-of its standard deviation around the mean.
-
-## Example
-
-```julia
-uncertainval = UncertainValue(0, 0.8, Normal)
-constraint = TruncateStd(1.1) # accept values only in range 1.1*stdev around the mean
-
-# Resample the uncertain value by truncating the distribution furnishing it,
-# then resampling the new distribution 1000 times.
-resample(uncertainval, constraint, 1000)
-```
-"""
-function resample(uv::AbstractUncertainValue, constraint::TruncateStd, n::Int; 
-        n_draws::Int = 10000)
-    # Apply (another level of) truncation, then sample
-    stdev = std(resample(uv, n_draws))
-    m = mean(resample(uv, n_draws))
-    lower_bound = m - stdev
-    upper_bound = m + stdev
-
-    rand(Truncated(uv.distribution, lower_bound, upper_bound), n)
 end
 
 

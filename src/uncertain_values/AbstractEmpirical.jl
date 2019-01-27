@@ -1,4 +1,3 @@
-include("AbstractUncertainValue.jl")
 
 abstract type AbstractEmpiricalValue <: AbstractUncertainValue end
 

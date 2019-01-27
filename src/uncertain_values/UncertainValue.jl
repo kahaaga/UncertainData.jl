@@ -1,10 +1,6 @@
 import KernelDensity.UnivariateKDE
 import Distributions.Distribution
 
-include("UncertainScalarsTheoreticalFitted.jl")
-include("UncertainScalarsTheoretical.jl")
-include("Population.jl")
-
 """ 
     UncertainValue(data::Vector{T}, probabilities::Vector{Real})
 

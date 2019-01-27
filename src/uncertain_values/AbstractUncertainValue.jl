@@ -30,12 +30,10 @@ export support
 # Intersection of the supports
 ##############################
 """
-    support_overlap(o1::AbstractUncertainValue,
-                    o2::AbstractUncertainValue)
+    support_overlap(o1::AbstractUncertainValue, o2::AbstractUncertainValue)
 
 Compute the overlap in the supports of two uncertain observations.
 """
-
 function support_overlap(uval1::AbstractUncertainValue, uval2::AbstractUncertainValue)
     s1 = support(uval1)
     s2 = support(uval2)

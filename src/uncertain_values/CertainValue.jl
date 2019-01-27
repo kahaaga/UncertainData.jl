@@ -19,8 +19,6 @@ struct CertainValue{T} <: AbstractUncertainValue
     value::T
 end
 
-Broadcast.broadcastable(uval::CertainValue) = Ref(uval)
-
 function summarise(uval::CertainValue)
     _type = typeof(uval)
     val = uval.value
@@ -64,8 +62,8 @@ StatsBase.median(v::CertainValue) = v.value
 StatsBase.middle(v::CertainValue) = v.value
 StatsBase.quantile(v::CertainValue, q) = v.value
 StatsBase.std(v::CertainValue{T}) where {T} = zero(T)
-StatsBase.minimum(v::CertainValue) = v.value
-StatsBase.maximum(v::CertainValue) = v.value
+Base.minimum(v::CertainValue) = v.value
+Base.maximum(v::CertainValue) = v.value
 
 export
 CertainValue,

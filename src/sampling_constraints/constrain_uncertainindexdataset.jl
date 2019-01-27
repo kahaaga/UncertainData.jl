@@ -2,8 +2,6 @@ import ..UncertainDatasets:
 	AbstractUncertainIndexDataset,
 	UncertainIndexDataset
 
-include("constrain_uncertainvalue.jl")
-
 import ..UncertainDatasets:ConstrainedUncertainIndexDataset
 
 """

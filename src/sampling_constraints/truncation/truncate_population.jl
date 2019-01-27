@@ -1,11 +1,11 @@
 import ..UncertainValues:
     AbstractScalarPopulation
 
-function truncate(p::AbstractScalarPopulation, constraint::NoConstraint)
+function Base.truncate(p::AbstractScalarPopulation, constraint::NoConstraint)
     p.values, p.probs
 end
 
-function truncate(p::AbstractScalarPopulation, constraint::TruncateRange)
+function Base.truncate(p::AbstractScalarPopulation, constraint::TruncateRange)
     inds = findall(constraint.min .<= p.values .<= constraint.max)
 
     if length(inds) == 0 
@@ -15,7 +15,7 @@ function truncate(p::AbstractScalarPopulation, constraint::TruncateRange)
     p.values[inds], p.probs[inds]
 end
 
-function truncate(p::AbstractScalarPopulation, constraint::TruncateMaximum)
+function Base.truncate(p::AbstractScalarPopulation, constraint::TruncateMaximum)
     inds = findall(p.values .<= constraint.max)
 
     if length(inds) == 0 
@@ -26,7 +26,7 @@ function truncate(p::AbstractScalarPopulation, constraint::TruncateMaximum)
 end
 
 
-function truncate(p::AbstractScalarPopulation, constraint::TruncateMinimum)
+function Base.truncate(p::AbstractScalarPopulation, constraint::TruncateMinimum)
     inds = findall(constraint.min .<= p.values)
 
     if length(inds) == 0 
@@ -37,7 +37,7 @@ function truncate(p::AbstractScalarPopulation, constraint::TruncateMinimum)
 end
 
 
-function truncate(p::AbstractScalarPopulation, constraint::TruncateLowerQuantile)
+function Base.truncate(p::AbstractScalarPopulation, constraint::TruncateLowerQuantile)
     lower_bound = quantile(p, constraint.lower_quantile)
 
     inds = findall(lower_bound .<= p.values)
@@ -49,7 +49,7 @@ function truncate(p::AbstractScalarPopulation, constraint::TruncateLowerQuantile
     p.values[inds], p.probs[inds]
 end
 
-function truncate(p::AbstractScalarPopulation, constraint::TruncateUpperQuantile)
+function Base.truncate(p::AbstractScalarPopulation, constraint::TruncateUpperQuantile)
     upper_bound = quantile(p, constraint.upper_quantile)
 
     inds = findall(p.values .<= upper_bound)
@@ -62,7 +62,7 @@ function truncate(p::AbstractScalarPopulation, constraint::TruncateUpperQuantile
 end
 
 
-function truncate(p::AbstractScalarPopulation, constraint::TruncateQuantiles)
+function Base.truncate(p::AbstractScalarPopulation, constraint::TruncateQuantiles)
     lower_bound = quantile(p, constraint.lower_quantile)
     upper_bound = quantile(p, constraint.upper_quantile)
 
@@ -76,7 +76,7 @@ function truncate(p::AbstractScalarPopulation, constraint::TruncateQuantiles)
 end
 
 
-function truncate(p::AbstractScalarPopulation, constraint::TruncateStd; n::Int = 30000)
+function Base.truncate(p::AbstractScalarPopulation, constraint::TruncateStd; n::Int = 30000)
     p_mean = mean(p, n)
     p_stdev = std(p, n)
     nσ  = constraint.nσ

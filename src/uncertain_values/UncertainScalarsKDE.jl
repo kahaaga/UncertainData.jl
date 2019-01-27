@@ -2,10 +2,9 @@ import Base.rand
 
 import StatsBase.quantile
 import StatsBase.median
-import StatsBase.support
+import Distributions.support
 
 import Distributions.ecdf
-import Distributions.support
 import Base:
     minimum, maximum,
     max, min
@@ -107,23 +106,12 @@ kernel density estimate.
 """
 mode(uv::AbstractUncertainScalarKDE) = uv.range(findmax(uv.distribution.density)[2])
 
-"""
-The mode (most likely value) of an uncertain value represented by a
-kernel density estimate.
-"""
-mode(uv::AbstractUncertainScalarKDE) = uv.range(findmax(uv.distribution.density)[2])
 
 """
     quantile(uv::UncertainScalarKDE, q)
 
 Return the `q`-th quantile of the distribution furnishing the uncertain value.
 """
-function quantile(uv::AbstractUncertainScalarKDE{T}, q) where T
-    uv.range[findfirst(ecdf(uv) .> q)]
-end
-
-median(uv::AbstractUncertainScalarKDE{T}) where T = quantile(uv, 0.5)
-
 function quantile(uv::AbstractUncertainScalarKDE{T}, q) where T
     uv.range[findfirst(ecdf(uv) .> q)]
 end
