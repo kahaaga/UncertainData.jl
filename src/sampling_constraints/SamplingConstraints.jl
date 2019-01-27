@@ -18,7 +18,6 @@ using Reexport
     include("constrain_uncertainvaluedataset.jl")
     include("constrain_uncertainindexdataset.jl")
 
-    include("ordered_sequences/ordered_sequence_algorithms.jl")
     include("ordered_sequences/ordered_sequences.jl")
 
 end # module

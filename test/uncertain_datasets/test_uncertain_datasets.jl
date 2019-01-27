@@ -43,7 +43,9 @@ UV = UncertainValueDataset(D.values)
 # UncertainIndexValueDataset
 #############################
 UIV = UncertainIndexValueDataset(D, D)
+UIV_from_vec = UncertainIndexValueDataset([o1, o2, o3], [o1, o2, o3])
 @test UIV isa UncertainIndexValueDataset
+@test UIV_from_vec isa UncertainIndexValueDataset
 
 # Iteration
 @test length(UIV) == 3

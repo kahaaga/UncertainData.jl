@@ -127,23 +127,6 @@ resample(udata::AbstractUncertainValueDataset,
 
 
 """
-    function resample(udata::UncertainIndexValueDataset,
-        sequential_constraint::StrictlyDecreasing, 
-        quantiles = [0.0001, 0.9999])
-
-Resample an uncertain index-value dataset by enforcing strictly increasing indices. 
-""" 
-function resample(udata::UncertainIndexValueDataset,
-    sequential_constraint::StrictlyDecreasing, 
-    quantiles = [0.0001, 0.9999])
-    resample(udata.indices, sequential_constraint), resample(udata.values)
-end
-
-
-
-
-
-"""
 function resample(udata::UncertainIndexValueDataset,
     sequential_constraint::StrictlyDecreasing, 
     quantiles = [0.0001, 0.9999])
@@ -187,7 +170,7 @@ function resample(udata::UncertainIndexValueDataset,
 end
 
 
-    function resample(udata::UncertainIndexValueDataset, 
+function resample(udata::UncertainIndexValueDataset, 
         idx_constraint::Vector{<:SamplingConstraint},
         value_constraint::SamplingConstraint,
         sequential_constraint::StrictlyDecreasing{<:OrderedSamplingAlgorithm})
@@ -220,3 +203,5 @@ function resample(udata::UncertainIndexValueDataset,
 
     inds, vals
 end
+
+export resample

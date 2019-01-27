@@ -11,16 +11,6 @@ must as a minimum implement the following fields:
 abstract type AbstractUncertainValueDataset <: AbstractUncertainDataset end
 
 
-function summarise(uvd::AbstractUncertainValueDataset)
-    _type = typeof(uvd)
-    n_values = length(uvd.values)
-    summary = "$_type with $n_values values"
-    return summary
-end
-
-Base.show(io::IO, uvd::AbstractUncertainValueDataset) =
-    println(io, summarise(uvd))
-
 ##########################
 # Indexing and iteration
 #########################
@@ -34,10 +24,8 @@ Base.eachindex(ud::AbstractUncertainValueDataset) = Base.OneTo(length(ud.values)
 Base.iterate(ud::AbstractUncertainValueDataset, state = 1) = iterate(ud.values, state)
 
 
-Base.minimum(udata::AbstractUncertainValueDataset) = [minimum(uval) for uval in udata]
-Base.maximum(udata::AbstractUncertainValueDataset) = [maximum(uval) for uval in udata]
-
-
+Base.minimum(udata::AbstractUncertainValueDataset) = minimum([minimum(uval) for uval in udata])
+Base.maximum(udata::AbstractUncertainValueDataset) = maximum([maximum(uval) for uval in udata])
 
 
 ###################

@@ -77,6 +77,9 @@ pages:
       - Strictly increasing: resampling/sequential/strictly_increasing.md
       - Strictly decreasing: resampling/sequential/strictly_decreasing.md
       - Index-value datasets: resampling/sequential/resampling_indexvalue_sequential.md
+    - Interpolation:
+      - Overview: resampling/interpolation/interpolation.md
+      - Gridded interpolation: resampling/interpolation/gridded.md
   - Mathematics: 
       - Elementary operations: mathematics/elementary_operations.md
       - Trigonometric functions: mathematics/trig_functions.md

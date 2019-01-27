@@ -1,3 +1,22 @@
+## UncertainData.jl v0.1.7
+
+### New functionality 
+- `UncertainIndexValueDataset`s can now be constructed from vectors of uncertain values. 
+    To do so, provide a vector of uncertain values for the indices, and the same for the 
+    values, e.g. `UncertainIndexValueDataset([idx1, idx2], [val1, val2])`.
+- Index-value dataset realizations can now be 
+    [interpolated on a regular grid](resampling/interpolation/gridded.md). 
+
+### Bug fixes 
+- `minima` and `maxima` now returns the global minimum for a dataset instead of a vector 
+    of elementwise minima and maxima.
+- Implemented the option to linearly interpolate index-value dataset realizations. 
+    To do so, provide `resample` with a [`RegularGrid`](link) instance. 
+- Merged redundant methods for assigning some distributions.
+- Fixed non-critical indexing bug for uncertain index-value datasets.
+- Removed redudant method definitions and multiple imports of the same files causing 
+    definitions to be overwritten and printing warnings statements when loading the package.
+
 ## UncertainData.jl v0.1.6
 
 ### New functionality 

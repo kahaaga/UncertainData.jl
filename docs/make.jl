@@ -57,8 +57,10 @@ PAGES = [
         "resampling/sequential/resampling_uncertaindatasets_sequential.md",
         "resampling/sequential/resampling_indexvalue_sequential.md",
         "resampling/sequential/strictly_increasing.md",
-        "resampling/sequential/strictly_decreasing.md"
+        "resampling/sequential/strictly_decreasing.md",
 
+        "resampling/interpolation/interpolation.md",
+        "resampling/interpolation/gridded.md"
         #"resampling/models/resampling_with_models.md"
     ],
     

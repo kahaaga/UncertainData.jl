@@ -1,6 +1,5 @@
 abstract type AbstractUncertainDataset end
 
-export AbstractUncertainDataset
 
 function summarise(ud::AbstractUncertainDataset)
     _type = typeof(ud)
@@ -9,3 +8,5 @@ function summarise(ud::AbstractUncertainDataset)
 end
 
 Base.show(io::IO, ud::AbstractUncertainDataset) = println(io, summarise(ud))
+
+export AbstractUncertainDataset

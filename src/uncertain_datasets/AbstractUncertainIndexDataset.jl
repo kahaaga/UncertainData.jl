@@ -13,8 +13,8 @@ Base.lastindex(uvd::AbstractUncertainIndexDataset) = length(uvd.indices)
 Base.eachindex(ud::AbstractUncertainIndexDataset) = Base.OneTo(length(ud.indices))
 Base.iterate(ud::AbstractUncertainIndexDataset, state = 1) = iterate(ud.indices, state)
 
-Base.minimum(udata::AbstractUncertainIndexDataset) = [minimum(uval) for uval in udata]
-Base.maximum(udata::AbstractUncertainIndexDataset) = [maximum(uval) for uval in udata]
+Base.minimum(udata::AbstractUncertainIndexDataset) = minimum([minimum(uval) for uval in udata])
+Base.maximum(udata::AbstractUncertainIndexDataset) = maximum([maximum(uval) for uval in udata])
 
 
 ###################

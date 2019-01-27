@@ -17,6 +17,9 @@ include("uncertain_datasets/UncertainDatasets.jl")
 # Sampling constraints
 include("sampling_constraints/SamplingConstraints.jl")
 
+# Interpolation and interpolation grids 
+include("interpolation/InterpolationsAndGrids.jl")
+
 # Resampling
 include("resampling/Resampling.jl")
 

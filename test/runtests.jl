@@ -36,6 +36,7 @@ include("resampling/uncertain_datasets/test_resampling_datasets.jl")
 include("resampling/uncertain_datasets/test_resampling_with_constraints.jl")
 include("resampling/uncertain_datasets/sequential/test_resampling_sequential_increasing.jl")
 include("resampling/uncertain_datasets/sequential/test_resampling_sequential_decreasing.jl")
+include("resampling/uncertain_datasets/test_interpolation.jl")
 
 # UncertainStatistics tests
 include("uncertain_statistics/test_UncertainStatistics.jl")
