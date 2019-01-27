@@ -1,4 +1,3 @@
-import Base.truncate
 
 ################################################################
 # Truncating uncertain values based on theoretical distributions
@@ -14,7 +13,7 @@ import Base.truncate
 Truncate an uncertain value `uv` represented by a theoretical distribution
 according to the sampling `constraint`.
 """
-truncate(uv::TheoreticalDistributionScalarValue, constraint::SamplingConstraint)
+Base.truncate(uv::TheoreticalDistributionScalarValue, constraint::SamplingConstraint)
 
 
 """
@@ -24,7 +23,7 @@ truncate(uv::TheoreticalDistributionScalarValue, constraint::SamplingConstraint)
 Truncate the theoretical distribution furnishing `uv` using a
 `NoConstraint` sampling constraint.
 """
-function truncate(uv::TheoreticalDistributionScalarValue,
+function Base.truncate(uv::TheoreticalDistributionScalarValue,
         constraint::NoConstraint)
     s = support(uv.distribution)
     lower_bound, upper_bound = s.lb, s.ub
@@ -38,7 +37,7 @@ end
 Truncate the theoretical distribution furnishing `uv` using a
 `TruncateQuantiles` sampling constraint.
 """
-function truncate(uv::TheoreticalDistributionScalarValue,
+function Base.truncate(uv::TheoreticalDistributionScalarValue,
         constraint::TruncateQuantiles)
     lower_bound = quantile(uv.distribution, constraint.lower_quantile)
     upper_bound = quantile(uv.distribution, constraint.upper_quantile)
@@ -53,7 +52,7 @@ end
 Truncate the theoretical distribution furnishing `uv` using a
 `TruncateLowerQuantile` sampling constraint.
 """
-function truncate(uv::TheoreticalDistributionScalarValue,
+function Base.truncate(uv::TheoreticalDistributionScalarValue,
         constraint::TruncateLowerQuantile)
     lower_bound = quantile(uv.distribution, constraint.lower_quantile)
     upper_bound = support(uv.distribution).ub
@@ -68,7 +67,7 @@ end
 Truncate the theoretical distribution furnishing `uv` using a
 `TruncateUpperQuantile` sampling constraint.
 """
-function truncate(uv::TheoreticalDistributionScalarValue,
+function Base.truncate(uv::TheoreticalDistributionScalarValue,
         constraint::TruncateUpperQuantile)
     lower_bound = support(uv.distribution).lb
     upper_bound = quantile(uv.distribution, constraint.upper_quantile)
@@ -84,7 +83,7 @@ end
 Truncate the theoretical distribution furnishing `uv` using a
 `TruncateMinimum` sampling constraint.
 """
-function truncate(uv::TheoreticalDistributionScalarValue,
+function Base.truncate(uv::TheoreticalDistributionScalarValue,
         constraint::TruncateMinimum)
     
     lower_bound = constraint.min
@@ -100,7 +99,7 @@ end
 Truncate the theoretical distribution furnishing `uv` using a
 `TruncateMaximum` sampling constraint.
 """
-function truncate(uv::TheoreticalDistributionScalarValue,
+function Base.truncate(uv::TheoreticalDistributionScalarValue,
         constraint::TruncateMaximum)
 
     lower_bound = support(uv.distribution).lb
@@ -116,7 +115,7 @@ end
 Truncate the theoretical distribution furnishing `uv` using a
 `TruncateRange` sampling constraint.
 """
-function truncate(uv::TheoreticalDistributionScalarValue,
+function Base.truncate(uv::TheoreticalDistributionScalarValue,
         constraint::TruncateRange)
     
     lower_bound = constraint.min
@@ -135,7 +134,7 @@ This functions needs to compute the mean and standard deviation
 of a truncated distribution, so takes an extra optional argument `n_draws` to allow 
 this.
 """
-function truncate(uv::TheoreticalDistributionScalarValue,
+function Base.truncate(uv::TheoreticalDistributionScalarValue,
         constraint::TruncateStd)
     
     m = mean(uv.distribution)

@@ -1,6 +1,5 @@
-import Base.truncate 
 
-function truncate(uv::TheoreticalFittedUncertainScalar,
+function Base.truncate(uv::TheoreticalFittedUncertainScalar,
     constraint::TruncateStd; n_draws::Int = 10000)
     m = mean(uv.distribution.distribution)
     s = std(uv.distribution.distribution)
