@@ -812,6 +812,54 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Interpolation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        Interpolation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../interpolation/interpolation/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../interpolation/gridded/" title="Gridded interpolation" class="md-nav__link">
+      Gridded interpolation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1170,7 +1218,7 @@
 </td></tr></table>
 
 <p>Resample an uncertain index-value dataset in an element-wise manner.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/resampling/uncertain_dataset/resample_uncertaindataset_indexvalue.jl#L81-L85' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/d153950ae6440a792c70e0d653107768923abab6/src/resampling/uncertain_dataset/resample_uncertaindataset_indexvalue.jl#L81-L85' class='documenter-source'>source</a><br></p>
 <p><a id='UncertainData.Resampling.resample-Tuple{UncertainIndexValueDataset,Int64}' href='#UncertainData.Resampling.resample-Tuple{UncertainIndexValueDataset,Int64}'>#</a>
 <strong><code class="codehilite">UncertainData.Resampling.resample</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -1180,7 +1228,7 @@
 </td></tr></table>
 
 <p>Resample <code class="codehilite">n</code> realizations an uncertain index-value dataset in an element-wise manner. </p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/resampling/uncertain_dataset/resample_uncertaindataset_indexvalue.jl#L263-L268' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/d153950ae6440a792c70e0d653107768923abab6/src/resampling/uncertain_dataset/resample_uncertaindataset_indexvalue.jl#L263-L268' class='documenter-source'>source</a><br></p>
 <p><a id='Same-constraint-to-both-indices-and-data-values-1'></a></p>
 <h4 id="same_constraint_to_both_indices_and_data_values">Same constraint to both indices and data values<a class="headerlink" href="#same_constraint_to_both_indices_and_data_values" title="Permanent link">&para;</a></h4>
 <p><a id='UncertainData.Resampling.resample-Tuple{UncertainIndexValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint}}' href='#UncertainData.Resampling.resample-Tuple{UncertainIndexValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint}}'>#</a>
@@ -1194,7 +1242,7 @@
 <p>Resample an uncertain index-value dataset in an element-wise manner. </p>
 <p>Enforces the provided sampling <code class="codehilite">constraint</code> to all uncertain values in the dataset, both  indices and data values.</p>
 <p>If a single constraint is provided, then that constraint will be applied to all values. If a  vector of constraints (as many as there are values) is provided, then the constraints are  applied element-wise to both the indices and the data values.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/resampling/uncertain_dataset/resample_uncertaindataset_indexvalue.jl#L5-L18' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/d153950ae6440a792c70e0d653107768923abab6/src/resampling/uncertain_dataset/resample_uncertaindataset_indexvalue.jl#L5-L18' class='documenter-source'>source</a><br></p>
 <p><a id='UncertainData.Resampling.resample-Tuple{UncertainIndexValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint},Int64}' href='#UncertainData.Resampling.resample-Tuple{UncertainIndexValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint},Int64}'>#</a>
 <strong><code class="codehilite">UncertainData.Resampling.resample</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -1208,7 +1256,7 @@
 <p>Resample <code class="codehilite">n</code> realizations of an uncertain index-value dataset in an element-wise manner. </p>
 <p>Enforces the provided sampling <code class="codehilite">constraint</code> to all uncertain values in the dataset, both  indices and data values.</p>
 <p>If a single constraint is provided, that constraint will be applied to all values. If a  vector of constraints (as many as there are values) is provided, then the constraints are  applied element-wise to both the indices and the data values.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/resampling/uncertain_dataset/resample_uncertaindataset_indexvalue.jl#L21-L35' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/d153950ae6440a792c70e0d653107768923abab6/src/resampling/uncertain_dataset/resample_uncertaindataset_indexvalue.jl#L21-L35' class='documenter-source'>source</a><br></p>
 <p><a id='Different-constraints-to-indices-and-data-values-1'></a></p>
 <h4 id="different_constraints_to_indices_and_data_values">Different constraints to indices and data values<a class="headerlink" href="#different_constraints_to_indices_and_data_values" title="Permanent link">&para;</a></h4>
 <p><a id='UncertainData.Resampling.resample-Tuple{UncertainIndexValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint},Union{Array{SamplingConstraint,1}, SamplingConstraint}}' href='#UncertainData.Resampling.resample-Tuple{UncertainIndexValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint},Union{Array{SamplingConstraint,1}, SamplingConstraint}}'>#</a>
@@ -1224,7 +1272,7 @@
 <p>Resample an uncertain index-value dataset in an element-wise manner. </p>
 <p>Enforces separate sampling constraints to the indices and to the data values. </p>
 <p>If a single constraint is provided, that constraint will be applied to all values. If a  vector of constraints (as many as there are values) is provided, then the constraints are  applied element-wise.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/resampling/uncertain_dataset/resample_uncertaindataset_indexvalue.jl#L40-L53' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/d153950ae6440a792c70e0d653107768923abab6/src/resampling/uncertain_dataset/resample_uncertaindataset_indexvalue.jl#L40-L53' class='documenter-source'>source</a><br></p>
 <p><a id='UncertainData.Resampling.resample-Tuple{UncertainIndexValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint},Union{Array{SamplingConstraint,1}, SamplingConstraint},Int64}' href='#UncertainData.Resampling.resample-Tuple{UncertainIndexValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint},Union{Array{SamplingConstraint,1}, SamplingConstraint},Int64}'>#</a>
 <strong><code class="codehilite">UncertainData.Resampling.resample</code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -1240,7 +1288,7 @@
 <p>Resample <code class="codehilite">n</code> realizations of an uncertain index-value dataset in an element-wise manner. </p>
 <p>Enforces separate sampling constraints to the indices and to the data values. </p>
 <p>If a single constraint is provided, that constraint will be applied to all values. If a  vector of constraints (as many as there are values) is provided, then the constraints are  applied element-wise.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/2a6213e967a006dacc5626fa21fa3eb843118c4e/src/resampling/uncertain_dataset/resample_uncertaindataset_indexvalue.jl#L57-L71' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/d153950ae6440a792c70e0d653107768923abab6/src/resampling/uncertain_dataset/resample_uncertaindataset_indexvalue.jl#L57-L71' class='documenter-source'>source</a><br></p>
 <p><a id='Examples-1'></a></p>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
 <p><a id='Same-constraint-for-all-uncertain-values-1'></a></p>
