@@ -1,3 +1,8 @@
+## UncertainData.jl v0.1.8
+
+### Bug fixes
+- Added missing package dependencies which were not caught by CI.
+
 ## UncertainData.jl v0.1.7
 
 ### New functionality 
