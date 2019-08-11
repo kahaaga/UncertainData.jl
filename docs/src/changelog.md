@@ -3,13 +3,6 @@
 ### New functionality 
 - Spline interpolation on a regular grid. 
 - Linear interpolation on an irregular grid. 
-- Dataset resampling is made easier by introducing the `DatasetResampling` composite type. 
-    It's an all-in-one solution for configuring resampling of datasets without the need of
-    a multitude of resampling methods.  The old style of resampling 
-    will still be possible, but now you'll only need to remember one resampling style.
-- Multiple realizations of a dataset is now sampled by providing a bootstrapping scheme.
-    The simplest approach is to use basic bootstrapping (resampling with replacement) by 
-    providing a `BasicBoostrap(n_samples)` instance to the `method` argument of `resample`.
 
 ### Improvements
 - `support_overlap` now returns an interval (from `IntervalArithmetic`), in line with 
