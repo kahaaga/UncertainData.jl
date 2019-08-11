@@ -11,16 +11,16 @@ import ..SamplingConstraints:
 
 """ 
     resample(udata::UncertainIndexValueDataset, 
-        grid_indices::InterpolationGrid;
+        grid::InterpolationGrid;
         trunc::TruncateQuantiles = TruncateQuantiles(0.001, 0.999))
 
-Draw a realization of `udata`, then interpolate the data values to `grid_indices`. 
+Draw a realization of `udata`, then interpolate the data values to `grid`. 
 
 To avoid very large spans of interpolation, the uncertain indices are truncated to some 
 large quantile range. Values are not truncated. 
 """
 function resample(udata::UncertainIndexValueDataset, 
-        grid_indices::InterpolationGrid;
+        grid::InterpolationGrid;
         trunc::TruncateQuantiles = TruncateQuantiles(0.001, 0.999))
 
     # Constrain data so that all furnishing distributions for the indices have finite 
@@ -34,29 +34,28 @@ function resample(udata::UncertainIndexValueDataset,
     inds, vals = resample(constrained_udata)
     
     # Interpolate to the provided grid
-    intp = linear_interpolation(inds, vals, range(grid_indices), 
-        extrapolation_bc = grid_indices.extrapolation_bc)
+    intp = linear_interpolation(inds, vals, extrapolation_bc = grid.extrapolation_bc)
 
     # Return grid indices and the interpolated points.
-    range(grid_indices), intp
+    range(grid), intp(grid.min:grid.step:grid.max)
 end
 
 """
     resample(udata::UncertainIndexValueDataset, 
         sequential_constraint::SequentialSamplingConstraint,
-        grid_indices::InterpolationGrid;
+        grid::InterpolationGrid;
         trunc::TruncateQuantiles = TruncateQuantiles(0.001, 0.999))
 
 Draw a realization of `udata`, enforcing a `sequential_constraint` on the indices. Then,
-interpolate the values of the realization to the provided grid of indices (`grid_indices`). 
+interpolate the values of the realization to the provided grid of indices (`grid`). 
 
 To avoid very large spans of interpolation, the uncertain indices are truncated to some 
 large quantile range. Values are not truncated.  
 """
 function resample(udata::UncertainIndexValueDataset, 
-    sequential_constraint::SequentialSamplingConstraint,
-    grid_indices::InterpolationGrid;
-    trunc::TruncateQuantiles = TruncateQuantiles(0.001, 0.999))
+        sequential_constraint::SequentialSamplingConstraint,
+        grid::InterpolationGrid;
+        trunc::TruncateQuantiles = TruncateQuantiles(0.001, 0.999))
 
     # Constrain data so that all furnishing distributions for the indices have finite 
     # supports.
@@ -69,11 +68,10 @@ function resample(udata::UncertainIndexValueDataset,
     inds, vals = resample(constrained_udata, sequential_constraint)
 
     # Interpolate to the desired grid.
-    intp = linear_interpolation(inds, vals, range(grid_indices), 
-        extrapolation_bc = grid_indices.extrapolation_bc)
+    intp = linear_interpolation(inds, vals, extrapolation_bc = grid.extrapolation_bc)
 
     # Return grid indices and the interpolated points.
-    range(grid_indices), intp
+    range(grid), intp(grid.min:grid.step:grid.max)
 
 end
 
@@ -81,10 +79,10 @@ end
 
 
 function resample(udata::UncertainIndexValueDataset, 
-    sequential_constraint::SequentialSamplingConstraint,
-    grid_indices::InterpolationGrid, 
-    n::Int;
-    trunc::TruncateQuantiles = TruncateQuantiles(0.001, 0.999))
+        sequential_constraint::SequentialSamplingConstraint,
+        grid::InterpolationGrid, 
+        n::Int;
+        trunc::TruncateQuantiles = TruncateQuantiles(0.001, 0.999))
 
     # Constrain data so that all furnishing distributions for the indices have finite 
     # supports.
@@ -94,20 +92,20 @@ function resample(udata::UncertainIndexValueDataset,
         )
 
 
-
     # Interpolate
-    grid = range(grid_indices)
+    grid = range(grid)
     resampled_vals = zeros(Float64, length(grid), n)
 
     for i = 1:n
         # Resample using the sequential constraint, then interpolate 
         # the realization to the provided grid.
         inds, vals = resample(constrained_udata, sequential_constraint)
+        
+        intp = linear_interpolation(inds, vals,
+            extrapolation_bc = grid.extrapolation_bc)
 
         # Each interpolated realization is a column in `resampled_vals`
-        resampled_vals[:, i] = linear_interpolation(
-            inds, vals, grid, 
-            extrapolation_bc = grid_indices.extrapolation_bc)
+        resampled_vals[:, i] = intp(grid.min:grid.step:grid.max)
     end
 
     # Return grid indices and the interpolated points. The interpolated 

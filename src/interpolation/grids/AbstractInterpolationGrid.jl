@@ -8,5 +8,5 @@ Base.max(g::InterpolationGrid) = g.max
 Base.range(g::InterpolationGrid) = g.min:g.step:g.max
 Base.step(g::InterpolationGrid) = g.step
 
-
 export InterpolationGrid
+

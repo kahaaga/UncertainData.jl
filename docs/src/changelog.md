@@ -1,3 +1,16 @@
+## UncertainData.jl v0.2.1
+
+### Notes
+- Julia 1.1 is required for version > v.0.2.0.
+
+### New functionality 
+- Spline interpolation on a regular grid. 
+- Linear interpolation on an irregular grid. 
+
+### Improvements
+- `support_overlap` now returns an interval (from `IntervalArithmetic`), in line with 
+    what `support` returns.
+
 ## UncertainData.jl v0.1.8
 
 ### Bug fixes
