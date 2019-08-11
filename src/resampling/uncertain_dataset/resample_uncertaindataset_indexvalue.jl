@@ -146,7 +146,7 @@ function resample(udata::UncertainIndexValueDataset,
 		idx, val = udata[i]
 		indices[i] = resample(idx, constraint_idxs)
 		values[i] = resample(val, constraint_vals)
-	end 
+	end
 
 	indices, values
 end
@@ -190,7 +190,7 @@ Enforces a unique sampling constraint `constraint_idxs[i]` to both the i-th inde
 and to the i-th data value. 
 """ 
 function resample(udata::UncertainIndexValueDataset, 
-	constraint::Vector{<:SamplingConstraint})
+		constraint::Vector{<:SamplingConstraint})
 
 	n_vals = length(udata)
 	indices = zeros(Float64, n_vals)
@@ -216,8 +216,8 @@ Enforces a unique sampling constraint `constraint_idxs[i]` to the i-th index val
 Also enforces a unique sampling constraint `constraint_vals[i]` to the i-th data value.
 """ 
 function resample(udata::UncertainIndexValueDataset, 
-	constraint_idxs::Vector{<:SamplingConstraint}, 
-	constraint_vals::Vector{<:SamplingConstraint})
+		constraint_idxs::Vector{<:SamplingConstraint}, 
+		constraint_vals::Vector{<:SamplingConstraint})
 
 	n_vals = length(udata)
 	indices = zeros(Float64, n_vals)
@@ -243,8 +243,8 @@ Enforces the same sampling constraint `constraint_idxs` on all index values,
 while using the sampling constraint `constraint_vals[i]` to the i-th data value.
 """ 
 function resample(udata::UncertainIndexValueDataset, 
-	constraint_idxs::SamplingConstraint, 
-	constraint_vals::Vector{<:SamplingConstraint})
+		constraint_idxs::SamplingConstraint, 
+		constraint_vals::Vector{<:SamplingConstraint})
 
 	n_vals = length(udata)
 	indices = zeros(Float64, n_vals)
@@ -296,9 +296,9 @@ Enforces the same sampling constraint `constraint_idxs` to all index values, and
 `constraint_vals` sampling constraint to all data values.
 """ 
 function resample(udata::UncertainIndexValueDataset, 
-	constraint_idxs::SamplingConstraint, 
-	constraint_vals::SamplingConstraint, 
-	n::Int)
+		constraint_idxs::SamplingConstraint, 
+		constraint_vals::SamplingConstraint, 
+		n::Int)
 
 	[resample(udata, constraint_idxs, constraint_vals) for i = 1:n]
 end
