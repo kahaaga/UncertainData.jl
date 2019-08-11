@@ -17,7 +17,7 @@ using Reexport
     include("recipes_vectors_of_uncertainvalues.jl")
 
     # Recipes for resampled statistics
-    include("recipes_resampledstatistics.jl")
+    #include("recipes_resampledstatistics.jl")
     
 end # module
 
