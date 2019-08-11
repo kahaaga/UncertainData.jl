@@ -181,6 +181,9 @@ function UncertainValue(distribution::Type{D}, a::T1, b::T2;
         dist = assigndist_betaprime(a, b; kwargs...)
         UncertainScalarBetaPrimeDistributed(dist, a, b)
     elseif distribution == Gamma
+        if !((a > 0) & (b > 0))
+            error("α and θ must both be > 0")
+        end
         dist = assigndist_gamma(a, b; kwargs...)
         UncertainScalarGammaDistributed(dist, a, b)
     elseif distribution == Frechet
