@@ -1095,7 +1095,7 @@
                 
                 <p><a id='Extending-existing-algorithms-for-uncertain-data-types-1'></a></p>
 <h3 id="extending_existing_algorithms_for_uncertain_data_types">Extending existing algorithms for uncertain data types<a class="headerlink" href="#extending_existing_algorithms_for_uncertain_data_types" title="Permanent link">&para;</a></h3>
-<p>Do you already have an algorithm computing some statistic that you want to obtain uncertainty estimates for? Simply use Julia's multiple dispatch and create a version of the algorithm function that accepts the <code class="codehilite">AbstractUncertainValue</code> and <code class="codehilite">AbstractUncertainDataset</code> types, along with a <code class="codehilite">SamplingConstraints</code> specifying how the uncertain values are should be resampled.</p>
+<p>Do you already have an algorithm computing some statistic that you want to obtain uncertainty estimates for? Simply use Julia's multiple dispatch and create a version of the algorithm function that accepts the <code class="codehilite"><span class="n">AbstractUncertainValue</span></code> and <code class="codehilite"><span class="n">AbstractUncertainDataset</span></code> types, along with a <code class="codehilite"><span class="n">SamplingConstraints</span></code> specifying how the uncertain values are should be resampled.</p>
 <p>A basic function skeleton could be</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2

@@ -1186,8 +1186,8 @@
 <h4 id="example_1_uncertain_values_defined_by_theoretical_distributions">Example 1: Uncertain values defined by theoretical distributions<a class="headerlink" href="#example_1_uncertain_values_defined_by_theoretical_distributions" title="Permanent link">&para;</a></h4>
 <p><a id='A-uniformly-distributed-uncertain-value-1'></a></p>
 <h5 id="a_uniformly_distributed_uncertain_value">A uniformly distributed uncertain value<a class="headerlink" href="#a_uniformly_distributed_uncertain_value" title="Permanent link">&para;</a></h5>
-<p>Consider the following contrived example. We've measure a data value with a poor instrument  that tells us that the value lies between <code class="codehilite">-2</code> and <code class="codehilite">3</code>. However, we but that we know nothing  more about how the value is distributed on that interval. Then it may be reasonable to  represent that value as a uniform distribution on <code class="codehilite">[-2, 3]</code>.</p>
-<p>To construct an uncertain value following a uniform distribution, we use the constructor  for theoretical distributions with known parameters  (<code class="codehilite">UncertainValue(distribution, params...)</code>). </p>
+<p>Consider the following contrived example. We've measure a data value with a poor instrument  that tells us that the value lies between <code class="codehilite"><span class="o">-</span><span class="mi">2</span></code> and <code class="codehilite"><span class="mi">3</span></code>. However, we but that we know nothing  more about how the value is distributed on that interval. Then it may be reasonable to  represent that value as a uniform distribution on <code class="codehilite"><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span></code>.</p>
+<p>To construct an uncertain value following a uniform distribution, we use the constructor  for theoretical distributions with known parameters  (<code class="codehilite"><span class="n">UncertainValue</span><span class="p">(</span><span class="n">distribution</span><span class="p">,</span> <span class="n">params</span><span class="p">...)</span></code>). </p>
 <p>The uniform distribution is defined by its lower and upper bounds, so we'll provide  these bounds as the parameters. </p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -1202,7 +1202,7 @@
 <p><img alt="" src="../uncertainvalue_theoretical_uniform.svg" /></p>
 <p><a id='A-normally-distributed-uncertain-value-1'></a></p>
 <h5 id="a_normally_distributed_uncertain_value">A normally distributed uncertain value<a class="headerlink" href="#a_normally_distributed_uncertain_value" title="Permanent link">&para;</a></h5>
-<p>A situation commonly encountered is to want to use someone else's data from a publication.  Usually, these values are reported as the mean or median, with some associated uncertainty.  Say we want to use an uncertain value which is normally distributed with mean <code class="codehilite">2.1</code> and  standard deviation <code class="codehilite">0.3</code>.</p>
+<p>A situation commonly encountered is to want to use someone else's data from a publication.  Usually, these values are reported as the mean or median, with some associated uncertainty.  Say we want to use an uncertain value which is normally distributed with mean <code class="codehilite"><span class="mi">2</span><span class="p">.</span><span class="mi">1</span></code> and  standard deviation <code class="codehilite"><span class="mi">0</span><span class="p">.</span><span class="mi">3</span></code>.</p>
 <p>Normal distributions also have two parameters, so we'll use the two-parameter constructor  as we did above. </p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -1228,7 +1228,7 @@
 </pre></div>
 </td></tr></table>
 
-<p>Now, pretend that <code class="codehilite">some_sample</code> is a list of measurements we got from somewhere.  KDE estimates to the distribution can be defined implicitly or explicitly as follows:</p>
+<p>Now, pretend that <code class="codehilite"><span class="n">some_sample</span></code> is a list of measurements we got from somewhere.  KDE estimates to the distribution can be defined implicitly or explicitly as follows:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -1259,7 +1259,7 @@
 </pre></div>
 </td></tr></table>
 
-<p>To perform a parameter estimation, simply provide the distribution as the first  argument and the sample as the second argument to the <code class="codehilite">UncertainValue</code> constructor.</p>
+<p>To perform a parameter estimation, simply provide the distribution as the first  argument and the sample as the second argument to the <code class="codehilite"><span class="n">UncertainValue</span></code> constructor.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3

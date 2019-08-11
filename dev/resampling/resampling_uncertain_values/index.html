@@ -1115,21 +1115,21 @@
 <p><a id='Documentation-1'></a></p>
 <h3 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h3>
 <p><a id='UncertainData.Resampling.resample-Tuple{AbstractUncertainValue}' href='#UncertainData.Resampling.resample-Tuple{AbstractUncertainValue}'>#</a>
-<strong><code class="codehilite">UncertainData.Resampling.resample</code></strong> &mdash; <em>Method</em>.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>resample(uv::AbstractUncertainValue)
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">Resampling</span><span class="p">.</span><span class="n">resample</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">resample</span><span class="p">(</span><span class="n">uv</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
 <p>Sample the uncertain value once, drawing values from the entire support of the probability  distribution furnishing it.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e10b241f0b0494d319111b068147ba5dde8b0384/src/resampling/uncertain_values/resample_uncertainvalues_theoretical.jl#L13-L18' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/71b1617813afa51aa16a1fc76aaa6b8afdf31571/src/resampling/uncertain_values/resample_uncertainvalues_theoretical.jl#L13-L18' class='documenter-source'>source</a><br></p>
 <p><a id='UncertainData.Resampling.resample-Tuple{AbstractUncertainValue,Int64}' href='#UncertainData.Resampling.resample-Tuple{AbstractUncertainValue,Int64}'>#</a>
-<strong><code class="codehilite">UncertainData.Resampling.resample</code></strong> &mdash; <em>Method</em>.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>resample(uv::AbstractUncertainValue, n::Int)
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">Resampling</span><span class="p">.</span><span class="n">resample</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">resample</span><span class="p">(</span><span class="n">uv</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
-<p>Sample the uncertain value <code class="codehilite">n</code> times, drawing values from the entire support of the  probability distribution furnishing it.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e10b241f0b0494d319111b068147ba5dde8b0384/src/resampling/uncertain_values/resample_uncertainvalues_theoretical.jl#L22-L27' class='documenter-source'>source</a><br></p>
+<p>Sample the uncertain value <code class="codehilite"><span class="n">n</span></code> times, drawing values from the entire support of the  probability distribution furnishing it.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/71b1617813afa51aa16a1fc76aaa6b8afdf31571/src/resampling/uncertain_values/resample_uncertainvalues_theoretical.jl#L22-L27' class='documenter-source'>source</a><br></p>
 <p><a id='Examples-1'></a></p>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
 <div class="superfences-tabs">
@@ -1184,18 +1184,18 @@
 </div>
 <p>Resampling can also be performed with constraints.</p>
 <ul>
-<li><code class="codehilite">resample(uv::AbstractUncertainValue, constraint::SamplingConstraint)</code>   samples the uncertain value once, drawing from a restricted   range of the support of the the probability distribution furnishing it.</li>
-<li><code class="codehilite">resample(uv::AbstractUncertainValue, constraint::SamplingConstraint, n::Int)</code>   samples the uncertain value <code class="codehilite">n</code> times, drawing values from a restricted   range of the support of the the probability distribution furnishing it.</li>
+<li><code class="codehilite"><span class="n">resample</span><span class="p">(</span><span class="n">uv</span><span class="p">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="k">constraint</span><span class="p">::</span><span class="n">SamplingConstraint</span><span class="p">)</span></code>   samples the uncertain value once, drawing from a restricted   range of the support of the the probability distribution furnishing it.</li>
+<li><code class="codehilite"><span class="n">resample</span><span class="p">(</span><span class="n">uv</span><span class="p">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="k">constraint</span><span class="p">::</span><span class="n">SamplingConstraint</span><span class="p">,</span> <span class="n">n</span><span class="p">::</span><span class="nb">Int</span><span class="p">)</span></code>   samples the uncertain value <code class="codehilite"><span class="n">n</span></code> times, drawing values from a restricted   range of the support of the the probability distribution furnishing it.</li>
 </ul>
 <p>Available sampling constraints are:</p>
 <ol>
-<li><code class="codehilite">TruncateStd(nσ::Int)</code></li>
-<li><code class="codehilite">TruncateMinimum(min::Number)</code></li>
-<li><code class="codehilite">TruncateMaximum(max::Number)</code></li>
-<li><code class="codehilite">TruncateRange(min::Number, max::Number)</code></li>
-<li><code class="codehilite">TruncateLowerQuantile(lower_quantile::Float64)</code></li>
-<li><code class="codehilite">TruncateUpperQuantile(upper_quantile::Float64)</code></li>
-<li><code class="codehilite">TruncateQuantiles(lower_quantile::Float64, upper_quantile::Float64)</code></li>
+<li><code class="codehilite"><span class="n">TruncateStd</span><span class="p">(</span><span class="n">n</span><span class="err">σ</span><span class="p">::</span><span class="nb">Int</span><span class="p">)</span></code></li>
+<li><code class="codehilite"><span class="n">TruncateMinimum</span><span class="p">(</span><span class="k">min</span><span class="p">::</span><span class="nb">Number</span><span class="p">)</span></code></li>
+<li><code class="codehilite"><span class="n">TruncateMaximum</span><span class="p">(</span><span class="k">max</span><span class="p">::</span><span class="nb">Number</span><span class="p">)</span></code></li>
+<li><code class="codehilite"><span class="n">TruncateRange</span><span class="p">(</span><span class="k">min</span><span class="p">::</span><span class="nb">Number</span><span class="p">,</span> <span class="k">max</span><span class="p">::</span><span class="nb">Number</span><span class="p">)</span></code></li>
+<li><code class="codehilite"><span class="n">TruncateLowerQuantile</span><span class="p">(</span><span class="n">lower_quantile</span><span class="p">::</span><span class="n">Float64</span><span class="p">)</span></code></li>
+<li><code class="codehilite"><span class="n">TruncateUpperQuantile</span><span class="p">(</span><span class="n">upper_quantile</span><span class="p">::</span><span class="n">Float64</span><span class="p">)</span></code></li>
+<li><code class="codehilite"><span class="n">TruncateQuantiles</span><span class="p">(</span><span class="n">lower_quantile</span><span class="p">::</span><span class="n">Float64</span><span class="p">,</span> <span class="n">upper_quantile</span><span class="p">::</span><span class="n">Float64</span><span class="p">)</span></code></li>
 </ol>
 <p>For full documentation of the constraints, see the  <a href="../../sampling_constraints/available_constraints/">available constraints</a> in the menu.</p>
 <div class="superfences-tabs">

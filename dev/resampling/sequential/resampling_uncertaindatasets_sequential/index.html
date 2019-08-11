@@ -1175,36 +1175,36 @@
 <h3 id="sequential_constraint_only">Sequential constraint only<a class="headerlink" href="#sequential_constraint_only" title="Permanent link">&para;</a></h3>
 <p>A dataset may be sampling imposing a sequential sampling constraint, but leaving the  furnishing distributions untouched otherwise.</p>
 <p><a id='UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset,SequentialSamplingConstraint}' href='#UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset,SequentialSamplingConstraint}'>#</a>
-<strong><code class="codehilite">UncertainData.Resampling.resample</code></strong> &mdash; <em>Method</em>.</p>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">Resampling</span><span class="p">.</span><span class="n">resample</span></code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">resample</span><span class="o">(</span><span class="nt">udata</span><span class="p">::</span><span class="nd">AbstractUncertainValueDataset</span><span class="o">,</span> 
-    <span class="nt">sequential_constraint</span><span class="p">::</span><span class="nd">SequentialSamplingConstraint</span><span class="o">;</span>
-    <span class="nt">quantiles</span> <span class="o">=</span> <span class="cp">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.9999</span><span class="cp">]</span><span class="o">)</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">resample</span><span class="p">(</span><span class="n">udata</span><span class="o">::</span><span class="n">AbstractUncertainValueDataset</span><span class="p">,</span> 
+    <span class="n">sequential_constraint</span><span class="o">::</span><span class="n">SequentialSamplingConstraint</span><span class="p">;</span>
+    <span class="n">quantiles</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.9999</span><span class="p">])</span>
 </pre></div>
 </td></tr></table>
 
 <p>Resample a dataset by imposing a sequential sampling constraint. </p>
-<p>Before drawing the realization, all furnishing distributions are truncated to the provided  <code class="codehilite">quantiles</code> range. This is to avoid problems in case some distributions have infinite  support.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e10b241f0b0494d319111b068147ba5dde8b0384/src/resampling/ordered_resampling/resample_sequential.jl#L7-L20' class='documenter-source'>source</a><br></p>
+<p>Before drawing the realization, all furnishing distributions are truncated to the provided  <code class="codehilite"><span class="n">quantiles</span></code> range. This is to avoid problems in case some distributions have infinite  support.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/71b1617813afa51aa16a1fc76aaa6b8afdf31571/src/resampling/ordered_resampling/resample_sequential.jl#L7-L20' class='documenter-source'>source</a><br></p>
 <p><a id='Regular-constraint(s)-sequential-constraint-1'></a></p>
 <h3 id="regular_constraints_sequential_constraint">Regular constraint(s) + sequential constraint<a class="headerlink" href="#regular_constraints_sequential_constraint" title="Permanent link">&para;</a></h3>
 <p>Another option is to first impose constraints on the furnishing distributions, then  applying the sequential sampling constraint.</p>
 <p><a id='UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint},SequentialSamplingConstraint}' href='#UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint},SequentialSamplingConstraint}'>#</a>
-<strong><code class="codehilite">UncertainData.Resampling.resample</code></strong> &mdash; <em>Method</em>.</p>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">Resampling</span><span class="p">.</span><span class="n">resample</span></code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">resample</span><span class="o">(</span><span class="nt">udata</span><span class="p">::</span><span class="nd">AbstractUncertainValueDataset</span><span class="o">,</span> 
-    <span class="nt">constraint</span><span class="p">::</span><span class="nd">Union</span><span class="p">{</span><span class="err">SamplingConstraint,</span> <span class="err">Vector{SamplingConstraint</span><span class="p">}</span><span class="err">}</span><span class="o">,</span> 
-    <span class="nt">sequential_constraint</span><span class="p">::</span><span class="nd">SequentialSamplingConstraint</span><span class="o">;</span>
-    <span class="nt">quantiles</span> <span class="o">=</span> <span class="cp">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.9999</span><span class="cp">]</span><span class="o">)</span>
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">resample</span><span class="p">(</span><span class="n">udata</span><span class="o">::</span><span class="n">AbstractUncertainValueDataset</span><span class="p">,</span> 
+    <span class="n">constraint</span><span class="o">::</span><span class="kt">Union</span><span class="p">{</span><span class="n">SamplingConstraint</span><span class="p">,</span> <span class="kt">Vector</span><span class="p">{</span><span class="n">SamplingConstraint</span><span class="p">}},</span> 
+    <span class="n">sequential_constraint</span><span class="o">::</span><span class="n">SequentialSamplingConstraint</span><span class="p">;</span>
+    <span class="n">quantiles</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.9999</span><span class="p">])</span>
 </pre></div>
 </td></tr></table>
 
 <p>Resample a dataset by first imposing regular sampling constraints on the furnishing  distributions, then applying a sequential sampling constraint. </p>
-<p>Before drawing the realization, all furnishing distributions are truncated to the provided  <code class="codehilite">quantiles</code> range. This is to avoid problems in case some distributions have infinite  support.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e10b241f0b0494d319111b068147ba5dde8b0384/src/resampling/ordered_resampling/resample_sequential.jl#L25-L38' class='documenter-source'>source</a><br></p>
+<p>Before drawing the realization, all furnishing distributions are truncated to the provided  <code class="codehilite"><span class="n">quantiles</span></code> range. This is to avoid problems in case some distributions have infinite  support.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/71b1617813afa51aa16a1fc76aaa6b8afdf31571/src/resampling/ordered_resampling/resample_sequential.jl#L25-L38' class='documenter-source'>source</a><br></p>
 <p><a id='List-of-sequential-resampling-schemes-1'></a></p>
 <h2 id="list_of_sequential_resampling_schemes">List of sequential resampling schemes<a class="headerlink" href="#list_of_sequential_resampling_schemes" title="Permanent link">&para;</a></h2>
 <ul>

@@ -1180,8 +1180,8 @@
                 <p><a id='Grids-1'></a></p>
 <h2 id="grids">Grids<a class="headerlink" href="#grids" title="Permanent link">&para;</a></h2>
 <p><a id='UncertainData.InterpolationAndGrids.RegularGrid' href='#UncertainData.InterpolationAndGrids.RegularGrid'>#</a>
-<strong><code class="codehilite">UncertainData.InterpolationAndGrids.RegularGrid</code></strong> &mdash; <em>Type</em>.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>RegularGrid
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">InterpolationAndGrids</span><span class="p">.</span><span class="n">RegularGrid</span></code></strong> &mdash; <em>Type</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">RegularGrid</span>
 </pre></div>
 </td></tr></table>
 
@@ -1192,7 +1192,7 @@
 <li><strong>step</strong>: The interval size.</li>
 <li><strong>extrapolation_bc</strong>: The extrapolation condition. Can also be NaN.</li>
 </ul>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e10b241f0b0494d319111b068147ba5dde8b0384/src/interpolation/grids/RectangularGrid.jl#L18-L27' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/71b1617813afa51aa16a1fc76aaa6b8afdf31571/src/interpolation/grids/RegularGrid.jl#L20-L29' class='documenter-source'>source</a><br></p>
 <p><a id='Syntax-1'></a></p>
 <h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
 <p><a id='Uncertain-index-value-datasets-1'></a></p>
@@ -1201,35 +1201,35 @@
 <p><a id='No-constraints-1'></a></p>
 <h4 id="no_constraints">No constraints<a class="headerlink" href="#no_constraints" title="Permanent link">&para;</a></h4>
 <p><a id='UncertainData.Resampling.resample-Tuple{UncertainIndexValueDataset,RegularGrid}' href='#UncertainData.Resampling.resample-Tuple{UncertainIndexValueDataset,RegularGrid}'>#</a>
-<strong><code class="codehilite">UncertainData.Resampling.resample</code></strong> &mdash; <em>Method</em>.</p>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">Resampling</span><span class="p">.</span><span class="n">resample</span></code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">resample</span><span class="o">(</span><span class="nt">udata</span><span class="p">::</span><span class="nd">UncertainIndexValueDataset</span><span class="o">,</span> 
-    <span class="nt">grid_indices</span><span class="p">::</span><span class="nd">InterpolationGrid</span><span class="o">;</span>
-    <span class="nt">trunc</span><span class="p">::</span><span class="nd">TruncateQuantiles</span> <span class="o">=</span> <span class="nt">TruncateQuantiles</span><span class="o">(</span><span class="nt">0</span><span class="p">.</span><span class="nc">001</span><span class="o">,</span> <span class="nt">0</span><span class="p">.</span><span class="nc">999</span><span class="o">))</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">resample</span><span class="p">(</span><span class="n">udata</span><span class="o">::</span><span class="n">UncertainIndexValueDataset</span><span class="p">,</span> 
+    <span class="n">grid</span><span class="o">::</span><span class="n">InterpolationGrid</span><span class="p">;</span>
+    <span class="n">trunc</span><span class="o">::</span><span class="n">TruncateQuantiles</span> <span class="o">=</span> <span class="n">TruncateQuantiles</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
-<p>Draw a realization of <code class="codehilite">udata</code>, then interpolate the data values to <code class="codehilite">grid_indices</code>. </p>
+<p>Draw a realization of <code class="codehilite"><span class="n">udata</span></code>, then interpolate the data values to <code class="codehilite"><span class="n">grid</span></code>. </p>
 <p>To avoid very large spans of interpolation, the uncertain indices are truncated to some  large quantile range. Values are not truncated. </p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e10b241f0b0494d319111b068147ba5dde8b0384/src/resampling/resampling_with_interpolation/resample_linear_interpolation.jl#L12-L22' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/71b1617813afa51aa16a1fc76aaa6b8afdf31571/src/resampling/resampling_with_interpolation/resample_linear_interpolation.jl#L12-L22' class='documenter-source'>source</a><br></p>
 <p><a id='Sequential-constraints-1'></a></p>
 <h4 id="sequential_constraints">Sequential constraints<a class="headerlink" href="#sequential_constraints" title="Permanent link">&para;</a></h4>
 <p><a id='UncertainData.Resampling.resample-Tuple{UncertainIndexValueDataset,SequentialSamplingConstraint,RegularGrid}' href='#UncertainData.Resampling.resample-Tuple{UncertainIndexValueDataset,SequentialSamplingConstraint,RegularGrid}'>#</a>
-<strong><code class="codehilite">UncertainData.Resampling.resample</code></strong> &mdash; <em>Method</em>.</p>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">Resampling</span><span class="p">.</span><span class="n">resample</span></code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">resample</span><span class="o">(</span><span class="nt">udata</span><span class="p">::</span><span class="nd">UncertainIndexValueDataset</span><span class="o">,</span> 
-    <span class="nt">sequential_constraint</span><span class="p">::</span><span class="nd">SequentialSamplingConstraint</span><span class="o">,</span>
-    <span class="nt">grid_indices</span><span class="p">::</span><span class="nd">InterpolationGrid</span><span class="o">;</span>
-    <span class="nt">trunc</span><span class="p">::</span><span class="nd">TruncateQuantiles</span> <span class="o">=</span> <span class="nt">TruncateQuantiles</span><span class="o">(</span><span class="nt">0</span><span class="p">.</span><span class="nc">001</span><span class="o">,</span> <span class="nt">0</span><span class="p">.</span><span class="nc">999</span><span class="o">))</span>
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">resample</span><span class="p">(</span><span class="n">udata</span><span class="o">::</span><span class="n">UncertainIndexValueDataset</span><span class="p">,</span> 
+    <span class="n">sequential_constraint</span><span class="o">::</span><span class="n">SequentialSamplingConstraint</span><span class="p">,</span>
+    <span class="n">grid</span><span class="o">::</span><span class="n">InterpolationGrid</span><span class="p">;</span>
+    <span class="n">trunc</span><span class="o">::</span><span class="n">TruncateQuantiles</span> <span class="o">=</span> <span class="n">TruncateQuantiles</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
-<p>Draw a realization of <code class="codehilite">udata</code>, enforcing a <code class="codehilite">sequential_constraint</code> on the indices. Then, interpolate the values of the realization to the provided grid of indices (<code class="codehilite">grid_indices</code>). </p>
+<p>Draw a realization of <code class="codehilite"><span class="n">udata</span></code>, enforcing a <code class="codehilite"><span class="n">sequential_constraint</span></code> on the indices. Then, interpolate the values of the realization to the provided grid of indices (<code class="codehilite"><span class="n">grid</span></code>). </p>
 <p>To avoid very large spans of interpolation, the uncertain indices are truncated to some  large quantile range. Values are not truncated.  </p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e10b241f0b0494d319111b068147ba5dde8b0384/src/resampling/resampling_with_interpolation/resample_linear_interpolation.jl#L44-L55' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/71b1617813afa51aa16a1fc76aaa6b8afdf31571/src/resampling/resampling_with_interpolation/resample_linear_interpolation.jl#L43-L54' class='documenter-source'>source</a><br></p>
                 
                   
                 

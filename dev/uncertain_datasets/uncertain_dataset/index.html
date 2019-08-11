@@ -1149,29 +1149,29 @@
                 
                   <h1>Generic uncertain dataset</h1>
                 
-                <p><code class="codehilite">UncertainDataset</code>s is a generic uncertain dataset type that has no explicit index  associated with its uncertain values. </p>
-<p>It inherits all the behaviour of <code class="codehilite">AbstractUncertainValueDataset</code>, but may lack some  functionality that an <a href="../uncertain_value_dataset/">UncertainValueDataset</a> has. </p>
+                <p><code class="codehilite"><span class="n">UncertainDataset</span></code>s is a generic uncertain dataset type that has no explicit index  associated with its uncertain values. </p>
+<p>It inherits all the behaviour of <code class="codehilite"><span class="n">AbstractUncertainValueDataset</span></code>, but may lack some  functionality that an <a href="../uncertain_value_dataset/">UncertainValueDataset</a> has. </p>
 <p>If you don't care about distinguishing between  indices and data values, constructing instances of this data type requires five less key  presses than <a href="../uncertain_value_dataset/">UncertainValueDataset</a>.</p>
 <p><a id='Documentation-1'></a></p>
 <h3 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h3>
 <p><a id='UncertainData.UncertainDatasets.UncertainDataset' href='#UncertainData.UncertainDatasets.UncertainDataset'>#</a>
-<strong><code class="codehilite">UncertainData.UncertainDatasets.UncertainDataset</code></strong> &mdash; <em>Type</em>.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>UncertainDataset
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">UncertainDatasets</span><span class="p">.</span><span class="n">UncertainDataset</span></code></strong> &mdash; <em>Type</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">UncertainDataset</span>
 </pre></div>
 </td></tr></table>
 
 <p>Generic dataset containing uncertain values.</p>
 <p><strong>Fields</strong></p>
 <ul>
-<li><strong><code class="codehilite">values::AbstractVector{AbstractUncertainValue}</code></strong>: The uncertain values.</li>
+<li><strong><code class="codehilite"><span class="k">values</span><span class="p">::</span><span class="n">AbstractVector</span><span class="err">{</span><span class="n">AbstractUncertainValue</span><span class="err">}</span></code></strong>: The uncertain values.</li>
 </ul>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e10b241f0b0494d319111b068147ba5dde8b0384/src/uncertain_datasets/UncertainDataset.jl#L1-L8' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/71b1617813afa51aa16a1fc76aaa6b8afdf31571/src/uncertain_datasets/UncertainDataset.jl#L1-L8' class='documenter-source'>source</a><br></p>
 <p><a id='Examples-1'></a></p>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
 <p><a id='Example-1:-constructing-an-UncertainDataset-from-uncertain-values-1'></a></p>
-<h4 id="example_1_constructing_an_uncertaindataset_from_uncertain_values">Example 1: constructing an <code class="codehilite">UncertainDataset</code> from uncertain values<a class="headerlink" href="#example_1_constructing_an_uncertaindataset_from_uncertain_values" title="Permanent link">&para;</a></h4>
+<h4 id="example_1_constructing_an_uncertaindataset_from_uncertain_values">Example 1: constructing an <code class="codehilite"><span class="n">UncertainDataset</span></code> from uncertain values<a class="headerlink" href="#example_1_constructing_an_uncertaindataset_from_uncertain_values" title="Permanent link">&para;</a></h4>
 <p>Let's create a random walk and pretend it represents fluctuations in the mean of an observed dataset. Assume that each data point is normally distributed, and that the <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>-th observation has standard deviation <span><span class="MathJax_Preview">\sigma_i \in [0.3, 0.5]</span><script type="math/tex">\sigma_i \in [0.3, 0.5]</script></span>.</p>
-<p>Representing these data as an <code class="codehilite">UncertainDataset</code> is done as follows:</p>
+<p>Representing these data as an <code class="codehilite"><span class="n">UncertainDataset</span></code> is done as follows:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1197,13 +1197,13 @@
 </td></tr></table>
 
 <p>By default, plotting the dataset will plot the median values (only for scatter plots) along with the 33<sup>rd</sup> to 67<sup>th</sup> percentile range error bars. </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>plot(D)
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
 <p><img alt="" src="../uncertain_value_dataset_plot_defaulterrorbars.svg" /></p>
 <p>You can customize the error bars by explicitly providing the quantiles:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>plot(D, [0.05, 0.95])
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">05</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">95</span><span class="p">])</span>
 </pre></div>
 </td></tr></table>
 

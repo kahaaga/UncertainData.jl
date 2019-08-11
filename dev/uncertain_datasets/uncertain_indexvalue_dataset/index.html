@@ -1095,23 +1095,23 @@
                 
                   <h1>Uncertain index-value dataset</h1>
                 
-                <p><code class="codehilite">UncertainIndexValueDataset</code>s have uncertainties associated with both the  indices (e.g. time, depth, etc) and the values of the data points.</p>
+                <p><code class="codehilite"><span class="n">UncertainIndexValueDataset</span></code>s have uncertainties associated with both the  indices (e.g. time, depth, etc) and the values of the data points.</p>
 <p><a id='UncertainData.UncertainDatasets.UncertainIndexValueDataset' href='#UncertainData.UncertainDatasets.UncertainIndexValueDataset'>#</a>
-<strong><code class="codehilite">UncertainData.UncertainDatasets.UncertainIndexValueDataset</code></strong> &mdash; <em>Type</em>.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>UncertainIndexValueDataset
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">UncertainDatasets</span><span class="p">.</span><span class="n">UncertainIndexValueDataset</span></code></strong> &mdash; <em>Type</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">UncertainIndexValueDataset</span>
 </pre></div>
 </td></tr></table>
 
 <p>A generic dataset type consisting of uncertain values whose indices (time, depth, order, etc...) are also uncertain value.</p>
 <p><strong>Fields</strong></p>
 <ul>
-<li><strong><code class="codehilite">values::T</code> where {T &lt;: AbstractUncertainValueDataset}</strong>: The uncertain indices.    Will in general be an <code class="codehilite">UncertainIndexDataset</code>, but does not necessarily have to be.     Each index is represented by an <code class="codehilite">AbstractUncertainValue</code>.</li>
-<li><strong><code class="codehilite">values::UncertainDataset</code></strong>: The uncertain values. Each value is   represented by an <code class="codehilite">AbstractUncertainValue</code>.</li>
+<li><strong><code class="codehilite"><span class="k">values</span><span class="p">::</span><span class="n">T</span></code> where {T &lt;: AbstractUncertainValueDataset}</strong>: The uncertain indices.    Will in general be an <code class="codehilite"><span class="n">UncertainIndexDataset</span></code>, but does not necessarily have to be.     Each index is represented by an <code class="codehilite"><span class="n">AbstractUncertainValue</span></code>.</li>
+<li><strong><code class="codehilite"><span class="k">values</span><span class="p">::</span><span class="n">UncertainDataset</span></code></strong>: The uncertain values. Each value is   represented by an <code class="codehilite"><span class="n">AbstractUncertainValue</span></code>.</li>
 </ul>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e10b241f0b0494d319111b068147ba5dde8b0384/src/uncertain_datasets/UncertainIndexValueDataset.jl#L1-L15' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/71b1617813afa51aa16a1fc76aaa6b8afdf31571/src/uncertain_datasets/UncertainIndexValueDataset.jl#L1-L15' class='documenter-source'>source</a><br></p>
 <p><a id='Example-1'></a></p>
 <h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
-<p>Here's an example of how to create an uncertain index-value dataset. Let's start by  defining the uncertain data values and collecting them in an <code class="codehilite">UncertainValueDataset</code>. </p>
+<p>Here's an example of how to create an uncertain index-value dataset. Let's start by  defining the uncertain data values and collecting them in an <code class="codehilite"><span class="n">UncertainValueDataset</span></code>. </p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1143,7 +1143,7 @@
 </pre></div>
 </td></tr></table>
 
-<p>Now, combine the uncertain time indices and measurements into an  <code class="codehilite">UncertainIndexValueDataset</code>.</p>
+<p>Now, combine the uncertain time indices and measurements into an  <code class="codehilite"><span class="n">UncertainIndexValueDataset</span></code>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">UncertainIndexValueDataset</span><span class="p">(</span><span class="n">uindices</span><span class="p">,</span> <span class="n">udata</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
@@ -1154,7 +1154,7 @@
 </td></tr></table>
 
 <p><img alt="" src="../uncertain_indexvalue_dataset_plot_defaulterrorbars.svg" /></p>
-<p>You can also tune the error bars by calling  <code class="codehilite">plot(udata::UncertainIndexValueDataset, idx_quantiles, val_quantiles)</code>, explicitly  specifying the quantiles in each direction, like so:</p>
+<p>You can also tune the error bars by calling  <code class="codehilite"><span class="n">plot</span><span class="p">(</span><span class="n">udata</span><span class="p">::</span><span class="n">UncertainIndexValueDataset</span><span class="p">,</span> <span class="n">idx_quantiles</span><span class="p">,</span> <span class="n">val_quantiles</span><span class="p">)</span></code>, explicitly  specifying the quantiles in each direction, like so:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">])</span>
 </pre></div>
 </td></tr></table>

@@ -1294,7 +1294,7 @@
 <p><img alt="" src="../imgs/bimodal_empirical.svg" /></p>
 <p>It is not obvious which distribution to fit to such data.</p>
 <p>A kernel density estimate, however, will always be a decent representation of the data, because it doesn't follow a specific distribution and adapts to the data values.</p>
-<p>To create a kernel density estimate, simply call the <code class="codehilite">UncertainValue(v::Vector{Number})</code> constructor with a vector containing the sample:</p>
+<p>To create a kernel density estimate, simply call the <code class="codehilite"><span class="n">UncertainValue</span><span class="p">(</span><span class="n">v</span><span class="p">::</span><span class="n">Vector</span><span class="err">{</span><span class="nb">Number</span><span class="err">}</span><span class="p">)</span></code> constructor with a vector containing the sample:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">uv</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">samples_empirical</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
@@ -1320,21 +1320,21 @@
 <p><a id='Constructor-1'></a></p>
 <h3 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h3>
 <p><a id='UncertainData.UncertainValues.UncertainValue-Union{Tuple{Array{T,1}}, Tuple{T}, Tuple{D}} where T where D<:Distribution' href='#UncertainData.UncertainValues.UncertainValue-Union{Tuple{Array{T,1}}, Tuple{T}, Tuple{D}} where T where D<:Distribution'>#</a>
-<strong><code class="codehilite">UncertainData.UncertainValues.UncertainValue</code></strong> &mdash; <em>Method</em>.</p>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">UncertainValues</span><span class="p">.</span><span class="n">UncertainValue</span></code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">UncertainValue</span><span class="o">(</span><span class="nt">data</span><span class="p">::</span><span class="nd">Vector</span><span class="p">{</span><span class="err">T</span><span class="p">}</span><span class="o">;</span>
-    <span class="nt">kernel</span><span class="p">::</span><span class="nd">Type</span><span class="p">{</span><span class="err">D</span><span class="p">}</span> <span class="o">=</span> <span class="nt">Normal</span><span class="o">,</span>
-    <span class="nt">npoints</span><span class="p">::</span><span class="nd">Int</span><span class="o">=</span><span class="nt">2048</span><span class="o">)</span> <span class="nt">where</span> <span class="p">{</span><span class="err">D</span> <span class="err">&lt;:</span> <span class="err">Distributions.Distribution,</span> <span class="err">T</span><span class="p">}</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">UncertainValue</span><span class="p">(</span><span class="n">data</span><span class="o">::</span><span class="kt">Vector</span><span class="p">{</span><span class="n">T</span><span class="p">};</span>
+    <span class="n">kernel</span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="n">D</span><span class="p">}</span> <span class="o">=</span> <span class="n">Normal</span><span class="p">,</span>
+    <span class="n">npoints</span><span class="o">::</span><span class="kt">Int</span><span class="o">=</span><span class="mi">2048</span><span class="p">)</span> <span class="n">where</span> <span class="p">{</span><span class="n">D</span> <span class="o">&lt;:</span> <span class="n">Distributions</span><span class="o">.</span><span class="n">Distribution</span><span class="p">,</span> <span class="n">T</span><span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
-<p>Construct an uncertain value by a kernel density estimate to <code class="codehilite">data</code>.</p>
+<p>Construct an uncertain value by a kernel density estimate to <code class="codehilite"><span class="k">data</span></code>.</p>
 <p>Fast Fourier transforms are used in the kernel density estimation, so the number of points should be a power of 2 (default = 2048).</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e10b241f0b0494d319111b068147ba5dde8b0384/src/uncertain_values/UncertainValue.jl#L13-L22' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/71b1617813afa51aa16a1fc76aaa6b8afdf31571/src/uncertain_values/UncertainValue.jl#L13-L22' class='documenter-source'>source</a><br></p>
 <p><a id='Additional-keyword-arguments-and-examples-1'></a></p>
 <h4 id="additional_keyword_arguments_and_examples">Additional keyword arguments and examples<a class="headerlink" href="#additional_keyword_arguments_and_examples" title="Permanent link">&para;</a></h4>
-<p>If the only argument to the <code class="codehilite">UncertainValue</code> constructor is a vector of values, the default behaviour is to represent the distribution by a kernel density estimate (KDE), i.e. <code class="codehilite">UncertainValue(data)</code>. Gaussian kernels are used by default. The syntax <code class="codehilite">UncertainValue(UnivariateKDE, data)</code> will also work if <code class="codehilite">KernelDensity.jl</code> is loaded.</p>
+<p>If the only argument to the <code class="codehilite"><span class="n">UncertainValue</span></code> constructor is a vector of values, the default behaviour is to represent the distribution by a kernel density estimate (KDE), i.e. <code class="codehilite"><span class="n">UncertainValue</span><span class="p">(</span><span class="k">data</span><span class="p">)</span></code>. Gaussian kernels are used by default. The syntax <code class="codehilite"><span class="n">UncertainValue</span><span class="p">(</span><span class="n">UnivariateKDE</span><span class="p">,</span> <span class="k">data</span><span class="p">)</span></code> will also work if <code class="codehilite"><span class="n">KernelDensity</span><span class="p">.</span><span class="n">jl</span></code> is loaded.</p>
                 
                   
                 

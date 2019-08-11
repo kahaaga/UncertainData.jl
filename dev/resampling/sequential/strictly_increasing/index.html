@@ -1165,52 +1165,52 @@
                 
                   <h1>Strictly increasing</h1>
                 
-                <p>The default constructor for a strictly increasing sequential sampling constraint is  <code class="codehilite">StrictlyIncreasing</code>. To specify how the sequence is sampled, provide an  <code class="codehilite">OrderedSamplingAlgorithm</code> as an argument to the constructor.</p>
+                <p>The default constructor for a strictly increasing sequential sampling constraint is  <code class="codehilite"><span class="n">StrictlyIncreasing</span></code>. To specify how the sequence is sampled, provide an  <code class="codehilite"><span class="n">OrderedSamplingAlgorithm</span></code> as an argument to the constructor.</p>
 <p><a id='Compatible-ordering-algorithms-1'></a></p>
 <h3 id="compatible_ordering_algorithms">Compatible ordering algorithms<a class="headerlink" href="#compatible_ordering_algorithms" title="Permanent link">&para;</a></h3>
 <ul>
-<li><code class="codehilite">StrictlyIncreasing(StartToEnd())</code> (the default)</li>
+<li><code class="codehilite"><span class="n">StrictlyIncreasing</span><span class="p">(</span><span class="n">StartToEnd</span><span class="p">())</span></code> (the default)</li>
 </ul>
 <p><a id='Documentation-1'></a></p>
 <h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h2>
 <p><a id='UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint},StrictlyIncreasing{OrderedSamplingAlgorithm}}' href='#UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint},StrictlyIncreasing{OrderedSamplingAlgorithm}}'>#</a>
-<strong><code class="codehilite">UncertainData.Resampling.resample</code></strong> &mdash; <em>Method</em>.</p>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">Resampling</span><span class="p">.</span><span class="n">resample</span></code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">resample</span><span class="o">(</span><span class="nt">udata</span><span class="p">::</span><span class="nd">AbstractUncertainValueDataset</span><span class="o">,</span> 
-    <span class="nt">constraint</span><span class="p">::</span><span class="nd">Union</span><span class="p">{</span><span class="err">SamplingConstraint,</span> <span class="err">Vector{SamplingConstraint</span><span class="p">}</span><span class="err">}</span><span class="o">,</span>
-    <span class="nt">sequential_constraint</span><span class="p">::</span><span class="nd">StrictlyIncreasing</span><span class="p">{</span><span class="err">OrderedSamplingAlgorithm</span><span class="p">}</span><span class="o">;</span>
-    <span class="nt">quantiles</span> <span class="o">=</span> <span class="cp">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.9999</span><span class="cp">]</span><span class="o">)</span>
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">resample</span><span class="p">(</span><span class="n">udata</span><span class="o">::</span><span class="n">AbstractUncertainValueDataset</span><span class="p">,</span> 
+    <span class="n">constraint</span><span class="o">::</span><span class="kt">Union</span><span class="p">{</span><span class="n">SamplingConstraint</span><span class="p">,</span> <span class="kt">Vector</span><span class="p">{</span><span class="n">SamplingConstraint</span><span class="p">}},</span>
+    <span class="n">sequential_constraint</span><span class="o">::</span><span class="n">StrictlyIncreasing</span><span class="p">{</span><span class="n">OrderedSamplingAlgorithm</span><span class="p">};</span>
+    <span class="n">quantiles</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.9999</span><span class="p">])</span>
 </pre></div>
 </td></tr></table>
 
-<p>Draw a sequence of values strictly increasing in magnitude from the dataset, sampling  each of the furnishing distributions once each, after first truncating the supports  of the values in the dataset using the provided <code class="codehilite">constraint</code>s.</p>
+<p>Draw a sequence of values strictly increasing in magnitude from the dataset, sampling  each of the furnishing distributions once each, after first truncating the supports  of the values in the dataset using the provided <code class="codehilite"><span class="k">constraint</span></code>s.</p>
 <p><strong>Arguments:</strong></p>
 <ul>
-<li><strong><code class="codehilite">udata</code></strong>: An uncertain dataset.</li>
-<li><strong><code class="codehilite">constraint</code></strong>: Sampling constraint(s) to apply to each of the values in the dataset    before drawing the sequence of increasing values.</li>
-<li><strong><code class="codehilite">sequential_constraint</code></strong>: An instance of a <code class="codehilite">StrictlyIncreasing</code> sequential    sampling constraint. For example, <code class="codehilite">StrictlyIncreasing(StartToEnd())</code> indicates    that a strictly increasing sequence should be created in one go from start to    finish (as opposed to chunking the data set first, then gluing partial sequences    together afterwards).</li>
-<li><strong><code class="codehilite">quantiles</code></strong>: A two-element vector representing a quantile range which is used    to truncate the supports values in the dataset before drawing the sequence of    increasing values. This deals with distributions with infinite support.</li>
+<li><strong><code class="codehilite"><span class="n">udata</span></code></strong>: An uncertain dataset.</li>
+<li><strong><code class="codehilite"><span class="k">constraint</span></code></strong>: Sampling constraint(s) to apply to each of the values in the dataset    before drawing the sequence of increasing values.</li>
+<li><strong><code class="codehilite"><span class="n">sequential_constraint</span></code></strong>: An instance of a <code class="codehilite"><span class="n">StrictlyIncreasing</span></code> sequential    sampling constraint. For example, <code class="codehilite"><span class="n">StrictlyIncreasing</span><span class="p">(</span><span class="n">StartToEnd</span><span class="p">())</span></code> indicates    that a strictly increasing sequence should be created in one go from start to    finish (as opposed to chunking the data set first, then gluing partial sequences    together afterwards).</li>
+<li><strong><code class="codehilite"><span class="n">quantiles</span></code></strong>: A two-element vector representing a quantile range which is used    to truncate the supports values in the dataset before drawing the sequence of    increasing values. This deals with distributions with infinite support.</li>
 </ul>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e10b241f0b0494d319111b068147ba5dde8b0384/src/resampling/ordered_resampling/resample_uncertaindataset_strictlyincreasing.jl#L111-L135' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/71b1617813afa51aa16a1fc76aaa6b8afdf31571/src/resampling/ordered_resampling/resample_uncertaindataset_strictlyincreasing.jl#L111-L135' class='documenter-source'>source</a><br></p>
 <p><a id='UncertainData.Resampling.resample-Union{Tuple{T}, Tuple{DT}, Tuple{DT,StrictlyIncreasing{T}}} where T<:StartToEnd where DT<:AbstractUncertainValueDataset' href='#UncertainData.Resampling.resample-Union{Tuple{T}, Tuple{DT}, Tuple{DT,StrictlyIncreasing{T}}} where T<:StartToEnd where DT<:AbstractUncertainValueDataset'>#</a>
-<strong><code class="codehilite">UncertainData.Resampling.resample</code></strong> &mdash; <em>Method</em>.</p>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">Resampling</span><span class="p">.</span><span class="n">resample</span></code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">resample</span><span class="o">(</span><span class="nt">udata</span><span class="p">::</span><span class="nd">DT</span><span class="o">,</span> <span class="nt">sequential_constraint</span><span class="p">::</span><span class="nd">StrictlyIncreasing</span><span class="p">{</span><span class="err">T</span><span class="p">}</span><span class="o">;</span>
-    <span class="nt">quantiles</span> <span class="o">=</span> <span class="cp">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.9999</span><span class="cp">]</span><span class="o">)</span> <span class="nt">where</span> <span class="p">{</span><span class="err">DT</span> <span class="err">&lt;:</span> <span class="err">AbstractUncertainValueDataset,</span> <span class="err">T</span> <span class="err">&lt;:</span> <span class="err">StartToEnd</span><span class="p">}</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">resample</span><span class="p">(</span><span class="n">udata</span><span class="o">::</span><span class="n">DT</span><span class="p">,</span> <span class="n">sequential_constraint</span><span class="o">::</span><span class="n">StrictlyIncreasing</span><span class="p">{</span><span class="n">T</span><span class="p">};</span>
+    <span class="n">quantiles</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.9999</span><span class="p">])</span> <span class="n">where</span> <span class="p">{</span><span class="n">DT</span> <span class="o">&lt;:</span> <span class="n">AbstractUncertainValueDataset</span><span class="p">,</span> <span class="n">T</span> <span class="o">&lt;:</span> <span class="n">StartToEnd</span><span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
 <p>Element-wise resample the uncertain values in the dataset such that each preceding value  is strictly less in magnitude than the next one. </p>
 <p><strong>Arguments:</strong></p>
 <ul>
-<li><strong><code class="codehilite">udata</code></strong>: An uncertain dataset.</li>
-<li><strong><code class="codehilite">sequential_constraint</code></strong>: An instance of a <code class="codehilite">StrictlyIncreasing</code> sequential    sampling constraint.</li>
-<li><strong><code class="codehilite">ordered_sampling_alg</code></strong>: An instance of a <code class="codehilite">StartToEnd</code> ordered    sampling constraint, indicating that the sequence of increasing values should    be created in one go from start to finish (as opposed to chunking the data set    first, then gluing partial sequences together afterwards).</li>
-<li><strong><code class="codehilite">quantiles</code></strong>: A two-element vector representing a quantile range which is used    to truncate the supports values in the dataset before drawing the sequence of    increasing values. This deals with distributions with infinite support.</li>
+<li><strong><code class="codehilite"><span class="n">udata</span></code></strong>: An uncertain dataset.</li>
+<li><strong><code class="codehilite"><span class="n">sequential_constraint</span></code></strong>: An instance of a <code class="codehilite"><span class="n">StrictlyIncreasing</span></code> sequential    sampling constraint.</li>
+<li><strong><code class="codehilite"><span class="n">ordered_sampling_alg</span></code></strong>: An instance of a <code class="codehilite"><span class="n">StartToEnd</span></code> ordered    sampling constraint, indicating that the sequence of increasing values should    be created in one go from start to finish (as opposed to chunking the data set    first, then gluing partial sequences together afterwards).</li>
+<li><strong><code class="codehilite"><span class="n">quantiles</span></code></strong>: A two-element vector representing a quantile range which is used    to truncate the supports values in the dataset before drawing the sequence of    increasing values. This deals with distributions with infinite support.</li>
 </ul>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e10b241f0b0494d319111b068147ba5dde8b0384/src/resampling/ordered_resampling/resample_uncertaindataset_strictlyincreasing.jl#L17-L37' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/71b1617813afa51aa16a1fc76aaa6b8afdf31571/src/resampling/ordered_resampling/resample_uncertaindataset_strictlyincreasing.jl#L17-L37' class='documenter-source'>source</a><br></p>
 <p><a id='Examples-1'></a></p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <p><a id='Example-1:-strictly-increasing-sequences-1'></a></p>

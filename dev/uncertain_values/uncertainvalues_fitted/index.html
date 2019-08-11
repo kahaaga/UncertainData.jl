@@ -1141,21 +1141,21 @@
 <p><a id='Constructor-1'></a></p>
 <h3 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h3>
 <p><a id='UncertainData.UncertainValues.UncertainValue-Union{Tuple{T}, Tuple{D}, Tuple{Type{D},Array{T,1}}} where T where D<:Distribution' href='#UncertainData.UncertainValues.UncertainValue-Union{Tuple{T}, Tuple{D}, Tuple{Type{D},Array{T,1}}} where T where D<:Distribution'>#</a>
-<strong><code class="codehilite">UncertainData.UncertainValues.UncertainValue</code></strong> &mdash; <em>Method</em>.</p>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">UncertainValues</span><span class="p">.</span><span class="n">UncertainValue</span></code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>UncertainValue(empiricaldata::AbstractVector{T},
-    d::Type{D}) where {D &lt;: Distribution}
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">UncertainValue</span><span class="p">(</span><span class="n">empiricaldata</span><span class="o">::</span><span class="kt">AbstractVector</span><span class="p">{</span><span class="n">T</span><span class="p">},</span>
+    <span class="n">d</span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="n">D</span><span class="p">})</span> <span class="n">where</span> <span class="p">{</span><span class="n">D</span> <span class="o">&lt;:</span> <span class="n">Distribution</span><span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
 <p><strong>Constructor for empirical distributions.</strong></p>
-<p>Fit a distribution of type <code class="codehilite">d</code> to the data and use that as the representation of the empirical distribution. Calls <code class="codehilite">Distributions.fit</code> behind the scenes.</p>
+<p>Fit a distribution of type <code class="codehilite"><span class="n">d</span></code> to the data and use that as the representation of the empirical distribution. Calls <code class="codehilite"><span class="n">Distributions</span><span class="p">.</span><span class="n">fit</span></code> behind the scenes.</p>
 <p><strong>Arguments</strong></p>
 <ul>
-<li><strong><code class="codehilite">empiricaldata</code></strong>: The data for which to fit the <code class="codehilite">distribution</code>.</li>
-<li><strong><code class="codehilite">distribution</code></strong>: A valid univariate distribution from <code class="codehilite">Distributions.jl</code>.</li>
+<li><strong><code class="codehilite"><span class="n">empiricaldata</span></code></strong>: The data for which to fit the <code class="codehilite"><span class="n">distribution</span></code>.</li>
+<li><strong><code class="codehilite"><span class="n">distribution</span></code></strong>: A valid univariate distribution from <code class="codehilite"><span class="n">Distributions</span><span class="p">.</span><span class="n">jl</span></code>.</li>
 </ul>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e10b241f0b0494d319111b068147ba5dde8b0384/src/uncertain_values/UncertainValue.jl#L71-L85' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/71b1617813afa51aa16a1fc76aaa6b8afdf31571/src/uncertain_values/UncertainValue.jl#L71-L85' class='documenter-source'>source</a><br></p>
 <p><a id='Examples-1'></a></p>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
 <div class="superfences-tabs">

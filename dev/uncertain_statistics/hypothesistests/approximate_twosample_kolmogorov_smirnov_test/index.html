@@ -1114,30 +1114,30 @@
                 <p><a id='Pooled-test-1'></a></p>
 <h3 id="pooled_test">Pooled test<a class="headerlink" href="#pooled_test" title="Permanent link">&para;</a></h3>
 <p><a id='UncertainData.UncertainStatistics.ApproximateTwoSampleKSTestPooled' href='#UncertainData.UncertainStatistics.ApproximateTwoSampleKSTestPooled'>#</a>
-<strong><code class="codehilite">UncertainData.UncertainStatistics.ApproximateTwoSampleKSTestPooled</code></strong> &mdash; <em>Function</em>.</p>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">UncertainStatistics</span><span class="p">.</span><span class="n">ApproximateTwoSampleKSTestPooled</span></code></strong> &mdash; <em>Function</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>ApproximateTwoSampleKSTestPooled(d1::UncertainDataset,
-    d2::UncertainDataset, n::Int = 1000) -&gt; ApproximateTwoSampleKSTest
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">ApproximateTwoSampleKSTestPooled</span><span class="p">(</span><span class="n">d1</span><span class="o">::</span><span class="n">UncertainDataset</span><span class="p">,</span>
+    <span class="n">d2</span><span class="o">::</span><span class="n">UncertainDataset</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ApproximateTwoSampleKSTest</span>
 </pre></div>
 </td></tr></table>
 
-<p>First, draw <code class="codehilite">n</code> realisations of each uncertain value in <code class="codehilite">d1</code>, then separately draw <code class="codehilite">n</code> realisations of each uncertain value in <code class="codehilite">d2</code>. Then, pool all realisations for <code class="codehilite">d1</code> together and all realisations of <code class="codehilite">d2</code> together.</p>
-<p>On the pooled realisations, perform an asymptotic two-sample Kolmogorov–Smirnov-test of the null hypothesis that the distribution furnishing the <code class="codehilite">d1</code> value pool represents the same distribution as the distribution furnishing the <code class="codehilite">d2</code> value pool, against the alternative hypothesis that the furnishing distributions are different.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e10b241f0b0494d319111b068147ba5dde8b0384/src/uncertain_statistics/hypothesis_tests/kolmogorov_smirnov.jl#L96-L109' class='documenter-source'>source</a><br></p>
+<p>First, draw <code class="codehilite"><span class="n">n</span></code> realisations of each uncertain value in <code class="codehilite"><span class="n">d1</span></code>, then separately draw <code class="codehilite"><span class="n">n</span></code> realisations of each uncertain value in <code class="codehilite"><span class="n">d2</span></code>. Then, pool all realisations for <code class="codehilite"><span class="n">d1</span></code> together and all realisations of <code class="codehilite"><span class="n">d2</span></code> together.</p>
+<p>On the pooled realisations, perform an asymptotic two-sample Kolmogorov–Smirnov-test of the null hypothesis that the distribution furnishing the <code class="codehilite"><span class="n">d1</span></code> value pool represents the same distribution as the distribution furnishing the <code class="codehilite"><span class="n">d2</span></code> value pool, against the alternative hypothesis that the furnishing distributions are different.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/71b1617813afa51aa16a1fc76aaa6b8afdf31571/src/uncertain_statistics/hypothesis_tests/kolmogorov_smirnov.jl#L96-L109' class='documenter-source'>source</a><br></p>
 <p><a id='Element-wise-test-1'></a></p>
 <h3 id="element-wise_test">Element-wise test<a class="headerlink" href="#element-wise_test" title="Permanent link">&para;</a></h3>
 <p><a id='UncertainData.UncertainStatistics.ApproximateTwoSampleKSTestElementWise' href='#UncertainData.UncertainStatistics.ApproximateTwoSampleKSTestElementWise'>#</a>
-<strong><code class="codehilite">UncertainData.UncertainStatistics.ApproximateTwoSampleKSTestElementWise</code></strong> &mdash; <em>Function</em>.</p>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">UncertainStatistics</span><span class="p">.</span><span class="n">ApproximateTwoSampleKSTestElementWise</span></code></strong> &mdash; <em>Function</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>ApproximateTwoSampleKSTestElementWise(d1::UncertainDataset,
-    d2::UncertainDataset, n::Int = 1000) -&gt; Vector{ApproximateTwoSampleKSTest}
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">ApproximateTwoSampleKSTestElementWise</span><span class="p">(</span><span class="n">d1</span><span class="o">::</span><span class="n">UncertainDataset</span><span class="p">,</span>
+    <span class="n">d2</span><span class="o">::</span><span class="n">UncertainDataset</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Vector</span><span class="p">{</span><span class="n">ApproximateTwoSampleKSTest</span><span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
-<p>Assuming <code class="codehilite">d1</code> and <code class="codehilite">d2</code> contain the same number of uncertain observations, draw <code class="codehilite">n</code> realisations of each uncertain value in <code class="codehilite">d1</code>, then separately and separately draw <code class="codehilite">n</code> realisations of each uncertain value in <code class="codehilite">d2</code>.</p>
-<p>Then, perform an asymptotic two-sample Kolmogorov–Smirnov-test of the null hypothesis that the uncertain values in <code class="codehilite">d1</code> and <code class="codehilite">d2</code> come from the same distribution against the alternative hypothesis that the (element-wise) values in  <code class="codehilite">d1</code> and <code class="codehilite">d2</code> come from different distributions.</p>
-<p>The test is performed pairwise, i.e. ApproximateTwoSampleKSTest(d1[i], d2[i]) with <code class="codehilite">n</code> draws for the <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>-ith pair of uncertain values.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e10b241f0b0494d319111b068147ba5dde8b0384/src/uncertain_statistics/hypothesis_tests/kolmogorov_smirnov.jl#L118-L133' class='documenter-source'>source</a><br></p>
+<p>Assuming <code class="codehilite"><span class="n">d1</span></code> and <code class="codehilite"><span class="n">d2</span></code> contain the same number of uncertain observations, draw <code class="codehilite"><span class="n">n</span></code> realisations of each uncertain value in <code class="codehilite"><span class="n">d1</span></code>, then separately and separately draw <code class="codehilite"><span class="n">n</span></code> realisations of each uncertain value in <code class="codehilite"><span class="n">d2</span></code>.</p>
+<p>Then, perform an asymptotic two-sample Kolmogorov–Smirnov-test of the null hypothesis that the uncertain values in <code class="codehilite"><span class="n">d1</span></code> and <code class="codehilite"><span class="n">d2</span></code> come from the same distribution against the alternative hypothesis that the (element-wise) values in  <code class="codehilite"><span class="n">d1</span></code> and <code class="codehilite"><span class="n">d2</span></code> come from different distributions.</p>
+<p>The test is performed pairwise, i.e. ApproximateTwoSampleKSTest(d1[i], d2[i]) with <code class="codehilite"><span class="n">n</span></code> draws for the <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>-ith pair of uncertain values.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/71b1617813afa51aa16a1fc76aaa6b8afdf31571/src/uncertain_statistics/hypothesis_tests/kolmogorov_smirnov.jl#L118-L133' class='documenter-source'>source</a><br></p>
                 
                   
                 

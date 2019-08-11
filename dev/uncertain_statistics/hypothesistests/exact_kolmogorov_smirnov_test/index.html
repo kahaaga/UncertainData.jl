@@ -1128,17 +1128,17 @@
                 <p><a id='Regular-test-1'></a></p>
 <h3 id="regular_test">Regular test<a class="headerlink" href="#regular_test" title="Permanent link">&para;</a></h3>
 <p><a id='HypothesisTests.ExactOneSampleKSTest' href='#HypothesisTests.ExactOneSampleKSTest'>#</a>
-<strong><code class="codehilite">HypothesisTests.ExactOneSampleKSTest</code></strong> &mdash; <em>Type</em>.</p>
+<strong><code class="codehilite"><span class="n">HypothesisTests</span><span class="p">.</span><span class="n">ExactOneSampleKSTest</span></code></strong> &mdash; <em>Type</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>ExactOneSampleKSTest(uv::AbstractUncertainValue,
-    d::UnivariateDistribution, n::Int = 1000) -&gt; ExactOneSampleKSTest
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">ExactOneSampleKSTest</span><span class="p">(</span><span class="n">uv</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span>
+    <span class="n">d</span><span class="o">::</span><span class="n">UnivariateDistribution</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ExactOneSampleKSTest</span>
 </pre></div>
 </td></tr></table>
 
-<p>Perform a one-sample exact Kolmogorov–Smirnov test of the null hypothesis that a draw of <code class="codehilite">n</code> realisations of the uncertain value <code class="codehilite">uv</code> comes from the distribution <code class="codehilite">d</code> against the alternative hypothesis that the sample is not drawn from <code class="codehilite">d</code>.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e10b241f0b0494d319111b068147ba5dde8b0384/src/uncertain_statistics/hypothesis_tests/kolmogorov_smirnov.jl#L32-L40' class='documenter-source'>source</a><br></p>
+<p>Perform a one-sample exact Kolmogorov–Smirnov test of the null hypothesis that a draw of <code class="codehilite"><span class="n">n</span></code> realisations of the uncertain value <code class="codehilite"><span class="n">uv</span></code> comes from the distribution <code class="codehilite"><span class="n">d</span></code> against the alternative hypothesis that the sample is not drawn from <code class="codehilite"><span class="n">d</span></code>.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/71b1617813afa51aa16a1fc76aaa6b8afdf31571/src/uncertain_statistics/hypothesis_tests/kolmogorov_smirnov.jl#L32-L40' class='documenter-source'>source</a><br></p>
 <p><strong>Example</strong></p>
-<p>We'll test whether the uncertain value <code class="codehilite">uv = UncertainValue(Gamma, 2, 4)</code> comes from the theoretical distribution <code class="codehilite">Gamma(2, 4)</code>. Of course, we expect the test to confirm this, because we're using the exact same distribution.</p>
+<p>We'll test whether the uncertain value <code class="codehilite"><span class="n">uv</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">Gamma</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span></code> comes from the theoretical distribution <code class="codehilite"><span class="n">Gamma</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span></code>. Of course, we expect the test to confirm this, because we're using the exact same distribution.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -1180,32 +1180,32 @@
 </pre></div>
 </td></tr></table>
 
-<p>As expected, the test can't reject the hypothesis that the uncertain value <code class="codehilite">uv</code> comes from the theoretical distribution <code class="codehilite">Gamma(2, 4)</code>, precisely because it does.</p>
+<p>As expected, the test can't reject the hypothesis that the uncertain value <code class="codehilite"><span class="n">uv</span></code> comes from the theoretical distribution <code class="codehilite"><span class="n">Gamma</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span></code>, precisely because it does.</p>
 <p><a id='Pooled-test-1'></a></p>
 <h3 id="pooled_test">Pooled test<a class="headerlink" href="#pooled_test" title="Permanent link">&para;</a></h3>
 <p><a id='UncertainData.UncertainStatistics.ExactOneSampleKSTestPooled' href='#UncertainData.UncertainStatistics.ExactOneSampleKSTestPooled'>#</a>
-<strong><code class="codehilite">UncertainData.UncertainStatistics.ExactOneSampleKSTestPooled</code></strong> &mdash; <em>Function</em>.</p>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">UncertainStatistics</span><span class="p">.</span><span class="n">ExactOneSampleKSTestPooled</span></code></strong> &mdash; <em>Function</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>ExactOneSampleKSTestPooled(ud::UncertainDataset,
-    d::UnivariateDistribution, n::Int = 1000) -&gt; ExactOneSampleKSTest
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">ExactOneSampleKSTestPooled</span><span class="p">(</span><span class="n">ud</span><span class="o">::</span><span class="n">UncertainDataset</span><span class="p">,</span>
+    <span class="n">d</span><span class="o">::</span><span class="n">UnivariateDistribution</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ExactOneSampleKSTest</span>
 </pre></div>
 </td></tr></table>
 
-<p>First, draw <code class="codehilite">n</code> realisations of each uncertain value in <code class="codehilite">ud</code> and pool them together. Then perform a one-sample exact Kolmogorov–Smirnov test of the null hypothesis that the pooled values comes from the distribution <code class="codehilite">d</code> against the alternative hypothesis that the sample is not drawn from <code class="codehilite">d</code>.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e10b241f0b0494d319111b068147ba5dde8b0384/src/uncertain_statistics/hypothesis_tests/kolmogorov_smirnov.jl#L47-L55' class='documenter-source'>source</a><br></p>
+<p>First, draw <code class="codehilite"><span class="n">n</span></code> realisations of each uncertain value in <code class="codehilite"><span class="n">ud</span></code> and pool them together. Then perform a one-sample exact Kolmogorov–Smirnov test of the null hypothesis that the pooled values comes from the distribution <code class="codehilite"><span class="n">d</span></code> against the alternative hypothesis that the sample is not drawn from <code class="codehilite"><span class="n">d</span></code>.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/71b1617813afa51aa16a1fc76aaa6b8afdf31571/src/uncertain_statistics/hypothesis_tests/kolmogorov_smirnov.jl#L47-L55' class='documenter-source'>source</a><br></p>
 <p><a id='Element-wise-test-1'></a></p>
 <h3 id="element-wise_test">Element-wise test<a class="headerlink" href="#element-wise_test" title="Permanent link">&para;</a></h3>
 <p><a id='UncertainData.UncertainStatistics.ExactOneSampleKSTestElementWise' href='#UncertainData.UncertainStatistics.ExactOneSampleKSTestElementWise'>#</a>
-<strong><code class="codehilite">UncertainData.UncertainStatistics.ExactOneSampleKSTestElementWise</code></strong> &mdash; <em>Function</em>.</p>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">UncertainStatistics</span><span class="p">.</span><span class="n">ExactOneSampleKSTestElementWise</span></code></strong> &mdash; <em>Function</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>ExactOneSampleKSTestElementWise(ud::UncertainDataset,
-    d::UnivariateDistribution, n::Int = 1000) -&gt; Vector{ExactOneSampleKSTest}
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">ExactOneSampleKSTestElementWise</span><span class="p">(</span><span class="n">ud</span><span class="o">::</span><span class="n">UncertainDataset</span><span class="p">,</span>
+    <span class="n">d</span><span class="o">::</span><span class="n">UnivariateDistribution</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Vector</span><span class="p">{</span><span class="n">ExactOneSampleKSTest</span><span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
-<p>First, draw <code class="codehilite">n</code> realisations of each uncertain value in <code class="codehilite">ud</code>, keeping one pool of values for each uncertain value.</p>
-<p>Then, perform an element-wise (pool-wise) one-sample exact Kolmogorov–Smirnov test of the null hypothesis that each value pool comes from the distribution <code class="codehilite">d</code> against the alternative hypothesis that the sample is not drawn from <code class="codehilite">d</code>.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e10b241f0b0494d319111b068147ba5dde8b0384/src/uncertain_statistics/hypothesis_tests/kolmogorov_smirnov.jl#L62-L72' class='documenter-source'>source</a><br></p>
+<p>First, draw <code class="codehilite"><span class="n">n</span></code> realisations of each uncertain value in <code class="codehilite"><span class="n">ud</span></code>, keeping one pool of values for each uncertain value.</p>
+<p>Then, perform an element-wise (pool-wise) one-sample exact Kolmogorov–Smirnov test of the null hypothesis that each value pool comes from the distribution <code class="codehilite"><span class="n">d</span></code> against the alternative hypothesis that the sample is not drawn from <code class="codehilite"><span class="n">d</span></code>.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/71b1617813afa51aa16a1fc76aaa6b8afdf31571/src/uncertain_statistics/hypothesis_tests/kolmogorov_smirnov.jl#L62-L72' class='documenter-source'>source</a><br></p>
                 
                   
                 

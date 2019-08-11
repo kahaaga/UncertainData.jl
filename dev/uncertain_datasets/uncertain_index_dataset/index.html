@@ -1189,22 +1189,22 @@
                 
                   <h1>Uncertain index dataset</h1>
                 
-                <p><code class="codehilite">UncertainIndexDataset</code>s is an uncertain dataset type that represents the indices  corresponding to an <a href="../uncertain_value_dataset/">UncertainValueDataset</a>.</p>
-<p>It is meant to be used for the <code class="codehilite">indices</code> field in <a href="../uncertain_indexvalue_dataset/">UncertainIndexValueDataset</a>s instances.</p>
+                <p><code class="codehilite"><span class="n">UncertainIndexDataset</span></code>s is an uncertain dataset type that represents the indices  corresponding to an <a href="../uncertain_value_dataset/">UncertainValueDataset</a>.</p>
+<p>It is meant to be used for the <code class="codehilite"><span class="n">indices</span></code> field in <a href="../uncertain_indexvalue_dataset/">UncertainIndexValueDataset</a>s instances.</p>
 <p><a id='Documentation-1'></a></p>
 <h3 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h3>
 <p><a id='UncertainData.UncertainDatasets.UncertainIndexDataset' href='#UncertainData.UncertainDatasets.UncertainIndexDataset'>#</a>
-<strong><code class="codehilite">UncertainData.UncertainDatasets.UncertainIndexDataset</code></strong> &mdash; <em>Type</em>.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>UncertainIndices
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">UncertainDatasets</span><span class="p">.</span><span class="n">UncertainIndexDataset</span></code></strong> &mdash; <em>Type</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">UncertainIndices</span>
 </pre></div>
 </td></tr></table>
 
 <p>Generic dataset containing uncertain indices.</p>
 <p><strong>Fields</strong></p>
 <ul>
-<li><strong><code class="codehilite">indices::AbstractVector{AbstractUncertainValue}</code></strong>: The uncertain values.</li>
+<li><strong><code class="codehilite"><span class="n">indices</span><span class="p">::</span><span class="n">AbstractVector</span><span class="err">{</span><span class="n">AbstractUncertainValue</span><span class="err">}</span></code></strong>: The uncertain values.</li>
 </ul>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e10b241f0b0494d319111b068147ba5dde8b0384/src/uncertain_datasets/UncertainIndexDataset.jl#L1-L8' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/71b1617813afa51aa16a1fc76aaa6b8afdf31571/src/uncertain_datasets/UncertainIndexDataset.jl#L1-L8' class='documenter-source'>source</a><br></p>
 <p><a id='Examples-1'></a></p>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
 <p><a id='Example-1:-increasing-index-uncertainty-through-time-1'></a></p>
@@ -1221,7 +1221,7 @@
 </td></tr></table>
 
 <p>Let's plot the 33<sup>rd</sup> to 67<sup>th</sup> percentile range for the indices: </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>plot(inds, [0.33, 0.67])
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">inds</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">33</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">67</span><span class="p">])</span>
 </pre></div>
 </td></tr></table>
 
@@ -1252,7 +1252,7 @@
 </td></tr></table>
 
 <p>Plot the dataset with error bars in both directions, using the 20<sup>th</sup> to 80<sup>th</sup> percentile  range for the indices and the 33<sup>rd</sup> to 67<sup>th</sup> percentile range for the data values. </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>plot(d, [0.2, 0.8], [0.33, 0.67])
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">33</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">67</span><span class="p">])</span>
 </pre></div>
 </td></tr></table>
 

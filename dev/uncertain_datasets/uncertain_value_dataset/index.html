@@ -1135,28 +1135,28 @@
                 
                   <h1>Uncertain value dataset</h1>
                 
-                <p><code class="codehilite">UncertainValueDataset</code>s is an uncertain dataset type that has no explicit index  associated with its uncertain values. This type may come with some extra functionality  that the generic <a href="../uncertain_dataset/">UncertainDataset</a> type does not support. </p>
+                <p><code class="codehilite"><span class="n">UncertainValueDataset</span></code>s is an uncertain dataset type that has no explicit index  associated with its uncertain values. This type may come with some extra functionality  that the generic <a href="../uncertain_dataset/">UncertainDataset</a> type does not support. </p>
 <p>Use this type when you want to be explicit about the values representing data values, as opposed to <a href="../uncertain_index_dataset/">indices</a>. </p>
 <p><a id='Documentation-1'></a></p>
 <h3 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h3>
 <p><a id='UncertainData.UncertainDatasets.UncertainValueDataset' href='#UncertainData.UncertainDatasets.UncertainValueDataset'>#</a>
-<strong><code class="codehilite">UncertainData.UncertainDatasets.UncertainValueDataset</code></strong> &mdash; <em>Type</em>.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>UncertainValueDataset
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">UncertainDatasets</span><span class="p">.</span><span class="n">UncertainValueDataset</span></code></strong> &mdash; <em>Type</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">UncertainValueDataset</span>
 </pre></div>
 </td></tr></table>
 
 <p>A dataset of uncertain values.</p>
 <p><strong>Fields</strong></p>
 <ul>
-<li><strong><code class="codehilite">values::AbstractVector{AbstractUncertainValue}</code></strong>: The uncertain values. Each value is   represented by an <code class="codehilite">AbstractUncertainValue</code>.</li>
+<li><strong><code class="codehilite"><span class="k">values</span><span class="p">::</span><span class="n">AbstractVector</span><span class="err">{</span><span class="n">AbstractUncertainValue</span><span class="err">}</span></code></strong>: The uncertain values. Each value is   represented by an <code class="codehilite"><span class="n">AbstractUncertainValue</span></code>.</li>
 </ul>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/e10b241f0b0494d319111b068147ba5dde8b0384/src/uncertain_datasets/UncertainValueDataset.jl#L2-L11' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/71b1617813afa51aa16a1fc76aaa6b8afdf31571/src/uncertain_datasets/UncertainValueDataset.jl#L2-L11' class='documenter-source'>source</a><br></p>
 <p><a id='Examples-1'></a></p>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
 <p><a id='Example-1:-constructing-an-UncertainValueDataset-from-uncertain-values-1'></a></p>
-<h4 id="example_1_constructing_an_uncertainvaluedataset_from_uncertain_values">Example 1: constructing an <code class="codehilite">UncertainValueDataset</code> from uncertain values<a class="headerlink" href="#example_1_constructing_an_uncertainvaluedataset_from_uncertain_values" title="Permanent link">&para;</a></h4>
+<h4 id="example_1_constructing_an_uncertainvaluedataset_from_uncertain_values">Example 1: constructing an <code class="codehilite"><span class="n">UncertainValueDataset</span></code> from uncertain values<a class="headerlink" href="#example_1_constructing_an_uncertainvaluedataset_from_uncertain_values" title="Permanent link">&para;</a></h4>
 <p>Let's create a random walk and pretend it represents fluctuations in the mean of an observed dataset. Assume that each data point is normally distributed, and that the <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>-th observation has standard deviation <span><span class="MathJax_Preview">\sigma_i \in [0.3, 0.5]</span><script type="math/tex">\sigma_i \in [0.3, 0.5]</script></span>.</p>
-<p>Representing these data as an <code class="codehilite">UncertainValueDataset</code> is done as follows:</p>
+<p>Representing these data as an <code class="codehilite"><span class="n">UncertainValueDataset</span></code> is done as follows:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1186,7 +1186,7 @@
 </td></tr></table>
 
 <p>The built-in plot recipes makes it a breeze to plot the dataset. Here, we'll plot the  20<sup>th</sup> to 80<sup>th</sup> percentile range error bars. </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>plot(d, [0.2, 0.8])
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8</span><span class="p">])</span>
 </pre></div>
 </td></tr></table>
 
