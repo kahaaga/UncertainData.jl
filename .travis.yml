@@ -3,12 +3,10 @@ os:
   - linux
 julia:
   - nightly
-  - 1.0
   - 1.1
 matrix:
 allow_failures:
 - julia: nightly
-- julia: 1.0
 
 jobs:
   include:
