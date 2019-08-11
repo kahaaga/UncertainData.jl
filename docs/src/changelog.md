@@ -1,4 +1,7 @@
-## UncertainData.jl v0.1.9
+## UncertainData.jl v0.2.1
+
+### Notes
+- Julia 1.1 is required for version > v.0.2.0.
 
 ### New functionality 
 - Spline interpolation on a regular grid. 
