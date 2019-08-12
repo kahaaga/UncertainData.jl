@@ -1,4 +1,4 @@
-## UncertainData.jl v0.2.1
+## UncertainData.jl v0.2.0
 
 ### Notes
 - Julia 1.1 is required for version > v.0.2.0.
