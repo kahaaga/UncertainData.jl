@@ -1,3 +1,9 @@
+## UncertainData.jl v0.2.1
+
+### Bug fixes
+- `resample` didn't work for `UncertainIndexDataset`s due to the data being stored in the `indices` field, not the `values` field as for other subtypes of `AbstractUncertainValueDataset`. This is now fixed.
+
+
 ## UncertainData.jl v0.2.0
 
 ### Notes
