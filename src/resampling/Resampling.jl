@@ -30,6 +30,7 @@ using Reexport
     include("uncertain_dataset/resample_uncertaindataset.jl")
 	include("uncertain_dataset/resample_uncertaindataset_withconstraint.jl")
 
+    include("uncertain_dataset/resample_uncertaindataset_index.jl")
     include("uncertain_dataset/resample_uncertaindataset_value.jl")
     include("uncertain_dataset/resample_uncertaindataset_indexvalue.jl")
 
