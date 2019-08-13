@@ -1164,7 +1164,7 @@
 
 <p>Resample an uncertain value dataset in an element-wise manner. </p>
 <p>Draws values from the entire support of the furnishing distributions.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/bd3d2e922dc911b30dcda860d941eec9d9a725e1/src/resampling/uncertain_dataset/resample_uncertaindataset.jl#L23-L29' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/b8e882bc3a8124a321c5f397c312d05d57b6e58a/src/resampling/uncertain_dataset/resample_uncertaindataset.jl#L23-L29' class='documenter-source'>source</a><br></p>
 <p><a id='UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset,Int64}' href='#UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset,Int64}'>#</a>
 <strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">Resampling</span><span class="p">.</span><span class="n">resample</span></code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">resample</span><span class="p">(</span><span class="n">uv</span><span class="o">::</span><span class="n">UncertainDataset</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Vector</span><span class="p">{</span><span class="kt">Vector</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}}</span>
@@ -1173,7 +1173,7 @@
 
 <p>Resample <code class="codehilite"><span class="n">n</span></code> realizations of an uncertain value dataset in an element-wise manner. </p>
 <p>Draws values from the entire support of the furnishing distributions.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/bd3d2e922dc911b30dcda860d941eec9d9a725e1/src/resampling/uncertain_dataset/resample_uncertaindataset.jl#L35-L41' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/b8e882bc3a8124a321c5f397c312d05d57b6e58a/src/resampling/uncertain_dataset/resample_uncertaindataset.jl#L35-L41' class='documenter-source'>source</a><br></p>
 <p><a id='UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint}}' href='#UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint}}'>#</a>
 <strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">Resampling</span><span class="p">.</span><span class="n">resample</span></code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -1185,7 +1185,7 @@
 <p>Resample an uncertain value dataset in an element-wise manner. </p>
 <p>Enforces the provided sampling <code class="codehilite"><span class="k">constraint</span></code>(s) to each of the data values, possibly  truncating the support of the furnishing distributions from which values are drawn.</p>
 <p>If a single constraint is provided, then that constraint will be applied to all values. If a  vector of constraints (as many as there are values) is provided, then the constraints are  applied element-wise to the data values.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/bd3d2e922dc911b30dcda860d941eec9d9a725e1/src/resampling/uncertain_dataset/resample_uncertaindataset.jl#L47-L59' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/b8e882bc3a8124a321c5f397c312d05d57b6e58a/src/resampling/uncertain_dataset/resample_uncertaindataset.jl#L47-L59' class='documenter-source'>source</a><br></p>
 <p><a id='UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint},Int64}' href='#UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint},Int64}'>#</a>
 <strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">Resampling</span><span class="p">.</span><span class="n">resample</span></code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -1199,7 +1199,7 @@
 <p>Resample <code class="codehilite"><span class="n">n</span></code> realizations of an uncertain value dataset in an element-wise manner. </p>
 <p>Enforces the provided sampling <code class="codehilite"><span class="k">constraint</span></code>(s) to each of the data values, possibly  truncating the support of the furnishing distributions from which values are drawn.</p>
 <p>If a single constraint is provided, then that constraint will be applied to all values. If a  vector of constraints (as many as there are values) is provided, then the constraints are  applied element-wise to the data values.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/bd3d2e922dc911b30dcda860d941eec9d9a725e1/src/resampling/uncertain_dataset/resample_uncertaindataset.jl#L63-L76' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/b8e882bc3a8124a321c5f397c312d05d57b6e58a/src/resampling/uncertain_dataset/resample_uncertaindataset.jl#L63-L76' class='documenter-source'>source</a><br></p>
 <p><a id='Examples-1'></a></p>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
 <p><a id='Resampling-with-sampling-constraints-1'></a></p>
