@@ -49,8 +49,9 @@ using Reexport
     # all types of uncertain values.
     include("UncertainValue.jl")
 
+    # Operations between uncertain UncertainValues
+    include("../uncertain_values_operations/merge.jl")
 
-    
 end #module
 
 """

@@ -1,5 +1,9 @@
 ## UncertainData.jl v0.2.1
 
+### New functionality
+
+- `merge(uvals::Vector{<:AbstractUncertainValue}; n = 1000)` now makes it possible to combine many uncertain values of different into one uncertain value represented by a kernel density estimate. This is achieved by resampling each of the values `n` times, then pooling the draws and estimating a total distribution using KDE.
+
 ### Bug fixes
 - `resample` didn't work for `UncertainIndexDataset`s due to the data being stored in the `indices` field, not the `values` field as for other subtypes of `AbstractUncertainValueDataset`. This is now fixed.
 

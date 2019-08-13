@@ -54,6 +54,8 @@ pages:
       - Theoretical distributions with fitted parameters: uncertain_values/uncertainvalues_fitted.md
       - Values without uncertainty: uncertain_values/certainvalue.md
       - Populations: uncertain_values/populations.md
+    - Merging: uncertain_values/merging.md
+
   - Uncertain datasets:
       - Overview: uncertain_datasets/uncertain_datasets_overview.md
       - Generic uncertain dataset: uncertain_datasets/uncertain_dataset.md
