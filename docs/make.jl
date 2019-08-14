@@ -4,6 +4,7 @@ using DocumenterMarkdown
 using UncertainData
 using Distributions
 using KernelDensity
+using StatsBase
 
 PAGES = [
     "index.md",
