@@ -78,3 +78,8 @@ for the user to reason about and plot their uncertain data under different assum
 Depending on your needs, [Measurements.jl](https://github.com/JuliaPhysics/Measurements.jl) 
 may be a better (and faster) choice if your data satisfies the requirements for the package 
 (normally distributed) and if your uncertainties are correlated.
+
+# Contributing
+
+If you have questions, or a good idea for new functionality that could be useful to have in 
+the package, please submit an issue, or even better - a pull request.
