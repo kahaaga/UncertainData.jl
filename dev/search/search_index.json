@@ -1192,13 +1192,8 @@
         }, 
         {
             "location": "/publications/", 
-            "text": "List of works that use this package.\n\n\n\n\nScientific papers\n\n\n\n\nVasskog, Kristian, John\u2010Inge Svendsen, Jan Mangerud, Kristian Agas\u00f8ster Haaga,    Arve Svean, and Eva Maria Lunnan. \"Evidence of early deglaciation (18 000 cal a bp)    and a postglacial relative sea\u2010level curve from southern Karm\u00f8y, south\u2010west Norway.\"    Journal of Quaternary Science    (2019)\n.\n\n\n\n\n\n\nSoftware\n\n\n\n\nIn a coming release, \nCausalityTools.jl\n    uses UncertainData.jl to detect causal relationships between time series with    uncertainties both in (time) indices and data values.", 
+            "text": "Scientific papers\n\n\n\n\nVasskog, Kristian, John\u2010Inge Svendsen, Jan Mangerud, Kristian Agas\u00f8ster Haaga,    Arve Svean, and Eva Maria Lunnan. \"Evidence of early deglaciation (18 000 cal a bp)    and a postglacial relative sea\u2010level curve from southern Karm\u00f8y, south\u2010west Norway.\"    Journal of Quaternary Science    (2019)\n.\n\n\n\n\n\n\nSoftware\n\n\n\n\nIn a coming release, \nCausalityTools.jl\n    uses UncertainData.jl to detect causal relationships between time series with    uncertainties both in (time) indices and data values.", 
             "title": "Publications and software"
-        }, 
-        {
-            "location": "/publications/#list_of_works_that_use_this_package", 
-            "text": "", 
-            "title": "List of works that use this package."
         }, 
         {
             "location": "/publications/#scientific_papers", 
