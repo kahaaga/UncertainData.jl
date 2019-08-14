@@ -1,4 +1,4 @@
-## UncertainData.jl v0.2.0
+## UncertainData.jl v0.2.1
 
 ### New functionality
 
