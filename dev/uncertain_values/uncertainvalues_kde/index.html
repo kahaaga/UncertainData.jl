@@ -437,6 +437,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../merging/" title="Combining" class="md-nav__link">
+      Combining
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1078,6 +1090,18 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../publications/" title="Publications and software" class="md-nav__link">
+      Publications and software
+    </a>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -1331,7 +1355,7 @@
 
 <p>Construct an uncertain value by a kernel density estimate to <code class="codehilite"><span class="k">data</span></code>.</p>
 <p>Fast Fourier transforms are used in the kernel density estimation, so the number of points should be a power of 2 (default = 2048).</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/b8e882bc3a8124a321c5f397c312d05d57b6e58a/src/uncertain_values/UncertainValue.jl#L13-L22' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/1ce743cc691516c87cfe34b3f713c9a2b1ced5a9/src/uncertain_values/UncertainValue.jl#L13-L22' class='documenter-source'>source</a><br></p>
 <p><a id='Additional-keyword-arguments-and-examples-1'></a></p>
 <h4 id="additional_keyword_arguments_and_examples">Additional keyword arguments and examples<a class="headerlink" href="#additional_keyword_arguments_and_examples" title="Permanent link">&para;</a></h4>
 <p>If the only argument to the <code class="codehilite"><span class="n">UncertainValue</span></code> constructor is a vector of values, the default behaviour is to represent the distribution by a kernel density estimate (KDE), i.e. <code class="codehilite"><span class="n">UncertainValue</span><span class="p">(</span><span class="k">data</span><span class="p">)</span></code>. Gaussian kernels are used by default. The syntax <code class="codehilite"><span class="n">UncertainValue</span><span class="p">(</span><span class="n">UnivariateKDE</span><span class="p">,</span> <span class="k">data</span><span class="p">)</span></code> will also work if <code class="codehilite"><span class="n">KernelDensity</span><span class="p">.</span><span class="n">jl</span></code> is loaded.</p>
