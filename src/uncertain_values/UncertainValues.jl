@@ -5,8 +5,12 @@ using Reexport
     using Distributions
     using RecipesBase
     using StaticArrays
-    using KernelDensity
-    using StatsBase
+    import KernelDensity: KernelDensity, UnivariateKDE, default_bandwidth, kde
+    import StatsBase: StatsBase,
+        ProbabilityWeights, pweights, 
+        FrequencyWeights, fweights,
+        Weights, weights,
+        AnalyticWeights, aweights
 
   
     # Abstract types and common methods
@@ -49,8 +53,11 @@ using Reexport
     # all types of uncertain values.
     include("UncertainValue.jl")
 
-
-    
+    export KernelDensity, UnivariateKDE, default_bandwidth, kde
+        ProbabilityWeights, pweights, 
+        FrequencyWeights, fweights,
+        Weights, weights,
+        AnalyticWeights, aweights
 end #module
 
 """

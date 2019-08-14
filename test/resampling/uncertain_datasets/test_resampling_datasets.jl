@@ -18,12 +18,13 @@ o14 = UncertainValue([2, 3, 4], [0.3, 0.4, 0.1])
 uvals = [o1, o2, o3, o4, o5, o6, o7, o8, o9, o11, o12, o13, o14]
 D = UncertainDataset(uvals)
 UV = UncertainValueDataset(uvals)
+UIDX = UncertainIndexDataset(uvals)
 UIV = UncertainIndexValueDataset(D, D)
 
 n = length(D)
 @test resample(D) isa Vector
 @test resample(UV) isa Vector
-
+@test resample(UIDX) isa Vector
 @test resample(D, 10) isa Vector
 @test resample(UV, 10) isa Vector
 #@test resample(UIV, 10) isa Vector

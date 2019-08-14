@@ -4,6 +4,5 @@ using Reexport
     using Interpolations
     
     include("grids/RectangularGrid.jl")
-    include("grids/schemes.jl")
     include("methods/interpolation.jl")
 end

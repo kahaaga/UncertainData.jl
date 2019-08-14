@@ -1,5 +1,25 @@
 ## UncertainData.jl v0.2.0
 
+### New functionality
+
+- `merge(uvals::Vector{<:AbstractUncertainValue}; n = 1000)` now makes it possible to combine many uncertain values of different into one uncertain value represented by a kernel density estimate. This is achieved by resampling each of the values `n` times, then pooling the draws and estimating a total distribution using KDE.
+- `merge(uvals::Vector{<:AbstractUncertainValue}; weights::Weights n = 1000)`, 
+    `merge(uvals::Vector{<:AbstractUncertainValue}; weights::AnalyticalWeights n = 1000)` 
+    and 
+    `merge(uvals::Vector{<:AbstractUncertainValue}; weights::ProbabilityWeights n = 1000)`
+    merges uncertain values by resampling them proportionally to `weights`, then pooling 
+    the draws and performing KDE. These are all functionally equivalent, but implementations
+    for different weights are provided for compatibility with StatsBase.
+- `merge(uvals::Vector{<:AbstractUncertainValue}; weights::FrequencyWeights n = 1000)` 
+    merges uncertain values by sampling them according to the number of samples provided 
+    with `weights`.
+
+### Bug fixes
+- `resample` didn't work for `UncertainIndexDataset`s due to the data being stored in the `indices` field, not the `values` field as for other subtypes of `AbstractUncertainValueDataset`. This is now fixed.
+
+
+## UncertainData.jl v0.2.0
+
 ### Notes
 - Julia 1.1 is required for version > v.0.2.0.
 

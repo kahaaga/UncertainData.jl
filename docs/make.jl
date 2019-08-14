@@ -4,6 +4,7 @@ using DocumenterMarkdown
 using UncertainData
 using Distributions
 using KernelDensity
+using StatsBase
 
 PAGES = [
     "index.md",
@@ -14,7 +15,8 @@ PAGES = [
         "uncertain_values/uncertainvalues_fitted.md",
         "uncertain_values/uncertainvalues_theoreticaldistributions.md",
         "uncertain_values/certainvalue.md",
-        "uncertain_values/populations.md"
+        "uncertain_values/populations.md",
+        "uncertain_values/merging.md"
     ],
 	"Uncertain datasets" => [
         "uncertain_datasets/uncertain_datasets_overview.md",
@@ -71,7 +73,9 @@ PAGES = [
 
     "implementing_algorithms_for_uncertaindata.md",
     
-    "changelog.md"
+    "changelog.md",
+
+    "publications.md"
 ]
 
 makedocs(
