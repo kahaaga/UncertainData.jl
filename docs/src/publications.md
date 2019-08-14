@@ -1,4 +1,3 @@
-# List of works that use this package.
 
 ## Scientific papers 
 - [Vasskog, Kristian, John‐Inge Svendsen, Jan Mangerud, Kristian Agasøster Haaga, 
