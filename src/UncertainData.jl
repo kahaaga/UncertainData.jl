@@ -32,6 +32,8 @@ include("uncertain_statistics/UncertainStatistics.jl")
 # Plot recipes
 include("plot_recipes/UncertainDataPlotRecipes.jl")
 
+# Operations between uncertain UncertainValues
+include("uncertain_values/operations/merging.jl")
 
 export UncertainScalarBinomialDistributed
 

@@ -51,7 +51,7 @@ number of points should be a power of 2 (default = 2048).
 """
 function UncertainValue(kerneldensity::Type{K}, data::Vector{T};
         kernel::Type{D} = Normal,
-        bandwidth = KernelDensity.default_bandwidth(data),
+        bandwidth = KernelDensity.default_bandwidth(data)/4,
         npoints::Int = 2048) where {K <: UnivariateKDE, D <: Distribution, T}
 
     # Kernel density estimation

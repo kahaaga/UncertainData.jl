@@ -11,7 +11,7 @@ include("uncertain_values/test_uncertain_values.jl")
 include("uncertain_values/test_minmax.jl")
 include("uncertain_values/test_certain_values.jl")
 include("uncertain_values/test_populations.jl")
-
+include("uncertain_values/test_merging.jl")
 include("mathematics/test_mathematics.jl")
 
 # UncertainDatasets module tests
