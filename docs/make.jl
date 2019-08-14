@@ -73,7 +73,9 @@ PAGES = [
 
     "implementing_algorithms_for_uncertaindata.md",
     
-    "changelog.md"
+    "changelog.md",
+
+    "publications.md"
 ]
 
 makedocs(

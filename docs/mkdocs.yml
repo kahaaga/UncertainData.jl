@@ -54,7 +54,7 @@ pages:
       - Theoretical distributions with fitted parameters: uncertain_values/uncertainvalues_fitted.md
       - Values without uncertainty: uncertain_values/certainvalue.md
       - Populations: uncertain_values/populations.md
-    - Merging: uncertain_values/merging.md
+    - Combining: uncertain_values/merging.md
 
   - Uncertain datasets:
       - Overview: uncertain_datasets/uncertain_datasets_overview.md
@@ -99,3 +99,4 @@ pages:
       - Anderson-Darling test: uncertain_statistics/hypothesistests/anderson_darling_test.md
   - Implementing algorithms for uncertain data: implementing_algorithms_for_uncertaindata.md
   - Changelog: changelog.md
+  - Publications and software: publications.md
