@@ -1160,7 +1160,7 @@
 </td></tr></table>
 
 <p>Perform a one-sample exact Kolmogorov–Smirnov test of the null hypothesis that a draw of <code class="codehilite"><span class="n">n</span></code> realisations of the uncertain value <code class="codehilite"><span class="n">uv</span></code> comes from the distribution <code class="codehilite"><span class="n">d</span></code> against the alternative hypothesis that the sample is not drawn from <code class="codehilite"><span class="n">d</span></code>.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/07f5c291d4c3ca2ee0d4509775cb0393f01b9425/src/uncertain_statistics/hypothesis_tests/kolmogorov_smirnov.jl#L32-L40' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/0351acbe84bcde8ce2aa54daaa01200d082781ef/src/uncertain_statistics/hypothesis_tests/kolmogorov_smirnov.jl#L32-L40' class='documenter-source'>source</a><br></p>
 <p><strong>Example</strong></p>
 <p>We'll test whether the uncertain value <code class="codehilite"><span class="n">uv</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">Gamma</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span></code> comes from the theoretical distribution <code class="codehilite"><span class="n">Gamma</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span></code>. Of course, we expect the test to confirm this, because we're using the exact same distribution.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -1216,7 +1216,7 @@
 </td></tr></table>
 
 <p>First, draw <code class="codehilite"><span class="n">n</span></code> realisations of each uncertain value in <code class="codehilite"><span class="n">ud</span></code> and pool them together. Then perform a one-sample exact Kolmogorov–Smirnov test of the null hypothesis that the pooled values comes from the distribution <code class="codehilite"><span class="n">d</span></code> against the alternative hypothesis that the sample is not drawn from <code class="codehilite"><span class="n">d</span></code>.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/07f5c291d4c3ca2ee0d4509775cb0393f01b9425/src/uncertain_statistics/hypothesis_tests/kolmogorov_smirnov.jl#L47-L55' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/0351acbe84bcde8ce2aa54daaa01200d082781ef/src/uncertain_statistics/hypothesis_tests/kolmogorov_smirnov.jl#L47-L55' class='documenter-source'>source</a><br></p>
 <p><a id='Element-wise-test-1'></a></p>
 <h3 id="element-wise_test">Element-wise test<a class="headerlink" href="#element-wise_test" title="Permanent link">&para;</a></h3>
 <p><a id='UncertainData.UncertainStatistics.ExactOneSampleKSTestElementWise' href='#UncertainData.UncertainStatistics.ExactOneSampleKSTestElementWise'>#</a>
@@ -1229,7 +1229,7 @@
 
 <p>First, draw <code class="codehilite"><span class="n">n</span></code> realisations of each uncertain value in <code class="codehilite"><span class="n">ud</span></code>, keeping one pool of values for each uncertain value.</p>
 <p>Then, perform an element-wise (pool-wise) one-sample exact Kolmogorov–Smirnov test of the null hypothesis that each value pool comes from the distribution <code class="codehilite"><span class="n">d</span></code> against the alternative hypothesis that the sample is not drawn from <code class="codehilite"><span class="n">d</span></code>.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/07f5c291d4c3ca2ee0d4509775cb0393f01b9425/src/uncertain_statistics/hypothesis_tests/kolmogorov_smirnov.jl#L62-L72' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/0351acbe84bcde8ce2aa54daaa01200d082781ef/src/uncertain_statistics/hypothesis_tests/kolmogorov_smirnov.jl#L62-L72' class='documenter-source'>source</a><br></p>
                 
                   
                 
