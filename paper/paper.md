@@ -23,18 +23,18 @@ bibliography: paper.bib
 
 ``UncertainData.jl`` provides an interface to represent data with associated uncertainties 
 for the Julia programming language [@Bezanson:2017]. Unlike 
-``Measurements.jl``[@Giordano:2016], which deals with exact error propagation of normally 
+``Measurements.jl`` [@Giordano:2016], which deals with exact error propagation of normally 
 distributed values, ``UncertainData.jl`` uses a resampling approach to deal with 
 uncertainties in calculations. This allows working with and combining any type of uncertain 
 value for which a resampling method can be defined. Examples of currently supported 
-uncertain values are theoretical distributions, e.g. those supported by 
-[Distributions.jl](https://github.com/JuliaStats/Distributions.jl); [@Besan:2019, @Lin:2019], 
-values whose states are represented by a finite set of values with weighted probabilities, 
-values represented by empirical distributions, and more.
+uncertain values are: theoretical distributions, e.g., those supported by 
+[Distributions.jl](https://github.com/JuliaStats/Distributions.jl) [@Besan:2019, @Lin:2019]; 
+values whose states are represented by a finite set of values with weighted probabilities; 
+values represented by empirical distributions; and more.
 
 The package simplifies resampling from uncertain datasets whose data points potentially 
 have different kinds of uncertainties, both in data values and potential index values 
-(e.g time or space). The user may resample using a set of pre-defined constraints, 
+(e.g., time or space). The user may resample using a set of pre-defined constraints, 
 truncating the supports of the distributions furnishing the uncertain datasets, combined
 with interpolation on pre-defined grids. Methods for sequential resampling of ordered 
 datasets that have indices with uncertainties are also provided.
