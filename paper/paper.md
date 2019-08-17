@@ -40,11 +40,13 @@ with interpolation on pre-defined grids. Methods for sequential resampling of or
 datasets that have indices with uncertainties are also provided.
 
 Using Julia's multiple dispatch, ``UncertainData.jl`` extends most elementary mathematical 
-operations for uncertain values and uncertain datasets, as well as hypothesis tests and 
-various methods from the [StatsBase.jl](https://github.com/JuliaStats/StatsBase.jl) package. 
-Additional statistical algorithms are trivially adapted to handle uncertain values and 
-datasets from ``UncertainData.jl`` by using multiple dispatch and the provided resampling 
-framework.
+operations, hypothesis tests from 
+[HypothesisTests.jl](https://github.com/JuliaStats/HypothesisTests.jl), and 
+various methods from the [StatsBase.jl](https://github.com/JuliaStats/StatsBase.jl) package 
+for uncertain values and uncertain datasets. 
+Additional statistical algorithms in other packages are trivially adapted to handle 
+uncertain values and datasets from ``UncertainData.jl`` by using multiple dispatch and 
+the provided resampling framework.
 
 ``UncertainData.jl``  was originally designed to form the backbone of the uncertainty 
 handling in the [CausalityTools.jl](https://github.com/kahaaga/CausalityTools.jl) package, 
