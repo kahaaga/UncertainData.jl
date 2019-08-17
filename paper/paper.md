@@ -5,7 +5,7 @@ tags:
   - uncertainty
   - measurements
 authors:
-  - name: Kristian Agas\{o}ster Haaga
+  - name: Kristian Agasøster Haaga
     orcid: 0000-0001-6880-8725
     affiliation: "1, 2, 3"
 affiliations:
