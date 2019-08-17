@@ -7,14 +7,14 @@ tags:
 authors:
   - name: Kristian Agasøster Haaga
     orcid: 0000-0001-6880-8725
-    affiliation: 1
+    affiliation: "1, 2", "3"
 affiliations:
- - name: Department of Earth Science, University of Bergen, Bergen, Norway
-   index: 1
-- name: Jebsen Centre for Deep Sea Research, Bergen, Norway
-   index: 2
- - name: Bjerknes Centre for Climate Research, Bergen, Norway
-   index: 3
+  - name: Department of Earth Science, University of Bergen, Bergen, Norway
+    index: 1 
+  - name: Jebsen Centre for Deep Sea Research, Bergen, Norway
+    index: 2
+  - name: Bjerknes Centre for Climate Research, Bergen, Norway
+    index: 3
 date: 05 August 2019
 bibliography: paper.bib
 ---
