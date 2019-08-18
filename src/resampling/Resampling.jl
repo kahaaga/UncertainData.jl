@@ -46,7 +46,7 @@ using Reexport
     #########################################
     include("resampling_with_interpolation/resample_linear_interpolation.jl")
 
-    export resample
+    export resample, resample_elwise
 end # module
 
 
