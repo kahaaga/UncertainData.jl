@@ -44,6 +44,14 @@ n = 3
 @test length(resample_elwise(UVD, n)) == length(UVD)
 @test length(resample_elwise(UVD, n)[1]) == n
 
+n = 5
+@test length(resample_elwise(UD, [TruncateQuantiles(0.1, 0.9) for i = 1:length(UD)], n)) == length(UD)
+@test length(resample_elwise(UD, [TruncateQuantiles(0.1, 0.9) for i = 1:length(UD)], n)[1]) == n
+@test length(resample_elwise(UVD, [TruncateQuantiles(0.1, 0.9) for i = 1:length(UVD)], n)) == length(UD)
+@test length(resample_elwise(UVD, [TruncateQuantiles(0.1, 0.9) for i = 1:length(UVD)], n)[1]) == n
+@test length(resample_elwise(UIDX, [TruncateQuantiles(0.1, 0.9) for i = 1:length(UIDX)], n)) == length(UD)
+@test length(resample_elwise(UIDX, [TruncateQuantiles(0.1, 0.9) for i = 1:length(UIDX)], n)[1]) == n
+
 # resample_elwise(uvd::AbstractUncertainValueDataset, constraint::SamplingConstraint, n::Int)
 @test length(resample_elwise(UIDX, TruncateQuantiles(0.1, 0.9), n)) == length(UIDX)
 @test length(resample_elwise(UIDX, TruncateQuantiles(0.1, 0.9), n)[1]) == n
