@@ -514,11 +514,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
     
     <label class="md-nav__link" for="nav-4-2">
-      Constraints
+      Sampling constraints
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
       <label class="md-nav__title" for="nav-4-2">
-        Constraints
+        Sampling constraints
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -605,25 +605,6 @@
           
 
 
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
-    
-    <label class="md-nav__link" for="nav-4-3">
-      Resampling methods
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-4-3">
-        Resampling methods
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
   <li class="md-nav__item">
     <a href="../../../resampling/resampling_uncertain_values/" title="Resampling uncertain values" class="md-nav__link">
       Resampling uncertain values
@@ -637,8 +618,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../resampling/resampling_uncertain_datasets/" title="Resampling uncertain value datasets" class="md-nav__link">
-      Resampling uncertain value datasets
+    <a href="../../../resampling/resampling_uncertain_datasets/" title="Resampling uncertain datasets" class="md-nav__link">
+      Resampling uncertain datasets
     </a>
   </li>
 
@@ -655,11 +636,6 @@
   </li>
 
         
-      </ul>
-    </nav>
-  </li>
-
-        
           
           
           
@@ -667,13 +643,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6">
     
-    <label class="md-nav__link" for="nav-4-4">
+    <label class="md-nav__link" for="nav-4-6">
       Sequential resampling
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-4-4">
+      <label class="md-nav__title" for="nav-4-6">
         Sequential resampling
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -739,13 +715,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-7" type="checkbox" id="nav-4-7">
     
-    <label class="md-nav__link" for="nav-4-5">
+    <label class="md-nav__link" for="nav-4-7">
       Interpolation
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-4-5">
+      <label class="md-nav__title" for="nav-4-7">
         Interpolation
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1160,7 +1136,7 @@
 </td></tr></table>
 
 <p>Perform a one-sample Anderson–Darling test of the null hypothesis that a draw of <code class="codehilite"><span class="n">n</span></code> realisations of the uncertain value <code class="codehilite"><span class="n">uv</span></code> comes from the distribution <code class="codehilite"><span class="n">d</span></code> against the alternative hypothesis that the sample is not drawn from <code class="codehilite"><span class="n">d</span></code>.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/8cfb4fd6ec0c5965cd1be92a9e1d51e9243e6b55/src/uncertain_statistics/hypothesis_tests/anderson_darling.jl#L3-L11' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/49d30495d6eb0b3964acdd44106fac8c8d369433/src/uncertain_statistics/hypothesis_tests/anderson_darling.jl#L3-L11' class='documenter-source'>source</a><br></p>
 <p><a id='Pooled-test-1'></a></p>
 <h3 id="pooled_test">Pooled test<a class="headerlink" href="#pooled_test" title="Permanent link">&para;</a></h3>
 <p><a id='UncertainData.UncertainStatistics.OneSampleADTestPooled' href='#UncertainData.UncertainStatistics.OneSampleADTestPooled'>#</a>
@@ -1172,7 +1148,7 @@
 </td></tr></table>
 
 <p>First, draw <code class="codehilite"><span class="n">n</span></code> realisations of each uncertain value in <code class="codehilite"><span class="n">ud</span></code> and pool them together. Then perform a one-sample Anderson–Darling test of the null hypothesis that the pooled values comes from the distribution <code class="codehilite"><span class="n">d</span></code> against the alternative hypothesis that the sample is not drawn from <code class="codehilite"><span class="n">d</span></code>.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/8cfb4fd6ec0c5965cd1be92a9e1d51e9243e6b55/src/uncertain_statistics/hypothesis_tests/anderson_darling.jl#L17-L25' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/49d30495d6eb0b3964acdd44106fac8c8d369433/src/uncertain_statistics/hypothesis_tests/anderson_darling.jl#L17-L25' class='documenter-source'>source</a><br></p>
 <p><a id='Element-wise-test-1'></a></p>
 <h3 id="element-wise_test">Element-wise test<a class="headerlink" href="#element-wise_test" title="Permanent link">&para;</a></h3>
 <p><a id='UncertainData.UncertainStatistics.OneSampleADTestElementWise' href='#UncertainData.UncertainStatistics.OneSampleADTestElementWise'>#</a>
@@ -1184,7 +1160,7 @@
 </td></tr></table>
 
 <p>First, draw <code class="codehilite"><span class="n">n</span></code> realisations of each uncertain value in <code class="codehilite"><span class="n">ud</span></code>, keeping one pool of values for each uncertain value. Then, perform an element-wise (pool-wise) one-sample Anderson–Darling test of the null hypothesis that each value pool comes from the distribution <code class="codehilite"><span class="n">d</span></code> against the alternative hypothesis that the sample is not drawn from <code class="codehilite"><span class="n">d</span></code>.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/8cfb4fd6ec0c5965cd1be92a9e1d51e9243e6b55/src/uncertain_statistics/hypothesis_tests/anderson_darling.jl#L31-L39' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/49d30495d6eb0b3964acdd44106fac8c8d369433/src/uncertain_statistics/hypothesis_tests/anderson_darling.jl#L31-L39' class='documenter-source'>source</a><br></p>
                 
                   
                 

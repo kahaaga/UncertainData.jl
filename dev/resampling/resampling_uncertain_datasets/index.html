@@ -40,7 +40,7 @@
     
     
       
-        <title>Resampling uncertain value datasets - UncertainData.jl</title>
+        <title>Resampling uncertain datasets - UncertainData.jl</title>
       
     
     
@@ -122,7 +122,7 @@
                 UncertainData.jl
               </span>
               <span class="md-header-nav__topic">
-                Resampling uncertain value datasets
+                Resampling uncertain datasets
               </span>
             
           
@@ -516,11 +516,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
     
     <label class="md-nav__link" for="nav-4-2">
-      Constraints
+      Sampling constraints
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
       <label class="md-nav__title" for="nav-4-2">
-        Constraints
+        Sampling constraints
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -606,27 +606,6 @@
           
           
 
-  
-
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" checked>
-    
-    <label class="md-nav__link" for="nav-4-3">
-      Resampling methods
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-4-3">
-        Resampling methods
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
 
   <li class="md-nav__item">
     <a href="../resampling_uncertain_values/" title="Resampling uncertain values" class="md-nav__link">
@@ -648,11 +627,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Resampling uncertain value datasets
+        Resampling uncertain datasets
       </label>
     
-    <a href="./" title="Resampling uncertain value datasets" class="md-nav__link md-nav__link--active">
-      Resampling uncertain value datasets
+    <a href="./" title="Resampling uncertain datasets" class="md-nav__link md-nav__link--active">
+      Resampling uncertain datasets
     </a>
     
       
@@ -720,11 +699,6 @@
   </li>
 
         
-      </ul>
-    </nav>
-  </li>
-
-        
           
           
           
@@ -732,13 +706,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6">
     
-    <label class="md-nav__link" for="nav-4-4">
+    <label class="md-nav__link" for="nav-4-6">
       Sequential resampling
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-4-4">
+      <label class="md-nav__title" for="nav-4-6">
         Sequential resampling
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -804,13 +778,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-7" type="checkbox" id="nav-4-7">
     
-    <label class="md-nav__link" for="nav-4-5">
+    <label class="md-nav__link" for="nav-4-7">
       Interpolation
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-4-5">
+      <label class="md-nav__title" for="nav-4-7">
         Interpolation
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1173,7 +1147,7 @@
                   <a href="https://github.com/kahaaga/UncertainData.jl/edit/master/docs/resampling/resampling_uncertain_datasets.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>Resampling uncertain value datasets</h1>
+                  <h1>Resampling uncertain datasets</h1>
                 
                 <p>Uncertain datasets are resampled by element-wise sampling the furnishing distributions  of the uncertain values in the dataset. </p>
 <p>You may sample the dataset as it is, or apply  <a href="../../sampling_constraints/available_constraints/">sampling constraints</a> that limit the  support of the individual data value distributions.</p>
@@ -1188,7 +1162,7 @@
 
 <p>Resample an uncertain value dataset in an element-wise manner. </p>
 <p>Draws values from the entire support of the furnishing distributions.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/8cfb4fd6ec0c5965cd1be92a9e1d51e9243e6b55/src/resampling/uncertain_dataset/resample_uncertaindataset.jl#L23-L29' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/49d30495d6eb0b3964acdd44106fac8c8d369433/src/resampling/uncertain_dataset/resample_uncertaindataset.jl#L23-L29' class='documenter-source'>source</a><br></p>
 <p><a id='UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset,Int64}' href='#UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset,Int64}'>#</a>
 <strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">Resampling</span><span class="p">.</span><span class="n">resample</span></code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">resample</span><span class="p">(</span><span class="n">uv</span><span class="o">::</span><span class="n">UncertainDataset</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Vector</span><span class="p">{</span><span class="kt">Vector</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}}</span>
@@ -1197,7 +1171,7 @@
 
 <p>Resample <code class="codehilite"><span class="n">n</span></code> realizations of an uncertain value dataset in an element-wise manner. </p>
 <p>Draws values from the entire support of the furnishing distributions.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/8cfb4fd6ec0c5965cd1be92a9e1d51e9243e6b55/src/resampling/uncertain_dataset/resample_uncertaindataset.jl#L35-L41' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/49d30495d6eb0b3964acdd44106fac8c8d369433/src/resampling/uncertain_dataset/resample_uncertaindataset.jl#L35-L41' class='documenter-source'>source</a><br></p>
 <p><a id='UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint}}' href='#UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint}}'>#</a>
 <strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">Resampling</span><span class="p">.</span><span class="n">resample</span></code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -1209,7 +1183,7 @@
 <p>Resample an uncertain value dataset in an element-wise manner. </p>
 <p>Enforces the provided sampling <code class="codehilite"><span class="k">constraint</span></code>(s) to each of the data values, possibly  truncating the support of the furnishing distributions from which values are drawn.</p>
 <p>If a single constraint is provided, then that constraint will be applied to all values. If a  vector of constraints (as many as there are values) is provided, then the constraints are  applied element-wise to the data values.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/8cfb4fd6ec0c5965cd1be92a9e1d51e9243e6b55/src/resampling/uncertain_dataset/resample_uncertaindataset.jl#L47-L59' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/49d30495d6eb0b3964acdd44106fac8c8d369433/src/resampling/uncertain_dataset/resample_uncertaindataset.jl#L47-L59' class='documenter-source'>source</a><br></p>
 <p><a id='UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint},Int64}' href='#UncertainData.Resampling.resample-Tuple{AbstractUncertainValueDataset,Union{Array{SamplingConstraint,1}, SamplingConstraint},Int64}'>#</a>
 <strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">Resampling</span><span class="p">.</span><span class="n">resample</span></code></strong> &mdash; <em>Method</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -1223,7 +1197,7 @@
 <p>Resample <code class="codehilite"><span class="n">n</span></code> realizations of an uncertain value dataset in an element-wise manner. </p>
 <p>Enforces the provided sampling <code class="codehilite"><span class="k">constraint</span></code>(s) to each of the data values, possibly  truncating the support of the furnishing distributions from which values are drawn.</p>
 <p>If a single constraint is provided, then that constraint will be applied to all values. If a  vector of constraints (as many as there are values) is provided, then the constraints are  applied element-wise to the data values.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/8cfb4fd6ec0c5965cd1be92a9e1d51e9243e6b55/src/resampling/uncertain_dataset/resample_uncertaindataset.jl#L63-L76' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/49d30495d6eb0b3964acdd44106fac8c8d369433/src/resampling/uncertain_dataset/resample_uncertaindataset.jl#L63-L76' class='documenter-source'>source</a><br></p>
 <p><a id='Examples-1'></a></p>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
 <p><a id='Resampling-with-sampling-constraints-1'></a></p>
