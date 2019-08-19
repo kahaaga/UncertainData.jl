@@ -2,7 +2,6 @@ using Reexport
 
 @reexport module Resampling
 
-    
     ###################################
     # Resampling uncertain values
     ###################################
@@ -27,9 +26,13 @@ using Reexport
     ###################################
     # Resampling uncertain datasets
     ###################################
+
+    # Supertype for all uncertain value datasets
+    include("uncertain_dataset/resample_abstractuncertainvaluedataset.jl")
+
+    # Specialized resampling for each type of dataset.
     include("uncertain_dataset/resample_uncertaindataset.jl")
 	include("uncertain_dataset/resample_uncertaindataset_withconstraint.jl")
-
     include("uncertain_dataset/resample_uncertaindataset_index.jl")
     include("uncertain_dataset/resample_uncertaindataset_value.jl")
     include("uncertain_dataset/resample_uncertaindataset_indexvalue.jl")
@@ -46,7 +49,7 @@ using Reexport
     #########################################
     include("resampling_with_interpolation/resample_linear_interpolation.jl")
 
-    export resample
+    export resample, resample_elwise
 end # module
 
 

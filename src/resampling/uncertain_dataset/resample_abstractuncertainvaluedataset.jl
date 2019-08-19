@@ -1,4 +1,10 @@
 
+import ..UncertainDatasets:
+    AbstractUncertainValueDataset
+
+import ..SamplingConstraints: 
+    SamplingConstraint
+
 
 """
     resample_elwise(uvd::AbstractUncertainValueDataset, n::Int)
@@ -11,7 +17,8 @@ function resample_elwise(uvd::AbstractUncertainValueDataset, n::Int)
 end
 
 """
-    resample_elwise(uvd::UncertainIndexDataset, constraint::SamplingConstraint, n::Int)
+    resample_elwise(uvd::AbstractUncertainValueDataset, constraint::SamplingConstraint, 
+        n::Int)
 
 Resample each element in `uvals` `n` times. The i-th entry in the returned 
 vector is a `n`-element vector consisting of `n` unique draws of `uvals[i]`, drawn 
