@@ -44,6 +44,9 @@ n = 3
 @test length(resample_elwise(UVD, n)) == length(UVD)
 @test length(resample_elwise(UVD, n)[1]) == n
 
+@test length(resample_elwise(UVD)[1]) == 1
+@test length(resample_elwise(UVD)) == length(UVD)
+
 n = 5
 @test length(resample_elwise(UD, [TruncateQuantiles(0.1, 0.9) for i = 1:length(UD)], n)) == length(UD)
 @test length(resample_elwise(UD, [TruncateQuantiles(0.1, 0.9) for i = 1:length(UD)], n)[1]) == n
