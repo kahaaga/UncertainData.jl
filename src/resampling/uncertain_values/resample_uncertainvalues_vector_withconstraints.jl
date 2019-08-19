@@ -1,11 +1,11 @@
 
 """
-resample(uvals::Vector{AbstractUncertainValue})
+resample(uvals::Vector{AbstractUncertainValue}, c::SamplingConstrant)
 
-Treat `uvals` as a dataset and resample each value of `uvals` once. 
+Treat `uvals` as a dataset and resample each value of `uvals` once,
 Returns an `length(uvals)`-element vector.
 """
-resample(uvals::Vector{AbstractUncertainValue}) = resample.(uvals)
+resample(uvals::Vector{AbstractUncertainValue}, c::SamplingConstrant) = resample.(uvals, c)
 
 
 """
@@ -16,9 +16,8 @@ Returns `n` resampled draws of `uvals`, each being a `length(uvals)`-element vec
 For each returned vector, the i-th element is a unique draw of `uvals[i]`. 
 """
 function resample(uvals::Vector{AbstractUncertainValue}, n::Int) 
-    [resample.(uvals) for i = 1:n]
+[resample.(uvals) for i = 1:n]
 end
-
 
 """
 resample_elwise(uvals::Vector{AbstractUncertainValue}, n::Int) 

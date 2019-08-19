@@ -32,6 +32,9 @@ include("resampling/uncertain_values/test_resampling_certain_value.jl")
 include("resampling/uncertain_values/test_resampling_uncertainvalues.jl")
 include("resampling/uncertain_values/test_resampling_uncertainvalues_kde.jl")
 
+include("resampling/uncertain_datasets/test_resampling_elwise.jl")
+include("resampling/uncertain_vectors/test_resampling_vectors.jl")
+
 include("resampling/uncertain_datasets/test_resampling_datasets.jl")
 include("resampling/uncertain_datasets/test_resampling_with_constraints.jl")
 include("resampling/uncertain_datasets/sequential/test_resampling_sequential_increasing.jl")

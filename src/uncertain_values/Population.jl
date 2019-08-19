@@ -27,7 +27,7 @@ function summarise(p::AbstractScalarPopulation)
     return summary
 end
 
-Base.show(io::IO, p::AbstractScalarPopulation) = println(io, summarise(p))
+Base.show(io::IO, p::AbstractScalarPopulation) = print(io, summarise(p))
 
 
 Base.rand(p::AbstractScalarPopulation) = sample(p.values, p.probs)
