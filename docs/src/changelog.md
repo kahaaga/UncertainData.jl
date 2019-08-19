@@ -1,8 +1,47 @@
+## UncertainData.jl v0.2.2
+
+### New functionality and syntax changes 
+
+#### Resampling vectors consisting of uncertain values (done in #61)
+
+- `resample(uvals::Vector{AbstractUncertainValue}, n::Int)` is now interpreted as "treat 
+    `uvals` as a dataset and sample it `n` times". Thus, it now behaves as 
+    `resample(AbstractUncertainDataset, n::Int)`, returning `n` vectors of length 
+    `length(uvals)`, where the i-th element is a unique draw of `uvals[i]`.
+
+- `resample_elwise(uvals::Vector{AbstractUncertainValue}, n::Int)` takes over the role as 
+    "sample `uvals` element-wise and `n` times for each element". Returns a vector of 
+    length `length(uvals)`, where the i-th element is a `n`-element vector of unique draws 
+    of `uvals[i]`.
+
+#### Resampling with subtypes of `AbstractUncertainValueDataset`
+
+Currently, this affects the generic `UncertainDataset`s, as well as the specialized 
+`UncertainIndexDataset`s and `UncertainValueDataset`s.
+
+- `resample_elwise(uvd::AbstractUncertainValueDataset, n::Int)` is now interpreted as 
+    "draw `n` realisations of each value in `uvd`". Returns a vector of length `length(uvals)` 
+    where the i-th element is a `n`-element vector of unique draws of `uvals[i]`. This works 
+    for `UncertainDataset`s, `UncertainIndexDataset`s, and `UncertainValueDataset`s. 
+- `resample_elwise(uvd::AbstractUncertainValueDataset, constraint::Union{SamplingConstraint, Vector{SamplingConstraint}}, n::Int)` 
+    is now interpreted as "draw `n` realisations of each value in `uvd`, subjecting each value 
+    in `uvd` to some sampling `constraint`(s) during resampling". Returns a vector of 
+    length `length(uvals)` where the i-th element is a `n`-element vector of unique draws 
+    of `uvals[i]`, where the support of `uvals[i]` has been truncated by the provided 
+    `constraint`(s).
+
+### Bug fixes
+
+- Removed extra blank line from print method for `AbstractUncertainPopulation`.
+
 ## UncertainData.jl v0.2.1
 
 ### New functionality
 
-- `merge(uvals::Vector{<:AbstractUncertainValue}; n = 1000)` now makes it possible to combine many uncertain values of different into one uncertain value represented by a kernel density estimate. This is achieved by resampling each of the values `n` times, then pooling the draws and estimating a total distribution using KDE.
+- `merge(uvals::Vector{<:AbstractUncertainValue}; n = 1000)` now makes it possible to 
+    combine many uncertain values of different into one uncertain value represented by a 
+    kernel density estimate. This is achieved by resampling each of the values `n` times, 
+    then pooling the draws and estimating a total distribution using KDE.
 - `merge(uvals::Vector{<:AbstractUncertainValue}; weights::Weights n = 1000)`, 
     `merge(uvals::Vector{<:AbstractUncertainValue}; weights::AnalyticalWeights n = 1000)` 
     and 
@@ -15,7 +54,9 @@
     with `weights`.
 
 ### Bug fixes
-- `resample` didn't work for `UncertainIndexDataset`s due to the data being stored in the `indices` field, not the `values` field as for other subtypes of `AbstractUncertainValueDataset`. This is now fixed.
+- `resample` didn't work for `UncertainIndexDataset`s due to the data being stored in the 
+    `indices` field, not the `values` field as for other subtypes of 
+    `AbstractUncertainValueDataset`. This is now fixed.
 
 
 ## UncertainData.jl v0.2.0
