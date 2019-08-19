@@ -12,7 +12,7 @@ function resample(uvd::UncertainIndexDataset)
 end
 
 """
-	resample(uvd::UncertainIndexDataset)
+	resample(uvd::UncertainIndexDataset, n::Int)
 
 Draw `n` realisations of an `UncertainIndexDataset` according to the
 distributions of the `UncertainValue`s comprising it.
@@ -22,6 +22,16 @@ function resample(uvd::UncertainIndexDataset, n::Int)
 	[[resample(uvd.indices[i]) for i in 1:L] for k in 1:n]
 end
 
+
+"""
+	resample_elwise(uvd::UncertainIndexDataset, n::Int)
+
+Resample each element in `uvals` `n` times. The i-th entry in the returned 
+vector is a `n`-element vector consisting of `n` unique draws of `uvals[i]`.
+"""
+function resample_elwise(uvd::UncertainIndexDataset, n::Int)
+    [resample(uvd[i], n) for i = 1:length(uvd)]
+end
 
 
 ##########################################################################
@@ -137,4 +147,15 @@ the supports of the distributions are truncated above at some quantile.
 function resample(uv::UncertainIndexDataset, constraint::TruncateQuantiles, n::Int)
 	L = length(uv)
 	[[resample(uv.indices[i], constraint) for i in 1:L] for k = 1:n]
+end
+
+"""
+    resample_elwise(uvd::UncertainIndexDataset, constraint::SamplingConstraint, n::Int)
+
+Resample each element in `uvals` `n` times. The i-th entry in the returned 
+vector is a `n`-element vector consisting of `n` unique draws of `uvals[i]`, drawn 
+after first truncating the support of `uvals[i]` according to the provided `constraint`.
+"""
+function resample_elwise(uvd::UncertainIndexDataset, constraint::SamplingConstraint, n::Int)
+    [resample(uvd[i], constraint, n) for i = 1:length(uvd)]
 end
