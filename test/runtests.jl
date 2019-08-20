@@ -18,6 +18,7 @@ include("mathematics/test_mathematics.jl")
 include("uncertain_datasets/test_uncertain_datasets.jl")
 
 # SamplingConstraints module tests
+include("sampling_constraints/test_sampling_constraints.jl")
 include("sampling_constraints/test_constrain_certainvalue.jl")
 include("sampling_constraints/test_constrain_population.jl")
 include("sampling_constraints/test_constrain_uncertainvalues.jl")
