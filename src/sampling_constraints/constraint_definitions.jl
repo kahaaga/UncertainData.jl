@@ -71,6 +71,14 @@ should be truncated at `nσ` (`n` standard deviations).
 """
 struct TruncateStd{T<:Number} <: ValueSamplingConstraint
     nσ::T
+    
+    function TruncateStd(nσ::T) where T
+        if nσ <= 0
+            error("TruncateStd must be initialised with nσ strictly positive (got nσ = $nσ)")
+        else
+            new{T}(nσ)
+        end
+    end
 end
 
 """
