@@ -61,7 +61,7 @@ uv = UncertainValue(UnivariateKDE, rand(Uniform(10, 15), 1000))
 # distributon furnishing the data point
 @test_throws ArgumentError constrain(uv, TruncateMaximum(-100))
 @test_throws ArgumentError constrain(uv, TruncateMinimum(100))
-@test_throws ArgumentError constrain(uv, TruncateRange(100, -100))
+@test_throws DomainError constrain(uv, TruncateRange(100, -100))
 
 
 uvc_lq = constrain(uv, TruncateLowerQuantile(0.2))
