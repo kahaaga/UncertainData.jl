@@ -53,6 +53,14 @@ should be truncated at some quantile quantile
 struct TruncateQuantiles <: ValueSamplingConstraint
     lower_quantile::Float64
     upper_quantile::Float64
+
+    function TruncateQuantiles(lower_quantile, upper_quantile)
+        if lower_quantile > upper_quantile
+            error("lower quantile > upper quantile ($lower_quantile > $upper_quantile)")
+        else
+            new(lower_quantile, upper_quantile)
+        end
+    end
 end
 
 """
