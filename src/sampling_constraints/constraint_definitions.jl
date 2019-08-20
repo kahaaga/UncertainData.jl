@@ -50,15 +50,17 @@ A constraint indicating that the distribution furnishing an uncertain value
 should be truncated at some quantile quantile
 `(lower_quantile, upper_quantile)`.
 """
-struct TruncateQuantiles <: ValueSamplingConstraint
-    lower_quantile::Float64
-    upper_quantile::Float64
+struct TruncateQuantiles{T1<:Real, T2<:Real} <: ValueSamplingConstraint
+    lower_quantile::T1
+    upper_quantile::T2
 
-    function TruncateQuantiles(lower_quantile, upper_quantile)
-        if lower_quantile > upper_quantile
-            error("lower quantile > upper quantile ($lower_quantile > $upper_quantile)")
+    function TruncateQuantiles(lower_quantile::T1, upper_quantile::T2) where {T1, T2}
+        err_msg = "Need 0 <= lower_quantile < upper_quantile <= 1"
+        
+        if !(lower_quantile < upper_quantile && 0.0 <= lower_quantile < upper_quantile <= 1.0)
+            throw(DomainError(err_msg * " (got lo = $lower_quantile, hi = $upper_quantile)"))
         else
-            new(lower_quantile, upper_quantile)
+            new{T1, T2}(lower_quantile, upper_quantile)
         end
     end
 end
@@ -73,8 +75,10 @@ struct TruncateStd{T<:Number} <: ValueSamplingConstraint
     nσ::T
     
     function TruncateStd(nσ::T) where T
+        
         if nσ <= 0
-            error("TruncateStd must be initialised with nσ strictly positive (got nσ = $nσ)")
+            err_str = "TruncateStd must be initialised with nσ strictly positive"
+            throw(DomainError(err_str *  " (got nσ = $nσ)"))
         else
             new{T}(nσ)
         end
@@ -115,7 +119,8 @@ struct TruncateRange{T1, T2} <: ValueSamplingConstraint
         if min < max
             return new{T1, T2}(min, max)
         else
-            error("Cannot create TruncateRange instance because min > max ($min > $max)")
+            err_msg = "Cannot create TruncateRange instance. Need min < max"
+            throw(DomainError(err_msg * " (got min = $min, max = $max)"))
         end
     end
 end
