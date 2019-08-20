@@ -99,11 +99,18 @@ end
 A constraint indicating that the distribution furnishing an uncertain value
 should be truncated at some range `[min, max]`.
 """
-struct TruncateRange{T} <: ValueSamplingConstraint
-    min::T
-    max::T
+struct TruncateRange{T1, T2} <: ValueSamplingConstraint
+    min::T1
+    max::T2
+    
+    function TruncateRange(min::T1, max::T2) where {T1, T2}
+        if min < max
+            return new{T1, T2}(min, max)
+        else
+            error("Cannot create TruncateRange instance because min > max ($min > $max)")
+        end
+    end
 end
-
 
 
 export
