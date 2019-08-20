@@ -1,3 +1,14 @@
+## UncertainData.jl v0.2.3
+
+### Improvements
+
+- Added input validation when initialising `TruncateQuantiles`, `TruncateRange` and 
+    `TruncateStd`.
+- Separate parameters types for `TruncateQuantiles` and `TruncateRange`, so one can do for 
+    example `TruncateRange(1, 8.0)`, instead of having to promote to `Float64`.
+- Added validation for distribution truncation when resampling.
+
+
 ## UncertainData.jl v0.2.2
 
 ### New functionality and syntax changes 
