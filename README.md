@@ -17,3 +17,12 @@ uncertain data.
 Please check out the
 [documentation](https://kahaaga.github.io/UncertainData.jl/dev) for more
 information.
+
+# Installation
+
+UncertainData.jl is a registered Julia package. Install it by opening a Julia console and run
+
+```julia
+using Pkg
+Pkg.add("UncertainData")
+```
