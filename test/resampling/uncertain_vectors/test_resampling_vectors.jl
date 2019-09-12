@@ -40,5 +40,12 @@ uvals_x = [UncertainValue(Normal, rand(Normal(0, 5)), abs(rand(Normal(0, 3)))) f
 
 constraints = [[TruncateStd(0.3) for x in 1:50]; [TruncateQuantiles(0.3, 0.7) for x in 1:50]];
 
+# Draw one realisation
 @test resample(uvals_x) isa Vector{<:Real}
+@test resample(uvals_x, constraints[1]) isa Vector{<:Real}
 @test resample(uvals_x, constraints) isa Vector{<:Real}
+
+# Draw multiple realisations
+@test resample(uvals_x, 5) isa Vector{Vector{T}} where T<:Real
+@test resample(uvals_x, constraints, 5) isa Vector{Vector{T}} where T<:Real
+@test resample(uvals_x, constraints[1], 5) isa Vector{Vector{T}} where T<:Real
