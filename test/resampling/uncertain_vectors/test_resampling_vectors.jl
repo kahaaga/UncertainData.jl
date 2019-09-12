@@ -35,3 +35,9 @@ n = 2
 @test resample_elwise(uvals1, n) isa Vector{Vector}
 @test length(resample_elwise(uvals1, n)) == length(uvals1)
 @test length(resample_elwise(uvals1, n)[1]) == n
+
+uvals_x = [UncertainValue(Normal, rand(Normal(0, 5)), abs(rand(Normal(0, 3)))) for i = 1:100]
+
+constraints = [[TruncateStd(0.3) for x in 1:50]; [TruncateQuantiles(0.3, 0.7) for x in 1:50]];
+
+@test resample(uvals_x, constraints) isa Vector{<:Real}
