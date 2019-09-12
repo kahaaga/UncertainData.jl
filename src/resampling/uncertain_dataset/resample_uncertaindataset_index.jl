@@ -1,4 +1,9 @@
 import ..UncertainDatasets.UncertainIndexDataset
+import ..UncertainDatasets.AbstractUncertainIndexDataset
+
+##############################
+# Resample the entire dataset
+##############################
 
 """
 	resample(uvd::UncertainIndexDataset)
@@ -10,6 +15,50 @@ function resample(uvd::UncertainIndexDataset)
 	L = length(uvd)
 	[resample(uvd.indices[i]) for i in 1:L]
 end
+
+""" 
+	resample(uv::AbstractUncertainIndexDataset, constraint::Vector{<:SamplingConstraint})
+
+Draw a realisation of an uncertain index dataset according to the uncertain values 
+comprising it, but constrain the elements in the dataset according the provided 
+sampling constraints.
+"""
+function resample(uv::DT, constraint::Vector{<:SamplingConstraint}) where {
+		DT <: AbstractUncertainIndexDataset}
+    [resample(uv.indices[i], constraint[i]) for i in 1:length(uv)]
+end
+
+function resample(uv::DT, constraint::SamplingConstraint) where {
+		DT <: AbstractUncertainIndexDataset}
+	[resample(uv.indices[i], constraint) for i in 1:length(uv)]
+end
+
+function resample(uv::DT, constraint::SamplingConstraint, n::Int) where {
+		DT <: AbstractUncertainIndexDataset}
+	[[resample(uv.indices[i], constraint) for i in 1:length(uv)] for k = 1:n]
+end
+
+function resample(uv::DT, constraint::Vector{<:SamplingConstraint}, n::Int) where {
+		DT <: AbstractUncertainIndexDataset}
+	[[resample(uv.indices[i], constraint[i]) for i in 1:length(uv)] for k = 1:n]
+end
+
+##############################
+# Resample the entire dataset
+##############################
+
+"""
+	resample_elwise(uvd::UncertainIndexDataset, n::Int)
+
+Resample each element in `uvals` `n` times. The i-th entry in the returned 
+vector is a `n`-element vector consisting of `n` unique draws of `uvals[i]`.
+"""
+function resample_elwise(uvd::UncertainIndexDataset, n::Int)
+    [resample(uvd[i], n) for i = 1:length(uvd)]
+end
+
+
+
 
 """
 	resample(uvd::UncertainIndexDataset, n::Int)
@@ -32,6 +81,8 @@ vector is a `n`-element vector consisting of `n` unique draws of `uvals[i]`.
 function resample_elwise(uvd::UncertainIndexDataset, n::Int)
     [resample(uvd[i], n) for i = 1:length(uvd)]
 end
+
+
 
 
 ##########################################################################
