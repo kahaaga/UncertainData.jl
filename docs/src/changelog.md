@@ -1,3 +1,17 @@
+
+# Changelog
+
+## UncertainData.jl v0.3.0
+
+### New functionality
+
+- Added additional resampling methods for uncertain index and uncertain value datasets, 
+    allowing passing vectors of constraints that are mapped to each value in the dataset. The 
+    syntax is `resample(::AbstractUncertainValueDataset, ::Vector{<:SamplingConstraint}` for a 
+    single draw, and `resample(::AbstractUncertainValueDataset, ::Vector{<:SamplingConstraint}, n::Int`
+    for `n` draws.
+
+
 ## UncertainData.jl v0.2.3
 
 ### Improvements
