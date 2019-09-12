@@ -37,6 +37,9 @@ using Reexport
     include("uncertain_dataset/resample_uncertaindataset_value.jl")
     include("uncertain_dataset/resample_uncertaindataset_indexvalue.jl")
 
+    # Resampling vectors of uncertain values 
+    include("uncertain_vectors/resample_uncertain_vectors.jl")
+
     #########################################
     # Ordered resampling
     #########################################
