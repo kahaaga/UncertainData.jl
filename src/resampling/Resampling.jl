@@ -27,15 +27,17 @@ using Reexport
     # Resampling uncertain datasets
     ###################################
 
-    # Supertype for all uncertain value datasets
-    include("uncertain_dataset/resample_abstractuncertainvaluedataset.jl")
+    # Element-wise resampling for all subtypes of AbstractUncertainValueDataset
+    include("uncertain_dataset/resample_abstractuncertainvaluedataset_elwise.jl")
 
     # Specialized resampling for each type of dataset.
     include("uncertain_dataset/resample_uncertaindataset.jl")
-	include("uncertain_dataset/resample_uncertaindataset_withconstraint.jl")
     include("uncertain_dataset/resample_uncertaindataset_index.jl")
     include("uncertain_dataset/resample_uncertaindataset_value.jl")
     include("uncertain_dataset/resample_uncertaindataset_indexvalue.jl")
+
+    # Resampling vectors of uncertain values 
+    include("uncertain_vectors/resample_uncertain_vectors.jl")
 
     #########################################
     # Ordered resampling

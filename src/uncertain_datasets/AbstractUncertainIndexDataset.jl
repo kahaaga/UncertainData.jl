@@ -31,3 +31,5 @@ end
 Base.show(io::IO, uvd::AbstractUncertainIndexDataset) =
     println(io, summarise(uvd))
 
+export 
+    AbstractUncertainIndexDataset
