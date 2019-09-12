@@ -5,6 +5,7 @@ using Reexport
     # Resampling schemes
     ###################################
     include("resampling_schemes/AbstractUncertainDataResampling.jl")
+    include("resampling_schemes/ConstrainedResampling.jl")
 
     ###################################
     # Resampling uncertain values

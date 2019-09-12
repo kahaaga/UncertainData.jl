@@ -17,6 +17,12 @@ include("uncertain_values/test_merging.jl")
 # UncertainDatasets module tests
 include("uncertain_datasets/test_uncertain_datasets.jl")
 
+
+#############################
+# Resampling schemes
+#############################
+include("resampling/resampling_schemes/test_ConstrainedResampling.jl")
+
 #############################
 # Sampling constraints
 #############################
