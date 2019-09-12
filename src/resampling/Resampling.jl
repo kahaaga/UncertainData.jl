@@ -1,6 +1,11 @@
 using Reexport
 
 @reexport module Resampling
+    ###################################
+    # Resampling schemes
+    ###################################
+    include("resampling_schemes/AbstractUncertainDataResampling.jl")
+    include("resampling_schemes/ConstrainedResampling.jl")
 
     ###################################
     # Resampling uncertain values
