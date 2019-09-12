@@ -1,4 +1,8 @@
 
+function resample(uv::DT) where {DT <: Vector{<:AbstractUncertainValue}}
+    resample.(uv)
+end
+
 # Vectors of sampling constraints mapped to unique sampling constraints
 function resample(uv::DT, constraint::Vector{<:SamplingConstraint}) where {
         DT <: Vector{<:AbstractUncertainValue}}

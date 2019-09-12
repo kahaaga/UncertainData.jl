@@ -40,4 +40,5 @@ uvals_x = [UncertainValue(Normal, rand(Normal(0, 5)), abs(rand(Normal(0, 3)))) f
 
 constraints = [[TruncateStd(0.3) for x in 1:50]; [TruncateQuantiles(0.3, 0.7) for x in 1:50]];
 
+@test resample(uvals_x) isa Vector{<:Real}
 @test resample(uvals_x, constraints) isa Vector{<:Real}
