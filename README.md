@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.com/kahaaga/UncertainData.jl.svg?branch=master)](https://travis-ci.com/kahaaga/UncertainData.jl)
 
 # UncertainData.jl
+
 A Julia package for dealing with data values with associated uncertainties and
 datasets consisting of uncertain values.
 
