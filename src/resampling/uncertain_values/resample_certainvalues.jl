@@ -1,6 +1,8 @@
 import ..SamplingConstraints: SamplingConstraint
 import ..UncertainValues: CertainValue
 
+resample(x::Real) = x
+
 resample(v::CertainValue) = v.value 
 resample(v::CertainValue, n::Int) = [v.value for i = 1:n]
 
