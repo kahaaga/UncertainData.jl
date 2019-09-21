@@ -1,6 +1,12 @@
 
 # Changelog
 
+## UncertainData.jl v0.5.0
+
+### New functionality 
+
+- Implemented `resample` methods for `NTuple`s of uncertain values.
+
 ## UncertainData.jl v0.4.0
 
 ### New functionality
