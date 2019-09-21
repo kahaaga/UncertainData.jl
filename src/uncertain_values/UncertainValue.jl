@@ -1,6 +1,8 @@
 import KernelDensity.UnivariateKDE
 import Distributions.Distribution
 
+UncertainValue(x::T) where T <: Real = CertainValue(x)
+
 # From Measurements.jl
 UncertainValue(m::Measurement{T}) where T = UncertainValue(Normal, m.val, m.err)
 
