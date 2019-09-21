@@ -24,6 +24,11 @@ using Reexport
     include("uncertain_values/resample_uncertainvalues_populations.jl")
 
     #########################################
+    # Resampling tuples of uncertain values
+    #########################################
+    include("uncertain_tuples/uncertain_tuples.jl")
+
+    #########################################
     # Resampling vectors of uncertain values
     #########################################
     include("uncertain_values/resampling_vector_uncertainvalues.jl")

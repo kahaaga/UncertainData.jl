@@ -42,6 +42,11 @@ include("resampling/uncertain_values/test_resampling_certain_value.jl")
 include("resampling/uncertain_values/test_resampling_uncertainvalues.jl")
 include("resampling/uncertain_values/test_resampling_uncertainvalues_kde.jl")
 
+#############################
+# Resampling uncertain tuples
+#############################
+include("resampling/uncertain_tuples/test_uncertain_tuples.jl")
+
 #############################################
 # Resampling uncertain datasets element-wise
 #############################################
