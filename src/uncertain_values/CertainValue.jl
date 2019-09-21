@@ -55,8 +55,6 @@ Base.first(x::CertainValue) = x
 Base.last(x::CertainValue) = x
 Base.copy(x::CertainValue) = x
 
-UncertainValue(value::T) where {T <: Real} = CertainValue{T}(value)
-
 StatsBase.mean(v::CertainValue) = v.value
 StatsBase.median(v::CertainValue) = v.value
 StatsBase.middle(v::CertainValue) = v.value
