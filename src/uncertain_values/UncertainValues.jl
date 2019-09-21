@@ -54,6 +54,9 @@ using Reexport
     # all types of uncertain values.
     include("UncertainValue.jl")
 
+    # Conversions
+    include("convert.jl")
+
     export KernelDensity, UnivariateKDE, default_bandwidth, kde
         ProbabilityWeights, pweights, 
         FrequencyWeights, fweights,
