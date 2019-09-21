@@ -1,6 +1,9 @@
 import KernelDensity.UnivariateKDE
 import Distributions.Distribution
 
+# From Measurements.jl
+UncertainValue(m::Measurement{T}) where T = UncertainValue(Normal, m.val, m.err)
+
 """ 
     UncertainValue(data::Vector{T}, probabilities::Vector{Real})
 

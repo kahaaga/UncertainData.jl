@@ -6,6 +6,11 @@
 ### New functionality 
 
 - Implemented `resample` methods for `NTuple`s of uncertain values.
+- Added support for `Measurement` instances from 
+    [Measurements.jl](https://github.com/JuliaPhysics/Measurements.jl).
+    These are treated as uncertain values represented by normal distibutions. 
+    Hence, they are given no extra treatment and error propagation is done by 
+    resampling, not by exact methods.
 
 ## UncertainData.jl v0.4.0
 

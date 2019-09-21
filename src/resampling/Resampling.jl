@@ -23,6 +23,8 @@ using Reexport
     include("uncertain_values/resample_certainvalues.jl")
     include("uncertain_values/resample_uncertainvalues_populations.jl")
 
+    include("uncertain_values/resample_measurements.jl")
+
     #########################################
     # Resampling tuples of uncertain values
     #########################################
