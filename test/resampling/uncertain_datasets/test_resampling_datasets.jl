@@ -19,7 +19,7 @@ uvals = [o1, o2, o3, o4, o5, o6, o7, o8, o9, o11, o12, o13, o14]
 D = UncertainDataset(uvals)
 UV = UncertainValueDataset(uvals)
 UIDX = UncertainIndexDataset(uvals)
-UIV = UncertainIndexValueDataset(D, D)
+UIV = UncertainIndexValueDataset(UIDX, UV)
 
 n = length(D)
 @test resample(D) isa Vector
@@ -69,8 +69,7 @@ d = UncertainDataset(measurements)
 @test resample(d) isa Vector{Float64}
 @test resample(d, 10) isa Vector{Vector{Float64}}
 
-
-iv = UncertainIndexValueDataset(d, d)
+iv = UncertainIndexValueDataset(measurements, measurements)
 
 @test resample(iv) isa Tuple{Vector{Float64}, Vector{Float64}}
 @test resample(iv, 5) isa  Vector{Tuple{Vector{Float64}, Vector{Float64}}}

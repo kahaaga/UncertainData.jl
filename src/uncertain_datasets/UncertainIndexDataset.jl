@@ -1,5 +1,5 @@
 """
-    UncertainIndices
+    UncertainIndexDataset
 
 Generic dataset containing uncertain indices.
 
@@ -7,21 +7,20 @@ Generic dataset containing uncertain indices.
 - **`indices::AbstractVector{AbstractUncertainValue}`**: The uncertain values.
 """
 struct UncertainIndexDataset <: AbstractUncertainIndexDataset
-    indices::AbstractVector{AbstractUncertainValue}
+    indices::AbstractVector{<:AbstractUncertainValue}
 end
-
 
 
 """
     ConstrainedUncertainIndexDataset
 
-Generic constrained dataset containing uncertain values.
+Constrained dataset containing uncertain indices.
 
 ## Fields
 - **`indices::AbstractVector{AbstractUncertainValue}`**: The uncertain indices.
 """
 struct ConstrainedUncertainIndexDataset <: AbstractUncertainIndexDataset
-    indices::AbstractVector{AbstractUncertainValue}
+    indices::AbstractVector{<:AbstractUncertainValue}
 end
 
 export 
