@@ -12,6 +12,12 @@
     Hence, they are given no extra treatment and error propagation is done by 
     resampling, not by exact methods.
 
+### Improvements
+
+- Removed redundant `resample` methods for the `UncertainDataset` type. `UncertainDataset` is 
+    a subtype of `AbstractUncertainValueDataset` and has no special behaviour beyond that 
+    implemented for the abstract type, so now we just rely on multiple dispatch here.
+
 ## UncertainData.jl v0.4.0
 
 ### New functionality
