@@ -3,6 +3,9 @@ import Distributions.Distribution
 
 UncertainValue(x::T) where T <: Real = CertainValue(x)
 
+# Identity constructor
+UncertainValue(uval::AbstractUncertainValue) = uval
+
 # From Measurements.jl
 UncertainValue(m::Measurement{T}) where T = UncertainValue(Normal, m.val, m.err)
 
