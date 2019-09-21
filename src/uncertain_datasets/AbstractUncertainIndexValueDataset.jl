@@ -13,8 +13,9 @@ abstract type AbstractUncertainIndexValueDataset <: AbstractUncertainDataset end
 
 function summarise(uid::AbstractUncertainIndexValueDataset)
     _type = typeof(uid)
-    n_values = length(uid.indices)
-    summary = "$_type with $n_values uncertain values that each have uncertain indices."
+    n_values = length(uid.values)
+    n_indices = length(uid.indices)
+    summary = "$_type containing $n_values uncertain values coupled with $n_indices uncertain indices"
     return summary
 end
 
