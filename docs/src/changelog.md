@@ -3,7 +3,14 @@
 
 ## UncertainData.jl v0.5.0
 
-### New functionality 
+### Breaking changes
+
+- To allow easier multiple dispatch, the `indices` field of a `UncertainIndexValueDataset` is
+    now *always* an instance of a subtype of `AbstractUncertainIndexDataset`. The `values` field 
+    of a `UncertainIndexValueDataset` is now *always* an instance of a subtype of 
+    `AbstractUncertainValueDataset`.
+
+### New functionality
 
 - Implemented `resample` methods for `NTuple`s of uncertain values.
 - Added support for `Measurement` instances from 
