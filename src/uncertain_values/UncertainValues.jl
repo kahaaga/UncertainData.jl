@@ -5,6 +5,7 @@ using Reexport
     using Distributions
     using RecipesBase
     using StaticArrays
+    using Measurements
     import KernelDensity: KernelDensity, UnivariateKDE, default_bandwidth, kde
     import StatsBase: StatsBase,
         ProbabilityWeights, pweights, 
