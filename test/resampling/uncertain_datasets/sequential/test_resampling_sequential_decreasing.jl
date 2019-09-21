@@ -24,13 +24,15 @@ import Test
 N = 10
 u_timeindices = [UncertainValue(Normal, i, rand(Uniform(0.1, 0.45))) for i = N:-1:1]
 u = UncertainDataset(u_timeindices)
+UI = UncertainIndexDataset(u_timeindices)
+UV = UncertainValueDataset(u_timeindices)
 
 # No further constraints other than the order constraint
-x = resample(u, StrictlyDecreasing())
+x = resample(UI, StrictlyDecreasing())
 @test x isa Vector{Float64}
 
 n_realizations = 100
-X = [resample(u, StrictlyDecreasing()) for i = 1:n_realizations]
+X = [resample(UI, StrictlyDecreasing()) for i = 1:n_realizations]
 
 # We're getting vectors 
 @test all([x isa Vector{Float64} for x in X])
@@ -52,19 +54,19 @@ test_constraints = [
 # First constrain using a single regular constraint, then apply the order constraint.  
 for i = 1:length(test_constraints)
     constraint = test_constraints[i]
-    @test resample(u, constraint, StrictlyDecreasing()) isa Vector{Float64}
-    @test all([resample(u, constraint, StrictlyDecreasing()) isa Vector{Float64} for k = 1:n_realizations])
+    @test resample(UI, constraint, StrictlyDecreasing()) isa Vector{Float64}
+    @test all([resample(UI, constraint, StrictlyDecreasing()) isa Vector{Float64} for k = 1:n_realizations])
 end
 
 #First element-wise apply a vector of regular constraints to each element in the dataset, 
 #then apply the order constraint.  
 for i = 1:length(test_constraints)
-    constraints = [test_constraints[i] for k = 1:length(u)]
-    @test resample(u, constraints, StrictlyDecreasing()) isa Vector{Float64}
-    @test all([resample(u, constraints, StrictlyDecreasing()) isa Vector{Float64} for k = 1:n_realizations])
+    constraints = [test_constraints[i] for k = 1:length(UI)]
+    @test resample(UI, constraints, StrictlyDecreasing()) isa Vector{Float64}
+    @test all([resample(UI, constraints, StrictlyDecreasing()) isa Vector{Float64} for k = 1:n_realizations])
 end
 
-iv = UncertainIndexValueDataset(u, u)
+iv = UncertainIndexValueDataset(UI, UV)
 @test resample(iv, StrictlyDecreasing()) isa Tuple{Vector{Float64}, Vector{Float64}}
 
 # First constrain using a single regular constraint, then apply the order constraint.  
@@ -75,7 +77,7 @@ for i = 1:length(test_constraints)
     @test all([resample(iv, constraint, StrictlyDecreasing()) isa Tuple{Vector{Float64}, Vector{Float64}} for k = 1:n_realizations])
     @test all([resample(iv, constraint, constraint, StrictlyDecreasing()) isa Tuple{Vector{Float64}, Vector{Float64}} for k = 1:n_realizations])
 
-    cs = [test_constraints[i] for k = 1:length(u)]
+    cs = [test_constraints[i] for k = 1:length(UI)]
     @test resample(iv, cs, cs, StrictlyDecreasing()) isa Tuple{Vector{Float64}, Vector{Float64}}
     @test resample(iv, cs, constraint, StrictlyDecreasing()) isa Tuple{Vector{Float64}, Vector{Float64}}
     @test resample(iv, constraint, cs, StrictlyDecreasing()) isa Tuple{Vector{Float64}, Vector{Float64}}

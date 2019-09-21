@@ -24,7 +24,7 @@ using Reexport
     include("UncertainValueDataset.jl")
     include("UncertainIndexDataset.jl")
 
-      # A generic type with all the functionality of `AbstractUncertainValueDataset`, if you 
+    # A generic type with all the functionality of `AbstractUncertainValueDataset`, if you 
     # can't be bothered with specifying 
     include("UncertainDataset.jl")
 

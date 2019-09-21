@@ -24,6 +24,16 @@ convert(::Type{UncertainDataset}, udata::T) where {T <: AbstractUncertainValueDa
 convert(::Type{UncertainDataset}, udata::UncertainIndexDataset) = 
     UncertainDataset(udata.indices)
 
+# Converting vectors of any input to uncertain datasets 
+function convert(::Type{UncertainValueDataset}, uvec::AbstractVector)
+    uvals = [UncertainValue(x) for x in uvec]
+    UncertainValueDataset(uvals)
+end
+
+function convert(::Type{UncertainValueDataset}, 
+        uvec::AbstractVector{T}) where {T<:AbstractUncertainValue}
+    UncertainValueDataset(uvec)
+end
 
 UncertainValueDataset(udata::UncertainDataset) = convert(UncertainValueDataset, udata)
 UncertainValueDataset(udata::UncertainIndexDataset) = convert(UncertainValueDataset, udata)
@@ -36,3 +46,4 @@ UncertainIndexDataset(udata::UncertainValueDataset) = convert(UncertainIndexData
 UncertainDataset(udata::UncertainDataset) = udata
 UncertainDataset(udata::UncertainIndexDataset) = convert(UncertainDataset, udata)
 UncertainDataset(udata::UncertainValueDataset) = convert(UncertainDataset, udata)
+

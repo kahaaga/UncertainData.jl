@@ -23,14 +23,15 @@ import Test
 # so we're guaranteed that a strictly increasing sequence through the dataset exists.
 N = 10
 u_timeindices = [UncertainValue(Normal, i, rand(Uniform(0.1, 0.45))) for i = 1:N]
-u = UncertainDataset(u_timeindices)
+UI = UncertainIndexDataset(u_timeindices)
+UV = UncertainValueDataset(u_timeindices)
 
 # No further constraints other than the order constraint
-x = resample(u, StrictlyIncreasing())
+x = resample(UI, StrictlyIncreasing())
 @test x isa Vector{Float64}
 
 n_realizations = 100
-X = [resample(u, StrictlyIncreasing()) for i = 1:n_realizations]
+X = [resample(UI, StrictlyIncreasing()) for i = 1:n_realizations]
 
 # We're getting vectors 
 @test all([x isa Vector{Float64} for x in X])
@@ -53,21 +54,21 @@ test_constraints = [
 # First constrain using a single regular constraint, then apply the order constraint.  
 for i = 1:length(test_constraints)
     constraint = test_constraints[i]    
-    @test resample(u, constraint, StrictlyIncreasing()) isa Vector{Float64}
-    @test all([resample(u, constraint, StrictlyIncreasing()) isa Vector{Float64} for k = 1:n_realizations])
+    @test resample(UI, constraint, StrictlyIncreasing()) isa Vector{Float64}
+    @test all([resample(UI, constraint, StrictlyIncreasing()) isa Vector{Float64} for k = 1:n_realizations])
 end
 
 #First element-wise apply a vector of regular constraints to each element in the dataset, 
 #then apply the order constraint.  
 for i = 1:length(test_constraints)
-    constraints = [test_constraints[i] for k = 1:length(u)]
-    @test resample(u, constraints, StrictlyIncreasing()) isa Vector{Float64}
-    @test all([resample(u, constraints, StrictlyIncreasing()) isa Vector{Float64} for k = 1:n_realizations])
+    constraints = [test_constraints[i] for k = 1:length(UI)]
+    @test resample(UI, constraints, StrictlyIncreasing()) isa Vector{Float64}
+    @test all([resample(UI, constraints, StrictlyIncreasing()) isa Vector{Float64} for k = 1:n_realizations])
 end
 
 
 # Index-value 
-iv = UncertainIndexValueDataset(u, u)
+iv = UncertainIndexValueDataset(UI, UV)
 
 # Sequential
 @test resample(iv, StrictlyIncreasing()) isa Tuple{Vector{Float64}, Vector{Float64}}
@@ -80,7 +81,7 @@ for i = 1:length(test_constraints)
     @test all([resample(iv, constraint, StrictlyIncreasing()) isa Tuple{Vector{Float64}, Vector{Float64}} for k = 1:n_realizations])
     @test all([resample(iv, constraint, constraint, StrictlyIncreasing()) isa Tuple{Vector{Float64}, Vector{Float64}} for k = 1:n_realizations])
 
-    cs = [test_constraints[i] for k = 1:length(u)]
+    cs = [test_constraints[i] for k = 1:length(UI)]
 
     @test resample(iv, cs, cs, StrictlyIncreasing()) isa Tuple{Vector{Float64}, Vector{Float64}}
     @test resample(iv, cs, constraint, StrictlyIncreasing()) isa Tuple{Vector{Float64}, Vector{Float64}}
