@@ -18,6 +18,7 @@
     These are treated as uncertain values represented by normal distibutions. 
     Hence, they are given no extra treatment and error propagation is done by 
     resampling, not by exact methods.
+- Implemented iteration for `UncertainScalarPopulation`.
 
 ### Improvements
 
