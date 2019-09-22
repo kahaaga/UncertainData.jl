@@ -49,7 +49,7 @@ uvals = UncertainValueDataset(uncertain_values)
 data = UncertainIndexValueDataset(uidxs, uvals)
 ```
 """
-struct UncertainIndexValueDataset{IDXTYP, VALSTYP} <: AbstractUncertainIndexValueDataset
+struct UncertainIndexValueDataset{IDXTYP <: AbstractUncertainIndexDataset, VALSTYP <: AbstractUncertainValueDataset} <: AbstractUncertainIndexValueDataset
 
     """ The indices of the uncertain index-value dataset. """
     indices::IDXTYP
@@ -71,8 +71,38 @@ struct UncertainIndexValueDataset{IDXTYP, VALSTYP} <: AbstractUncertainIndexValu
     end
 
     function UncertainIndexValueDataset(
-            indices::Vector{T}, 
-            values::Vector{T}) where {T <: AbstractUncertainValue}
+        indices::ConstrainedUncertainIndexDataset, 
+        values::UncertainValueDataset)
+    
+        IDXTYP = ConstrainedUncertainIndexDataset
+        VALSTYP = UncertainValueDataset
+        
+        new{IDXTYP, VALSTYP}(indices, values)
+    end
+
+    function UncertainIndexValueDataset(
+        indices::UncertainIndexDataset, 
+        values::ConstrainedUncertainValueDataset)
+    
+        IDXTYP = UncertainIndexDataset
+        VALSTYP = ConstrainedUncertainValueDataset
+        
+        new{IDXTYP, VALSTYP}(indices, values)
+    end
+
+    function UncertainIndexValueDataset(
+        indices::ConstrainedUncertainIndexDataset, 
+        values::ConstrainedUncertainValueDataset)
+    
+        IDXTYP = ConstrainedUncertainIndexDataset
+        VALSTYP = ConstrainedUncertainValueDataset
+        
+        new{IDXTYP, VALSTYP}(indices, values)
+    end
+
+    function UncertainIndexValueDataset(
+            indices::Vector{<:AbstractUncertainValue}, 
+            values::Vector{<:AbstractUncertainValue})
         
         IDXTYP = UncertainIndexDataset
         VALSTYP = UncertainValueDataset
@@ -84,10 +114,10 @@ struct UncertainIndexValueDataset{IDXTYP, VALSTYP} <: AbstractUncertainIndexValu
     end
 
     function UncertainIndexValueDataset(
-            indices::UncertainIndexDataset, 
-            values::Vector{<:AbstractUncertainValue})
+            indices::DT, 
+            values::Vector{<:AbstractUncertainValue}) where {DT <: AbstractUncertainIndexDataset}
         
-        IDXTYP = UncertainIndexDataset
+        IDXTYP = DT
         VALSTYP = UncertainValueDataset
         
         new{IDXTYP, VALSTYP}(indices, UncertainValueDataset(values))
@@ -95,10 +125,10 @@ struct UncertainIndexValueDataset{IDXTYP, VALSTYP} <: AbstractUncertainIndexValu
 
     function UncertainIndexValueDataset(
             indices::Vector{<:AbstractUncertainValue},
-            values::UncertainValueDataset)
+            values::DT) where {DT <: AbstractUncertainValueDataset}
         
         IDXTYP = UncertainIndexDataset
-        VALSTYP = UncertainValueDataset
+        VALSTYP = DT
         
         new{IDXTYP, VALSTYP}(UncertainIndexDataset(indices), values)
     end

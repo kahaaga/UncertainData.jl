@@ -16,12 +16,21 @@ o9 = UncertainValue([2, 4, 5, 2], rand(4))
 uvals = [o1, o2, o3, o4, o5, o7, o8, o9]
 UV = UncertainValueDataset(uvals)
 UI = UncertainIndexDataset(uvals)
+CUV = constrain(UV, TruncateQuantiles(0.1, 0.9))
+CUI = constrain(UV, TruncateQuantiles(0.1, 0.9))
 
+# Vectors
 @test UncertainIndexValueDataset(uvals, uvals) isa UncertainIndexValueDataset
+
+# Non-constrained datasets
 @test UncertainIndexValueDataset(uvals, UV) isa UncertainIndexValueDataset
 @test UncertainIndexValueDataset(UI, uvals) isa UncertainIndexValueDataset
 @test UncertainIndexValueDataset(UI, UV) isa UncertainIndexValueDataset
 
+# Constrained datasets
+@test UncertainIndexValueDataset(uvals, CUV) isa UncertainIndexValueDataset
+@test UncertainIndexValueDataset(CUI, uvals) isa UncertainIndexValueDataset
+@test UncertainIndexValueDataset(CUI, CUV) isa UncertainIndexValueDataset
 
 UIV = UncertainIndexValueDataset(UI, UV)
 
