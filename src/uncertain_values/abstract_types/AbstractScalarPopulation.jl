@@ -13,6 +13,11 @@ abstract type AbstractScalarPopulation <: AbstractPopulation end
 Base.length(p::AbstractScalarPopulation) = length(p.values)
 Base.getindex(p::AbstractScalarPopulation, i) = p.values[i]
 
+Base.firstindex(p::AbstractScalarPopulation) = 1
+Base.lastindex(p::AbstractScalarPopulation) = length(p.values)
+Base.eachindex(p::AbstractScalarPopulation) = Base.OneTo(lastindex(p))
+Base.iterate(p::AbstractScalarPopulation, state = 1) = iterate(p.values, state)
+
 function summarise(p::AbstractScalarPopulation)
     _type = typeof(p)
     l = length(p.values)
