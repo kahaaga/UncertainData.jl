@@ -8,6 +8,6 @@ An empirical value represented by a distribution estimated from actual data.
 - **`values`**: The values from which `distribution` is estimated.
 """
 struct UncertainEmpiricalVectorValue{D <: Distribution, T} <: AbstractEmpiricalValue
-    distribution::D #
+    distribution::D
     values::AbstractVector{AbstractVector{T}}
 end
