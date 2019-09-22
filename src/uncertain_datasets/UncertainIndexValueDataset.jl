@@ -23,11 +23,11 @@ The i-th index is assumed to correspond to the i-th value. For example, if
 ```julia
 # Simulate some data values measured a specific times.
 times = 1:100
-values = rand(100)
+values = sin.(0.0:0.1:100.0)
 
 # Assume the data were measured by a device with normally distributed
 # measurement uncertainties with fluctuating standard deviations
-σ_range = (0.1, 0.2)
+σ_range = (0.1, 0.7)
 
 uncertain_values = [UncertainValue(Normal, val, rand(Uniform(σ_range...))) 
     for val in values]
