@@ -25,6 +25,10 @@
     a subtype of `AbstractUncertainValueDataset` and has no special behaviour beyond that 
     implemented for the abstract type, so now we just rely on multiple dispatch here.
 
+### Documentation
+
+- Improved documentation for `cor` and `cov` for uncertain datasets. 
+
 ## UncertainData.jl v0.4.0
 
 ### New functionality
