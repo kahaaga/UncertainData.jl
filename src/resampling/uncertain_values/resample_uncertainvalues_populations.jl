@@ -1,8 +1,17 @@
 import ..UncertainValues:
     AbstractScalarPopulation
 
-resample(p::AbstractScalarPopulation) = rand(p)
-resample(p::AbstractScalarPopulation, n::Int) = rand(p, n)
+
+import Base.rand
+import StatsBase.sample
+    
+function resample(p::AbstractScalarPopulation)
+    sample(resample.(p.values), p.probs)
+end
+    
+function resample(p::AbstractScalarPopulation, n::Int)
+    [sample(resample.(p.values), p.probs) for i = 1:n]
+end
 
 constraints = [
     :(NoConstraint), 
