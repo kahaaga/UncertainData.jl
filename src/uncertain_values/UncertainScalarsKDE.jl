@@ -9,8 +9,6 @@ import Base:
     minimum, maximum,
     max, min
 
-abstract type AbstractUncertainScalarKDE{T} <: AbstractEmpiricalValue end
-
 """
     UncertainScalarKDE
 
