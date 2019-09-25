@@ -1,6 +1,9 @@
 using Reexport
 
 @reexport module Resampling
+
+    function resample end
+
     ###################################
     # Resampling schemes
     ###################################
