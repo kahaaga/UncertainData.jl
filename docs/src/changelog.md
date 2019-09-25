@@ -12,6 +12,20 @@
 
 ### New functionality
 
+- Added point-estimators for single uncertain values:
+    1. `harmmean(x::AbstractUncertainValue, n::Int)`
+    2. `geomean(x::AbstractUncertainValue, n::Int)`
+    3. `kurtosis(x::AbstractUncertainValue, n::Int; m = mean(x))`
+    4. `moment(x::AbstractUncertainValue, k, n::Int, m = mean(x))`
+    5. `percentile(x::AbstractUncertainValue, p, n::Int)`
+    6. `renyientropy(x::AbstractUncertainValue, α, n::Int)`
+    7. `rle(x::AbstractUncertainValue, n::Int)`
+    8. `sem(x::AbstractUncertainValue, n::Int)`
+    9. `skewness(x::AbstractUncertainValue, n::Int; m = mean(x))`
+    10. `span(x::AbstractUncertainValue, n::Int)`
+    11. `summarystats(x::AbstractUncertainValue, n::Int)`
+    12. `totalvar(x::AbstractUncertainValue, n::Int)`
+
 - Implemented `resample` methods for `NTuple`s of uncertain values.
 - Added `resample(f::Function, n::Int, x::AbstractUncertainValue, args...; kwargs...)`method for 
     easy evaluation of point-estimates for single uncertain values.
