@@ -2,6 +2,7 @@ using Reexport
 
 @reexport module UncertainValues
     using IntervalArithmetic
+    import IntervalArithmetic: interval
     using Distributions
     using RecipesBase
     using StaticArrays
