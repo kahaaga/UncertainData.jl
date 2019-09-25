@@ -80,7 +80,6 @@ export intersect
 ###################
 
 function summarise(o::AbstractUncertainValue)
-    dist = o.distribution
     _type = typeof(o)
     "$_type"
 end
