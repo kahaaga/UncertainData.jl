@@ -30,6 +30,10 @@
 
 - Improved documentation for `cor` and `cov` for uncertain datasets. 
 
+### Bug fixes
+
+- Fixed error in `show` method for `AbstractUncertainValue`. Not subtypes of `AbstractUncertainValue` has the `distributions` field, so that is now removed from the `show` method.
+
 ## UncertainData.jl v0.4.0
 
 ### New functionality
