@@ -12,8 +12,8 @@ using Reexport
     using ..Resampling
 
     # Definitions of statistical methods for UncertainDatasets
-    include("statsbase/core_stats_uncertainvalues.jl")
-	include("statsbase/core_stats_uncertaindatasets.jl")
+    include("statsbase/uncertain_values/core_stats_AbstractUncertainValue.jl")
+	include("statsbase/uncertain_datasets/core_stats_uncertaindatasets.jl")
 
     include("hypothesis_tests/mann_whitney.jl")
     include("hypothesis_tests/t_tests.jl")
