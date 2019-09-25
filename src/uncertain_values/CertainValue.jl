@@ -1,4 +1,3 @@
-
 """ 
     CertainValue
 
@@ -51,17 +50,26 @@ function Base.getindex(x::CertainValue, I::Integer...)
     @boundscheck all([i == 1 for i in I]) || throw(BoundsError())
     x
 end
+
 Base.first(x::CertainValue) = x
 Base.last(x::CertainValue) = x
 Base.copy(x::CertainValue) = x
 
-StatsBase.mean(v::CertainValue) = v.value
-StatsBase.median(v::CertainValue) = v.value
-StatsBase.middle(v::CertainValue) = v.value
-StatsBase.quantile(v::CertainValue, q) = v.value
-StatsBase.std(v::CertainValue{T}) where {T} = zero(T)
 Base.minimum(v::CertainValue) = v.value
 Base.maximum(v::CertainValue) = v.value
+Base.isnan(x::CertainValue) = Base.isnan(x.value)
+Base.abs2(x::CertainValue) = Base.abs2(x.value)
+
+function Base.:<(x::CertainValue{T1}, y::CertainValue{T2}) where {
+        T1 <: Real, T2 <: Real} 
+    x.value < y.value
+end
+
+function IntervalArithmetic.interval(x::CertainValue{T1}, y::CertainValue{T2}) where {
+        T1 <: Real, T2 <: Real} 
+    interval(x.value, y.value)
+end 
+
 
 export
 CertainValue,
