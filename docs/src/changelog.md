@@ -13,6 +13,8 @@
 ### New functionality
 
 - Implemented `resample` methods for `NTuple`s of uncertain values.
+- Added `resample(f::Function, n::Int, x::AbstractUncertainValue, args...; kwargs...)`method for 
+    easy evaluation of point-estimates for single uncertain values.
 - Added support for `Measurement` instances from 
     [Measurements.jl](https://github.com/JuliaPhysics/Measurements.jl).
     These are treated as uncertain values represented by normal distibutions. 

@@ -7,6 +7,7 @@ using Reexport
     include("resampling_schemes/AbstractUncertainDataResampling.jl")
     include("resampling_schemes/ConstrainedResampling.jl")
 
+
     ###################################
     # Resampling uncertain values
     ###################################
@@ -62,6 +63,11 @@ using Reexport
     #########################################
     include("resampling_with_interpolation/resample_linear_interpolation.jl")
 
+    ################################
+    # Apply function with resampling
+    ################################
+    include("apply_func.jl")
+    
     export resample, resample_elwise
 end # module
 
