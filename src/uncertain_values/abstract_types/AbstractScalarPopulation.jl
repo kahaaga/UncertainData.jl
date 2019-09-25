@@ -8,7 +8,7 @@ AbstractScalarPopulation
 
 An abstract type for population-based uncertain scalar values.
 """
-abstract type AbstractScalarPopulation <: AbstractPopulation end
+abstract type AbstractScalarPopulation{T, PW} <: AbstractPopulation end
 
 Base.length(p::AbstractScalarPopulation) = length(p.values)
 Base.getindex(p::AbstractScalarPopulation, i) = p.values[i]
@@ -36,5 +36,8 @@ StatsBase.median(p::AbstractScalarPopulation, n::Int = 30000) = median(rand(p, n
 StatsBase.middle(p::AbstractScalarPopulation, n::Int = 30000) = middle(rand(p, n))
 StatsBase.quantile(p::AbstractScalarPopulation, q, n::Int = 30000) = quantile(rand(p, n), q)
 StatsBase.std(p::AbstractScalarPopulation, n::Int = 30000) = std(rand(p, n))
+
+
+
 
 export AbstractScalarPopulation

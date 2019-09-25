@@ -1,10 +1,16 @@
 ##################################################
 # Uncertain populations 
 ################################################
-vals = rand(10) 
-weights = rand(10)
-@test UncertainValue(vals, weights) isa UncertainScalarPopulation
+x = UncertainValue([1, 2, 3], rand(3))
+y = UncertainValue([1, UncertainValue(Normal, 0, 1), 3], rand(3))
 
+@test x isa UncertainScalarPopulation{T1, T2} where {T1 <: Number, T2}
+@test y isa UncertainScalarPopulation{T1, T2} where {T1 <: AbstractUncertainValue, T2}
+
+
+##################################################
+# Uncertain theoretical distributions
+################################################
 # Uncertain normally distributed values
 @test UncertainValue(Normal, 1, 0.2, nσ = 2, trunc_lower = -5) isa UncertainScalarNormallyDistributed
 @test UncertainValue(Normal, -3, 0.2) isa UncertainScalarNormallyDistributed

@@ -1,5 +1,6 @@
 import KernelDensity.UnivariateKDE
 import Distributions.Distribution
+import StatsBase: AbstractWeights, Weights
 
 UncertainValue(x::T) where T <: Real = CertainValue(x)
 
@@ -9,14 +10,43 @@ UncertainValue(uval::AbstractUncertainValue) = uval
 # From Measurements.jl
 UncertainValue(m::Measurement{T}) where T = UncertainValue(Normal, m.val, m.err)
 
-""" 
-    UncertainValue(data::Vector{T}, probabilities::Vector{Real})
 
-Construct an uncertain value represented by a population that will be sampled according to
-the provided probabilities.
-""" 
-UncertainValue(data::Vector{T1}, probabilities::Vector{T2}) where {T1, T2} = 
-    UncertainScalarPopulation(data, probabilities)
+"""
+    UncertainValue(values::Vector{<:Number}, probs::Vector{<:Number})
+
+From a numeric vector, construct an `UncertainPopulation` whose 
+members are scalar values.
+"""
+function UncertainValue(values::Vector{<:Number}, probs::Vector{<:Number})
+    UncertainScalarPopulation(values, probs)
+end
+
+"""
+    UncertainValue(values::Vector{<:Number}, probs::Vector{<:Number})
+
+From a numeric vector, construct an `UncertainPopulation` whose 
+members are scalar values.
+"""
+function UncertainValue(values::Vector{<:Number}, probs::W) where {W <: AbstractWeights}
+    UncertainScalarPopulation(values, probs)
+end
+
+
+"""
+    UncertainValue(values, probs)
+
+From vector consisting of one or more uncertain values, construct an 
+`UncertainPopulation` whose members are uncertain values. All scalar numeric 
+values are promoted to `CertainValue` and the `values` of the 
+`UncertainPopulation` are represented as a `Vector{<:AbstractUncertainValue}`.
+"""
+function UncertainValue(values::VT, probs) where VT <: Vector{ELTYPE} where {ELTYPE<:POTENTIAL_UVAL_TYPES}
+    UncertainScalarPopulation(UncertainValue.(values), probs)
+end
+
+function UncertainValue(values::VT, probs::Vector{Number}) where VT <: Vector{ELTYPE} where {ELTYPE<:POTENTIAL_UVAL_TYPES}
+    UncertainScalarPopulation(UncertainValue.(values), probs)
+end
 
 """
     UncertainValue(data::Vector{T};
