@@ -1,71 +1,30 @@
-This package implements many of the statistical algorithms in `StatsBase` for uncertain 
-values and uncertain datasets.
+# Estimate statistics on uncertain values and datasets of uncertain values
 
-The syntax for calling the algorithms is the same as in `StatsBase`, but
-the functions here accept an additional positional argument `n`. This additional 
-argument controls how many times the uncertain values are resampled to compute the 
-statistics. For theoretical distributions, both with known and fitted parameters, some of 
-the stats functions may be called without the `n` argument.
+This package extends many of the statistical algorithms in `StatsBase` 
+for uncertain values. To compute these statistics, a resampling 
+approach is used. For more details and lists of the available statistics, see
 
-### Statistics of single uncertain values
+- [Point-estimates of statistics](@ref point_estimate_statistics)
+- [Pairwise estimates of statistics](@ref pairwise_statistics)
+- [Dataset statistics](@ref dataset_statistics).
 
-```@docs
-mean(uv::AbstractUncertainValue, n::Int)
-```
+## [Point-estimates of statistics](@id pointwise_statistics)
 
-```@docs
-median(uv::AbstractUncertainValue, n::Int)
-```
+There are two direct ways of obtaining the value of a statistic `f` for single instances of an uncertain value `uval`:
 
-```@docs
-middle(uv::AbstractUncertainValue, n::Int)
-```
+- `f(uval::AbstractUncertainValue)` return the exact value of the statistic if `uval` is some sort of formal distribution.
+- `f(uval::AbstractUncertainValue, n::Int, args...; kwargs...)` estimates the statistic `f` for a length-`n` draw of `uval`.
 
-```@docs
-std(uv::AbstractUncertainValue, n::Int)
-```
+You can also be explicit about the resampling by calling the relevant `resample` method:
 
-```@docs
-var(uv::AbstractUncertainValue, n::Int)
-```
+- `resample(f::Function, uval::AbstractUncertainValue, n::Int, args...; kwargs...)` does essentially the same as `f(uval::AbstractUncertainValue, n, args...; kwargs...)`.
 
-```@docs
-quantile(uv::AbstractUncertainValue, q, n::Int)
-```
+## [Pairwise estimates of statistics](@id pairwise_statistics)
 
-### Statistics on datasets of uncertain values
+Pairwise estimation of a statistic `f` for the uncertain values `x` and `y` can be done by calling:
 
-The following statistics are available for uncertain datasets (collections
-of uncertain values).
+- `f(x::AbstractUncertainValue, y::AbstractUncertainValue, args..., n::Int; kwargs...)`, which draws independent length-`n` draws of `x` and `y`, then estimates the statistic `f` for those draws. 
 
-```@docs
-mean(d::AbstractUncertainValueDataset, n::Int)
-```
+You can also be explicit about the resampling by calling the relevant `resample` method:
 
-```@docs
-median(d::AbstractUncertainValueDataset, n::Int)
-```
-
-```@docs
-middle(d::AbstractUncertainValueDataset, n::Int)
-```
-
-```@docs
-std(d::AbstractUncertainValueDataset, n::Int)
-```
-
-```@docs
-var(d::AbstractUncertainValueDataset, n::Int)
-```
-
-```@docs
-quantile(d::AbstractUncertainValueDataset, q, n::Int)
-```
-
-```@docs
-cov(d1::AbstractUncertainValueDataset, d2::AbstractUncertainValueDataset, n::Int)
-```
-
-```@docs
-cor(d1::AbstractUncertainValueDataset, d2::AbstractUncertainValueDataset, n::Int)
-```
+- `resample(f::Function, x::AbstractUncertainValue, y::AbstractUncertainValue, n::Int, args...; kwargs...)` does essentially the same as `f(f(x::AbstractUncertainValue, y::AbstractUncertainValue, args..., n::Int; kwargs...)`.
