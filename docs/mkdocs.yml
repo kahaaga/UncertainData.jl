@@ -85,7 +85,11 @@ pages:
       - Elementary operations: mathematics/elementary_operations.md
       - Trigonometric functions: mathematics/trig_functions.md
   - Uncertain statistics:
-    - Core statistics: uncertain_statistics/core_stats/core_statistics.md
+    - Core statistics: 
+      - Overview: uncertain_statistics/core_stats/core_statistics.md
+      - Point estimates: uncertain_statistics/core_stats/core_statistics_point_estimates.md
+      - Pairwise estimates: uncertain_statistics/core_stats/core_statistics_pairwise_estimates.md
+      - On uncertain datasets: uncertain_statistics/core_stats/core_statistics_datasets.md
     - Hypothesis tests:
       - Overview: uncertain_statistics/hypothesistests/hypothesis_tests_overview.md
       - One sample t-test: uncertain_statistics/hypothesistests/one_sample_t_test.md
