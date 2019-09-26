@@ -27,7 +27,7 @@ include("resampling/Resampling.jl")
 include("mathematics/UncertainMathematics.jl")
 
 # Uncertain statistics
-include("uncertain_statistics/UncertainStatistics.jl")
+include("statistics/UncertainStatistics.jl")
 
 # Plot recipes
 include("plot_recipes/UncertainDataPlotRecipes.jl")
