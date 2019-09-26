@@ -55,7 +55,7 @@ end
 
 Construct a population from a vector of values and a vector of probabilities associated 
 to those values."""
-function UncertainScalarPopulation(values::Vector{T1}, probabilities::Vector{T2}) where {T1 <: Number, T2}
+function UncertainScalarPopulation(values::Vector{T1}, probabilities::Vector{T2}) where {T1 <: Number, T2 <: Number}
     if length(values) != length(probabilities)
         throw(ArgumentError("Lengths of values and probability vectors do not match."))
     end
@@ -99,20 +99,20 @@ end
 """
     ConstrainedUncertainScalarPopulation(values::Vector, probabilities::Vector{Float64})
 
-Construct a constrained population from a vector of values and a vector of probabilities associated 
-to those values."""
-function ConstrainedUncertainPopulation(values::Vector{T1}, probabilities::Vector{T2}) where {T1 <: Number, T2}
+Construct a constrained population from a vector of values and a vector of 
+probabilities associated to those values.
+"""
+function ConstrainedUncertainScalarPopulation(values::Vector{T1}, probabilities::Vector{T2}) where {T1 <: Number, T2 <: Number}
     if length(values) != length(probabilities)
         throw(ArgumentError("Lengths of values and probability vectors do not match."))
     end
-    ConstrainedUncertainPopulation(values, StatsBase.weights(probabilities))
+    ConstrainedUncertainScalarPopulation(values, StatsBase.weights(probabilities))
 end
-
-function ConstrainedUncertainPopulation(values::VT, probabilities) where VT <: Vector{ELTYPE} where {ELTYPE<:POTENTIAL_UVAL_TYPES}
+function ConstrainedUncertainScalarPopulation(values::VT, probabilities) where VT <: Vector{ELTYPE} where {ELTYPE<:POTENTIAL_UVAL_TYPES}
     if length(values) != length(probabilities)
         throw(ArgumentError("Lengths of values and probability vectors do not match."))
     end
-    ConstrainedUncertainPopulation(UncertainValue.(values), StatsBase.weights(probabilities))
+    ConstrainedUncertainScalarPopulation(UncertainValue.(values), StatsBase.weights(probabilities))
 end
 
 export 
