@@ -26,6 +26,24 @@
     11. `summarystats(x::AbstractUncertainValue, n::Int)`
     12. `totalvar(x::AbstractUncertainValue, n::Int)`
 
+- Added statistical estimators for pairs of uncertain values:
+    1. `cov(x::AbstractUncertainValue, y::AbstractUncertainValue, n::Int; corrected::Bool = true)`
+    1. `cor(x::AbstractUncertainValue, y::AbstractUncertainValue, n::Int)`
+    1. `countne(x::AbstractUncertainValue, y::AbstractUncertainValue, n::Int)`
+    1. `counteq(x::AbstractUncertainValue, y::AbstractUncertainValue, n::Int)`
+    1. `corkendall(x::AbstractUncertainValue, y::AbstractUncertainValue, n::Int)`
+    1. `corspearman(x::AbstractUncertainValue, y::AbstractUncertainValue, n::Int)`
+    1. `maxad(x::AbstractUncertainValue, y::AbstractUncertainValue, n::Int)`
+    1. `meanad(x::AbstractUncertainValue, y::AbstractUncertainValue, n::Int)`
+    1. `msd(x::AbstractUncertainValue, y::AbstractUncertainValue, n::Int)`
+    1. `psnr(x::AbstractUncertainValue, y::AbstractUncertainValue, maxv, n::Int)`
+    1. `rmsd(x::AbstractUncertainValue, y::AbstractUncertainValue, n::Int; normalize = false)`
+    1. `sqL2dist(x::AbstractUncertainValue, y::AbstractUncertainValue, n::Int)`
+    1. `crosscor(x::AbstractUncertainValue, y::AbstractUncertainValue, n::Int; demean = true)`
+    1. `crosscov(x::AbstractUncertainValue, y::AbstractUncertainValue, n::Int; demean = true)`
+    1. `gkldiv(x::AbstractUncertainValue, y::AbstractUncertainValue, n::Int)`
+    1. `kldivergence(x::AbstractUncertainValue, y::AbstractUncertainValue, n::Int)`
+
 - Implemented `resample` methods for `NTuple`s of uncertain values.
 - Added `resample(f::Function, n::Int, x::AbstractUncertainValue, args...; kwargs...)`method for 
     easy evaluation of point-estimates for single uncertain values.
@@ -34,6 +52,10 @@
     These are treated as uncertain values represented by normal distibutions. 
     Hence, they are given no extra treatment and error propagation is done by 
     resampling, not by exact methods.
+- The uncertain value type `UncertainScalarPopulation` may now not only have real-valued scalars 
+    as elements of the population. It can now have uncertain values as members of the population!
+- Resampling implemented for `UncertainScalarPopulation` so that we can also sample population 
+    members that are uncertain values.
 - Implemented iteration for `UncertainScalarPopulation`.
 
 ### Improvements
