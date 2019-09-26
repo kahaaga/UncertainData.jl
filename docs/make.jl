@@ -27,7 +27,10 @@ PAGES = [
 	],
     "Uncertain statistics" => [
         "Core statistics" => [
-            "uncertain_statistics/core_stats/core_statistics.md"
+            "uncertain_statistics/core_stats/core_statistics.md",
+            "uncertain_statistics/core_stats/core_statistics_point_estimates.md",
+            "uncertain_statistics/core_stats/core_statistics_pairwise_estimates.md",
+            "uncertain_statistics/core_stats/core_statistics_datasets.md"
         ],
 
         "Hypothesis tests" => [
