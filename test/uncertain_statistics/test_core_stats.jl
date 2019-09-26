@@ -15,12 +15,6 @@ D2 = UncertainDataset([o1, o2, o4, o5])
 @test quantile(o1, 0.86) isa Float64
 @test std(o1) isa Float64
 @test var(o1) isa Float64
-@test mean(o1, 10) isa Float64
-@test median(o1, 10) isa Float64
-@test middle(o1, 10) isa Float64
-@test quantile(o1, 0.86, 10) isa Float64
-@test std(o1, 10) isa Float64
-@test var(o1, 10) isa Float64
 
 #####################
 ## Uncertain datasets
@@ -34,3 +28,6 @@ D2 = UncertainDataset([o1, o2, o4, o5])
 
 @test cor(D1, D2, 10) isa Vector{Float64}
 @test cov(D1, D2, 10) isa Vector{Float64}
+
+@test cor(D1, D2) isa Float64
+@test cov(D1, D2) isa Float64
