@@ -6,11 +6,11 @@ import Base.rand
 import StatsBase.sample
     
 function resample(p::AbstractScalarPopulation)
-    sample(resample.(p.values), p.probs)
+    sample([float.(resample(v)) for v in p.values], p.probs)
 end
     
 function resample(p::AbstractScalarPopulation, n::Int)
-    [sample(resample.(p.values), p.probs) for i = 1:n]
+    [sample([float.(resample(v)) for v in p.values], p.probs) for i = 1:n]
 end
 
 constraints = [
