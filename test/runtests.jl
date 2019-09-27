@@ -48,6 +48,10 @@ include("mathematics/test_mathematics.jl")
 #############################################
 include("uncertain_statistics/uncertain_values/test_core_stats_point_estimates.jl")
 include("uncertain_statistics/uncertain_values/test_core_stats_pair_estimates.jl")
+
+include("uncertain_statistics/uncertain_datasets/test_core_stats_single_dataset_estimates.jl")
+
+
 include("uncertain_statistics/test_hypothesistests.jl")
 #include("uncertain_statistics/test_hypothesistests_timeseries.jl")
 
