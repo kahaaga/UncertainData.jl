@@ -5,7 +5,7 @@ uncertainties.
 
 ## Uncertain index datasets and data value datasets
 
-There are three main types of uncertain datasets: 
+There are three main types of uncertain datasets:
 
 - [UncertainIndexDataset](uncertain_index_dataset.md)s contain uncertain indices.
 - [UncertainValueDataset](uncertain_value_dataset.md)s contain uncertain data values. 
@@ -14,10 +14,9 @@ There are three main types of uncertain datasets:
     `UncertainIndexDataset`s to represent the indices and `UncertainValueDataset`s
     to represent the data values.
 
-
 ## Generic dataset type
+
 There's also a generic uncertain dataset type for when you don't care about distinguishing 
-between indices and data values: 
+between indices and data values:
 
 - [UncertainDataset](uncertain_dataset.md) contains uncertain indices.
-

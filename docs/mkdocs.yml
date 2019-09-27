@@ -53,7 +53,7 @@ pages:
       - Theoretical distributions with known parameters: uncertain_values/uncertainvalues_theoreticaldistributions.md
       - Theoretical distributions with fitted parameters: uncertain_values/uncertainvalues_fitted.md
       - Values without uncertainty: uncertain_values/certainvalue.md
-      - Populations: uncertain_values/populations.md
+      - (Nested) populations: uncertain_values/populations.md
     - Combining: uncertain_values/merging.md
 
   - Uncertain datasets:
@@ -84,12 +84,13 @@ pages:
   - Mathematics: 
       - Elementary operations: mathematics/elementary_operations.md
       - Trigonometric functions: mathematics/trig_functions.md
-  - Uncertain statistics:
-    - Core statistics: 
+  - Statistics:
+    - Basics: 
       - Overview: uncertain_statistics/core_stats/core_statistics.md
       - Point estimates: uncertain_statistics/core_stats/core_statistics_point_estimates.md
       - Pairwise estimates: uncertain_statistics/core_stats/core_statistics_pairwise_estimates.md
-      - On uncertain datasets: uncertain_statistics/core_stats/core_statistics_datasets.md
+      - Single uncertain dataset estimates: uncertain_statistics/core_stats/core_statistics_datasets_single_dataset_estimates.md
+      #- Single uncertain dataset estimates: uncertain_statistics/core_stats/core_statistics_datasets.md
     - Hypothesis tests:
       - Overview: uncertain_statistics/hypothesistests/hypothesis_tests_overview.md
       - One sample t-test: uncertain_statistics/hypothesistests/one_sample_t_test.md

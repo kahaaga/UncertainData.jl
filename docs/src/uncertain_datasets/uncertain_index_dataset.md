@@ -6,15 +6,16 @@ It is meant to be used for the `indices` field in
 
 ## Documentation
 
-```@docs 
+```@docs
 UncertainIndexDataset
 ```
 
-## Examples 
+## Defining uncertain index datasets
 
 ### Example 1: increasing index uncertainty through time
 
 #### Defining the indices
+
 Say we had a dataset of 20 values for which the uncertainties are normally distributed 
 with increasing standard deviation through time.
 
@@ -47,19 +48,18 @@ datavals = UncertainValueDataset(measurements)
 
 ![](uncertain_indexvalue_dataset_vals.svg)
 
+#### Combinining the indices and values
 
-#### Combinining the indices and values 
+Now, we combine the indices and the corresponding data.
 
-Now, we combine the indices and the corresponding data. 
-
-```julia 
+```julia
 d = UncertainIndexDataset(inds, datavals)
 ```
 
 Plot the dataset with error bars in both directions, using the 20th to 80th percentile 
 range for the indices and the 33rd to 67th percentile range for the data values. 
 
-```
+```julia
 plot(d, [0.2, 0.8], [0.33, 0.67])
 ```
 

@@ -11,9 +11,10 @@ as opposed to [indices](uncertain_index_dataset.md).
 UncertainValueDataset
 ```
 
-## Examples
+## Defining uncertain value datasets
 
 ### Example 1: constructing an `UncertainValueDataset` from uncertain values
+
 Let's create a random walk and pretend it represents fluctuations in the mean
 of an observed dataset. Assume that each data point is normally distributed,
 and that the $i$-th observation has standard deviation $\sigma_i \in [0.3, 0.5]$.
@@ -39,7 +40,7 @@ d = UncertainValueDataset(uvals)
 The built-in plot recipes makes it a breeze to plot the dataset. Here, we'll plot the 
 20th to 80th percentile range error bars. 
 
-```
+```julia
 plot(d, [0.2, 0.8])
 ```
 
