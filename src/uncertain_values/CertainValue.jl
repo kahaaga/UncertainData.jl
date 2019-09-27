@@ -60,6 +60,13 @@ Base.maximum(v::CertainValue) = v.value
 Base.isnan(x::CertainValue) = Base.isnan(x.value)
 Base.abs2(x::CertainValue) = Base.abs2(x.value)
 
+StatsBase.mean(v::CertainValue) = v.value
+StatsBase.median(v::CertainValue) = v.value
+StatsBase.middle(v::CertainValue) = v.value
+StatsBase.quantile(v::CertainValue, q) = v.value
+StatsBase.quantile(v::CertainValue, q, n::Int) = v.value
+StatsBase.std(v::CertainValue{T}) where {T} = zero(T)
+
 function Base.:<(x::CertainValue{T1}, y::CertainValue{T2}) where {
         T1 <: Real, T2 <: Real} 
     x.value < y.value
