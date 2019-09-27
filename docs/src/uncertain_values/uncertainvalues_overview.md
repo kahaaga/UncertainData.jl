@@ -3,13 +3,14 @@ probability distribution describing the point's uncertainty.
 
 There are currently three ways of doing so:
 
-- by [theoretical distributions with known parameters](uncertainvalues_theoreticaldistributions.md)
-- by [theoretical distributions with parameters fitted to empirical data](uncertainvalues_fitted.md)
-- by [kernel density estimates to empirical data](uncertainvalues_kde.md)
-- by [weighted populations](populations.md) where the probability of drawing values are 
-    already known, so you can skip kernel density estimation.
-- a type representing [values without uncertainty](certainvalue.md), so you can mix 
-    uncertain values with certain values
+- By [theoretical distributions with known parameters](uncertainvalues_theoreticaldistributions.md).
+- By [theoretical distributions with parameters fitted to empirical data](uncertainvalues_fitted.md).
+- By [kernel density estimates to empirical data](uncertainvalues_kde.md).
+- By [weighted populations](populations.md) where the probability of drawing values are 
+    already known, so you can skip kernel density estimation. Populations can be nested, and 
+    may contain numerical values, uncertain values or both.
+- A type representing [values without uncertainty](certainvalue.md), so you can mix 
+    uncertain values with certain values.
 
 ## Some quick examples
 
