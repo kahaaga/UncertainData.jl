@@ -73,12 +73,12 @@ include("uncertain_statistics/test_hypothesistests.jl")
 # #############################
 # # Sampling constraints
 # #############################
-# include("sampling_constraints/test_sampling_constraints.jl")
-# include("sampling_constraints/test_constrain_certainvalue.jl")
-# #include("sampling_constraints/test_constrain_population.jl")
-# include("sampling_constraints/test_constrain_uncertainvalues.jl")
-# include("sampling_constraints/test_constrain_uncertainvalues_kde.jl")
-# include("sampling_constraints/test_constrain_uncertaindatasets.jl")
-# include("sampling_constraints/test_constrain_uncertainvaluedatasets.jl")
-# include("sampling_constraints/test_constrain_uncertainindexdatasets.jl")
+include("sampling_constraints/test_sampling_constraints.jl")
+include("sampling_constraints/test_constrain_certainvalue.jl")
+include("sampling_constraints/test_constrain_population.jl")
+include("sampling_constraints/test_constrain_uncertainvalues.jl")
+include("sampling_constraints/test_constrain_uncertainvalues_kde.jl")
+include("sampling_constraints/test_constrain_uncertaindatasets.jl")
+include("sampling_constraints/test_constrain_uncertainvaluedatasets.jl")
+include("sampling_constraints/test_constrain_uncertainindexdatasets.jl")
 

@@ -48,13 +48,3 @@ constrain(pop2, TruncateStd(1))
 @test constrain(pop2, TruncateStd(1)).values == pop2.values[2:3]
 @test constrain(pop2, TruncateStd(1)).probs == pop2.probs[2:3]
 
-
-
-#@test constrain(uv, TruncateMinimum(0.2)) isa ConstrainedUncertainScalarPopulation
-#@test constrain(uv, TruncateMaximum(0.8)) isa ConstrainedUncertainScalarPopulation
-#@test constrain(uv, TruncateRange(0.2, 0.8)) isa ConstrainedUncertainScalarPopulation
-#@test constrain(uv, TruncateLowerQuantile(0.2)) isa ConstrainedUncertainScalarPopulation
-#@test constrain(uv, TruncateUpperQuantile(0.8)) isa ConstrainedUncertainScalarPopulation
-#@test constrain(uv, TruncateQuantiles(0.2, 0.8)) isa ConstrainedUncertainScalarPopulation
-#@test constrain(uv, TruncateStd(1)) isa ConstrainedUncertainScalarPopulation
-#@test constrain(uv, TruncateStd(1.3)) isa ConstrainedUncertainScalarPopulation
