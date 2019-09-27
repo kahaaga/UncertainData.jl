@@ -27,8 +27,8 @@ end
 
 Base.show(io::IO, p::AbstractScalarPopulation) = print(io, summarise(p))
 
-Base.minimum(p::AbstractScalarPopulation) = minimum(p.values)
-Base.maximum(p::AbstractScalarPopulation) = maximum(p.values)
+Base.minimum(p::AbstractScalarPopulation) = minimum(minimum(p.values))
+Base.maximum(p::AbstractScalarPopulation) = maximum(maximum(p.values))
 Distributions.support(p::AbstractScalarPopulation) = interval(minimum(p), maximum(p))
 
 export AbstractScalarPopulation
