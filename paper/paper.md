@@ -51,7 +51,6 @@ the provided resampling framework.
 ``UncertainData.jl``  was originally designed to form the backbone of the uncertainty 
 handling in the [CausalityTools.jl](https://github.com/kahaaga/CausalityTools.jl) package, 
 with the aim of quantifying the sensitivity of statistical time series causality detection 
-algorithms - a work that is in progress. Recently, the package has also been used in 
-paleoclimate research [@Vasskog:2019].
+algorithms. Recently, the package has also been used in paleoclimate research [@Vasskog:2019].
 
 # References
