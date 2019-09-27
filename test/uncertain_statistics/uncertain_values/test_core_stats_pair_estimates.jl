@@ -18,7 +18,7 @@ pairwise_funcs = [
     StatsBase.crosscov
 ]
 
-@testset "$(pairwise_funcs[i])" for i = 1:length(pairwise_funcs)
+@testset "pairwise statistic: $(pairwise_funcs[i])" for i = 1:length(pairwise_funcs)
     f = pairwise_funcs[i]
     @testset for (i, uval) in enumerate(example_uvals)
         if f == StatsBase.psnr
