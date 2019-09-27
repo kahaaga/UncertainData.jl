@@ -94,7 +94,7 @@ StatsBase.geomean(x::AbstractUncertainValue, n::Int) = resample(StatsBase.geomea
 Compute the excess kurtosis of an uncertain value over an `n`-draw sample of it,
 optionally specifying a center `m`).
 """
-StatsBase.kurtosis(x::AbstractUncertainValue, n::Int; m = mean(x, n)) = resample(StatsBase.kurtosis, x, n, m)
+StatsBase.kurtosis(x::AbstractUncertainValue, n::Int, m = mean(x, n)) = resample(StatsBase.kurtosis, x, n, m)
 
 """
 	moment(x::AbstractUncertainValue, k, n::Int, m = mean(x, n))

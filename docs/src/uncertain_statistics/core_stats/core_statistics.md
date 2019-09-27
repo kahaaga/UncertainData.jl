@@ -2,11 +2,23 @@
 
 This package extends many of the statistical algorithms in `StatsBase` 
 for uncertain values. To compute these statistics, a resampling 
-approach is used. For more details and lists of the available statistics, see
+approach is used. 
+
+## Enabling uncertain statistics
+
+To enable uncertain statistics, first run the following:
+
+```julia
+using StatsBase
+```
+
+## Available statistics
+
+For more details and lists of the available statistics, see
 
 - [Point-estimates of statistics](@ref point_estimate_statistics)
 - [Pairwise estimates of statistics](@ref pairwise_statistics)
-- [Dataset statistics](@ref dataset_statistics).
+- [Dataset statistics](@ref single_dataset_estimate_statistics).
 
 ## [Point-estimates of statistics](@id pointwise_statistics)
 

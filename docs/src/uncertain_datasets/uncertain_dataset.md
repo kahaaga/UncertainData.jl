@@ -1,30 +1,28 @@
 `UncertainDataset`s is a generic uncertain dataset type that has no explicit index 
-associated with its uncertain values. 
+associated with its uncertain values.
 
 It inherits all the behaviour of `AbstractUncertainValueDataset`, but may lack some 
-functionality that an [UncertainValueDataset](uncertain_value_dataset.md) has. 
+functionality that an [UncertainValueDataset](uncertain_value_dataset.md) has.
 
 If you don't care about distinguishing between 
 indices and data values, constructing instances of this data type requires five less key 
 presses than [UncertainValueDataset](uncertain_value_dataset.md).
 
-
-## Documentation 
+## Documentation
 
 ```@docs
 UncertainDataset
 ```
 
-## Examples
+## Defining an `UncertainDataset` from a collection of uncertain values
 
-### Example 1: constructing an `UncertainDataset` from uncertain values
 Let's create a random walk and pretend it represents fluctuations in the mean
 of an observed dataset. Assume that each data point is normally distributed,
 and that the $i$-th observation has standard deviation $\sigma_i \in [0.3, 0.5]$.
 
 Representing these data as an `UncertainDataset` is done as follows:
 
-```julia 
+```julia
 using UncertainData, Plots
 
 # Create a random walk of 55 steps
@@ -39,9 +37,9 @@ D = UncertainDataset(uncertainvals)
 ```
 
 By default, plotting the dataset will plot the median values (only for scatter plots) along with the 33rd to 67th
-percentile range error bars. 
+percentile range error bars.
 
-```
+```julia
 plot(D)
 ```
 
@@ -49,17 +47,16 @@ plot(D)
 
 You can customize the error bars by explicitly providing the quantiles:
 
-```
+```julia
 plot(D, [0.05, 0.95])
 ```
 
 ![](uncertain_value_dataset_plot_customerrorbars.svg)
 
-
 ## Example 2: mixing different types of uncertain values
+
 Mixing different types of uncertain values also works. Let's create a dataset
 of uncertain values constructed in different ways.
-
 
 ```julia
 using UncertainData, Distributions, Plots
@@ -85,7 +82,6 @@ D = UncertainDataset([o1, o2, o3, o4, o5, o6, o7])
 Now, plot the uncertain dataset.
 
 ```julia
-
 using Plots
 # Initialise the plot
 p = plot(legend = false, xlabel = "time step", ylabel = "value")
