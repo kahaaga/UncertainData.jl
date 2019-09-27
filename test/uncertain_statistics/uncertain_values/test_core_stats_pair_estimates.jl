@@ -18,21 +18,23 @@ pairwise_funcs = [
     StatsBase.crosscov
 ]
 
-@testset "pairwise statistic: $(pairwise_funcs[i])" for i = 1:length(pairwise_funcs)
-    f = pairwise_funcs[i]
-    @testset for (i, uval) in enumerate(example_uvals)
-        if f == StatsBase.psnr
-            maxv = 100
-            @test f(uval, uval, maxv, n) isa T where T <: Real
-            
-        elseif f ∈ [StatsBase.crosscor, StatsBase.crosscov]
-            @test f(uval, uval, n) isa AbstractVector{T} where T <: Real
-            
-        else
-            @test f(uval, uval, n) isa T where T <: Real
+@testset "Pairwise statistics" begin
+    @testset "$(pairwise_funcs[i])" for i = 1:length(pairwise_funcs)
+        f = pairwise_funcs[i]
+        @testset for (i, uval) in enumerate(example_uvals)
+            if f == StatsBase.psnr
+                maxv = 100
+                @test f(uval, uval, maxv, n) isa T where T <: Real
+                
+            elseif f ∈ [StatsBase.crosscor, StatsBase.crosscov]
+                @test f(uval, uval, n) isa AbstractVector{T} where T <: Real
+                
+            else
+                @test f(uval, uval, n) isa T where T <: Real
+            end
         end
-    end
-end;
+    end;
+end
 
 # Functions that under the hood use functions with strictly positive domains
 # special_pairwise_funcs = [
