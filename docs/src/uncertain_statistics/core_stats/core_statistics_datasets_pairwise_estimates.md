@@ -1,4 +1,4 @@
-# [Pairwise statistics on uncertain data collections](@id single_dataset_estimate_statistics)
+# [Pairwise statistics on uncertain data collections](@id pairs_dataset_estimate_statistics)
 
 These estimators operate on pairs of uncertain value collections. They compute the 
 statistic in question by drawing length-`n` draws of both datasets independently,

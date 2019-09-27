@@ -16,9 +16,10 @@ using StatsBase
 
 For more details and lists of the available statistics, see
 
-- [Point-estimates of statistics](@ref point_estimate_statistics)
-- [Pairwise estimates of statistics](@ref pairwise_statistics)
-- [Dataset statistics](@ref single_dataset_estimate_statistics).
+- [Point-estimates of statistics on single uncertain values](@ref point_estimate_statistics)
+- [Statistics on pairs of uncertain values](@ref pairwise_statistics)
+- [Statistics on a single uncertain data collection](@ref single_dataset_estimate_statistics)
+- [Statistics on pairs of uncertain data collections](@ref pairs_dataset_estimate_statistics)
 
 ## [Point-estimates of statistics](@id pointwise_statistics)
 
