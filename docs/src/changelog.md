@@ -67,6 +67,7 @@
 ### Documentation
 
 - Improved documentation for `cor` and `cov` for uncertain datasets. 
+- Other minor documentation improvements.
 
 ### Bug fixes
 
