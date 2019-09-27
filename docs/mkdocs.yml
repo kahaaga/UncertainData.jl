@@ -87,9 +87,10 @@ pages:
   - Statistics:
     - Basics: 
       - Overview: uncertain_statistics/core_stats/core_statistics.md
-      - Point estimates: uncertain_statistics/core_stats/core_statistics_point_estimates.md
-      - Pairwise estimates: uncertain_statistics/core_stats/core_statistics_pairwise_estimates.md
-      - Single uncertain dataset estimates: uncertain_statistics/core_stats/core_statistics_datasets_single_dataset_estimates.md
+      - Point estimates on values: uncertain_statistics/core_stats/core_statistics_point_estimates.md
+      - Pairwise estimates on values: uncertain_statistics/core_stats/core_statistics_pairwise_estimates.md
+      - Estimates on single uncertain value collections: uncertain_statistics/core_stats/core_statistics_datasets_single_dataset_estimates.md
+      - Estimates on pairs of uncertain value collections: uncertain_statistics/core_stats/core_statistics_datasets_pairwise_estimates.md
       #- Single uncertain dataset estimates: uncertain_statistics/core_stats/core_statistics_datasets.md
     - Hypothesis tests:
       - Overview: uncertain_statistics/hypothesistests/hypothesis_tests_overview.md

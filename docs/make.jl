@@ -31,6 +31,7 @@ PAGES = [
             "uncertain_statistics/core_stats/core_statistics_point_estimates.md",
             "uncertain_statistics/core_stats/core_statistics_pairwise_estimates.md",
             "uncertain_statistics/core_stats/core_statistics_datasets_single_dataset_estimates.md",
+            "uncertain_statistics/core_stats/core_statistics_datasets_pairwise_estimates.md",
             "uncertain_statistics/core_stats/core_statistics_datasets.md"
         ],
 
