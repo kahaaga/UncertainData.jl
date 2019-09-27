@@ -12,6 +12,7 @@ import ..UncertainValues:
     UncertainScalarBinomialDistributed,
     UncertainScalarGammaDistributed,
     UncertainScalarFrechetDistributed
+import Distributions 
 
 # Resample for generic
 resample(uv::TheoreticalDistributionScalarValue) = rand(uv.distribution)
@@ -42,3 +43,10 @@ resample(uv::UncertainScalarBetaBinomialDistributed, n::Int) = rand(uv.distribut
 resample(uv::UncertainScalarGammaDistributed, n::Int) = rand(uv.distribution, n)
 resample(uv::UncertainScalarFrechetDistributed, n::Int) = rand(uv.distribution, n)
 resample(uv::UncertainScalarBinomialDistributed, n::Int) = rand(uv.distribution, n)
+
+
+resample(x::Distributions.Truncated) = rand(x)
+resample(x::Distributions.Truncated, n::Int) = rand(x, n)
+
+resample(x::Distributions.Distribution) = rand(x)
+resample(x::Distributions.Distribution, n::Int) = rand(x, n)
