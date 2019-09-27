@@ -128,7 +128,7 @@ support(uv::AbstractUncertainScalarKDE{T}) where T =
 
 
 """
-    getrangeindex(uv::AbstractUncertainScalarKDE, q::Float64)
+    getquantileindex(uv::AbstractUncertainScalarKDE, q::Float64)
 
 Return the index of the range/density value corresponding to the `q`-th quantile
 of an uncertain value furnished by a kernel density estimate.
