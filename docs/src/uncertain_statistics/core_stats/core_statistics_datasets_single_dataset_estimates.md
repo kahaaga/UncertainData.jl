@@ -5,6 +5,19 @@ statistic in question by drawing a length-`n` draw of the uncertain value,
 sampling each point in the collection independently, then computing the statistic 
 on those `n` draws.
 
+## What is a collection of uncertain data?
+
+This might be either an instance of `UncertainValueDataset`, `UncertainIndexDataset` or 
+a vector of uncertain values `Vector{AbstractUncertainValue}`. In the package, the following
+type union is used to represent these possibilities:
+
+```julia
+const UVAL_COLLECTION_TYPES = Union{UD, UV} where {
+    UD <: AbstractUncertainValueDataset,
+    UV <: AbstractVector{T} where {
+        T <: AbstractUncertainValue}}
+```
+
 ## Mean
 
 ```@docs

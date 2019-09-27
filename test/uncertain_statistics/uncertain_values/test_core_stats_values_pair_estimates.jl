@@ -1,4 +1,4 @@
-n = 5
+n = 10
 using Test 
 
 pairwise_funcs = [
@@ -18,7 +18,7 @@ pairwise_funcs = [
     StatsBase.crosscov
 ]
 
-@testset "Pairwise statistics" begin
+@testset "Pairwise statistics on uncertain values" begin
     @testset "$(pairwise_funcs[i])" for i = 1:length(pairwise_funcs)
         f = pairwise_funcs[i]
         @testset for (i, uval) in enumerate(example_uvals)
@@ -28,7 +28,7 @@ pairwise_funcs = [
                 
             elseif f ∈ [StatsBase.crosscor, StatsBase.crosscov]
                 @test f(uval, uval, n) isa AbstractVector{T} where T <: Real
-                
+                @test f(uval, uval, 1:5, n) isa AbstractVector{T} where T <: Real
             else
                 @test f(uval, uval, n) isa T where T <: Real
             end

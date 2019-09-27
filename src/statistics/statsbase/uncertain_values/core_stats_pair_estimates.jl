@@ -187,7 +187,7 @@ StatsBase.rmsd(x::AbstractUncertainValue, y::AbstractUncertainValue, n::Int; nor
 
 Compute the squared L2 distance between two uncertain values by independently 
 drawing `n` samples from `x` and from `y`, then computing the  
-squared L2 distance between those length-`n` draws: ``\\sum_{i=1}^n |a_i - b_i|^2``.
+squared L2 distance between those length-`n` draws: ``\\sum_{i=1}^n |x_i - y_i|^2``.
 """
 StatsBase.sqL2dist(x::AbstractUncertainValue, y::AbstractUncertainValue, n::Int) = 
     resample(StatsBase.sqL2dist, x, y, n)
