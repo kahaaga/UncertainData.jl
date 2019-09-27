@@ -89,19 +89,20 @@ Compute the geometric mean of an uncertain value over an `n`-draw sample of it.
 StatsBase.geomean(x::AbstractUncertainValue, n::Int) = resample(StatsBase.geomean, x, n)
 
 """
-	kurtosis(uv::AbstractUncertainValue, n::Int)
+	kurtosis(uv::AbstractUncertainValue, n::Int, m = mean(uv, n))
 
-Compute the excess kurtosis of an uncertain value over an `n`-draw sample of it.
+Compute the excess kurtosis of an uncertain value over an `n`-draw sample of it,
+optionally specifying a center `m`).
 """
-StatsBase.kurtosis(x::AbstractUncertainValue, n::Int; m = mean(x)) = resample(StatsBase.kurtosis, x, n, m)
+StatsBase.kurtosis(x::AbstractUncertainValue, n::Int; m = mean(x, n)) = resample(StatsBase.kurtosis, x, n, m)
 
 """
-	moment(x::AbstractUncertainValue, k, n::Int, m = mean(x))
+	moment(x::AbstractUncertainValue, k, n::Int, m = mean(x, n))
 
 Compute the `k`-th order central moment of an uncertain value over an 
 `n`-draw sample of it, optionally specifying a center `m`.
 """
-StatsBase.moment(x::AbstractUncertainValue, k, n::Int, m = mean(x)) = resample(StatsBase.moment, x, n, k, m)
+StatsBase.moment(x::AbstractUncertainValue, k, n::Int, m = mean(x, n)) = resample(StatsBase.moment, x, n, k, m)
 
 """
 	percentile(x::AbstractUncertainValue, p, n::Int)
@@ -138,12 +139,12 @@ sample of it, optionally specifying a center `m`, i.e.
 StatsBase.sem(x::AbstractUncertainValue, n::Int) = resample(StatsBase.sem, x, n)
 
 """
-	skewness(x::AbstractUncertainValue, n::Int)
+	skewness(x::AbstractUncertainValue, n::Int, m = mean(x, n))
 
 Compute the standardized skewness of an uncertain value over an `n`-draw sample of 
 it, optionally specifying a center `m`.
 """
-StatsBase.skewness(x::AbstractUncertainValue, n::Int; m = mean(x)) = resample(StatsBase.skewness, x, n, m)
+StatsBase.skewness(x::AbstractUncertainValue, n::Int; m = mean(x, n)) = resample(StatsBase.skewness, x, n, m)
 
 """
 	span(x::AbstractUncertainValue, n::Int)
