@@ -119,15 +119,6 @@ end
 Base.minimum(pop::UncertainScalarPopulation{T, PW} where {T <: AbstractUncertainValue, PW}) = 
     minimum([minimum(uv) for uv in pop])
 
-Base.maximum(pop::UncertainScalarPopulation{T, PW} where {T <: AbstractUncertainValue, PW}) = 
-    maximum([maximum(uv) for uv in pop])
-
-Base.minimum(pop::UncertainScalarPopulation{T, PW} where {T <: Number, PW}) = 
-    minimum([minimum(uv) for uv in pop])
-
-Base.maximum(pop::UncertainScalarPopulation{T, PW} where {T <: Number, PW}) = 
-    maximum([maximum(uv) for uv in pop])
-
 export 
 UncertainScalarPopulation,
 ConstrainedUncertainScalarPopulation
