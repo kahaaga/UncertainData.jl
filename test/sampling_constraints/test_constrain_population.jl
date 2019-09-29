@@ -28,6 +28,8 @@ uncertain_scalar_populations = [pop1, pop2, pop3, pop4, pop5];
 @test constrain(pop1, TruncateLowerQuantile(0.2)) isa ConstrainedUncertainScalarPopulation
 @test constrain(pop1, TruncateUpperQuantile(0.8)) isa ConstrainedUncertainScalarPopulation
 @test constrain(pop1, TruncateQuantiles(0.2, 0.8)) isa ConstrainedUncertainScalarPopulation
+@test constrain(pop1, TruncateStd(1)) isa ConstrainedUncertainScalarPopulation
+@test constrain(pop1, TruncateStd(0.5)) isa ConstrainedUncertainScalarPopulation
 
 # pop2.values = [1, 2, 3]
 @test constrain(pop2, TruncateMinimum(0.2)) isa ConstrainedUncertainScalarPopulation
@@ -36,6 +38,12 @@ uncertain_scalar_populations = [pop1, pop2, pop3, pop4, pop5];
 @test constrain(pop2, TruncateLowerQuantile(0.2)) isa ConstrainedUncertainScalarPopulation
 @test constrain(pop2, TruncateUpperQuantile(0.8)) isa ConstrainedUncertainScalarPopulation
 @test constrain(pop2, TruncateQuantiles(0.2, 0.8)) isa ConstrainedUncertainScalarPopulation
+@test_throws ArgumentError constrain(pop2, TruncateMinimum(3.2)).values
+@test_throws ArgumentError constrain(pop2, TruncateMaximum(0.8)).values
+@test_throws ArgumentError constrain(pop2, TruncateRange(-1, 0)).values
+@test constrain(pop2, TruncateStd(1)) isa ConstrainedUncertainScalarPopulation
+@test constrain(pop2, TruncateStd(0.5)) isa ConstrainedUncertainScalarPopulation
+
 
 # pop3.values = [1.0, 2.0, 3.0]
 @test constrain(pop3, TruncateMinimum(0.2)) isa ConstrainedUncertainScalarPopulation
@@ -44,6 +52,11 @@ uncertain_scalar_populations = [pop1, pop2, pop3, pop4, pop5];
 @test constrain(pop3, TruncateLowerQuantile(0.2)) isa ConstrainedUncertainScalarPopulation
 @test constrain(pop3, TruncateUpperQuantile(0.8)) isa ConstrainedUncertainScalarPopulation
 @test constrain(pop3, TruncateQuantiles(0.2, 0.8)) isa ConstrainedUncertainScalarPopulation
+@test_throws ArgumentError constrain(pop3, TruncateMinimum(3.2)).values
+@test_throws ArgumentError constrain(pop3, TruncateMaximum(0.8)).values
+@test_throws ArgumentError constrain(pop3, TruncateRange(-1, 0)).values
+@test constrain(pop3, TruncateStd(1)) isa ConstrainedUncertainScalarPopulation
+@test constrain(pop3, TruncateStd(0.5)) isa ConstrainedUncertainScalarPopulation
 
 @test constrain(pop4, TruncateMinimum(-10)) isa ConstrainedUncertainScalarPopulation
 @test constrain(pop4, TruncateMaximum(10)) isa ConstrainedUncertainScalarPopulation
@@ -51,6 +64,8 @@ uncertain_scalar_populations = [pop1, pop2, pop3, pop4, pop5];
 @test constrain(pop4, TruncateLowerQuantile(0.2)) isa ConstrainedUncertainScalarPopulation
 @test constrain(pop4, TruncateUpperQuantile(0.8)) isa ConstrainedUncertainScalarPopulation
 @test constrain(pop4, TruncateQuantiles(0.2, 0.8)) isa ConstrainedUncertainScalarPopulation
+@test constrain(pop4, TruncateStd(1)) isa ConstrainedUncertainScalarPopulation
+@test constrain(pop4, TruncateStd(0.5)) isa ConstrainedUncertainScalarPopulation
 
 @test constrain(pop5, TruncateMinimum(-10)) isa ConstrainedUncertainScalarPopulation
 @test constrain(pop5, TruncateMaximum(10)) isa ConstrainedUncertainScalarPopulation
@@ -58,6 +73,8 @@ uncertain_scalar_populations = [pop1, pop2, pop3, pop4, pop5];
 @test constrain(pop5, TruncateLowerQuantile(0.2)) isa ConstrainedUncertainScalarPopulation
 @test constrain(pop5, TruncateUpperQuantile(0.8)) isa ConstrainedUncertainScalarPopulation
 @test constrain(pop5, TruncateQuantiles(0.2, 0.8)) isa ConstrainedUncertainScalarPopulation
+@test constrain(pop5, TruncateStd(1)) isa ConstrainedUncertainScalarPopulation
+@test constrain(pop5, TruncateStd(0.5)) isa ConstrainedUncertainScalarPopulation
 
 
 
