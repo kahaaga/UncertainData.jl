@@ -44,6 +44,8 @@
     1. `gkldiv(x::AbstractUncertainValue, y::AbstractUncertainValue, n::Int)`
     1. `kldivergence(x::AbstractUncertainValue, y::AbstractUncertainValue, n::Int)`
 
+- Added `UncertainValue` constructor for distribution instances.
+- Added `UncertainValue` constructor for (potentially nested) truncated distribution instances.
 - Implemented `resample` methods for `NTuple`s of uncertain values.
 - Added `resample(f::Function, n::Int, x::AbstractUncertainValue, args...; kwargs...)`method for 
     easy evaluation of point-estimates for single uncertain values.
