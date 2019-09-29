@@ -1,41 +1,45 @@
 
-The following sampling constraints are available:
+# Available sampling constraints
 
+The following sampling constraints are available. These constraints may be used in any resampling setting.
 
-## Generic resampling
-
-These constraints may be used in any resampling setting.
-
-
-### Standard deviation 
+## Standard deviation
 
 ```@docs
 TruncateStd
 ```
 
+## Minimum value
 
-### Value range 
 ```@docs
 TruncateMinimum
 ```
+
+## Maximum value
 
 ```@docs
 TruncateMaximum
 ```
 
+## Value range
+
 ```@docs
 TruncateRange
 ```
 
-### Quantile range
+## Lower quantile
 
 ```@docs
 TruncateLowerQuantile
 ```
 
+## Upper quantile
+
 ```@docs
 TruncateUpperQuantile
 ```
+
+## Quantile range
 
 ```@docs
 TruncateQuantiles

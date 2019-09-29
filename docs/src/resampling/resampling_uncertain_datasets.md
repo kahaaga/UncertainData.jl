@@ -1,6 +1,6 @@
 
 Uncertain datasets are resampled by element-wise sampling the furnishing distributions 
-of the uncertain values in the dataset. 
+of the uncertain values in the dataset.
 
 You may sample the dataset as it is, or apply 
 [sampling constraints](../sampling_constraints/available_constraints.md) that limit the 
@@ -9,31 +9,27 @@ support of the individual data value distributions.
 **Note: for datasets where both indices and values are uncertain, see 
 [uncertain index-value datasets](resampling_uncertain_indexvalue_datasets.md).**
 
+## Documentation
 
-## Documentation 
-
-```@docs 
+```@docs
 resample(uv::AbstractUncertainValueDataset)
 ```
 
-```@docs 
+```@docs
 resample(uv::AbstractUncertainValueDataset, n::Int)
 ```
 
-
 ```@docs
-resample(udata::AbstractUncertainValueDataset, 
-	constraint::Union{SamplingConstraint, Vector{SamplingConstraint}})
+resample(udata::AbstractUncertainValueDataset, constraint::Union{SamplingConstraint, Vector{SamplingConstraint}})
 ```
 
 ```@docs
-resample(udata::AbstractUncertainValueDataset, 
-	constraint::Union{SamplingConstraint, Vector{SamplingConstraint}}, n::Int)
+resample(udata::AbstractUncertainValueDataset, constraint::Union{SamplingConstraint, Vector{SamplingConstraint}}, n::Int)
 ```
 
-## Examples 
+## Examples
 
-###  Resampling with sampling constraints 
+### Resampling with sampling constraints
 
 Consider the following example where we had a bunch of different measurements. 
 
@@ -48,7 +44,7 @@ by a normal and a gamma distribution with known parameters.
 
 To plot these data, we gather them in an `UncertainDataset`.
 
-```julia 
+```julia
 dist1 = Uniform(-0.4, 0.4)
 dist2 = Uniform(-0.1, 0.1)
 r1 = [UncertainValue(Normal, 0 + rand(dist), 0.5 + rand(dist2)) for i = 1:10]
@@ -72,7 +68,7 @@ errors bars covering the 0.1st to 99.9th, the 5th to 95th, and the 33rd to 67th 
 ranges. The function will also take a sampling constraint, then resample the dataset 
 a number of times and plot the individual realizations as lines. 
 
-```julia 
+```julia
 using UncertainData, Plots
 
 function resample_plot(data, sampling_constraint; n_resample_draws = 40) 
@@ -102,7 +98,6 @@ plot(p1, p2, p3, p4, layout = (4, 1), titlefont = font(8))
 This produces the following plot:
 
 ![](resampling_uncertain_datasets.png)
-
 
 ### What happens when applying invalid constraints to a dataset?
 

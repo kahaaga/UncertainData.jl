@@ -4,7 +4,7 @@
 ExactOneSampleKSTest(uv::AbstractUncertainValue, d::UnivariateDistribution, n::Int = 1000)
 ```
 
-**Example**
+### Example
 
 We'll test whether the uncertain value `uv = UncertainValue(Gamma, 2, 4)`
 comes from the theoretical distribution `Gamma(2, 4)`. Of course, we expect

@@ -4,7 +4,7 @@
 EqualVarianceTTest(d1::AbstractUncertainValue, d2::AbstractUncertainValue, n::Int = 1000; μ0::Real = 0)
 ```
 
-**Example**
+### Example
 
 Let's create two uncertain values furnished by distributions of different types.
 We'll perform the equal variance t-test to check if there is support for the
@@ -46,7 +46,6 @@ Details:
 
 The test rejects the null-hypothesis, so we accept the alternative hypothesis
 that the samples come from distributions with different means and variances.
-
 
 ## Pooled test
 

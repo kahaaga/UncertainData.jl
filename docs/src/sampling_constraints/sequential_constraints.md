@@ -1,5 +1,5 @@
 The following constraints may be used to impose sequential constraints when sampling a 
-dataset element-wise. 
+collection of uncertain values element-wise. 
 
 ### Increasing 
 ```@docs 

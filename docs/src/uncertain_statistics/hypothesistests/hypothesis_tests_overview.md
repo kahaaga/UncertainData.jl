@@ -12,7 +12,6 @@ The following hypothesis tests are implemented for uncertain data types.
 - [One-sample Anderson–Darling test](anderson_darling_test.md).
 - [Jarque-Bera test](jarque_bera_test.md).
 
-
 ## Terminology
 
 **Pooled statistics** are computed by sampling all uncertain values comprising the dataset n times, pooling the values together and treating them as one variable, then computing the statistic.
