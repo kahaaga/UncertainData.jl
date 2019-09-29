@@ -2,6 +2,7 @@ using Reexport
 
 
 @reexport module SamplingConstraints
+    import Distributions 
     # Sampling constraints types
     include("constraint_definitions.jl")
 
