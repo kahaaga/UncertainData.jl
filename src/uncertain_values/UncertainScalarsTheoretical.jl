@@ -5,8 +5,8 @@ import Statistics
 
 abstract type TheoreticalDistributionScalarValue <: AbstractUncertainValue end
 
-Base.rand(uv::AbstractUncertainValue) = rand(uv.distribution)
-Base.rand(uv::AbstractUncertainValue, n::Int) = [rand(uv) for i = 1:n]
+Base.rand(uv::TheoreticalDistributionScalarValue) = rand(uv.distribution)
+Base.rand(uv::TheoreticalDistributionScalarValue, n::Int) = rand(uv.distribution, n)
 
 function Distributions.support(fd::TheoreticalDistributionScalarValue)
     s = support(fd.distribution)
