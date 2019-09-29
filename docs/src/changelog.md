@@ -60,6 +60,7 @@
 
 ### Improvements
 
+- Improved subtyping for theoretical distributions.
 - Removed redundant `resample` methods for the `UncertainDataset` type. `UncertainDataset` is 
     a subtype of `AbstractUncertainValueDataset` and has no special behaviour beyond that 
     implemented for the abstract type, so now we just rely on multiple dispatch here.
