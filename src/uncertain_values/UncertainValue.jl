@@ -1,6 +1,7 @@
 import KernelDensity.UnivariateKDE
 import Distributions.Distribution
 import StatsBase: AbstractWeights, Weights
+import Distributions
 
 UncertainValue(x::T) where T <: Real = CertainValue(x)
 
@@ -284,6 +285,138 @@ function UncertainValue(distribution::Type{D}, a::T1, b::T2, c::T3;
         UncertainScalarBetaBinomialDistributed(dist, a, b, c)
     else
         throw(DomainError("Three-parameter $dist is not implemented."))
+    end
+end
+
+
+"""
+    nested_disttype(t::Distributions.Truncated)
+
+Get the type of the untruncated distribution for a potentially nested
+truncated distribution.
+"""
+function untruncated_dist(t::Distributions.Truncated)
+    t_untrunc = t
+    
+    while typeof(t_untrunc) <: Distributions.Truncated
+        t_untrunc = t_untrunc.untruncated
+    end
+    
+    return t_untrunc
+end
+
+"""
+    untruncated_disttype(t::Distributions.Truncated)
+
+Get the type of the untruncated distribution for a potentially nested
+truncated distribution.
+"""
+function untruncated_disttype(t::Distributions.Truncated)
+    t_untrunc = t
+    
+    while typeof(t_untrunc) <: Distributions.Truncated
+        t_untrunc = t_untrunc.untruncated
+    end
+    
+    return typeof(t_untrunc)
+end
+
+"""
+    UncertainValue(t::Distributions.Truncated)
+
+Construct an uncertain value from an instance of a distribution. If a specific
+uncertain value type has not been implemented, the number of parameters is 
+determined from the distribution and an instance of one of the following types
+is returned: 
+
+- `ConstrainedUncertainScalarValueOneParameter`
+- `ConstrainedUncertainScalarValueTwoParameter`
+- `ConstrainedUncertainScalarValueThreeParameter`
+
+## Examples 
+
+```julia
+# Normal distribution truncated to the interval [0.5, 0.7]
+t = Truncated(Normal(0, 1), 0.5, 0.7)
+UncertainValue(t)
+
+# Gamma distribution truncated to the interval [0.5, 3.5]
+t = Truncate(Gamma(4, 5.1), 0.5, 3.5)
+UncertainValue(t)
+
+# Binomial distribution truncated to the interval [2, 7]
+t = Truncate(Binomial(10, 0.4), 2, 7)
+UncertainValue(t)
+```
+"""
+function UncertainValue(t::Distributions.Truncated)
+    dist_type = nested_disttype(t)
+    original_dist = untruncated_dist(t)
+    params = fieldnames(dist_type)
+    param_values = [getfield(original_dist, p) for p in params]
+
+    n_params = length(params)
+    if n_params == 1
+        return ConstrainedUncertainScalarValueOneParameter(t, param_values...)
+    elseif n_params == 2
+        return ConstrainedUncertainScalarValueTwoParameter(t, param_values...)
+    elseif n_params == 3
+        return ConstrainedUncertainScalarValueThreeParameter(t, param_values...)
+    end
+end
+
+"""
+    UncertainValue(d::Distributions.Distribution)
+
+Construct an uncertain value from an instance of a distribution. If a specific
+uncertain value type has not been implemented, the number of parameters is 
+determined from the distribution and an instance of one of the following types
+is returned: 
+
+- `UncertainScalarTheoreticalOneParameter`
+- `UncertainScalarTheoreticalTwoParameter`
+- `UncertainScalarTheoreticalThreeParameter`
+
+## Examples 
+
+```julia
+UncertainValue(Normal(0, 1))
+UncertainValue(Gamma(4, 5.1))
+UncertainValue(Binomial, 8, 0.2)
+```
+"""
+function UncertainValue(d::Distributions.Distribution)    
+    params = fieldnames(typeof(d))
+    n_params = length(params)
+    param_values = [getfield(d, p) for p in params]
+    
+    if d isa Uniform
+        UncertainScalarUniformlyDistributed(d, param_values...)
+    elseif d isa Binomial
+        UncertainScalarBinomialDistributed(d, param_values...)
+    elseif d isa Normal
+        UncertainScalarNormallyDistributed(d, param_values...)
+    elseif d isa Beta
+        UncertainScalarBetaDistributed(d, param_values...)
+    elseif d isa BetaPrime
+        UncertainScalarBetaPrimeDistributed(d, param_values...)
+    elseif d isa Gamma
+        UncertainScalarGammaDistributed(d, param_values...)
+    elseif d isa Frechet
+        UncertainScalarFrechetDistributed(d, param_values...)
+    # if no specific type is implemented for this distribution, just create 
+    # a generic one
+    else 
+        if n_params == 1
+            return UncertainScalarTheoreticalOneParameter(d, param_values...)
+        elseif n_params == 2
+            return UncertainScalarTheoreticalTwoParameter(d, param_values...)
+        elseif n_params == 3
+            return UncertainScalarTheoreticalThreeParameter(d, param_values...)
+        else
+            msg = "uncertain value type for $n_params-parameter $d not implemented."
+            throw(DomainError(msg))
+        end
     end
 end
 
