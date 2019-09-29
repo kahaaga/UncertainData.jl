@@ -67,8 +67,9 @@
 
 ### Documentation
 
-- Improved documentation for `cor` and `cov` for uncertain datasets. 
+- Improved documentation for `cor` and `cov` for uncertain datasets.
 - Other minor documentation improvements.
+- Improved documentation for `TruncateStd`.
 
 ### Bug fixes
 

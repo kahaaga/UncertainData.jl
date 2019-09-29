@@ -66,10 +66,10 @@ struct TruncateQuantiles{T1<:Real, T2<:Real} <: ValueSamplingConstraint
 end
 
 """
-    TruncateStd(nσ::Int)
+    TruncateStd(nσ::Number)
 
 A constraint indicating that the distribution furnishing an uncertain value
-should be truncated at `nσ` (`n` standard deviations).
+should be truncated at the mean ± `nσ` (`n` standard deviations).
 """
 struct TruncateStd{T<:Number} <: ValueSamplingConstraint
     nσ::T
