@@ -58,18 +58,20 @@ pages:
 
   - Uncertain datasets:
       - Overview: uncertain_datasets/uncertain_datasets_overview.md
-      - Generic uncertain dataset: uncertain_datasets/uncertain_dataset.md
       - Uncertain index dataset: uncertain_datasets/uncertain_index_dataset.md 
       - Uncertain value dataset: uncertain_datasets/uncertain_value_dataset.md
       - Uncertain index-value dataset: uncertain_datasets/uncertain_indexvalue_dataset.md
-  - Resampling:
-    - Overview: resampling/resampling_overview.md
-    - Sampling constraints:
-      - Constraining uncertain values: sampling_constraints/constrain_uncertain_values.md
-      - Generic constraints: sampling_constraints/available_constraints.md
+      - Generic uncertain dataset: uncertain_datasets/uncertain_dataset.md
+  - Sampling constraints:
+    - Lists of constraints:
+      - Regular constraints: sampling_constraints/available_constraints.md
       - Sequential constraints:
         - List of sequential constraints: sampling_constraints/sequential_constraints.md
         - Existence of sequences: sampling_constraints/ordered_sequence_exists.md
+    - Examples:
+      - Constraining uncertain values: sampling_constraints/constrain_uncertain_values.md
+  - Resampling:
+    - Overview: resampling/resampling_overview.md
     - Resampling uncertain values: resampling/resampling_uncertain_values.md
     - Resampling uncertain datasets: resampling/resampling_uncertain_datasets.md
     - Resampling uncertain index-value datasets: resampling/resampling_uncertain_indexvalue_datasets.md
