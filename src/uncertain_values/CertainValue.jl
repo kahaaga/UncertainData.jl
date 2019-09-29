@@ -18,6 +18,8 @@ struct CertainValue{T} <: AbstractUncertainValue
     value::T
 end
 
+Broadcast.broadcastable(x::CertainValue) = Ref(x.value)
+
 function summarise(uval::CertainValue)
     _type = typeof(uval)
     val = uval.value
@@ -66,6 +68,9 @@ StatsBase.middle(v::CertainValue) = v.value
 StatsBase.quantile(v::CertainValue, q) = v.value
 StatsBase.quantile(v::CertainValue, q, n::Int) = v.value
 StatsBase.std(v::CertainValue{T}) where {T} = zero(T)
+
+Base.rand(v::CertainValue) = v.value
+Base.float(v::CertainValue) = float(v.value)
 
 function Base.:<(x::CertainValue{T1}, y::CertainValue{T2}) where {
         T1 <: Real, T2 <: Real} 
