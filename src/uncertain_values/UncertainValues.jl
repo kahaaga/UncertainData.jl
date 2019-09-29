@@ -19,9 +19,13 @@ using Reexport
     ##########################################
     include("abstract_types/AbstractUncertainValue.jl")
 
+    include("abstract_types/AbstractTheoreticalDistributionScalarValue.jl")
+
     include("abstract_types/AbstractPopulation.jl")
     include("abstract_types/AbstractScalarPopulation.jl")
+
     include("abstract_types/AbstractEmpirical.jl")
+    
     include("abstract_types/AbstractUncertainScalarKDE.jl")
 
 
