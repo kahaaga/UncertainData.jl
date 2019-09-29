@@ -1,16 +1,15 @@
 import ..UncertainValues:
     AbstractScalarPopulation
 
-
 import Base.rand
 import StatsBase.sample
     
 function resample(p::AbstractScalarPopulation)
-    sample([float.(resample(v)) for v in p.values], p.probs)
+    rand(p)
 end
     
 function resample(p::AbstractScalarPopulation, n::Int)
-    [sample([float.(resample(v)) for v in p.values], p.probs) for i = 1:n]
+    rand(p, n)
 end
 
 constraints = [
@@ -27,11 +26,11 @@ constraints = [
 for constraint in constraints
     funcs = quote 
         function resample(p::AbstractScalarPopulation, constraint::$(constraint))
-            resample(constrain(p, constraint))
+            rand(constrain(p, constraint))
         end
         
         function resample(p::AbstractScalarPopulation, constraint::$(constraint), n::Int)
-            resample(constrain(p, constraint), n)
+            rand(constrain(p, constraint), n)
         end
     end
     eval(funcs)
