@@ -36,8 +36,8 @@ n = length(D)
 measurements = [UncertainValue(Normal, 0, 0.1) for i = 1:5]
 d = UncertainDataset(measurements)
 
-@test resample(d) isa Vector{Float64}
-@test resample(d, 10) isa Vector{Vector{Float64}}
+@test resample(d) isa Vector{T} where T <: Real
+@test resample(d, 10) isa Vector{Vector{T}} where T <: Real
 
 ##########################################################################
 # Resampling datasets consisting of uncertain values furnished by
@@ -46,8 +46,8 @@ d = UncertainDataset(measurements)
 measurements = [UncertainValue(Normal, rand(Normal(), 1000)) for i = 1:5]
 d = UncertainDataset(measurements)
 
-@test resample(d) isa Vector{Float64}
-@test resample(d, 10) isa Vector{Vector{Float64}}
+@test resample(d) isa Vector{T} where T <: Real
+@test resample(d, 10) isa Vector{Vector{T}} where T <: Real
 
 ##########################################################################
 # Resampling datasets consisting of uncertain values furnished by
@@ -55,8 +55,8 @@ d = UncertainDataset(measurements)
 ##########################################################################
 measurements = [UncertainValue(UnivariateKDE, rand(Normal(), 1000)) for i = 1:5]
 d = UncertainDataset(measurements)
-@test resample(d) isa Vector{Float64}
-@test resample(d, 10) isa Vector{Vector{Float64}}
+@test resample(d) isa Vector{T} where T <: Real
+@test resample(d, 10) isa Vector{Vector{T}} where T <: Real
 
 ##########################################################################
 # Resampling datasets consisting of a mixture of different types of
@@ -66,11 +66,11 @@ measurements = [UncertainValue(rand(100));
                 UncertainValue(Normal, rand(Normal(), 100));
                 UncertainValue(Normal, 0, 2)]
 d = UncertainDataset(measurements)
-@test resample(d) isa Vector{Float64}
-@test resample(d, 10) isa Vector{Vector{Float64}}
+@test resample(d) isa Vector{T} where T <: Real
+@test resample(d, 10) isa Vector{Vector{T}} where T <: Real
 
 iv = UncertainIndexValueDataset(measurements, measurements)
 
-@test resample(iv) isa Tuple{Vector{Float64}, Vector{Float64}}
-@test resample(iv, 5) isa  Vector{Tuple{Vector{Float64}, Vector{Float64}}}
+@test resample(iv) isa Tuple{Vector{T}, Vector{T}} where T <: Real
+@test resample(iv, 5) isa  Vector{Tuple{Vector{T}, Vector{T}}} where T <: Real
 @test length(resample(iv, 5)) == 5

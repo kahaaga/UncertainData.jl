@@ -34,3 +34,6 @@ include("stats_on_truncated_distributions.jl")
 include("truncate_kde.jl")
 include("truncate_theoreticalscalar.jl")
 include("truncate_theoretical_fitted.jl")
+include("truncate_CertainValue.jl")
+include("truncate_population.jl")
+

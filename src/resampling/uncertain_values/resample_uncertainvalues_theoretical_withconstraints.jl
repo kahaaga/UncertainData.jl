@@ -74,7 +74,7 @@ resample(uncertainval, constraint)
 function resample(uv::AbstractUncertainValue, constraint::TruncateLowerQuantile)
     # Apply (another level of) truncation, then sample
     lower_bound = quantile(uv.distribution, constraint.lower_quantile)
-    upper_bound = support(uv.distribution).ub
+    upper_bound = maximum(uv)
     rand(Truncated(uv.distribution, lower_bound, upper_bound))
 end
 
@@ -98,7 +98,7 @@ resample(uncertainval, constraint, 1000)
 function resample(uv::AbstractUncertainValue, constraint::TruncateLowerQuantile, n::Int)
     # Apply (another level of) truncation, then sample
     lower_bound = quantile(uv.distribution, constraint.lower_quantile)
-    upper_bound = support(uv.distribution).ub
+    upper_bound = maximum(uv)
     rand(Truncated(uv.distribution, lower_bound, upper_bound), n)
 end
 
@@ -121,7 +121,7 @@ resample(uncertainval, constraint)
 """
 function resample(uv::AbstractUncertainValue, constraint::TruncateUpperQuantile)
     # Apply (another level of) truncation, then sample
-    lower_bound = support(uv.distribution).lb
+    lower_bound = minimum(uv)
     upper_bound = quantile(uv.distribution, constraint.upper_quantile)
     rand(Truncated(uv.distribution, lower_bound, upper_bound))
 end
@@ -145,7 +145,7 @@ resample(uncertainval, constraint, 1000)
 """
 function resample(uv::AbstractUncertainValue, constraint::TruncateUpperQuantile, n::Int)
     # Apply (another level of) truncation, then sample
-    lower_bound = support(uv.distribution).lb
+    lower_bound = minimum(uv)
     upper_bound = quantile(uv.distribution, constraint.upper_quantile)
     rand(Truncated(uv.distribution, lower_bound, upper_bound), n)
 end
@@ -249,7 +249,7 @@ resample(uncertainval, constraint)
 function resample(uv::AbstractUncertainValue, constraint::TruncateMinimum)
     # Apply (another level of) truncation, then sample
     lower_bound = constraint.min
-    upper_bound = support(uv.distribution).ub
+    upper_bound = maximum(uv)
     lower_bound > upper_bound ? error("lower bound > upper_bound") : nothing
     rand(Truncated(uv.distribution, lower_bound, upper_bound))
 end
@@ -274,7 +274,7 @@ resample(uncertainval, constraint, 1000)
 function resample(uv::AbstractUncertainValue, constraint::TruncateMinimum, n::Int)
     # Apply (another level of) truncation, then sample
     lower_bound = constraint.min
-    upper_bound = support(uv.distribution).ub
+    upper_bound = maximum(uv)
     lower_bound > upper_bound ? error("lower bound > upper_bound") : nothing
     rand(Truncated(uv.distribution, lower_bound, upper_bound), n)
 end
@@ -299,7 +299,7 @@ resample(uncertainval, constraint)
 function resample(uv::AbstractUncertainValue, constraint::TruncateMaximum)
     # Apply (another level of) truncation, then sample
     upper_bound = constraint.max
-    lower_bound = support(uv.distribution).lb
+    lower_bound = minimum(uv)
     lower_bound > upper_bound ? error("lower bound > upper_bound") : nothing
     rand(Truncated(uv.distribution, lower_bound, upper_bound))
 end
@@ -323,13 +323,11 @@ resample(uncertainval, constraint, 1000)
 """
 function resample(uv::AbstractUncertainValue, constraint::TruncateMaximum, n::Int)
     # Apply (another level of) truncation, then sample
-    lower_bound = support(uv.distribution).lb
+    lower_bound = minimum(uv)
     upper_bound = constraint.max
     lower_bound > upper_bound ? error("lower bound > upper_bound") : nothing
     rand(Truncated(uv.distribution, lower_bound, upper_bound), n)
 end
-
-
 
 """
     resample(uv::AbstractUncertainValue, constraint::TruncateRange)

@@ -2,7 +2,7 @@
 ##########################################
 # Some uncertain datasets
 ##########################################
-UV = UncertainValueDataset(uvals)
+UV = UncertainValueDataset(example_uvals)
 
 ##########################################
 # Apply functions to datasets `n` times

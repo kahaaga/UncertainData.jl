@@ -1,6 +1,6 @@
-constraints = [TruncateStd(rand()) for i in 1:length(uvals)]
+constraints = [TruncateStd(1 + rand()) for i in 1:length(example_uvals)]
 
-UV = UncertainValueDataset(uvals)
+UV = UncertainValueDataset(example_uvals)
 
 # A single constraint applied to each element of the dataset
 n = 5

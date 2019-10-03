@@ -44,15 +44,15 @@ Base.maximum(pop::AbstractScalarPopulation{T, PW} where {T <: AbstractUncertainV
 
 Distributions.support(p::AbstractScalarPopulation) = interval(minimum(p), maximum(p))
 
-
 function Base.rand(pop::AbstractScalarPopulation{T, PW}) where {T <: Number, PW}
     StatsBase.sample(pop.values, pop.probs)
 end
+
 function Base.rand(pop::AbstractScalarPopulation{T, PW}, n::Int) where {T <: Number, PW}
     StatsBase.sample(pop.values, pop.probs, n)
 end
-function Base.rand(pop::AbstractScalarPopulation{T, PW}) where {
-        T <: AbstractUncertainValue, PW}
+
+function Base.rand(pop::AbstractScalarPopulation{T, PW}) where {T <: AbstractUncertainValue, PW}
     # Sample one of the populations, then draw a random number from it
     popmember_idx = StatsBase.sample(1:length(pop), pop.probs)
     rand(pop[popmember_idx])
@@ -60,7 +60,6 @@ end
 function Base.rand(pop::AbstractScalarPopulation{T, PW}, n::Int) where {T <: AbstractUncertainValue, PW}
     n_members = length(pop)
     draws = zeros(Float64, n)
-    
     for i = 1:n
         # Sample one of the populations, then draw a random number from it
         sample_pop_idx = StatsBase.sample(1:n_members, pop.probs)
@@ -69,5 +68,21 @@ function Base.rand(pop::AbstractScalarPopulation{T, PW}, n::Int) where {T <: Abs
     return draws
 end
 
+
+function Base.rand(pop::AbstractScalarPopulation{T, PW}) where {T <: Any, PW}#{T <: AbstractUncertainValue, PW}
+    # Sample one of the populations, then draw a random number from it
+    popmember_idx = StatsBase.sample(1:length(pop), pop.probs)
+    rand(pop[popmember_idx])
+end
+function Base.rand(pop::AbstractScalarPopulation{T, PW}, n::Int) where {T <: Any, PW}#{T <: AbstractUncertainValue, PW}
+    n_members = length(pop)
+    draws = zeros(Float64, n)
+    for i = 1:n
+        # Sample one of the populations, then draw a random number from it
+        sample_pop_idx = StatsBase.sample(1:n_members, pop.probs)
+        draws[i] = rand(pop[sample_pop_idx])
+    end
+    return draws
+end
 
 export AbstractScalarPopulation
