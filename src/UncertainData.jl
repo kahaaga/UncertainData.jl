@@ -8,6 +8,31 @@ using StaticArrays
 using Statistics
 using KernelDensity
 
+
+
+display_update = true
+version = "v0.5.0"
+update_name = "update_$version"
+
+if display_update
+if !isfile(joinpath(@__DIR__, update_name))
+printstyled(stdout,
+"""
+\nUpdate message: UncertainData $version
+----------------
+New features
+----------------
+
+- Support for many more StatsBase functions. These can be applied to single uncertain values,
+    pairs of uncertain values, single uncertain datasets, and to collections of uncertain values.
+- The `UncertainValue` constructor accepts instances of distributions, and  
+    instances of truncated distributions.
+- Experimental support for nested populations.
+"""; color = :light_magenta)
+touch(joinpath(@__DIR__, update_name))
+end
+end
+
 # Uncertain values
 include("uncertain_values/UncertainValues.jl")
 
