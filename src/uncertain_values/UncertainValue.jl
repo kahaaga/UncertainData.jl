@@ -19,7 +19,7 @@ From a numeric vector, construct an `UncertainPopulation` whose
 members are scalar values.
 """
 function UncertainValue(values::Vector{<:Number}, probs::Vector{<:Number})
-    UncertainScalarPopulation(values, probs)
+    UncertainScalarPopulation(float.(values), probs)
 end
 
 """
@@ -29,9 +29,8 @@ From a numeric vector, construct an `UncertainPopulation` whose
 members are scalar values.
 """
 function UncertainValue(values::Vector{<:Number}, probs::W) where {W <: AbstractWeights}
-    UncertainScalarPopulation(values, probs)
+    UncertainScalarPopulation(float.(values), probs)
 end
-
 
 """
     UncertainValue(values, probs)
@@ -350,7 +349,7 @@ UncertainValue(t)
 ```
 """
 function UncertainValue(t::Distributions.Truncated)
-    dist_type = nested_disttype(t)
+    dist_type = untruncated_disttype(t)
     original_dist = untruncated_dist(t)
     params = fieldnames(dist_type)
     param_values = [getfield(original_dist, p) for p in params]

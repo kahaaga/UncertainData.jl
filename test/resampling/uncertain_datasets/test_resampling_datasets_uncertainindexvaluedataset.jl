@@ -1,5 +1,5 @@
-UI = UncertainValueDataset(uidxs)
-UV = UncertainValueDataset(uvals)
+UI = UncertainValueDataset(example_uidxs)
+UV = UncertainValueDataset(example_uvals)
 UIV = UncertainIndexValueDataset(UI, UV)
 
 n = 3

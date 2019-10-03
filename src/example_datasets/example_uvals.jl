@@ -43,9 +43,9 @@ pop1 = UncertainValue(
         [0.5, 0.5, 0.5, 0.5]
     )
 
-pop2 = UncertainValue([1, 2, 3], rand(3))
-pop3 = UncertainValue([1.0, 2.0, 3.0], Weights(rand(3)))
-
+pop2 = UncertainValue(1:10 |> collect, rand(10))
+pop3 = UncertainValue(1.0:10.0 |> collect, Weights(rand(10)))
+    
 # Uncertain population consisting of uncertain populations and other stuff
 pop4 = UncertainValue([pop1, pop2], [0.1, 0.5])
 pop5 = UncertainValue([pop1, pop2, 2, UncertainValue(Normal, -2, 3)], Weights(rand(4)));

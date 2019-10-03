@@ -12,6 +12,14 @@ function resample(p::AbstractScalarPopulation, n::Int)
     rand(p, n)
 end
 
+function resample(p::AbstractScalarPopulation, constraint::SamplingConstraint) 
+    rand(constrain(p, constraint))
+end
+        
+function resample(p::AbstractScalarPopulation, constraint::SamplingConstraint, n::Int)
+    rand(constrain(p, constraint), n)
+end
+
 constraints = [
     :(NoConstraint), 
     :(TruncateLowerQuantile), 
@@ -25,11 +33,11 @@ constraints = [
 
 for constraint in constraints
     funcs = quote 
-        function resample(p::AbstractScalarPopulation, constraint::$(constraint))
+        function resample(p::AbstractScalarPopulation{T, PW}, constraint::$(constraint)) where {T, PW}
             rand(constrain(p, constraint))
         end
         
-        function resample(p::AbstractScalarPopulation, constraint::$(constraint), n::Int)
+        function resample(p::AbstractScalarPopulation{T, PW}, constraint::$(constraint), n::Int) where {T, PW}
             rand(constrain(p, constraint), n)
         end
     end

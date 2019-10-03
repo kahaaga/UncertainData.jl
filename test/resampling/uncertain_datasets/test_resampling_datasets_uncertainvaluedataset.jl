@@ -1,4 +1,4 @@
-UV = UncertainValueDataset(uvals)
+UV = UncertainValueDataset(example_uvals)
 
 n = 3
 @test resample(UV) isa Vector{T} where T <: Real

@@ -1,4 +1,3 @@
-include("truncation/truncate.jl")
 
 #############################################################
 # Constraining values

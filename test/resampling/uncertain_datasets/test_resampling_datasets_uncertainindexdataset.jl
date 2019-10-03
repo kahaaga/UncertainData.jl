@@ -1,5 +1,5 @@
 
-UI = UncertainIndexDataset(uidxs)
+UI = UncertainIndexDataset(example_uidxs)
 
 n = 3
 @test resample(UI) isa Vector{<:Real}

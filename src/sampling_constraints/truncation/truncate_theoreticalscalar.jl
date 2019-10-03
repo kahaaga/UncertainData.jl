@@ -1,4 +1,11 @@
 
+function validate_bounds(lower, upper, uv, constraint) 
+    if lower >= upper
+        msg = "lower_bound < upper_bound required, got $lower <= $upper"
+        msg2 = "cannot truncate $uv with $constraint\n"
+        throw(ArgumentError(msg2*msg))
+    end
+end
 ################################################################
 # Truncating uncertain values based on theoretical distributions
 # Operating on the union of both TheoreticalFittedUncertainScalar
@@ -27,6 +34,7 @@ function Base.truncate(uv::TheoreticalDistributionScalarValue,
         constraint::NoConstraint)
     s = support(uv.distribution)
     lower_bound, upper_bound = s.lb, s.ub
+
     return Truncated(uv.distribution, lower_bound, upper_bound)
 end
 
@@ -41,6 +49,8 @@ function Base.truncate(uv::TheoreticalDistributionScalarValue,
         constraint::TruncateQuantiles)
     lower_bound = quantile(uv.distribution, constraint.lower_quantile)
     upper_bound = quantile(uv.distribution, constraint.upper_quantile)
+    
+    validate_bounds(lower_bound, upper_bound, uv, constraint) 
 
     Truncated(uv.distribution, lower_bound, upper_bound)
 end
@@ -55,7 +65,9 @@ Truncate the theoretical distribution furnishing `uv` using a
 function Base.truncate(uv::TheoreticalDistributionScalarValue,
         constraint::TruncateLowerQuantile)
     lower_bound = quantile(uv.distribution, constraint.lower_quantile)
-    upper_bound = support(uv.distribution).ub
+    upper_bound = maximum(uv)
+
+    validate_bounds(lower_bound, upper_bound, uv, constraint)
 
     Truncated(uv.distribution, lower_bound, upper_bound)
 end
@@ -69,8 +81,10 @@ Truncate the theoretical distribution furnishing `uv` using a
 """
 function Base.truncate(uv::TheoreticalDistributionScalarValue,
         constraint::TruncateUpperQuantile)
-    lower_bound = support(uv.distribution).lb
+    lower_bound = minimum(uv)
     upper_bound = quantile(uv.distribution, constraint.upper_quantile)
+
+    validate_bounds(lower_bound, upper_bound, uv, constraint) 
 
     Truncated(uv.distribution, lower_bound, upper_bound)
 end
@@ -87,7 +101,9 @@ function Base.truncate(uv::TheoreticalDistributionScalarValue,
         constraint::TruncateMinimum)
     
     lower_bound = constraint.min
-    upper_bound = support(uv.distribution).ub
+    upper_bound = maximum(uv)
+
+    validate_bounds(lower_bound, upper_bound, uv, constraint) 
 
     Truncated(uv.distribution, lower_bound, upper_bound)
 end
@@ -102,8 +118,10 @@ Truncate the theoretical distribution furnishing `uv` using a
 function Base.truncate(uv::TheoreticalDistributionScalarValue,
         constraint::TruncateMaximum)
 
-    lower_bound = support(uv.distribution).lb
+    lower_bound = minimum(uv)
     upper_bound = constraint.max
+
+    validate_bounds(lower_bound, upper_bound, uv, constraint) 
 
     Truncated(uv.distribution, lower_bound, upper_bound)
 end
@@ -120,6 +138,9 @@ function Base.truncate(uv::TheoreticalDistributionScalarValue,
     
     lower_bound = constraint.min
     upper_bound = constraint.max
+
+    validate_bounds(lower_bound, upper_bound, uv, constraint) 
+
     Truncated(uv.distribution, lower_bound, upper_bound)
 end
 
@@ -141,6 +162,8 @@ function Base.truncate(uv::TheoreticalDistributionScalarValue,
     s = std(uv.distribution)
     lower_bound = m - s
     upper_bound = m + s
+
+    validate_bounds(lower_bound, upper_bound, uv, constraint) 
 
     Truncated(uv.distribution, lower_bound, upper_bound)
 end

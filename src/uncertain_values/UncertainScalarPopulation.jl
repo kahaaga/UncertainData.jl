@@ -106,7 +106,7 @@ function ConstrainedUncertainScalarPopulation(values::Vector{T1}, probabilities:
     if length(values) != length(probabilities)
         throw(ArgumentError("Lengths of values and probability vectors do not match."))
     end
-    ConstrainedUncertainScalarPopulation(values, StatsBase.weights(probabilities))
+    ConstrainedUncertainScalarPopulation(float.(values), StatsBase.weights(probabilities))
 end
 function ConstrainedUncertainScalarPopulation(values::VT, probabilities) where VT <: Vector{ELTYPE} where {ELTYPE<:POTENTIAL_UVAL_TYPES}
     if length(values) != length(probabilities)
@@ -114,10 +114,6 @@ function ConstrainedUncertainScalarPopulation(values::VT, probabilities) where V
     end
     ConstrainedUncertainScalarPopulation(UncertainValue.(values), StatsBase.weights(probabilities))
 end
-
-
-Base.minimum(pop::UncertainScalarPopulation{T, PW} where {T <: AbstractUncertainValue, PW}) = 
-    minimum([minimum(uv) for uv in pop])
 
 export 
 UncertainScalarPopulation,
