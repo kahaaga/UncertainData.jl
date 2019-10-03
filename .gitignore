@@ -2,3 +2,4 @@ docs/build/
 docs/site/
 docs/Manifest.toml
 Manifest.toml
+*.DS_Store
