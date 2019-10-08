@@ -6,7 +6,7 @@ abstract type TheoreticalFittedUncertainScalar <: TheoreticalDistributionScalarV
 Broadcast.broadcastable(uv::TheoreticalFittedUncertainScalar) = Ref(uv.distribution)
 
 """
-    UncertainEmpiricalScalarValue
+UncertainScalarTheoreticalFit
 
 An empirical value represented by a distribution estimated from actual data.
 
@@ -20,7 +20,7 @@ struct UncertainScalarTheoreticalFit{D <: Distribution, T} <: TheoreticalFittedU
 end
 
 """
-    ConstrainedUncertainEmpiricalScalarValue
+    ConstrainedUncertainScalarTheoreticalFit
 
 An empirical value represented by a distribution estimated from actual data.
 

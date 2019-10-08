@@ -17,6 +17,7 @@ the bandwidth is determined using the `KernelDensity.default_bandwidth` function
     you may want to lower the bandwidth significantly.
 
 # Example 
+
 ```julia
 v1 = UncertainValue(Normal, 1, 0.3)
 v2 = UncertainValue(Normal, 0.8, 0.4)
@@ -79,6 +80,7 @@ uvals = [v1, v2, v3, v4];
 combine(uvals, ProbabilityWeights([0.2, 0.1, 0.3, 0.2]))
 combine(uvals, pweights([0.2, 0.1, 0.3, 0.2]), n = 20000) # adjust number of total draws
 ```
+
 """
 function combine(uvals::Vector{AbstractUncertainValue}, weights::ProbabilityWeights; 
         n = 10000*length(uvals), 
@@ -255,7 +257,9 @@ the bandwidth is determined using the `KernelDensity.default_bandwidth` function
     If you're combining very peaked distributions or discrete populations, however, 
     you may want to lower the bandwidth significantly.
 
-# Example 
+# Example
+
+```julia
 v1 = UncertainValue(Normal, 1, 0.3)
 v2 = UncertainValue(Normal, 0.8, 0.4)
 v3 = UncertainValue([rand() for i = 1:3], [0.3, 0.3, 0.4])
@@ -265,6 +269,7 @@ uvals = [v1, v2, v3, v4];
 # Two difference syntax options
 combine(uvals, FrequencyWeights([100, 500, 343, 7000]))
 combine(uvals, pweights([1410, 550, 223, 801]))
+```
 """
 function combine(uvals::Vector{AbstractUncertainValue}, weights::FrequencyWeights;
         bw::Union{Nothing, Real} = nothing)

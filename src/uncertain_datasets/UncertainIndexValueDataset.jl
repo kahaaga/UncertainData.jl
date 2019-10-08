@@ -8,8 +8,10 @@ depth, order, etc...) and a set of uncertain `values`.
 
 The i-th index is assumed to correspond to the i-th value. For example, if 
 `data` is an instance of a `UncertainIndexValueDataset`, then 
-`data.indices[1]` is the index for the value `data.values[1]`, and 
-`data.indices[7]` is the index for the value `data.values[7]`.
+
+- `data.indices[2]` is the index for the value `data.values[2]`
+- `data.values[7]` is the value for the index `data.indices[7]`.
+- `data[3]` is an index-value tuple `(data.indices[3], data.values[3])`.
 
 ## Fields
 

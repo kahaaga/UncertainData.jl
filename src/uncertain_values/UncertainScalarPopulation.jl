@@ -15,7 +15,14 @@ An `UncertainScalarPopulation`, which consists of some population members (`valu
 and some weights (`probs`) that indicate the relative importance of the 
 population members (for example during resampling). 
 
-There are different constructors for different types of `values`:
+## Fields
+
+- **`values`**: The members of the population. Can be either numerical values, any
+    type of uncertain value defined in this package (including populations), and
+    `Measurement` instances from Measurements.jl.
+- **`probs`**: The probabilities of sampling each member of the population.
+
+## Constructors 
 
 - If `values` contains only scalar numeric values, then the `values` field 
     will be of type `Vector{Number}`.
