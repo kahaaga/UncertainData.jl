@@ -26,14 +26,12 @@ resampling the probability distributions furnishing them.
 Individual uncertain observations of different types are seamlessly mixed and can
 be organised in [collections of uncertain values](uncertain_datasets/uncertain_datasets_overview.md).
 
-
 ## Mathematical operations
 
 Several [elementary mathematical operations](mathematics/elementary_operations.md) and 
 [trigonometric functions](mathematics/trig_functions.md) are supported 
 for uncertain values. Computations are done using a 
 [resampling approach](resampling/resampling_overview).
-
 
 ## Statistics on uncertain datasets
 
@@ -46,10 +44,10 @@ Statistics on uncertain datasets are computed using a resampling approach:
 
 [Resampling](resampling/resampling_overview.md) is done by drawing random numbers from the furnishing distributions/populations of the uncertain value(s), using one of the [`resample`](@ref) methods.
 
-[Individual uncertain values](resampling/resampling_uncertain_values) may be sampled as they are,
+- [Individual uncertain values](resampling/resampling_uncertain_values) may be sampled as they are,
 or after first applying [sampling constraints](sampling_constraints/available_constraints.md) on the underlying distributions/populations.
 
-[Collections of uncertain values](resampling/resampling_uncertain_datasets.md). Resampling collections can be done assuming no sequential dependence for your data, or by applying sequential sampling models. During this process [sampling constraints](sampling_constraints/available_constraints.md) can be applied element-wise or on entire collections.
+- [Collections of uncertain values](resampling/resampling_uncertain_datasets.md) can be resampled by either assuming no sequential dependence for your data, or by applying sequential sampling models. During this process [sampling constraints](sampling_constraints/available_constraints.md) can be applied element-wise or on entire collections.
 
 ## Basic workflow
 
