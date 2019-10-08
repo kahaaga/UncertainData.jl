@@ -1,7 +1,6 @@
 
-Because uncertain values are represented by 
-[some kind of probability distribution](../uncertain_values/uncertainvalues_overview.md),
-we may trivially resample them by drawing random numbers from their furnishing distributions/populations.
+[Uncertain values](../uncertain_values/uncertainvalues_overview.md) 
+are trivially resampled by drawing random numbers from their furnishing distributions/populations.
 
 If needed, you may choose to 
 [constrain](../sampling_constraints/constrain_uncertain_values.md) an uncertain value before resampling, using one of the available 

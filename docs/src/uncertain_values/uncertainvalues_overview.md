@@ -1,21 +1,23 @@
+# Uncertain value types
+
 The core concept of `UncertainData` is to replace an uncertain data value with a 
 probability distribution describing the point's uncertainty.
 
-There are currently three ways of doing so:
+The following types of uncertain values are currently implemented:
 
-- By [theoretical distributions with known parameters](uncertainvalues_theoreticaldistributions.md).
-- By [theoretical distributions with parameters fitted to empirical data](uncertainvalues_fitted.md).
-- By [kernel density estimates to empirical data](uncertainvalues_kde.md).
-- By [weighted populations](populations.md) where the probability of drawing values are 
-    already known, so you can skip kernel density estimation. Populations can be nested, and 
-    may contain numerical values, uncertain values or both.
-- A type representing [values without uncertainty](certainvalue.md), so you can mix 
-    uncertain values with certain values.
+- [Theoretical distributions with known parameters](uncertainvalues_theoreticaldistributions.md).
+- [Theoretical distributions with parameters fitted to empirical data](uncertainvalues_fitted.md).
+- [Kernel density estimated distributions estimated from empirical data](uncertainvalues_kde.md).
+- [Weighted (nested) populations](uncertainvalues_populations.md) where the probability of 
+    drawing values are already known, so you can skip kernel density estimation. Populations can be 
+    nested, and may contain numerical values, uncertain values or both.
+- [Values without uncertainty](uncertainvalues_certainvalue.md) have their own dedicated 
+    [`CertainValue`](@ref) type, so that you can uncertain values with certain values.
+- [`Measurement` instances](uncertainvalues_Measurements.md) from [Measurements.jl](https://github.com/JuliaPhysics/Measurements.jl) are treated as normal distributions with known mean and standard devation.
 
 ## Some quick examples
 
 See also the [extended examples](uncertainvalues_examples.md)!
-
 
 ### Kernel density estimation (KDE)
 
@@ -47,7 +49,7 @@ some_sample = rand(Normal(), 1000)
 uv = UncertainValue(UnivariateKDE, some_sample)
 ```
 
-### Populations 
+### Populations
 
 If you have a population of values where each value has a probability assigned to it, 
 you can construct an uncertain value by providing the values and uncertainties as 

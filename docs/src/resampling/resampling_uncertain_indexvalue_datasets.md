@@ -4,9 +4,10 @@ values and `UncertainDatasets`.
 See also the list of 
 [available sampling constraints](../sampling_constraints/available_constraints.md).
 
-## Documentation
+# Method documentation
 
-### No constraints
+## No constraints
+
 ```@docs
 resample(udata::UncertainIndexValueDataset) 
 ```
@@ -15,7 +16,8 @@ resample(udata::UncertainIndexValueDataset)
 resample(udata::UncertainIndexValueDataset, n::Int) 
 ```
 
-### Same constraint to both indices and data values
+## Same constraint to both indices and data values
+
 ```@docs
 resample(udata::UncertainIndexValueDataset, 
         constraint::Union{SamplingConstraint, Vector{SamplingConstraint}})
@@ -27,7 +29,7 @@ resample(udata::UncertainIndexValueDataset,
         n::Int)
 ```
 
-### Different constraints to indices and data values
+## Different constraints to indices and data values
 
 ```@docs
 resample(udata::UncertainIndexValueDataset, 
@@ -42,14 +44,14 @@ resample(udata::UncertainIndexValueDataset,
         n::Int)
 ```
 
-## Examples 
+# Examples
 
-### Same constraint for all uncertain values
+## Same constraint for all uncertain values
 
 First, let's define some data to work on.
 
-```julia 
-using UncertainData, Plots 
+```julia
+using UncertainData, Plots
 gr()
 r1 = [UncertainValue(Normal, rand(), rand()) for i = 1:10]
 r2 = UncertainValue(rand(10000))
@@ -68,10 +70,10 @@ x = UncertainIndexValueDataset(uindices, udata)
 
 By default, the plot recipe shows the median and 33rd to 67th percentile range error bars. 
 Let's use the default plot recipe, and add some line plots with resampled realizations 
-of the dataset. 
+of the dataset.
 
-```julia 
-p = plot(x) 
+```julia
+p = plot(x)
 
 for i = 1:100
     s = resample(x, TruncateQuantiles(0.33, 0.67), TruncateQuantiles(0.33, 0.67))
@@ -88,15 +90,15 @@ p
 This would of course also work with any other sampling constraint that is valid for your 
 dataset. Let's demonstrate with a few more examples.
 
-### Different constraints for indices and data values
+## Different constraints for indices and data values
 
 Let's say that we want to treat the uncertainties of the indices (time, in this case) 
 separately from the uncertainties of the data values. 
 
 First, let's define a dataset to work on.
 
-```julia 
-using UncertainData, Plots 
+```julia
+using UncertainData, Plots
 gr()
 r1 = [UncertainValue(Normal, rand(), rand()) for i = 1:10]
 r2 = UncertainValue(rand(10000))
@@ -117,7 +119,7 @@ Let's pretend every 2nd time index has many outliers which we don't trust, so we
 resampling of those values to the 30th to 70th percentile range. For the remaining time 
 indices, there are some outliers outliers, but these are concentrated at the lower end of 
 the distributions, so we'll resample by truncating the furnishing distributions below at 
-the 10th percentile. 
+the 10th percentile.
 
 For the data values, we pretend that the same applies: every 2nd value has a bunch of 
 outliers, so we restrict the support of the distributions of those uncertain values to 
@@ -126,8 +128,7 @@ from the the 20th to 80th percentile range.
 
 Now, define the constraints as described:
 
-
-```julia 
+```julia
 # Define the constraints
 n_vals = length(x)
 
@@ -147,8 +148,7 @@ end
 
 Finally, plot the realizations.
 
-```julia 
-
+```julia
 # Resample a bunch of times and plot the realizations both as lines as scatter points
 p = plot(xlabel = "Index", ylabel = "Value")
 for i = 1:500
@@ -160,6 +160,5 @@ for i = 1:500
 end
 p
 ```
-
 
 ![](uncertain_indexvalue_dataset_sampling_manyconstraints.svg)

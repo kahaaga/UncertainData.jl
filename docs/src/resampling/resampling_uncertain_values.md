@@ -51,6 +51,7 @@ Resampling can also be performed with constraints.
     range of the support of the the probability distribution furnishing it.
 
 Available sampling constraints are:
+
 1. `TruncateStd(nσ::Int)`
 2. `TruncateMinimum(min::Number)`
 3. `TruncateMaximum(max::Number)`
@@ -61,7 +62,6 @@ Available sampling constraints are:
 
 For full documentation of the constraints, see the 
 [available constraints](../sampling_constraints/available_constraints.md) in the menu.
-
 
 ``` julia tab="Lower quantile"
 using Distributions, UncertainData
@@ -82,8 +82,6 @@ n = 100
 resample(uv_theoretical, TruncateLowerQuantile(0.2), n)
 resample(uv_theoretical_fitted, TruncateLowerQuantile(0.2), n)
 resample(uv_kde, TruncateLowerQuantile(0.2))
-
-
 ```
 
 ``` julia tab="Upper quantile"
@@ -166,7 +164,6 @@ resample(uv_theoretical, TruncateMaximum(3), n)
 resample(uv_theoretical_fitted, TruncateMaximum(3), n)
 resample(uv_kde, TruncateMaximum(3))
 ```
-
 
 ``` julia tab="Range"
 using Distributions, UncertainData

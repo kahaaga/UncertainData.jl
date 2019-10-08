@@ -1,4 +1,12 @@
+# Hypothesis tests for uncertain values and collections
+
 In addition to providing ensemble computation of basic statistic measures, this package also wraps various hypothesis tests from `HypothesisTests.jl`. This allows us to perform hypothesis testing on ensemble realisations of the data.
+
+## Terminology
+
+**Pooled statistics** are computed by sampling all uncertain values comprising the dataset n times, pooling the values together and treating them as one variable, then computing the statistic.
+
+**Element-wise statistics** are computed by sampling each uncertain value n times, keeping the data generated from each uncertain value separate. The statistics are the computed separately for each sample.
 
 ## Implemented hypothesis tests
 
@@ -11,9 +19,3 @@ The following hypothesis tests are implemented for uncertain data types.
 - [Approximate two-sample Kolmogorov-Smirnov test](approximate_twosample_kolmogorov_smirnov_test.md).
 - [One-sample Anderson–Darling test](anderson_darling_test.md).
 - [Jarque-Bera test](jarque_bera_test.md).
-
-## Terminology
-
-**Pooled statistics** are computed by sampling all uncertain values comprising the dataset n times, pooling the values together and treating them as one variable, then computing the statistic.
-
-**Element-wise statistics** are computed by sampling each uncertain value n times, keeping the data generated from each uncertain value separate. The statistics are the computed separately for each sample.

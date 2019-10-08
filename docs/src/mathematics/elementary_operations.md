@@ -8,7 +8,7 @@ uncertain values of different types and scalars are supported.
 Resampling is used to perform the mathematical operations. All mathematical 
 operations return a vector containing the results of repeated element-wise operations 
 (where each element is a resampled draw from the furnishing distribution(s) of the 
-uncertain value(s)). 
+uncertain value(s)).
 
 The default number of realizations is set to `10000`. This allows calling `uval1 + uval2` 
 for two uncertain values `uval1` and `uval2`. If you need to tune the number of resample 

@@ -12,6 +12,8 @@
 
 ### New functionality
 
+- Experimental support for nested populations.
+
 - Added point-estimators for single uncertain values:
     1. `harmmean(x::AbstractUncertainValue, n::Int)`
     2. `geomean(x::AbstractUncertainValue, n::Int)`
@@ -69,7 +71,7 @@
 
 ### Documentation
 
-- Improved documentation for `cor` and `cov` for uncertain datasets.
+- Improved documentation statistical methods.
 - Other minor documentation improvements.
 - Improved documentation for `TruncateStd`.
 

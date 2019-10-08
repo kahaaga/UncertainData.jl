@@ -5,6 +5,7 @@ using UncertainData
 using Distributions
 using KernelDensity
 using StatsBase
+using Measurements
 
 PAGES = [
     "index.md",
@@ -14,8 +15,9 @@ PAGES = [
         "uncertain_values/uncertainvalues_kde.md",
         "uncertain_values/uncertainvalues_fitted.md",
         "uncertain_values/uncertainvalues_theoreticaldistributions.md",
-        "uncertain_values/certainvalue.md",
-        "uncertain_values/populations.md",
+        "uncertain_values/uncertainvalues_certainvalue.md",
+        "uncertain_values/uncertainvalues_populations.md",
+        "uncertain_values/uncertainvalues_Measurements.md",
         "uncertain_values/merging.md"
     ],
 	"Uncertain datasets" => [

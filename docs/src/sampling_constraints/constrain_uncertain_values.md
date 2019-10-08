@@ -1,18 +1,14 @@
-# Constraining uncertain values
 
-## Documentation
+# Documentation
 
 ```@docs
 constrain(uv::AbstractUncertainValue, constraint::SamplingConstraint)
 ```
 
-![](constraining_uncertain_values.svg)
-
-## Quick examples
+# Examples
 
 Uncertain values may be constrained in various ways, as visualised by the following example.
-
-Which was generated as follows. Note that the plot recipe normalises the distributions
+Note that the plot recipe normalises the distributions
 after constraining the uncertain values.
 
 ```julia
@@ -31,7 +27,9 @@ plot!(constrain(uval, TruncateMinimum(-2)), ls = :dash, label = "minimum value t
 plot(p1, p2, layout = (2, 1), link = :x, xlabel = "value", ylabel = "probability")
 ```
 
-## Constraining theoretical distributions
+# Constraining uncertain values
+
+## Theoretical distributions
 
 ``` julia tab="Theoretical distribution"
 using UncertainData, Distributions
@@ -49,7 +47,7 @@ uvc_max = constrain(uv, TruncateMaximum(1.5))
 uvc_range = constrain(uv, TruncateRange(0.5, 1.5))
 ```
 
-## Constraining theoretical distributions with fitted parameters
+## Theoretical distributions with fitted parameters
 
 ``` julia tab="Theoretical distribution with fitted parameters"
 using UncertainData, Distributions
@@ -68,7 +66,7 @@ uvc_max = constrain(uv, TruncateMaximum(1.5))
 uvc_range = constrain(uv, TruncateRange(0.5, 1.5))
 ```
 
-## Constraining Kernel density estimated distributions
+## Kernel density estimated distributions
 
 ``` julia tab="Kernel density estimated distribution"
 # Define an uncertain value furnished by a kernel density estimate to the
@@ -85,7 +83,7 @@ uvc_max = constrain(uv, TruncateMaximum(13))
 uvc_range = constrain(uv, TruncateRange(11, 12))
 ```
 
-## Constraining (nested) weighted populations of uncertain values
+## (nested) weighted populations of uncertain values
 
 Let's define a complicated uncertain value that is defined by a nested weighted population.
 
@@ -138,7 +136,7 @@ xlabel!("Sampling #"); ylabel!("Value")
 
 ![](figs/constraining_complex_population_truncateminimum.svg)
 
-## TruncateMaximum
+### TruncateMaximum
 
 To truncate the overall population above at some absolute value, use a
 [`TruncateMaximum`](@ref) sampling constraint.
@@ -160,7 +158,7 @@ xlabel!("Sampling #"); ylabel!("Value")
 
 ![](figs/constraining_complex_population_truncatemaximum.svg)
 
-## TruncateRange
+### TruncateRange
 
 To truncate the overall population above at some range of values, use a
 [`TruncateRange`](@ref) sampling constraint.
@@ -183,7 +181,7 @@ xlabel!("Sampling #"); ylabel!("Value")
 
 ![](figs/constraining_complex_population_truncaterange.svg)
 
-## TruncateLowerQuantile
+### TruncateLowerQuantile
 
 To truncate the overall population below at some quantile of 
 the overall population, use a
@@ -216,7 +214,7 @@ xlabel!("Sampling #"); ylabel!("Value")
 
 ![](figs/constraining_complex_population_truncatelowerquantile.svg)
 
-## TruncateUpperQuantile
+### TruncateUpperQuantile
 
 To truncate the overall population below at some quantile of 
 the overall population, use a
@@ -249,7 +247,7 @@ xlabel!("Sampling #"); ylabel!("Value")
 
 ![](figs/constraining_complex_population_truncateupperquantile.svg)
 
-## TruncateQuantiles
+### TruncateQuantiles
 
 To truncate the overall population below at some quantile of 
 the overall population, use a

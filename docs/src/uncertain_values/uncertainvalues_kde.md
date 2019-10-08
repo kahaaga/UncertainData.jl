@@ -1,9 +1,20 @@
-
 When your data have an empirical distribution that doesn't follow any obvious
 theoretical distribution, the data may be represented by a kernel density
 estimate.
 
-## Examples
+# Generic constructor
+
+```@docs
+UncertainValue(::AbstractVector{<:Real})
+```
+
+# Type documentation
+
+```@docs
+UncertainScalarKDE
+```
+
+# Examples
 
 ``` julia tab="Implicit KDE constructor"
 using Distributions, UncertainData
@@ -65,11 +76,9 @@ some_sample = rand(d, 1000)
 uv = UncertainValue(UnivariateKDE, v::Vector; npoints = 1024)
 ```
 
-
-## Extended example
+# Extended example
 
 Let's create a bimodal distribution, then sample 10000 values from it.
-
 
 ```julia
 using Distributions
@@ -97,7 +106,6 @@ To create a kernel density estimate, simply call the
 `UncertainValue(v::Vector{Number})` constructor with a vector containing the
 sample:
 
-
 ```julia
 uv = UncertainValue(samples_empirical)
 ```
@@ -117,8 +125,6 @@ ylabel!("probability density")
 
 ![](imgs/KDEUncertainValue.svg)
 
-
-
 ## Constructor
 
 ```@docs
@@ -126,7 +132,6 @@ UncertainValue(data::Vector{T};
         kernel::Type{D} = Normal,
         npoints::Int = 2048) where {D <: Distributions.Distribution, T}
 ```
-
 
 ### Additional keyword arguments and examples
 

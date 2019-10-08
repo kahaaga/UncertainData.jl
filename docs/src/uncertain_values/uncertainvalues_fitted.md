@@ -3,13 +3,17 @@ may choose to represent the data by fitting a theoretical distribution to the
 values. This will only work well if the histogram closely resembles a
 theoretical distribution.
 
-
-## Constructor
+## Generic constructor
 
 ```@docs
 UncertainValue(d::Type{D}, empiricaldata::Vector{T}) where {D<:Distribution, T}
 ```
 
+## Type documentation
+
+```@docs
+UncertainScalarTheoreticalFit
+```
 
 ## Examples
 
