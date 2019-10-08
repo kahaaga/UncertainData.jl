@@ -33,6 +33,7 @@ Several [elementary mathematical operations](mathematics/elementary_operations.m
 for uncertain values. Computations are done using a 
 [resampling approach](resampling/resampling_overview).
 
+
 ## Statistics on uncertain datasets
 
 Statistics on uncertain datasets are computed using a resampling approach:
@@ -48,6 +49,7 @@ Statistics on uncertain datasets are computed using a resampling approach:
 or after first applying [sampling constraints](sampling_constraints/available_constraints.md) on the underlying distributions/populations.
 
 [Collections of uncertain values](resampling/resampling_uncertain_datasets.md) can also be resampled, either assuming no sequential dependence for your data, or by applying sequential sampling models. During this process [sampling constraints](sampling_constraints/available_constraints.md) can be applied element-wise or on entire collections.
+
 
 ## Basic workflow
 
