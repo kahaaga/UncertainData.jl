@@ -3,6 +3,11 @@ import Distributions.Distribution
 import StatsBase: AbstractWeights, Weights
 import Distributions
 
+"""
+    UncertainValue(x::T) where T <: Real
+
+Create a `CertainValue` instance from a scalar with no uncertainty.
+"""
 UncertainValue(x::T) where T <: Real = CertainValue(x)
 
 # Identity constructor
@@ -10,7 +15,6 @@ UncertainValue(uval::AbstractUncertainValue) = uval
 
 # From Measurements.jl
 UncertainValue(m::Measurement{T}) where T = UncertainValue(Normal, m.val, m.err)
-
 
 """
     UncertainValue(values::Vector{<:Number}, probs::Vector{<:Number})
@@ -33,12 +37,11 @@ function UncertainValue(values::Vector{<:Number}, probs::W) where {W <: Abstract
 end
 
 """
-    UncertainValue(values, probs)
+    UncertainValue(values::Vector, probs::Union{Vector, AbstractWeights})
 
-From vector consisting of one or more uncertain values, construct an 
-`UncertainPopulation` whose members are uncertain values. All scalar numeric 
-values are promoted to `CertainValue` and the `values` of the 
-`UncertainPopulation` are represented as a `Vector{<:AbstractUncertainValue}`.
+Construct a population whose members are given by `values` and whose sampling 
+probabilities are given by `probs`. The elements of `values` can be either 
+numeric or uncertain values of any type.
 """
 function UncertainValue(values::VT, probs) where VT <: Vector{ELTYPE} where {ELTYPE<:POTENTIAL_UVAL_TYPES}
     UncertainScalarPopulation(UncertainValue.(values), probs)
