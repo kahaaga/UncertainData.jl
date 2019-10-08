@@ -5,29 +5,7 @@
 constrain(uv::AbstractUncertainValue, constraint::SamplingConstraint)
 ```
 
-# Examples
-
-Uncertain values may be constrained in various ways, as visualised by the following example.
-Note that the plot recipe normalises the distributions
-after constraining the uncertain values.
-
-```julia
-uval = UncertainValue(Normal, 2, 5)
-
-p1 = plot(uval, label = "full support", title = "Quantile truncation")
-plot!(constrain(uval, TruncateQuantiles(0.2, 0.8)), label = "quantile range truncation")
-plot!(constrain(uval, TruncateUpperQuantile(0.9)), label = "upper quantile truncation")
-plot!(constrain(uval, TruncateLowerQuantile(0.1)), label = "lower quantile truncation")
-
-p2 = plot(uval, label = "full support", title = "Value truncation")
-plot!(constrain(uval, TruncateRange(2, 4)), ls = :dash, label = "range truncation")
-plot!(constrain(uval, TruncateMaximum(4.5)), ls = :dash, label = "maximum value truncation")
-plot!(constrain(uval, TruncateMinimum(-2)), ls = :dash, label = "minimum value truncation")
-
-plot(p1, p2, layout = (2, 1), link = :x, xlabel = "value", ylabel = "probability")
-```
-
-# Constraining uncertain values
+# Examples: constraining uncertain values
 
 ## Theoretical distributions
 
