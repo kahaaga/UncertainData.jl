@@ -1,15 +1,7 @@
 import StatsBase
 
-export UVAL_COLLECTION_TYPES
-
-const UVAL_COLLECTION_TYPES = Union{UD, UV} where {
-    UD <: AbstractUncertainValueDataset, 
-    UV <: AbstractVector{T} where {
-        T <: AbstractUncertainValue}}
-
 """
-    median(x::Union{AbstractUncertainValueDataset, 
-                    Vector{AbstractUncertainValue}, n::Int)
+    median(x::UVAL_COLLECTION_TYPES, n::Int)
 
 Obtain a distribution for the median of a collection of uncertain values.
 This is done by first drawing `n` length-`L` realisations of `x`, where 
@@ -33,8 +25,7 @@ function StatsBase.median(x::UVAL_COLLECTION_TYPES, n::Int)
 end
 
 """
-    mean(x::Union{AbstractUncertainValueDataset, 
-                    Vector{AbstractUncertainValue}, n::Int)
+    mean(x::UVAL_COLLECTION_TYPES, n::Int)
 
 Obtain a distribution for the mean of a collection of uncertain values.
 This is done by first drawing `n` length-`L` realisations of `x`, where 
@@ -58,8 +49,7 @@ function StatsBase.mean(x::UVAL_COLLECTION_TYPES, n::Int)
 end
 
 """
-    mode(x::Union{AbstractUncertainValueDataset, 
-                    Vector{AbstractUncertainValue}, n::Int)
+    mode(x::UVAL_COLLECTION_TYPES, n::Int)
 
 Obtain a distribution for the mode of a collection of uncertain values.
 This is done by first drawing `n` length-`L` realisations of `x`, where 
@@ -83,8 +73,7 @@ function StatsBase.mode(x::UVAL_COLLECTION_TYPES, n::Int)
 end
 
 """
-    quantile(x::Union{AbstractUncertainValueDataset, 
-                    Vector{AbstractUncertainValue}, q, n::Int)
+    quantile(x::UVAL_COLLECTION_TYPES, q, n::Int)
 
 Obtain a distribution for the quantile(s) `q` of a collection of uncertain values.
 This is done by first drawing `n` length-`L` realisations of `x`, where 
@@ -109,8 +98,7 @@ end
 
 
 """
-    iqr(x::Union{AbstractUncertainValueDataset, 
-                    Vector{AbstractUncertainValue}, n::Int)
+    iqr(x::UVAL_COLLECTION_TYPES, n::Int)
 
 Obtain a distribution for the interquartile range (IQR), i.e. the 75th 
 percentile minus the 25th percentile, of a collection of uncertain values.
@@ -135,8 +123,7 @@ function StatsBase.iqr(x::UVAL_COLLECTION_TYPES, n::Int)
 end
 
 """
-    middle(x::Union{AbstractUncertainValueDataset, 
-                    Vector{AbstractUncertainValue}, n::Int)
+    middle(x::UVAL_COLLECTION_TYPES, n::Int)
 
 Obtain a distribution for the middle of a collection of uncertain values.
 This is done by first drawing `n` length-`L` realisations of `x`, where 
@@ -160,8 +147,7 @@ function StatsBase.middle(x::UVAL_COLLECTION_TYPES, n::Int)
 end
 
 """
-    std(x::Union{AbstractUncertainValueDataset, 
-                    Vector{AbstractUncertainValue}, n::Int)
+    std(x::UVAL_COLLECTION_TYPES, n::Int)
 
 Obtain a distribution for the standard deviation of a collection of uncertain values.
 This is done by first drawing `n` length-`L` realisations of `x`, where 
@@ -185,8 +171,7 @@ function StatsBase.std(x::UVAL_COLLECTION_TYPES, n::Int)
 end
 
 """
-    var(x::Union{AbstractUncertainValueDataset, 
-                    Vector{AbstractUncertainValue}, n::Int)
+    var(x::UVAL_COLLECTION_TYPES, n::Int)
 
 Obtain a distribution for the variance of a collection of uncertain values.
 This is done by first drawing `n` length-`L` realisations of `x`, where 
@@ -210,8 +195,7 @@ function StatsBase.var(x::UVAL_COLLECTION_TYPES, n::Int)
 end
 
 """
-    genmean(x::Union{AbstractUncertainValueDataset, 
-                    Vector{AbstractUncertainValue}, p, n::Int)
+    genmean(x::UVAL_COLLECTION_TYPES, p, n::Int)
 
 Obtain a distribution for the generalized/power mean with exponent `p` of a 
 collection of uncertain values.
@@ -236,8 +220,7 @@ function StatsBase.genmean(x::UVAL_COLLECTION_TYPES, p, n::Int)
 end
 
 """
-    genvar(x::Union{AbstractUncertainValueDataset, 
-                    Vector{AbstractUncertainValue}, n::Int)
+    genvar(x::UVAL_COLLECTION_TYPES, n::Int)
 
 Obtain a distribution for the generalized sample variance of a collection of 
 uncertain values.
@@ -264,8 +247,7 @@ function StatsBase.genvar(x::UVAL_COLLECTION_TYPES, n::Int)
 end
 
 """
-    harmmean(x::Union{AbstractUncertainValueDataset, 
-                    Vector{AbstractUncertainValue}, n::Int)
+    harmmean(x::UVAL_COLLECTION_TYPES, n::Int)
 
 Obtain a distribution for the harmonic mean of a collection of uncertain values.
 This is done by first drawing `n` length-`L` realisations of `x`, where 
@@ -289,8 +271,7 @@ function StatsBase.harmmean(x::UVAL_COLLECTION_TYPES, n::Int)
 end
 
 """
-    geomean(x::Union{AbstractUncertainValueDataset, 
-                    Vector{AbstractUncertainValue}, n::Int)
+    geomean(x::UVAL_COLLECTION_TYPES, n::Int)
 
 Obtain a distribution for the geometric mean of a collection of uncertain values.
 This is done by first drawing `n` length-`L` realisations of `x`, where 
@@ -314,9 +295,7 @@ function StatsBase.geomean(x::UVAL_COLLECTION_TYPES, n::Int)
 end
 
 """
-    kurtosis(x::Union{AbstractUncertainValueDataset, 
-                    Vector{AbstractUncertainValue}, 
-            n::Int, f = StatsBase.mean)
+    kurtosis(x::UVAL_COLLECTION_TYPES, n::Int, f = StatsBase.mean)
 
 Obtain a distribution for the kurtosis of a collection of uncertain values.
 
@@ -352,8 +331,7 @@ function StatsBase.kurtosis(x::UVAL_COLLECTION_TYPES, n::Int, f = StatsBase.mean
 end
 
 """
-    moment(x::Union{AbstractUncertainValueDataset, 
-                    Vector{AbstractUncertainValue}, k, n::Int)
+    moment(x::UVAL_COLLECTION_TYPES, k, n::Int)
 
 Obtain a distribution for the `k`-th order central moment of a collection 
 of uncertain values.
@@ -380,8 +358,7 @@ function StatsBase.moment(x::UVAL_COLLECTION_TYPES, k, n::Int)
 end
 
 """
-    percentile(x::Union{AbstractUncertainValueDataset, 
-                    Vector{AbstractUncertainValue}, p, n::Int)
+    percentile(x::UVAL_COLLECTION_TYPES, p, n::Int)
 
 Obtain a distribution for the percentile(s) `p` of a collection of uncertain values.
 This is done by first drawing `n` length-`L` realisations of `x`, where 
@@ -405,8 +382,7 @@ function StatsBase.percentile(x::UVAL_COLLECTION_TYPES, p, n::Int)
 end
 
 """
-    renyientropy(x::Union{AbstractUncertainValueDataset, 
-                    Vector{AbstractUncertainValue}, α, n::Int)
+    renyientropy(x::UVAL_COLLECTION_TYPES, α, n::Int)
 
 Obtain a distribution for the Rényi (generalized) entropy of 
 order `α` of a collection of uncertain values.
@@ -433,8 +409,7 @@ function StatsBase.renyientropy(x::UVAL_COLLECTION_TYPES, α, n::Int)
 end
 
 """
-    rle(x::Union{AbstractUncertainValueDataset, 
-                    Vector{AbstractUncertainValue}, α, n::Int)
+    rle(x::UVAL_COLLECTION_TYPES, α, n::Int)
 
 Obtain a distribution for the run-length encoding of a 
 collection of uncertain values.
@@ -466,8 +441,7 @@ function StatsBase.rle(x::UVAL_COLLECTION_TYPES, n::Int)
 end
 
 """
-    sem(x::Union{AbstractUncertainValueDataset, 
-                    Vector{AbstractUncertainValue}, n::Int)
+    sem(x::UVAL_COLLECTION_TYPES, n::Int)
 
 Obtain a distribution for the standard error of the mean of a 
 collection of uncertain values.
@@ -496,9 +470,7 @@ end
 
 
 """
-    skewness(x::Union{AbstractUncertainValueDataset, 
-                    Vector{AbstractUncertainValue}, 
-            n::Int, f = StatsBase.mean)
+    skewness(x::UVAL_COLLECTION_TYPES, n::Int, f = StatsBase.mean)
 
 Obtain a distribution for the skewness of a collection of uncertain values.
 
@@ -534,8 +506,7 @@ function StatsBase.skewness(x::UVAL_COLLECTION_TYPES, n::Int, f = StatsBase.mean
 end
 
 """
-    span(x::Union{AbstractUncertainValueDataset, 
-                    Vector{AbstractUncertainValue}, n::Int)
+    span(x::UVAL_COLLECTION_TYPES, n::Int)
 
 Obtain a distribution for the span of a collection of uncertain values.
 This is done by first drawing `n` length-`L` realisations of `x`, where 
@@ -562,8 +533,7 @@ function StatsBase.span(x::UVAL_COLLECTION_TYPES, n::Int)
 end
 
 """
-    totalvar(x::Union{AbstractUncertainValueDataset, 
-                    Vector{AbstractUncertainValue}, n::Int)
+    totalvar(x::UVAL_COLLECTION_TYPES, n::Int)
 
 Obtain a distribution for the total variance of a collection of uncertain values.
 This is done by first drawing `n` length-`L` realisations of `x`, where 
@@ -587,8 +557,7 @@ function StatsBase.totalvar(x::UVAL_COLLECTION_TYPES, n::Int)
 end
 
 """
-    summarystats(x::Union{AbstractUncertainValueDataset, 
-                    Vector{AbstractUncertainValue}, n::Int)
+    summarystats(x::UVAL_COLLECTION_TYPES, n::Int)
 
 Obtain a distribution for the summary statistics of a collection of uncertain values.
 This is done by first drawing `n` length-`L` realisations of `x`, where 

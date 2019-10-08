@@ -30,16 +30,8 @@ function resample(f::Function,
     f(draw_x, draw_y, args...; kwargs...)
 end
 
-
-const UVAL_COLLECTION_TYPES = Union{UD, UV} where {
-    UD <: AbstractUncertainValueDataset, 
-    UV <: AbstractVector{T} where {
-        T <: AbstractUncertainValue}}
-
 """ 
-    resample(f::Function,
-        x::Union{AbstractUncertainValueDataset, AbstractVector{<:AbstractUncertainValue}}, 
-        n::Int, args...; kwargs...)
+    resample(f::Function, x::UVAL_COLLECTION_TYPES, n::Int, args...; kwargs...)
 
 Resample the elements of `x` according to their furnishing uncertain values, yielding
 a length-`l` realisation of `x` if `length(x) = l`. The elements of `x` are resampled 
@@ -56,10 +48,7 @@ function resample(f::Function, x::T, n::Int, args...; kwargs...) where {
 end
 
 """ 
-    resample(f::Function, 
-        x::Union{AbstractUncertainValueDataset, AbstractVector{<:AbstractUncertainValue}}, 
-        y::Union{AbstractUncertainValueDataset, AbstractVector{<:AbstractUncertainValue}}, 
-        n::Int, args...; kwargs...)
+    resample(f::Function, x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, n::Int, args...; kwargs...)
 
 Resample the elements of `x` according to their furnishing uncertain values, yielding
 a length-`l` realisation of `x` if `length(x) = l`. Then, do the same for `y`.

@@ -11,6 +11,8 @@ using Reexport
     # Sampling constraints and resampling functions
     using ..Resampling
 
+    import ..UVAL_COLLECTION_TYPES
+
     # Definitions of statistical methods for UncertainDatasets
     include("statsbase/uncertain_values/core_stats_point_estimates.jl")
     include("statsbase/uncertain_values/core_stats_pair_estimates.jl")
