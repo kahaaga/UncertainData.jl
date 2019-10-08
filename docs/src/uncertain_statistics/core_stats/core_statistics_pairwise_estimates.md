@@ -4,6 +4,12 @@ These estimators operate on pairs of uncertain values. They compute the
 statistic in question by drawing independent length-`n` draws of the 
 uncertain values, then computing the statistic on those draws.
 
+## [Syntax](@id syntax_statistics_uncertainvalue_pairs)
+
+The syntax for computing the statistic `f` for uncertain values `x` and `y` is:
+
+- `f(x::AbstractUncertainValue, y::AbstractUncertainValue, args..., n::Int; kwargs...)`, which draws independent length-`n` draws of `x` and `y`, then estimates the statistic `f` for those draws.
+
 ## Covariance
 
 ```@docs

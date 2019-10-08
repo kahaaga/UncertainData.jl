@@ -3,6 +3,13 @@
 These estimators operate on single uncertain values. They compute the statistic in question by drawing a
 length-`n` draw of the uncertain value, then computing the statistic on that draw.
 
+## [Syntax](@id syntax_statistics_uncertainvalue_single)
+
+The syntax for computing the statistic `f` for single instances of an uncertain value `x` is
+
+- `f(x::AbstractUncertainValue)`, which returns the exact value of the statistic if `x` is some sort of formal distribution.
+- `f(x::AbstractUncertainValue, n::Int, args...; kwargs...)`, which estimates the statistic `f` for a length-`n` draw of `x`.
+
 ## Mean
 
 ```@docs

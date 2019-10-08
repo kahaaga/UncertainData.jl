@@ -7,18 +7,11 @@ then computing the statistic `n` times for the `n` pairs of draws.
 Within each collection, point are always sampled independently according to their 
 furnishing distributions.
 
-## What is a collection of uncertain data?
+## [Syntax](@id syntax_statistics_collection_pairs)
 
-This might be either an instance of `UncertainValueDataset`, `UncertainIndexDataset` or 
-a vector of uncertain values `Vector{AbstractUncertainValue}`. In the package, the following
-type union is used to represent these possibilities:
+The syntax for estimating of a statistic `f` on uncertain value collections `x` and `y` is
 
-```julia
-const UVAL_COLLECTION_TYPES = Union{UD, UV} where {
-    UD <: AbstractUncertainValueDataset,
-    UV <: AbstractVector{T} where {
-        T <: AbstractUncertainValue}}
-```
+- `f(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, args..., n::Int; kwargs...)`, which draws independent length-`n` draws of `x` and `y`, then estimates the statistic `f` for those draws.
 
 ## Covariance
 

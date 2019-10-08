@@ -1,15 +1,19 @@
-`UncertainValueDataset`s is an uncertain dataset type that has no explicit index 
-associated with its uncertain values. This type may come with some extra functionality 
-that the generic [UncertainDataset](uncertain_dataset.md) type does not support. 
-
-Use this type when you want to be explicit about the values representing data values,
-as opposed to [indices](uncertain_index_dataset.md). 
+# Uncertain value datasets
 
 ## Documentation
 
 ```@docs
 UncertainValueDataset
 ```
+
+## Description
+
+`UncertainValueDataset`s is an uncertain dataset type that has no explicit index 
+associated with its uncertain values. This type may come with some extra functionality 
+that the generic [UncertainDataset](uncertain_dataset.md) type does not support. 
+
+Use this type when you want to be explicit about the values representing data values,
+as opposed to [indices](uncertain_index_dataset.md). 
 
 ## Defining uncertain value datasets
 

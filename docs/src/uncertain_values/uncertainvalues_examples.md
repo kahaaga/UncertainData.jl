@@ -1,14 +1,14 @@
 
-
 First, load the necessary packages:
 
 ```julia
 using UncertainData, Distributions, KernelDensity, Plots
 ```
 
-### Example 1: Uncertain values defined by theoretical distributions
+# Example 1: Uncertain values defined by theoretical distributions
 
-#### A uniformly distributed uncertain value
+## A uniformly distributed uncertain value
+
 Consider the following contrived example. We've measure a data value with a poor instrument 
 that tells us that the value lies between `-2` and `3`. However, we but that we know nothing 
 more about how the value is distributed on that interval. Then it may be reasonable to 
@@ -19,7 +19,7 @@ for theoretical distributions with known parameters
 (`UncertainValue(distribution, params...)`). 
 
 The uniform distribution is defined by its lower and upper bounds, so we'll provide 
-these bounds as the parameters. 
+these bounds as the parameters.
 
 ```julia
 u = UncertainValue(Uniform, 1, 2)
@@ -28,11 +28,9 @@ u = UncertainValue(Uniform, 1, 2)
 bar(u, label = "", xlabel = "value", ylabel = "probability density")
 ```
 
+![](figs/uncertainvalue_theoretical_uniform.svg)
 
-![](uncertainvalue_theoretical_uniform.svg)
-
-
-#### A normally distributed uncertain value
+## A normally distributed uncertain value
 
 A situation commonly encountered is to want to use someone else's data from a publication. 
 Usually, these values are reported as the mean or median, with some associated uncertainty. 
@@ -49,16 +47,14 @@ u = UncertainValue(Normal, 2.1, 0.3)
 bar(u, label = "", xlabel = "value", ylabel = "probability density")
 ```
 
+![](figs/uncertainvalue_theoretical_normal.svg)
 
-![](uncertainvalue_theoretical_normal.svg)
-
-#### Other distributions 
+## Other distributions 
 
 You may define uncertain values following any of the 
 [supported distributions](uncertainvalues_theoreticaldistributions.md). 
 
-
-### Example 2: Uncertain values defined by kernel density estimated distributions
+# Example 2: Uncertain values defined by kernel density estimated distributions
 
 One may also be given a a distribution of numbers that's not quite normally distributed. 
 How to represent this uncertainty? Easy: we use a kernel density estimate to the distribution.
@@ -90,18 +86,17 @@ Gaussians we started out with, it's the kernel density estimate to that mixture!
 plot(u, xlabel = "Value", ylabel = "Probability density")
 ```
 
-![](uncertainvalue_kde_bimodal.svg)
+![](figs/uncertainvalue_kde_bimodal.svg)
 
-
-### Example 3: Uncertain values defined by theoretical distributions fitted to empirical data
+# Example 3: Uncertain values defined by theoretical distributions fitted to empirical data
 
 One may also be given a dataset whose histogram looks a lot like a theoretical
 distribution. We may then select a theoretical distribution and fit its
-parameters to the empirical data. 
+parameters to the empirical data.
 
-Say our data was a sample that looks like it obeys Gamma distribution. 
+Say our data was a sample that looks like it obeys Gamma distribution.
 
-```julia 
+```julia
 # Draw a 2000-point sample from a Gamma distribution with parameters α = 1.7 and θ = 5.5
 some_sample = rand(Gamma(1.7, 5.5), 2000)
 ```
@@ -120,7 +115,7 @@ p1 = histogram(some_sample, normalize = true,
 
 # For the uncertain value representation, fit a gamma distribution to the sample. 
 # Then, compare the histogram obtained from the original distribution to that obtained 
-# when resampling the fitted distribution 
+# when resampling the fitted distribution
 uv = UncertainValue(Gamma, some_sample)
 
 # Resample the fitted theoretical distribution
@@ -134,4 +129,4 @@ plot(p1, p2, layout = (2, 1), link = :x)
 As expected, the histograms closely match (but are not exact because we estimated
 the distribution using a limited sample).
 
-![](uncertainvalue_theoretical_fitted_gamma.svg)
+![](figs/uncertainvalue_theoretical_fitted_gamma.svg)

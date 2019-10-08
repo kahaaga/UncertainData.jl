@@ -27,42 +27,41 @@ outside the domain of the function, you risk encountering errors.
 
 ## Sine
 
-```@docs 
+```@docs
 Base.sin(x::AbstractUncertainValue; n::Int)
 Base.sin(x::AbstractUncertainValue, n::Int)
 ```
 
-```@docs 
+```@docs
 Base.sind(x::AbstractUncertainValue; n::Int)
 Base.sind(x::AbstractUncertainValue, n::Int)
 ```
 
-```
+```@docs
 Base.sinh(x::AbstractUncertainValue; n::Int)
 Base.sinh(x::AbstractUncertainValue, n::Int)
 ```
 
 ## Cosine
 
-```@docs 
+```@docs
 Base.cos(x::AbstractUncertainValue; n::Int)
 Base.cos(x::AbstractUncertainValue, n::Int)
 ```
 
-```@docs 
+```@docs
 Base.cosd(x::AbstractUncertainValue; n::Int)
 Base.cosd(x::AbstractUncertainValue, n::Int)
 ```
 
-```@docs 
+```@docs
 Base.cosh(x::AbstractUncertainValue; n::Int)
 Base.cosh(x::AbstractUncertainValue, n::Int)
 ```
 
-
 ## Tangent
 
-```@docs 
+```@docs
 Base.atan(x::AbstractUncertainValue; n::Int)
 Base.atan(x::AbstractUncertainValue, n::Int)
 ```
@@ -72,104 +71,103 @@ Base.atand(x::AbstractUncertainValue; n::Int)
 Base.atand(x::AbstractUncertainValue, n::Int)
 ```
 
-```@docs 
+```@docs
 Base.atanh(x::AbstractUncertainValue; n::Int)
 Base.atanh(x::AbstractUncertainValue, n::Int)
 ```
 
-
-## Reciprocal trig functions 
+## Reciprocal trig functions
 
 ### Cosecant
 
-```@docs 
+```@docs
 Base.csc(x::AbstractUncertainValue; n::Int)
 Base.csc(x::AbstractUncertainValue, n::Int)
 ```
 
-```@docs 
+```@docs
 Base.cscd(x::AbstractUncertainValue; n::Int)
 Base.cscd(x::AbstractUncertainValue, n::Int)
 ```
 
-```@docs 
+```@docs
 Base.csch(x::AbstractUncertainValue; n::Int)
 Base.csch(x::AbstractUncertainValue, n::Int)
 ```
 
 ### Secant
 
-```@docs 
+```@docs
 Base.sec(x::AbstractUncertainValue; n::Int)
 Base.sec(x::AbstractUncertainValue, n::Int)
 ```
 
-```@docs 
+```@docs
 Base.secd(x::AbstractUncertainValue; n::Int)
 Base.secd(x::AbstractUncertainValue, n::Int)
 ```
 
-```@docs 
+```@docs
 Base.sech(x::AbstractUncertainValue; n::Int)
 Base.sech(x::AbstractUncertainValue, n::Int)
 ```
 
 ### Cotangent
 
-```@docs 
+```@docs
 Base.cot(x::AbstractUncertainValue; n::Int)
 Base.cot(x::AbstractUncertainValue, n::Int)
 ```
 
-```@docs 
+```@docs
 Base.cotd(x::AbstractUncertainValue; n::Int)
 Base.cotd(x::AbstractUncertainValue, n::Int)
 ```
 
-```@docs 
+```@docs
 Base.coth(x::AbstractUncertainValue; n::Int)
 Base.coth(x::AbstractUncertainValue, n::Int)
 ```
 
-## Inverse trig functions 
+## Inverse trig functions
 
-### Sine 
+### Sine
 
-```@docs 
+```@docs
 Base.asin(x::AbstractUncertainValue; n::Int)
 Base.asin(x::AbstractUncertainValue, n::Int)
 ```
 
-```@docs 
+```@docs
 Base.asind(x::AbstractUncertainValue; n::Int)
 Base.asind(x::AbstractUncertainValue, n::Int)
 ```
 
-```
+```@docs
 Base.asinh(x::AbstractUncertainValue; n::Int)
 Base.asinh(x::AbstractUncertainValue, n::Int)
 ```
 
-### Cosine 
+### Cosine
 
-```@docs 
+```@docs
 Base.acos(x::AbstractUncertainValue; n::Int)
 Base.acos(x::AbstractUncertainValue, n::Int)
 ```
 
-```@docs 
+```@docs
 Base.acosd(x::AbstractUncertainValue; n::Int)
 Base.acosd(x::AbstractUncertainValue, n::Int)
 ```
 
-```@docs 
+```@docs
 Base.acosh(x::AbstractUncertainValue; n::Int)
 Base.acosh(x::AbstractUncertainValue, n::Int)
 ```
 
 ### Tangent
 
-```@docs 
+```@docs
 Base.tan(x::AbstractUncertainValue; n::Int)
 Base.tan(x::AbstractUncertainValue, n::Int)
 ```
@@ -179,66 +177,65 @@ Base.tand(x::AbstractUncertainValue; n::Int)
 Base.tand(x::AbstractUncertainValue, n::Int)
 ```
 
-```@docs 
+```@docs
 Base.tanh(x::AbstractUncertainValue; n::Int)
 Base.tanh(x::AbstractUncertainValue, n::Int)
 ```
 
 ### Inverse cosecant
 
-
-```@docs 
+```@docs
 Base.acsc(x::AbstractUncertainValue; n::Int)
 Base.acsc(x::AbstractUncertainValue, n::Int)
 ```
 
-```@docs 
+```@docs
 Base.acscd(x::AbstractUncertainValue; n::Int)
 Base.acscd(x::AbstractUncertainValue, n::Int)
 ```
 
-```@docs 
+```@docs
 Base.acsch(x::AbstractUncertainValue; n::Int)
 Base.acsch(x::AbstractUncertainValue, n::Int)
 ```
 
 ### Inverse secant
 
-```@docs 
+```@docs
 Base.asec(x::AbstractUncertainValue; n::Int)
 Base.asec(x::AbstractUncertainValue, n::Int)
 ```
 
-```@docs 
+```@docs
 Base.asecd(x::AbstractUncertainValue; n::Int)
 Base.asecd(x::AbstractUncertainValue, n::Int)
 ```
 
-```@docs 
+```@docs
 Base.asech(x::AbstractUncertainValue; n::Int)
 Base.asech(x::AbstractUncertainValue, n::Int)
 ```
 
 ### Inverse cotangent
 
-```@docs 
+```@docs
 Base.acot(x::AbstractUncertainValue; n::Int)
 Base.acot(x::AbstractUncertainValue, n::Int)
 ```
 
-```@docs 
+```@docs
 Base.acotd(x::AbstractUncertainValue; n::Int)
 Base.acotd(x::AbstractUncertainValue, n::Int)
 ```
 
-```@docs 
+```@docs
 Base.acoth(x::AbstractUncertainValue; n::Int)
 Base.acoth(x::AbstractUncertainValue, n::Int)
 ```
 
-## Other trig functions 
+## Other trig functions
 
-```@docs 
+```@docs
 Base.sincos(x::AbstractUncertainValue; n::Int)
 Base.sincos(x::AbstractUncertainValue, n::Int)
 ```

@@ -5,9 +5,9 @@
 UncertainData.jl was born to systematically deal with uncertain data, and to 
 [sample](resampling/resampling_overview.md) from 
 [uncertain datasets](uncertain_datasets/uncertain_datasets_overview.md) more rigorously. 
-It makes workflows involving 
-[uncertain data of different types](uncertain_values/uncertainvalues_overview.md) 
-and from different sources significantly easier. 
+It makes workflows involving uncertain data of 
+[different types](uncertain_values/uncertainvalues_overview.md) 
+and from different sources significantly easier.
 
 ## Package philosophy
 
@@ -26,30 +26,6 @@ resampling the probability distributions furnishing them.
 Individual uncertain observations of different types are seamlessly mixed and can
 be organised in [collections of uncertain values](uncertain_datasets/uncertain_datasets_overview.md).
 
-- The [UncertainValueDataset](uncertain_datasets/uncertain_value_dataset.md) type is 
-    just a wrapper for a vector of uncertain values.
-- The [UncertainIndexDataset](uncertain_datasets/uncertain_index_dataset.md) type 
-    behaves just as [UncertainValueDataset](uncertain_datasets/uncertain_value_dataset.md), but has certain resampling methods such as [sequential resampling](resampling/sequential/resampling_uncertaindatasets_sequential) associated with them.
-- The [UncertainIndexValueDataset](uncertain_datasets/uncertain_indexvalue_dataset.md) 
-    type allows you to be explicit that you're working with datasets where both the 
-    [indices](uncertain_datasets/uncertain_index_dataset.md) and the 
-    [data values](uncertain_datasets/uncertain_value_dataset.md) are uncertain. 
-    This may be useful when you, for example, want to draw realizations of your 
-    dataset while simultaneously enforcing 
-    [sequential resampling](resampling/sequential/resampling_uncertaindatasets_sequential.md) 
-    models. One example is resampling while ensuring the draws have 
-    [strictly increasing](resampling/sequential/resampling_indexvalue_sequential.md) 
-    age models.
-
-## Resampling
-
-Resampling can be done by user-provided sampling constraints, either on the individual uncertain values, or even on the entire collections.
-
-- Individual uncertain values are resampled by drawing random numbers from their furnishing     distributions/populations. The common `resample` method does this for all uncertain value
-types. Resampling can either be done from the entire populations, or after first applying
-[sampling constraints](sampling_constraints/available_constraints.md) on the underlying distributions/populations.
-
-- [Collections of uncertain values](uncertain_datasets/uncertain_datasets_overview.md) may also be resampled. Resampling collections can be done assuming no sequential dependence for your data, or by applying sequential sampling models. During this process [sampling constraints](sampling_constraints/available_constraints.md) can be applied element-wise or on entire collections.
 
 ## Mathematical operations
 
@@ -58,13 +34,22 @@ Several [elementary mathematical operations](mathematics/elementary_operations.m
 for uncertain values. Computations are done using a 
 [resampling approach](resampling/resampling_overview).
 
+
 ## Statistics on uncertain datasets
 
-Statistics on uncertain datasets are computed using a resampling approach, and can be 
-computed either by sampling values and datasets independently or by using models
+Statistics on uncertain datasets are computed using a resampling approach:
 
 - [Core statistics](uncertain_statistics/core_stats/core_statistics.md)
 - [Hypothesis tests](uncertain_statistics/hypothesistests/hypothesis_tests_overview.md)
+
+## Resampling
+
+[Resampling](resampling/resampling_overview.md) is done by drawing random numbers from the furnishing distributions/populations of the uncertain value(s), using one of the [`resample`](@ref) methods.
+
+[Individual uncertain values](resampling/resampling_uncertain_values) may be sampled as they are,
+or after first applying [sampling constraints](sampling_constraints/available_constraints.md) on the underlying distributions/populations.
+
+[Collections of uncertain values](resampling/resampling_uncertain_datasets.md). Resampling collections can be done assuming no sequential dependence for your data, or by applying sequential sampling models. During this process [sampling constraints](sampling_constraints/available_constraints.md) can be applied element-wise or on entire collections.
 
 ## Basic workflow
 

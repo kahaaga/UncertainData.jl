@@ -44,32 +44,35 @@ markdown_extensions:
 docs_dir: 'build'
 
 pages:
-  - Overview: index.md
+  - Package overview: index.md
+  
   - Uncertain values:
-    - Overview: uncertain_values/uncertainvalues_overview.md
-    - Extended examples: uncertain_values/uncertainvalues_examples.md
-    - Representations:
+    - Types of uncertain values: uncertain_values/uncertainvalues_overview.md
+    - List of representations:
       - Kernel density estimates (KDE): uncertain_values/uncertainvalues_kde.md
       - Theoretical distributions with known parameters: uncertain_values/uncertainvalues_theoreticaldistributions.md
       - Theoretical distributions with fitted parameters: uncertain_values/uncertainvalues_fitted.md
-      - Values without uncertainty: uncertain_values/certainvalue.md
-      - (Nested) populations: uncertain_values/populations.md
-    - Combining: uncertain_values/merging.md
+      - Weighted (nested) populations: uncertain_values/uncertainvalues_populations.md
+      - Values without uncertainty: uncertain_values/uncertainvalues_certainvalue.md
+      - Measurements: uncertain_values/uncertainvalues_Measurements.md
+    - Combining/merging: uncertain_values/merging.md
+    - Extended examples: uncertain_values/uncertainvalues_examples.md
 
   - Uncertain datasets:
-      - Overview: uncertain_datasets/uncertain_datasets_overview.md
+      - Types of uncertain datasets: uncertain_datasets/uncertain_datasets_overview.md
       - Uncertain index dataset: uncertain_datasets/uncertain_index_dataset.md 
       - Uncertain value dataset: uncertain_datasets/uncertain_value_dataset.md
       - Uncertain index-value dataset: uncertain_datasets/uncertain_indexvalue_dataset.md
       - Generic uncertain dataset: uncertain_datasets/uncertain_dataset.md
+
   - Sampling constraints:
-    - Lists of constraints:
-      - Regular constraints: sampling_constraints/available_constraints.md
-      - Sequential constraints:
-        - List of sequential constraints: sampling_constraints/sequential_constraints.md
-        - Existence of sequences: sampling_constraints/ordered_sequence_exists.md
+    - Regular constraints: sampling_constraints/available_constraints.md
+    - Sequential constraints:
+      - List of sequential constraints: sampling_constraints/sequential_constraints.md
+      - Existence of sequences: sampling_constraints/ordered_sequence_exists.md
     - Examples:
       - Constraining uncertain values: sampling_constraints/constrain_uncertain_values.md
+  
   - Resampling:
     - Overview: resampling/resampling_overview.md
     - Resampling uncertain values: resampling/resampling_uncertain_values.md
@@ -83,9 +86,11 @@ pages:
     - Interpolation:
       - Overview: resampling/interpolation/interpolation.md
       - Gridded interpolation: resampling/interpolation/gridded.md
+  
   - Mathematics: 
       - Elementary operations: mathematics/elementary_operations.md
       - Trigonometric functions: mathematics/trig_functions.md
+  
   - Statistics:
     - Basics: 
       - Overview: uncertain_statistics/core_stats/core_statistics.md
@@ -104,6 +109,9 @@ pages:
       - Jarque-Bera test: uncertain_statistics/hypothesistests/jarque_bera_test.md
       - Mann-Whitney u-test: uncertain_statistics/hypothesistests/mann_whitney_u_test.md
       - Anderson-Darling test: uncertain_statistics/hypothesistests/anderson_darling_test.md
+  
   - Implementing algorithms for uncertain data: implementing_algorithms_for_uncertaindata.md
+  
   - Changelog: changelog.md
+  
   - Publications and software: publications.md
