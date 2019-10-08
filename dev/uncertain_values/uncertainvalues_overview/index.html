@@ -40,7 +40,7 @@
     
     
       
-        <title>Overview - UncertainData.jl</title>
+        <title>Types of uncertain values - UncertainData.jl</title>
       
     
     
@@ -96,7 +96,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#some_quick_examples" tabindex="1" class="md-skip">
+      <a href="#uncertain_value_types" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -122,7 +122,7 @@
                 UncertainData.jl
               </span>
               <span class="md-header-nav__topic">
-                Overview
+                Types of uncertain values
               </span>
             
           
@@ -239,8 +239,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="Overview" class="md-nav__link">
-      Overview
+    <a href="../.." title="Package overview" class="md-nav__link">
+      Package overview
     </a>
   </li>
 
@@ -279,11 +279,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Overview
+        Types of uncertain values
       </label>
     
-    <a href="./" title="Overview" class="md-nav__link md-nav__link--active">
-      Overview
+    <a href="./" title="Types of uncertain values" class="md-nav__link md-nav__link--active">
+      Types of uncertain values
     </a>
     
       
@@ -295,6 +295,14 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#uncertain_value_types" title="Uncertain value types" class="md-nav__link">
+    Uncertain value types
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#some_quick_examples" title="Some quick examples" class="md-nav__link">
     Some quick examples
   </a>
@@ -341,6 +349,11 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
       
       
@@ -358,28 +371,16 @@
           
 
 
-  <li class="md-nav__item">
-    <a href="../uncertainvalues_examples/" title="Extended examples" class="md-nav__link">
-      Extended examples
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
     
-    <label class="md-nav__link" for="nav-2-3">
-      Representations
+    <label class="md-nav__link" for="nav-2-2">
+      List of representations
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-2-3">
-        Representations
+      <label class="md-nav__title" for="nav-2-2">
+        List of representations
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -426,7 +427,19 @@
 
 
   <li class="md-nav__item">
-    <a href="../certainvalue/" title="Values without uncertainty" class="md-nav__link">
+    <a href="../uncertainvalues_populations/" title="Weighted (nested) populations" class="md-nav__link">
+      Weighted (nested) populations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../uncertainvalues_certainvalue/" title="Values without uncertainty" class="md-nav__link">
       Values without uncertainty
     </a>
   </li>
@@ -438,8 +451,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../populations/" title="Populations" class="md-nav__link">
-      Populations
+    <a href="../uncertainvalues_Measurements/" title="Measurements" class="md-nav__link">
+      Measurements
     </a>
   </li>
 
@@ -455,8 +468,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../merging/" title="Combining" class="md-nav__link">
-      Combining
+    <a href="../merging/" title="Combining/merging" class="md-nav__link">
+      Combining/merging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../uncertainvalues_examples/" title="Extended examples" class="md-nav__link">
+      Extended examples
     </a>
   </li>
 
@@ -491,20 +516,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../uncertain_datasets/uncertain_datasets_overview/" title="Overview" class="md-nav__link">
-      Overview
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../uncertain_datasets/uncertain_dataset/" title="Generic uncertain dataset" class="md-nav__link">
-      Generic uncertain dataset
+    <a href="../../uncertain_datasets/uncertain_datasets_overview/" title="Types of uncertain datasets" class="md-nav__link">
+      Types of uncertain datasets
     </a>
   </li>
 
@@ -545,6 +558,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_datasets/uncertain_dataset/" title="Generic uncertain dataset" class="md-nav__link">
+      Generic uncertain dataset
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -560,11 +585,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
-      Resampling
+      Sampling constraints
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-4">
-        Resampling
+        Sampling constraints
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -575,8 +600,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../resampling/resampling_overview/" title="Overview" class="md-nav__link">
-      Overview
+    <a href="../../sampling_constraints/available_constraints/" title="Regular constraints" class="md-nav__link">
+      Regular constraints
     </a>
   </li>
 
@@ -591,53 +616,10 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
     
     <label class="md-nav__link" for="nav-4-2">
-      Sampling constraints
+      Sequential constraints
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
       <label class="md-nav__title" for="nav-4-2">
-        Sampling constraints
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../sampling_constraints/constrain_uncertain_values/" title="Constraining uncertain values" class="md-nav__link">
-      Constraining uncertain values
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../sampling_constraints/available_constraints/" title="Generic constraints" class="md-nav__link">
-      Generic constraints
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2-3" type="checkbox" id="nav-4-2-3">
-    
-    <label class="md-nav__link" for="nav-4-2-3">
-      Sequential constraints
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-4-2-3">
         Sequential constraints
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -672,8 +654,75 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
+    
+    <label class="md-nav__link" for="nav-4-3">
+      Examples
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../sampling_constraints/constrain_uncertain_values/" title="Constraining uncertain values" class="md-nav__link">
+      Constraining uncertain values
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Resampling
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Resampling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../resampling/resampling_overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
   </li>
 
         
@@ -720,13 +769,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5">
     
-    <label class="md-nav__link" for="nav-4-6">
+    <label class="md-nav__link" for="nav-5-5">
       Sequential resampling
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-4-6">
+      <label class="md-nav__title" for="nav-5-5">
         Sequential resampling
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -792,13 +841,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-7" type="checkbox" id="nav-4-7">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6">
     
-    <label class="md-nav__link" for="nav-4-7">
+    <label class="md-nav__link" for="nav-5-6">
       Interpolation
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-4-7">
+      <label class="md-nav__title" for="nav-5-6">
         Interpolation
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -845,13 +894,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
-    <label class="md-nav__link" for="nav-5">
+    <label class="md-nav__link" for="nav-6">
       Mathematics
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
+      <label class="md-nav__title" for="nav-6">
         Mathematics
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -893,14 +942,33 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
     
-    <label class="md-nav__link" for="nav-6">
-      Uncertain statistics
+    <label class="md-nav__link" for="nav-7">
+      Statistics
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
-        Uncertain statistics
+      <label class="md-nav__title" for="nav-7">
+        Statistics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-1" type="checkbox" id="nav-7-1">
+    
+    <label class="md-nav__link" for="nav-7-1">
+      Basics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-1">
+        Basics
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -911,9 +979,62 @@
 
 
   <li class="md-nav__item">
-    <a href="../../uncertain_statistics/core_stats/core_statistics/" title="Core statistics" class="md-nav__link">
-      Core statistics
+    <a href="../../uncertain_statistics/core_stats/core_statistics/" title="Overview" class="md-nav__link">
+      Overview
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_statistics/core_stats/core_statistics_point_estimates/" title="Point estimates on values" class="md-nav__link">
+      Point estimates on values
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_statistics/core_stats/core_statistics_pairwise_estimates/" title="Pairwise estimates on values" class="md-nav__link">
+      Pairwise estimates on values
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_statistics/core_stats/core_statistics_datasets_single_dataset_estimates/" title="Estimates on single uncertain value collections" class="md-nav__link">
+      Estimates on single uncertain value collections
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_statistics/core_stats/core_statistics_datasets_pairwise_estimates/" title="Estimates on pairs of uncertain value collections" class="md-nav__link">
+      Estimates on pairs of uncertain value collections
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -924,13 +1045,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
     
-    <label class="md-nav__link" for="nav-6-2">
+    <label class="md-nav__link" for="nav-7-2">
       Hypothesis tests
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-6-2">
+      <label class="md-nav__title" for="nav-7-2">
         Hypothesis tests
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1109,6 +1230,14 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#uncertain_value_types" title="Uncertain value types" class="md-nav__link">
+    Uncertain value types
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#some_quick_examples" title="Some quick examples" class="md-nav__link">
     Some quick examples
   </a>
@@ -1155,6 +1284,11 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
       
       
@@ -1175,16 +1309,19 @@
                   <a href="https://github.com/kahaaga/UncertainData.jl/edit/master/docs/uncertain_values/uncertainvalues_overview.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>Overview</h1>
+                  <h1>Types of uncertain values</h1>
                 
-                <p>The core concept of <code class="codehilite"><span class="n">UncertainData</span></code> is to replace an uncertain data value with a  probability distribution describing the point's uncertainty.</p>
-<p>There are currently three ways of doing so:</p>
+                <p><a id='Uncertain-value-types-1'></a></p>
+<h2 id="uncertain_value_types">Uncertain value types<a class="headerlink" href="#uncertain_value_types" title="Permanent link">&para;</a></h2>
+<p>The core concept of <code class="codehilite"><span class="n">UncertainData</span></code> is to replace an uncertain data value with a  probability distribution describing the point's uncertainty.</p>
+<p>The following types of uncertain values are currently implemented:</p>
 <ul>
-<li>by <a href="../uncertainvalues_theoreticaldistributions/">theoretical distributions with known parameters</a></li>
-<li>by <a href="../uncertainvalues_fitted/">theoretical distributions with parameters fitted to empirical data</a></li>
-<li>by <a href="../uncertainvalues_kde/">kernel density estimates to empirical data</a></li>
-<li>by <a href="../populations/">weighted populations</a> where the probability of drawing values are    already known, so you can skip kernel density estimation.</li>
-<li>a type representing <a href="../certainvalue/">values without uncertainty</a>, so you can mix    uncertain values with certain values</li>
+<li><a href="../uncertainvalues_theoreticaldistributions/">Theoretical distributions with known parameters</a>.</li>
+<li><a href="../uncertainvalues_fitted/">Theoretical distributions with parameters fitted to empirical data</a>.</li>
+<li><a href="../uncertainvalues_kde/">Kernel density estimated distributions estimated from empirical data</a>.</li>
+<li><a href="../uncertainvalues_populations/">Weighted (nested) populations</a> where the probability of    drawing values are already known, so you can skip kernel density estimation. Populations can be    nested, and may contain numerical values, uncertain values or both.</li>
+<li><a href="../uncertainvalues_certainvalue/">Values without uncertainty</a> have their own dedicated    <a href="../uncertainvalues_certainvalue/#UncertainData.UncertainValues.CertainValue"><code class="codehilite"><span class="n">CertainValue</span></code></a> type, so that you can uncertain values with certain values.</li>
+<li><a href="../uncertainvalues_Measurements/"><code class="codehilite"><span class="n">Measurement</span></code> instances</a> from <a href="https://github.com/JuliaPhysics/Measurements.jl">Measurements.jl</a> are treated as normal distributions with known mean and standard devation.</li>
 </ul>
 <p><a id='Some-quick-examples-1'></a></p>
 <h3 id="some_quick_examples">Some quick examples<a class="headerlink" href="#some_quick_examples" title="Permanent link">&para;</a></h3>
@@ -1352,7 +1489,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../.." title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../.." title="Package overview" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1361,19 +1498,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Overview
+                Package overview
               </span>
             </div>
           </a>
         
         
-          <a href="../uncertainvalues_examples/" title="Extended examples" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../uncertainvalues_kde/" title="Kernel density estimates (KDE)" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Extended examples
+                Kernel density estimates (KDE)
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
