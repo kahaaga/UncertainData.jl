@@ -1,7 +1,5 @@
 """
-    countne(x::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}},
-            y::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}}, 
-            n::Int)
+    countne(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, n::Int)
 
 Estimate a `n`-member distribution on the number of indices at which the elements of 
 two collections of uncertain values are not equal. 
@@ -25,9 +23,7 @@ StatsBase.countne(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, n::Int) =
     resample(StatsBase.countne, x, y, n)
 
 """
-    counteq(x::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}},
-            y::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}}, 
-            n::Int)
+    counteq(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, n::Int)
 
 Estimate a `n`-member distribution on the number of indices at which the elements of 
 two collections of uncertain values are equal.
@@ -51,9 +47,7 @@ StatsBase.counteq(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, n::Int) =
     resample(StatsBase.counteq, x, y, n)
 
 """
-    corkendall(x::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}},
-            y::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}}, 
-            n::Int)
+    corkendall(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, n::Int)
 
 Estimate a `n`-member distribution on Kendalls's rank correlation 
 coefficient between two collections of uncertain values.
@@ -77,9 +71,7 @@ StatsBase.corkendall(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, n::Int)
     resample(StatsBase.corspearman, x, y, n)
 
 """
-    corspearman(x::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}},
-        y::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}}, 
-        n::Int)
+    corspearman(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, n::Int)
 
 Estimate a `n`-member distribution on Spearman's rank correlation 
 coefficient between two collections of uncertain values.
@@ -103,9 +95,7 @@ StatsBase.corspearman(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, n::Int
     resample(StatsBase.corspearman, x, y, n)
 
 """
-    cor(x::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}},
-        y::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}}, 
-        n::Int)
+    cor(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, n::Int)
 
 Estimate a distribution on Pearson's rank correlation coefficient between 
 two collections of uncertain values.
@@ -129,9 +119,7 @@ StatsBase.cor(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, n::Int) =
     resample(StatsBase.cor, x, y, n)
 
 """
-    cov(x::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}},
-        y::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}}, 
-        n::Int; corrected::Bool = true)
+    cov(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, n::Int; corrected::Bool = true)
 
 Obtain a distribution on the covariance between two collections of 
 uncertain values.
@@ -158,9 +146,7 @@ StatsBase.cov(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, n::Int; correc
     resample(StatsBase.cov, x, y, n; corrected = corrected)
 
 """
-    crosscor(x::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}},
-            y::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}}, 
-            [lags], n::Int; demean = true)
+    crosscor(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, [lags], n::Int; demean = true)
 
 Obtain a distribution over the cross correlation between two collections of 
 uncertain values.
@@ -215,9 +201,7 @@ function StatsBase.crosscor(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, 
 end
 
 """
-    crosscov(x::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}},
-        y::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}}, 
-        [lags], n::Int; demean = true)
+    crosscov(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, [lags], n::Int; demean = true)
 
 Obtain a distribution over the cross covariance function (CCF) between two 
 collections of uncertain values.
@@ -273,9 +257,7 @@ function StatsBase.crosscov(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, 
 end
 
 """
-    gkldiv(x::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}},
-        y::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}}, 
-        n::Int)
+    gkldiv(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, n::Int)
 
 Obtain a distribution over the generalized Kullback-Leibler divergence between two 
 collections of uncertain values.
@@ -300,9 +282,7 @@ StatsBase.gkldiv(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, n::Int) =
     resample(StatsBase.gkldiv, x, y, n)
 
 """
-    kldivergence(x::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}},
-        y::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}}, 
-        [b], n::Int)
+    kldivergence(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, [b], n::Int)
 
 Obtain a distribution over the Kullback-Leibler divergence between two 
 collections of uncertain values.
@@ -333,9 +313,7 @@ StatsBase.kldivergence(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, b, n:
     resample(StatsBase.kldivergence, x, y, n, b)
 
 """
-    maxad(x::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}},
-        y::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}}, 
-        n::Int)
+    maxad(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, n::Int)
 
 Obtain a distribution over the maximum absolute deviation between two 
 collections of uncertain values.
@@ -361,9 +339,7 @@ StatsBase.maxad(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, n::Int) =
 
 
 """
-    meanad(x::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}},
-        y::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}}, 
-        n::Int)
+    meanad(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, n::Int)
 
 Obtain a distribution over the mean absolute deviation between two 
 collections of uncertain values.
@@ -389,9 +365,7 @@ StatsBase.meanad(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, n::Int) =
 
 
 """
-    msd(x::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}},
-        y::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}}, 
-        n::Int)
+    msd(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, n::Int)
 
 Obtain a distribution over the mean squared deviation between two 
 collections of uncertain values.
@@ -417,9 +391,7 @@ StatsBase.msd(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, n::Int) =
 
 
 """
-    psnr(x::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}},
-        y::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}}, 
-        maxv, n::Int)
+    psnr(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, maxv, n::Int)
 
 Obtain a distribution over the peak signal-to-noise ratio (PSNR) between two 
 collections of uncertain values.
@@ -445,9 +417,7 @@ StatsBase.psnr(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, maxv, n::Int)
     resample(StatsBase.psnr, x, y, n, maxv)
 
 """
-    rmsd(x::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}},
-        y::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}}, 
-        n::Int, normalize = false)
+    rmsd(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, n::Int, normalize = false)
 
 Obtain a distribution over the root mean squared deviation between two 
 collections of uncertain values.
@@ -475,9 +445,7 @@ StatsBase.rmsd(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, n::Int; norma
     resample(StatsBase.rmsd, x, y, n; normalize = normalize)
 
 """
-    sqL2dist(x::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}},
-        y::Union{AbstractUncertainValueDataset, Vector{AbstractUncertainValue}}, 
-        n::Int)
+    sqL2dist(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, n::Int)
 
 Obtain a distribution over the squared L2 distance between two 
 collections of uncertain values.

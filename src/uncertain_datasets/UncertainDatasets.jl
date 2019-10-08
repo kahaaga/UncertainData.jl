@@ -39,6 +39,21 @@ using Reexport
     # Conversion and promotion 
     include("conversions.jl")
 
+    """ 
+        UVAL_COLLECTION_TYPES = Union{UD, UV} where {
+            UD <: AbstractUncertainValueDataset, 
+            UV <: AbstractVector{T} where {
+                T <: AbstractUncertainValue}}
+        
+    A type union used to represent types of uncertain values. 
+    """
+    const UVAL_COLLECTION_TYPES = Union{UD, UV} where {
+        UD <: AbstractUncertainValueDataset, 
+        UV <: AbstractVector{T} where {
+            T <: AbstractUncertainValue}}
+
+    export UVAL_COLLECTION_TYPES
+
 end # module
 
 """

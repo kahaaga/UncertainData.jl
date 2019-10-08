@@ -2,6 +2,8 @@ using Reexport
 
 @reexport module Resampling
 
+    import ..UVAL_COLLECTION_TYPES
+
     function resample end
 
     ###################################
