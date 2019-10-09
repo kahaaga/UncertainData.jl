@@ -45,7 +45,7 @@ docs_dir: 'build'
 
 pages:
   - Package overview: index.md
-  
+  - Propagation of errors: propagation_of_errors/propagation_of_errors.md
   - Uncertain values:
     - Types of uncertain values: uncertain_values/uncertainvalues_overview.md
     - List of representations:

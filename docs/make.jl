@@ -72,6 +72,10 @@ PAGES = [
         "resampling/interpolation/gridded.md"
         #"resampling/models/resampling_with_models.md"
     ],
+
+    "Propagation of errors" => [
+        "propagation_of_errors/propagation_of_errors.md"
+    ],
     
     "Mathematics" => [
         "mathematics/elementary_operations.md",
