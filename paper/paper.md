@@ -11,7 +11,7 @@ authors:
 affiliations:
   - name: Department of Earth Science, University of Bergen, Bergen, Norway
     index: 1 
-  - name: Jebsen Centre for Deep Sea Research, Bergen, Norway
+  - name: K. G. Jebsen Centre for Deep Sea Research, Bergen, Norway
     index: 2
   - name: Bjerknes Centre for Climate Research, Bergen, Norway
     index: 3
