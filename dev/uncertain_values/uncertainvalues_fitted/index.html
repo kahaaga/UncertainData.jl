@@ -96,7 +96,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#generic_constructor" tabindex="1" class="md-skip">
+      <a href="#fitted_theoretical_distributions" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -352,20 +352,28 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#fitted_theoretical_distributions" title="Fitted theoretical distributions" class="md-nav__link">
+    Fitted theoretical distributions
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#generic_constructor" title="Generic constructor" class="md-nav__link">
     Generic constructor
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#type_documentation" title="Type documentation" class="md-nav__link">
     Type documentation
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#examples" title="Examples" class="md-nav__link">
     Examples
   </a>
@@ -377,6 +385,11 @@
   <a href="#beware_fitting_distributions_may_lead_to_nonsensical_results" title="Beware: fitting distributions may lead to nonsensical results!" class="md-nav__link">
     Beware: fitting distributions may lead to nonsensical results!
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1205,20 +1218,28 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#fitted_theoretical_distributions" title="Fitted theoretical distributions" class="md-nav__link">
+    Fitted theoretical distributions
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#generic_constructor" title="Generic constructor" class="md-nav__link">
     Generic constructor
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#type_documentation" title="Type documentation" class="md-nav__link">
     Type documentation
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#examples" title="Examples" class="md-nav__link">
     Examples
   </a>
@@ -1230,6 +1251,11 @@
   <a href="#beware_fitting_distributions_may_lead_to_nonsensical_results" title="Beware: fitting distributions may lead to nonsensical results!" class="md-nav__link">
     Beware: fitting distributions may lead to nonsensical results!
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1259,7 +1285,9 @@
                 
                   <h1>Theoretical distributions with fitted parameters</h1>
                 
-                <p>For data values with histograms close to some known distribution, the user may choose to represent the data by fitting a theoretical distribution to the values. This will only work well if the histogram closely resembles a theoretical distribution.</p>
+                <p><a id='uncertain_value_fitted_theoretical_distribution-1'></a></p>
+<h2 id="fitted_theoretical_distributions">Fitted theoretical distributions<a class="headerlink" href="#fitted_theoretical_distributions" title="Permanent link">&para;</a></h2>
+<p>For data values with histograms close to some known distribution, the user may choose to represent the data by fitting a theoretical distribution to the values. This will only work well if the histogram closely resembles a theoretical distribution.</p>
 <p><a id='Generic-constructor-1'></a></p>
 <h3 id="generic_constructor">Generic constructor<a class="headerlink" href="#generic_constructor" title="Permanent link">&para;</a></h3>
 <p><a id='UncertainData.UncertainValues.UncertainValue-Union{Tuple{T}, Tuple{D}, Tuple{Type{D},Array{T,1}}} where T where D<:Distribution' href='#UncertainData.UncertainValues.UncertainValue-Union{Tuple{T}, Tuple{D}, Tuple{Type{D},Array{T,1}}} where T where D<:Distribution'>#</a>
@@ -1277,7 +1305,7 @@
 <li><strong><code class="codehilite"><span class="n">empiricaldata</span></code></strong>: The data for which to fit the <code class="codehilite"><span class="n">distribution</span></code>.</li>
 <li><strong><code class="codehilite"><span class="n">distribution</span></code></strong>: A valid univariate distribution from <code class="codehilite"><span class="n">Distributions</span><span class="p">.</span><span class="n">jl</span></code>.</li>
 </ul>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/df92378d7cdd4999a0ac5445528f0969bbd5f8be/src/uncertain_values/UncertainValue.jl#L112-L126' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3662693a0684272a6d1aec649513eef08c5741f0/src/uncertain_values/UncertainValue.jl#L112-L126' class='documenter-source'>source</a><br></p>
 <p><a id='Type-documentation-1'></a></p>
 <h3 id="type_documentation">Type documentation<a class="headerlink" href="#type_documentation" title="Permanent link">&para;</a></h3>
 <p><a id='UncertainData.UncertainValues.UncertainScalarTheoreticalFit' href='#UncertainData.UncertainValues.UncertainScalarTheoreticalFit'>#</a>
@@ -1289,7 +1317,7 @@
 <li><strong><code class="codehilite"><span class="n">distribution</span></code></strong> The distribution describing the value.</li>
 <li><strong><code class="codehilite"><span class="k">values</span></code></strong>: The values from which <code class="codehilite"><span class="n">distribution</span></code> is estimated.</li>
 </ul>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/df92378d7cdd4999a0ac5445528f0969bbd5f8be/src/uncertain_values/UncertainScalarsTheoreticalFitted.jl#L8-L16' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3662693a0684272a6d1aec649513eef08c5741f0/src/uncertain_values/UncertainScalarsTheoreticalFitted.jl#L8-L16' class='documenter-source'>source</a><br></p>
 <p><a id='Examples-1'></a></p>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
 <div class="superfences-tabs">

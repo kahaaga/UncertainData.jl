@@ -924,21 +924,28 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#list" title="List" class="md-nav__link">
-    List
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#collections_of_uncertain_values" title="Collections of uncertain values" class="md-nav__link">
-    Collections of uncertain values
+  <a href="#exact_vs_approximate_error_propagation" title="Exact vs. approximate error propagation" class="md-nav__link">
+    Exact vs. approximate error propagation
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list_of_statistics" title="List of statistics" class="md-nav__link">
+    List of statistics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accepted_collection_types" title="Accepted collection types" class="md-nav__link">
+    Accepted collection types
+  </a>
   
 </li>
       
@@ -1206,21 +1213,28 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#list" title="List" class="md-nav__link">
-    List
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#collections_of_uncertain_values" title="Collections of uncertain values" class="md-nav__link">
-    Collections of uncertain values
+  <a href="#exact_vs_approximate_error_propagation" title="Exact vs. approximate error propagation" class="md-nav__link">
+    Exact vs. approximate error propagation
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list_of_statistics" title="List of statistics" class="md-nav__link">
+    List of statistics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accepted_collection_types" title="Accepted collection types" class="md-nav__link">
+    Accepted collection types
+  </a>
   
 </li>
       
@@ -1247,23 +1261,28 @@
                 
                 <p><a id='Statistics-on-uncertain-values-and-collections-1'></a></p>
 <h2 id="statistics_on_uncertain_values_and_collections">Statistics on uncertain values and collections<a class="headerlink" href="#statistics_on_uncertain_values_and_collections" title="Permanent link">&para;</a></h2>
-<p>This package extends many of the statistical algorithms in <code class="codehilite"><span class="n">StatsBase</span></code> for uncertain values. The statistics are computed using a resampling approach.</p>
-<p>To enable uncertain statistics, first run the following to bring the functions into scope.</p>
+<p>This package extends many of the statistical algorithms in <code class="codehilite"><span class="n">StatsBase</span></code> for uncertain values. The statistics are computed using a resampling approach. </p>
+<p>To use these methods, you first have to run the following in your Julia console  to bring the functions into scope:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">StatsBase</span>
 </pre></div>
 </td></tr></table>
 
-<p><a id='List-1'></a></p>
-<h3 id="list">List<a class="headerlink" href="#list" title="Permanent link">&para;</a></h3>
+<p><a id='Exact-vs.-approximate-error-propagation-1'></a></p>
+<h3 id="exact_vs_approximate_error_propagation">Exact vs. approximate error propagation<a class="headerlink" href="#exact_vs_approximate_error_propagation" title="Permanent link">&para;</a></h3>
+<p>For exact error propagation of normally distributed uncertain values that are  potentially correlated, you can use <a href="https://github.com/JuliaPhysics/Measurements.jl">Measurements.jl</a>. It is, however, not always the case that data points have normally distributed uncertainties. </p>
+<p>This where the resampling approach becomes useful. In this package, the resampling  approach allows you to <em>approximate any statistic</em> for  <a href="../../../uncertain_values/uncertainvalues_overview/#uncertain_value_types-1"><em>any type of uncertain value</em></a>. You may still use  normal distributions to represent uncertain values, but the various statistics  are <em>approximated through resampling</em>, rather than computed exactly.</p>
+<p><a id='List-of-statistics-1'></a></p>
+<h2 id="list_of_statistics">List of statistics<a class="headerlink" href="#list_of_statistics" title="Permanent link">&para;</a></h2>
+<p>Some statistics are implemented only for <a href="../../../uncertain_values/uncertainvalues_overview/#uncertain_value_types-1">uncertain values</a>, while other statistics are implemented only for <a href="../../../uncertain_datasets/uncertain_datasets_overview/#uncertain_value_collection_types-1">collections of uncertain values</a>. Some statistics also work on pairs of of uncertain values,  or pairs of uncertain value collections. Here's an overview:</p>
 <ul>
-<li><a href="../core_statistics_point_estimates/#syntax_statistics_uncertainvalue_single-1">Point-estimates of statistics on single uncertain values</a></li>
-<li><a href="../core_statistics_pairwise_estimates/#syntax_statistics_uncertainvalue_pairs-1">Statistics on pairs of uncertain values</a></li>
-<li><a href="../core_statistics_datasets_single_dataset_estimates/#syntax_statistics_collection_single-1">Statistics on a single uncertain data collection</a></li>
-<li><a href="../core_statistics_datasets_pairwise_estimates/#syntax_statistics_collection_pairs-1">Statistics on pairs of uncertain data collections</a></li>
+<li><a href="../core_statistics_point_estimates/#syntax_statistics_uncertainvalue_single-1">Uncertain values, on single values</a></li>
+<li><a href="../core_statistics_pairwise_estimates/#syntax_statistics_uncertainvalue_pairs-1">Uncertain values, on pairs of values</a></li>
+<li><a href="../core_statistics_datasets_single_dataset_estimates/#syntax_statistics_collection_single-1">Uncertain collections, on single collections</a></li>
+<li><a href="../core_statistics_datasets_pairwise_estimates/#syntax_statistics_collection_pairs-1">Uncertain collections, on pairs of collections</a></li>
 </ul>
-<p><a id='Collections-of-uncertain-values-1'></a></p>
-<h3 id="collections_of_uncertain_values">Collections of uncertain values<a class="headerlink" href="#collections_of_uncertain_values" title="Permanent link">&para;</a></h3>
-<p>In the documentation for the statistical methods, you'll notice that the inputs are supposed to be of type <a href="../../../uncertain_datasets/uncertain_datasets_overview/#UncertainData.UncertainDatasets.UVAL_COLLECTION_TYPES"><code class="codehilite"><span class="n">UVAL_COLLECTION_TYPES</span></code></a>. This is a type union representing all types of collections for which the statistical methods are defined. Currently, this includes <code class="codehilite"><span class="n">UncertainValueDataset</span></code>, <code class="codehilite"><span class="n">UncertainIndexDataset</span></code>  and vectors of uncertain values (<code class="codehilite"><span class="n">Vector</span><span class="err">{</span><span class="n">AbstractUncertainValue</span><span class="err">}</span></code>).</p>
+<p><a id='Accepted-collection-types-1'></a></p>
+<h2 id="accepted_collection_types">Accepted collection types<a class="headerlink" href="#accepted_collection_types" title="Permanent link">&para;</a></h2>
+<p>In the documentation for the statistical methods, you'll notice that the inputs are supposed to be of type <a href="../../../uncertain_datasets/uncertain_datasets_overview/#UncertainData.UncertainDatasets.UVAL_COLLECTION_TYPES"><code class="codehilite"><span class="n">UVAL_COLLECTION_TYPES</span></code></a>. This is a type union representing all types of collections for which the statistical methods are defined. Currently, this includes <code class="codehilite"><span class="n">UncertainValueDataset</span></code>, <code class="codehilite"><span class="n">UncertainIndexDataset</span></code>  and vectors of uncertain values (<code class="codehilite"><span class="n">Vector</span><span class="err">{</span><span class="n">T</span><span class="err">}</span> <span class="k">where</span> <span class="n">T</span> <span class="o">&lt;</span><span class="p">:</span> <span class="n">AbstractUncertainValue</span></code>).</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">const</span> <span class="n">UVAL_COLLECTION_TYPES</span> <span class="o">=</span> <span class="kt">Union</span><span class="p">{</span><span class="n">UD</span><span class="p">,</span> <span class="n">UV</span><span class="p">}</span> <span class="n">where</span> <span class="p">{</span>

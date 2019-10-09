@@ -956,15 +956,22 @@
     Statistics on single collections of uncertain data
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#syntax" title="Syntax" class="md-nav__link">
     Syntax
   </a>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" title="Methods" class="md-nav__link">
+    Methods
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#mean" title="Mean" class="md-nav__link">
@@ -1349,15 +1356,22 @@
     Statistics on single collections of uncertain data
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#syntax" title="Syntax" class="md-nav__link">
     Syntax
   </a>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" title="Methods" class="md-nav__link">
+    Methods
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#mean" title="Mean" class="md-nav__link">
@@ -1541,14 +1555,17 @@
                 
                 <p><a id='single_dataset_estimate_statistics-1'></a></p>
 <h2 id="statistics_on_single_collections_of_uncertain_data">Statistics on single collections of uncertain data<a class="headerlink" href="#statistics_on_single_collections_of_uncertain_data" title="Permanent link">&para;</a></h2>
-<p>These estimators operate on collections of uncertain values. They compute the  statistic in question by drawing a length-<code class="codehilite"><span class="n">n</span></code> draw of the uncertain value,  sampling each point in the collection independently, then computing the statistic  on those <code class="codehilite"><span class="n">n</span></code> draws.</p>
+<p>These estimators operate on collections of uncertain values. Each element of such a collection can be an uncertain value of <a href="../../../uncertain_values/uncertainvalues_overview/#uncertain_value_types-1">any type</a>, such as <a href="../../../uncertain_values/uncertainvalues_populations/#uncertain_value_population-1">populations</a>,  <a href="../../../uncertain_values/uncertainvalues_theoreticaldistributions/#uncertain_value_theoretical_distribution-1">theoretical distributions</a>,  <a href="../../../uncertain_values/uncertainvalues_kde/#uncertain_value_kde-1">KDE distributions</a> or  <a href="../../../uncertain_values/uncertainvalues_fitted/#uncertain_value_fitted_theoretical_distribution-1">fitted distributions</a>.</p>
+<p>The methods compute the statistic in question by drawing a length-<code class="codehilite"><span class="n">k</span></code> realisation of the <code class="codehilite"><span class="n">k</span></code>-element collection. Realisations are drawn by sampling each uncertain point in the collection independently. The statistic is then computed on either a single such realisation (yielding a single value for the statistic) or  over multiple realisations (yielding a distribution of the statistic).</p>
 <p><a id='syntax_statistics_collection_single-1'></a></p>
-<h3 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h3>
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
 <p>The syntax for computing a statistic <code class="codehilite"><span class="n">f</span></code> for single instances of an uncertain value collections is</p>
 <ul>
-<li><code class="codehilite"><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">)</span></code>, which resamples <code class="codehilite"><span class="n">x</span></code> once, assuming no element-wise dependence between the elements of <code class="codehilite"><span class="n">x</span></code>.</li>
-<li><code class="codehilite"><span class="nt">f</span><span class="o">(</span><span class="nt">x</span><span class="p">::</span><span class="nd">UVAL_COLLECTION_TYPES</span><span class="o">,</span> <span class="nt">n</span><span class="p">::</span><span class="nd">Int</span><span class="o">,</span> <span class="nt">args</span><span class="o">...;</span> <span class="nt">kwargs</span><span class="o">...)</span></code>, which resamples <code class="codehilite"><span class="n">x</span></code> <code class="codehilite"><span class="n">n</span></code> times, assuming no    element-wise dependence between the elements of <code class="codehilite"><span class="n">x</span></code>, then computes the statistic on each of those <code class="codehilite"><span class="n">n</span></code> independent draws. Returns a distributions of estimates of the statistic.</li>
+<li><code class="codehilite"><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">)</span></code>, which resamples <code class="codehilite"><span class="n">x</span></code> once, assuming no element-wise dependence    between the elements of <code class="codehilite"><span class="n">x</span></code>.</li>
+<li><code class="codehilite"><span class="nt">f</span><span class="o">(</span><span class="nt">x</span><span class="p">::</span><span class="nd">UVAL_COLLECTION_TYPES</span><span class="o">,</span> <span class="nt">n</span><span class="p">::</span><span class="nd">Int</span><span class="o">,</span> <span class="nt">args</span><span class="o">...;</span> <span class="nt">kwargs</span><span class="o">...)</span></code>, which resamples <code class="codehilite"><span class="n">x</span></code> <code class="codehilite"><span class="n">n</span></code> times,    assuming no element-wise dependence between the elements of <code class="codehilite"><span class="n">x</span></code>, then computes the statistic    on each of those <code class="codehilite"><span class="n">n</span></code> independent draws. Returns a distributions of estimates of the statistic.</li>
 </ul>
+<p><a id='Methods-1'></a></p>
+<h2 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h2>
 <p><a id='Mean-1'></a></p>
 <h3 id="mean">Mean<a class="headerlink" href="#mean" title="Permanent link">&para;</a></h3>
 <p><a id='Statistics.mean-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#Statistics.mean-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
@@ -1564,7 +1581,7 @@
 <li>Compute the mean for the realisation.</li>
 <li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the mean of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
 </ol>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/df92378d7cdd4999a0ac5445528f0969bbd5f8be/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L27-L46' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3662693a0684272a6d1aec649513eef08c5741f0/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L27-L46' class='documenter-source'>source</a><br></p>
 <p><a id='Mode-1'></a></p>
 <h3 id="mode">Mode<a class="headerlink" href="#mode" title="Permanent link">&para;</a></h3>
 <p><a id='StatsBase.mode-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#StatsBase.mode-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
@@ -1580,7 +1597,7 @@
 <li>Compute the mode for the realisation, which is a vector of length <code class="codehilite"><span class="n">L</span></code></li>
 <li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the mode of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
 </ol>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/df92378d7cdd4999a0ac5445528f0969bbd5f8be/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L51-L70' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3662693a0684272a6d1aec649513eef08c5741f0/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L51-L70' class='documenter-source'>source</a><br></p>
 <p><a id='Quantile-1'></a></p>
 <h3 id="quantile">Quantile<a class="headerlink" href="#quantile" title="Permanent link">&para;</a></h3>
 <p><a id='Statistics.quantile-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Any,Int64}' href='#Statistics.quantile-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Any,Int64}'>#</a>
@@ -1596,7 +1613,7 @@
 <li>Compute the quantile for the realisation, which is a vector of length <code class="codehilite"><span class="n">L</span></code></li>
 <li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the quantile of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
 </ol>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/df92378d7cdd4999a0ac5445528f0969bbd5f8be/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L75-L94' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3662693a0684272a6d1aec649513eef08c5741f0/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L75-L94' class='documenter-source'>source</a><br></p>
 <p><a id='IQR-1'></a></p>
 <h3 id="iqr">IQR<a class="headerlink" href="#iqr" title="Permanent link">&para;</a></h3>
 <p><a id='StatsBase.iqr-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#StatsBase.iqr-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
@@ -1612,7 +1629,7 @@
 <li>Compute the IQR for the realisation, which is a vector of length <code class="codehilite"><span class="n">L</span></code></li>
 <li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the IQR of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
 </ol>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/df92378d7cdd4999a0ac5445528f0969bbd5f8be/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L100-L120' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3662693a0684272a6d1aec649513eef08c5741f0/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L100-L120' class='documenter-source'>source</a><br></p>
 <p><a id='Median-1'></a></p>
 <h3 id="median">Median<a class="headerlink" href="#median" title="Permanent link">&para;</a></h3>
 <p><a id='Statistics.median-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#Statistics.median-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
@@ -1628,7 +1645,7 @@
 <li>Compute the median for the realisation.</li>
 <li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the median of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
 </ol>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/df92378d7cdd4999a0ac5445528f0969bbd5f8be/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L3-L22' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3662693a0684272a6d1aec649513eef08c5741f0/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L3-L22' class='documenter-source'>source</a><br></p>
 <p><a id='Middle-1'></a></p>
 <h3 id="middle">Middle<a class="headerlink" href="#middle" title="Permanent link">&para;</a></h3>
 <p><a id='Statistics.middle-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#Statistics.middle-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
@@ -1644,7 +1661,7 @@
 <li>Compute the middle for the realisation, which is a vector of length <code class="codehilite"><span class="n">L</span></code></li>
 <li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the middle of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
 </ol>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/df92378d7cdd4999a0ac5445528f0969bbd5f8be/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L125-L144' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3662693a0684272a6d1aec649513eef08c5741f0/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L125-L144' class='documenter-source'>source</a><br></p>
 <p><a id='Standard-deviation-1'></a></p>
 <h3 id="standard_deviation">Standard deviation<a class="headerlink" href="#standard_deviation" title="Permanent link">&para;</a></h3>
 <p><a id='Statistics.std-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#Statistics.std-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
@@ -1660,7 +1677,7 @@
 <li>Compute the std for the realisation, which is a vector of length <code class="codehilite"><span class="n">L</span></code></li>
 <li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the standard deviation of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
 </ol>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/df92378d7cdd4999a0ac5445528f0969bbd5f8be/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L149-L168' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3662693a0684272a6d1aec649513eef08c5741f0/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L149-L168' class='documenter-source'>source</a><br></p>
 <p><a id='Variance-1'></a></p>
 <h3 id="variance">Variance<a class="headerlink" href="#variance" title="Permanent link">&para;</a></h3>
 <p><a id='Statistics.var-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#Statistics.var-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
@@ -1676,7 +1693,7 @@
 <li>Compute the variance for the realisation, which is a vector of length <code class="codehilite"><span class="n">L</span></code></li>
 <li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the variance of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
 </ol>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/df92378d7cdd4999a0ac5445528f0969bbd5f8be/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L173-L192' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3662693a0684272a6d1aec649513eef08c5741f0/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L173-L192' class='documenter-source'>source</a><br></p>
 <p><a id='Generalized/power-mean-1'></a></p>
 <h3 id="generalizedpower_mean">Generalized/power mean<a class="headerlink" href="#generalizedpower_mean" title="Permanent link">&para;</a></h3>
 <p><a id='StatsBase.genmean-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Any,Int64}' href='#StatsBase.genmean-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Any,Int64}'>#</a>
@@ -1692,7 +1709,7 @@
 <li>Compute the generalized mean for the realisation, which is a vector of length <code class="codehilite"><span class="n">L</span></code></li>
 <li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the generalized mean of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
 </ol>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/df92378d7cdd4999a0ac5445528f0969bbd5f8be/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L197-L217' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3662693a0684272a6d1aec649513eef08c5741f0/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L197-L217' class='documenter-source'>source</a><br></p>
 <p><a id='Generalized-variance-1'></a></p>
 <h3 id="generalized_variance">Generalized variance<a class="headerlink" href="#generalized_variance" title="Permanent link">&para;</a></h3>
 <p><a id='StatsBase.genvar-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#StatsBase.genvar-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
@@ -1708,7 +1725,7 @@
 <li>Compute the generalized sample variance for the realisation, which is a   vector of length <code class="codehilite"><span class="n">L</span></code>.</li>
 <li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the generalized sample variance of <code class="codehilite"><span class="n">x</span></code>,   which is returned as a vector.</li>
 </ol>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/df92378d7cdd4999a0ac5445528f0969bbd5f8be/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L222-L244' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3662693a0684272a6d1aec649513eef08c5741f0/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L222-L244' class='documenter-source'>source</a><br></p>
 <p><a id='Harmonic-mean-1'></a></p>
 <h3 id="harmonic_mean">Harmonic mean<a class="headerlink" href="#harmonic_mean" title="Permanent link">&para;</a></h3>
 <p><a id='StatsBase.harmmean-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#StatsBase.harmmean-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
@@ -1724,7 +1741,7 @@
 <li>Compute the harmonic mean for the realisation.</li>
 <li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the harmonic mean of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
 </ol>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/df92378d7cdd4999a0ac5445528f0969bbd5f8be/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L249-L268' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3662693a0684272a6d1aec649513eef08c5741f0/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L249-L268' class='documenter-source'>source</a><br></p>
 <p><a id='Geometric-mean-1'></a></p>
 <h3 id="geometric_mean">Geometric mean<a class="headerlink" href="#geometric_mean" title="Permanent link">&para;</a></h3>
 <p><a id='StatsBase.geomean-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#StatsBase.geomean-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
@@ -1740,7 +1757,7 @@
 <li>Compute the geometric mean for the realisation.</li>
 <li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the geometric mean of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
 </ol>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/df92378d7cdd4999a0ac5445528f0969bbd5f8be/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L273-L292' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3662693a0684272a6d1aec649513eef08c5741f0/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L273-L292' class='documenter-source'>source</a><br></p>
 <p><a id='Kurtosis-1'></a></p>
 <h3 id="kurtosis">Kurtosis<a class="headerlink" href="#kurtosis" title="Permanent link">&para;</a></h3>
 <p><a id='StatsBase.kurtosis-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#StatsBase.kurtosis-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
@@ -1758,7 +1775,7 @@
 <li>Compute the kurtosis for the realisation.</li>
 <li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the kurtosis of <code class="codehilite"><span class="n">x</span></code>, which is returned as a vector.</li>
 </ol>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/df92378d7cdd4999a0ac5445528f0969bbd5f8be/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L297-L320' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3662693a0684272a6d1aec649513eef08c5741f0/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L297-L320' class='documenter-source'>source</a><br></p>
 <p><a id='k-th-order-moment-1'></a></p>
 <h3 id="k-th_order_moment">k-th order moment<a class="headerlink" href="#k-th_order_moment" title="Permanent link">&para;</a></h3>
 <p><a id='StatsBase.moment-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Any,Int64}' href='#StatsBase.moment-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Any,Int64}'>#</a>
@@ -1775,7 +1792,7 @@
 <li>Compute the <code class="codehilite"><span class="n">k</span></code>-th order central moment for the realisation.</li>
 <li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the <code class="codehilite"><span class="n">k</span></code>-th order central moment of <code class="codehilite"><span class="n">x</span></code>,   which is returned as a vector.</li>
 </ol>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/df92378d7cdd4999a0ac5445528f0969bbd5f8be/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L333-L355' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3662693a0684272a6d1aec649513eef08c5741f0/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L333-L355' class='documenter-source'>source</a><br></p>
 <p><a id='Percentile-1'></a></p>
 <h3 id="percentile">Percentile<a class="headerlink" href="#percentile" title="Permanent link">&para;</a></h3>
 <p><a id='StatsBase.percentile-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Any,Int64}' href='#StatsBase.percentile-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Any,Int64}'>#</a>
@@ -1791,7 +1808,7 @@
 <li>Compute the percentile for the realisation, which is a vector of length <code class="codehilite"><span class="n">L</span></code></li>
 <li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the percentile of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
 </ol>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/df92378d7cdd4999a0ac5445528f0969bbd5f8be/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L360-L379' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3662693a0684272a6d1aec649513eef08c5741f0/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L360-L379' class='documenter-source'>source</a><br></p>
 <p><a id='Renyi-entropy-1'></a></p>
 <h3 id="renyi_entropy">Renyi entropy<a class="headerlink" href="#renyi_entropy" title="Permanent link">&para;</a></h3>
 <p><a id='StatsBase.renyientropy-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Any,Int64}' href='#StatsBase.renyientropy-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Any,Int64}'>#</a>
@@ -1808,7 +1825,7 @@
 <li>Compute the Rényi (generalized) entropy of order <code class="codehilite"><span class="err">α</span></code> for the realisation.</li>
 <li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the Rényi (generalized) entropy of   order <code class="codehilite"><span class="err">α</span></code> of <code class="codehilite"><span class="n">x</span></code>, which is returned as a vector.</li>
 </ol>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/df92378d7cdd4999a0ac5445528f0969bbd5f8be/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L384-L406' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3662693a0684272a6d1aec649513eef08c5741f0/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L384-L406' class='documenter-source'>source</a><br></p>
 <p><a id='Run-length-encoding-1'></a></p>
 <h3 id="run-length_encoding">Run-length encoding<a class="headerlink" href="#run-length_encoding" title="Permanent link">&para;</a></h3>
 <p><a id='StatsBase.rle-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#StatsBase.rle-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
@@ -1826,7 +1843,7 @@
 <li>Compute the run-length encoding for the realisation. This gives a   tuple, where the first element of the tuple is a vector of   values of the input and the second is the number of consecutive occurrences of  each element.</li>
 <li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the run-length encoding of <code class="codehilite"><span class="n">x</span></code>,   which is returned as a vector of the run-length encoding tuples.</li>
 </ol>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/df92378d7cdd4999a0ac5445528f0969bbd5f8be/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L411-L438' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3662693a0684272a6d1aec649513eef08c5741f0/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L411-L438' class='documenter-source'>source</a><br></p>
 <p><a id='Standard-error-of-the-mean-1'></a></p>
 <h3 id="standard_error_of_the_mean">Standard error of the mean<a class="headerlink" href="#standard_error_of_the_mean" title="Permanent link">&para;</a></h3>
 <p><a id='StatsBase.sem-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#StatsBase.sem-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
@@ -1842,7 +1859,7 @@
 <li>Compute the standard error of the mean for the realisation, which is   a vector of length <code class="codehilite"><span class="n">L</span></code>.</li>
 <li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the standard error of the mean of <code class="codehilite"><span class="n">x</span></code>,   which is returned as a vector.</li>
 </ol>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/df92378d7cdd4999a0ac5445528f0969bbd5f8be/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L443-L466' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3662693a0684272a6d1aec649513eef08c5741f0/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L443-L466' class='documenter-source'>source</a><br></p>
 <p><a id='Skewness-1'></a></p>
 <h3 id="skewness">Skewness<a class="headerlink" href="#skewness" title="Permanent link">&para;</a></h3>
 <p><a id='StatsBase.skewness-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#StatsBase.skewness-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
@@ -1860,7 +1877,7 @@
 <li>Compute the skewness for the realisation.</li>
 <li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the skewness of <code class="codehilite"><span class="n">x</span></code>,   which is returned as a vector.</li>
 </ol>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/df92378d7cdd4999a0ac5445528f0969bbd5f8be/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L472-L496' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3662693a0684272a6d1aec649513eef08c5741f0/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L472-L496' class='documenter-source'>source</a><br></p>
 <p><a id='Span-1'></a></p>
 <h3 id="span">Span<a class="headerlink" href="#span" title="Permanent link">&para;</a></h3>
 <p><a id='StatsBase.span-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#StatsBase.span-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
@@ -1877,7 +1894,7 @@
 <li>Compute the span for the realisation, which is a vector of length <code class="codehilite"><span class="n">L</span></code></li>
 <li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the span of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
 </ol>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/df92378d7cdd4999a0ac5445528f0969bbd5f8be/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L508-L530' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3662693a0684272a6d1aec649513eef08c5741f0/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L508-L530' class='documenter-source'>source</a><br></p>
 <p><a id='Summary-statistics-1'></a></p>
 <h3 id="summary_statistics">Summary statistics<a class="headerlink" href="#summary_statistics" title="Permanent link">&para;</a></h3>
 <p><a id='StatsBase.summarystats-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#StatsBase.summarystats-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
@@ -1894,7 +1911,7 @@
 <li>Compute the summary statistics for the realisation, which is a vector of length <code class="codehilite"><span class="n">L</span></code></li>
 <li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the summary statistics of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
 </ol>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/df92378d7cdd4999a0ac5445528f0969bbd5f8be/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L559-L581' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3662693a0684272a6d1aec649513eef08c5741f0/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L559-L581' class='documenter-source'>source</a><br></p>
 <p><a id='Total-variance-1'></a></p>
 <h3 id="total_variance">Total variance<a class="headerlink" href="#total_variance" title="Permanent link">&para;</a></h3>
 <p><a id='StatsBase.totalvar-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#StatsBase.totalvar-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
@@ -1910,7 +1927,7 @@
 <li>Compute the total variance for the realisation, which is a vector of length <code class="codehilite"><span class="n">L</span></code></li>
 <li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the total variance of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
 </ol>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/df92378d7cdd4999a0ac5445528f0969bbd5f8be/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L535-L554' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3662693a0684272a6d1aec649513eef08c5741f0/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L535-L554' class='documenter-source'>source</a><br></p>
                 
                   
                 
