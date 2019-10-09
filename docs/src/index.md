@@ -17,7 +17,7 @@ should live in the probability domain, not as single value representations of th
 (e.g. the mean).
 
 In this package, uncertain data values are thus 
-[stored as probability distributions](uncertain_values/uncertainvalues_overview.md). 
+[stored as probability distributions or populations](uncertain_values/uncertainvalues_overview.md). 
 Only when performing a computation or plotting, the uncertain values are realized by 
 resampling the probability distributions furnishing them.
 
