@@ -1,14 +1,19 @@
 # [Pairwise estimates of statistics](@id point_estimate_statistics)
 
-These estimators operate on pairs of uncertain values. They compute the 
-statistic in question by drawing independent length-`n` draws of the 
-uncertain values, then computing the statistic on those draws.
+These estimators operate on pairs of uncertain values, which can be of [any type](@ref uncertain_value_types), , such as [populations](@ref uncertain_value_population), 
+[theoretical distributions](@ref uncertain_value_theoretical_distribution), 
+[KDE distributions](@ref uncertain_value_kde) or 
+[fitted distributions](@ref uncertain_value_fitted_theoretical_distribution). They compute the 
+statistic in question by drawing independent length-`n` draws of each of
+the two uncertain values, then computing the statistic on those draws.
 
-## [Syntax](@id syntax_statistics_uncertainvalue_pairs)
+# [Syntax](@id syntax_statistics_uncertainvalue_pairs)
 
 The syntax for computing the statistic `f` for uncertain values `x` and `y` is:
 
 - `f(x::AbstractUncertainValue, y::AbstractUncertainValue, args..., n::Int; kwargs...)`, which draws independent length-`n` draws of `x` and `y`, then estimates the statistic `f` for those draws.
+
+# Methods 
 
 ## Covariance
 

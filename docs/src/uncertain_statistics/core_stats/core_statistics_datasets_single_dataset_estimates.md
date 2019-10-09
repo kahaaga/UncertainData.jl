@@ -1,17 +1,26 @@
 # [Statistics on single collections of uncertain data](@id single_dataset_estimate_statistics)
 
-These estimators operate on collections of uncertain values. They compute the 
-statistic in question by drawing a length-`n` draw of the uncertain value, 
-sampling each point in the collection independently, then computing the statistic 
-on those `n` draws.
+These estimators operate on collections of uncertain values. Each element of such a collection
+can be an uncertain value of [any type](@ref uncertain_value_types), such as [populations](@ref uncertain_value_population), 
+[theoretical distributions](@ref uncertain_value_theoretical_distribution), 
+[KDE distributions](@ref uncertain_value_kde) or 
+[fitted distributions](@ref uncertain_value_fitted_theoretical_distribution).
 
-## [Syntax](@id syntax_statistics_collection_single)
+The methods compute the statistic in question by drawing a length-`k` realisation of the `k`-element
+collection. Realisations are drawn by sampling each uncertain point in the collection independently. The statistic is then computed on either a single such realisation (yielding a single value for the statistic) or 
+over multiple realisations (yielding a distribution of the statistic).
+
+# [Syntax](@id syntax_statistics_collection_single)
 
 The syntax for computing a statistic `f` for single instances of an uncertain value collections is
 
-- `f(x::UVAL_COLLECTION_TYPES)`, which resamples `x` once, assuming no element-wise dependence between the elements of `x`.
-- `f(x::UVAL_COLLECTION_TYPES, n::Int, args...; kwargs...)`, which resamples `x` `n` times, assuming no 
-    element-wise dependence between the elements of `x`, then computes the statistic on each of those `n` independent draws. Returns a distributions of estimates of the statistic.
+- `f(x::UVAL_COLLECTION_TYPES)`, which resamples `x` once, assuming no element-wise dependence 
+    between the elements of `x`.
+- `f(x::UVAL_COLLECTION_TYPES, n::Int, args...; kwargs...)`, which resamples `x` `n` times, 
+    assuming no element-wise dependence between the elements of `x`, then computes the statistic 
+    on each of those `n` independent draws. Returns a distributions of estimates of the statistic.
+
+# Methods 
 
 ## Mean
 

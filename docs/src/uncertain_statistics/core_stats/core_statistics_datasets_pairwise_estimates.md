@@ -1,17 +1,24 @@
 # [Pairwise statistics on uncertain data collections](@id pairs_dataset_estimate_statistics)
 
-These estimators operate on pairs of uncertain value collections. They compute the 
-statistic in question by drawing length-`n` draws of both datasets independently,
-then computing the statistic `n` times for the `n` pairs of draws. 
+These estimators operate on pairs of [uncertain value collections](@ref uncertain_value_collection_types). 
+Each element of such a collection can be an uncertain value of [any type](@ref uncertain_value_types), such as [populations](@ref uncertain_value_population), 
+[theoretical distributions](@ref uncertain_value_theoretical_distribution), 
+[KDE distributions](@ref uncertain_value_kde) or 
+[fitted distributions](@ref uncertain_value_fitted_theoretical_distribution).
+
+The methods compute the statistic in question by drawing a length-`k` realisation of each of the `k`-element
+collections. Realisations are drawn by sampling each uncertain point in the collections independently. The statistic is then computed on either a single pair of such realisations (yielding a single value for the statistic) or over multiple pairs of realisations (yielding a distribution of the statistic).
 
 Within each collection, point are always sampled independently according to their 
-furnishing distributions.
+furnishing distributions, unless sampling constraints are provided (not yet implemented).
 
-## [Syntax](@id syntax_statistics_collection_pairs)
+# [Syntax](@id syntax_statistics_collection_pairs)
 
 The syntax for estimating of a statistic `f` on uncertain value collections `x` and `y` is
 
 - `f(x::UVAL_COLLECTION_TYPES, y::UVAL_COLLECTION_TYPES, args..., n::Int; kwargs...)`, which draws independent length-`n` draws of `x` and `y`, then estimates the statistic `f` for those draws.
+
+# Methods 
 
 ## Covariance
 

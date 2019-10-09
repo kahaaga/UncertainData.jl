@@ -1,4 +1,4 @@
-# Types of uncertain value collections
+# [Types of uncertain value collections](@id uncertain_value_collection_types)
 
 If dealing with several uncertain values, it may be useful to represent them
 as an uncertain dataset. This way, one may trivially, for example, compute

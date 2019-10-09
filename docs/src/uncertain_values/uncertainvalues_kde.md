@@ -1,3 +1,5 @@
+# [Kernel density estimated distributions](@id uncertain_value_kde)
+
 When your data have an empirical distribution that doesn't follow any obvious
 theoretical distribution, the data may be represented by a kernel density
 estimate.

@@ -1,14 +1,17 @@
 # [Point-estimate statistics](@id point_estimate_statistics)
 
-These estimators operate on single uncertain values. They compute the statistic in question by drawing a
-length-`n` draw of the uncertain value, then computing the statistic on that draw.
+These estimators operate on single uncertain values, which can be of [any type](@ref uncertain_value_types), such as [populations](@ref uncertain_value_population), 
+[theoretical distributions](@ref uncertain_value_theoretical_distribution), 
+[KDE distributions](@ref uncertain_value_kde) or 
+[fitted distributions](@ref uncertain_value_fitted_theoretical_distribution). They compute the statistic in question by drawing a length-`n` draw of the uncertain value, then computing the statistic on that draw.
 
-## [Syntax](@id syntax_statistics_uncertainvalue_single)
+# [Syntax](@id syntax_statistics_uncertainvalue_single)
 
 The syntax for computing the statistic `f` for single instances of an uncertain value `x` is
 
-- `f(x::AbstractUncertainValue)`, which returns the exact value of the statistic if `x` is some sort of formal distribution.
 - `f(x::AbstractUncertainValue, n::Int, args...; kwargs...)`, which estimates the statistic `f` for a length-`n` draw of `x`.
+
+# Methods
 
 ## Mean
 

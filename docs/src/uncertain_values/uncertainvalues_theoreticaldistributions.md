@@ -1,3 +1,4 @@
+# [Theoretical distributions](@id uncertain_value_theoretical_distribution)
 
 It is common in the scientific literature to encounter uncertain data values
 which are reported as following a specific distribution. For example, an author

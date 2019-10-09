@@ -1,4 +1,4 @@
-# Uncertain value types
+# [Uncertain value types](@id uncertain_value_types)
 
 The core concept of `UncertainData` is to replace an uncertain data value with a 
 probability distribution describing the point's uncertainty.
