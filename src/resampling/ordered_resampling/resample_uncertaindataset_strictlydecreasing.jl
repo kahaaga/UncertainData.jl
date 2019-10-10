@@ -45,7 +45,8 @@ function resample(udata::DT,
     # Some values may have infinite support even after applying the first round of 
     # constraints, so truncate to the provided (large) quantile range to ensure that all 
     # values have finite support when sampling.
-    constrained_data = constrain(udata, TruncateQuantiles(quantiles...,))
+    c = TruncateQuantiles(quantiles...,)
+    constrained_data = [udata[i] isa CertainValue ? udata[i] : constrain(udata[i], c) for i = 1:length(udata)]
 
     # Pre-allocate a sample 
     sample = Vector{Float64}(undef, n_vals)
@@ -54,8 +55,13 @@ function resample(udata::DT,
     # increasing sequence from indices 2:end will exist.
     hi = maximum(constrained_data[1])
     lo = minimum(maximum.(constrained_data[1:end]))
-    sample[1] = resample(constrained_data[1], TruncateRange(lo, hi))
 
+    if lo == hi 
+        sample[1] = resample(constrained_data[1])
+    else 
+        sample[1] = resample(constrained_data[1], TruncateRange(lo, hi))
+    end
+    
     for i = 2:n_vals - 1
         # Find the lower and upper bounds of the support from which we can draw values 
         # while still ensuring an increasing sequence of values.
@@ -65,8 +71,14 @@ function resample(udata::DT,
         
         # Constrain the support of the furnishing distribution according 
         # to the bounds and sample a value from it.
-        constrained_val = constrain(constrained_data[i], TruncateRange(lo, hi))
-        sample[i] = resample(constrained_val)
+        cd = constrained_data[i]
+
+        if cd isa CertainValue # no need to constrain if value is not uncertain
+            sample[i] = resample(cd)
+        else
+            constrained_val = constrain(cd, TruncateRange(lo, hi))
+            sample[i] = resample(constrained_val)
+        end
     end
 
     # The last value doesn't need an upper bound, because there's no 

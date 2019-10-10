@@ -22,7 +22,7 @@ import Test
 # Create some uncertain data with decreasing magnitude and zero overlap between values, 
 # so we're guaranteed that a strictly decreasing sequence through the dataset exists.
 N = 10
-u_timeindices = [UncertainValue(Normal, i, rand(Uniform(0.1, 0.45))) for i = N:-1:1]
+u_timeindices = [ i <= N/2 ? CertainValue(float(i)) : UncertainValue(Normal, i, 1) for i = N:-1:1]
 u = UncertainDataset(u_timeindices)
 UI = UncertainIndexDataset(u_timeindices)
 UV = UncertainValueDataset(u_timeindices)
