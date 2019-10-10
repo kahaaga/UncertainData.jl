@@ -22,7 +22,7 @@ import Test
 # Create some uncertain data with increasing magnitude and zero overlap between values, 
 # so we're guaranteed that a strictly increasing sequence through the dataset exists.
 N = 10
-u_timeindices = [UncertainValue(Normal, i, rand(Uniform(0.1, 0.45))) for i = 1:N]
+u_timeindices = [ i <= N/2 ? CertainValue(float(i)) : UncertainValue(Normal, i, 1) for i = 1:N]
 UI = UncertainIndexDataset(u_timeindices)
 UV = UncertainValueDataset(u_timeindices)
 

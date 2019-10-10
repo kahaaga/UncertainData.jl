@@ -1,6 +1,16 @@
 
 # Changelog
 
+## UncertainData.jl v0.5.1
+
+### Bug fixes
+
+- Strictly increasing or decreasing sequences were not always possible to construct 
+    when using `CertainValue`s, because `TruncateRange` instances with equal 
+    minimum and maximum was constructed (not possible). It is now possible to 
+    resample with sequential constraints even with the `StrictlyIncreasing` 
+    and `StrictlyDecreasing` constraints.
+
 ## UncertainData.jl v0.5.0
 
 ### Breaking changes
