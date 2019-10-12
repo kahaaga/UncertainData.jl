@@ -108,6 +108,9 @@ function UncertainValue(kerneldensity::Type{K}, data::Vector{T};
     UncertainScalarKDE(KDE, data, xrange, Weights(density))
 end
 
+# For vectors of zero-dimensional arrays. 
+UncertainValue(x::Vector{Array{<:Real, 0}}) = UncertainValue([el[] for el in x])
+
 
 """
     UncertainValue(empiricaldata::AbstractVector{T},
