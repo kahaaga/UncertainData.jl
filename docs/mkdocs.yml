@@ -72,26 +72,33 @@ pages:
       - Existence of sequences: sampling_constraints/ordered_sequence_exists.md
     - Examples:
       - Constraining uncertain values: sampling_constraints/constrain_uncertain_values.md
-  
   - Resampling:
     - Overview: resampling/resampling_overview.md
-    - Resampling uncertain values: resampling/resampling_uncertain_values.md
-    - Resampling uncertain datasets: resampling/resampling_uncertain_datasets.md
-    - Resampling uncertain index-value datasets: resampling/resampling_uncertain_indexvalue_datasets.md
-    - Sequential resampling: 
-      - Overview: resampling/sequential/resampling_uncertaindatasets_sequential.md
-      - Strictly increasing: resampling/sequential/strictly_increasing.md
-      - Strictly decreasing: resampling/sequential/strictly_decreasing.md
-      - Index-value datasets: resampling/sequential/resampling_indexvalue_sequential.md
-    - Interpolation:
-      - Overview: resampling/interpolation/interpolation.md
-      - Gridded interpolation: resampling/interpolation/gridded.md
-    - Schemes: resampling/resampling_schemes/resampling_schemes.md
-  
+    - Uncertain values: 
+      - Resampling uncertain values: resampling/resampling_uncertain_values.md
+    - Uncertain value collections: 
+      - Resampling uncertain collections: resampling/resampling_uncertain_datasets.md
+      - Sampling schemes: 
+        - List of schemes: resampling/resampling_schemes/resampling_schemes_uncertain_value_collections.md
+        - Applying resampling schemes: resampling/resampling_schemes/resampling_with_schemes_uncertain_value_collections.md
+    - Uncertain index-value collections: 
+      - Resampling index-value collections: resampling/resampling_uncertain_indexvalue_datasets.md
+      - Sampling schemes: 
+        - List of schemes: resampling/resampling_schemes/resampling_schemes_uncertain_indexvalue_collections.md
+        - Applying resampling schemes: resampling/resampling_schemes/resampling_with_schemes_uncertain_indexvalue_collections.md
+      - Sequential resampling: 
+        - Overview: resampling/sequential/resampling_uncertaindatasets_sequential.md
+        - Strictly increasing: resampling/sequential/strictly_increasing.md
+        - Strictly decreasing: resampling/sequential/strictly_decreasing.md
+        - Index-value datasets: resampling/sequential/resampling_indexvalue_sequential.md
+      - Interpolation:
+        - Overview: resampling/interpolation/interpolation.md
+        - Gridded interpolation: resampling/interpolation/gridded.md
+
   - Mathematics: 
       - Elementary operations: mathematics/elementary_operations.md
       - Trigonometric functions: mathematics/trig_functions.md
-  
+
   - Statistics:
     - Basics: 
       - Overview: uncertain_statistics/core_stats/core_statistics.md
