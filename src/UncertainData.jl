@@ -11,7 +11,7 @@ using KernelDensity
 
 
 display_update = true
-version = "v0.5.0"
+version = "v0.6.0"
 update_name = "update_$version"
 
 if display_update
