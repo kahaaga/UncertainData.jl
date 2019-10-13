@@ -69,7 +69,8 @@ PAGES = [
         "resampling/sequential/strictly_decreasing.md",
 
         "resampling/interpolation/interpolation.md",
-        "resampling/interpolation/gridded.md"
+        "resampling/interpolation/gridded.md",
+        "resampling/resampling_schemes/resampling_schemes.md"
         #"resampling/models/resampling_with_models.md"
     ],
 

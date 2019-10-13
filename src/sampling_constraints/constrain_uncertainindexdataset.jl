@@ -64,6 +64,4 @@ function constrain(udata::ConstrainedUncertainIndexDataset,
     ConstrainedUncertainIndexDataset([constrain(udata[i], constraints[i]) for i in 1:n_vals])
 end
 
-
-
 export constrain, verify_constraints

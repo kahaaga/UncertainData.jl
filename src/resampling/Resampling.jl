@@ -11,7 +11,13 @@ using Reexport
     ###################################
     include("resampling_schemes/AbstractUncertainDataResampling.jl")
     include("resampling_schemes/ConstrainedResampling.jl")
+    include("resampling_schemes/ConstrainedValueResampling.jl")
+    include("resampling_schemes/ConstrainedIndexValueResampling.jl")
+    include("resampling_schemes/SequentialResampling.jl")
+    include("resampling_schemes/SequentialInterpolatedResampling.jl")
 
+    # Extend some methods to allow easier resampling.
+    include("resampling_with_schemes/extend_constrain_with_schemes.jl")
 
     ###################################
     # Resampling uncertain values
@@ -72,6 +78,11 @@ using Reexport
     # Apply function with resampling
     ################################
     include("apply_func.jl")
+
+    ################################
+    # Resampling with schemes 
+    ################################
+    include("resampling_with_schemes/methods_resamplings_schemes.jl")
     
     export resample, resample_elwise
 end # module
