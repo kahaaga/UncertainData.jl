@@ -70,7 +70,10 @@ PAGES = [
 
         "resampling/interpolation/interpolation.md",
         "resampling/interpolation/gridded.md",
-        "resampling/resampling_schemes/resampling_schemes.md"
+        "resampling/resampling_schemes/resampling_schemes_uncertain_value_collections.md",
+        "resampling/resampling_schemes/resampling_schemes_uncertain_indexvalue_collections.md",
+        "resampling/resampling_schemes/resampling_with_schemes_uncertain_value_collections.md",
+        "resampling/resampling_schemes/resampling_with_schemes_uncertain_indexvalue_collections.md"
         #"resampling/models/resampling_with_models.md"
     ],
 

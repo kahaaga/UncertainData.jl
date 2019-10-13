@@ -36,6 +36,13 @@ include("resampling/test_resampling_uncertain_tuples.jl")
 # Resampling uncertain datasets
 #############################################
 
+# Resampling schemes
+
+include("resampling/resampling_schemes/test_ConstrainedIndexValueResampling.jl")
+include("resampling/resampling_schemes/test_ConstrainedValueResampling.jl")
+include("resampling/resampling_schemes/test_SequentialResampling.jl")
+include("resampling/resampling_schemes/test_SequentialInterpolatedResampling.jl")
+
 # Define an array of uncertain values `uvals` that we can construct datasets from.
 include("resampling/define_uncertain_values.jl")
 
