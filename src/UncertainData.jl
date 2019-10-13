@@ -23,11 +23,30 @@ printstyled(stdout,
 New features
 ----------------
 
-- Support for many more StatsBase functions. These can be applied to single uncertain values,
-    pairs of uncertain values, single uncertain datasets, and to collections of uncertain values.
-- The `UncertainValue` constructor accepts instances of distributions, and  
-    instances of truncated distributions.
-- Experimental support for nested populations.
+
+### New features
+
+- `UncertainValue` constructor for vectors of zero-dimensional arrays.
+
+New resampling types for uncertain index-value datasets.
+- `ConstrainedValueResampling` resampling type. Makes it easier to provide sampling 
+    constraints to uncertain value collections, especially if there are many of 
+    them and they need different sampling constraints.
+- `ConstrainedIndexValueResampling` resampling type. Makes it easier to provide 
+    sampling constraints to index-value datasets, especially if there are many of
+    them and they need different sampling constraints.
+- `SequentialResampling` resampling type.
+- `SequentialInterpolationResampling` resampling type. Combines sequential 
+    resampling and interpolation (in that order).
+
+and their resampling methods: 
+
+- `resample(x::AbstractUncertainIndexValueDataset, resampling::ConstrainedValueResampling`.
+- `resample(x::AbstractUncertainIndexValueDataset, resampling::ConstrainedIndexValueResampling`.
+- `resample(x::AbstractUncertainIndexValueDataset, resampling::SequentialResampling`, a
+    method that resamples sequentially according to the indices of `x`.
+- `resample(x::AbstractUncertainIndexValueDataset, resampling::SequentialInterpolatedResampling`, a 
+    method that combines sequential sampling and interpolation (in that order).
 """; color = :light_magenta)
 touch(joinpath(@__DIR__, update_name))
 end
