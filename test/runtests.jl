@@ -65,6 +65,7 @@ include("resampling/uncertain_datasets/test_resampling_datasets_uncertainindexda
 # Resampling uncertain index-value datasets
 #-------------------------------------
 include("resampling/uncertain_datasets/test_resampling_uncertainindexvaluedataset.jl")
+include("resampling/uncertain_datasets/test_resampling_with_schemes.jl")
 
 # Resampling uncertain vectors
 #-----------------------------
@@ -124,4 +125,6 @@ include("sampling_constraints/test_constrain_uncertainvalues_kde.jl")
 include("sampling_constraints/test_constrain_uncertaindatasets.jl")
 include("sampling_constraints/test_constrain_uncertainvaluedatasets.jl")
 include("sampling_constraints/test_constrain_uncertainindexdatasets.jl")
+
+include("sampling_constraints/test_constrain_with_schemes.jl")
 

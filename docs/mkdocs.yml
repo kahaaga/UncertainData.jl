@@ -86,6 +86,7 @@ pages:
     - Interpolation:
       - Overview: resampling/interpolation/interpolation.md
       - Gridded interpolation: resampling/interpolation/gridded.md
+    - Schemes: resampling/resampling_schemes/resampling_schemes.md
   
   - Mathematics: 
       - Elementary operations: mathematics/elementary_operations.md
