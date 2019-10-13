@@ -14,6 +14,13 @@ function constrain(x::UncertainIndexDataset,
 end
 
 
+function constrain(x::AbstractUncertainValueDataset, 
+        resampling::ConstrainedValueResampling{1})
+
+    ConstrainedUncertainValueDataset(constrain(x.values, resampling.constraints[1]))
+end
+
+
 function constrain(x::AbstractUncertainIndexValueDataset, 
         resampling_inds::ConstrainedValueResampling{N1},
         resampling_vals::ConstrainedValueResampling{N2}) where {N1, N2}
