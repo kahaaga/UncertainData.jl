@@ -1,6 +1,12 @@
 
 # Changelog
 
+## Uncertaindata.jl v0.7.0
+
+### New functionality
+
+- Added `resample!` for in-place resampling into pre-allocated containers.
+
 ## UncertainData.jl v0.5.1
 
 ### Bug fixes

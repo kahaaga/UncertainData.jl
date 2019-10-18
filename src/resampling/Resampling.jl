@@ -84,7 +84,9 @@ using Reexport
     ################################
     include("resampling_with_schemes/methods_resamplings_schemes.jl")
     
-    export resample, resample_elwise
+    include("resampling_inplace.jl")
+
+    export resample, resample!, resample_elwise
 end # module
 
 
