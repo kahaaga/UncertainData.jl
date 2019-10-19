@@ -73,7 +73,8 @@ PAGES = [
         "resampling/resampling_schemes/resampling_schemes_uncertain_value_collections.md",
         "resampling/resampling_schemes/resampling_schemes_uncertain_indexvalue_collections.md",
         "resampling/resampling_schemes/resampling_with_schemes_uncertain_value_collections.md",
-        "resampling/resampling_schemes/resampling_with_schemes_uncertain_indexvalue_collections.md"
+        "resampling/resampling_schemes/resampling_with_schemes_uncertain_indexvalue_collections.md",
+        "resampling/resampling_inplace.md"
         #"resampling/models/resampling_with_models.md"
     ],
 

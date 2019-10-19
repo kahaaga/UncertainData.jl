@@ -81,6 +81,8 @@ include("uncertain_values/operations/merging.jl")
 
 # Example datasets 
 include("example_datasets/example_uvals.jl")
+include("example_datasets/example_constraints.jl")
+include("example_datasets/example_uncertainindexvalue_dataset.jl")
 
 export UncertainScalarBinomialDistributed
 

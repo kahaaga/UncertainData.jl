@@ -94,7 +94,7 @@ pages:
       - Interpolation:
         - Overview: resampling/interpolation/interpolation.md
         - Gridded interpolation: resampling/interpolation/gridded.md
-
+    - Resampling in-place: resampling/resampling_inplace.md
   - Mathematics: 
       - Elementary operations: mathematics/elementary_operations.md
       - Trigonometric functions: mathematics/trig_functions.md
