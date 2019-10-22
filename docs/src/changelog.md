@@ -1,6 +1,14 @@
 
 # Changelog
 
+## Uncertaindata.jl v0.8.0
+
+### New functionality
+
+- Added binned resampling methods that uses [`BinnedResampling`](@ref) and [`BinnedMeanResampling`](@ref) schemes.
+    - [`resample(::AbstractUncertainIndexValueDataset, ::BinnedResampling`](@ref)
+    - [`resample(::AbstractUncertainIndexValueDataset, ::BinnedMeanResampling`](@ref)
+
 ## Uncertaindata.jl v0.7.0
 
 ### New functionality
