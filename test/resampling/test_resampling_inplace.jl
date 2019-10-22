@@ -104,14 +104,8 @@ resample!(x, UncertainValue(Normal(0, 1)))
 
 # Three uncertain values resampled element-wise into a 3-element vector
 x = repeat([NaN], 3)
-resample!(x, val, val, val)
+resample!(x, (val, val, val))
 @test any(isnan.(x)) == false
-
-# when the number of elements does not match the number of uncertain values,
-# an error should be thrown
-x = repeat([NaN], 2)
-uval = UncertainValue(Normal(0, 1))
-@test_throws ArgumentError resample!(x, uval)
 
 # Three uncertain values resampled element-wise into a 3-element MVector
 N = 3

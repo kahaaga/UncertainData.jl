@@ -131,6 +131,18 @@ end
 ##########################################################################################
 # A single draw of `N` uncertain values into a length-`N` a mutable vector-like container.
 ##########################################################################################
+function resample!(v::Vector{T}, x::NTuple{N, AbstractUncertainValue}) where {N, T}
+    if length(v) != N
+        throw(ArgumentError("length(v) == $(length(v)), has to match the number of uncertain values ($N)"))
+    end
+
+    for i = 1:N
+        @inbounds v[i] = resample(x[i])
+    end
+    
+    return v
+end
+
 function resample!(v::MVector{N, T}, x::Vararg{AbstractUncertainValue, N}) where {N, T}
     @inbounds for i = 1:N
         v[i] = resample(x[i])
