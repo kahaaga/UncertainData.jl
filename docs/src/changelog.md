@@ -9,6 +9,15 @@
     - [`resample(::AbstractUncertainIndexValueDataset, ::BinnedResampling`](@ref)
     - [`resample(::AbstractUncertainIndexValueDataset, ::BinnedMeanResampling`](@ref)
 
+### Bug fixes
+
+- Fixed bug where `resample!` method for vectors and tuples of uncertain values didn't return the 
+    expected result.
+
+### Improvements
+
+- Improved `resample!` docs.
+
 ## Uncertaindata.jl v0.7.0
 
 ### New functionality
