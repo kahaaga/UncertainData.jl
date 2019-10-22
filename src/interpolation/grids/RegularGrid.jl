@@ -33,6 +33,13 @@ struct RegularGrid <: InterpolationGrid
     extrapolation_bc::BCC
 end
 
+
+function get_edgepoints(x::RegularGrid)
+    x.min:x.step:x.max
+end
+
+Base.length(x::RegularGrid) = length(x.min:x.step:x.max)
+
 ##############################################################################
 # Rectangular grid constructors for different types of uncertain datasets
 ##############################################################################
