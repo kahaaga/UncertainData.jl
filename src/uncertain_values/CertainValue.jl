@@ -68,7 +68,7 @@ StatsBase.quantile(v::CertainValue, q, n::Int) = v.value
 StatsBase.std(v::CertainValue{T}) where {T} = zero(T)
 
 Base.rand(v::CertainValue) = v.value
-Base.rand(v::CertainValue, n) = repeat([v.value], n)
+Base.rand(v::CertainValue{T}, n::Int) where T = repeat([v.value], n)
 
 Base.float(v::CertainValue) = float(v.value)
 

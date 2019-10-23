@@ -14,7 +14,7 @@ test_constraints = [
 T = eltype(x)
 
 @test rand(x) isa T
-@test rand(x, 10) isa Vector{T}
+@test rand(x, 10) isa Vector
 
 @test resample(x) isa T
 @test resample(x, 10) isa Vector
