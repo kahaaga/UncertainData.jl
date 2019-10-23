@@ -136,6 +136,12 @@ struct UncertainIndexValueDataset{IDXTYP <: AbstractUncertainIndexDataset, VALST
     end
 end
 
+function UncertainIndexValueDataset(x::AbstractArray{T, 1}, y::AbstractArray{T, 1}) where T
+    idxs = UncertainIndexDataset(rand(50))
+    vals = UncertainValueDataset(rand(50))
+    UncertainIndexValueDataset(idxs, vals)
+end
+
 Base.length(u::UncertainIndexValueDataset) = length(u.values)
 Base.size(u::UncertainIndexValueDataset) = length(u.values)
 
