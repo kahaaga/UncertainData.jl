@@ -1,0 +1,1952 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Datasets and values with associated uncertainties.">
+      
+      
+      
+        <meta name="author" content="Kristian Agasøster Haaga">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.5, mkdocs-material-2.9.4">
+    
+    
+      
+        <title>Theoretical distributions with known parameters - UncertainData.jl</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+      <link rel="stylesheet" href="../../assets/Documenter.css">
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#theoretical_distributions" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="UncertainData.jl" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                UncertainData.jl
+              </span>
+              <span class="md-header-nav__topic">
+                Theoretical distributions with known parameters
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/kahaaga/UncertainData.jl/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="UncertainData.jl" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    UncertainData.jl
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/kahaaga/UncertainData.jl/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Package overview" class="md-nav__link">
+      Package overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../propagation_of_errors/propagation_of_errors/" title="Propagation of errors" class="md-nav__link">
+      Propagation of errors
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Uncertain values
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Uncertain values
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../uncertainvalues_overview/" title="Types of uncertain values" class="md-nav__link">
+      Types of uncertain values
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2" checked>
+    
+    <label class="md-nav__link" for="nav-3-2">
+      List of representations
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        List of representations
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../uncertainvalues_kde/" title="Kernel density estimates (KDE)" class="md-nav__link">
+      Kernel density estimates (KDE)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Theoretical distributions with known parameters
+      </label>
+    
+    <a href="./" title="Theoretical distributions with known parameters" class="md-nav__link md-nav__link--active">
+      Theoretical distributions with known parameters
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#theoretical_distributions" title="Theoretical distributions" class="md-nav__link">
+    Theoretical distributions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generic_constructors" title="Generic constructors" class="md-nav__link">
+    Generic constructors
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from_instances_of_distributions" title="From instances of distributions" class="md-nav__link">
+    From instances of distributions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defined_from_scratch" title="Defined from scratch" class="md-nav__link">
+    Defined from scratch
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#two-parameter_distributions" title="Two-parameter distributions" class="md-nav__link">
+    Two-parameter distributions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#three-parameter_distributions" title="Three-parameter distributions" class="md-nav__link">
+    Three-parameter distributions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#type_documentation" title="Type documentation" class="md-nav__link">
+    Type documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list_of_supported_distributions" title="List of supported distributions" class="md-nav__link">
+    List of supported distributions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" title="Examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../uncertainvalues_fitted/" title="Theoretical distributions with fitted parameters" class="md-nav__link">
+      Theoretical distributions with fitted parameters
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../uncertainvalues_populations/" title="Weighted (nested) populations" class="md-nav__link">
+      Weighted (nested) populations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../uncertainvalues_certainvalue/" title="Values without uncertainty" class="md-nav__link">
+      Values without uncertainty
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../uncertainvalues_Measurements/" title="Measurements" class="md-nav__link">
+      Measurements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../merging/" title="Combining/merging" class="md-nav__link">
+      Combining/merging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../uncertainvalues_examples/" title="Extended examples" class="md-nav__link">
+      Extended examples
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Uncertain datasets
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Uncertain datasets
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_datasets/uncertain_datasets_overview/" title="Types of uncertain datasets" class="md-nav__link">
+      Types of uncertain datasets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_datasets/uncertain_index_dataset/" title="Uncertain index dataset" class="md-nav__link">
+      Uncertain index dataset
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_datasets/uncertain_value_dataset/" title="Uncertain value dataset" class="md-nav__link">
+      Uncertain value dataset
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_datasets/uncertain_indexvalue_dataset/" title="Uncertain index-value dataset" class="md-nav__link">
+      Uncertain index-value dataset
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_datasets/uncertain_dataset/" title="Generic uncertain dataset" class="md-nav__link">
+      Generic uncertain dataset
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Sampling constraints
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Sampling constraints
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../sampling_constraints/available_constraints/" title="Regular constraints" class="md-nav__link">
+      Regular constraints
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+    
+    <label class="md-nav__link" for="nav-5-2">
+      Sequential constraints
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        Sequential constraints
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../sampling_constraints/sequential_constraints/" title="List of sequential constraints" class="md-nav__link">
+      List of sequential constraints
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../sampling_constraints/ordered_sequence_exists/" title="Existence of sequences" class="md-nav__link">
+      Existence of sequences
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Examples
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../sampling_constraints/constrain_uncertain_values/" title="Constraining uncertain values" class="md-nav__link">
+      Constraining uncertain values
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Resampling
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Resampling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../resampling/resampling_overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+    
+    <label class="md-nav__link" for="nav-6-2">
+      Uncertain values
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-2">
+        Uncertain values
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../resampling/resampling_uncertain_values/" title="Resampling uncertain values" class="md-nav__link">
+      Resampling uncertain values
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      Uncertain value collections
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        Uncertain value collections
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../resampling/resampling_uncertain_datasets/" title="Resampling uncertain collections" class="md-nav__link">
+      Resampling uncertain collections
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3-2" type="checkbox" id="nav-6-3-2">
+    
+    <label class="md-nav__link" for="nav-6-3-2">
+      Sampling schemes
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-3-2">
+        Sampling schemes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../resampling/resampling_schemes/resampling_schemes_uncertain_value_collections/" title="List of schemes" class="md-nav__link">
+      List of schemes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../resampling/resampling_schemes/resampling_with_schemes_uncertain_value_collections/" title="Applying resampling schemes" class="md-nav__link">
+      Applying resampling schemes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4">
+    
+    <label class="md-nav__link" for="nav-6-4">
+      Uncertain index-value collections
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-4">
+        Uncertain index-value collections
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../resampling/resampling_uncertain_indexvalue_datasets/" title="Resampling index-value collections" class="md-nav__link">
+      Resampling index-value collections
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4-2" type="checkbox" id="nav-6-4-2">
+    
+    <label class="md-nav__link" for="nav-6-4-2">
+      Sampling schemes
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-4-2">
+        Sampling schemes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../resampling/resampling_schemes/resampling_schemes_uncertain_indexvalue_collections/" title="List of schemes" class="md-nav__link">
+      List of schemes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../resampling/resampling_schemes/resampling_with_schemes_uncertain_indexvalue_collections/" title="Applying resampling schemes" class="md-nav__link">
+      Applying resampling schemes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4-3" type="checkbox" id="nav-6-4-3">
+    
+    <label class="md-nav__link" for="nav-6-4-3">
+      Sequential resampling
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-4-3">
+        Sequential resampling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../resampling/sequential/resampling_uncertaindatasets_sequential/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../resampling/sequential/strictly_increasing/" title="Strictly increasing" class="md-nav__link">
+      Strictly increasing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../resampling/sequential/strictly_decreasing/" title="Strictly decreasing" class="md-nav__link">
+      Strictly decreasing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../resampling/sequential/resampling_indexvalue_sequential/" title="Index-value datasets" class="md-nav__link">
+      Index-value datasets
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4-4" type="checkbox" id="nav-6-4-4">
+    
+    <label class="md-nav__link" for="nav-6-4-4">
+      Interpolation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-4-4">
+        Interpolation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../resampling/interpolation/interpolation/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../resampling/interpolation/gridded/" title="Gridded interpolation" class="md-nav__link">
+      Gridded interpolation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../resampling/resampling_inplace/" title="Resampling in-place" class="md-nav__link">
+      Resampling in-place
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Mathematics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Mathematics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../mathematics/elementary_operations/" title="Elementary operations" class="md-nav__link">
+      Elementary operations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../mathematics/trig_functions/" title="Trigonometric functions" class="md-nav__link">
+      Trigonometric functions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Statistics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Statistics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-1" type="checkbox" id="nav-8-1">
+    
+    <label class="md-nav__link" for="nav-8-1">
+      Basics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-1">
+        Basics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_statistics/core_stats/core_statistics/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_statistics/core_stats/core_statistics_point_estimates/" title="Point estimates on values" class="md-nav__link">
+      Point estimates on values
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_statistics/core_stats/core_statistics_pairwise_estimates/" title="Pairwise estimates on values" class="md-nav__link">
+      Pairwise estimates on values
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_statistics/core_stats/core_statistics_datasets_single_dataset_estimates/" title="Estimates on single uncertain value collections" class="md-nav__link">
+      Estimates on single uncertain value collections
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_statistics/core_stats/core_statistics_datasets_pairwise_estimates/" title="Estimates on pairs of uncertain value collections" class="md-nav__link">
+      Estimates on pairs of uncertain value collections
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2">
+    
+    <label class="md-nav__link" for="nav-8-2">
+      Hypothesis tests
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-2">
+        Hypothesis tests
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_statistics/hypothesistests/hypothesis_tests_overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_statistics/hypothesistests/one_sample_t_test/" title="One sample t-test" class="md-nav__link">
+      One sample t-test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_statistics/hypothesistests/equal_variance_t_test/" title="Equal variance t-test" class="md-nav__link">
+      Equal variance t-test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_statistics/hypothesistests/unequal_variance_t_test/" title="Unequal variance t-test" class="md-nav__link">
+      Unequal variance t-test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_statistics/hypothesistests/exact_kolmogorov_smirnov_test/" title="Exact Kolmogorov-Smirnov test" class="md-nav__link">
+      Exact Kolmogorov-Smirnov test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_statistics/hypothesistests/approximate_twosample_kolmogorov_smirnov_test/" title="Approximate two-sample Kolmogorov-Smirnov test" class="md-nav__link">
+      Approximate two-sample Kolmogorov-Smirnov test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_statistics/hypothesistests/jarque_bera_test/" title="Jarque-Bera test" class="md-nav__link">
+      Jarque-Bera test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_statistics/hypothesistests/mann_whitney_u_test/" title="Mann-Whitney u-test" class="md-nav__link">
+      Mann-Whitney u-test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uncertain_statistics/hypothesistests/anderson_darling_test/" title="Anderson-Darling test" class="md-nav__link">
+      Anderson-Darling test
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorials/tutorial_overview/" title="List of tutorials" class="md-nav__link">
+      List of tutorials
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-2" type="checkbox" id="nav-9-2">
+    
+    <label class="md-nav__link" for="nav-9-2">
+      Regularising data
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-2">
+        Regularising data
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorials/tutorial_transforming_data_to_regular_grid/" title="Binned resampling" class="md-nav__link">
+      Binned resampling
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../implementing_algorithms_for_uncertaindata/" title="Implementing algorithms for uncertain data" class="md-nav__link">
+      Implementing algorithms for uncertain data
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../changelog/" title="Changelog" class="md-nav__link">
+      Changelog
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../publications/" title="Publications and software" class="md-nav__link">
+      Publications and software
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#theoretical_distributions" title="Theoretical distributions" class="md-nav__link">
+    Theoretical distributions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generic_constructors" title="Generic constructors" class="md-nav__link">
+    Generic constructors
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from_instances_of_distributions" title="From instances of distributions" class="md-nav__link">
+    From instances of distributions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defined_from_scratch" title="Defined from scratch" class="md-nav__link">
+    Defined from scratch
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#two-parameter_distributions" title="Two-parameter distributions" class="md-nav__link">
+    Two-parameter distributions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#three-parameter_distributions" title="Three-parameter distributions" class="md-nav__link">
+    Three-parameter distributions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#type_documentation" title="Type documentation" class="md-nav__link">
+    Type documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list_of_supported_distributions" title="List of supported distributions" class="md-nav__link">
+    List of supported distributions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" title="Examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/kahaaga/UncertainData.jl/edit/master/docs/uncertain_values/uncertainvalues_theoreticaldistributions.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                  <h1>Theoretical distributions with known parameters</h1>
+                
+                <p><a id='uncertain_value_theoretical_distribution-1'></a></p>
+<h2 id="theoretical_distributions">Theoretical distributions<a class="headerlink" href="#theoretical_distributions" title="Permanent link">&para;</a></h2>
+<p>It is common in the scientific literature to encounter uncertain data values which are reported as following a specific distribution. For example, an author report the mean and standard deviation of a value stated to follow a normal distribution. <code class="codehilite"><span class="n">UncertainData</span></code> makes it easy to represent such values!</p>
+<p><a id='Generic-constructors-1'></a></p>
+<h2 id="generic_constructors">Generic constructors<a class="headerlink" href="#generic_constructors" title="Permanent link">&para;</a></h2>
+<p><a id='From-instances-of-distributions-1'></a></p>
+<h3 id="from_instances_of_distributions">From instances of distributions<a class="headerlink" href="#from_instances_of_distributions" title="Permanent link">&para;</a></h3>
+<p><a id='UncertainData.UncertainValues.UncertainValue-Tuple{Distribution}' href='#UncertainData.UncertainValues.UncertainValue-Tuple{Distribution}'>#</a>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">UncertainValues</span><span class="p">.</span><span class="n">UncertainValue</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">UncertainValue</span><span class="p">(</span><span class="n">d</span><span class="o">::</span><span class="n">Distributions</span><span class="o">.</span><span class="n">Distribution</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Construct an uncertain value from an instance of a distribution. If a specific uncertain value type has not been implemented, the number of parameters is  determined from the distribution and an instance of one of the following types is returned: </p>
+<ul>
+<li><code class="codehilite"><span class="n">UncertainScalarTheoreticalOneParameter</span></code></li>
+<li><code class="codehilite"><span class="n">UncertainScalarTheoreticalTwoParameter</span></code></li>
+<li><code class="codehilite"><span class="n">UncertainScalarTheoreticalThreeParameter</span></code></li>
+</ul>
+<p><strong>Examples</strong></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">UncertainValue</span><span class="p">(</span><span class="n">Normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">UncertainValue</span><span class="p">(</span><span class="n">Gamma</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mf">5.1</span><span class="p">))</span>
+<span class="n">UncertainValue</span><span class="p">(</span><span class="n">Binomial</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/66a80be5f5183e9a8fd1a62ba81e8adfad906d41/src/uncertain_values/UncertainValue.jl#L373-L392' class='documenter-source'>source</a><br></p>
+<p><a id='Defined-from-scratch-1'></a></p>
+<h3 id="defined_from_scratch">Defined from scratch<a class="headerlink" href="#defined_from_scratch" title="Permanent link">&para;</a></h3>
+<p>Uncertain values represented by theoretical distributions may be constructed using the two-parameter or three-parameter constructors <code class="codehilite"><span class="n">UncertainValue</span><span class="p">(</span><span class="n">d</span><span class="p">::</span><span class="k">Type</span><span class="err">{</span><span class="n">D</span><span class="err">}</span><span class="p">,</span> <span class="n">a</span><span class="o">&lt;</span><span class="p">:</span><span class="nb">Number</span><span class="p">,</span> <span class="n">b</span><span class="o">&lt;</span><span class="p">:</span><span class="nb">Number</span><span class="p">)</span></code> or <code class="codehilite"><span class="n">UncertainValue</span><span class="p">(</span><span class="n">d</span><span class="p">::</span><span class="k">Type</span><span class="err">{</span><span class="n">D</span><span class="err">}</span><span class="p">,</span> <span class="n">a</span><span class="o">&lt;</span><span class="p">:</span><span class="nb">Number</span><span class="p">,</span> <span class="n">b</span><span class="o">&lt;</span><span class="p">:</span><span class="nb">Number</span><span class="p">,</span> <span class="k">c</span><span class="o">&lt;</span><span class="p">:</span><span class="nb">Number</span><span class="p">)</span></code> (see below). Parameters are provided to the constructor in the same order as for constructing  the equivalent distributions in <code class="codehilite"><span class="n">Distributions</span><span class="p">.</span><span class="n">jl</span></code>.</p>
+<p><a id='Two-parameter-distributions-1'></a></p>
+<h4 id="two-parameter_distributions">Two-parameter distributions<a class="headerlink" href="#two-parameter_distributions" title="Permanent link">&para;</a></h4>
+<p><a id='UncertainData.UncertainValues.UncertainValue-Union{Tuple{D}, Tuple{T2}, Tuple{T1}, Tuple{Type{D},T1,T2}} where D<:Distribution where T2<:Number where T1<:Number' href='#UncertainData.UncertainValues.UncertainValue-Union{Tuple{D}, Tuple{T2}, Tuple{T1}, Tuple{Type{D},T1,T2}} where D<:Distribution where T2<:Number where T1<:Number'>#</a>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">UncertainValues</span><span class="p">.</span><span class="n">UncertainValue</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">UncertainValue</span><span class="p">(</span><span class="n">distribution</span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="n">D</span><span class="p">},</span> <span class="n">a</span><span class="o">::</span><span class="n">T1</span><span class="p">,</span> <span class="n">b</span><span class="o">::</span><span class="n">T2</span><span class="p">;</span>
+    <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span> <span class="n">where</span> <span class="p">{</span><span class="n">T1</span><span class="o">&lt;:</span><span class="kt">Number</span><span class="p">,</span> <span class="n">T2</span> <span class="o">&lt;:</span> <span class="kt">Number</span><span class="p">,</span> <span class="n">D</span><span class="o">&lt;:</span><span class="n">Distribution</span><span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<p><strong>Constructor for two-parameter distributions</strong></p>
+<p><code class="codehilite"><span class="n">UncertainValue</span></code>s are currently implemented for the following two-parameter distributions: <code class="codehilite"><span class="n">Uniform</span></code>, <code class="codehilite"><span class="n">Normal</span></code>, <code class="codehilite"><span class="n">Binomial</span></code>, <code class="codehilite"><span class="n">Beta</span></code>, <code class="codehilite"><span class="n">BetaPrime</span></code>, <code class="codehilite"><span class="n">Gamma</span></code>, and <code class="codehilite"><span class="n">Frechet</span></code>.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong><code class="codehilite"><span class="n">a</span></code>, <code class="codehilite"><span class="n">b</span></code></strong>: Generic parameters whose meaning varies depending   on what <code class="codehilite"><span class="n">distribution</span></code> is provided. See the list below.</li>
+<li><strong><code class="codehilite"><span class="n">distribution</span></code></strong>: A valid univariate distribution from <code class="codehilite"><span class="n">Distributions</span><span class="p">.</span><span class="n">jl</span></code>.</li>
+</ul>
+<p>Precisely what  <code class="codehilite"><span class="n">a</span></code> and <code class="codehilite"><span class="n">b</span></code> are depends on which distribution is provided.</p>
+<ul>
+<li><code class="codehilite"><span class="n">UncertainValue</span><span class="p">(</span><span class="n">Normal</span><span class="p">,</span> <span class="err">μ</span><span class="p">,</span> <span class="err">σ</span><span class="p">)</span></code> returns an <code class="codehilite"><span class="n">UncertainScalarNormallyDistributed</span></code> instance.</li>
+<li><code class="codehilite"><span class="n">UncertainValue</span><span class="p">(</span><span class="n">Uniform</span><span class="p">,</span> <span class="k">lower</span><span class="p">,</span> <span class="k">upper</span><span class="p">)</span></code> returns an <code class="codehilite"><span class="n">UncertainScalarUniformlyDistributed</span></code> instance.</li>
+<li><code class="codehilite"><span class="n">UncertainValue</span><span class="p">(</span><span class="n">Beta</span><span class="p">,</span> <span class="err">α</span><span class="p">,</span> <span class="err">β</span><span class="p">)</span></code> returns an <code class="codehilite"><span class="n">UncertainScalarBetaDistributed</span></code> instance.</li>
+<li><code class="codehilite"><span class="n">UncertainValue</span><span class="p">(</span><span class="n">BetaPrime</span><span class="p">,</span> <span class="err">α</span><span class="p">,</span> <span class="err">β</span><span class="p">)</span></code> returns an <code class="codehilite"><span class="n">UncertainScalarBetaPrimeDistributed</span></code> instance.</li>
+<li><code class="codehilite"><span class="n">UncertainValue</span><span class="p">(</span><span class="n">Gamma</span><span class="p">,</span> <span class="err">α</span><span class="p">,</span> <span class="err">θ</span><span class="p">)</span></code> returns an <code class="codehilite"><span class="n">UncertainScalarGammaDistributed</span></code> instance.</li>
+<li><code class="codehilite"><span class="n">UncertainValue</span><span class="p">(</span><span class="n">Frechet</span><span class="p">,</span> <span class="err">α</span><span class="p">,</span> <span class="err">θ</span><span class="p">)</span></code> returns an <code class="codehilite"><span class="n">UncertainScalarFrechetDistributed</span></code> instance.</li>
+<li><code class="codehilite"><span class="n">UncertainValue</span><span class="p">(</span><span class="n">Binomial</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></code> returns an <code class="codehilite"><span class="n">UncertainScalarBinomialDistributed</span></code> instance.</li>
+</ul>
+<p><strong>Keyword arguments</strong></p>
+<ul>
+<li><strong><code class="codehilite"><span class="n">n</span><span class="err">σ</span></code></strong>: If <code class="codehilite"><span class="n">distribution</span> <span class="o">&lt;</span><span class="p">:</span> <span class="n">Distributions</span><span class="p">.</span><span class="n">Normal</span></code>, then how many standard   deviations away from <code class="codehilite"><span class="err">μ</span></code> does <code class="codehilite"><span class="k">lower</span></code> and <code class="codehilite"><span class="k">upper</span></code> (i.e. both, because   they are the same distance away from <code class="codehilite"><span class="err">μ</span></code>) represent?</li>
+<li><strong><code class="codehilite"><span class="n">tolerance</span></code></strong>: A threshold determining how symmetric the uncertainties   must be in order to allow the construction of  Normal distribution   (<code class="codehilite"><span class="k">upper</span> <span class="o">-</span> <span class="k">lower</span> <span class="o">&gt;</span> <span class="n">threshold</span></code> is required).</li>
+<li><strong><code class="codehilite"><span class="n">trunc_lower</span></code></strong>: Lower truncation bound for distributions with infinite   support. Defaults to <code class="codehilite"><span class="o">-</span><span class="n">Inf</span></code>.</li>
+<li><strong><code class="codehilite"><span class="n">trunc_upper</span></code></strong>: Upper truncation bound for distributions with infinite   support. Defaults to <code class="codehilite"><span class="n">Inf</span></code>.</li>
+</ul>
+<p><strong>Examples</strong></p>
+<p><strong>Normal distribution</strong></p>
+<p>Normal distributions are formed by using the constructor <code class="codehilite"><span class="n">UncertainValue</span><span class="p">(</span><span class="err">μ</span><span class="p">,</span> <span class="err">σ</span><span class="p">,</span> <span class="n">Normal</span><span class="p">;</span> <span class="n">kwargs</span><span class="p">...)</span></code>. This gives a normal distribution with mean μ and standard deviation σ/nσ (nσ must be given as a keyword argument).</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c"># A normal distribution with mean = 2.3 and standard deviation 0.3.</span>
+<span class="n">UncertainValue</span><span class="p">(</span><span class="mf">2.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">Normal</span><span class="p">)</span>
+
+<span class="c"># A normal distribution with mean 2.3 and standard deviation 0.3/2.</span>
+<span class="n">UncertainValue</span><span class="p">(</span><span class="mf">2.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">Normal</span><span class="p">,</span> <span class="n">nσ</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c"># A normal distribution with mean 2.3 and standard deviation = 0.3,</span>
+<span class="n">truncated</span> <span class="n">to</span> <span class="n">the</span> <span class="n">interval</span> <span class="sb">`[1, 3]`</span><span class="o">.</span>
+<span class="n">UncertainValue</span><span class="p">(</span><span class="mf">2.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">Normal</span><span class="p">,</span> <span class="n">trunc_lower</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">trunc_upper</span> <span class="o">=</span> <span class="mf">3.0</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p><strong>Uniform distribution</strong></p>
+<p>Uniform distributions are formed using the <code class="codehilite"><span class="n">UncertainValue</span><span class="p">(</span><span class="k">lower</span><span class="p">,</span> <span class="k">upper</span><span class="p">,</span> <span class="n">Uniform</span><span class="p">)</span></code> constructor.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">#  A uniform distribution on `[2, 3]`</span>
+<span class="n">UncertainValue</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">Uniform</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/66a80be5f5183e9a8fd1a62ba81e8adfad906d41/src/uncertain_values/UncertainValue.jl#L138-L208' class='documenter-source'>source</a><br></p>
+<p><a id='Three-parameter-distributions-1'></a></p>
+<h4 id="three-parameter_distributions">Three-parameter distributions<a class="headerlink" href="#three-parameter_distributions" title="Permanent link">&para;</a></h4>
+<p><a id='UncertainData.UncertainValues.UncertainValue-Union{Tuple{D}, Tuple{T3}, Tuple{T2}, Tuple{T1}, Tuple{Type{D},T1,T2,T3}} where D<:Distribution where T3<:Number where T2<:Number where T1<:Number' href='#UncertainData.UncertainValues.UncertainValue-Union{Tuple{D}, Tuple{T3}, Tuple{T2}, Tuple{T1}, Tuple{Type{D},T1,T2,T3}} where D<:Distribution where T3<:Number where T2<:Number where T1<:Number'>#</a>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">UncertainValues</span><span class="p">.</span><span class="n">UncertainValue</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">UncertainValue</span><span class="p">(</span><span class="n">distribution</span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="n">D</span><span class="p">},</span> <span class="n">a</span><span class="o">::</span><span class="n">T1</span><span class="p">,</span> <span class="n">b</span><span class="o">::</span><span class="n">T2</span><span class="p">,</span> <span class="n">c</span><span class="o">::</span><span class="n">T3</span><span class="p">;</span>
+    <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span> <span class="n">where</span> <span class="p">{</span><span class="n">T1</span><span class="o">&lt;:</span><span class="kt">Number</span><span class="p">,</span> <span class="n">T2</span><span class="o">&lt;:</span><span class="kt">Number</span><span class="p">,</span> <span class="n">T3</span><span class="o">&lt;:</span><span class="kt">Number</span><span class="p">,</span> <span class="n">D</span><span class="o">&lt;:</span><span class="n">Distribution</span><span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<p><strong>Constructor for three-parameter distributions</strong></p>
+<p>Currently implemented distributions are <code class="codehilite"><span class="n">BetaBinomial</span></code>.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong><code class="codehilite"><span class="n">a</span></code>, <code class="codehilite"><span class="n">b</span></code>, <code class="codehilite"><span class="k">c</span></code></strong>: Generic parameters whose meaning varies depending   on what <code class="codehilite"><span class="n">distribution</span></code> is provided. See the list below.</li>
+<li><strong><code class="codehilite"><span class="n">distribution</span></code></strong>: A valid univariate distribution from <code class="codehilite"><span class="n">Distributions</span><span class="p">.</span><span class="n">jl</span></code>.</li>
+</ul>
+<p>Precisely what <code class="codehilite"><span class="n">a</span></code>, <code class="codehilite"><span class="n">b</span></code> and <code class="codehilite"><span class="k">c</span></code> are depends on which distribution is provided.</p>
+<ul>
+<li><code class="codehilite"><span class="n">UncertainValue</span><span class="p">(</span><span class="n">BetaBinomial</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="err">α</span><span class="p">,</span> <span class="err">β</span><span class="p">)</span></code> returns an <code class="codehilite"><span class="n">UncertainScalarBetaBinomialDistributed</span></code> instance.</li>
+</ul>
+<p><strong>Keyword arguments</strong></p>
+<ul>
+<li><strong><code class="codehilite"><span class="n">n</span><span class="err">σ</span></code></strong>: If <code class="codehilite"><span class="n">distribution</span> <span class="o">&lt;</span><span class="p">:</span> <span class="n">Distributions</span><span class="p">.</span><span class="n">Normal</span></code>, then how many standard   deviations away from <code class="codehilite"><span class="err">μ</span></code> does <code class="codehilite"><span class="k">lower</span></code> and <code class="codehilite"><span class="k">upper</span></code> (i.e. both, because   they are the same distance away from <code class="codehilite"><span class="err">μ</span></code>) represent?</li>
+<li><strong><code class="codehilite"><span class="n">tolerance</span></code></strong>: A threshold determining how symmetric the uncertainties   must be in order to allow the construction of  Normal distribution   (<code class="codehilite"><span class="k">upper</span> <span class="o">-</span> <span class="k">lower</span> <span class="o">&gt;</span> <span class="n">threshold</span></code> is required).</li>
+<li><strong><code class="codehilite"><span class="n">trunc_lower</span></code></strong>: Lower truncation bound for distributions with infinite   support. Defaults to <code class="codehilite"><span class="o">-</span><span class="n">Inf</span></code>.</li>
+<li><strong><code class="codehilite"><span class="n">trunc_upper</span></code></strong>: Upper truncation bound for distributions with infinite   support. Defaults to <code class="codehilite"><span class="n">Inf</span></code>.</li>
+</ul>
+<p><strong>Examples</strong></p>
+<p><strong>BetaBinomial distribution</strong></p>
+<p>Normal distributions are formed by using the constructor <code class="codehilite"><span class="n">UncertainValue</span><span class="p">(</span><span class="err">μ</span><span class="p">,</span> <span class="err">σ</span><span class="p">,</span> <span class="n">Normal</span><span class="p">;</span> <span class="n">kwargs</span><span class="p">...)</span></code>. This gives a normal distribution with mean μ and standard deviation σ/nσ (nσ must be given as a keyword argument).</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c"># A beta binomial distribution with n = 100 trials and parameters α = 2.3 and</span>
+<span class="c"># β = 5</span>
+<span class="n">UncertainValue</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">BetaBinomial</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/66a80be5f5183e9a8fd1a62ba81e8adfad906d41/src/uncertain_values/UncertainValue.jl#L242-L284' class='documenter-source'>source</a><br></p>
+<p><a id='Type-documentation-1'></a></p>
+<h2 id="type_documentation">Type documentation<a class="headerlink" href="#type_documentation" title="Permanent link">&para;</a></h2>
+<p><a id='UncertainData.UncertainValues.UncertainScalarBetaBinomialDistributed' href='#UncertainData.UncertainValues.UncertainScalarBetaBinomialDistributed'>#</a>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">UncertainValues</span><span class="p">.</span><span class="n">UncertainScalarBetaBinomialDistributed</span></code></strong> &mdash; <em>Type</em>.</p>
+<p>Uncertain value represented by a beta binomial distribution.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/66a80be5f5183e9a8fd1a62ba81e8adfad906d41/src/uncertain_values/UncertainScalarsTheoretical.jl#L149-L151' class='documenter-source'>source</a><br></p>
+<p><a id='UncertainData.UncertainValues.UncertainScalarBetaDistributed' href='#UncertainData.UncertainValues.UncertainScalarBetaDistributed'>#</a>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">UncertainValues</span><span class="p">.</span><span class="n">UncertainScalarBetaDistributed</span></code></strong> &mdash; <em>Type</em>.</p>
+<p>Uncertain value represented by a beta distribution.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/66a80be5f5183e9a8fd1a62ba81e8adfad906d41/src/uncertain_values/UncertainScalarsTheoretical.jl#L128-L130' class='documenter-source'>source</a><br></p>
+<p><a id='UncertainData.UncertainValues.UncertainScalarBetaPrimeDistributed' href='#UncertainData.UncertainValues.UncertainScalarBetaPrimeDistributed'>#</a>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">UncertainValues</span><span class="p">.</span><span class="n">UncertainScalarBetaPrimeDistributed</span></code></strong> &mdash; <em>Type</em>.</p>
+<p>Uncertain value represented by a beta prime distribution.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/66a80be5f5183e9a8fd1a62ba81e8adfad906d41/src/uncertain_values/UncertainScalarsTheoretical.jl#L138-L140' class='documenter-source'>source</a><br></p>
+<p><a id='UncertainData.UncertainValues.UncertainScalarBinomialDistributed' href='#UncertainData.UncertainValues.UncertainScalarBinomialDistributed'>#</a>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">UncertainValues</span><span class="p">.</span><span class="n">UncertainScalarBinomialDistributed</span></code></strong> &mdash; <em>Type</em>.</p>
+<p>Uncertain value represented by a binomial distribution.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/66a80be5f5183e9a8fd1a62ba81e8adfad906d41/src/uncertain_values/UncertainScalarsTheoretical.jl#L186-L188' class='documenter-source'>source</a><br></p>
+<p><a id='UncertainData.UncertainValues.UncertainScalarFrechetDistributed' href='#UncertainData.UncertainValues.UncertainScalarFrechetDistributed'>#</a>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">UncertainValues</span><span class="p">.</span><span class="n">UncertainScalarFrechetDistributed</span></code></strong> &mdash; <em>Type</em>.</p>
+<p>Uncertain value represented by a Fréchet distribution.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/66a80be5f5183e9a8fd1a62ba81e8adfad906d41/src/uncertain_values/UncertainScalarsTheoretical.jl#L174-L176' class='documenter-source'>source</a><br></p>
+<p><a id='UncertainData.UncertainValues.UncertainScalarGammaDistributed' href='#UncertainData.UncertainValues.UncertainScalarGammaDistributed'>#</a>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">UncertainValues</span><span class="p">.</span><span class="n">UncertainScalarGammaDistributed</span></code></strong> &mdash; <em>Type</em>.</p>
+<p>Uncertain value represented by a gamma distribution.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/66a80be5f5183e9a8fd1a62ba81e8adfad906d41/src/uncertain_values/UncertainScalarsTheoretical.jl#L162-L164' class='documenter-source'>source</a><br></p>
+<p><a id='UncertainData.UncertainValues.UncertainScalarNormallyDistributed' href='#UncertainData.UncertainValues.UncertainScalarNormallyDistributed'>#</a>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">UncertainValues</span><span class="p">.</span><span class="n">UncertainScalarNormallyDistributed</span></code></strong> &mdash; <em>Type</em>.</p>
+<p>Uncertain value represented by a normal distribution.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/66a80be5f5183e9a8fd1a62ba81e8adfad906d41/src/uncertain_values/UncertainScalarsTheoretical.jl#L108-L110' class='documenter-source'>source</a><br></p>
+<p><a id='UncertainData.UncertainValues.UncertainScalarUniformlyDistributed' href='#UncertainData.UncertainValues.UncertainScalarUniformlyDistributed'>#</a>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">UncertainValues</span><span class="p">.</span><span class="n">UncertainScalarUniformlyDistributed</span></code></strong> &mdash; <em>Type</em>.</p>
+<p>Uncertain value represented by a uniform distribution.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/66a80be5f5183e9a8fd1a62ba81e8adfad906d41/src/uncertain_values/UncertainScalarsTheoretical.jl#L118-L120' class='documenter-source'>source</a><br></p>
+<p><a id='List-of-supported-distributions-1'></a></p>
+<h2 id="list_of_supported_distributions">List of supported distributions<a class="headerlink" href="#list_of_supported_distributions" title="Permanent link">&para;</a></h2>
+<p>Supported distributions are:</p>
+<ul>
+<li><code class="codehilite"><span class="n">Uniform</span></code></li>
+<li><code class="codehilite"><span class="n">Normal</span></code></li>
+<li><code class="codehilite"><span class="n">Gamma</span></code></li>
+<li><code class="codehilite"><span class="n">Beta</span></code></li>
+<li><code class="codehilite"><span class="n">BetaPrime</span></code></li>
+<li><code class="codehilite"><span class="n">Frechet</span></code></li>
+<li><code class="codehilite"><span class="n">Binomial</span></code></li>
+<li><code class="codehilite"><span class="n">BetaBinomial</span></code></li>
+</ul>
+<p>More distributions will be added in the future!.</p>
+<p><a id='Examples-1'></a></p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<div class="superfences-tabs">
+<input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
+<label for="__tab_1_0">Uniform</label>
+<div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c"># Uncertain value generated by a uniform distribution on [-5.0, 5.1].</span>
+<span class="n">uv</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">Uniform</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">5.1</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<input name="__tabs_1" type="radio" id="__tab_1_1" />
+<label for="__tab_1_1">Normal</label>
+<div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c"># Uncertain value generated by a normal distribution with parameters μ = -2 and</span>
+<span class="c"># σ = 0.5.</span>
+<span class="n">uv</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">Normal</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<input name="__tabs_1" type="radio" id="__tab_1_2" />
+<label for="__tab_1_2">Gamma</label>
+<div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c"># Uncertain value generated by a gamma distribution with parameters α = 2.2</span>
+<span class="c"># and θ = 3.</span>
+<span class="n">uv</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">Gamma</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<input name="__tabs_1" type="radio" id="__tab_1_3" />
+<label for="__tab_1_3">Beta</label>
+<div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c"># Uncertain value generated by a beta distribution with parameters α = 1.5</span>
+<span class="c"># and β = 3.5</span>
+<span class="n">uv</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">Beta</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<input name="__tabs_1" type="radio" id="__tab_1_4" />
+<label for="__tab_1_4">BetaPrime</label>
+<div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c"># Uncertain value generated by a beta prime distribution with parameters α = 1.7</span>
+<span class="c"># and β = 3.2</span>
+<span class="n">uv</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">Beta</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<input name="__tabs_1" type="radio" id="__tab_1_5" />
+<label for="__tab_1_5">Fréchet</label>
+<div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c"># Uncertain value generated by a Fréchet distribution with parameters α = 2.1</span>
+<span class="c"># and θ = 4</span>
+<span class="n">uv</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">Beta</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<input name="__tabs_1" type="radio" id="__tab_1_6" />
+<label for="__tab_1_6">Binomial</label>
+<div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c"># Uncertain value generated by binomial distribution with n = 28 trials and</span>
+<span class="c"># probability p = 0.2 of success in individual trials.</span>
+<span class="n">uv</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">Binomial</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<input name="__tabs_1" type="radio" id="__tab_1_7" />
+<label for="__tab_1_7">BetaBinomial</label>
+<div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c"># Creates an uncertain value generated by a beta-binomial distribution with</span>
+<span class="c"># n = 28 trials, and parameters α = 1.5 and β = 3.5.</span>
+<span class="n">uv</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">BetaBinomial</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../uncertainvalues_kde/" title="Kernel density estimates (KDE)" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Kernel density estimates (KDE)
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../uncertainvalues_fitted/" title="Theoretical distributions with fitted parameters" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Theoretical distributions with fitted parameters
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.30f6b8b1.js"></script>
+      
+      <script>app.initialize({version:"0.17.5",url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+      
+        <script src="../../assets/mathjaxhelper.js"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>
