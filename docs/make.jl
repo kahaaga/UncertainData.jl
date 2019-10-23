@@ -87,6 +87,11 @@ PAGES = [
         "mathematics/trig_functions.md"
     ],
 
+    "Tutorials" => [
+        "tutorials/tutorial_overview.md",
+        "tutorials/tutorial_transforming_data_to_regular_grid.md"
+    ],
+
     "implementing_algorithms_for_uncertaindata.md",
     
     "changelog.md",

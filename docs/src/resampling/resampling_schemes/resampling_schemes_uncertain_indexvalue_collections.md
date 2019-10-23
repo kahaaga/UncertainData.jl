@@ -5,20 +5,50 @@ constraints as a single input argument to functions that accept uncertain value 
 Sequential constraints also make it possible to impose constraints on the indices of 
 datasets while sampling.
 
+## Constrained
+
 ## Constrained resampling
 
 ```@docs
 ConstrainedIndexValueResampling
 ```
 
-## Sequential resampling
+## Sequential
+
+### Sequential resampling
 
 ```@docs
 SequentialResampling
 ```
 
-## Sequential and interpolated resampling
+### Sequential and interpolated resampling
 
 ```@docs
 SequentialInterpolatedResampling
+```
+
+## Binned resampling
+
+### BinnedResampling
+
+```@docs
+BinnedResampling
+```
+
+### BinnedWeightedResampling
+
+```@docs
+BinnedWeightedResampling
+```
+
+### BinnedMeanResampling
+
+```@docs
+BinnedMeanResampling
+```
+
+### BinnedMeanWeightedResampling
+
+```@docs
+BinnedMeanWeightedResampling
 ```
