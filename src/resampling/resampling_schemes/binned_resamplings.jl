@@ -107,8 +107,9 @@ end
 """ 
     BinnedMeanWeightedResampling
 
-Binned resampling where each bin is summarised using 
-the mean of all draws falling in that bin.
+Binned resampling where each bin is summarised using the mean of all draws 
+falling in that bin. Points in the dataset are sampled with probabilities
+according to `weights`.
 
 ## Fields 
 
