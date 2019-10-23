@@ -19,6 +19,9 @@ UI = UncertainIndexDataset(uvals)
 CUV = constrain(UV, TruncateQuantiles(0.1, 0.9))
 CUI = constrain(UV, TruncateQuantiles(0.1, 0.9))
 
+# From scalar vectors 
+@test UncertainIndexValueDataset(rand(30), rand(30)) isa UncertainIndexValueDataset
+
 # Vectors
 @test UncertainIndexValueDataset(uvals, uvals) isa UncertainIndexValueDataset
 

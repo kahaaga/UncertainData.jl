@@ -23,6 +23,10 @@ struct ConstrainedUncertainIndexDataset <: AbstractUncertainIndexDataset
     indices::AbstractVector{<:AbstractUncertainValue}
 end
 
+function UncertainIndexDataset(x::AbstractArray{T, 1}) where T
+    UncertainIndexDataset(CertainValue.(x))
+end
+
 export 
 UncertainIndexDataset,
 ConstrainedUncertainIndexDataset,
