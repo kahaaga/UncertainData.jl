@@ -39,6 +39,8 @@ include("resampling/test_resampling_uncertain_tuples.jl")
 # Resampling schemes
 include("resampling/resampling_schemes/test_BinnedResampling.jl")
 include("resampling/resampling_schemes/test_BinnedMeanResampling.jl")
+include("resampling/resampling_schemes/test_BinnedWeightedResampling.jl")
+
 include("resampling/resampling_schemes/test_ConstrainedIndexValueResampling.jl")
 include("resampling/resampling_schemes/test_ConstrainedValueResampling.jl")
 include("resampling/resampling_schemes/test_SequentialResampling.jl")
