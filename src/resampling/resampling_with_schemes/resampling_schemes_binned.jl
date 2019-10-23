@@ -1,5 +1,94 @@
 
 """
+    resample(x::AbstractUncertainIndexValueDataset, resampling::BinnedMeanWeightedResampling)
+
+Transform index-irregularly spaced uncertain data onto a regular index-grid and 
+take the mean of the values in each bin. Resamples the data points in `x` 
+according to `resampling.weights`.
+
+Distributions in each index bin are obtained by resampling all index values in `x` 
+`resampling.n` times, in proportions obeying `resampling.weights` and mapping those 
+index draws to the bins. Simultaneously, the values in `x` are resampled and placed 
+in the corresponding bins. Finally, the mean in each bin is calculated. In total, 
+`length(x)*resampling.n` draws are distributed among the bins to form the final mean 
+estimate.
+
+Returns a vector of mean values, one for each bin.
+
+Assumes that the points in `x` are independent.
+
+## Example
+
+```julia
+vars = (1, 2)
+npts, tstep = 100, 10
+d_xind = Uniform(2.5, 15.5)
+d_yind = Uniform(2.5, 15.5)
+d_xval = Uniform(0.01, 0.2)
+d_yval = Uniform(0.01, 0.2)
+
+X, Y = example_uncertain_indexvalue_datasets(ar1_unidir(c_xy = 0.5), npts, vars, tstep = tstep,
+d_xind = d_xind, d_yind = d_yind,
+d_xval = d_xval, d_yval = d_yval);
+
+n_draws = 10000 # draws per uncertain value
+time_grid = 0:50:1000
+
+# Resample both X and Y so that they are both at the same time indices, 
+# and take the mean of each bin.
+resampled_dataset = resample(X, BinnedMeanResampling(time_grid, n_draws))
+resampled_dataset = resample(Y, BinnedMeanResampling(time_grid, n_draws))
+```
+"""
+function resample(x::AbstractUncertainIndexValueDataset, resampling::BinnedMeanWeightedResampling)
+    
+    # Represent entire dataset as a weighted population and sample from that 
+    pop_inds = UncertainValue(x.indices.indices, resampling.weights)
+    pop_vals = UncertainValue(x.values.values, resampling.weights)
+
+    # Pre-allocate an array representing each bin, and an array keeping track
+    # of the values falling in that bin.
+    n_bins = length(resampling.left_bin_edges) - 1
+    bin_sums = fill(0.0, n_bins)
+    bin_sums_n_entries = similar(bin_sums)
+
+    # Pre-allocate some arrays into which we resample the values of the 
+    # index and value populations.
+    idxs = fill(NaN, resampling.n)
+    vals = fill(NaN, resampling.n)
+
+    # Used to compute the index of the bin into which a draw belongs
+    mini = minimum(resampling.left_bin_edges)
+    s = step(resampling.left_bin_edges)
+
+    for (j, (pop_idx, pop_val)) in enumerate(zip(pop_inds, pop_vals))
+
+        # Sample the j-th idx-value pair `resampling.n` times and 
+        # accumulate the values in the correct bin sum. Also keep
+        # track of how many values there are in each bin.
+        resample!(idxs, pop_idx) 
+        resample!(vals, pop_val)
+        
+        @inbounds for i = 1:resampling.n
+            arr_idx = ceil(Int, (idxs[i] - mini) / s)
+            
+            # Because the indices of `x` are uncertain values 
+            # with potentially infinite support, we need to check
+            # that the value falls inside the grid
+            if 0 < arr_idx <= n_bins
+                bin_sums[arr_idx] += vals[i]
+                bin_sums_n_entries[arr_idx] += 1.0
+            end
+        end
+    end
+
+    # Return bin averages (entries with 0s are represented as NaNs)
+    bin_avgs = bin_sums ./ bin_sums_n_entries
+    bin_avgs[isapprox.(bin_avgs, 0.0)] .= NaN
+    return bin_avgs
+end
+
+"""
     resample(x::AbstractUncertainIndexValueDataset, resampling::BinnedMeanResampling)
 
 Transform index-irregularly spaced uncertain data onto a regular index-grid and 
@@ -44,6 +133,54 @@ function resample(x::AbstractUncertainIndexValueDataset, resampling::BinnedMeanR
     # Represent entire dataset as an equally-weighted population and sample from that 
     pop_inds = UncertainValue(x.indices.indices, [1 for x in x.indices])
     pop_vals = UncertainValue(x.values.values, [1 for x in x.values])
+    
+    # Pre-allocate an array representing each bin, and an array keeping track
+    # of the values falling in that bin.
+    n_bins = length(resampling.left_bin_edges) - 1
+    bin_sums = fill(0.0, n_bins)
+    bin_sums_n_entries = similar(bin_sums)
+
+    # Pre-allocate some arrays into which we resample the values of the 
+    # index and value populations.
+    idxs = fill(NaN, resampling.n)
+    vals = fill(NaN, resampling.n)
+    
+    # Used to compute the index of the bin into which a draw belongs
+    mini = minimum(resampling.left_bin_edges)
+    s = step(resampling.left_bin_edges)
+    
+    for (j, (pop_idx, pop_val)) in enumerate(zip(pop_inds, pop_vals))
+    
+        # Sample the j-th idx-value pair `resampling.n` times and 
+        # accumulate the values in the correct bin sum. Also keep
+        # track of how many values there are in each bin.
+        resample!(idxs, pop_idx) 
+        resample!(vals, pop_val)
+        
+        @inbounds for i = 1:resampling.n
+            arr_idx = ceil(Int, (idxs[i] - mini) / s)
+            
+            # Because the indices of `x` are uncertain values 
+            # with potentially infinite support, we need to check
+            # that the value falls inside the grid
+            if 0 < arr_idx <= n_bins
+                bin_sums[arr_idx] += vals[i]
+                bin_sums_n_entries[arr_idx] += 1.0
+            end
+        end
+    end
+    
+    # Return bin averages (entries with 0s are represented as NaNs)
+    bin_avgs = bin_sums ./ bin_sums_n_entries
+    bin_avgs[isapprox.(bin_avgs, 0.0)] .= NaN
+    return bin_avgs
+end
+
+function resample(x::AbstractUncertainIndexValueDataset, resampling::BinnedMeanWeightedResampling)
+     
+    # Represent entire dataset as a weighted population and sample from that 
+    pop_inds = UncertainValue(x.indices.indices, resampling.weights)
+    pop_vals = UncertainValue(x.values.values, resampling.weights)
     
     # Pre-allocate an array representing each bin, and an array keeping track
     # of the values falling in that bin.
