@@ -25,6 +25,10 @@ struct ConstrainedUncertainValueDataset <: AbstractUncertainValueDataset
     values::AbstractVector{<:AbstractUncertainValue}
 end
 
+function UncertainValueDataset(x::AbstractArray{T, 1}) where T
+    UncertainValueDataset(CertainValue.(x))
+end
+
 export
 UncertainValueDataset,
 ConstrainedUncertainValueDataset

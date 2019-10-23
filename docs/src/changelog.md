@@ -1,6 +1,16 @@
 
 # Changelog
 
+## Uncertaindata.jl v0.8.1
+
+## New features
+
+- Added `UncertainValueDataset`, `UncertainIndexDataset`, and `UncertainIndexValueDataset` constructors for vectors of numbers (they get converted to `CertainValue`s). 
+
+## Bug fixes
+
+- `rand(x::CertainValue, n::Int)` now returns a length-`n` array with `x` repeated `n` times.
+
 ## Uncertaindata.jl v0.8.0
 
 ### New functionality
