@@ -1,6 +1,12 @@
 
 # Changelog
 
+## Uncertaindata.jl v0.8.1
+
+## Bug fixes
+
+- `rand(x::CertainValue, n::Int)` now returns a length-`n` array with `x` repeated `n` times.
+
 ## Uncertaindata.jl v0.8.0
 
 ### New functionality
