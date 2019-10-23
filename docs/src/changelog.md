@@ -1,6 +1,10 @@
 
 # Changelog
 
+## Uncertaindata.jl v0.8.2
+
+- Added `resample` method for `BinnedWeightedResampling` scheme.
+
 ## Uncertaindata.jl v0.8.1
 
 ## New features
