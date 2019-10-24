@@ -16,6 +16,7 @@ using Reexport
     # Resampling schemes
     ###################################
     include("resampling_schemes/AbstractUncertainDataResampling.jl")
+    include("resampling_schemes/BinnedResamplings.jl")
     include("resampling_schemes/ConstrainedResampling.jl")
     include("resampling_schemes/ConstrainedValueResampling.jl")
     include("resampling_schemes/ConstrainedIndexValueResampling.jl")

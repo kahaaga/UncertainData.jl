@@ -26,7 +26,7 @@ n_draws = 10000
 resampling = BinnedResampling(grid, n_draws)
 ```
 """
-struct BinnedResampling{B} <: AbstractUncertainDataResampling
+struct BinnedResampling{B} <: AbstractBinnedResampling
     left_bin_edges::B
     n::Int
 end
@@ -64,7 +64,7 @@ n_draws = 10000000
 resampling = BinnedWeightedResampling(grid, wts, n_draws)
 ```
 """
-struct BinnedWeightedResampling{B} <: AbstractUncertainDataResampling
+struct BinnedWeightedResampling{B} <: AbstractBinnedResampling
     left_bin_edges::B
     weights
     n::Int
@@ -99,7 +99,7 @@ n_draws = 10000
 resampling = BinnedMeanResampling(grid, n_draws)
 ```
 """
-struct BinnedMeanResampling{B} <: AbstractUncertainDataResampling
+struct BinnedMeanResampling{B} <: AbstractBinnedSummarisedResampling
     left_bin_edges::B
     n::Int
 end
@@ -138,7 +138,7 @@ n_draws = 10000000
 resampling = BinnedMeanWeightedResampling(grid, wts, n_draws)
 ```
 """
-struct BinnedMeanWeightedResampling{B} <: AbstractUncertainDataResampling
+struct BinnedMeanWeightedResampling{B} <: AbstractBinnedSummarisedResampling
     left_bin_edges::B
     weights
     n::Int
