@@ -3,15 +3,21 @@
 
 ## Uncertaindata.jl v0.8.2
 
+### New features
+
 - Added `resample` method for `BinnedWeightedResampling` scheme.
+
+### Improvements
+
+- Added more tests for binned resampling schemes.
 
 ## Uncertaindata.jl v0.8.1
 
-## New features
+### New features
 
 - Added `UncertainValueDataset`, `UncertainIndexDataset`, and `UncertainIndexValueDataset` constructors for vectors of numbers (they get converted to `CertainValue`s). 
 
-## Bug fixes
+### Bug fixes
 
 - `rand(x::CertainValue, n::Int)` now returns a length-`n` array with `x` repeated `n` times.
 
