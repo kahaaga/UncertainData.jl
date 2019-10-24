@@ -1,0 +1,1703 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Datasets and values with associated uncertainties.">
+      
+      
+      
+        <meta name="author" content="Kristian Agasøster Haaga">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.5, mkdocs-material-2.9.4">
+    
+    
+      
+        <title>Equal variance t-test - UncertainData.jl</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.451f80e5.css">
+      
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+      <link rel="stylesheet" href="../../../assets/Documenter.css">
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#regular_test" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../.." title="UncertainData.jl" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                UncertainData.jl
+              </span>
+              <span class="md-header-nav__topic">
+                Equal variance t-test
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/kahaaga/UncertainData.jl/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../.." title="UncertainData.jl" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    UncertainData.jl
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/kahaaga/UncertainData.jl/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Package overview" class="md-nav__link">
+      Package overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../propagation_of_errors/propagation_of_errors/" title="Propagation of errors" class="md-nav__link">
+      Propagation of errors
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Uncertain values
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Uncertain values
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/uncertainvalues_overview/" title="Types of uncertain values" class="md-nav__link">
+      Types of uncertain values
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+    
+    <label class="md-nav__link" for="nav-3-2">
+      List of representations
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        List of representations
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/uncertainvalues_kde/" title="Kernel density estimates (KDE)" class="md-nav__link">
+      Kernel density estimates (KDE)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/uncertainvalues_theoreticaldistributions/" title="Theoretical distributions with known parameters" class="md-nav__link">
+      Theoretical distributions with known parameters
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/uncertainvalues_fitted/" title="Theoretical distributions with fitted parameters" class="md-nav__link">
+      Theoretical distributions with fitted parameters
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/uncertainvalues_populations/" title="Weighted (nested) populations" class="md-nav__link">
+      Weighted (nested) populations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/uncertainvalues_certainvalue/" title="Values without uncertainty" class="md-nav__link">
+      Values without uncertainty
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/uncertainvalues_Measurements/" title="Measurements" class="md-nav__link">
+      Measurements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/merging/" title="Combining/merging" class="md-nav__link">
+      Combining/merging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/uncertainvalues_examples/" title="Extended examples" class="md-nav__link">
+      Extended examples
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Uncertain datasets
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Uncertain datasets
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_datasets/uncertain_datasets_overview/" title="Types of uncertain datasets" class="md-nav__link">
+      Types of uncertain datasets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_datasets/uncertain_index_dataset/" title="Uncertain index dataset" class="md-nav__link">
+      Uncertain index dataset
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_datasets/uncertain_value_dataset/" title="Uncertain value dataset" class="md-nav__link">
+      Uncertain value dataset
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_datasets/uncertain_indexvalue_dataset/" title="Uncertain index-value dataset" class="md-nav__link">
+      Uncertain index-value dataset
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_datasets/uncertain_dataset/" title="Generic uncertain dataset" class="md-nav__link">
+      Generic uncertain dataset
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Sampling constraints
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Sampling constraints
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../sampling_constraints/available_constraints/" title="Regular constraints" class="md-nav__link">
+      Regular constraints
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+    
+    <label class="md-nav__link" for="nav-5-2">
+      Sequential constraints
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        Sequential constraints
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../sampling_constraints/sequential_constraints/" title="List of sequential constraints" class="md-nav__link">
+      List of sequential constraints
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../sampling_constraints/ordered_sequence_exists/" title="Existence of sequences" class="md-nav__link">
+      Existence of sequences
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Examples
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../sampling_constraints/constrain_uncertain_values/" title="Constraining uncertain values" class="md-nav__link">
+      Constraining uncertain values
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Resampling
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Resampling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+    
+    <label class="md-nav__link" for="nav-6-2">
+      Uncertain values
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-2">
+        Uncertain values
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_uncertain_values/" title="Resampling uncertain values" class="md-nav__link">
+      Resampling uncertain values
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      Uncertain value collections
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        Uncertain value collections
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_uncertain_datasets/" title="Resampling uncertain collections" class="md-nav__link">
+      Resampling uncertain collections
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3-2" type="checkbox" id="nav-6-3-2">
+    
+    <label class="md-nav__link" for="nav-6-3-2">
+      Sampling schemes
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-3-2">
+        Sampling schemes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_schemes/resampling_schemes_uncertain_value_collections/" title="List of schemes" class="md-nav__link">
+      List of schemes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_schemes/resampling_with_schemes_uncertain_value_collections/" title="Applying resampling schemes" class="md-nav__link">
+      Applying resampling schemes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4">
+    
+    <label class="md-nav__link" for="nav-6-4">
+      Uncertain index-value collections
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-4">
+        Uncertain index-value collections
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_uncertain_indexvalue_datasets/" title="Resampling index-value collections" class="md-nav__link">
+      Resampling index-value collections
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4-2" type="checkbox" id="nav-6-4-2">
+    
+    <label class="md-nav__link" for="nav-6-4-2">
+      Sampling schemes
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-4-2">
+        Sampling schemes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_schemes/resampling_schemes_uncertain_indexvalue_collections/" title="List of schemes" class="md-nav__link">
+      List of schemes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_schemes/resampling_with_schemes_uncertain_indexvalue_collections/" title="Applying resampling schemes" class="md-nav__link">
+      Applying resampling schemes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4-3" type="checkbox" id="nav-6-4-3">
+    
+    <label class="md-nav__link" for="nav-6-4-3">
+      Sequential resampling
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-4-3">
+        Sequential resampling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/sequential/resampling_uncertaindatasets_sequential/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/sequential/strictly_increasing/" title="Strictly increasing" class="md-nav__link">
+      Strictly increasing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/sequential/strictly_decreasing/" title="Strictly decreasing" class="md-nav__link">
+      Strictly decreasing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/sequential/resampling_indexvalue_sequential/" title="Index-value datasets" class="md-nav__link">
+      Index-value datasets
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4-4" type="checkbox" id="nav-6-4-4">
+    
+    <label class="md-nav__link" for="nav-6-4-4">
+      Interpolation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-4-4">
+        Interpolation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/interpolation/interpolation/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/interpolation/gridded/" title="Gridded interpolation" class="md-nav__link">
+      Gridded interpolation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_inplace/" title="Resampling in-place" class="md-nav__link">
+      Resampling in-place
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Mathematics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Mathematics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../mathematics/elementary_operations/" title="Elementary operations" class="md-nav__link">
+      Elementary operations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../mathematics/trig_functions/" title="Trigonometric functions" class="md-nav__link">
+      Trigonometric functions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
+    
+    <label class="md-nav__link" for="nav-8">
+      Statistics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Statistics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-1" type="checkbox" id="nav-8-1">
+    
+    <label class="md-nav__link" for="nav-8-1">
+      Basics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-1">
+        Basics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../core_stats/core_statistics/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../core_stats/core_statistics_point_estimates/" title="Point estimates on values" class="md-nav__link">
+      Point estimates on values
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../core_stats/core_statistics_pairwise_estimates/" title="Pairwise estimates on values" class="md-nav__link">
+      Pairwise estimates on values
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../core_stats/core_statistics_datasets_single_dataset_estimates/" title="Estimates on single uncertain value collections" class="md-nav__link">
+      Estimates on single uncertain value collections
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../core_stats/core_statistics_datasets_pairwise_estimates/" title="Estimates on pairs of uncertain value collections" class="md-nav__link">
+      Estimates on pairs of uncertain value collections
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2" checked>
+    
+    <label class="md-nav__link" for="nav-8-2">
+      Hypothesis tests
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-2">
+        Hypothesis tests
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../hypothesis_tests_overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../one_sample_t_test/" title="One sample t-test" class="md-nav__link">
+      One sample t-test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Equal variance t-test
+      </label>
+    
+    <a href="./" title="Equal variance t-test" class="md-nav__link md-nav__link--active">
+      Equal variance t-test
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#regular_test" title="Regular test" class="md-nav__link">
+    Regular test
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pooled_test" title="Pooled test" class="md-nav__link">
+    Pooled test
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#element-wise_test" title="Element-wise test" class="md-nav__link">
+    Element-wise test
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../unequal_variance_t_test/" title="Unequal variance t-test" class="md-nav__link">
+      Unequal variance t-test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../exact_kolmogorov_smirnov_test/" title="Exact Kolmogorov-Smirnov test" class="md-nav__link">
+      Exact Kolmogorov-Smirnov test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../approximate_twosample_kolmogorov_smirnov_test/" title="Approximate two-sample Kolmogorov-Smirnov test" class="md-nav__link">
+      Approximate two-sample Kolmogorov-Smirnov test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../jarque_bera_test/" title="Jarque-Bera test" class="md-nav__link">
+      Jarque-Bera test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mann_whitney_u_test/" title="Mann-Whitney u-test" class="md-nav__link">
+      Mann-Whitney u-test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../anderson_darling_test/" title="Anderson-Darling test" class="md-nav__link">
+      Anderson-Darling test
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../tutorials/tutorial_overview/" title="List of tutorials" class="md-nav__link">
+      List of tutorials
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-2" type="checkbox" id="nav-9-2">
+    
+    <label class="md-nav__link" for="nav-9-2">
+      Regularising data
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-2">
+        Regularising data
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../tutorials/tutorial_transforming_data_to_regular_grid/" title="Binned resampling" class="md-nav__link">
+      Binned resampling
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../implementing_algorithms_for_uncertaindata/" title="Implementing algorithms for uncertain data" class="md-nav__link">
+      Implementing algorithms for uncertain data
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../changelog/" title="Changelog" class="md-nav__link">
+      Changelog
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../publications/" title="Publications and software" class="md-nav__link">
+      Publications and software
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#regular_test" title="Regular test" class="md-nav__link">
+    Regular test
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pooled_test" title="Pooled test" class="md-nav__link">
+    Pooled test
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#element-wise_test" title="Element-wise test" class="md-nav__link">
+    Element-wise test
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/kahaaga/UncertainData.jl/edit/master/docs/uncertain_statistics/hypothesistests/equal_variance_t_test.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                  <h1>Equal variance t-test</h1>
+                
+                <p><a id='Regular-test-1'></a></p>
+<h3 id="regular_test">Regular test<a class="headerlink" href="#regular_test" title="Permanent link">&para;</a></h3>
+<p><a id='HypothesisTests.EqualVarianceTTest' href='#HypothesisTests.EqualVarianceTTest'>#</a>
+<strong><code class="codehilite"><span class="n">HypothesisTests</span><span class="p">.</span><span class="n">EqualVarianceTTest</span></code></strong> &mdash; <em>Type</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">EqualVarianceTTest</span><span class="p">(</span><span class="n">d1</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">d2</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span>
+    <span class="n">n</span><span class="o">::</span><span class="kt">Int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span> <span class="n">μ0</span><span class="o">::</span><span class="kt">Real</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EqualVarianceTTest</span>
+</pre></div>
+</td></tr></table>
+
+<p>Consider two samples <code class="codehilite"><span class="n">s1</span></code> and <code class="codehilite"><span class="n">s2</span></code>, each consisting of <code class="codehilite"><span class="n">n</span></code> random draws from the distributions furnishing <code class="codehilite"><span class="n">d1</span></code> and <code class="codehilite"><span class="n">d2</span></code>, respectively.</p>
+<p>This function performs a two-sample t-test of the null hypothesis that <code class="codehilite"><span class="n">s1</span></code> and <code class="codehilite"><span class="n">s2</span></code> come from distributions with equal means and variances against the alternative hypothesis that the distributions have different means but equal variances.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/57b2abe78a67964d7d5697d4b56fdd5600585ed9/src/statistics/hypothesis_tests/t_tests.jl#L34-L45' class='documenter-source'>source</a><br></p>
+<p><a id='Example-1'></a></p>
+<h4 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h4>
+<p>Let's create two uncertain values furnished by distributions of different types. We'll perform the equal variance t-test to check if there is support for the null-hypothesis that the distributions furnishing the uncertain values come from distributions with equal means and variances.</p>
+<p>We expect the test to reject this null-hypothesis, because we've created two very different distributions.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">uv1</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">Normal</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">uv2</span> <span class="o">=</span> <span class="n">UncertainValue</span><span class="p">(</span><span class="n">Gamma</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c"># EqualVarianceTTest on 1000 draws for each variable</span>
+<span class="n">EqualVarianceTTest</span><span class="p">(</span><span class="n">uv1</span><span class="p">,</span> <span class="n">uv2</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>The output is:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Two</span> <span class="n">sample</span> <span class="n">t</span><span class="o">-</span><span class="n">test</span> <span class="p">(</span><span class="n">equal</span> <span class="n">variance</span><span class="p">)</span>
+<span class="o">----------------------------------</span>
+<span class="n">Population</span> <span class="n">details</span><span class="o">:</span>
+    <span class="n">parameter</span> <span class="n">of</span> <span class="n">interest</span><span class="o">:</span>   <span class="n">Mean</span> <span class="n">difference</span>
+    <span class="n">value</span> <span class="n">under</span> <span class="n">h_0</span><span class="o">:</span>         <span class="mi">0</span>
+    <span class="n">point</span> <span class="n">estimate</span><span class="o">:</span>          <span class="o">-</span><span class="mf">4.782470406651697</span>
+    <span class="mi">95</span><span class="o">%</span> <span class="n">confidence</span> <span class="n">interval</span><span class="o">:</span> <span class="p">(</span><span class="o">-</span><span class="mf">5.0428</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.5222</span><span class="p">)</span>
+
+<span class="n">Test</span> <span class="n">summary</span><span class="o">:</span>
+    <span class="n">outcome</span> <span class="n">with</span> <span class="mi">95</span><span class="o">%</span> <span class="n">confidence</span><span class="o">:</span> <span class="n">reject</span> <span class="n">h_0</span>
+    <span class="n">two</span><span class="o">-</span><span class="n">sided</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span><span class="o">:</span>           <span class="o">&lt;</span><span class="mf">1e-99</span>
+
+<span class="n">Details</span><span class="o">:</span>
+    <span class="n">number</span> <span class="n">of</span> <span class="n">observations</span><span class="o">:</span>   <span class="p">[</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">]</span>
+    <span class="n">t</span><span class="o">-</span><span class="n">statistic</span><span class="o">:</span>              <span class="o">-</span><span class="mf">36.03293014520585</span>
+    <span class="n">degrees</span> <span class="n">of</span> <span class="n">freedom</span><span class="o">:</span>       <span class="mi">1998</span>
+    <span class="n">empirical</span> <span class="n">standard</span> <span class="n">error</span><span class="o">:</span> <span class="mf">0.1327249931487462</span>
+</pre></div>
+</td></tr></table>
+
+<p>The test rejects the null-hypothesis, so we accept the alternative hypothesis that the samples come from distributions with different means and variances.</p>
+<p><a id='Pooled-test-1'></a></p>
+<h3 id="pooled_test">Pooled test<a class="headerlink" href="#pooled_test" title="Permanent link">&para;</a></h3>
+<p><a id='UncertainData.UncertainStatistics.EqualVarianceTTestPooled' href='#UncertainData.UncertainStatistics.EqualVarianceTTestPooled'>#</a>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">UncertainStatistics</span><span class="p">.</span><span class="n">EqualVarianceTTestPooled</span></code></strong> &mdash; <em>Function</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">EqualVarianceTTestPooled</span><span class="p">(</span><span class="n">d1</span><span class="o">::</span><span class="n">UncertainDataset</span><span class="p">,</span> <span class="n">d2</span><span class="o">::</span><span class="n">UncertainDataset</span><span class="p">,</span>
+    <span class="n">n</span><span class="o">::</span><span class="kt">Int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span> <span class="n">μ0</span><span class="o">::</span><span class="kt">Real</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EqualVarianceTTest</span>
+</pre></div>
+</td></tr></table>
+
+<p>Consider two samples <code class="codehilite"><span class="n">s1</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"></span></code> and <code class="codehilite"><span class="n">s2</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"></span></code>, each consisting of <code class="codehilite"><span class="n">n</span></code> random draws from the distributions furnishing the uncertain values <code class="codehilite"><span class="n">d1</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"></span></code> and <code class="codehilite"><span class="n">d2</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"></span></code>, respectively. Gather all <code class="codehilite"><span class="n">s1</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"></span></code> in a pooled sample <code class="codehilite"><span class="n">S1</span></code>, and all <code class="codehilite"><span class="n">s2</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"></span></code> in a pooled sample <code class="codehilite"><span class="n">S2</span></code>.</p>
+<p>Perform a two-sample t-test of the null hypothesis that <code class="codehilite"><span class="n">S1</span></code> and <code class="codehilite"><span class="n">S2</span></code> come from distributions with equal means and variances against the alternative hypothesis that the distributions have different means but equal variances.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/57b2abe78a67964d7d5697d4b56fdd5600585ed9/src/statistics/hypothesis_tests/t_tests.jl#L56-L68' class='documenter-source'>source</a><br></p>
+<p><a id='Element-wise-test-1'></a></p>
+<h3 id="element-wise_test">Element-wise test<a class="headerlink" href="#element-wise_test" title="Permanent link">&para;</a></h3>
+<p><a id='UncertainData.UncertainStatistics.EqualVarianceTTestElementWise' href='#UncertainData.UncertainStatistics.EqualVarianceTTestElementWise'>#</a>
+<strong><code class="codehilite"><span class="n">UncertainData</span><span class="p">.</span><span class="n">UncertainStatistics</span><span class="p">.</span><span class="n">EqualVarianceTTestElementWise</span></code></strong> &mdash; <em>Function</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">EqualVarianceTTestElementWise</span><span class="p">(</span><span class="n">d1</span><span class="o">::</span><span class="n">UncertainDataset</span><span class="p">,</span> <span class="n">d2</span><span class="o">::</span><span class="n">UncertainDataset</span><span class="p">,</span>
+    <span class="n">n</span><span class="o">::</span><span class="kt">Int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span> <span class="n">μ0</span><span class="o">::</span><span class="kt">Real</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Vector</span><span class="p">{</span><span class="n">EqualVarianceTTest</span><span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>Consider two samples <code class="codehilite"><span class="n">s1</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"></span></code> and <code class="codehilite"><span class="n">s2</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"></span></code>, each consisting of <code class="codehilite"><span class="n">n</span></code> random draws from the distributions furnishing the uncertain values <code class="codehilite"><span class="n">d1</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"></span></code> and <code class="codehilite"><span class="n">d2</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"></span></code>, respectively. This function performs an elementwise <code class="codehilite"><span class="n">EqualVarianceTTest</span></code> on the pairs <code class="codehilite"><span class="p">(</span><span class="n">s1</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">s2</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">)</span><span class="w"></span></code>. Specifically:</p>
+<p>Performs an pairwise two-sample t-test of the null hypothesis that <code class="codehilite"><span class="n">s1</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"></span></code> and <code class="codehilite"><span class="n">s2</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"></span></code> come from distributions with equal means and variances against the alternative hypothesis that the distributions have different means but equal variances.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/57b2abe78a67964d7d5697d4b56fdd5600585ed9/src/statistics/hypothesis_tests/t_tests.jl#L81-L94' class='documenter-source'>source</a><br></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../one_sample_t_test/" title="One sample t-test" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                One sample t-test
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../unequal_variance_t_test/" title="Unequal variance t-test" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Unequal variance t-test
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.30f6b8b1.js"></script>
+      
+      <script>app.initialize({version:"0.17.5",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+      
+        <script src="../../../assets/mathjaxhelper.js"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>
