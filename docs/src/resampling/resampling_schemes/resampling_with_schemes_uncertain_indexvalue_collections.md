@@ -38,3 +38,15 @@ resample(::AbstractUncertainIndexValueDataset, ::BinnedResampling)
 ```@docs
 resample(x::AbstractUncertainIndexValueDataset, resampling::BinnedMeanResampling)
 ```
+
+## BinnedWeightedResampling
+
+```@docs
+resample(::AbstractUncertainIndexValueDataset, ::BinnedWeightedResampling)
+```
+
+## BinnedMeanWeightedResampling
+
+```@docs
+resample(x::AbstractUncertainIndexValueDataset, resampling::BinnedMeanWeightedResampling)
+```

@@ -1,13 +1,30 @@
 
 # Changelog
 
+## Uncertaindata.jl v0.8.2
+
+### New features
+
+- Added `resample` method for `BinnedWeightedResampling` scheme.
+- Added `AbstractBinnedResampling` for binned resamplings.
+- Added `AbstractBinnedUncertainValueResampling` abstract type for binnings where 
+    the values in each bin is represented by an uncertain value. `BinnedResampling` 
+    and `BinnedWeightedResampling` are subtypes `AbstractBinnedUncertainValueResampling`.
+- Added `AbstractBinnedSummarisedResampling` abstract type for binnings where the values 
+    in each bin are summarised to a single value. `BinnedMeanResampling` and
+     `BinnedMeanWeightedResampling` are subtypes `AbstractBinnedResampling`.
+
+### Improvements
+
+- Added more tests for binned resampling schemes.
+
 ## Uncertaindata.jl v0.8.1
 
-## New features
+### New features
 
 - Added `UncertainValueDataset`, `UncertainIndexDataset`, and `UncertainIndexValueDataset` constructors for vectors of numbers (they get converted to `CertainValue`s). 
 
-## Bug fixes
+### Bug fixes
 
 - `rand(x::CertainValue, n::Int)` now returns a length-`n` array with `x` repeated `n` times.
 
