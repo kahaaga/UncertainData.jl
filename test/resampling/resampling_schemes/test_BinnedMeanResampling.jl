@@ -3,3 +3,4 @@ grid = 0:10:500
 resampling = BinnedMeanResampling(grid, n_draws)
 
 @test resampling isa BinnedMeanResampling
+@test typeof(resampling) <: AbstractBinnedSummarisedResampling

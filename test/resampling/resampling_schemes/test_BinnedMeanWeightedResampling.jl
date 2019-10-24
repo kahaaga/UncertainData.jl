@@ -4,4 +4,4 @@ wts = rand(10)
 resampling = BinnedMeanWeightedResampling(grid, wts, n_draws)
 
 @test resampling isa BinnedMeanWeightedResampling
-@test resampling isa AbstractBinnedSummarisedResampling
+@test typeof(resampling) <: AbstractBinnedSummarisedResampling

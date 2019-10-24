@@ -6,8 +6,10 @@
 ### New features
 
 - Added `resample` method for `BinnedWeightedResampling` scheme.
-- Added `AbstractBinnedResampling` abstract type for binnings where the values in each 
-    bin is represented by an uncertain value. `BinnedResampling` and `BinnedWeightedResampling` are subtypes `AbstractBinnedResampling`.
+- Added `AbstractBinnedResampling` for binned resamplings.
+- Added `AbstractBinnedUncertainValueResampling` abstract type for binnings where 
+    the values in each bin is represented by an uncertain value. `BinnedResampling` 
+    and `BinnedWeightedResampling` are subtypes `AbstractBinnedUncertainValueResampling`.
 - Added `AbstractBinnedSummarisedResampling` abstract type for binnings where the values 
     in each bin are summarised to a single value. `BinnedMeanResampling` and
      `BinnedMeanWeightedResampling` are subtypes `AbstractBinnedResampling`.
