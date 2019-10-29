@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/kahaaga/UncertainData.jl.svg?branch=master)](https://travis-ci.com/kahaaga/UncertainData.jl)
+|  [![Build Status](https://travis-ci.com/kahaaga/UncertainData.jl.svg?branch=master)](https://travis-ci.com/kahaaga/UncertainData.jl) | [![DOI](https://zenodo.org/badge/160108056.svg)](https://zenodo.org/badge/latestdoi/160108056) |
 
 # UncertainData.jl
 
