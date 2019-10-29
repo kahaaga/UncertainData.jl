@@ -100,6 +100,7 @@ include("resampling/uncertain_datasets/test_resampling_abstractuncertainvaluedat
 ############################################
 # Interpolation
 #############################################
+include("generic_interpolation/test_findall_nan_chunks.jl")
 include("resampling/uncertain_datasets/test_interpolation.jl")
 
 #############################
