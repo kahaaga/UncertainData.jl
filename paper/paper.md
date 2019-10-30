@@ -28,7 +28,7 @@ distributed values, ``UncertainData.jl`` uses a resampling approach to deal with
 uncertainties in calculations. This allows working with and combining any type of uncertain 
 value for which a resampling method can be defined. Examples of currently supported 
 uncertain values are: theoretical distributions, e.g., those supported by 
-[Distributions.jl](https://github.com/JuliaStats/Distributions.jl) [@Besan:2019, @Lin:2019]; 
+[Distributions.jl](https://github.com/JuliaStats/Distributions.jl) [@Besan:2019; @Lin:2019]; 
 values whose states are represented by a finite set of values with weighted probabilities; 
 values represented by empirical distributions; and more.
 
