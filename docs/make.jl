@@ -96,7 +96,9 @@ PAGES = [
     
     "changelog.md",
 
-    "publications.md"
+    "publications.md",
+
+    "citing.md"
 ]
 
 makedocs(
