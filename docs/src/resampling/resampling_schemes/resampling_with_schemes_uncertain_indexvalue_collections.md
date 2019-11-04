@@ -56,5 +56,5 @@ resample(x::AbstractUncertainIndexValueDataset, resampling::BinnedMeanWeightedRe
 ## InterpolateAndBin resampling
 
 ```@docs
-resample(::AbstractUncertainIndexValueDataset, ::InterpolateBin{Linear})
+resample(::AbstractUncertainIndexValueDataset, ::InterpolateAndBin{Linear})
 ```

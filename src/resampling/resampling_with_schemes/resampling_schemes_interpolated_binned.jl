@@ -30,7 +30,7 @@ udata = UncertainIndexValueDataset(utime, uy)
 # then gather the points falling in each of the coarser bins and summarise 
 # each bin using the mean of the points in each bin.
 left_bin_edges = 0:10:npts*5
-r = InterpolateBin(mean, left_bin_edges, Linear(), 0:0.1:1000, Flat(OnGrid()))
+r = InterpolateAndBin(mean, left_bin_edges, Linear(), 0:0.1:1000, Flat(OnGrid()))
 
 # The binned time axis:
 time_binned = left_bin_edges[1:end-1] .+ step(left_bin_edges)/2

@@ -6,6 +6,7 @@ using Distributions
 using KernelDensity
 using StatsBase
 using Measurements
+using Interpolations
 
 PAGES = [
     "index.md",

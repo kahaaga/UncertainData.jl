@@ -1,6 +1,8 @@
 using Reexport
 
 @reexport module Resampling
+    import Interpolations
+    import Interpolations: Linear, BoundaryCondition
 
     import ..UVAL_COLLECTION_TYPES
     import ..UncertainDatasets: 

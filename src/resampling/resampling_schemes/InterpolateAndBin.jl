@@ -1,8 +1,6 @@
-import Interpolations
-import Interpolations: Linear, BoundaryCondition
 
 """
-    InterpolateAndBin{L}(f::Function, left_bin_edges, intp::L, intp_grid
+    InterpolateAndBin{L}(f::Function, left_bin_edges, intp::L, intp_grid,
         extrapolation_bc::Union{<:Real, Interpolations.BoundaryCondition})
 
 Indicates that a dataset consisting of both indices and values should first
@@ -35,7 +33,7 @@ f = mean
 left_bin_edges = 0:50:1000
 
 r = InterpolateBin(f, left_bin_edges, intp, intp_grid, extrapolation_bc)
-````
+```
 """
 struct InterpolateAndBin{L}
     f::Function
