@@ -1,4 +1,5 @@
-import Interpolations.BoundaryCondition
+import Interpolations
+import Interpolations: Linear, BoundaryCondition
 
 """
     InterpolateAndBin{L}(f::Function, left_bin_edges, intp::L, intp_grid

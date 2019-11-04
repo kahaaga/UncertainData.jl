@@ -1,5 +1,5 @@
 """
-    resample(udata::AbstractUncertainIndexValueDataset, regularization_scheme::InterpolateBin{Linear})
+    resample(udata::AbstractUncertainIndexValueDataset, regularization_scheme::InterpolateAndBin{Linear})
 
 Draw a single realisation of `udata` and interpolate-and-bin the data according to the 
 provided regularization scheme. Assumes points in `udata` are independent and sorts the draw
@@ -51,7 +51,7 @@ plot!(udata, c = :black, lw = 1, ms = 2, marker = stroke(0.1, :black), [0.05, 0.
 vline!(left_bin_edges, c = :black, α = 0.3, lw = 0.3, label = "")
 ```
 """
-function resample(udata::AbstractUncertainIndexValueDataset, regularization_scheme::InterpolateBin{Linear})
+function resample(udata::AbstractUncertainIndexValueDataset, regularization_scheme::InterpolateAndBin{Linear})
     inds, vals = resample(udata)
     
     sortidxs = sortperm(inds)
