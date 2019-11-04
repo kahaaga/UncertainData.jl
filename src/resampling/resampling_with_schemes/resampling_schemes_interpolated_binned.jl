@@ -3,7 +3,7 @@
 
 Draw a single realisation of `udata` and interpolate-and-bin the data according to the 
 provided regularization scheme. Assumes points in `udata` are independent and sorts the draw
-according to the index values before interpolating. See also [`InterpolateBin`](@ref).
+according to the index values before interpolating. See also [`InterpolateAndBin`](@ref).
 
 ## Example 
 
