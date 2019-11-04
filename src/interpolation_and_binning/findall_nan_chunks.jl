@@ -8,7 +8,7 @@ See also: [`findall_nan_chunks!`](@ref)
 
 ## Examples 
 
-```jldoctest
+```julia
 x = [NaN, NaN, 2.3, NaN, 5.6, NaN, NaN, NaN]
 findall_nan_chunks(x)
 ```
@@ -52,7 +52,6 @@ of those index tuples, using a preallocated boolean vector `v`, where
 `length(x) == length(v)`, to keep track of `NaN` positions.
 
 See also: [`findall_nan_chunks`](@ref)
-
 
 ## Example 
 
