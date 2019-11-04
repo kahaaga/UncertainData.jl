@@ -78,14 +78,12 @@ pages:
       - Resampling uncertain values: resampling/resampling_uncertain_values.md
     - Uncertain value collections: 
       - Resampling uncertain collections: resampling/resampling_uncertain_datasets.md
-      - Sampling schemes: 
-        - List of schemes: resampling/resampling_schemes/resampling_schemes_uncertain_value_collections.md
-        - Applying resampling schemes: resampling/resampling_schemes/resampling_with_schemes_uncertain_value_collections.md
+      - List of resampling schemes: resampling/resampling_schemes/resampling_schemes_uncertain_value_collections.md
+      - resample: resampling/resampling_schemes/resampling_with_schemes_uncertain_value_collections.md
     - Uncertain index-value collections: 
       - Resampling index-value collections: resampling/resampling_uncertain_indexvalue_datasets.md
-      - Sampling schemes: 
-        - List of schemes: resampling/resampling_schemes/resampling_schemes_uncertain_indexvalue_collections.md
-        - Applying resampling schemes: resampling/resampling_schemes/resampling_with_schemes_uncertain_indexvalue_collections.md
+      - List of resampling schemes: resampling/resampling_schemes/resampling_schemes_uncertain_indexvalue_collections.md
+      - resample: resampling/resampling_schemes/resampling_with_schemes_uncertain_indexvalue_collections.md
       - Sequential resampling: 
         - Overview: resampling/sequential/resampling_uncertaindatasets_sequential.md
         - Strictly increasing: resampling/sequential/strictly_increasing.md
