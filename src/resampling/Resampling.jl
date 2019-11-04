@@ -23,7 +23,8 @@ using Reexport
     include("resampling_schemes/SequentialResampling.jl")
     include("resampling_schemes/SequentialInterpolatedResampling.jl")
     include("resampling_schemes/binned_resamplings.jl")
-
+    include("resampling_schemes/RandomSequences.jl")
+    
     # Extend some methods to allow easier resampling.
     include("resampling_with_schemes/constrain_with_schemes.jl")
 
