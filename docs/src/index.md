@@ -80,3 +80,9 @@ may be a better (and faster) choice if your data satisfies the requirements for 
 
 If you have questions, or a good idea for new functionality that could be useful to have in 
 the package, please submit an issue, or even better - a pull request.
+
+## Citing
+
+If you use UncertainData.jl for any of your projects or scientific publications, please cite [this small Journal of Open Source Software (JOSS) publication](https://joss.theoj.org/papers/10.21105/joss.01666) as follows
+
+> Haaga, (2019). UncertainData.jl: a Julia package for working with measurements and datasets with uncertainties. Journal of Open Source Software, 4(43), 1666, https://doi.org/10.21105/joss.01666

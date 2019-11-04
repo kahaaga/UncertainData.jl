@@ -52,3 +52,11 @@ BinnedMeanResampling
 ```@docs
 BinnedMeanWeightedResampling
 ```
+
+## Interpolated-and-binned resampling
+
+### InterpolateAndBin
+
+```@docs
+InterpolateAndBin
+```

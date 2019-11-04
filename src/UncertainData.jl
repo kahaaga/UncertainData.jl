@@ -40,7 +40,7 @@ include("uncertain_datasets/UncertainDatasets.jl")
 include("sampling_constraints/SamplingConstraints.jl")
 
 # Interpolation and interpolation grids 
-include("interpolation/InterpolationsAndGrids.jl")
+include("interpolation_and_binning/InterpolationsAndGrids.jl")
 
 # Resampling
 include("resampling/Resampling.jl")

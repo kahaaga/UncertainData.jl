@@ -46,6 +46,7 @@ include("resampling/resampling_schemes/test_ConstrainedIndexValueResampling.jl")
 include("resampling/resampling_schemes/test_ConstrainedValueResampling.jl")
 include("resampling/resampling_schemes/test_SequentialResampling.jl")
 include("resampling/resampling_schemes/test_SequentialInterpolatedResampling.jl")
+include("resampling/resampling_schemes/test_RandomSequences.jl")
 
 # Define an array of uncertain values `uvals` that we can construct datasets from.
 include("resampling/define_uncertain_values.jl")
@@ -98,9 +99,12 @@ include("resampling/uncertain_datasets/test_resampling_abstractuncertainvaluedat
 
 
 ############################################
-# Interpolation
+# Interpolation and binning
 #############################################
+include("generic_interpolation/test_findall_nan_chunks.jl")
+include("generic_interpolation/test_interpolate_nans.jl")
 include("resampling/uncertain_datasets/test_interpolation.jl")
+include("binning/test_binning.jl")
 
 #############################
 # Mathematics
