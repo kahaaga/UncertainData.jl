@@ -26,6 +26,14 @@ x = [2.3, 5.6, NaN, NaN, NaN]
 fs = findall_nan_chunks(x)
 fs[1] == (3, 5)
 
+x  = [NaN, 1.0, 2.0, NaN, NaN, 2.3, NaN, 5.6, 8.7, NaN]
+fc = findall_nan_chunks(x)
+@test fc[1] == (1, 1)
+@test fc[2] == (4, 5)
+@test fc[3] == (7, 7)
+@test fc[4] == (10, 10)
+@test length(fc) == 4
+
 # The number of NaNs in the ranges matches the total number of NaNs 
 x = rand(10000)
 x[rand(1:1000, 1000)] .= NaN
