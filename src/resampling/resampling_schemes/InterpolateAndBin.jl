@@ -44,3 +44,5 @@ struct InterpolateAndBin{L}
     intp_grid
     extrapolation_bc::Union{<:Real, Interpolations.BoundaryCondition}
 end
+
+export InterpolateAndBin
