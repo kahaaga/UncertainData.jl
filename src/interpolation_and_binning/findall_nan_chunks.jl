@@ -9,12 +9,8 @@ See also: [`findall_nan_chunks!`](@ref)
 ## Examples 
 
 ```jldoctest
-julia> x = [NaN, NaN, 2.3, NaN, 5.6, NaN, NaN, NaN]
-julia> findall_nan_chunks(x)
-3-element Array{Tuple{Int64,Int64},1}:
- (1, 2)
- (4, 4)
- (6, 8)
+x = [NaN, NaN, 2.3, NaN, 5.6, NaN, NaN, NaN]
+findall_nan_chunks(x)
 ```
 """
 function findall_nan_chunks(x)
@@ -25,7 +21,7 @@ function findall_nan_chunks(x)
     nan_chunks = Vector{Tuple{Int, Int}}(undef, 0)
     
     i = 1
-    @inbounds while i < N
+    @inbounds while i <= N
         if x_isnans[i] == true
             # Now we know that the Nan range starts at position i           
             j = i
@@ -60,14 +56,10 @@ See also: [`findall_nan_chunks`](@ref)
 
 ## Example 
 
-```jldoctest
-julia> x = [NaN, NaN, 2.3, NaN, 5.6, NaN, NaN, NaN]
-julia> v = zeros(Bool, length(x))
-julia> findall_nan_chunks!(v, x)
-3-element Array{Tuple{Int64,Int64},1}:
- (1, 2)
- (4, 4)
- (6, 8)
+```julia
+x = [NaN, NaN, 2.3, NaN, 5.6, NaN, NaN, NaN]
+v = zeros(Bool, length(x))
+findall_nan_chunks!(v, x)
 ```
 """
 function findall_nan_chunks!(v::AbstractVector{Bool}, x)
@@ -79,7 +71,7 @@ function findall_nan_chunks!(v::AbstractVector{Bool}, x)
     i = 1
     N = length(x)
 
-    @inbounds while i < N
+    @inbounds while i <= N
         if v[i] == true
             # Now we know that the Nan range starts at position i           
             j = i
