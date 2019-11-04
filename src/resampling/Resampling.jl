@@ -23,8 +23,9 @@ using Reexport
     include("resampling_schemes/SequentialResampling.jl")
     include("resampling_schemes/SequentialInterpolatedResampling.jl")
     include("resampling_schemes/binned_resamplings.jl")
+    include("resampling_schemes/InterpolateAndBin.jl")
     include("resampling_schemes/RandomSequences.jl")
-    
+
     # Extend some methods to allow easier resampling.
     include("resampling_with_schemes/constrain_with_schemes.jl")
 
@@ -97,6 +98,7 @@ using Reexport
     # Resampling with schemes 
     ################################
     include("resampling_with_schemes/resampling_schemes_binned.jl")
+    include("resampling_with_schemes/resampling_schemes_interpolated_binned.jl")
     include("resampling_with_schemes/resampling_schemes_constrained.jl")
     include("resampling_with_schemes/resampling_schemes_sequential.jl")
 
