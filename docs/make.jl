@@ -6,6 +6,7 @@ using Distributions
 using KernelDensity
 using StatsBase
 using Measurements
+using Interpolations
 
 PAGES = [
     "index.md",
@@ -96,7 +97,9 @@ PAGES = [
     
     "changelog.md",
 
-    "publications.md"
+    "publications.md",
+
+    "citing.md"
 ]
 
 makedocs(

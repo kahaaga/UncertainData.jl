@@ -1,6 +1,22 @@
 
 # Changelog
 
+## Uncertaindata.jl v0.9.0
+
+### New features
+
+- Added `interpolate_and_bin` function.
+- Added `InterpolateAndBin` type.
+- Added `resample(inds, vals, resampling::InterpolateAndBin{Linear})` method, which interpolates and bins `inds` and `vals` onto an interpolation grid, then bins and summarises the bins. Returns the binned values.
+- Added `resample(x::AbstractUncertainIndexValueDataset, resampling::InterpolateAndBin{Linear})` method. 
+    Draws a single realisation of both the indices and values of `x` and orders them sequentially according
+    to the indices (assuming independent points). Then, interpolate, bin and summarise bins.
+- Added `bin` and `bin!` functions.
+- Added `bin_mean` function.
+- Added `fill_nans`, `fill_nans!` and `interpolate_nans` functions for dealing with data containing `NaN`s.
+- Added `findall_nan_chunks` function for identifying consecutive `NaN`s in a dataset.
+- Added `RandomSequences` resampling scheme.
+
 ## Uncertaindata.jl v0.8.2
 
 ### New features

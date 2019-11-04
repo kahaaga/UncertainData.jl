@@ -50,3 +50,11 @@ resample(::AbstractUncertainIndexValueDataset, ::BinnedWeightedResampling)
 ```@docs
 resample(x::AbstractUncertainIndexValueDataset, resampling::BinnedMeanWeightedResampling)
 ```
+
+# Interpolated-and-binned resampling
+
+## InterpolateAndBin resampling
+
+```@docs
+resample(::AbstractUncertainIndexValueDataset, ::InterpolateAndBin{Linear})
+```

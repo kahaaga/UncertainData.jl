@@ -51,7 +51,7 @@ function resample(x::AbstractUncertainIndexValueDataset, resampling::BinnedMeanW
     # of the values falling in that bin.
     n_bins = length(resampling.left_bin_edges) - 1
     bin_sums = fill(0.0, n_bins)
-    bin_sums_n_entries = similar(bin_sums)
+    bin_sums_n_entries = fill(0.0, n_bins)
 
     # Pre-allocate some arrays into which we resample the values of the 
     # index and value populations.
@@ -139,7 +139,7 @@ function resample(x::AbstractUncertainIndexValueDataset, resampling::BinnedMeanR
     # of the values falling in that bin.
     n_bins = length(resampling.left_bin_edges) - 1
     bin_sums = fill(0.0, n_bins)
-    bin_sums_n_entries = similar(bin_sums)
+    bin_sums_n_entries = fill(0.0, n_bins)
 
     # Pre-allocate some arrays into which we resample the values of the 
     # index and value populations.
