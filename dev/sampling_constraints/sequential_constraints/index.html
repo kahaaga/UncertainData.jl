@@ -765,28 +765,9 @@
           
 
 
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3-2" type="checkbox" id="nav-6-3-2">
-    
-    <label class="md-nav__link" for="nav-6-3-2">
-      Sampling schemes
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-6-3-2">
-        Sampling schemes
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
   <li class="md-nav__item">
-    <a href="../../resampling/resampling_schemes/resampling_schemes_uncertain_value_collections/" title="List of schemes" class="md-nav__link">
-      List of schemes
+    <a href="../../resampling/resampling_schemes/resampling_schemes_uncertain_value_collections/" title="List of resampling schemes" class="md-nav__link">
+      List of resampling schemes
     </a>
   </li>
 
@@ -797,14 +778,9 @@
 
 
   <li class="md-nav__item">
-    <a href="../../resampling/resampling_schemes/resampling_with_schemes_uncertain_value_collections/" title="Applying resampling schemes" class="md-nav__link">
-      Applying resampling schemes
+    <a href="../../resampling/resampling_schemes/resampling_with_schemes_uncertain_value_collections/" title="resample" class="md-nav__link">
+      resample
     </a>
-  </li>
-
-        
-      </ul>
-    </nav>
   </li>
 
         
@@ -849,28 +825,9 @@
           
 
 
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4-2" type="checkbox" id="nav-6-4-2">
-    
-    <label class="md-nav__link" for="nav-6-4-2">
-      Sampling schemes
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-6-4-2">
-        Sampling schemes
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
   <li class="md-nav__item">
-    <a href="../../resampling/resampling_schemes/resampling_schemes_uncertain_indexvalue_collections/" title="List of schemes" class="md-nav__link">
-      List of schemes
+    <a href="../../resampling/resampling_schemes/resampling_schemes_uncertain_indexvalue_collections/" title="List of resampling schemes" class="md-nav__link">
+      List of resampling schemes
     </a>
   </li>
 
@@ -881,14 +838,9 @@
 
 
   <li class="md-nav__item">
-    <a href="../../resampling/resampling_schemes/resampling_with_schemes_uncertain_indexvalue_collections/" title="Applying resampling schemes" class="md-nav__link">
-      Applying resampling schemes
+    <a href="../../resampling/resampling_schemes/resampling_with_schemes_uncertain_indexvalue_collections/" title="resample" class="md-nav__link">
+      resample
     </a>
-  </li>
-
-        
-      </ul>
-    </nav>
   </li>
 
         
@@ -899,13 +851,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4-3" type="checkbox" id="nav-6-4-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4-4" type="checkbox" id="nav-6-4-4">
     
-    <label class="md-nav__link" for="nav-6-4-3">
+    <label class="md-nav__link" for="nav-6-4-4">
       Sequential resampling
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-6-4-3">
+      <label class="md-nav__title" for="nav-6-4-4">
         Sequential resampling
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -971,13 +923,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4-4" type="checkbox" id="nav-6-4-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4-5" type="checkbox" id="nav-6-4-5">
     
-    <label class="md-nav__link" for="nav-6-4-4">
+    <label class="md-nav__link" for="nav-6-4-5">
       Interpolation
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-6-4-4">
+      <label class="md-nav__title" for="nav-6-4-5">
         Interpolation
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1430,6 +1382,18 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../citing/" title="Citing" class="md-nav__link">
+      Citing
+    </a>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -1494,7 +1458,7 @@
 
 <p>A sampling constraint indicating element-wise sampling of the uncertain values in a dataset, such that the values of the draw are strictly increasing in magnitude.</p>
 <p>Typically used when there are known, physical constraints on the measurements. For example, geochemical measurements of sediments at different depths of a sediment core  are taken at physically separate depths in the core. Thus, the order of the indices cannot be flipped, and must be strictly decreasing/increasing. </p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/87aa68e8c7bb43d2b523efedcedfef1c30aa58fc/src/sampling_constraints/constraint_definitions.jl#L177-L188' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/7cc1fdeaa1c2f1f576d9775e8ed6a72784d103aa/src/sampling_constraints/constraint_definitions.jl#L177-L188' class='documenter-source'>source</a><br></p>
 <p><a id='Decreasing-1'></a></p>
 <h4 id="decreasing">Decreasing<a class="headerlink" href="#decreasing" title="Permanent link">&para;</a></h4>
 <p><a id='UncertainData.SamplingConstraints.StrictlyDecreasing' href='#UncertainData.SamplingConstraints.StrictlyDecreasing'>#</a>
@@ -1505,7 +1469,7 @@
 
 <p>A sampling constraint indicating element-wise sampling of the uncertain values in a dataset, such that the values of the draw are strictly decreasing in magnitude.</p>
 <p>Typically used when there are known, physical constraints on the measurements. For example, geochemical measurements of sediments at different depths of a sediment core  are taken at physically separate depths in the core. Thus, the order of the indices cannot be flipped, and must be strictly decreasing/increasing. </p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/87aa68e8c7bb43d2b523efedcedfef1c30aa58fc/src/sampling_constraints/constraint_definitions.jl#L192-L203' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/7cc1fdeaa1c2f1f576d9775e8ed6a72784d103aa/src/sampling_constraints/constraint_definitions.jl#L192-L203' class='documenter-source'>source</a><br></p>
                 
                   
                 
