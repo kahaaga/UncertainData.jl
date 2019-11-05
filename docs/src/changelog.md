@@ -1,6 +1,12 @@
 
 # Changelog
 
+## Uncertaindata.jl v0.9.1
+
+### Bug fixes
+
+- Missing import of `interpolate_and_bin` between sub-packages fixed.
+
 ## Uncertaindata.jl v0.9.0
 
 ### New features

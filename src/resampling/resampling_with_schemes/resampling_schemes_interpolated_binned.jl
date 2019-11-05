@@ -1,3 +1,5 @@
+import ..InterpolationAndGrids: interpolate_and_bin
+
 """
     resample(udata::AbstractUncertainIndexValueDataset, regularization_scheme::InterpolateAndBin{Linear})
 
