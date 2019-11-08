@@ -64,4 +64,6 @@ include("example_datasets/example_uncertainindexvalue_dataset.jl")
 
 export UncertainScalarBinomialDistributed
 
+include("sensitivity_testing/SensitivityTests.jl")
+
 end # module
