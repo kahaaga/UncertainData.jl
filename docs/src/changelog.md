@@ -1,7 +1,13 @@
 
 # Changelog
 
-## Uncertaindata.jl v0.9.1
+## UncertainData.jl v0.9.2
+
+### New features
+
+- Added `SensitivityTests` module defining the abstract type `SensitivityTest`.
+
+## UncertainData.jl v0.9.1
 
 ### Bug fixes
 
