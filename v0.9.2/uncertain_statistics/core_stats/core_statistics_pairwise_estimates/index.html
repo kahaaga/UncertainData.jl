@@ -1,0 +1,1970 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Datasets and values with associated uncertainties.">
+      
+      
+      
+        <meta name="author" content="Kristian Agasøster Haaga">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.5, mkdocs-material-2.9.4">
+    
+    
+      
+        <title>Pairwise estimates on values - UncertainData.jl</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.451f80e5.css">
+      
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+      <link rel="stylesheet" href="../../../assets/Documenter.css">
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#pairwise_estimates_of_statistics" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../.." title="UncertainData.jl" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                UncertainData.jl
+              </span>
+              <span class="md-header-nav__topic">
+                Pairwise estimates on values
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/kahaaga/UncertainData.jl/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../.." title="UncertainData.jl" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    UncertainData.jl
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/kahaaga/UncertainData.jl/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Package overview" class="md-nav__link">
+      Package overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../propagation_of_errors/propagation_of_errors/" title="Propagation of errors" class="md-nav__link">
+      Propagation of errors
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Uncertain values
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Uncertain values
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/uncertainvalues_overview/" title="Types of uncertain values" class="md-nav__link">
+      Types of uncertain values
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+    
+    <label class="md-nav__link" for="nav-3-2">
+      List of representations
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        List of representations
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/uncertainvalues_kde/" title="Kernel density estimates (KDE)" class="md-nav__link">
+      Kernel density estimates (KDE)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/uncertainvalues_theoreticaldistributions/" title="Theoretical distributions with known parameters" class="md-nav__link">
+      Theoretical distributions with known parameters
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/uncertainvalues_fitted/" title="Theoretical distributions with fitted parameters" class="md-nav__link">
+      Theoretical distributions with fitted parameters
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/uncertainvalues_populations/" title="Weighted (nested) populations" class="md-nav__link">
+      Weighted (nested) populations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/uncertainvalues_certainvalue/" title="Values without uncertainty" class="md-nav__link">
+      Values without uncertainty
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/uncertainvalues_Measurements/" title="Measurements" class="md-nav__link">
+      Measurements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/merging/" title="Combining/merging" class="md-nav__link">
+      Combining/merging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/uncertainvalues_examples/" title="Extended examples" class="md-nav__link">
+      Extended examples
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Uncertain datasets
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Uncertain datasets
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_datasets/uncertain_datasets_overview/" title="Types of uncertain datasets" class="md-nav__link">
+      Types of uncertain datasets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_datasets/uncertain_index_dataset/" title="Uncertain index dataset" class="md-nav__link">
+      Uncertain index dataset
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_datasets/uncertain_value_dataset/" title="Uncertain value dataset" class="md-nav__link">
+      Uncertain value dataset
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_datasets/uncertain_indexvalue_dataset/" title="Uncertain index-value dataset" class="md-nav__link">
+      Uncertain index-value dataset
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_datasets/uncertain_dataset/" title="Generic uncertain dataset" class="md-nav__link">
+      Generic uncertain dataset
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Sampling constraints
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Sampling constraints
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../sampling_constraints/available_constraints/" title="Regular constraints" class="md-nav__link">
+      Regular constraints
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+    
+    <label class="md-nav__link" for="nav-5-2">
+      Sequential constraints
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        Sequential constraints
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../sampling_constraints/sequential_constraints/" title="List of sequential constraints" class="md-nav__link">
+      List of sequential constraints
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../sampling_constraints/ordered_sequence_exists/" title="Existence of sequences" class="md-nav__link">
+      Existence of sequences
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Examples
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../sampling_constraints/constrain_uncertain_values/" title="Constraining uncertain values" class="md-nav__link">
+      Constraining uncertain values
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Resampling
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Resampling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+    
+    <label class="md-nav__link" for="nav-6-2">
+      Uncertain values
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-2">
+        Uncertain values
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_uncertain_values/" title="Resampling uncertain values" class="md-nav__link">
+      Resampling uncertain values
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      Uncertain value collections
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        Uncertain value collections
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_uncertain_datasets/" title="Resampling uncertain collections" class="md-nav__link">
+      Resampling uncertain collections
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_schemes/resampling_schemes_uncertain_value_collections/" title="List of resampling schemes" class="md-nav__link">
+      List of resampling schemes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_schemes/resampling_with_schemes_uncertain_value_collections/" title="resample" class="md-nav__link">
+      resample
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4">
+    
+    <label class="md-nav__link" for="nav-6-4">
+      Uncertain index-value collections
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-4">
+        Uncertain index-value collections
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_uncertain_indexvalue_datasets/" title="Resampling index-value collections" class="md-nav__link">
+      Resampling index-value collections
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_schemes/resampling_schemes_uncertain_indexvalue_collections/" title="List of resampling schemes" class="md-nav__link">
+      List of resampling schemes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_schemes/resampling_with_schemes_uncertain_indexvalue_collections/" title="resample" class="md-nav__link">
+      resample
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4-4" type="checkbox" id="nav-6-4-4">
+    
+    <label class="md-nav__link" for="nav-6-4-4">
+      Sequential resampling
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-4-4">
+        Sequential resampling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/sequential/resampling_uncertaindatasets_sequential/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/sequential/strictly_increasing/" title="Strictly increasing" class="md-nav__link">
+      Strictly increasing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/sequential/strictly_decreasing/" title="Strictly decreasing" class="md-nav__link">
+      Strictly decreasing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/sequential/resampling_indexvalue_sequential/" title="Index-value datasets" class="md-nav__link">
+      Index-value datasets
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4-5" type="checkbox" id="nav-6-4-5">
+    
+    <label class="md-nav__link" for="nav-6-4-5">
+      Interpolation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-4-5">
+        Interpolation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/interpolation/interpolation/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/interpolation/gridded/" title="Gridded interpolation" class="md-nav__link">
+      Gridded interpolation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_inplace/" title="Resampling in-place" class="md-nav__link">
+      Resampling in-place
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Mathematics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Mathematics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../mathematics/elementary_operations/" title="Elementary operations" class="md-nav__link">
+      Elementary operations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../mathematics/trig_functions/" title="Trigonometric functions" class="md-nav__link">
+      Trigonometric functions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
+    
+    <label class="md-nav__link" for="nav-8">
+      Statistics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Statistics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-1" type="checkbox" id="nav-8-1" checked>
+    
+    <label class="md-nav__link" for="nav-8-1">
+      Basics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-1">
+        Basics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../core_statistics/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../core_statistics_point_estimates/" title="Point estimates on values" class="md-nav__link">
+      Point estimates on values
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Pairwise estimates on values
+      </label>
+    
+    <a href="./" title="Pairwise estimates on values" class="md-nav__link md-nav__link--active">
+      Pairwise estimates on values
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pairwise_estimates_of_statistics" title="Pairwise estimates of statistics" class="md-nav__link">
+    Pairwise estimates of statistics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#syntax" title="Syntax" class="md-nav__link">
+    Syntax
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" title="Methods" class="md-nav__link">
+    Methods
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#covariance" title="Covariance" class="md-nav__link">
+    Covariance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correlation_pearson" title="Correlation (Pearson)" class="md-nav__link">
+    Correlation (Pearson)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correlation_kendall" title="Correlation (Kendall)" class="md-nav__link">
+    Correlation (Kendall)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correlation_spearman" title="Correlation (Spearman)" class="md-nav__link">
+    Correlation (Spearman)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count_non-equal" title="Count non-equal" class="md-nav__link">
+    Count non-equal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count_equal" title="Count equal" class="md-nav__link">
+    Count equal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maximum_absolute_deviation" title="Maximum absolute deviation" class="md-nav__link">
+    Maximum absolute deviation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mean_absolute_deviation" title="Mean absolute deviation" class="md-nav__link">
+    Mean absolute deviation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mean_squared_deviation" title="Mean squared deviation" class="md-nav__link">
+    Mean squared deviation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peak_signal-to-noise_ratio" title="Peak signal-to-noise ratio" class="md-nav__link">
+    Peak signal-to-noise ratio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#root_mean_squared_deviation" title="Root mean squared deviation" class="md-nav__link">
+    Root mean squared deviation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#squared_l2_distance" title="Squared L2 distance" class="md-nav__link">
+    Squared L2 distance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cross_correlation" title="Cross correlation" class="md-nav__link">
+    Cross correlation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cross_covariance" title="Cross covariance" class="md-nav__link">
+    Cross covariance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generalized_kullback-leibler_divergence" title="Generalized Kullback-Leibler divergence" class="md-nav__link">
+    Generalized Kullback-Leibler divergence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kullback-leibler_divergence" title="Kullback-Leibler divergence" class="md-nav__link">
+    Kullback-Leibler divergence
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../core_statistics_datasets_single_dataset_estimates/" title="Estimates on single uncertain value collections" class="md-nav__link">
+      Estimates on single uncertain value collections
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../core_statistics_datasets_pairwise_estimates/" title="Estimates on pairs of uncertain value collections" class="md-nav__link">
+      Estimates on pairs of uncertain value collections
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2">
+    
+    <label class="md-nav__link" for="nav-8-2">
+      Hypothesis tests
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-2">
+        Hypothesis tests
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../hypothesistests/hypothesis_tests_overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../hypothesistests/one_sample_t_test/" title="One sample t-test" class="md-nav__link">
+      One sample t-test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../hypothesistests/equal_variance_t_test/" title="Equal variance t-test" class="md-nav__link">
+      Equal variance t-test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../hypothesistests/unequal_variance_t_test/" title="Unequal variance t-test" class="md-nav__link">
+      Unequal variance t-test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../hypothesistests/exact_kolmogorov_smirnov_test/" title="Exact Kolmogorov-Smirnov test" class="md-nav__link">
+      Exact Kolmogorov-Smirnov test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../hypothesistests/approximate_twosample_kolmogorov_smirnov_test/" title="Approximate two-sample Kolmogorov-Smirnov test" class="md-nav__link">
+      Approximate two-sample Kolmogorov-Smirnov test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../hypothesistests/jarque_bera_test/" title="Jarque-Bera test" class="md-nav__link">
+      Jarque-Bera test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../hypothesistests/mann_whitney_u_test/" title="Mann-Whitney u-test" class="md-nav__link">
+      Mann-Whitney u-test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../hypothesistests/anderson_darling_test/" title="Anderson-Darling test" class="md-nav__link">
+      Anderson-Darling test
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../tutorials/tutorial_overview/" title="List of tutorials" class="md-nav__link">
+      List of tutorials
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-2" type="checkbox" id="nav-9-2">
+    
+    <label class="md-nav__link" for="nav-9-2">
+      Regularising data
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-2">
+        Regularising data
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../tutorials/tutorial_transforming_data_to_regular_grid/" title="Binned resampling" class="md-nav__link">
+      Binned resampling
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../implementing_algorithms_for_uncertaindata/" title="Implementing algorithms for uncertain data" class="md-nav__link">
+      Implementing algorithms for uncertain data
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../changelog/" title="Changelog" class="md-nav__link">
+      Changelog
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../publications/" title="Publications and software" class="md-nav__link">
+      Publications and software
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../citing/" title="Citing" class="md-nav__link">
+      Citing
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pairwise_estimates_of_statistics" title="Pairwise estimates of statistics" class="md-nav__link">
+    Pairwise estimates of statistics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#syntax" title="Syntax" class="md-nav__link">
+    Syntax
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" title="Methods" class="md-nav__link">
+    Methods
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#covariance" title="Covariance" class="md-nav__link">
+    Covariance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correlation_pearson" title="Correlation (Pearson)" class="md-nav__link">
+    Correlation (Pearson)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correlation_kendall" title="Correlation (Kendall)" class="md-nav__link">
+    Correlation (Kendall)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correlation_spearman" title="Correlation (Spearman)" class="md-nav__link">
+    Correlation (Spearman)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count_non-equal" title="Count non-equal" class="md-nav__link">
+    Count non-equal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count_equal" title="Count equal" class="md-nav__link">
+    Count equal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maximum_absolute_deviation" title="Maximum absolute deviation" class="md-nav__link">
+    Maximum absolute deviation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mean_absolute_deviation" title="Mean absolute deviation" class="md-nav__link">
+    Mean absolute deviation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mean_squared_deviation" title="Mean squared deviation" class="md-nav__link">
+    Mean squared deviation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peak_signal-to-noise_ratio" title="Peak signal-to-noise ratio" class="md-nav__link">
+    Peak signal-to-noise ratio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#root_mean_squared_deviation" title="Root mean squared deviation" class="md-nav__link">
+    Root mean squared deviation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#squared_l2_distance" title="Squared L2 distance" class="md-nav__link">
+    Squared L2 distance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cross_correlation" title="Cross correlation" class="md-nav__link">
+    Cross correlation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cross_covariance" title="Cross covariance" class="md-nav__link">
+    Cross covariance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generalized_kullback-leibler_divergence" title="Generalized Kullback-Leibler divergence" class="md-nav__link">
+    Generalized Kullback-Leibler divergence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kullback-leibler_divergence" title="Kullback-Leibler divergence" class="md-nav__link">
+    Kullback-Leibler divergence
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/kahaaga/UncertainData.jl/edit/master/docs/uncertain_statistics/core_stats/core_statistics_pairwise_estimates.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                  <h1>Pairwise estimates on values</h1>
+                
+                <p><a id='point_estimate_statistics-1'></a></p>
+<h2 id="pairwise_estimates_of_statistics">Pairwise estimates of statistics<a class="headerlink" href="#pairwise_estimates_of_statistics" title="Permanent link">&para;</a></h2>
+<p>These estimators operate on pairs of uncertain values, which can be of <a href="../../../uncertain_values/uncertainvalues_overview/#uncertain_value_types-1">any type</a>, , such as <a href="../../../uncertain_values/uncertainvalues_populations/#uncertain_value_population-1">populations</a>,  <a href="../../../uncertain_values/uncertainvalues_theoreticaldistributions/#uncertain_value_theoretical_distribution-1">theoretical distributions</a>,  <a href="../../../uncertain_values/uncertainvalues_kde/#uncertain_value_kde-1">KDE distributions</a> or  <a href="../../../uncertain_values/uncertainvalues_fitted/#uncertain_value_fitted_theoretical_distribution-1">fitted distributions</a>. They compute the  statistic in question by drawing independent length-<code class="codehilite"><span class="n">n</span></code> draws of each of the two uncertain values, then computing the statistic on those draws.</p>
+<p><a id='syntax_statistics_uncertainvalue_pairs-1'></a></p>
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<p>The syntax for computing the statistic <code class="codehilite"><span class="n">f</span></code> for uncertain values <code class="codehilite"><span class="n">x</span></code> and <code class="codehilite"><span class="n">y</span></code> is:</p>
+<ul>
+<li><code class="codehilite"><span class="nt">f</span><span class="o">(</span><span class="nt">x</span><span class="p">::</span><span class="nd">AbstractUncertainValue</span><span class="o">,</span> <span class="nt">y</span><span class="p">::</span><span class="nd">AbstractUncertainValue</span><span class="o">,</span> <span class="nt">args</span><span class="o">...,</span> <span class="nt">n</span><span class="p">::</span><span class="nd">Int</span><span class="o">;</span> <span class="nt">kwargs</span><span class="o">...)</span></code>, which draws independent length-<code class="codehilite"><span class="n">n</span></code> draws of <code class="codehilite"><span class="n">x</span></code> and <code class="codehilite"><span class="n">y</span></code>, then estimates the statistic <code class="codehilite"><span class="n">f</span></code> for those draws.</li>
+</ul>
+<p><a id='Methods-1'></a></p>
+<h2 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h2>
+<p><a id='Covariance-1'></a></p>
+<h3 id="covariance">Covariance<a class="headerlink" href="#covariance" title="Permanent link">&para;</a></h3>
+<p><a id='Statistics.cov-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}' href='#Statistics.cov-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}'>#</a>
+<strong><code class="codehilite"><span class="k">Statistics</span><span class="p">.</span><span class="n">cov</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">cov</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">;</span> 
+    <span class="n">corrected</span><span class="o">::</span><span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Compute the covariance between two uncertain values by independently  drawing <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">x</span></code> and <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">y</span></code> , then computing  the covariance between those length-<code class="codehilite"><span class="n">n</span></code> draws.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/d74ab2611d5954cfeb616f8df5b8c324dd4e75cb/src/statistics/statsbase/uncertain_values/core_stats_pair_estimates.jl#L49-L56' class='documenter-source'>source</a><br></p>
+<p><a id='Correlation-(Pearson)-1'></a></p>
+<h3 id="correlation_pearson">Correlation (Pearson)<a class="headerlink" href="#correlation_pearson" title="Permanent link">&para;</a></h3>
+<p><a id='Statistics.cor-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}' href='#Statistics.cor-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}'>#</a>
+<strong><code class="codehilite"><span class="k">Statistics</span><span class="p">.</span><span class="n">cor</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">cor</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Compute the Pearson correlation between two uncertain values by independently  drawing <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">x</span></code> and <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">y</span></code>, then computing  the Pearson correlation between those length-<code class="codehilite"><span class="n">n</span></code> draws.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/d74ab2611d5954cfeb616f8df5b8c324dd4e75cb/src/statistics/statsbase/uncertain_values/core_stats_pair_estimates.jl#L39-L45' class='documenter-source'>source</a><br></p>
+<p><a id='Correlation-(Kendall)-1'></a></p>
+<h3 id="correlation_kendall">Correlation (Kendall)<a class="headerlink" href="#correlation_kendall" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.corkendall-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}' href='#StatsBase.corkendall-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">corkendall</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">corkendall</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Compute Kendalls's rank correlation coefficient between two uncertain values by  independently drawing <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">x</span></code> and <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">y</span></code>, then computing  Kendalls's rank correlation coefficient between those length-<code class="codehilite"><span class="n">n</span></code> draws.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/d74ab2611d5954cfeb616f8df5b8c324dd4e75cb/src/statistics/statsbase/uncertain_values/core_stats_pair_estimates.jl#L19-L25' class='documenter-source'>source</a><br></p>
+<p><a id='Correlation-(Spearman)-1'></a></p>
+<h3 id="correlation_spearman">Correlation (Spearman)<a class="headerlink" href="#correlation_spearman" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.corspearman-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}' href='#StatsBase.corspearman-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">corspearman</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">corspearman</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Compute Spearman's rank correlation coefficient between two uncertain values by  independently drawing <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">x</span></code> and <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">y</span></code>, then computing  the Spearman's rank correlation coefficient between those length-<code class="codehilite"><span class="n">n</span></code> draws.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/d74ab2611d5954cfeb616f8df5b8c324dd4e75cb/src/statistics/statsbase/uncertain_values/core_stats_pair_estimates.jl#L29-L35' class='documenter-source'>source</a><br></p>
+<p><a id='Count-non-equal-1'></a></p>
+<h3 id="count_non-equal">Count non-equal<a class="headerlink" href="#count_non-equal" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.countne-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}' href='#StatsBase.countne-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">countne</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">countne</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Count the number of indices at which the elements of two independent length-<code class="codehilite"><span class="n">n</span></code> draws of <code class="codehilite"><span class="n">x</span></code> and for <code class="codehilite"><span class="n">y</span></code> are not equal. </p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/d74ab2611d5954cfeb616f8df5b8c324dd4e75cb/src/statistics/statsbase/uncertain_values/core_stats_pair_estimates.jl#L1-L6' class='documenter-source'>source</a><br></p>
+<p><a id='Count-equal-1'></a></p>
+<h3 id="count_equal">Count equal<a class="headerlink" href="#count_equal" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.counteq-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}' href='#StatsBase.counteq-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">counteq</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">counteq</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Count the number of indices at which the elements of two independent length-<code class="codehilite"><span class="n">n</span></code> draws of <code class="codehilite"><span class="n">x</span></code> and for <code class="codehilite"><span class="n">y</span></code> are equal. </p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/d74ab2611d5954cfeb616f8df5b8c324dd4e75cb/src/statistics/statsbase/uncertain_values/core_stats_pair_estimates.jl#L10-L15' class='documenter-source'>source</a><br></p>
+<p><a id='Maximum-absolute-deviation-1'></a></p>
+<h3 id="maximum_absolute_deviation">Maximum absolute deviation<a class="headerlink" href="#maximum_absolute_deviation" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.maxad-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}' href='#StatsBase.maxad-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">maxad</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">maxad</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Compute the maximum absolute deviation between two uncertain values by independently  drawing <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">x</span></code> and <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">y</span></code>, then computing the  maximum absolute deviation between those length-<code class="codehilite"><span class="n">n</span></code> draws.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/d74ab2611d5954cfeb616f8df5b8c324dd4e75cb/src/statistics/statsbase/uncertain_values/core_stats_pair_estimates.jl#L126-L132' class='documenter-source'>source</a><br></p>
+<p><a id='Mean-absolute-deviation-1'></a></p>
+<h3 id="mean_absolute_deviation">Mean absolute deviation<a class="headerlink" href="#mean_absolute_deviation" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.meanad-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}' href='#StatsBase.meanad-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">meanad</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">meanad</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Compute the mean absolute deviation between two uncertain values by independently  drawing <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">x</span></code> and <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">y</span></code>, then computing the  mean absolute deviation between those length-<code class="codehilite"><span class="n">n</span></code> draws.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/d74ab2611d5954cfeb616f8df5b8c324dd4e75cb/src/statistics/statsbase/uncertain_values/core_stats_pair_estimates.jl#L137-L143' class='documenter-source'>source</a><br></p>
+<p><a id='Mean-squared-deviation-1'></a></p>
+<h3 id="mean_squared_deviation">Mean squared deviation<a class="headerlink" href="#mean_squared_deviation" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.msd-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}' href='#StatsBase.msd-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">msd</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">msd</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Compute the mean squared deviation between two uncertain values by independently  drawing <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">x</span></code> and <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">y</span></code>, then computing the  mean squared deviation between those length-<code class="codehilite"><span class="n">n</span></code> draws.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/d74ab2611d5954cfeb616f8df5b8c324dd4e75cb/src/statistics/statsbase/uncertain_values/core_stats_pair_estimates.jl#L148-L154' class='documenter-source'>source</a><br></p>
+<p><a id='Peak-signal-to-noise-ratio-1'></a></p>
+<h3 id="peak_signal-to-noise_ratio">Peak signal-to-noise ratio<a class="headerlink" href="#peak_signal-to-noise_ratio" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.psnr-Tuple{AbstractUncertainValue,AbstractUncertainValue,Any,Int64}' href='#StatsBase.psnr-Tuple{AbstractUncertainValue,AbstractUncertainValue,Any,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">psnr</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">psnr</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">maxv</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Compute the peak signal-to-noise ratio between two uncertain values by independently  drawing <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">x</span></code> and from <code class="codehilite"><span class="n">y</span></code>, yielding <code class="codehilite"><span class="n">x_draw</span></code> and <code class="codehilite"><span class="n">y_draw</span></code>, then  computing the peak signal-to-noise ratio between those length-<code class="codehilite"><span class="n">n</span></code> draws. </p>
+<p>The PSNR is computed as <code class="codehilite"><span class="mi">10</span> <span class="o">*</span> <span class="n">log10</span><span class="p">(</span><span class="n">maxv</span><span class="o">^</span><span class="mi">2</span> <span class="o">/</span> <span class="n">msd</span><span class="p">(</span><span class="n">x_draw</span><span class="p">,</span> <span class="n">y_draw</span><span class="p">))</span></code>, where <code class="codehilite"><span class="n">maxv</span></code> is  the maximum possible value <code class="codehilite"><span class="n">x</span></code> or <code class="codehilite"><span class="n">y</span></code> can take</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/d74ab2611d5954cfeb616f8df5b8c324dd4e75cb/src/statistics/statsbase/uncertain_values/core_stats_pair_estimates.jl#L159-L168' class='documenter-source'>source</a><br></p>
+<p><a id='Root-mean-squared-deviation-1'></a></p>
+<h3 id="root_mean_squared_deviation">Root mean squared deviation<a class="headerlink" href="#root_mean_squared_deviation" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.rmsd-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}' href='#StatsBase.rmsd-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">rmsd</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">rmsd</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">,</span> 
+    <span class="n">normalize</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Compute the root mean squared deviation between two uncertain values by independently  drawing <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">x</span></code> and from <code class="codehilite"><span class="n">y</span></code>, yielding <code class="codehilite"><span class="n">x_draw</span></code> and <code class="codehilite"><span class="n">y_draw</span></code>, then  computing the the root mean squared deviation between those length-<code class="codehilite"><span class="n">n</span></code> draws.  The root mean squared deviation is computed as <code class="codehilite"><span class="n">sqrt</span><span class="p">(</span><span class="n">msd</span><span class="p">(</span><span class="n">x_draw</span><span class="p">,</span> <span class="n">y_draw</span><span class="p">))</span></code>. Optionally, <code class="codehilite"><span class="n">x_draw</span></code> and <code class="codehilite"><span class="n">y_draw</span></code> may be normalised.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/d74ab2611d5954cfeb616f8df5b8c324dd4e75cb/src/statistics/statsbase/uncertain_values/core_stats_pair_estimates.jl#L172-L181' class='documenter-source'>source</a><br></p>
+<p><a id='Squared-L2-distance-1'></a></p>
+<h3 id="squared_l2_distance">Squared L2 distance<a class="headerlink" href="#squared_l2_distance" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.sqL2dist-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}' href='#StatsBase.sqL2dist-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">sqL2dist</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">sqL2dist</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Compute the squared L2 distance between two uncertain values by independently  drawing <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">x</span></code> and from <code class="codehilite"><span class="n">y</span></code>, then computing the   squared L2 distance between those length-<code class="codehilite"><span class="n">n</span></code> draws: <span><span class="MathJax_Preview">\sum_{i=1}^n |x_i - y_i|^2</span><script type="math/tex">\sum_{i=1}^n |x_i - y_i|^2</script></span>.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/d74ab2611d5954cfeb616f8df5b8c324dd4e75cb/src/statistics/statsbase/uncertain_values/core_stats_pair_estimates.jl#L185-L191' class='documenter-source'>source</a><br></p>
+<p><a id='Cross-correlation-1'></a></p>
+<h3 id="cross_correlation">Cross correlation<a class="headerlink" href="#cross_correlation" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.crosscor-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}' href='#StatsBase.crosscor-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">crosscor</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">crosscor</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="p">[</span><span class="n">lags</span><span class="p">],</span> 
+    <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">;</span> <span class="n">demean</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Compute the cross correlation between two uncertain values by independently  drawing <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">x</span></code> and <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">y</span></code>, <code class="codehilite"><span class="n">x_draw</span></code> and <code class="codehilite"><span class="n">y_draw</span></code>, then computing  the cross correlation between those length-<code class="codehilite"><span class="n">n</span></code> draws. <code class="codehilite"><span class="n">demean</span></code> specifies whether the respective  means of the <code class="codehilite"><span class="n">x_draw</span></code> and <code class="codehilite"><span class="n">y_draw</span></code> should be subtracted from them before computing  their cross correlation.</p>
+<p>When left unspecified, the <code class="codehilite"><span class="n">lags</span></code> used are <code class="codehilite"><span class="o">-</span><span class="k">min</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="o">*</span><span class="n">log10</span><span class="p">(</span><span class="n">n</span><span class="p">))</span></code> to <code class="codehilite"><span class="k">min</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">10</span><span class="o">*</span><span class="n">log10</span><span class="p">(</span><span class="n">n</span><span class="p">))</span></code>.</p>
+<p>The output is normalized by <code class="codehilite"><span class="n">sqrt</span><span class="p">(</span><span class="n">var</span><span class="p">(</span><span class="n">x_draw</span><span class="p">)</span><span class="o">*</span><span class="n">var</span><span class="p">(</span><span class="n">y_draw</span><span class="p">))</span></code>. See <code class="codehilite"><span class="n">crosscov</span></code> for the unnormalized form.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/d74ab2611d5954cfeb616f8df5b8c324dd4e75cb/src/statistics/statsbase/uncertain_values/core_stats_pair_estimates.jl#L60-L73' class='documenter-source'>source</a><br></p>
+<p><a id='Cross-covariance-1'></a></p>
+<h3 id="cross_covariance">Cross covariance<a class="headerlink" href="#cross_covariance" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.crosscov-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}' href='#StatsBase.crosscov-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">crosscov</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">crosscov</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="p">[</span><span class="n">lags</span><span class="p">],</span> 
+    <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">;</span> <span class="n">demean</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Compute the cross covariance function (CCF) between two uncertain values by independently  drawing <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">x</span></code> and <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">y</span></code>, <code class="codehilite"><span class="n">x_draw</span></code> and <code class="codehilite"><span class="n">y_draw</span></code>, then computing  the cross correlation between those length-<code class="codehilite"><span class="n">n</span></code> draws. <code class="codehilite"><span class="n">demean</span></code> specifies whether the respective  means of the <code class="codehilite"><span class="n">x_draw</span></code> and <code class="codehilite"><span class="n">y_draw</span></code> should be subtracted from them before computing  their CCF.</p>
+<p>When left unspecified, the <code class="codehilite"><span class="n">lags</span></code> used are <code class="codehilite"><span class="o">-</span><span class="k">min</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="o">*</span><span class="n">log10</span><span class="p">(</span><span class="n">n</span><span class="p">))</span></code> to <code class="codehilite"><span class="k">min</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">10</span><span class="o">*</span><span class="n">log10</span><span class="p">(</span><span class="n">n</span><span class="p">))</span></code>.</p>
+<p>The output is not normalized. See <code class="codehilite"><span class="n">crosscor</span></code> for a function with normalization.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/d74ab2611d5954cfeb616f8df5b8c324dd4e75cb/src/statistics/statsbase/uncertain_values/core_stats_pair_estimates.jl#L80-L93' class='documenter-source'>source</a><br></p>
+<p><a id='Generalized-Kullback-Leibler-divergence-1'></a></p>
+<h3 id="generalized_kullback-leibler_divergence">Generalized Kullback-Leibler divergence<a class="headerlink" href="#generalized_kullback-leibler_divergence" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.gkldiv-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}' href='#StatsBase.gkldiv-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">gkldiv</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">gkldiv</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Compute the generalized Kullback-Leibler divergence between two uncertain  values by independently drawing <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">x</span></code> and <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">y</span></code>,  then computing the generalized Kullback-Leibler divergence between those  length-<code class="codehilite"><span class="n">n</span></code> draws. </p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/d74ab2611d5954cfeb616f8df5b8c324dd4e75cb/src/statistics/statsbase/uncertain_values/core_stats_pair_estimates.jl#L100-L107' class='documenter-source'>source</a><br></p>
+<p><a id='Kullback-Leibler-divergence-1'></a></p>
+<h3 id="kullback-leibler_divergence">Kullback-Leibler divergence<a class="headerlink" href="#kullback-leibler_divergence" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.kldivergence-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}' href='#StatsBase.kldivergence-Tuple{AbstractUncertainValue,AbstractUncertainValue,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">kldivergence</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">kldivergence</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="n">AbstractUncertainValue</span><span class="p">,</span> <span class="p">[</span><span class="n">b</span><span class="p">],</span> 
+    <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Compute the Kullback-Leibler divergence between two uncertain values by independently  drawing <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">x</span></code> and <code class="codehilite"><span class="n">n</span></code> samples from <code class="codehilite"><span class="n">y</span></code>, then computing the  Kullback-Leibler divergence between those length-<code class="codehilite"><span class="n">n</span></code> draws. Optionally a real number  <code class="codehilite"><span class="n">b</span></code> can be specified such that the divergence is scaled by <code class="codehilite"><span class="mi">1</span><span class="o">/</span><span class="n">log</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code>.</p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/d74ab2611d5954cfeb616f8df5b8c324dd4e75cb/src/statistics/statsbase/uncertain_values/core_stats_pair_estimates.jl#L111-L119' class='documenter-source'>source</a><br></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../core_statistics_point_estimates/" title="Point estimates on values" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Point estimates on values
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../core_statistics_datasets_single_dataset_estimates/" title="Estimates on single uncertain value collections" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Estimates on single uncertain value collections
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.30f6b8b1.js"></script>
+      
+      <script>app.initialize({version:"0.17.5",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+      
+        <script src="../../../assets/mathjaxhelper.js"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>
