@@ -101,5 +101,4 @@ Base.minimum(uvs::AbstractVector{AbstractUncertainValue}) =
     minimum([minimum(uv) for uv in uvs])
 
 export
-AbstractUncertainValue,
-dimension
+AbstractUncertainValue
