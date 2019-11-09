@@ -1,6 +1,10 @@
 
 # Changelog
 
+## UncertainData.jl v0.9.3
+
+- `dimension` is no longer exported.
+
 ## UncertainData.jl v0.9.2
 
 ### New features
