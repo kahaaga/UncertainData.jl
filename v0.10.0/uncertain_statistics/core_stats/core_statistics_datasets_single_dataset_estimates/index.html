@@ -1,0 +1,2243 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Datasets and values with associated uncertainties.">
+      
+      
+      
+        <meta name="author" content="Kristian Agasøster Haaga">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.5, mkdocs-material-2.9.4">
+    
+    
+      
+        <title>Estimates on single uncertain value collections - UncertainData.jl</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.451f80e5.css">
+      
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+      <link rel="stylesheet" href="../../../assets/Documenter.css">
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#statistics_on_single_collections_of_uncertain_data" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../.." title="UncertainData.jl" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                UncertainData.jl
+              </span>
+              <span class="md-header-nav__topic">
+                Estimates on single uncertain value collections
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/kahaaga/UncertainData.jl/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../.." title="UncertainData.jl" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    UncertainData.jl
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/kahaaga/UncertainData.jl/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Package overview" class="md-nav__link">
+      Package overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../propagation_of_errors/propagation_of_errors/" title="Propagation of errors" class="md-nav__link">
+      Propagation of errors
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Uncertain values
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Uncertain values
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/uncertainvalues_overview/" title="Types of uncertain values" class="md-nav__link">
+      Types of uncertain values
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+    
+    <label class="md-nav__link" for="nav-3-2">
+      List of representations
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        List of representations
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/uncertainvalues_kde/" title="Kernel density estimates (KDE)" class="md-nav__link">
+      Kernel density estimates (KDE)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/uncertainvalues_theoreticaldistributions/" title="Theoretical distributions with known parameters" class="md-nav__link">
+      Theoretical distributions with known parameters
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/uncertainvalues_fitted/" title="Theoretical distributions with fitted parameters" class="md-nav__link">
+      Theoretical distributions with fitted parameters
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/uncertainvalues_populations/" title="Weighted (nested) populations" class="md-nav__link">
+      Weighted (nested) populations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/uncertainvalues_certainvalue/" title="Values without uncertainty" class="md-nav__link">
+      Values without uncertainty
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/uncertainvalues_Measurements/" title="Measurements" class="md-nav__link">
+      Measurements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/merging/" title="Combining/merging" class="md-nav__link">
+      Combining/merging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_values/uncertainvalues_examples/" title="Extended examples" class="md-nav__link">
+      Extended examples
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Uncertain datasets
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Uncertain datasets
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_datasets/uncertain_datasets_overview/" title="Types of uncertain datasets" class="md-nav__link">
+      Types of uncertain datasets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_datasets/uncertain_index_dataset/" title="Uncertain index dataset" class="md-nav__link">
+      Uncertain index dataset
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_datasets/uncertain_value_dataset/" title="Uncertain value dataset" class="md-nav__link">
+      Uncertain value dataset
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_datasets/uncertain_indexvalue_dataset/" title="Uncertain index-value dataset" class="md-nav__link">
+      Uncertain index-value dataset
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../uncertain_datasets/uncertain_dataset/" title="Generic uncertain dataset" class="md-nav__link">
+      Generic uncertain dataset
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Sampling constraints
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Sampling constraints
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../sampling_constraints/available_constraints/" title="Regular constraints" class="md-nav__link">
+      Regular constraints
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+    
+    <label class="md-nav__link" for="nav-5-2">
+      Sequential constraints
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        Sequential constraints
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../sampling_constraints/sequential_constraints/" title="List of sequential constraints" class="md-nav__link">
+      List of sequential constraints
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../sampling_constraints/ordered_sequence_exists/" title="Existence of sequences" class="md-nav__link">
+      Existence of sequences
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Examples
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../sampling_constraints/constrain_uncertain_values/" title="Constraining uncertain values" class="md-nav__link">
+      Constraining uncertain values
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Resampling
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Resampling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+    
+    <label class="md-nav__link" for="nav-6-2">
+      Uncertain values
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-2">
+        Uncertain values
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_uncertain_values/" title="Resampling uncertain values" class="md-nav__link">
+      Resampling uncertain values
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      Uncertain value collections
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        Uncertain value collections
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_uncertain_datasets/" title="Resampling uncertain collections" class="md-nav__link">
+      Resampling uncertain collections
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_schemes/resampling_schemes_uncertain_value_collections/" title="List of resampling schemes" class="md-nav__link">
+      List of resampling schemes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_schemes/resampling_with_schemes_uncertain_value_collections/" title="resample" class="md-nav__link">
+      resample
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4">
+    
+    <label class="md-nav__link" for="nav-6-4">
+      Uncertain index-value collections
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-4">
+        Uncertain index-value collections
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_uncertain_indexvalue_datasets/" title="Resampling index-value collections" class="md-nav__link">
+      Resampling index-value collections
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_schemes/resampling_schemes_uncertain_indexvalue_collections/" title="List of resampling schemes" class="md-nav__link">
+      List of resampling schemes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_schemes/resampling_with_schemes_uncertain_indexvalue_collections/" title="resample" class="md-nav__link">
+      resample
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4-4" type="checkbox" id="nav-6-4-4">
+    
+    <label class="md-nav__link" for="nav-6-4-4">
+      Sequential resampling
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-4-4">
+        Sequential resampling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/sequential/resampling_uncertaindatasets_sequential/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/sequential/strictly_increasing/" title="Strictly increasing" class="md-nav__link">
+      Strictly increasing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/sequential/strictly_decreasing/" title="Strictly decreasing" class="md-nav__link">
+      Strictly decreasing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/sequential/resampling_indexvalue_sequential/" title="Index-value datasets" class="md-nav__link">
+      Index-value datasets
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4-5" type="checkbox" id="nav-6-4-5">
+    
+    <label class="md-nav__link" for="nav-6-4-5">
+      Interpolation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-4-5">
+        Interpolation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/interpolation/interpolation/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/interpolation/gridded/" title="Gridded interpolation" class="md-nav__link">
+      Gridded interpolation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../resampling/resampling_inplace/" title="Resampling in-place" class="md-nav__link">
+      Resampling in-place
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Mathematics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Mathematics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../mathematics/elementary_operations/" title="Elementary operations" class="md-nav__link">
+      Elementary operations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../mathematics/trig_functions/" title="Trigonometric functions" class="md-nav__link">
+      Trigonometric functions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
+    
+    <label class="md-nav__link" for="nav-8">
+      Statistics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Statistics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-1" type="checkbox" id="nav-8-1" checked>
+    
+    <label class="md-nav__link" for="nav-8-1">
+      Basics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-1">
+        Basics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../core_statistics/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../core_statistics_point_estimates/" title="Point estimates on values" class="md-nav__link">
+      Point estimates on values
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../core_statistics_pairwise_estimates/" title="Pairwise estimates on values" class="md-nav__link">
+      Pairwise estimates on values
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Estimates on single uncertain value collections
+      </label>
+    
+    <a href="./" title="Estimates on single uncertain value collections" class="md-nav__link md-nav__link--active">
+      Estimates on single uncertain value collections
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#statistics_on_single_collections_of_uncertain_data" title="Statistics on single collections of uncertain data" class="md-nav__link">
+    Statistics on single collections of uncertain data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#syntax" title="Syntax" class="md-nav__link">
+    Syntax
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" title="Methods" class="md-nav__link">
+    Methods
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mean" title="Mean" class="md-nav__link">
+    Mean
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mode" title="Mode" class="md-nav__link">
+    Mode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quantile" title="Quantile" class="md-nav__link">
+    Quantile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iqr" title="IQR" class="md-nav__link">
+    IQR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#median" title="Median" class="md-nav__link">
+    Median
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#middle" title="Middle" class="md-nav__link">
+    Middle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standard_deviation" title="Standard deviation" class="md-nav__link">
+    Standard deviation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variance" title="Variance" class="md-nav__link">
+    Variance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generalizedpower_mean" title="Generalized/power mean" class="md-nav__link">
+    Generalized/power mean
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generalized_variance" title="Generalized variance" class="md-nav__link">
+    Generalized variance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#harmonic_mean" title="Harmonic mean" class="md-nav__link">
+    Harmonic mean
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geometric_mean" title="Geometric mean" class="md-nav__link">
+    Geometric mean
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kurtosis" title="Kurtosis" class="md-nav__link">
+    Kurtosis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k-th_order_moment" title="k-th order moment" class="md-nav__link">
+    k-th order moment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#percentile" title="Percentile" class="md-nav__link">
+    Percentile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renyi_entropy" title="Renyi entropy" class="md-nav__link">
+    Renyi entropy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-length_encoding" title="Run-length encoding" class="md-nav__link">
+    Run-length encoding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standard_error_of_the_mean" title="Standard error of the mean" class="md-nav__link">
+    Standard error of the mean
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skewness" title="Skewness" class="md-nav__link">
+    Skewness
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#span" title="Span" class="md-nav__link">
+    Span
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary_statistics" title="Summary statistics" class="md-nav__link">
+    Summary statistics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#total_variance" title="Total variance" class="md-nav__link">
+    Total variance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../core_statistics_datasets_pairwise_estimates/" title="Estimates on pairs of uncertain value collections" class="md-nav__link">
+      Estimates on pairs of uncertain value collections
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2">
+    
+    <label class="md-nav__link" for="nav-8-2">
+      Hypothesis tests
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-2">
+        Hypothesis tests
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../hypothesistests/hypothesis_tests_overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../hypothesistests/one_sample_t_test/" title="One sample t-test" class="md-nav__link">
+      One sample t-test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../hypothesistests/equal_variance_t_test/" title="Equal variance t-test" class="md-nav__link">
+      Equal variance t-test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../hypothesistests/unequal_variance_t_test/" title="Unequal variance t-test" class="md-nav__link">
+      Unequal variance t-test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../hypothesistests/exact_kolmogorov_smirnov_test/" title="Exact Kolmogorov-Smirnov test" class="md-nav__link">
+      Exact Kolmogorov-Smirnov test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../hypothesistests/approximate_twosample_kolmogorov_smirnov_test/" title="Approximate two-sample Kolmogorov-Smirnov test" class="md-nav__link">
+      Approximate two-sample Kolmogorov-Smirnov test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../hypothesistests/jarque_bera_test/" title="Jarque-Bera test" class="md-nav__link">
+      Jarque-Bera test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../hypothesistests/mann_whitney_u_test/" title="Mann-Whitney u-test" class="md-nav__link">
+      Mann-Whitney u-test
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../hypothesistests/anderson_darling_test/" title="Anderson-Darling test" class="md-nav__link">
+      Anderson-Darling test
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../tutorials/tutorial_overview/" title="List of tutorials" class="md-nav__link">
+      List of tutorials
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-2" type="checkbox" id="nav-9-2">
+    
+    <label class="md-nav__link" for="nav-9-2">
+      Regularising data
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-2">
+        Regularising data
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../tutorials/tutorial_transforming_data_to_regular_grid/" title="Binned resampling" class="md-nav__link">
+      Binned resampling
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../implementing_algorithms_for_uncertaindata/" title="Implementing algorithms for uncertain data" class="md-nav__link">
+      Implementing algorithms for uncertain data
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../changelog/" title="Changelog" class="md-nav__link">
+      Changelog
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../publications/" title="Publications and software" class="md-nav__link">
+      Publications and software
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../citing/" title="Citing" class="md-nav__link">
+      Citing
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#statistics_on_single_collections_of_uncertain_data" title="Statistics on single collections of uncertain data" class="md-nav__link">
+    Statistics on single collections of uncertain data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#syntax" title="Syntax" class="md-nav__link">
+    Syntax
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" title="Methods" class="md-nav__link">
+    Methods
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mean" title="Mean" class="md-nav__link">
+    Mean
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mode" title="Mode" class="md-nav__link">
+    Mode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quantile" title="Quantile" class="md-nav__link">
+    Quantile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iqr" title="IQR" class="md-nav__link">
+    IQR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#median" title="Median" class="md-nav__link">
+    Median
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#middle" title="Middle" class="md-nav__link">
+    Middle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standard_deviation" title="Standard deviation" class="md-nav__link">
+    Standard deviation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variance" title="Variance" class="md-nav__link">
+    Variance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generalizedpower_mean" title="Generalized/power mean" class="md-nav__link">
+    Generalized/power mean
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generalized_variance" title="Generalized variance" class="md-nav__link">
+    Generalized variance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#harmonic_mean" title="Harmonic mean" class="md-nav__link">
+    Harmonic mean
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geometric_mean" title="Geometric mean" class="md-nav__link">
+    Geometric mean
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kurtosis" title="Kurtosis" class="md-nav__link">
+    Kurtosis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k-th_order_moment" title="k-th order moment" class="md-nav__link">
+    k-th order moment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#percentile" title="Percentile" class="md-nav__link">
+    Percentile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renyi_entropy" title="Renyi entropy" class="md-nav__link">
+    Renyi entropy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-length_encoding" title="Run-length encoding" class="md-nav__link">
+    Run-length encoding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standard_error_of_the_mean" title="Standard error of the mean" class="md-nav__link">
+    Standard error of the mean
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skewness" title="Skewness" class="md-nav__link">
+    Skewness
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#span" title="Span" class="md-nav__link">
+    Span
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary_statistics" title="Summary statistics" class="md-nav__link">
+    Summary statistics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#total_variance" title="Total variance" class="md-nav__link">
+    Total variance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/kahaaga/UncertainData.jl/edit/master/docs/uncertain_statistics/core_stats/core_statistics_datasets_single_dataset_estimates.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                  <h1>Estimates on single uncertain value collections</h1>
+                
+                <p><a id='single_dataset_estimate_statistics-1'></a></p>
+<h2 id="statistics_on_single_collections_of_uncertain_data">Statistics on single collections of uncertain data<a class="headerlink" href="#statistics_on_single_collections_of_uncertain_data" title="Permanent link">&para;</a></h2>
+<p>These estimators operate on collections of uncertain values. Each element of such a collection can be an uncertain value of <a href="../../../uncertain_values/uncertainvalues_overview/#uncertain_value_types-1">any type</a>, such as <a href="../../../uncertain_values/uncertainvalues_populations/#uncertain_value_population-1">populations</a>,  <a href="../../../uncertain_values/uncertainvalues_theoreticaldistributions/#uncertain_value_theoretical_distribution-1">theoretical distributions</a>,  <a href="../../../uncertain_values/uncertainvalues_kde/#uncertain_value_kde-1">KDE distributions</a> or  <a href="../../../uncertain_values/uncertainvalues_fitted/#uncertain_value_fitted_theoretical_distribution-1">fitted distributions</a>.</p>
+<p>The methods compute the statistic in question by drawing a length-<code class="codehilite"><span class="n">k</span></code> realisation of the <code class="codehilite"><span class="n">k</span></code>-element collection. Realisations are drawn by sampling each uncertain point in the collection independently. The statistic is then computed on either a single such realisation (yielding a single value for the statistic) or  over multiple realisations (yielding a distribution of the statistic).</p>
+<p><a id='syntax_statistics_collection_single-1'></a></p>
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<p>The syntax for computing a statistic <code class="codehilite"><span class="n">f</span></code> for single instances of an uncertain value collections is</p>
+<ul>
+<li><code class="codehilite"><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">)</span></code>, which resamples <code class="codehilite"><span class="n">x</span></code> once, assuming no element-wise dependence    between the elements of <code class="codehilite"><span class="n">x</span></code>.</li>
+<li><code class="codehilite"><span class="nt">f</span><span class="o">(</span><span class="nt">x</span><span class="p">::</span><span class="nd">UVAL_COLLECTION_TYPES</span><span class="o">,</span> <span class="nt">n</span><span class="p">::</span><span class="nd">Int</span><span class="o">,</span> <span class="nt">args</span><span class="o">...;</span> <span class="nt">kwargs</span><span class="o">...)</span></code>, which resamples <code class="codehilite"><span class="n">x</span></code> <code class="codehilite"><span class="n">n</span></code> times,    assuming no element-wise dependence between the elements of <code class="codehilite"><span class="n">x</span></code>, then computes the statistic    on each of those <code class="codehilite"><span class="n">n</span></code> independent draws. Returns a distributions of estimates of the statistic.</li>
+</ul>
+<p><a id='Methods-1'></a></p>
+<h2 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h2>
+<p><a id='Mean-1'></a></p>
+<h3 id="mean">Mean<a class="headerlink" href="#mean" title="Permanent link">&para;</a></h3>
+<p><a id='Statistics.mean-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#Statistics.mean-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
+<strong><code class="codehilite"><span class="k">Statistics</span><span class="p">.</span><span class="n">mean</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Obtain a distribution for the mean of a collection of uncertain values. This is done by first drawing <code class="codehilite"><span class="n">n</span></code> length-<code class="codehilite"><span class="n">L</span></code> realisations of <code class="codehilite"><span class="n">x</span></code>, where  <code class="codehilite"><span class="n">L</span> <span class="o">=</span> <span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>. Then, the mean is computed for each of those length-<code class="codehilite"><span class="n">L</span></code> realisations, yielding a distribution of mean estimates. </p>
+<p>Detailed steps:</p>
+<ol>
+<li>First, draw a length-<code class="codehilite"><span class="n">L</span></code> realisation of <code class="codehilite"><span class="n">x</span></code> by drawing one random   number from  each uncertain value furnishing the dataset. The draws are   independent, so that no element-wise dependencies (e.g. sequential  correlations) that are not already present in the data are introduced in   the realisation.</li>
+<li>Compute the mean for the realisation.</li>
+<li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the mean of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
+</ol>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/c617930e80a292c871f640d12666094c39d03b48/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L27-L46' class='documenter-source'>source</a><br></p>
+<p><a id='Mode-1'></a></p>
+<h3 id="mode">Mode<a class="headerlink" href="#mode" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.mode-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#StatsBase.mode-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="k">mode</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">mode</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Obtain a distribution for the mode of a collection of uncertain values. This is done by first drawing <code class="codehilite"><span class="n">n</span></code> length-<code class="codehilite"><span class="n">L</span></code> realisations of <code class="codehilite"><span class="n">x</span></code>, where  <code class="codehilite"><span class="n">L</span> <span class="o">=</span> <span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>. Then, the mode is computed for each of those length-<code class="codehilite"><span class="n">L</span></code> realisations, yielding a distribution of mode estimates. </p>
+<p>Detailed steps:</p>
+<ol>
+<li>First, draw a length-<code class="codehilite"><span class="n">L</span></code> realisation of <code class="codehilite"><span class="n">x</span></code> by drawing one random   number from  each uncertain value furnishing the dataset. The draws are   independent, so that no element-wise dependencies (e.g. sequential  correlations) that are not already present in the data are introduced in   the realisation.</li>
+<li>Compute the mode for the realisation, which is a vector of length <code class="codehilite"><span class="n">L</span></code></li>
+<li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the mode of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
+</ol>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/c617930e80a292c871f640d12666094c39d03b48/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L51-L70' class='documenter-source'>source</a><br></p>
+<p><a id='Quantile-1'></a></p>
+<h3 id="quantile">Quantile<a class="headerlink" href="#quantile" title="Permanent link">&para;</a></h3>
+<p><a id='Statistics.quantile-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Any,Int64}' href='#Statistics.quantile-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Any,Int64}'>#</a>
+<strong><code class="codehilite"><span class="k">Statistics</span><span class="p">.</span><span class="n">quantile</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">quantile</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Obtain a distribution for the quantile(s) <code class="codehilite"><span class="n">q</span></code> of a collection of uncertain values. This is done by first drawing <code class="codehilite"><span class="n">n</span></code> length-<code class="codehilite"><span class="n">L</span></code> realisations of <code class="codehilite"><span class="n">x</span></code>, where  <code class="codehilite"><span class="n">L</span> <span class="o">=</span> <span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>. Then, the quantile is computed for each of those length-<code class="codehilite"><span class="n">L</span></code> realisations, yielding a distribution of quantile estimates. </p>
+<p>Detailed steps:</p>
+<ol>
+<li>First, draw a length-<code class="codehilite"><span class="n">L</span></code> realisation of <code class="codehilite"><span class="n">x</span></code> by drawing one random   number from  each uncertain value furnishing the dataset. The draws are   independent, so that no element-wise dependencies (e.g. sequential  correlations) that are not already present in the data are introduced in   the realisation.</li>
+<li>Compute the quantile for the realisation, which is a vector of length <code class="codehilite"><span class="n">L</span></code></li>
+<li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the quantile of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
+</ol>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/c617930e80a292c871f640d12666094c39d03b48/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L75-L94' class='documenter-source'>source</a><br></p>
+<p><a id='IQR-1'></a></p>
+<h3 id="iqr">IQR<a class="headerlink" href="#iqr" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.iqr-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#StatsBase.iqr-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">iqr</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">iqr</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Obtain a distribution for the interquartile range (IQR), i.e. the 75<sup>th</sup>  percentile minus the 25<sup>th</sup> percentile, of a collection of uncertain values. This is done by first drawing <code class="codehilite"><span class="n">n</span></code> length-<code class="codehilite"><span class="n">L</span></code> realisations of <code class="codehilite"><span class="n">x</span></code>, where  <code class="codehilite"><span class="n">L</span> <span class="o">=</span> <span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>. Then, the IQR is computed for each of those length-<code class="codehilite"><span class="n">L</span></code> realisations, yielding a distribution of IQR estimates. </p>
+<p>Detailed steps:</p>
+<ol>
+<li>First, draw a length-<code class="codehilite"><span class="n">L</span></code> realisation of <code class="codehilite"><span class="n">x</span></code> by drawing one random   number from each uncertain value furnishing the dataset. The draws are   independent, so that no element-wise dependencies (e.g. sequential  correlations) that are not already present in the data are introduced in   the realisation.</li>
+<li>Compute the IQR for the realisation, which is a vector of length <code class="codehilite"><span class="n">L</span></code></li>
+<li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the IQR of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
+</ol>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/c617930e80a292c871f640d12666094c39d03b48/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L100-L120' class='documenter-source'>source</a><br></p>
+<p><a id='Median-1'></a></p>
+<h3 id="median">Median<a class="headerlink" href="#median" title="Permanent link">&para;</a></h3>
+<p><a id='Statistics.median-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#Statistics.median-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
+<strong><code class="codehilite"><span class="k">Statistics</span><span class="p">.</span><span class="n">median</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">median</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Obtain a distribution for the median of a collection of uncertain values. This is done by first drawing <code class="codehilite"><span class="n">n</span></code> length-<code class="codehilite"><span class="n">L</span></code> realisations of <code class="codehilite"><span class="n">x</span></code>, where  <code class="codehilite"><span class="n">L</span> <span class="o">=</span> <span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>. Then, the median is computed for each of those length-<code class="codehilite"><span class="n">L</span></code> realisations, yielding a distribution of median estimates. </p>
+<p>Detailed steps:</p>
+<ol>
+<li>First, draw a length-<code class="codehilite"><span class="n">L</span></code> realisation of <code class="codehilite"><span class="n">x</span></code> by drawing one random   number from  each uncertain value furnishing the dataset. The draws are   independent, so that no element-wise dependencies (e.g. sequential  correlations) that are not already present in the data are introduced in   the realisation.</li>
+<li>Compute the median for the realisation.</li>
+<li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the median of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
+</ol>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/c617930e80a292c871f640d12666094c39d03b48/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L3-L22' class='documenter-source'>source</a><br></p>
+<p><a id='Middle-1'></a></p>
+<h3 id="middle">Middle<a class="headerlink" href="#middle" title="Permanent link">&para;</a></h3>
+<p><a id='Statistics.middle-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#Statistics.middle-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
+<strong><code class="codehilite"><span class="k">Statistics</span><span class="p">.</span><span class="n">middle</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">middle</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Obtain a distribution for the middle of a collection of uncertain values. This is done by first drawing <code class="codehilite"><span class="n">n</span></code> length-<code class="codehilite"><span class="n">L</span></code> realisations of <code class="codehilite"><span class="n">x</span></code>, where  <code class="codehilite"><span class="n">L</span> <span class="o">=</span> <span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>. Then, the middle is computed for each of those length-<code class="codehilite"><span class="n">L</span></code> realisations, yielding a distribution of middle estimates. </p>
+<p>Detailed steps:</p>
+<ol>
+<li>First, draw a length-<code class="codehilite"><span class="n">L</span></code> realisation of <code class="codehilite"><span class="n">x</span></code> by drawing one random   number from  each uncertain value furnishing the dataset. The draws are   independent, so that no element-wise dependencies (e.g. sequential  correlations) that are not already present in the data are introduced in   the realisation.</li>
+<li>Compute the middle for the realisation, which is a vector of length <code class="codehilite"><span class="n">L</span></code></li>
+<li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the middle of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
+</ol>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/c617930e80a292c871f640d12666094c39d03b48/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L125-L144' class='documenter-source'>source</a><br></p>
+<p><a id='Standard-deviation-1'></a></p>
+<h3 id="standard_deviation">Standard deviation<a class="headerlink" href="#standard_deviation" title="Permanent link">&para;</a></h3>
+<p><a id='Statistics.std-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#Statistics.std-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
+<strong><code class="codehilite"><span class="k">Statistics</span><span class="p">.</span><span class="n">std</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Obtain a distribution for the standard deviation of a collection of uncertain values. This is done by first drawing <code class="codehilite"><span class="n">n</span></code> length-<code class="codehilite"><span class="n">L</span></code> realisations of <code class="codehilite"><span class="n">x</span></code>, where  <code class="codehilite"><span class="n">L</span> <span class="o">=</span> <span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>. Then, the standard deviation is computed for each of those length-<code class="codehilite"><span class="n">L</span></code> realisations, yielding a distribution of standard deviation estimates. </p>
+<p>Detailed steps:</p>
+<ol>
+<li>First, draw a length-<code class="codehilite"><span class="n">L</span></code> realisation of <code class="codehilite"><span class="n">x</span></code> by drawing one random   number from  each uncertain value furnishing the dataset. The draws are   independent, so that no element-wise dependencies (e.g. sequential  correlations) that are not already present in the data are introduced in   the realisation.</li>
+<li>Compute the std for the realisation, which is a vector of length <code class="codehilite"><span class="n">L</span></code></li>
+<li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the standard deviation of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
+</ol>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/c617930e80a292c871f640d12666094c39d03b48/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L149-L168' class='documenter-source'>source</a><br></p>
+<p><a id='Variance-1'></a></p>
+<h3 id="variance">Variance<a class="headerlink" href="#variance" title="Permanent link">&para;</a></h3>
+<p><a id='Statistics.var-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#Statistics.var-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
+<strong><code class="codehilite"><span class="k">Statistics</span><span class="p">.</span><span class="n">var</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">var</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Obtain a distribution for the variance of a collection of uncertain values. This is done by first drawing <code class="codehilite"><span class="n">n</span></code> length-<code class="codehilite"><span class="n">L</span></code> realisations of <code class="codehilite"><span class="n">x</span></code>, where  <code class="codehilite"><span class="n">L</span> <span class="o">=</span> <span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>. Then, the variance is computed for each of those length-<code class="codehilite"><span class="n">L</span></code> realisations, yielding a distribution of variance estimates. </p>
+<p>Detailed steps:</p>
+<ol>
+<li>First, draw a length-<code class="codehilite"><span class="n">L</span></code> realisation of <code class="codehilite"><span class="n">x</span></code> by drawing one random   number from  each uncertain value furnishing the dataset. The draws are   independent, so that no element-wise dependencies (e.g. sequential  correlations) that are not already present in the data are introduced in   the realisation.</li>
+<li>Compute the variance for the realisation, which is a vector of length <code class="codehilite"><span class="n">L</span></code></li>
+<li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the variance of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
+</ol>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/c617930e80a292c871f640d12666094c39d03b48/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L173-L192' class='documenter-source'>source</a><br></p>
+<p><a id='Generalized/power-mean-1'></a></p>
+<h3 id="generalizedpower_mean">Generalized/power mean<a class="headerlink" href="#generalizedpower_mean" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.genmean-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Any,Int64}' href='#StatsBase.genmean-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Any,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">genmean</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">genmean</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Obtain a distribution for the generalized/power mean with exponent <code class="codehilite"><span class="n">p</span></code> of a  collection of uncertain values. This is done by first drawing <code class="codehilite"><span class="n">n</span></code> length-<code class="codehilite"><span class="n">L</span></code> realisations of <code class="codehilite"><span class="n">x</span></code>, where  <code class="codehilite"><span class="n">L</span> <span class="o">=</span> <span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>. Then, the generalized mean is computed for each of those length-<code class="codehilite"><span class="n">L</span></code> realisations, yielding a distribution of generalized mean estimates. </p>
+<p>Detailed steps:</p>
+<ol>
+<li>First, draw a length-<code class="codehilite"><span class="n">L</span></code> realisation of <code class="codehilite"><span class="n">x</span></code> by drawing one random   number from  each uncertain value furnishing the dataset. The draws are   independent, so that no element-wise dependencies (e.g. sequential  correlations) that are not already present in the data are introduced in   the realisation.</li>
+<li>Compute the generalized mean for the realisation, which is a vector of length <code class="codehilite"><span class="n">L</span></code></li>
+<li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the generalized mean of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
+</ol>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/c617930e80a292c871f640d12666094c39d03b48/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L197-L217' class='documenter-source'>source</a><br></p>
+<p><a id='Generalized-variance-1'></a></p>
+<h3 id="generalized_variance">Generalized variance<a class="headerlink" href="#generalized_variance" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.genvar-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#StatsBase.genvar-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">genvar</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">genvar</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Obtain a distribution for the generalized sample variance of a collection of  uncertain values. This is done by first drawing <code class="codehilite"><span class="n">n</span></code> length-<code class="codehilite"><span class="n">L</span></code> realisations of <code class="codehilite"><span class="n">x</span></code>, where  <code class="codehilite"><span class="n">L</span> <span class="o">=</span> <span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>. Then, the generalized sample variance is computed for each of  those length-<code class="codehilite"><span class="n">L</span></code> realisations, yielding a distribution of generalized sample variance estimates. </p>
+<p>Detailed steps:</p>
+<ol>
+<li>First, draw a length-<code class="codehilite"><span class="n">L</span></code> realisation of <code class="codehilite"><span class="n">x</span></code> by drawing one random   number from  each uncertain value furnishing the dataset. The draws are   independent, so that no element-wise dependencies (e.g. sequential  correlations) that are not already present in the data are introduced in   the realisation.</li>
+<li>Compute the generalized sample variance for the realisation, which is a   vector of length <code class="codehilite"><span class="n">L</span></code>.</li>
+<li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the generalized sample variance of <code class="codehilite"><span class="n">x</span></code>,   which is returned as a vector.</li>
+</ol>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/c617930e80a292c871f640d12666094c39d03b48/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L222-L244' class='documenter-source'>source</a><br></p>
+<p><a id='Harmonic-mean-1'></a></p>
+<h3 id="harmonic_mean">Harmonic mean<a class="headerlink" href="#harmonic_mean" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.harmmean-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#StatsBase.harmmean-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">harmmean</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">harmmean</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Obtain a distribution for the harmonic mean of a collection of uncertain values. This is done by first drawing <code class="codehilite"><span class="n">n</span></code> length-<code class="codehilite"><span class="n">L</span></code> realisations of <code class="codehilite"><span class="n">x</span></code>, where  <code class="codehilite"><span class="n">L</span> <span class="o">=</span> <span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>. Then, the harmonic mean is computed for each of those length-<code class="codehilite"><span class="n">L</span></code> realisations, yielding a distribution of harmonic mean estimates. </p>
+<p>Detailed steps:</p>
+<ol>
+<li>First, draw a length-<code class="codehilite"><span class="n">L</span></code> realisation of <code class="codehilite"><span class="n">x</span></code> by drawing one random   number from  each uncertain value furnishing the dataset. The draws are   independent, so that no element-wise dependencies (e.g. sequential  correlations) that are not already present in the data are introduced in   the realisation.</li>
+<li>Compute the harmonic mean for the realisation.</li>
+<li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the harmonic mean of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
+</ol>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/c617930e80a292c871f640d12666094c39d03b48/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L249-L268' class='documenter-source'>source</a><br></p>
+<p><a id='Geometric-mean-1'></a></p>
+<h3 id="geometric_mean">Geometric mean<a class="headerlink" href="#geometric_mean" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.geomean-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#StatsBase.geomean-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">geomean</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">geomean</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Obtain a distribution for the geometric mean of a collection of uncertain values. This is done by first drawing <code class="codehilite"><span class="n">n</span></code> length-<code class="codehilite"><span class="n">L</span></code> realisations of <code class="codehilite"><span class="n">x</span></code>, where  <code class="codehilite"><span class="n">L</span> <span class="o">=</span> <span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>. Then, the geometric mean is computed for each of those length-<code class="codehilite"><span class="n">L</span></code> realisations, yielding a distribution of geometric mean estimates. </p>
+<p>Detailed steps:</p>
+<ol>
+<li>First, draw a length-<code class="codehilite"><span class="n">L</span></code> realisation of <code class="codehilite"><span class="n">x</span></code> by drawing one random   number from  each uncertain value furnishing the dataset. The draws are   independent, so that no element-wise dependencies (e.g. sequential  correlations) that are not already present in the data are introduced in   the realisation.</li>
+<li>Compute the geometric mean for the realisation.</li>
+<li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the geometric mean of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
+</ol>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/c617930e80a292c871f640d12666094c39d03b48/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L273-L292' class='documenter-source'>source</a><br></p>
+<p><a id='Kurtosis-1'></a></p>
+<h3 id="kurtosis">Kurtosis<a class="headerlink" href="#kurtosis" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.kurtosis-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#StatsBase.kurtosis-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">kurtosis</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">kurtosis</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="n">StatsBase</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Obtain a distribution for the kurtosis of a collection of uncertain values.</p>
+<p>This is done by first drawing <code class="codehilite"><span class="n">n</span></code> length-<code class="codehilite"><span class="n">L</span></code> realisations of <code class="codehilite"><span class="n">x</span></code>, where  <code class="codehilite"><span class="n">L</span> <span class="o">=</span> <span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>. Then, the kurtosis is computed for each of those length-<code class="codehilite"><span class="n">L</span></code> realisations, yielding a distribution of kurtosis estimates. </p>
+<p>Optionally, a center function <code class="codehilite"><span class="n">f</span></code> can be specified. This function is used  to compute the center of each draw, i.e. for the i-th draw, call <code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">kurtosis</span><span class="p">(</span><span class="n">draw_i</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">draw_i</span><span class="p">))</span></code>.</p>
+<p>Detailed steps:</p>
+<ol>
+<li>First, draw a length-<code class="codehilite"><span class="n">L</span></code> realisation of <code class="codehilite"><span class="n">x</span></code> by drawing one random   number from  each uncertain value furnishing the dataset. The draws are   independent, so that no element-wise dependencies (e.g. sequential  correlations) that are not already present in the data are introduced in   the realisation.</li>
+<li>Compute the kurtosis for the realisation.</li>
+<li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the kurtosis of <code class="codehilite"><span class="n">x</span></code>, which is returned as a vector.</li>
+</ol>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/c617930e80a292c871f640d12666094c39d03b48/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L297-L320' class='documenter-source'>source</a><br></p>
+<p><a id='k-th-order-moment-1'></a></p>
+<h3 id="k-th_order_moment">k-th order moment<a class="headerlink" href="#k-th_order_moment" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.moment-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Any,Int64}' href='#StatsBase.moment-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Any,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">moment</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">moment</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Obtain a distribution for the <code class="codehilite"><span class="n">k</span></code>-th order central moment of a collection  of uncertain values.</p>
+<p>This is done by first drawing <code class="codehilite"><span class="n">n</span></code> length-<code class="codehilite"><span class="n">L</span></code> realisations of <code class="codehilite"><span class="n">x</span></code>, where  <code class="codehilite"><span class="n">L</span> <span class="o">=</span> <span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>. Then, the <code class="codehilite"><span class="n">k</span></code>-th order central moment is computed for each  of those length-<code class="codehilite"><span class="n">L</span></code>realisations, yielding a distribution of <code class="codehilite"><span class="n">k</span></code>-th  order central moment estimates. </p>
+<p>The procedure is as follows. </p>
+<ol>
+<li>First, draw a length-<code class="codehilite"><span class="n">L</span></code> realisation of <code class="codehilite"><span class="n">x</span></code> by drawing one random   number from  each uncertain value furnishing the dataset. The draws are   independent, so that no element-wise dependencies (e.g. sequential  correlations) that are not already present in the data are introduced in   the realisation.</li>
+<li>Compute the <code class="codehilite"><span class="n">k</span></code>-th order central moment for the realisation.</li>
+<li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the <code class="codehilite"><span class="n">k</span></code>-th order central moment of <code class="codehilite"><span class="n">x</span></code>,   which is returned as a vector.</li>
+</ol>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/c617930e80a292c871f640d12666094c39d03b48/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L333-L355' class='documenter-source'>source</a><br></p>
+<p><a id='Percentile-1'></a></p>
+<h3 id="percentile">Percentile<a class="headerlink" href="#percentile" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.percentile-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Any,Int64}' href='#StatsBase.percentile-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Any,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">percentile</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">percentile</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Obtain a distribution for the percentile(s) <code class="codehilite"><span class="n">p</span></code> of a collection of uncertain values. This is done by first drawing <code class="codehilite"><span class="n">n</span></code> length-<code class="codehilite"><span class="n">L</span></code> realisations of <code class="codehilite"><span class="n">x</span></code>, where  <code class="codehilite"><span class="n">L</span> <span class="o">=</span> <span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>. Then, the percentile is computed for each of those length-<code class="codehilite"><span class="n">L</span></code> realisations, yielding a distribution of percentile estimates. </p>
+<p>Detailed steps:</p>
+<ol>
+<li>First, draw a length-<code class="codehilite"><span class="n">L</span></code> realisation of <code class="codehilite"><span class="n">x</span></code> by drawing one random   number from  each uncertain value furnishing the dataset. The draws are   independent, so that no element-wise dependencies (e.g. sequential  correlations) that are not already present in the data are introduced in   the realisation.</li>
+<li>Compute the percentile for the realisation, which is a vector of length <code class="codehilite"><span class="n">L</span></code></li>
+<li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the percentile of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
+</ol>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/c617930e80a292c871f640d12666094c39d03b48/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L360-L379' class='documenter-source'>source</a><br></p>
+<p><a id='Renyi-entropy-1'></a></p>
+<h3 id="renyi_entropy">Renyi entropy<a class="headerlink" href="#renyi_entropy" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.renyientropy-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Any,Int64}' href='#StatsBase.renyientropy-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Any,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">renyientropy</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">renyientropy</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">,</span> <span class="n">α</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Obtain a distribution for the Rényi (generalized) entropy of  order <code class="codehilite"><span class="err">α</span></code> of a collection of uncertain values.</p>
+<p>This is done by first drawing <code class="codehilite"><span class="n">n</span></code> length-<code class="codehilite"><span class="n">L</span></code> realisations of <code class="codehilite"><span class="n">x</span></code>, where  <code class="codehilite"><span class="n">L</span> <span class="o">=</span> <span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>. Then, the generalized entropy is computed for each  of those length-<code class="codehilite"><span class="n">L</span></code>realisations, yielding a distribution of  generalized entropy estimates. </p>
+<p>The procedure is as follows. </p>
+<ol>
+<li>First, draw a length-<code class="codehilite"><span class="n">L</span></code> realisation of <code class="codehilite"><span class="n">x</span></code> by drawing one random   number from  each uncertain value furnishing the dataset. The draws are   independent, so that no element-wise dependencies (e.g. sequential  correlations) that are not already present in the data are introduced in   the realisation.</li>
+<li>Compute the Rényi (generalized) entropy of order <code class="codehilite"><span class="err">α</span></code> for the realisation.</li>
+<li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the Rényi (generalized) entropy of   order <code class="codehilite"><span class="err">α</span></code> of <code class="codehilite"><span class="n">x</span></code>, which is returned as a vector.</li>
+</ol>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/c617930e80a292c871f640d12666094c39d03b48/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L384-L406' class='documenter-source'>source</a><br></p>
+<p><a id='Run-length-encoding-1'></a></p>
+<h3 id="run-length_encoding">Run-length encoding<a class="headerlink" href="#run-length_encoding" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.rle-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#StatsBase.rle-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">rle</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">rle</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">,</span> <span class="n">α</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Obtain a distribution for the run-length encoding of a  collection of uncertain values.</p>
+<p>This is done by first drawing <code class="codehilite"><span class="n">n</span></code> length-<code class="codehilite"><span class="n">L</span></code> realisations of <code class="codehilite"><span class="n">x</span></code>, where  <code class="codehilite"><span class="n">L</span> <span class="o">=</span> <span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>. Then, the run-length encoding is computed for each  of those length-<code class="codehilite"><span class="n">L</span></code>realisations, yielding a distribution of  run-length encoding estimates. </p>
+<p>Returns a vector of tuples of run-length encodings.</p>
+<p>The procedure is as follows. </p>
+<ol>
+<li>First, draw a length-<code class="codehilite"><span class="n">L</span></code> realisation of <code class="codehilite"><span class="n">x</span></code> by drawing one random   number from  each uncertain value furnishing the dataset. The draws are   independent, so that no element-wise dependencies (e.g. sequential  correlations) that are not already present in the data are introduced in   the realisation.</li>
+<li>Compute the run-length encoding for the realisation. This gives a   tuple, where the first element of the tuple is a vector of   values of the input and the second is the number of consecutive occurrences of  each element.</li>
+<li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the run-length encoding of <code class="codehilite"><span class="n">x</span></code>,   which is returned as a vector of the run-length encoding tuples.</li>
+</ol>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/c617930e80a292c871f640d12666094c39d03b48/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L411-L438' class='documenter-source'>source</a><br></p>
+<p><a id='Standard-error-of-the-mean-1'></a></p>
+<h3 id="standard_error_of_the_mean">Standard error of the mean<a class="headerlink" href="#standard_error_of_the_mean" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.sem-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#StatsBase.sem-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">sem</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">sem</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Obtain a distribution for the standard error of the mean of a  collection of uncertain values. This is done by first drawing <code class="codehilite"><span class="n">n</span></code> length-<code class="codehilite"><span class="n">L</span></code> realisations of <code class="codehilite"><span class="n">x</span></code>, where  <code class="codehilite"><span class="n">L</span> <span class="o">=</span> <span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>. Then, the standard error of the mean is computed for  each of those length-<code class="codehilite"><span class="n">L</span></code> realisations, yielding a distribution of standard error of the  mean estimates. </p>
+<p>Detailed steps:</p>
+<ol>
+<li>First, draw a length-<code class="codehilite"><span class="n">L</span></code> realisation of <code class="codehilite"><span class="n">x</span></code> by drawing one random   number from  each uncertain value furnishing the dataset. The draws are   independent, so that no element-wise dependencies (e.g. sequential  correlations) that are not already present in the data are introduced in   the realisation.</li>
+<li>Compute the standard error of the mean for the realisation, which is   a vector of length <code class="codehilite"><span class="n">L</span></code>.</li>
+<li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the standard error of the mean of <code class="codehilite"><span class="n">x</span></code>,   which is returned as a vector.</li>
+</ol>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/c617930e80a292c871f640d12666094c39d03b48/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L443-L466' class='documenter-source'>source</a><br></p>
+<p><a id='Skewness-1'></a></p>
+<h3 id="skewness">Skewness<a class="headerlink" href="#skewness" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.skewness-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#StatsBase.skewness-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">skewness</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">skewness</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="n">StatsBase</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Obtain a distribution for the skewness of a collection of uncertain values.</p>
+<p>This is done by first drawing <code class="codehilite"><span class="n">n</span></code> length-<code class="codehilite"><span class="n">L</span></code> realisations of <code class="codehilite"><span class="n">x</span></code>, where  <code class="codehilite"><span class="n">L</span> <span class="o">=</span> <span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>. Then, the skewness is computed for each of those length-<code class="codehilite"><span class="n">L</span></code> realisations, yielding a distribution of skewness estimates. </p>
+<p>Optionally, a center function <code class="codehilite"><span class="n">f</span></code> can be specified. This function is used  to compute the center of each draw, i.e. for the i-th draw, call <code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">skewness</span><span class="p">(</span><span class="n">draw_i</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">draw_i</span><span class="p">))</span></code>.</p>
+<p>Detailed steps:</p>
+<ol>
+<li>First, draw a length-<code class="codehilite"><span class="n">L</span></code> realisation of <code class="codehilite"><span class="n">x</span></code> by drawing one random   number from  each uncertain value furnishing the dataset. The draws are   independent, so that no element-wise dependencies (e.g. sequential  correlations) that are not already present in the data are introduced in   the realisation.</li>
+<li>Compute the skewness for the realisation.</li>
+<li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the skewness of <code class="codehilite"><span class="n">x</span></code>,   which is returned as a vector.</li>
+</ol>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/c617930e80a292c871f640d12666094c39d03b48/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L472-L496' class='documenter-source'>source</a><br></p>
+<p><a id='Span-1'></a></p>
+<h3 id="span">Span<a class="headerlink" href="#span" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.span-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#StatsBase.span-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">span</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">span</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Obtain a distribution for the span of a collection of uncertain values. This is done by first drawing <code class="codehilite"><span class="n">n</span></code> length-<code class="codehilite"><span class="n">L</span></code> realisations of <code class="codehilite"><span class="n">x</span></code>, where  <code class="codehilite"><span class="n">L</span> <span class="o">=</span> <span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>. Then, the span is computed for each of those length-<code class="codehilite"><span class="n">L</span></code> realisations, yielding a distribution of span estimates. </p>
+<p>Returns a length-<code class="codehilite"><span class="n">L</span></code> vector of <code class="codehilite"><span class="n">span</span></code>s, where the i-th span is the range <code class="codehilite"><span class="n">minimum</span><span class="p">(</span><span class="n">draw_x_i</span><span class="p">):</span><span class="n">maximum</span><span class="p">(</span><span class="n">draw_x_i</span><span class="p">)</span></code>.</p>
+<p>Detailed steps:</p>
+<ol>
+<li>First, draw a length-<code class="codehilite"><span class="n">L</span></code> realisation of <code class="codehilite"><span class="n">x</span></code> by drawing one random   number from  each uncertain value furnishing the dataset. The draws are   independent, so that no element-wise dependencies (e.g. sequential  correlations) that are not already present in the data are introduced in   the realisation.</li>
+<li>Compute the span for the realisation, which is a vector of length <code class="codehilite"><span class="n">L</span></code></li>
+<li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the span of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
+</ol>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/c617930e80a292c871f640d12666094c39d03b48/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L508-L530' class='documenter-source'>source</a><br></p>
+<p><a id='Summary-statistics-1'></a></p>
+<h3 id="summary_statistics">Summary statistics<a class="headerlink" href="#summary_statistics" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.summarystats-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#StatsBase.summarystats-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">summarystats</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">summarystats</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Obtain a distribution for the summary statistics of a collection of uncertain values. This is done by first drawing <code class="codehilite"><span class="n">n</span></code> length-<code class="codehilite"><span class="n">L</span></code> realisations of <code class="codehilite"><span class="n">x</span></code>, where  <code class="codehilite"><span class="n">L</span> <span class="o">=</span> <span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>. Then, the summary statistics is computed for each of those length-<code class="codehilite"><span class="n">L</span></code> realisations, yielding a distribution of summary statistics estimates. </p>
+<p>Returns a length-<code class="codehilite"><span class="n">L</span></code> vector of <code class="codehilite"><span class="n">SummaryStats</span></code> objects containing the mean, minimum,  25<sup>th</sup> percentile, median, 75<sup>th</sup> percentile, and maximum for each draw of <code class="codehilite"><span class="n">x</span></code>.</p>
+<p>Detailed steps:</p>
+<ol>
+<li>First, draw a length-<code class="codehilite"><span class="n">L</span></code> realisation of <code class="codehilite"><span class="n">x</span></code> by drawing one random   number from  each uncertain value furnishing the dataset. The draws are   independent, so that no element-wise dependencies (e.g. sequential  correlations) that are not already present in the data are introduced in   the realisation.</li>
+<li>Compute the summary statistics for the realisation, which is a vector of length <code class="codehilite"><span class="n">L</span></code></li>
+<li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the summary statistics of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
+</ol>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/c617930e80a292c871f640d12666094c39d03b48/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L559-L581' class='documenter-source'>source</a><br></p>
+<p><a id='Total-variance-1'></a></p>
+<h3 id="total_variance">Total variance<a class="headerlink" href="#total_variance" title="Permanent link">&para;</a></h3>
+<p><a id='StatsBase.totalvar-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}' href='#StatsBase.totalvar-Tuple{Union{UD, UV} where UV<:(AbstractArray{T,1} where T<:AbstractUncertainValue) where UD<:AbstractUncertainValueDataset,Int64}'>#</a>
+<strong><code class="codehilite"><span class="n">StatsBase</span><span class="p">.</span><span class="n">totalvar</span></code></strong> &mdash; <em>Method</em>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">totalvar</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">UVAL_COLLECTION_TYPES</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Obtain a distribution for the total variance of a collection of uncertain values. This is done by first drawing <code class="codehilite"><span class="n">n</span></code> length-<code class="codehilite"><span class="n">L</span></code> realisations of <code class="codehilite"><span class="n">x</span></code>, where  <code class="codehilite"><span class="n">L</span> <span class="o">=</span> <span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>. Then, the total variance is computed for each of those length-<code class="codehilite"><span class="n">L</span></code> realisations, yielding a distribution of total variance estimates. </p>
+<p>Detailed steps:</p>
+<ol>
+<li>First, draw a length-<code class="codehilite"><span class="n">L</span></code> realisation of <code class="codehilite"><span class="n">x</span></code> by drawing one random   number from  each uncertain value furnishing the dataset. The draws are   independent, so that no element-wise dependencies (e.g. sequential  correlations) that are not already present in the data are introduced in   the realisation.</li>
+<li>Compute the total variance for the realisation, which is a vector of length <code class="codehilite"><span class="n">L</span></code></li>
+<li>Repeat the procedure <code class="codehilite"><span class="n">n</span></code> times, drawing <code class="codehilite"><span class="n">n</span></code> independent realisations of <code class="codehilite"><span class="n">x</span></code>.  This yields <code class="codehilite"><span class="n">n</span></code> estimates of the total variance of <code class="codehilite"><span class="n">x</span></code>, which is returned as   a vector.</li>
+</ol>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/c617930e80a292c871f640d12666094c39d03b48/src/statistics/statsbase/uncertain_datasets/core_stats_uncertaindatasets_single_estimates.jl#L535-L554' class='documenter-source'>source</a><br></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../core_statistics_pairwise_estimates/" title="Pairwise estimates on values" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Pairwise estimates on values
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../core_statistics_datasets_pairwise_estimates/" title="Estimates on pairs of uncertain value collections" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Estimates on pairs of uncertain value collections
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.30f6b8b1.js"></script>
+      
+      <script>app.initialize({version:"0.17.5",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+      
+        <script src="../../../assets/mathjaxhelper.js"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>
