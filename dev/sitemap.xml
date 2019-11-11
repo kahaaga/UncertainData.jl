@@ -2,287 +2,287 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/propagation_of_errors/propagation_of_errors/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_values/uncertainvalues_overview/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_values/uncertainvalues_kde/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_values/uncertainvalues_theoreticaldistributions/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_values/uncertainvalues_fitted/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_values/uncertainvalues_populations/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_values/uncertainvalues_certainvalue/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_values/uncertainvalues_Measurements/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_values/merging/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_values/uncertainvalues_examples/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_datasets/uncertain_datasets_overview/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_datasets/uncertain_index_dataset/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_datasets/uncertain_value_dataset/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_datasets/uncertain_indexvalue_dataset/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_datasets/uncertain_dataset/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/sampling_constraints/available_constraints/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/sampling_constraints/sequential_constraints/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/sampling_constraints/ordered_sequence_exists/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/sampling_constraints/constrain_uncertain_values/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/resampling/resampling_overview/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/resampling/resampling_uncertain_values/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/resampling/resampling_uncertain_datasets/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/resampling/resampling_schemes/resampling_schemes_uncertain_value_collections/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/resampling/resampling_schemes/resampling_with_schemes_uncertain_value_collections/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/resampling/resampling_uncertain_indexvalue_datasets/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/resampling/resampling_schemes/resampling_schemes_uncertain_indexvalue_collections/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/resampling/resampling_schemes/resampling_with_schemes_uncertain_indexvalue_collections/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/resampling/sequential/resampling_uncertaindatasets_sequential/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/resampling/sequential/strictly_increasing/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/resampling/sequential/strictly_decreasing/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/resampling/sequential/resampling_indexvalue_sequential/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/resampling/interpolation/interpolation/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/resampling/interpolation/gridded/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/resampling/resampling_inplace/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/mathematics/elementary_operations/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/mathematics/trig_functions/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_statistics/core_stats/core_statistics/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_statistics/core_stats/core_statistics_point_estimates/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_statistics/core_stats/core_statistics_pairwise_estimates/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_statistics/core_stats/core_statistics_datasets_single_dataset_estimates/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_statistics/core_stats/core_statistics_datasets_pairwise_estimates/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_statistics/hypothesistests/hypothesis_tests_overview/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_statistics/hypothesistests/one_sample_t_test/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_statistics/hypothesistests/equal_variance_t_test/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_statistics/hypothesistests/unequal_variance_t_test/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_statistics/hypothesistests/exact_kolmogorov_smirnov_test/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_statistics/hypothesistests/approximate_twosample_kolmogorov_smirnov_test/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_statistics/hypothesistests/jarque_bera_test/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_statistics/hypothesistests/mann_whitney_u_test/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/uncertain_statistics/hypothesistests/anderson_darling_test/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/tutorials/tutorial_overview/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/tutorials/tutorial_transforming_data_to_regular_grid/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/implementing_algorithms_for_uncertaindata/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/changelog/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/publications/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/citing/</loc>
-     <lastmod>2019-11-09</lastmod>
+     <lastmod>2019-11-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
