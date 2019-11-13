@@ -32,7 +32,7 @@ extrapolation_bc = Flat(OnGrid())
 f = mean
 left_bin_edges = 0:50:1000
 
-r = InterpolateBin(f, left_bin_edges, intp, intp_grid, extrapolation_bc)
+r = InterpolateAndBin(f, left_bin_edges, intp, intp_grid, extrapolation_bc)
 ```
 """
 struct InterpolateAndBin{L}
