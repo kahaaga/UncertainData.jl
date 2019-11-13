@@ -1553,7 +1553,7 @@
 </td></tr></table>
 
 <p>Construct a population whose members are given by <code class="codehilite"><span class="k">values</span></code> and whose sampling  probabilities are given by <code class="codehilite"><span class="n">probs</span></code>. The elements of <code class="codehilite"><span class="k">values</span></code> can be either  numeric or uncertain values of any type.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/94f22a9e261981f8a26eb73b3edb8e34488454a5/src/uncertain_values/UncertainValue.jl#L39-L45' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/68af7516725b3d67bbce0f518bb9e876bbdd1ec4/src/uncertain_values/UncertainValue.jl#L39-L45' class='documenter-source'>source</a><br></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">UncertainValue</span><span class="p">(</span><span class="n">data</span><span class="o">::</span><span class="kt">Vector</span><span class="p">{</span><span class="n">T</span><span class="p">};</span>
@@ -1564,7 +1564,7 @@
 
 <p>Construct an uncertain value by a kernel density estimate to <code class="codehilite"><span class="k">data</span></code>.</p>
 <p>Fast Fourier transforms are used in the kernel density estimation, so the number of points should be a power of 2 (default = 2048).</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/94f22a9e261981f8a26eb73b3edb8e34488454a5/src/uncertain_values/UncertainValue.jl#L54-L63' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/68af7516725b3d67bbce0f518bb9e876bbdd1ec4/src/uncertain_values/UncertainValue.jl#L54-L63' class='documenter-source'>source</a><br></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">UncertainValue</span><span class="o">(</span><span class="nt">kerneldensity</span><span class="p">::</span><span class="nd">Type</span><span class="p">{</span><span class="err">K</span><span class="p">}</span><span class="o">,</span> <span class="nt">data</span><span class="p">::</span><span class="nd">Vector</span><span class="p">{</span><span class="err">T</span><span class="p">}</span><span class="o">;</span>
@@ -1575,7 +1575,7 @@
 
 <p>Construct an uncertain value by a kernel density estimate to <code class="codehilite"><span class="k">data</span></code>.</p>
 <p>Fast Fourier transforms are used in the kernel density estimation, so the number of points should be a power of 2 (default = 2048).</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/94f22a9e261981f8a26eb73b3edb8e34488454a5/src/uncertain_values/UncertainValue.jl#L83-L92' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/68af7516725b3d67bbce0f518bb9e876bbdd1ec4/src/uncertain_values/UncertainValue.jl#L83-L92' class='documenter-source'>source</a><br></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">UncertainValue</span><span class="p">(</span><span class="n">empiricaldata</span><span class="o">::</span><span class="kt">AbstractVector</span><span class="p">{</span><span class="n">T</span><span class="p">},</span>
     <span class="n">d</span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="n">D</span><span class="p">})</span> <span class="n">where</span> <span class="p">{</span><span class="n">D</span> <span class="o">&lt;:</span> <span class="n">Distribution</span><span class="p">}</span>
@@ -1589,7 +1589,7 @@
 <li><strong><code class="codehilite"><span class="n">empiricaldata</span></code></strong>: The data for which to fit the <code class="codehilite"><span class="n">distribution</span></code>.</li>
 <li><strong><code class="codehilite"><span class="n">distribution</span></code></strong>: A valid univariate distribution from <code class="codehilite"><span class="n">Distributions</span><span class="p">.</span><span class="n">jl</span></code>.</li>
 </ul>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/94f22a9e261981f8a26eb73b3edb8e34488454a5/src/uncertain_values/UncertainValue.jl#L115-L129' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/68af7516725b3d67bbce0f518bb9e876bbdd1ec4/src/uncertain_values/UncertainValue.jl#L115-L129' class='documenter-source'>source</a><br></p>
 <p><a id='Type-documentation-1'></a></p>
 <h2 id="type_documentation">Type documentation<a class="headerlink" href="#type_documentation" title="Permanent link">&para;</a></h2>
 <p><a id='UncertainData.UncertainValues.UncertainScalarKDE' href='#UncertainData.UncertainValues.UncertainScalarKDE'>#</a>
@@ -1606,7 +1606,7 @@
 <li><strong><code class="codehilite"><span class="n">range</span></code></strong>: The values for which the pdf is estimated.</li>
 <li><strong><code class="codehilite"><span class="n">pdf</span></code></strong>: The values of the pdf at each point in <code class="codehilite"><span class="n">range</span></code>.</li>
 </ul>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/94f22a9e261981f8a26eb73b3edb8e34488454a5/src/uncertain_values/UncertainScalarsKDE.jl#L12-L22' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/68af7516725b3d67bbce0f518bb9e876bbdd1ec4/src/uncertain_values/UncertainScalarsKDE.jl#L12-L22' class='documenter-source'>source</a><br></p>
 <p><a id='Examples-1'></a></p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <div class="superfences-tabs">
@@ -1786,7 +1786,7 @@
 
 <p>Construct an uncertain value by a kernel density estimate to <code class="codehilite"><span class="k">data</span></code>.</p>
 <p>Fast Fourier transforms are used in the kernel density estimation, so the number of points should be a power of 2 (default = 2048).</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/94f22a9e261981f8a26eb73b3edb8e34488454a5/src/uncertain_values/UncertainValue.jl#L54-L63' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/68af7516725b3d67bbce0f518bb9e876bbdd1ec4/src/uncertain_values/UncertainValue.jl#L54-L63' class='documenter-source'>source</a><br></p>
 <p><a id='Additional-keyword-arguments-and-examples-1'></a></p>
 <h4 id="additional_keyword_arguments_and_examples">Additional keyword arguments and examples<a class="headerlink" href="#additional_keyword_arguments_and_examples" title="Permanent link">&para;</a></h4>
 <p>If the only argument to the <code class="codehilite"><span class="n">UncertainValue</span></code> constructor is a vector of values, the default behaviour is to represent the distribution by a kernel density estimate (KDE), i.e. <code class="codehilite"><span class="n">UncertainValue</span><span class="p">(</span><span class="k">data</span><span class="p">)</span></code>. Gaussian kernels are used by default. The syntax <code class="codehilite"><span class="n">UncertainValue</span><span class="p">(</span><span class="n">UnivariateKDE</span><span class="p">,</span> <span class="k">data</span><span class="p">)</span></code> will also work if <code class="codehilite"><span class="n">KernelDensity</span><span class="p">.</span><span class="n">jl</span></code> is loaded.</p>
