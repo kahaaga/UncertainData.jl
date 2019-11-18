@@ -2,7 +2,7 @@ name = "UncertainData"
 uuid = "dcd9ba68-c27b-5cea-ae21-829cd07325bf"
 authors = ["Kristian Agasøster Haaga <kahaaga@gmail.com>"]
 repo = "https://github.com/kahaaga/UncertainData.jl.git"
-version = "0.10.2"
+version = "0.10.3"
 
 [deps]
 Bootstrap = "e28b5b4c-05e8-5b66-bc03-6f0c0a0a06e0"
