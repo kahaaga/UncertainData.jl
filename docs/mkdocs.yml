@@ -73,7 +73,8 @@ pages:
     - Examples:
       - Constraining uncertain values: sampling_constraints/constrain_uncertain_values.md
   - Binning:
-    - BinnedResampling: binning/bin_BinnedResampling.md
+    - Scalar valued data: binning/bin_scalardata.md
+    - Uncertain data: binning/bin_BinnedResampling.md
   - Resampling:
     - Overview: resampling/resampling_overview.md
     - Uncertain values: 

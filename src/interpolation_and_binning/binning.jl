@@ -10,7 +10,7 @@ points in `left_bin_edges`. If `xs[i]` falls in the `n`-th bin interval, then `y
 is assigned to the `n`-th bin vector. If `xs[i]` lie outside the grid, then the 
 corresponding `ys[i]` is ignored. See also [`bin!`](@ref)
 
-- If no summary function is supplied, return `N - 1` bin vectors.
+Returns `N - 1` bin vectors.
 
 ## Examples 
 
@@ -70,10 +70,11 @@ points in `left_bin_edges`. If `xs[i]` falls in the `n`-th bin interval, then `y
 is assigned to the `n`-th bin vector. If `xs[i]` lie outside the grid, then the 
 corresponding `ys[i]` is ignored. See also [`bin!`](@ref)
 
-- If a summary function `f` is supplied as the first argument, apply the summary function 
-    element-wise to each of the bin vectors, with `args` and `kwargs` as arguments and 
-    keyword arguments. Then, `N-1` summary values, one for each bin, are returned.
-    Empty bins are assigned `NaN` values.
+Then, apply the summary function element-wise to each of the bin vectors, with `args` 
+and `kwargs` as arguments and keyword arguments. Then, `N-1` summary values, one for 
+each bin, are returned. Empty bins are assigned `NaN` values.
+
+Returns `N-1` bin summaries.
 
 ## Examples 
 
@@ -130,7 +131,7 @@ function bin(f::Function, left_bin_edges::AbstractRange{T}, xs, ys, args...; kwa
 end
 
 """
-    bin!(bins, left_bin_edges::AbstractRange, xs, ys)
+    bin!(bins::Vector{AbstractVector{T}}, left_bin_edges::AbstractRange{T}, xs, ys) where T
 
 Distribute the elements of `ys` into `N-1` different pre-allocated empty 
 bin vectors, based on how the values in `xs` are distributed among 

@@ -1,6 +1,12 @@
 
 # Changelog
 
+## UncertainData.jl v0.10.3
+
+### Documentation
+
+- Fixed missing doc string for `bin!`.
+
 ## UncertainData.jl v0.10.2
 
 ### Improvements
