@@ -58,6 +58,10 @@ PAGES = [
         "sampling_constraints/ordered_sequence_exists.md",
         "sampling_constraints/sequential_constraints.md"
     ],
+
+    "Binning" => [
+        "binning/bin_BinnedResampling.md"
+    ],
     "Resampling" => [
         "resampling/resampling_overview.md",
         "resampling/resampling_uncertain_values.md",

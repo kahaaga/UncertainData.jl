@@ -1,3 +1,5 @@
+import KernelDensity: UnivariateKDE
+import ..UncertainValues: UncertainScalarKDE, UncertainScalarPopulation
 
 """
     resample(x::AbstractUncertainIndexValueDataset, resampling::BinnedMeanWeightedResampling)
@@ -178,8 +180,8 @@ function resample(x::AbstractUncertainIndexValueDataset, resampling::BinnedMeanR
 end
 
 """
-    resample(x::AbstractUncertainIndexValueDataset, resampling::BinnedResampling;
-        nan_threshold = 0.0)
+    resample(x::AbstractUncertainIndexValueDataset, resampling::BinnedResampling{UncertainScalarKDE};
+        bin_repr::Symbol = :kde, nan_threshold = 0.0)
 
 Transform index-irregularly spaced uncertain data onto a regular index-grid.
 Distributions in each index bin are obtained by resampling all index values 
@@ -217,7 +219,8 @@ resampled_dataset = resample(X, resampling)
 resampled_dataset = resample(Y, resampling)
 ```
 """
-function resample(x::AbstractUncertainIndexValueDataset, resampling::BinnedResampling;
+function resample(x::AbstractUncertainIndexValueDataset, 
+        resampling::BinnedResampling{UncertainScalarKDE};
         nan_threshold = 0.0)
 
     # Pre-allocate some arrays into which we resample the values of the 
@@ -277,6 +280,119 @@ function resample(x::AbstractUncertainIndexValueDataset, resampling::BinnedResam
     
     UncertainIndexValueDataset(new_inds, new_vals)
 end
+
+function resample(x::AbstractUncertainIndexValueDataset, 
+        resampling::BinnedResampling{UncertainScalarPopulation};
+        nan_threshold = 0.0)
+
+    # Pre-allocate some arrays into which we resample the values of the 
+    # index and value populations.
+    idxs = fill(NaN, resampling.n)
+    vals = fill(NaN, resampling.n)
+
+    perminds = zeros(Int, resampling.n)
+    sorted_idxs = fill(NaN, resampling.n)
+    sorted_vals = fill(NaN, resampling.n)
+
+
+    bin_edges = resampling.left_bin_edges
+    n_bins = length(bin_edges) - 1
+
+    # Used to compute the index of the bin into which a draw belongs
+    mini = minimum(resampling.left_bin_edges)
+    s = step(resampling.left_bin_edges)
+        
+    # Empty vectors that will contain draws.
+    binvecs = [Vector{Float64}(undef, 0) for i = 1:n_bins] 
+    #[sizehint!(bv, resampling.n*n_bins) for bv in binvecs]
+
+    @inbounds for (j, (idx, val)) in enumerate(zip(x.indices, x.values))
+        # Resample the j-th index and j-th value
+        resample!(idxs, idx)
+        resample!(vals, val)
+        
+        # Get the vector that sorts the index vector, and use that to 
+        # sort the draws.
+        sortperm!(perminds, idxs)
+        sorted_idxs .= idxs[perminds]
+        sorted_vals .= vals[perminds]
+        
+        # The vectors above are sorted sorted, so this can be done faster
+        for i in 1:n_bins
+            inbin = findall(bin_edges[i] .<= sorted_idxs .<= bin_edges[i+1])
+            if length(inbin) > nan_threshold
+                append!(binvecs[i], sorted_vals[inbin])
+            end   
+        end
+    end
+
+    # Estimate distributions in each bin by kernel density estimation
+    estimated_value_dists = Vector{AbstractUncertainValue}(undef, n_bins)
+
+    for i in 1:n_bins
+        if length(binvecs[i]) > nan_threshold
+            L = length(binvecs[i])
+            estimated_value_dists[i] = UncertainValue(binvecs[i], repeat([1 / L], L))
+        else 
+            estimated_value_dists[i] = UncertainValue(NaN)
+        end
+    end
+
+    new_inds = UncertainIndexDataset(UncertainValue.(bin_edges[1:end-1] .+ step(bin_edges)/2))
+    new_vals = UncertainValueDataset(estimated_value_dists)
+
+    UncertainIndexValueDataset(new_inds, new_vals)
+end
+
+function resample(x::AbstractUncertainIndexValueDataset, 
+        resampling::BinnedResampling{RawValues};
+        nan_threshold = 0.0)
+
+    # Pre-allocate some arrays into which we resample the values of the 
+    # index and value populations.
+    idxs = fill(NaN, resampling.n)
+    vals = fill(NaN, resampling.n)
+
+    perminds = zeros(Int, resampling.n)
+    sorted_idxs = fill(NaN, resampling.n)
+    sorted_vals = fill(NaN, resampling.n)
+
+    bin_edges = resampling.left_bin_edges
+    n_bins = length(bin_edges) - 1
+
+    # Used to compute the index of the bin into which a draw belongs
+    mini = minimum(resampling.left_bin_edges)
+    s = step(resampling.left_bin_edges)
+        
+    # Empty vectors that will contain draws.
+    binvecs = [Vector{Float64}(undef, 0) for i = 1:n_bins] 
+    #[sizehint!(bv, resampling.n*n_bins) for bv in binvecs]
+
+    @inbounds for (j, (idx, val)) in enumerate(zip(x.indices, x.values))
+        # Resample the j-th index and j-th value
+        resample!(idxs, idx)
+        resample!(vals, val)
+        
+        # Get the vector that sorts the index vector, and use that to 
+        # sort the draws.
+        sortperm!(perminds, idxs)
+        sorted_idxs .= idxs[perminds]
+        sorted_vals .= vals[perminds]
+        
+        # The vectors above are sorted sorted, so this can be done faster
+        for i in 1:n_bins
+            inbin = findall(bin_edges[i] .<= sorted_idxs .<= bin_edges[i+1])
+            if length(inbin) > nan_threshold
+                append!(binvecs[i], sorted_vals[inbin])
+            end   
+        end
+    end
+
+    bin_centers = bin_edges[1:end-1] .+ step(bin_edges)/2
+
+    return bin_centers, binvecs
+end
+
 
 """
     resample(x::AbstractUncertainIndexValueDataset, resampling::BinnedWeightedResampling;

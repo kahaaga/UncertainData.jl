@@ -106,6 +106,9 @@ include("generic_interpolation/test_interpolate_nans.jl")
 include("resampling/uncertain_datasets/test_interpolation.jl")
 include("binning/test_binning.jl")
 
+# Interpolation with resampling schemes
+include("resampling/binning/test_bin_BinnedResampling.jl")
+
 #############################
 # Mathematics
 #############################
