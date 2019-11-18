@@ -72,6 +72,8 @@ pages:
       - Existence of sequences: sampling_constraints/ordered_sequence_exists.md
     - Examples:
       - Constraining uncertain values: sampling_constraints/constrain_uncertain_values.md
+  - Binning:
+    - BinnedResampling: binning/bin_BinnedResampling.md
   - Resampling:
     - Overview: resampling/resampling_overview.md
     - Uncertain values: 
