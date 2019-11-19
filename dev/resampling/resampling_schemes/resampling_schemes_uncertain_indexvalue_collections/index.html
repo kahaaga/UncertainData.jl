@@ -622,34 +622,10 @@
       
 
 
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
-    
-    <label class="md-nav__link" for="nav-6">
-      Binning
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
-        Binning
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
   <li class="md-nav__item">
-    <a href="../../../binning/bin_BinnedResampling/" title="BinnedResampling" class="md-nav__link">
-      BinnedResampling
+    <a href="../../../binning/bin/" title="Binning" class="md-nav__link">
+      Binning
     </a>
-  </li>
-
-        
-      </ul>
-    </nav>
   </li>
 
     
@@ -1781,7 +1757,7 @@
 </pre></div>
 </td></tr></table>
 
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/29eeb19336b26564100c69bd7e2deff82464fdf6/src/resampling/resampling_schemes/ConstrainedIndexValueResampling.jl#L5-L99' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3fad919a7132242abe3d44cd494383f050973697/src/resampling/resampling_schemes/ConstrainedIndexValueResampling.jl#L5-L99' class='documenter-source'>source</a><br></p>
 <p><a id='Sequential-1'></a></p>
 <h3 id="sequential">Sequential<a class="headerlink" href="#sequential" title="Permanent link">&para;</a></h3>
 <p><a id='Sequential-resampling-1'></a></p>
@@ -1802,7 +1778,7 @@
 </pre></div>
 </td></tr></table>
 
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/29eeb19336b26564100c69bd7e2deff82464fdf6/src/resampling/resampling_schemes/SequentialResampling.jl#L4-L19' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3fad919a7132242abe3d44cd494383f050973697/src/resampling/resampling_schemes/SequentialResampling.jl#L4-L19' class='documenter-source'>source</a><br></p>
 <p><a id='Sequential-and-interpolated-resampling-1'></a></p>
 <h4 id="sequential_and_interpolated_resampling">Sequential and interpolated resampling<a class="headerlink" href="#sequential_and_interpolated_resampling" title="Permanent link">&para;</a></h4>
 <p><a id='UncertainData.Resampling.SequentialInterpolatedResampling' href='#UncertainData.Resampling.SequentialInterpolatedResampling'>#</a>
@@ -1819,7 +1795,7 @@
 </ul>
 <p><strong>Examples</strong></p>
 <p>For example, <code class="codehilite"><span class="n">SequentialInterpolatedResampling</span><span class="p">(</span><span class="n">StrictlyIncreasing</span><span class="p">(),</span> <span class="n">RegularGrid</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">100</span><span class="p">))</span></code> indicates a sequential draw that is then interpolated to the grid 0:2:100.</p>
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/29eeb19336b26564100c69bd7e2deff82464fdf6/src/resampling/resampling_schemes/SequentialInterpolatedResampling.jl#L7-L25' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3fad919a7132242abe3d44cd494383f050973697/src/resampling/resampling_schemes/SequentialInterpolatedResampling.jl#L7-L25' class='documenter-source'>source</a><br></p>
 <p><a id='Binned-resampling-1'></a></p>
 <h3 id="binned_resampling">Binned resampling<a class="headerlink" href="#binned_resampling" title="Permanent link">&para;</a></h3>
 <p><a id='BinnedResampling-1'></a></p>
@@ -1891,9 +1867,9 @@
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">BinnedWeightedResampling</span><span class="p">(</span><span class="n">left_bin_edges</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">;</span> <span class="n">bin_repr</span> <span class="o">=</span> <span class="n">UncertainScalarKDE</span><span class="p">)</span>
-<span class="n">BinnedResampling</span><span class="p">(</span><span class="n">UncertainScalarKDE</span><span class="p">,</span> <span class="n">left_bin_edges</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
-<span class="n">BinnedResampling</span><span class="p">(</span><span class="n">UncertainScalarPopulation</span><span class="p">,</span> <span class="n">left_bin_edges</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
-<span class="n">BinnedResampling</span><span class="p">(</span><span class="n">RawValues</span><span class="p">,</span> <span class="n">left_bin_edges</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+<span class="n">BinnedWeightedResampling</span><span class="p">(</span><span class="n">UncertainScalarKDE</span><span class="p">,</span> <span class="n">left_bin_edges</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+<span class="n">BinnedWeightedResampling</span><span class="p">(</span><span class="n">UncertainScalarPopulation</span><span class="p">,</span> <span class="n">left_bin_edges</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+<span class="n">BinnedWeightedResampling</span><span class="p">(</span><span class="n">RawValues</span><span class="p">,</span> <span class="n">left_bin_edges</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -1990,7 +1966,7 @@
 </pre></div>
 </td></tr></table>
 
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/29eeb19336b26564100c69bd7e2deff82464fdf6/src/resampling/resampling_schemes/binned_resamplings.jl#L135-L164' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3fad919a7132242abe3d44cd494383f050973697/src/resampling/resampling_schemes/binned_resamplings.jl#L135-L164' class='documenter-source'>source</a><br></p>
 <p><a id='BinnedMeanWeightedResampling-1'></a></p>
 <h4 id="binnedmeanweightedresampling">BinnedMeanWeightedResampling<a class="headerlink" href="#binnedmeanweightedresampling" title="Permanent link">&para;</a></h4>
 <p><a id='UncertainData.Resampling.BinnedMeanWeightedResampling' href='#UncertainData.Resampling.BinnedMeanWeightedResampling'>#</a>
@@ -2037,7 +2013,7 @@
 </pre></div>
 </td></tr></table>
 
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/29eeb19336b26564100c69bd7e2deff82464fdf6/src/resampling/resampling_schemes/binned_resamplings.jl#L174-L208' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3fad919a7132242abe3d44cd494383f050973697/src/resampling/resampling_schemes/binned_resamplings.jl#L174-L208' class='documenter-source'>source</a><br></p>
 <p><a id='Interpolated-and-binned-resampling-1'></a></p>
 <h3 id="interpolated-and-binned_resampling">Interpolated-and-binned resampling<a class="headerlink" href="#interpolated-and-binned_resampling" title="Permanent link">&para;</a></h3>
 <p><a id='InterpolateAndBin-1'></a></p>
@@ -2096,7 +2072,7 @@
 </pre></div>
 </td></tr></table>
 
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/29eeb19336b26564100c69bd7e2deff82464fdf6/src/resampling/resampling_schemes/InterpolateAndBin.jl#L2-L37' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3fad919a7132242abe3d44cd494383f050973697/src/resampling/resampling_schemes/InterpolateAndBin.jl#L2-L37' class='documenter-source'>source</a><br></p>
                 
                   
                 

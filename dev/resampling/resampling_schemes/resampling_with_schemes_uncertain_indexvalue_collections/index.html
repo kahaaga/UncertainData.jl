@@ -622,34 +622,10 @@
       
 
 
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
-    
-    <label class="md-nav__link" for="nav-6">
-      Binning
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
-        Binning
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
   <li class="md-nav__item">
-    <a href="../../../binning/bin_BinnedResampling/" title="BinnedResampling" class="md-nav__link">
-      BinnedResampling
+    <a href="../../../binning/bin/" title="Binning" class="md-nav__link">
+      Binning
     </a>
-  </li>
-
-        
-      </ul>
-    </nav>
   </li>
 
     
@@ -1781,7 +1757,7 @@
 </pre></div>
 </td></tr></table>
 
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/29eeb19336b26564100c69bd7e2deff82464fdf6/src/resampling/resampling_with_schemes/resampling_schemes_constrained.jl#L35-L88' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3fad919a7132242abe3d44cd494383f050973697/src/resampling/resampling_with_schemes/resampling_schemes_constrained.jl#L35-L88' class='documenter-source'>source</a><br></p>
 <p><a id='Sequential-resampling-schemes-1'></a></p>
 <h2 id="sequential_resampling_schemes">Sequential resampling schemes<a class="headerlink" href="#sequential_resampling_schemes" title="Permanent link">&para;</a></h2>
 <p><a id='Sequential-1'></a></p>
@@ -1833,7 +1809,7 @@
 </pre></div>
 </td></tr></table>
 
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/29eeb19336b26564100c69bd7e2deff82464fdf6/src/resampling/resampling_with_schemes/resampling_schemes_sequential.jl#L2-L34' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3fad919a7132242abe3d44cd494383f050973697/src/resampling/resampling_with_schemes/resampling_schemes_sequential.jl#L2-L34' class='documenter-source'>source</a><br></p>
 <p><a id='Sequential-and-interpolated-1'></a></p>
 <h3 id="sequential_and_interpolated">Sequential and interpolated<a class="headerlink" href="#sequential_and_interpolated" title="Permanent link">&para;</a></h3>
 <p><a id='UncertainData.Resampling.resample-Tuple{AbstractUncertainIndexValueDataset,SequentialInterpolatedResampling}' href='#UncertainData.Resampling.resample-Tuple{AbstractUncertainIndexValueDataset,SequentialInterpolatedResampling}'>#</a>
@@ -1883,7 +1859,7 @@
 </pre></div>
 </td></tr></table>
 
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/29eeb19336b26564100c69bd7e2deff82464fdf6/src/resampling/resampling_with_schemes/resampling_schemes_sequential.jl#L40-L73' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3fad919a7132242abe3d44cd494383f050973697/src/resampling/resampling_with_schemes/resampling_schemes_sequential.jl#L40-L73' class='documenter-source'>source</a><br></p>
 <p><a id='Binned-resampling-schemes-1'></a></p>
 <h2 id="binned_resampling_schemes">Binned resampling schemes<a class="headerlink" href="#binned_resampling_schemes" title="Permanent link">&para;</a></h2>
 <p><a id='BinnedResampling-1'></a></p>
@@ -1943,7 +1919,7 @@
 </pre></div>
 </td></tr></table>
 
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/29eeb19336b26564100c69bd7e2deff82464fdf6/src/resampling/resampling_with_schemes/resampling_schemes_binned.jl#L94-L132' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3fad919a7132242abe3d44cd494383f050973697/src/resampling/resampling_with_schemes/resampling_schemes_binned.jl#L94-L132' class='documenter-source'>source</a><br></p>
 <p><a id='BinnedWeightedResampling-1'></a></p>
 <h3 id="binnedweightedresampling">BinnedWeightedResampling<a class="headerlink" href="#binnedweightedresampling" title="Permanent link">&para;</a></h3>
 <p><a id='UncertainData.Resampling.resample-Tuple{AbstractUncertainIndexValueDataset,BinnedWeightedResampling}' href='#UncertainData.Resampling.resample-Tuple{AbstractUncertainIndexValueDataset,BinnedWeightedResampling}'>#</a>
@@ -1954,7 +1930,8 @@
 </pre></div>
 </td></tr></table>
 
-<p>Transform index-irregularly spaced uncertain data onto a regular index-grid. Distributions in each index bin are obtained by resampling all index values  in <code class="codehilite"><span class="n">x</span></code> <code class="codehilite"><span class="n">resampling</span><span class="p">.</span><span class="n">n</span></code> times, sampled according to probabilities <code class="codehilite"><span class="n">resampling</span><span class="p">.</span><span class="n">weights</span></code>, and mapping those index draws to the bins. Simultaneously, the values in <code class="codehilite"><span class="n">x</span></code> are  resampled and placed in the corresponding bins. In total, <code class="codehilite"><span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">resampling</span><span class="p">.</span><span class="n">n</span></code> draws  are distributed among the bins to form the final KDEs. </p>
+<p>Transform index-irregularly spaced uncertain data onto a regular index-grid.</p>
+<p>Distributions in each index bin are obtained by resampling all index values  in <code class="codehilite"><span class="n">x</span></code> <code class="codehilite"><span class="n">resampling</span><span class="p">.</span><span class="n">n</span></code> times, sampled according to probabilities <code class="codehilite"><span class="n">resampling</span><span class="p">.</span><span class="n">weights</span></code>, and mapping those index draws to the bins. Simultaneously, the values in <code class="codehilite"><span class="n">x</span></code> are  resampled and placed in the corresponding bins. In total, <code class="codehilite"><span class="k">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">resampling</span><span class="p">.</span><span class="n">n</span></code> draws  are distributed among the bins to form the final KDEs. </p>
 <p>Returns an <code class="codehilite"><span class="n">UncertainIndexValueDataset</span></code>. The distribution of values in the <code class="codehilite"><span class="n">i</span></code>-th bin  is approximated by a kernel density estimate (KDE) over the draws falling in the  <code class="codehilite"><span class="n">i</span></code>-th bin.</p>
 <p>Assumes that the points in <code class="codehilite"><span class="n">x</span></code> are independent.</p>
 <p><strong>Example</strong></p>
@@ -1992,7 +1969,7 @@
 </pre></div>
 </td></tr></table>
 
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/29eeb19336b26564100c69bd7e2deff82464fdf6/src/resampling/resampling_with_schemes/resampling_schemes_binned.jl#L397-L434' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3fad919a7132242abe3d44cd494383f050973697/src/resampling/resampling_with_schemes/resampling_schemes_binned.jl#L397-L435' class='documenter-source'>source</a><br></p>
 <p><a id='BinnedMeanWeightedResampling-1'></a></p>
 <h3 id="binnedmeanweightedresampling">BinnedMeanWeightedResampling<a class="headerlink" href="#binnedmeanweightedresampling" title="Permanent link">&para;</a></h3>
 <p><a id='UncertainData.Resampling.resample-Tuple{AbstractUncertainIndexValueDataset,BinnedMeanWeightedResampling}' href='#UncertainData.Resampling.resample-Tuple{AbstractUncertainIndexValueDataset,BinnedMeanWeightedResampling}'>#</a>
@@ -2046,7 +2023,7 @@
 </pre></div>
 </td></tr></table>
 
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/29eeb19336b26564100c69bd7e2deff82464fdf6/src/resampling/resampling_with_schemes/resampling_schemes_binned.jl#L4-L45' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3fad919a7132242abe3d44cd494383f050973697/src/resampling/resampling_with_schemes/resampling_schemes_binned.jl#L4-L45' class='documenter-source'>source</a><br></p>
 <p><a id='Interpolated-and-binned-resampling-1'></a></p>
 <h2 id="interpolated-and-binned_resampling">Interpolated-and-binned resampling<a class="headerlink" href="#interpolated-and-binned_resampling" title="Permanent link">&para;</a></h2>
 <p><a id='InterpolateAndBin-resampling-1'></a></p>
@@ -2143,7 +2120,7 @@
 </pre></div>
 </td></tr></table>
 
-<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/29eeb19336b26564100c69bd7e2deff82464fdf6/src/resampling/resampling_with_schemes/resampling_schemes_interpolated_binned.jl#L3-L55' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/kahaaga/UncertainData.jl/blob/3fad919a7132242abe3d44cd494383f050973697/src/resampling/resampling_with_schemes/resampling_schemes_interpolated_binned.jl#L3-L55' class='documenter-source'>source</a><br></p>
                 
                   
                 
