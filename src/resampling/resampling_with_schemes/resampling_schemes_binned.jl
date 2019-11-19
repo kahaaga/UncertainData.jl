@@ -265,7 +265,7 @@ function resample(x::AbstractUncertainIndexValueDataset,
     end
     
     # Estimate distributions in each bin by kernel density estimation
-    estimated_value_dists = Vector{AbstractUncertainValue}(undef, n_bins)
+    estimated_value_dists = Vector{Union{CertainValue, UncertainScalarKDE}}(undef, n_bins)
     
     for i in 1:n_bins
         if length(binvecs[i]) > nan_threshold
@@ -327,7 +327,7 @@ function resample(x::AbstractUncertainIndexValueDataset,
     end
 
     # Estimate distributions in each bin by kernel density estimation
-    estimated_value_dists = Vector{AbstractUncertainValue}(undef, n_bins)
+    estimated_value_dists = Vector{Union{CertainValue, UncertainScalarPopulation}}(undef, n_bins)
 
     for i in 1:n_bins
         if length(binvecs[i]) > nan_threshold
@@ -399,6 +399,7 @@ end
         nan_threshold = 0.0)
 
 Transform index-irregularly spaced uncertain data onto a regular index-grid.
+
 Distributions in each index bin are obtained by resampling all index values 
 in `x` `resampling.n` times, sampled according to probabilities `resampling.weights`,
 and mapping those index draws to the bins. Simultaneously, the values in `x` are 

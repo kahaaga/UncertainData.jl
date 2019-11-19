@@ -30,6 +30,8 @@ touch(joinpath(@__DIR__, update_name))
 end
 end
 
+include("definitions.jl")
+
 # Uncertain values
 include("uncertain_values/UncertainValues.jl")
 

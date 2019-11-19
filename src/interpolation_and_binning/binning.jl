@@ -1,5 +1,5 @@
 
-function bin end 
+import ..bin
 
 """
     bin(left_bin_edges::AbstractRange, xs, ys) -> Vector{Vector{T}} where T

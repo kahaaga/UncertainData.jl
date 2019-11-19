@@ -108,6 +108,7 @@ include("binning/test_binning.jl")
 
 # Interpolation with resampling schemes
 include("resampling/binning/test_bin_BinnedResampling.jl")
+include("resampling/binning/test_bin_BinnedWeightedResampling.jl")
 
 #############################
 # Mathematics
