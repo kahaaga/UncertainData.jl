@@ -70,9 +70,9 @@ end
 
 """ 
     BinnedWeightedResampling(left_bin_edges, weights, n::Int; bin_repr = UncertainScalarKDE)
-    BinnedResampling(UncertainScalarKDE, left_bin_edges, weights, n::Int)
-    BinnedResampling(UncertainScalarPopulation, left_bin_edges, weights, n::Int)
-    BinnedResampling(RawValues, left_bin_edges, weights, n::Int)
+    BinnedWeightedResampling(UncertainScalarKDE, left_bin_edges, weights, n::Int)
+    BinnedWeightedResampling(UncertainScalarPopulation, left_bin_edges, weights, n::Int)
+    BinnedWeightedResampling(RawValues, left_bin_edges, weights, n::Int)
 
 Indicates that binned resampling should be performed, but weighting each
 point in the dataset differently.

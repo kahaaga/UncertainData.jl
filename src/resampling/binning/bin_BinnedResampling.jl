@@ -6,7 +6,7 @@ import Distributions: Distribution
     bin(x::AbstractUncertainIndexValueDataset, binning::BinnedResampling{UncertainScalarPopulation}) -> UncertainIndexValueDataset
 
 Resample every element of `x` the number of times given by `binning.n`. After resampling,
-distribute the values according to their indices in the bins given by `binning.left_bin_edges`.
+distribute the values according to their indices, into the bins given by `binning.left_bin_edges`.
 
 ## Returns 
 
@@ -14,10 +14,10 @@ Returns an `UncertainIndexValueDataset`. Indices are assumed to be uniformly dis
 bin, and are represented as `CertainValue`s at the bin centers. Values of the dataset have different 
 representations depending on what `binning` is:
 
-- If `binning isa BinnedResampling{UncertainScalarKDE}`, values in each bin are represented by a 
+- If `binning isa BinnedResampling{UncertainScalarKDE}`, then values in each bin are represented by a 
     kernel density estimate to the distribution of the resampled values whose resampled indices 
     fall in that bin.
-- If `binning isa BinnedResampling{UncertainScalarPopulation}`, values in each bin are 
+- If `binning isa BinnedResampling{UncertainScalarPopulation}`, then values in each bin are 
     represented by equiprobable populations consisting of the resampled values whose resampled 
     indices fall in the bins.
 """
@@ -27,9 +27,11 @@ function bin(x::AbstractUncertainIndexValueDataset, binning::BinnedResampling); 
     bin(x::AbstractUncertainIndexValueDataset, binning::BinnedResampling{RawValues}) -> Tuple(Vector, Vector{Vector})
 
 Resample every element of `x` the number of times given by `binning.n`. After resampling,
-distribute the values according to their indices in the bins given by `binning.left_bin_edges`.
+distribute the values according to their indices, into the `N` bins given by `binning.left_bin_edges`.
 
-For each bin, return a tuple containing the `N` different bin centers and a `N`-length vector of 
+## Returns 
+
+Return a tuple containing the `N` different bin centers and a `N`-length vector of 
 resampled values whose resampled indices fall in the `N` different bins.
 
 ## Example 

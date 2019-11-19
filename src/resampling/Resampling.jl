@@ -3,7 +3,7 @@ using Reexport
 @reexport module Resampling
     import Interpolations
     import Interpolations: Linear, BoundaryCondition
-    import ..InterpolationAndGrids: bin
+    import ..bin
 
     import ..UVAL_COLLECTION_TYPES
     import ..UncertainDatasets: 
@@ -109,6 +109,7 @@ using Reexport
     # Interpolation
     ################################
     include("binning/bin_BinnedResampling.jl")
+    include("binning/bin_BinnedWeightedResampling.jl")
 
     export resample, resample!, resample_elwise, bin
 end # module

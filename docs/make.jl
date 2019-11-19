@@ -60,7 +60,7 @@ PAGES = [
     ],
 
     "Binning" => [
-        "binning/bin_BinnedResampling.md"
+        "binning/bin.md"
     ],
     "Resampling" => [
         "resampling/resampling_overview.md",
