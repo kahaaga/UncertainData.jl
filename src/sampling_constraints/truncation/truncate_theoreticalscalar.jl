@@ -1,3 +1,4 @@
+import Distributions: truncated
 
 function validate_bounds(lower, upper, uv, constraint) 
     if lower >= upper
