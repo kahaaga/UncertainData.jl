@@ -1,3 +1,5 @@
+# Generic uncertain datasets
+
 `UncertainDataset`s is a generic uncertain dataset type that has no explicit index 
 associated with its uncertain values.
 

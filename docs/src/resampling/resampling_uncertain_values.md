@@ -1,13 +1,15 @@
+# Resampling uncertain values
+
 Uncertain values may be resampled by drawing random number from the distributions
 furnishing them.
 
 ## Documentation
 
-```@docs 
+```@docs
 resample(uv::AbstractUncertainValue)
 ```
 
-```@docs 
+```@docs
 resample(uv::AbstractUncertainValue, n::Int)
 ```
 

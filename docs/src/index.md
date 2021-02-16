@@ -9,6 +9,8 @@ It makes workflows involving uncertain data of
 [different types](uncertain_values/uncertainvalues_overview.md) 
 and from different sources significantly easier.
 
+![](tutorials/imgs/BinnedResampling.svg)
+
 ## Package philosophy
 
 Way too often in data analysis the uncertainties in observational data are ignored or not 

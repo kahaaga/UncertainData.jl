@@ -1,4 +1,5 @@
+# In-place resampling
 
-```@docs 
+```@docs
 resample!
 ```
