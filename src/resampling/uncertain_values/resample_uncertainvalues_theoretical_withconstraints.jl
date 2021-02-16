@@ -9,7 +9,7 @@ import ..SamplingConstraints:
 	TruncateMaximum,
 	TruncateRange,
     TruncateStd
-import Distributions: Truncated
+import Distributions: truncated
 
 
 ########################################################################
