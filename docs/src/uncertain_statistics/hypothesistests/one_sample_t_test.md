@@ -1,3 +1,5 @@
+# One-sample t-test
+
 ## Regular test
 
 ```@docs

@@ -1,6 +1,16 @@
 
 # Changelog
 
+## UncertainData.jl v0.10.4
+
+### Documentation
+
+- Changed to regular documentation template.
+
+### Bug fixes
+
+- Fixed type error for test.
+
 ## UncertainData.jl v0.10.3
 
 ### Improvements

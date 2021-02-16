@@ -1,3 +1,4 @@
+# Jarque-Bera test
 
 ## Regular test
 

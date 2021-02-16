@@ -1,3 +1,5 @@
+# Approximate two-sample Kolmogorov-Smirnov test
+
 ## Pooled test
 
 ```@docs

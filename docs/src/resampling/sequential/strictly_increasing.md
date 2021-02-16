@@ -1,15 +1,14 @@
-
+# Strictly increasing
 
 The default constructor for a strictly increasing sequential sampling constraint is 
 `StrictlyIncreasing`. To specify how the sequence is sampled, provide an 
 `OrderedSamplingAlgorithm` as an argument to the constructor.
 
-
 ## Compatible ordering algorithms
 
 - `StrictlyIncreasing(StartToEnd())` (the default)
 
-# Documentation 
+## Documentation 
 
 
 ```@docs
@@ -25,9 +24,9 @@ resample(udata::DT, sequential_constraint::StrictlyIncreasing{T};
         quantiles = [0.0001, 0.9999]) where {DT <: AbstractUncertainValueDataset, T <: StartToEnd}
 ```
 
-# Examples
+## Examples
 
-## Example 1: strictly increasing sequences
+### Example 1: strictly increasing sequences
 
 Let's compare how the realizations look for the situation where no sequential sampling
 constraint is imposed versus enforcing strictly increasing sequences.
@@ -62,13 +61,13 @@ Values of the realizations where strictly increasing sequences are imposed clear
 limited by the next values in the dataset. For the regular sampling, however, realizations 
 jump wildly, with both positive and negative first differences.
 
-## Example 2: regular constraints + strictly increasing sequences
+### Example 2: regular constraints + strictly increasing sequences
 
 You may also combine regular sampling constraints with sequential resampling schemes. 
 Here's one example. We use the same data as in example 1 above, but when drawing increasing 
 sequences, we only resample from within one standard deviation around the mean.
- 
-```julia 
+
+```julia
 p_increasing = plot(u, [0.0001, 0.9999], legend = false,
     xlabel = "index", ylabel = "value")
 p_regular = plot(u, [0.0001, 0.9999], legend = false,
