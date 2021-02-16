@@ -1,5 +1,8 @@
-[![Build Status](https://travis-ci.com/kahaaga/UncertainData.jl.svg?branch=master)](https://travis-ci.com/kahaaga/UncertainData.jl) [![DOI](https://joss.theoj.org/papers/10.21105/joss.01666/status.svg)](https://doi.org/10.21105/joss.01666) [![DOI](https://zenodo.org/badge/160108056.svg)](https://zenodo.org/badge/latestdoi/160108056) 
-
+[![CI](https://github.com/kahaaga/UncertainData.jl/workflows/CI/badge.svg)](https://github.com/kahaaga/UncertainData.jl/actions)
+[![](https://img.shields.io/badge/docs-latest_tagged-blue.svg)](https://kahaaga.github.io/UncertainData.jl/stable/)
+[![](https://img.shields.io/badge/docs-dev_(master)-blue.svg)](https://kahaaga.github.io/UncertainData.jl/dev/)
+[![DOI](https://joss.theoj.org/papers/10.21105/joss.01666/status.svg)](https://doi.org/10.21105/joss.01666)
+[![DOI](https://zenodo.org/badge/160108056.svg)](https://zenodo.org/badge/latestdoi/160108056) 
 
 # UncertainData.jl
 
