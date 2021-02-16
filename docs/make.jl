@@ -1,6 +1,12 @@
-
+cd(@__DIR__)
+using Pkg
+CI = get(ENV, "CI", nothing) == "true" || get(ENV, "GITHUB_TOKEN", nothing) !== nothing
+CI && Pkg.activate(@__DIR__)
+CI && Pkg.instantiate()
+CI && (ENV["GKSwstype"] = "100")
 using Documenter
 using DocumenterMarkdown
+
 using UncertainData
 using Distributions
 using KernelDensity
