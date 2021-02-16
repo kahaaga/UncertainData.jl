@@ -35,7 +35,7 @@ function Base.truncate(uv::TheoreticalDistributionScalarValue,
     s = support(uv.distribution)
     lower_bound, upper_bound = s.lb, s.ub
 
-    return Truncated(uv.distribution, lower_bound, upper_bound)
+    return truncated(uv.distribution, lower_bound, upper_bound)
 end
 
 """
@@ -52,7 +52,7 @@ function Base.truncate(uv::TheoreticalDistributionScalarValue,
     
     validate_bounds(lower_bound, upper_bound, uv, constraint) 
 
-    Truncated(uv.distribution, lower_bound, upper_bound)
+    truncated(uv.distribution, lower_bound, upper_bound)
 end
 
 """
@@ -69,7 +69,7 @@ function Base.truncate(uv::TheoreticalDistributionScalarValue,
 
     validate_bounds(lower_bound, upper_bound, uv, constraint)
 
-    Truncated(uv.distribution, lower_bound, upper_bound)
+    truncated(uv.distribution, lower_bound, upper_bound)
 end
 
 """
@@ -86,7 +86,7 @@ function Base.truncate(uv::TheoreticalDistributionScalarValue,
 
     validate_bounds(lower_bound, upper_bound, uv, constraint) 
 
-    Truncated(uv.distribution, lower_bound, upper_bound)
+    truncated(uv.distribution, lower_bound, upper_bound)
 end
 
 
@@ -105,7 +105,7 @@ function Base.truncate(uv::TheoreticalDistributionScalarValue,
 
     validate_bounds(lower_bound, upper_bound, uv, constraint) 
 
-    Truncated(uv.distribution, lower_bound, upper_bound)
+    truncated(uv.distribution, lower_bound, upper_bound)
 end
 
 """
@@ -123,7 +123,7 @@ function Base.truncate(uv::TheoreticalDistributionScalarValue,
 
     validate_bounds(lower_bound, upper_bound, uv, constraint) 
 
-    Truncated(uv.distribution, lower_bound, upper_bound)
+    truncated(uv.distribution, lower_bound, upper_bound)
 end
 
 """
@@ -141,7 +141,7 @@ function Base.truncate(uv::TheoreticalDistributionScalarValue,
 
     validate_bounds(lower_bound, upper_bound, uv, constraint) 
 
-    Truncated(uv.distribution, lower_bound, upper_bound)
+    truncated(uv.distribution, lower_bound, upper_bound)
 end
 
 """
@@ -165,7 +165,7 @@ function Base.truncate(uv::TheoreticalDistributionScalarValue,
 
     validate_bounds(lower_bound, upper_bound, uv, constraint) 
 
-    Truncated(uv.distribution, lower_bound, upper_bound)
+    truncated(uv.distribution, lower_bound, upper_bound)
 end
 
 

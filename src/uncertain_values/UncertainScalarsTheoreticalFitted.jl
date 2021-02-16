@@ -35,8 +35,8 @@ struct ConstrainedUncertainScalarTheoreticalFit{D <: Distribution, T} <: Theoret
 end
 
 """ Truncate a fitted distribution. """
-Distributions.Truncated(fd::FittedDistribution, lower, upper) =
-    Distributions.Truncated(fd.distribution, lower, upper)
+Distributions.truncated(fd::FittedDistribution, lower, upper) =
+    Distributions.truncated(fd.distribution, lower, upper)
 
 
 Base.rand(fd::UncertainScalarTheoreticalFit) = rand(fd.distribution.distribution)
