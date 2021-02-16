@@ -14,7 +14,7 @@ y = UncertainValue([1, UncertainValue(Normal, 0, 1), 3], rand(3))
 
 @test UncertainValue(Normal(1, 2)) isa UncertainScalarNormallyDistributed
 @test UncertainValue(Normal(1, 2)) isa UncertainScalarNormallyDistributed
-@test UncertainValue(Truncated(Normal(1, 2), 0.2, 0.8)) isa ConstrainedUncertainScalarValueTwoParameter
+@test UncertainValue(truncated(Normal(1, 2), 0.2, 0.8)) isa ConstrainedUncertainScalarValueTwoParameter
 
 # Uncertain normally distributed values
 @test UncertainValue(Normal, 1, 0.2, nσ = 2, trunc_lower = -5) isa UncertainScalarNormallyDistributed

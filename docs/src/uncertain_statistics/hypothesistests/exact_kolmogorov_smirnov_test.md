@@ -1,3 +1,5 @@
+# Exact two-sample Kolmogorov-Smirnov test
+
 ## Regular test
 
 ```@docs

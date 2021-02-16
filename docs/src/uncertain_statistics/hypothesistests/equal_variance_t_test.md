@@ -1,3 +1,5 @@
+# Equal variance t-test
+
 ## Regular test
 
 ```@docs

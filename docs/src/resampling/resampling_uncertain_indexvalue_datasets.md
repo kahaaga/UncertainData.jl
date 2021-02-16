@@ -1,3 +1,5 @@
+# `UncertainIndexValueDataset`
+
 Resampling `UncertainIndexValueDataset`s is done in the same manner as for uncertain 
 values and `UncertainDatasets`. 
 

@@ -1,6 +1,13 @@
-
+cd(@__DIR__)
+using Pkg
+CI = get(ENV, "CI", nothing) == "true" || get(ENV, "GITHUB_TOKEN", nothing) !== nothing
+CI && Pkg.activate(@__DIR__)
+CI && Pkg.instantiate()
+CI && (ENV["GKSwstype"] = "100")
 using Documenter
+using DocumenterTools
 using DocumenterMarkdown
+
 using UncertainData
 using Distributions
 using KernelDensity
@@ -11,22 +18,22 @@ using Interpolations
 PAGES = [
     "index.md",
     "Uncertain values" => [
-        "uncertain_values/uncertainvalues_examples.md",
         "uncertain_values/uncertainvalues_overview.md",
+        "uncertain_values/uncertainvalues_theoreticaldistributions.md",
         "uncertain_values/uncertainvalues_kde.md",
         "uncertain_values/uncertainvalues_fitted.md",
-        "uncertain_values/uncertainvalues_theoreticaldistributions.md",
         "uncertain_values/uncertainvalues_certainvalue.md",
         "uncertain_values/uncertainvalues_populations.md",
         "uncertain_values/uncertainvalues_Measurements.md",
-        "uncertain_values/merging.md"
+        "uncertain_values/merging.md",
+        "uncertain_values/uncertainvalues_examples.md",
     ],
 	"Uncertain datasets" => [
         "uncertain_datasets/uncertain_datasets_overview.md",
         "uncertain_datasets/uncertain_index_dataset.md",
         "uncertain_datasets/uncertain_value_dataset.md",
+        "uncertain_datasets/uncertain_indexvalue_dataset.md",
         "uncertain_datasets/uncertain_dataset.md",
-        "uncertain_datasets/uncertain_indexvalue_dataset.md"
 	],
     "Uncertain statistics" => [
         "Core statistics" => [
@@ -52,10 +59,7 @@ PAGES = [
     ],
     "Sampling constraints" => [
         "sampling_constraints/available_constraints.md",
-
         "sampling_constraints/constrain_uncertain_values.md",
-
-        "sampling_constraints/ordered_sequence_exists.md",
         "sampling_constraints/sequential_constraints.md"
     ],
 
@@ -106,19 +110,27 @@ PAGES = [
     "citing.md"
 ]
 
+
+# %% Build docs
+#PyPlot.ioff()
+cd(@__DIR__)
+ENV["JULIA_DEBUG"] = "Documenter"
+
+
 makedocs(
     modules = [UncertainData],
     sitename = "UncertainData.jl documentation",
-    format = Markdown(),
+    format = format = Documenter.HTML(
+        prettyurls = CI,
+        ),
     pages = PAGES
 )
 
-if !Sys.iswindows()
+
+if CI
     deploydocs(
-        deps   = Deps.pip("mkdocs==0.17.5", "mkdocs-material==2.9.4",
-        "python-markdown-math", "pygments", "pymdown-extensions"),
-        repo   = "github.com/kahaaga/UncertainData.jl.git",
-        target = "site",
-        make = () -> run(`mkdocs build`)
+        repo = "github.com/kahaaga/UncertainData.jl.git",
+        target = "build",
+        push_preview = true
     )
 end

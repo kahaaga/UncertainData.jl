@@ -6,5 +6,5 @@ function Base.truncate(uv::TheoreticalFittedUncertainScalar,
     lower_bound = m - s
     upper_bound = m + s
 
-    Truncated(uv.distribution, lower_bound, upper_bound)
+    truncated(uv.distribution, lower_bound, upper_bound)
 end

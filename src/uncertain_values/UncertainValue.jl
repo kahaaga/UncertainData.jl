@@ -342,7 +342,7 @@ is returned:
 
 ```julia
 # Normal distribution truncated to the interval [0.5, 0.7]
-t = Truncated(Normal(0, 1), 0.5, 0.7)
+t = truncated(Normal(0, 1), 0.5, 0.7)
 UncertainValue(t)
 
 # Gamma distribution truncated to the interval [0.5, 3.5]

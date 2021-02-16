@@ -1,9 +1,8 @@
+# `UncertainDataset`
 
 Collections of uncertain values are resampled by element-wise sampling the 
 furnishing distributions of the uncertain values in the collection. You may sample the collection as it is, or apply [sampling constraints](../sampling_constraints/available_constraints.md) that limit the 
 support of the individual data value distributions.
-
-# Method documentation
 
 The following methods will work for any collection type included in the [`UVAL_COLLECTION_TYPES`](@ref) type union.
 
@@ -47,9 +46,9 @@ resample(::UVAL_COLLECTION_TYPES, ::SamplingConstraint, ::Int)
 resample(x::UVAL_COLLECTION_TYPES, constraint::Vector{<:SamplingConstraint}, n::Int)
 ```
 
-# Examples
+## Examples
 
-## Resampling with sampling constraints
+### Resampling with sampling constraints
 
 Consider the following example where we had a bunch of different measurements. 
 
@@ -119,7 +118,7 @@ This produces the following plot:
 
 ![](resampling_uncertain_datasets.png)
 
-## What happens when applying invalid constraints to a dataset?
+### What happens when applying invalid constraints to a dataset?
 
 In the example above, the resampling worked fine because all the constraints were 
 applicable to the data. However, it could happen that the constraint is not applicable 
