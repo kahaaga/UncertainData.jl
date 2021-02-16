@@ -3,8 +3,6 @@ on:
   issue_comment:  # THIS BIT IS NEW
     types:
       - created
-  schedule:
-    - cron: 0 * * * *
 jobs:
   TagBot:
     if: github.event_name == 'workflow_dispatch' || github.actor == 'JuliaTagBot'
