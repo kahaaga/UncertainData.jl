@@ -10,8 +10,8 @@ using KernelDensity
 
 
 
-display_update = true
-version = "v0.8.0"
+display_update = false
+version = "v0.10.4"
 update_name = "update_$version"
 
 if display_update
@@ -19,12 +19,8 @@ if !isfile(joinpath(@__DIR__, update_name))
 printstyled(stdout,
 """
 \nUpdate message: UncertainData $version
-----------------
-New features
-----------------
 
-- Added binned resampling methods that uses `BinnedResampling` and 
-    `BinnedMeanResampling` schemes.
+- Fixed some minor bugs.
 """; color = :light_magenta)
 touch(joinpath(@__DIR__, update_name))
 end
