@@ -24,8 +24,8 @@ import ..UncertainStatistics: quantile, median
         @series begin 
             #seriescolor --> :black
             label --> ""
-            xerr --> ([med_idx - lower_idx], [upper_idx - med_idx])
-            yerr --> ([med_val - lower_val], [upper_val - med_val])
+            xerror --> ([med_idx - lower_idx], [upper_idx - med_idx])
+            yerror --> ([med_val - lower_val], [upper_val - med_val])
             [med_idx], [med_val]
         end    
     end
