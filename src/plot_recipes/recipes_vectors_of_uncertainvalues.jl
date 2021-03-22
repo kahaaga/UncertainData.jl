@@ -16,7 +16,7 @@ import ..UncertainStatistics: mean, std, median, quantile
         @series begin 
             seriescolor --> :black
             label --> ""
-            yerr --> ([med - lower], [upper - med])
+            yerror --> ([med - lower], [upper - med])
             [i], [med]
         end
     end
