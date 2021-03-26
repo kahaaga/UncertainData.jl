@@ -6,7 +6,7 @@ An abstract type for ordered sampling algorithms.
 abstract type OrderedSamplingAlgorithm end 
 
 """
-    OrderedSamplingStartToEnd
+    StartToEnd
 
 An ordered sampling algorithm indicating that values should be 
 treated consecutively from start to finish of the dataset.
@@ -14,7 +14,7 @@ treated consecutively from start to finish of the dataset.
 struct StartToEnd <: OrderedSamplingAlgorithm end 
 
 """
-    OrderedSamplingEndToStart
+    EndToStart
 
 An ordered sampling algorithm indicating that the values should be 
 treated consecutively from the end to the start of the dataset.
@@ -22,7 +22,7 @@ treated consecutively from the end to the start of the dataset.
 struct EndToStart <: OrderedSamplingAlgorithm end
 
 """
-    OrderedSamplingMidpointOutwards
+    MidpointOutwards
 
 An ordered sampling algorithm indicating that the values should be 
 divided into two groups, separating the values at some midpoint 
@@ -33,7 +33,7 @@ struct MidpointOutwards <: OrderedSamplingAlgorithm
 end
 
 """
-    OrderedSamplingChuncksForwards
+    ChuncksForwards
 
 An ordered sampling algorithm indicating that the values should be 
 divided into multiple (`n_chunks`) groups. The groups of values 
@@ -45,7 +45,7 @@ struct ChunksForwards <: OrderedSamplingAlgorithm
 end
 
 """
-    OrderedSamplingChuncksForwards
+    ChuncksBackwards
 
 An ordered sampling algorithm indicating that the values should be 
 divided into multiple (`n_chunks`) groups. The groups of values 
