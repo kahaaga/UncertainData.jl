@@ -170,7 +170,7 @@ function resample(udata::UncertainIndexValueDataset,
         sequential_constraint::StrictlyIncreasing{<:OrderedSamplingAlgorithm})
 
     inds = resample(constrain(udata.indices, constraint), sequential_constraint)
-    vals = resample(constrain(udata.indices, constraint))
+    vals = resample(constrain(udata.values, constraint))
 
     inds, vals
 end
@@ -180,7 +180,7 @@ function resample(udata::UncertainIndexValueDataset,
         sequential_constraint::StrictlyIncreasing{<:OrderedSamplingAlgorithm})
 
     inds = resample(constrain(udata.indices, constraint), sequential_constraint)
-    vals = resample(constrain(udata.indices, constraint))
+    vals = resample(constrain(udata.values, constraint))
 
     inds, vals
 end
@@ -192,7 +192,7 @@ function resample(udata::UncertainIndexValueDataset,
         sequential_constraint::StrictlyIncreasing{<:OrderedSamplingAlgorithm})
     
     inds = resample(constrain(udata.indices, idx_constraint), sequential_constraint)
-    vals = resample(constrain(udata.indices, value_constraint))
+    vals = resample(constrain(udata.values, value_constraint))
 
     inds, vals
 end
@@ -204,7 +204,7 @@ function resample(udata::UncertainIndexValueDataset,
         sequential_constraint::StrictlyIncreasing{<:OrderedSamplingAlgorithm})
 
     inds = resample(constrain(udata.indices, idx_constraint), sequential_constraint)
-    vals = resample(constrain(udata.indices, value_constraint))
+    vals = resample(constrain(udata.values, value_constraint))
 
     inds, vals
 end
@@ -216,7 +216,7 @@ function resample(udata::UncertainIndexValueDataset,
         sequential_constraint::StrictlyIncreasing{<:OrderedSamplingAlgorithm})
 
     inds = resample(constrain(udata.indices, idx_constraint), sequential_constraint)
-    vals = resample(constrain(udata.indices, value_constraint))
+    vals = resample(constrain(udata.values, value_constraint))
 
     inds, vals
 end
@@ -227,7 +227,7 @@ function resample(udata::UncertainIndexValueDataset,
         sequential_constraint::StrictlyIncreasing{<:OrderedSamplingAlgorithm})
 
     inds = resample(constrain(udata.indices, idx_constraint), sequential_constraint)
-    vals = resample(constrain(udata.indices, value_constraint))
+    vals = resample(constrain(udata.values, value_constraint))
 
     inds, vals
 end
