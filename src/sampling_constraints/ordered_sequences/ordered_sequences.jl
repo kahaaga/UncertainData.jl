@@ -1,86 +1,77 @@
 using IntervalArithmetic
+include("utils.jl")
+import ..AbstractUncertainIndexValueDataset
 
-"""
-    truncated_supports(udata::AbstractUncertainValueDataset; quantiles = [0.001, 0.999])
-
-Truncate the furnishing distribution of each uncertain value in the dataset
-to the provided `quantiles` range. Returns a vector of Interval{Float64}, one 
-for each value.
-""" 
-function truncated_supports(udata::AbstractUncertainValueDataset; 
-            quantiles = [0.001, 0.999])
-    n_vals = length(udata)
-    
-    # Using the provided quantiles, find the parts of the supports of the furnishing 
-    # distributions from which we're going to sample.
-    supports = Vector{Interval{Float64}}(undef, n_vals)
-    
-    for i = 1:n_vals
-        lowerbound = quantile(udata[i], minimum(quantiles))
-        upperbound = quantile(udata[i], maximum(quantiles))
-        
-        supports[i] = interval(lowerbound, upperbound)
-    end
-    
-    return supports
-end
-    
+export 
+sequence_exists,
+sequence_exists!
 
 """ 
-    strictly_increasing_sequence_exists(udata::AbstractUncertainValueDataset; 
-        quantiles = [0.0001, 0.9999]) 
+    sequence_exists(x, c::SequentialSamplingConstraint) 
+    sequence_exists(x, c::SequentialSamplingConstraint) 
 
-Does a path through the dataset exist? I.e, check that a strictly 
-increasing sequence can be found after first 
-constraining each distribution to the provided quantile range (this 
-is necessary because some distributions may have infinite support).
+Does a point-by-point sequence through the uncertain dataset `x` exist that satisfies the criteria `c`?
+
+If `x` is an `UncertainIndexValueDataset`, then check for a sequence through the indices only.
+
+Before the check is performed, the distributions in `x` are truncated to the quantiles provided 
+by `c` to ensure they have finite supports.
+
+## Example
+
+```julia
+# Create a set of time indices 
+# We construct this is such a way that we *know* an increasing sequence exists. 
+t = [UncertainValue(Normal, i, 2) for i in 1:N];
+sequence_exists(t, StrictlyIncreasing(StartToEnd()))
+```
 """ 
-function strictly_increasing_sequence_exists(udata, quantiles = [0.0001, 0.9999])
-    n_vals = length(udata)
-    sample = Vector{Float64}(undef, n_vals)
-    
-    # First, constrain all data such that the supports are all finite
-    constrained_data = constrain(udata, TruncateQuantiles(quantiles...,))
+function sequence_exists end
 
-    # Sample the first value in a way that ensures a strictly 
-    # increasing sequence from indices 2:end will exist.
-    minima = minimum.(constrained_data)
-    maxima = maximum.(constrained_data)
+# If data has uncertainties both in indices and values, check only for indices.
+sequence_exists(x::AbstractUncertainIndexValueDataset, c) = sequence_exists(x.indices, c)
+
+function sequence_exists(x, c::SequentialSamplingConstraint)
+    lqs, uqs = get_quantiles(x, c)
     
-    increasing_sequence_exists = true
-    
-    for i = 2:n_vals - 1
-        # Find the lower and upper bounds of the support from which 
-        # we can draw values while still ensuring an increasing 
-        # sequence of values.
-        
-        lo = minima[i]
-        hi = minimum(maxima[i:end])
-        if lo > hi
-            increasing_sequence_exists = false
-        end
-    end
-    
-    return increasing_sequence_exists 
+    return sequence_exists(lqs, uqs, c), lqs, uqs
 end
 
-"""
-    strictly_decreasing_sequence_exists(udata::AbstractUncertainValueDataset;
-        quantiles = [0.0001, 0.9999]) 
+function sequence_exists!(lqs, uqs, x::AbstractUncertainValueDataset, c)
+    get_quantiles!(lqs, uqs, x, c)
+    
+    return sequence_exists(lqs, uqs, c)
+end
 
-Does a path through the dataset exist? I.e,  check that a strictly 
+sequence_exists(x::AbstractUncertainIndexValueDataset, c::StrictlyIncreasing{StartToEnd}) = 
+    sequence_exists(x.indices, c)
+
+###########################
+# Concrete implementations 
+###########################
+"""
+    sequence_exists(udata::AbstractUncertainValueDataset, c::StrictlyDecreasing{StartToEnd}) 
+
+Does a strictly decreasing sequence through the dataset exist? I.e,  check that a strictly 
 decreasing sequence can be found after first 
 constraining each distribution to the provided quantile range (this 
 is necessary because some distributions may have infinite support).
-""" 
-function strictly_decreasing_sequence_exists(udata; quantiles = [0.0001, 0.9999])
-    # If a strictly increasing sequence exists for the reversed dataset, then a strictly 
-    # decreasing sequence exists for the original dataset.
-    strictly_increasing_sequence_exists(udata[end:-1:1], quantiles = quantiles)
+"""
+function sequence_exists(lqs, uqs, c::StrictlyIncreasing{StartToEnd})
+    L = length(lqs)
+    if any(lqs .>= uqs)
+        error("Not all `lqs[i]` are lower than uqs[i]. Quantile calculations are not meaningful.")
+        return false
+    end
+    
+    for i = 1:L-1
+        if lqs[i] >= minimum(uqs[i+1:end])
+            return false
+        end
+    end
+    return true
 end
 
-
-
-export 
-strictly_increasing_sequence_exists,
-strictly_decreasing_sequence_exists
+function sequence_exists(udata, c::StrictlyDecreasing{StartToEnd})
+    sequence_exists(udata[end:-1:1], c)
+end

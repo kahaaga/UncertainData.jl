@@ -167,11 +167,11 @@ abstract type IndexSamplingConstraint <: SamplingConstraint end
 # Sequential sampling constraints
 #########################################################################
 
-abstract type SequentialSamplingConstraint end
+abstract type SequentialSamplingConstraint{OA} end
 
 # Add the ordered sampling scheme to the seqential sampling constraints,
 # because that's all they affect. Defaults to `StartToEnd`.
-(::Type{SSC})() where SSC<:SequentialSamplingConstraint = SSC(StartToEnd())
+#(::Type{SSC})(args...; kwargs...) where SSC<:SequentialSamplingConstraint = SSC(StartToEnd(), args...; kwargs...)
 
 
 """ 
@@ -197,7 +197,7 @@ be flipped, and must be strictly decreasing/increasing.
 
 See also: [`StartToEnd`](@ref)
 """
-struct StrictlyIncreasing{OA <: OrderedSamplingAlgorithm} <: SequentialSamplingConstraint
+struct StrictlyIncreasing{OA <: OrderedSamplingAlgorithm} <: SequentialSamplingConstraint{OA}
     ordered_sampling_algorithm::OA
     n::Int # number of samples to draw from samples
     lq::Float64 # lower quantile
@@ -233,7 +233,7 @@ be flipped, and must be strictly decreasing/increasing.
 
 See also: [`StartToEnd`](@ref)
 """
-struct StrictlyDecreasing{OA <: OrderedSamplingAlgorithm} <: SequentialSamplingConstraint
+struct StrictlyDecreasing{OA <: OrderedSamplingAlgorithm} <: SequentialSamplingConstraint{OA}
     ordered_sampling_algorithm::OA
     n::Int # number of samples to draw from samples
     lq::Float64 # lower quantile

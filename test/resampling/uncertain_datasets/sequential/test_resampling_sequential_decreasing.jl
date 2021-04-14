@@ -1,23 +1,6 @@
-import UncertainData: 
-    UncertainDataset, 
-    resample, 
-    UncertainValue, 
-    StrictlyDecreasing,
-    NoConstraint,
-    TruncateLowerQuantile,
-    TruncateUpperQuantile,
-    TruncateQuantiles,
-    TruncateMinimum,
-    TruncateMaximum,
-    TruncateRange,
-    TruncateStd
-
-import Distributions: 
-    Uniform, 
-    Normal
-
-import Test 
-
+using Test 
+using UncertainData
+using Distributions
 
 # Create some uncertain data with decreasing magnitude and zero overlap between values, 
 # so we're guaranteed that a strictly decreasing sequence through the dataset exists.
@@ -69,6 +52,9 @@ end
 iv = UncertainIndexValueDataset(UI, UV)
 @test resample(iv, StrictlyDecreasing()) isa Tuple{Vector{Float64}, Vector{Float64}}
 
+@testset "Sequential constraints" begin 
+
+end
 # First constrain using a single regular constraint, then apply the order constraint.  
 for i = 1:length(test_constraints)
     constraint = test_constraints[i]
