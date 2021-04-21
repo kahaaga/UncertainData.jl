@@ -123,7 +123,7 @@ struct TruncateRange{T1, T2} <: ValueSamplingConstraint
     max::T2
     
     function TruncateRange(min::T1, max::T2) where {T1, T2}
-        if min < max
+        if min <= max # <= ties are allowed, because we may encounter CertainValue instances
             return new{T1, T2}(min, max)
         else
             err_msg = "Cannot create TruncateRange instance. Need min < max"
@@ -167,41 +167,84 @@ abstract type IndexSamplingConstraint <: SamplingConstraint end
 # Sequential sampling constraints
 #########################################################################
 
-abstract type SequentialSamplingConstraint end
+abstract type SequentialSamplingConstraint{OA} end
 
 # Add the ordered sampling scheme to the seqential sampling constraints,
 # because that's all they affect. Defaults to `StartToEnd`.
-(::Type{SSC})() where SSC<:SequentialSamplingConstraint = SSC(StartToEnd())
+#(::Type{SSC})(args...; kwargs...) where SSC<:SequentialSamplingConstraint = SSC(StartToEnd(), args...; kwargs...)
 
 
 """ 
-    StrictlyIncreasing
+    StrictlyIncreasing(algorithm::OrderedSamplingAlgorithm; 
+        n::Int = 50000, lq = 0.05, uq = 0.95)
 
-A sampling constraint indicating element-wise sampling of the uncertain values in a dataset,
-such that the values of the draw are strictly increasing in magnitude.
+Sampling scheme indicating element-wise sampling such that the resulting values 
+are strictly increasing in magnitude. 
+
+Increasing sequential sampling is only guaranteed when distributions have finite support.
+Therefore, distributions are element-wise truncated to the lower and upper quantiles 
+`lq` and `uq`. For each distribution, this is done by drawing `n` values from it, then 
+finding the quantiles for that sample, and finally truncating the distribution to the empirical
+quantile range.
+
+`algorithm` is an instance of some `OrderedSamplingAlgorithm` (e.g. `StartToEnd`).
+`n` is the number of samples to draw when computing quantiles. 
 
 Typically used when there are known, physical constraints on the measurements.
 For example, geochemical measurements of sediments at different depths of a sediment core 
 are taken at physically separate depths in the core. Thus, the order of the indices cannot
-be flipped, and must be strictly decreasing/increasing. 
-""" 
-struct StrictlyIncreasing{OA<:OrderedSamplingAlgorithm} <: SequentialSamplingConstraint
+be flipped, and must be strictly decreasing/increasing.
+
+See also: [`StartToEnd`](@ref)
+"""
+struct StrictlyIncreasing{OA <: OrderedSamplingAlgorithm} <: SequentialSamplingConstraint{OA}
     ordered_sampling_algorithm::OA
+    n::Int # number of samples to draw from samples
+    lq::Float64 # lower quantile
+    uq::Float64 # upper quantile
+    
+    function StrictlyIncreasing(algorithm::OA = StartToEnd(); n::Int = 10000, lq = 0.05, uq = 0.95) where OA
+        if lq >= uq
+            throw(ArgumentError("Need lq < uq. Got lq=$(lq) > uq=$(uq)."))
+        end
+        new{OA}(algorithm, n, lq, uq)
+    end
 end
 
 """ 
-    StrictlyDecreasing
+    StrictlyIncreasing(algorithm::OrderedSamplingAlgorithm; n::Int = 50000)
 
-A sampling constraint indicating element-wise sampling of the uncertain values in a dataset,
-such that the values of the draw are strictly decreasing in magnitude.
-    
+Sampling scheme indicating element-wise sampling such that the resulting values 
+are strictly decreasing in magnitude. 
+
+Decreasing sequential sampling is only guaranteed when distributions have finite support.
+Therefore, distributions are element-wise truncated to the lower and upper quantiles 
+`lq` and `uq`. For each distribution, this is done by drawing `n` values from it, then 
+finding the quantiles for that sample, and finally truncating the distribution to the empirical
+quantile range.
+
+`algorithm` is an instance of some `OrderedSamplingAlgorithm` (e.g. `StartToEnd`).
+`n` is the number of samples to draw when computing quantiles. 
+
 Typically used when there are known, physical constraints on the measurements.
 For example, geochemical measurements of sediments at different depths of a sediment core 
 are taken at physically separate depths in the core. Thus, the order of the indices cannot
-be flipped, and must be strictly decreasing/increasing. 
-""" 
-struct StrictlyDecreasing{OA<:OrderedSamplingAlgorithm} <: SequentialSamplingConstraint 
+be flipped, and must be strictly decreasing/increasing.
+
+See also: [`StartToEnd`](@ref)
+"""
+struct StrictlyDecreasing{OA <: OrderedSamplingAlgorithm} <: SequentialSamplingConstraint{OA}
     ordered_sampling_algorithm::OA
+    n::Int # number of samples to draw from samples
+    lq::Float64 # lower quantile
+    uq::Float64 # upper quantile
+    
+    function StrictlyDecreasing(algorithm::OA = StartToEnd(); n::Int = 10000, lq = 0.05, uq = 0.95) where OA
+        if lq >= uq
+            throw(ArgumentError("Need lq < uq. Got lq=$(lq) > uq=$(uq)."))
+        end
+        new{OA}(algorithm, n, lq, uq)
+    end
 end
 
 

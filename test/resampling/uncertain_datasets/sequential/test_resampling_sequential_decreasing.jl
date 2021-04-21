@@ -1,84 +1,68 @@
-import UncertainData: 
-    UncertainDataset, 
-    resample, 
-    UncertainValue, 
-    StrictlyDecreasing,
-    NoConstraint,
-    TruncateLowerQuantile,
-    TruncateUpperQuantile,
-    TruncateQuantiles,
-    TruncateMinimum,
-    TruncateMaximum,
-    TruncateRange,
-    TruncateStd
+using Test, UncertainData
 
-import Distributions: 
-    Uniform, 
-    Normal
+@testset "StrictlyDecreasing" begin 
+        
+    # Create some uncertain data with decreasing magnitude and zero overlap between values, 
+    # so we're guaranteed that a strictly decreasing sequence through the dataset exists.
+    N = 10
+    t = [i <= N/2 ? CertainValue(float(i)) : UncertainValue(Normal, i, 1) for i = N:-1:1]
+    T = UncertainIndexDataset(t)
+    iv = UncertainIndexValueDataset(t, t)
 
-import Test 
+    test_cs = [
+        NoConstraint(), 
+        TruncateLowerQuantile(0.2), 
+        TruncateUpperQuantile(0.2),
+        TruncateQuantiles(0.2, 0.8),
+        TruncateMaximum(50),
+        TruncateMinimum(-50),
+        TruncateRange(-50, 50),
+        TruncateStd(1)
+    ]
+    test_seqs = [
+        StrictlyDecreasing(StartToEnd())
+    ]
 
+    @testset "$(test_seqs[i])" for i in 1:length(test_seqs)
+        @test resample(t, StrictlyDecreasing()) isa Vector{Float64}
+        @test resample(T, StrictlyDecreasing()) isa Vector{Float64}
 
-# Create some uncertain data with decreasing magnitude and zero overlap between values, 
-# so we're guaranteed that a strictly decreasing sequence through the dataset exists.
-N = 10
-u_timeindices = [ i <= N/2 ? CertainValue(float(i)) : UncertainValue(Normal, i, 1) for i = N:-1:1]
-u = UncertainDataset(u_timeindices)
-UI = UncertainIndexDataset(u_timeindices)
-UV = UncertainValueDataset(u_timeindices)
+        iv_draw = resample(iv, StrictlyDecreasing())
+        @test iv_draw isa Tuple{Vector{Float64}, Vector{Float64}}
 
-# No further constraints other than the order constraint
-x = resample(UI, StrictlyDecreasing())
-@test x isa Vector{Float64}
+        @testset "$(test_cs[i])" for i in 1:length(test_cs)
+            c = test_cs[i] # sequential + single constraint
+            cs = sample(test_cs, N) # sequential + multiple constraints
+            @test resample(t, StrictlyDecreasing(), c) isa Vector{Float64}
+            @test resample(t, StrictlyDecreasing(), cs) isa Vector{Float64}
+            @test resample(T, StrictlyDecreasing(), c) isa Vector{Float64}
+            @test resample(T, StrictlyDecreasing(), cs) isa Vector{Float64}
 
-n_realizations = 100
-X = [resample(UI, StrictlyDecreasing()) for i = 1:n_realizations]
+            # Single extra constraint
+            iv_draw = resample(iv, StrictlyDecreasing(), c)
+            @test iv_draw isa Tuple{Vector{Float64}, Vector{Float64}}
+            @test all(diff(iv_draw[1]) .< 0)
 
-# We're getting vectors 
-@test all([x isa Vector{Float64} for x in X])
+            iv_draw = resample(iv, StrictlyDecreasing(), c, c)
+            @test iv_draw isa Tuple{Vector{Float64}, Vector{Float64}}
+            @test all(diff(iv_draw[1]) .< 0)
 
-# All sequences 
-@test all([all(diff(x) .< 0) for x in X])
+            # Multiple extra constraints
+            iv_draw = resample(iv, StrictlyDecreasing(), cs)
+            #@test iv_draw isa Tuple{Vector{Float64}, Vector{Float64}}
+            #@test all(diff(iv_draw[1]) .< 0)
 
-test_constraints = [
-    NoConstraint(), 
-    TruncateLowerQuantile(0.2), 
-    TruncateUpperQuantile(0.2),
-    TruncateQuantiles(0.2, 0.8),
-    TruncateMaximum(50),
-    TruncateMinimum(-50),
-    TruncateRange(-50, 50),
-    TruncateStd(1)
-]
+            # iv_draw = resample(iv, StrictlyDecreasing(), cs, cs)
+            # @test iv_draw isa Tuple{Vector{Float64}, Vector{Float64}}
+            # @test all(diff(iv_draw[1]) .< 0)
 
-# First constrain using a single regular constraint, then apply the order constraint.  
-for i = 1:length(test_constraints)
-    constraint = test_constraints[i]
-    @test resample(UI, constraint, StrictlyDecreasing()) isa Vector{Float64}
-    @test all([resample(UI, constraint, StrictlyDecreasing()) isa Vector{Float64} for k = 1:n_realizations])
-end
+            # iv_draw = resample(iv, StrictlyDecreasing(), c, cs)
+            # @test iv_draw isa Tuple{Vector{Float64}, Vector{Float64}}
+            # @test all(diff(iv_draw[1]) .< 0)
 
-#First element-wise apply a vector of regular constraints to each element in the dataset, 
-#then apply the order constraint.  
-for i = 1:length(test_constraints)
-    constraints = [test_constraints[i] for k = 1:length(UI)]
-    @test resample(UI, constraints, StrictlyDecreasing()) isa Vector{Float64}
-    @test all([resample(UI, constraints, StrictlyDecreasing()) isa Vector{Float64} for k = 1:n_realizations])
-end
-
-iv = UncertainIndexValueDataset(UI, UV)
-@test resample(iv, StrictlyDecreasing()) isa Tuple{Vector{Float64}, Vector{Float64}}
-
-# First constrain using a single regular constraint, then apply the order constraint.  
-for i = 1:length(test_constraints)
-    constraint = test_constraints[i]
-    @test resample(iv, constraint, StrictlyDecreasing()) isa Tuple{Vector{Float64}, Vector{Float64}}
-    @test resample(iv, constraint, constraint, StrictlyDecreasing()) isa Tuple{Vector{Float64}, Vector{Float64}}
-    @test all([resample(iv, constraint, StrictlyDecreasing()) isa Tuple{Vector{Float64}, Vector{Float64}} for k = 1:n_realizations])
-    @test all([resample(iv, constraint, constraint, StrictlyDecreasing()) isa Tuple{Vector{Float64}, Vector{Float64}} for k = 1:n_realizations])
-
-    cs = [test_constraints[i] for k = 1:length(UI)]
-    @test resample(iv, cs, cs, StrictlyDecreasing()) isa Tuple{Vector{Float64}, Vector{Float64}}
-    @test resample(iv, cs, constraint, StrictlyDecreasing()) isa Tuple{Vector{Float64}, Vector{Float64}}
-    @test resample(iv, constraint, cs, StrictlyDecreasing()) isa Tuple{Vector{Float64}, Vector{Float64}}
+            # iv_draw = resample(iv, StrictlyDecreasing(), cs, c)
+            # @test iv_draw isa Tuple{Vector{Float64}, Vector{Float64}}
+            # @test all(diff(iv_draw[1]) .> 0)
+        end
+    end
 end

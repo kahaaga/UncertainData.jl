@@ -8,7 +8,8 @@ using Reexport
     import ..UVAL_COLLECTION_TYPES
     import ..UncertainDatasets: 
         AbstractUncertainValueDataset,
-        UncertainIndexValueDataset
+        UncertainIndexValueDataset,
+        AbstractUncertainDataset
     import ..UncertainValues:
         UncertainValue,
         AbstractUncertainValue
@@ -79,8 +80,8 @@ using Reexport
     # Ordered resampling
     #########################################
     include("ordered_resampling/resample_sequential.jl")
-    include("ordered_resampling/resample_uncertaindataset_strictlyincreasing.jl")
-    include("ordered_resampling/resample_uncertaindataset_strictlydecreasing.jl")
+    include("ordered_resampling/strictlyincreasing.jl")
+    include("ordered_resampling/strictlydecreasing.jl")
 
     #########################################
     # Resampling with interpolation 
