@@ -22,13 +22,13 @@ treated consecutively from the end to the start of the dataset.
 struct EndToStart <: OrderedSamplingAlgorithm end
 
 """
-    MidpointOutwards
+RandPtOutwards
 
 An ordered sampling algorithm indicating that the values should be 
 divided into two groups, separating the values at some midpoint 
 of the dataset. The two groups of values are then treated separately.
 """
-struct MidpointOutwards <: OrderedSamplingAlgorithm
+struct RandPtOutwards <: OrderedSamplingAlgorithm
     midpoint_idx::Int
 end
 
@@ -60,6 +60,6 @@ export
 OrderedSamplingAlgorithm, 
 StartToEnd,
 EndToStart,
-MidpointOutwards,
+RandPtOutwards,
 ChunksForwards,
 ChunksBackwards
