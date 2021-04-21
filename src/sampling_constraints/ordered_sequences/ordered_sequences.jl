@@ -42,21 +42,21 @@ function sequence_exists!(lqs, uqs, x::AbstractUncertainValueDataset, c)
     return sequence_exists(lqs, uqs, c)
 end
 
-sequence_exists(x::AbstractUncertainIndexValueDataset, c::StrictlyIncreasing{StartToEnd}) = 
+sequence_exists(x::AbstractUncertainIndexValueDataset, c::StrictlyIncreasing) = 
     sequence_exists(x.indices, c)
 
 ###########################
 # Concrete implementations 
 ###########################
 """
-    sequence_exists(udata::AbstractUncertainValueDataset, c::StrictlyDecreasing{StartToEnd}) 
+    sequence_exists(udata::AbstractUncertainValueDataset, c::StrictlyDecreasing) 
 
 Does a strictly decreasing sequence through the dataset exist? I.e,  check that a strictly 
 decreasing sequence can be found after first 
 constraining each distribution to the provided quantile range (this 
 is necessary because some distributions may have infinite support).
 """
-function sequence_exists(lqs, uqs, c::StrictlyIncreasing{StartToEnd})
+function sequence_exists(lqs, uqs, c::StrictlyIncreasing)
     L = length(lqs)
     if any(lqs .> uqs) # ties are allowed, because we have `CertainValue`s
         error("Not all `lqs[i]` are lower than uqs[i]. Quantile calculations are not meaningful.")
@@ -71,7 +71,7 @@ function sequence_exists(lqs, uqs, c::StrictlyIncreasing{StartToEnd})
     return true
 end
 
-function sequence_exists(lqs, uqs, c::StrictlyDecreasing{StartToEnd})
+function sequence_exists(lqs, uqs, c::StrictlyDecreasing)
     L = length(lqs)
     if any(lqs .> uqs) # ties are allowed, because we have `CertainValue`s
         error("Not all `lqs[i]` are lower than uqs[i]. Quantile calculations are not meaningful.")
