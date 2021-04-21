@@ -8,7 +8,6 @@ sequence_exists!
 
 """ 
     sequence_exists(x, c::SequentialSamplingConstraint) 
-    sequence_exists(x, c::SequentialSamplingConstraint) 
 
 Does a point-by-point sequence through the uncertain dataset `x` exist that satisfies the criteria `c`?
 
@@ -59,7 +58,7 @@ is necessary because some distributions may have infinite support).
 """
 function sequence_exists(lqs, uqs, c::StrictlyIncreasing{StartToEnd})
     L = length(lqs)
-    if any(lqs .>= uqs)
+    if any(lqs .> uqs) # ties are allowed, because we have `CertainValue`s
         error("Not all `lqs[i]` are lower than uqs[i]. Quantile calculations are not meaningful.")
         return false
     end
@@ -72,6 +71,17 @@ function sequence_exists(lqs, uqs, c::StrictlyIncreasing{StartToEnd})
     return true
 end
 
-function sequence_exists(udata, c::StrictlyDecreasing{StartToEnd})
-    sequence_exists(udata[end:-1:1], c)
+function sequence_exists(lqs, uqs, c::StrictlyDecreasing{StartToEnd})
+    L = length(lqs)
+    if any(lqs .> uqs) # ties are allowed, because we have `CertainValue`s
+        error("Not all `lqs[i]` are lower than uqs[i]. Quantile calculations are not meaningful.")
+        return false
+    end
+    
+    for i = 1:L-1
+        if uqs[i] < maximum(lqs[i+1:end])
+            return false
+        end
+    end
+    return true
 end

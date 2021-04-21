@@ -123,7 +123,7 @@ struct TruncateRange{T1, T2} <: ValueSamplingConstraint
     max::T2
     
     function TruncateRange(min::T1, max::T2) where {T1, T2}
-        if min < max
+        if min <= max # <= ties are allowed, because we may encounter CertainValue instances
             return new{T1, T2}(min, max)
         else
             err_msg = "Cannot create TruncateRange instance. Need min < max"

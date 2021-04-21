@@ -10,120 +10,49 @@ import ..SamplingConstraints:
 import IntervalArithmetic: 
     interval
 
-
-
-
-# function resample(udata::DT, constraint::Vector{SCT}, 
-#         sequential_constraint::StrictlyDecreasing{T}) where {SCT <: SamplingConstraint, 
-#                     DT <: AbstractUncertainValueDataset, 
-#                     T <: StartToEnd}
-
-#     resample(constrain(udata, constraint), sequential_constraint)
-# end
-
-
-
-# """ 
-#     resample(udata::AbstractUncertainValueDataset, 
-#         constraint::Union{SamplingConstraint, Vector{SamplingConstraint}},
-#         sequential_constraint::StrictlyDecreasing{OrderedSamplingAlgorithm})
-
-# Draw a sequence of values strictly decreasing in magnitude from the dataset, sampling 
-# each of the furnishing distributions once each, after first truncating the supports 
-# of the values in the dataset using the provided `constraint`s.
-
-# ## Arguments: 
-
-# - **`udata`**: An uncertain dataset.
-# - **`constraint`**: Sampling constraint(s) to apply to each of the values in the dataset 
-# before drawing the sequence of decreasing values.
-# - **`sequential_constraint`**: An instance of a `StrictlyDecreasing` sequential 
-# sampling constraint. For example, `StrictlyDecreasing(StartToEnd())` indicates 
-# that a strictly decreasing sequence should be created in one go from start to 
-# finish (as opposed to chunking the data set first, then gluing partial sequences 
-# together afterwards).
-# """ 
-# resample(udata::AbstractUncertainValueDataset, 
-#     constraint::Union{SamplingConstraint, Vector{SamplingConstraint}},
-#     sequential_constraint::StrictlyDecreasing{OrderedSamplingAlgorithm})
-
-
-# """
-# function resample(udata::UncertainIndexValueDataset,
-#     sequential_constraint::StrictlyDecreasing, 
-#     quantiles = [0.0001, 0.9999])
-
-# Resample an uncertain index-value dataset by enforcing strictly decreasing indices. 
-# """ 
-# function resample(udata::UncertainIndexValueDataset,
-#         sequential_constraint::StrictlyDecreasing{<:OrderedSamplingAlgorithm})
-#     resample(udata.indices, sequential_constraint), resample(udata.values)
-# end
-
-# function resample(udata::UncertainIndexValueDataset, 
-#         constraint::SamplingConstraint,
-#         sequential_constraint::StrictlyDecreasing{<:OrderedSamplingAlgorithm})
-
-#     inds = resample(constrain(udata.indices, constraint), sequential_constraint)
-#     vals = resample(constrain(udata.values, constraint))
-
-#     inds, vals
-# end
-
-# function resample(udata::UncertainIndexValueDataset, 
-#         constraint::Vector{SamplingConstraint},
-#         sequential_constraint::StrictlyDecreasing{<:OrderedSamplingAlgorithm})
-
-#     inds = resample(constrain(udata.indices, constraint), sequential_constraint)
-#     vals = resample(constrain(udata.values, constraint))
-
-#     inds, vals
-# end
-
-# function resample(udata::UncertainIndexValueDataset, 
-#         idx_constraint::SamplingConstraint,
-#         value_constraint::SamplingConstraint,
-#         sequential_constraint::StrictlyDecreasing{<:OrderedSamplingAlgorithm})
+function _draw!(s, x, c::StrictlyDecreasing{<:StartToEnd}, mins, maxs)
+    L = length(x)
     
-#     inds = resample(constrain(udata.indices, idx_constraint), sequential_constraint)
-#     vals = resample(constrain(udata.values, value_constraint))
+    # TODO: add slight margin?
+    for i = 1:L
+        if i == 1
+            lo = maximum(mins[2:end])
+            truncated_distribution = truncate(x[i], TruncateMinimum(lo))
+            s[1] = resample(truncated_distribution)
+        end
+        
+        if 1 < i < L
+            hi = min(s[i - 1], maxs[i])
+            lo = max(mins[i], maximum(mins[i+1:end]))
+            
+            lo <= hi || error("Truncation range invalid for point $i. Got lo < hi ($lo < $hi), which should be impossible.")
+            
+            truncated_distribution = truncate(x[i], TruncateRange(lo, hi))
+            s[i] = resample(truncated_distribution)
+        end
+        
+        if i == L
+            hi = min(s[i - 1], maxs[i])
+            truncated_distribution = truncate(x[i], TruncateMaximum(hi))
+            s[end] = resample(truncated_distribution)
 
-#     inds, vals
-# end
+        end
+    end
+    
+    return s
+end
 
+"""
+    _draw(x, c::StrictlyDecreasing{StartToEnd}, mins, maxs)
 
-# function resample(udata::UncertainIndexValueDataset, 
-#         idx_constraint::Vector{<:SamplingConstraint},
-#         value_constraint::SamplingConstraint,
-#         sequential_constraint::StrictlyDecreasing{<:OrderedSamplingAlgorithm})
+Sample `x` in a strictly decreasing manner, given pre-computed minimum and maximum 
+values for each distribution in `c`.
 
-#     inds = resample(constrain(udata.indices, idx_constraint), sequential_constraint)
-#     vals = resample(constrain(udata.values, value_constraint))
-
-#     inds, vals
-# end
-
-
-# function resample(udata::UncertainIndexValueDataset, 
-#         idx_constraint::SamplingConstraint,
-#         value_constraint::Vector{<:SamplingConstraint},
-#         sequential_constraint::StrictlyDecreasing{<:OrderedSamplingAlgorithm})
-
-#     inds = resample(constrain(udata.indices, idx_constraint), sequential_constraint)
-#     vals = resample(constrain(udata.values, value_constraint))
-
-#     inds, vals
-# end
-
-# function resample(udata::UncertainIndexValueDataset, 
-#         idx_constraint::Vector{<:SamplingConstraint},
-#         value_constraint::Vector{<:SamplingConstraint},
-#         sequential_constraint::StrictlyDecreasing{<:OrderedSamplingAlgorithm})
-
-#     inds = resample(constrain(udata.indices, idx_constraint), sequential_constraint)
-#     vals = resample(constrain(udata.values, value_constraint))
-
-#     inds, vals
-# end
-
-# export resample
+Implicitly assumes a strictly decreasing sequence exists, but does not check that condition.
+"""
+function _draw(x, c::StrictlyDecreasing{<:StartToEnd}, mins, maxs)    
+    L = length(x)
+    samples = zeros(Float64, L) # a vector to hold the element-wise samples
+    
+    _draw!(samples, x, c, mins, maxs)
+end
