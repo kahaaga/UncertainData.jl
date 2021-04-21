@@ -11,7 +11,8 @@ const XD = Union{AbstractUncertainDataset, Vector{<:AbstractUncertainValue}}
 
 """
     resample(x, ssc::SequentialSamplingConstraint)
-    resample(x, ssc::SequentialSamplingConstraint, c::Union{SamplingConstraint, Vector{SamplingConstraint}})
+    resample(x, ssc::SequentialSamplingConstraint, c)
+    resample(x::UncertainIndexValueDataset, ssc::SequentialSamplingConstraint, ic, vc)
 
 Sample `x` element-wise such that the samples obey the sequential constraints given by `ssc`.
 Alteratively, apply constrain(s) `c` to `x` *before* sequential sampling is performed. 
@@ -21,7 +22,12 @@ Before the check is performed, the distributions in `x` are truncated element-wi
 to the quantiles provided by `c` to ensure they have finite supports.
 
 If `x` is an uncertain index-value dataset, then the sequential constraint is only applied to 
-the indices.
+the indices. If one set of additional constraints are added to an uncertain index-value dataset,
+then they are applied to both the indices and the values. It is also possible to give separate 
+index constraints `ic` and value constraints `vc`. 
+
+If constraints `c`, or `ic` and `vc`, are given, then `c`/`ic`/`vc` must be either a single constraint,
+or a vector of constraints where constraints are applied element-wise to the distributions in `x`.
 
     resample!(s, x, ssc::SequentialSamplingConstraint, lqs, uqs)
 
