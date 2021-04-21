@@ -1,6 +1,16 @@
 
 # Changelog
 
+## UncertainData.jl v.0.14
+
+### Breaking changes 
+
+- `sequence_exists` replaces `strictly_increasing_sequence_exists`/`strictly_decreasing_sequence_exists`.
+
+### Bug fixes
+
+- Fixed bug that could occasionally occur for certain types of data when performing resampling with the `StrictlyIncreasing`/`StrictlyDecreasing` sequential constraints.
+
 ## UncertainData.jl v0.10.4
 
 ### Documentation

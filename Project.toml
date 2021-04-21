@@ -2,7 +2,8 @@ name = "UncertainData"
 uuid = "dcd9ba68-c27b-5cea-ae21-829cd07325bf"
 authors = ["Kristian Agasøster Haaga <kahaaga@gmail.com>"]
 repo = "https://github.com/kahaaga/UncertainData.jl.git"
-version = "0.13.0"
+version = "0.14.0"
+
 
 [deps]
 Bootstrap = "e28b5b4c-05e8-5b66-bc03-6f0c0a0a06e0"
@@ -29,7 +30,7 @@ Distributions = "0.21, 1, 0.23, 0.24"
 DynamicalSystemsBase = "^1.3"
 HypothesisTests = "0.8, 1, 0.10"
 Interpolations = "^0.12, ^1, 0.13"
-IntervalArithmetic = "^0.16, ^1, 0.17"
+IntervalArithmetic = "^0.16, ^1, 0.17, 0.18"
 KernelDensity = "^0.5.0, ^1, 0.6"
 Measurements = "^2.1"
 RecipesBase = "^0.7, ^1, 0.8"
