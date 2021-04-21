@@ -6,7 +6,7 @@
 
 - `sequence_exists` replaces `strictly_increasing_sequence_exists`/`strictly_decreasing_sequence_exists`.
 - When resampling using sequential constraints, the quantiles used to truncate distributions now have to be given 
-    to the constructors of the sequential constraints, i.e. `resample(x, StrictlyIncreasing(lq = 0.1, uq = 0.9)` instead of `resample(x, StrictlyIncreasing(), 0.1, 0.9`.
+    to the constructors of the sequential constraints, i.e. `resample(x, StrictlyIncreasing(lq = 0.1, uq = 0.9)` instead of `resample(x, StrictlyIncreasing(), 0.1, 0.9)`.
 
 ### Bug fixes
 
