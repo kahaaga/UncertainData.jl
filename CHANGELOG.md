@@ -1,6 +1,16 @@
 # UncertainData changelog
 
-## v.0.14
+## v.0.14.1
+
+### Features
+
+- Implement sequential resampling with chunks.
+
+### Misc
+
+- Make some methods more generic (non-breaking).
+
+## v.0.14.0
 
 ### Breaking changes 
 

@@ -5,14 +5,6 @@ may choose to represent the data by fitting a theoretical distribution to the
 values. This will only work well if the histogram closely resembles a
 theoretical distribution.
 
-## Generic constructor
-
-```@docs
-UncertainValue(d::Type{D}, empiricaldata::Vector{T}) where {D<:Distribution, T}
-```
-
-## Type documentation
-
 ```@docs
 UncertainScalarTheoreticalFit
 ```
@@ -62,6 +54,7 @@ of your data!
 
 
 ### Beware: fitting distributions may lead to nonsensical results!
+
 In a less contrived example, we may try to fit a beta distribution to a sample
 generated from a gamma distribution.
 

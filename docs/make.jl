@@ -25,14 +25,17 @@ using Interpolations
 PAGES = [
     "index.md",
     "Uncertain values" => [
-        "uncertain_values/uncertainvalues_overview.md",
+        "uncertain_values/convenience_constructors.md",
+        #"uncertain_values/uncertainvalues_overview.md",
+        "Types of uncertain values" => [
         "uncertain_values/uncertainvalues_theoreticaldistributions.md",
-        "uncertain_values/uncertainvalues_kde.md",
         "uncertain_values/uncertainvalues_fitted.md",
-        "uncertain_values/uncertainvalues_certainvalue.md",
+        "uncertain_values/uncertainvalues_kde.md",
         "uncertain_values/uncertainvalues_populations.md",
+        "uncertain_values/uncertainvalues_certainvalue.md",
         "uncertain_values/uncertainvalues_Measurements.md",
-        "uncertain_values/merging.md",
+        ],
+        "uncertain_values/combining_and_merging.md",
         "uncertain_values/uncertainvalues_examples.md",
     ],
 	"Uncertain datasets" => [

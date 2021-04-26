@@ -1,7 +1,7 @@
+# Combining and merging
+
 Because all uncertainties are handled using a resampling approach, it is trivial to 
 [`combine`](@ref) or merge uncertain values of different types into a single uncertain value.
-
-# Nomenclature
 
 Depending on your data, you may want to choose of one the following ways of 
 representing multiple uncertain values as one:
@@ -16,7 +16,7 @@ representing multiple uncertain values as one:
     a kernel density estimate to the overall distribution. This approach introduces 
     approximations *beyond* what is present in the uncertain values when you define them.
 
-# [Combining uncertain values: the population approach](@id uncertainvalue_combine)
+## [Combining: the population approach](@id uncertainvalue_combine)
 
 **Combining** uncertain values is done by representing them as a weighted population
 of uncertain values, which is illustrated in the following example:
@@ -65,13 +65,13 @@ plot(d1, d2, layout = (2, 1), xlabel = "Value", ylabel = "Density", link = :x, x
 
 This makes it possible treat an ensemble of uncertain values as a single uncertain value.
 
-With equal weights, this introduces no bias beyond what is present in the data, 
+With equal weights, combining uncertain values introduces no bias beyond what is present in the data, 
 because resampling is done from the full supports of each of the furnishing values. 
 Additional information on relative sampling probabilities, however, be it informed by
 expert opinion or quantative estimates, is easily incorporated by adjusting 
 the sampling weights.
 
-# [Merging uncertain values: the kernel density estimation (KDE) approach](@id uncertainvalue_merge)
+## [Merging: KDE approach](@id uncertainvalue_merge)
 
 **Merging** multiple uncertain values could be done by fitting a model distribution to 
 the values. Using any specific theoretical distribution as a model for the combined 
@@ -83,7 +83,7 @@ This has the advantage that you only have to deal with a single estimate to the 
 distribution, but introduces bias because the distribution is *estimated* and the 
 shape of the distribution depends on the parameters of the KDE procedure.
 
-## Without weights
+### Without weights
 
 When no weights are provided, the combined value is computed 
 by resampling each of the `N` uncertain values `n/N` times,
@@ -121,18 +121,17 @@ plot(p, pcombined, layout = (2, 1), link = :x, ylabel = "Density")
 
 ![](figs/combine_example_noweights.png)
 
-## With weights
+### With weights
 
 `Weights`, `ProbabilityWeights` and  `AnalyticWeights` are functionally the same. Either 
 may be used depending on whether the weights are assigned subjectively or quantitatively. 
 With `FrequencyWeights`, it is possible to control the exact number of draws from each 
 uncertain value that goes into the draw pool before performing KDE.
 
-### ProbabilityWeights
+#### `ProbabilityWeights`
 
 ```@docs
-combine(uvals::Vector{AbstractUncertainValue}, weights::ProbabilityWeights; 
-    n = 1000*length(uvals))
+combine(uvals::Vector{AbstractUncertainValue}, weights::ProbabilityWeights)
 ```
 
 For example:
@@ -166,11 +165,10 @@ plot(p, pcombined, layout = (2, 1), size = (800, 600),
 
 ![](figs/combine_example_pweights.png)
 
-### AnalyticWeights
+#### `AnalyticWeights`
 
 ```@docs
-combine(uvals::Vector{AbstractUncertainValue}, weights::AnalyticWeights; 
-    n = 1000*length(uvals))
+combine(uvals::Vector{AbstractUncertainValue}, weights::AnalyticWeights)
 ```
 
 For example:
@@ -200,7 +198,7 @@ plot(p, pcombined, layout = (2, 1), size = (800, 600),
 
 ![](figs/combine_example_aweights.png)
 
-### Generic Weights
+### Generic `Weights`
 
 ```@docs
 combine(uvals::Vector{AbstractUncertainValue}, weights::Weights; 
@@ -237,15 +235,14 @@ plot(p, pcombined, layout = (2, 1), size = (800, 600),
 
 ![](figs/combine_example_generic_weights.png)
 
-### FrequencyWeights
+### `FrequencyWeights`
 
 Using `FrequencyWeights`, one may specify the number of times each of the uncertain values 
 should be sampled to form the pooled resampled draws on which the final kernel density 
 estimate is performed.
 
 ```@docs
-combine(uvals::Vector{AbstractUncertainValue}, weights::FrequencyWeights; 
-    n = 1000*length(uvals))
+combine(uvals::Vector{AbstractUncertainValue}, weights::FrequencyWeights)
 ```
 
 For example:

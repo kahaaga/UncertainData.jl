@@ -6,15 +6,12 @@ The default constructor for a strictly decreasing sequential sampling constraint
 ## Documentation
 
 ```@docs
-resample(udata::AbstractUncertainValueDataset, 
-        constraint::Union{SamplingConstraint, Vector{SamplingConstraint}},
-        sequential_constraint::StrictlyDecreasing{OrderedSamplingAlgorithm};
-        quantiles = [0.0001, 0.9999])
+resample(udata::AbstractUncertainValueDataset, sequential_constraint::StrictlyDecreasing{OrderedSamplingAlgorithm}, 
+        constraint::Union{SamplingConstraint, Vector{SamplingConstraint}})
 ```
 
 ```@docs 
-resample(udata::DT, sequential_constraint::StrictlyDecreasing{T};
-        quantiles = [0.0001, 0.9999]) where {DT <: AbstractUncertainValueDataset, T <: StartToEnd}
+resample(udata::DT, sequential_constraint::StrictlyDecreasing{T}) where {DT <: AbstractUncertainValueDataset, T <: StartToEnd}
 ```
 
 ## Compatible ordering algorithms

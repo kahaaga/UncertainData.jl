@@ -1,3 +1,4 @@
+# Examples
 
 First, load the necessary packages:
 
@@ -5,9 +6,9 @@ First, load the necessary packages:
 using UncertainData, Distributions, KernelDensity, Plots
 ```
 
-# Example 1: Uncertain values defined by theoretical distributions
+## Theoretical distributions
 
-## A uniformly distributed uncertain value
+### A uniformly distributed uncertain value
 
 Consider the following contrived example. We've measure a data value with a poor instrument 
 that tells us that the value lies between `-2` and `3`. However, we but that we know nothing 
@@ -30,7 +31,7 @@ bar(u, label = "", xlabel = "value", ylabel = "probability density")
 
 ![](figs/uncertainvalue_theoretical_uniform.svg)
 
-## A normally distributed uncertain value
+### A normally distributed uncertain value
 
 A situation commonly encountered is to want to use someone else's data from a publication. 
 Usually, these values are reported as the mean or median, with some associated uncertainty. 
@@ -49,12 +50,12 @@ bar(u, label = "", xlabel = "value", ylabel = "probability density")
 
 ![](figs/uncertainvalue_theoretical_normal.svg)
 
-## Other distributions 
+### Other distributions 
 
 You may define uncertain values following any of the 
 [supported distributions](uncertainvalues_theoreticaldistributions.md). 
 
-# Example 2: Uncertain values defined by kernel density estimated distributions
+## Kernel density estimated distributions
 
 One may also be given a a distribution of numbers that's not quite normally distributed. 
 How to represent this uncertainty? Easy: we use a kernel density estimate to the distribution.
@@ -88,7 +89,7 @@ plot(u, xlabel = "Value", ylabel = "Probability density")
 
 ![](figs/uncertainvalue_kde_bimodal.svg)
 
-# Example 3: Uncertain values defined by theoretical distributions fitted to empirical data
+## Theoretical distributions fitted to empirical data
 
 One may also be given a dataset whose histogram looks a lot like a theoretical
 distribution. We may then select a theoretical distribution and fit its

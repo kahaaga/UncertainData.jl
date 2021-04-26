@@ -1,6 +1,6 @@
-# [Uncertain value types](@id uncertain_value_types)
+# [Types of uncertain values](@id uncertain_value_types)
 
-The core concept of `UncertainData` is to replace an uncertain data value with a 
+The core concept of `UncertainData.jl` is to replace an uncertain data value with a 
 probability distribution describing the point's uncertainty.
 
 The following types of uncertain values are currently implemented:
@@ -66,7 +66,7 @@ p = UncertainValue(vals, weights)
 If your data has a histogram closely resembling some theoretical distribution,
 the uncertain value may be represented by fitting such a distribution to the data.
 
-``` julia tab="Example 1: fitting a normal distribution"
+```julia
 using Distributions, UncertainData
 
 # Generate some random data from a normal distribution, so that we get a
@@ -78,7 +78,7 @@ some_sample = rand(Normal(), 1000)
 uv = UncertainValue(Normal, some_sample)
 ```
 
-``` julia tab="Example 2: fitting a gamma distribution"
+```julia
 using Distributions, UncertainData
 
 # Generate some random data from a gamma distribution, so that we get a
@@ -98,19 +98,19 @@ parameters. For example, a data value may be given as normal distribution with
 a given mean `μ = 2.2` and standard deviation `σ = 0.3`.
 
 
-``` julia tab="Example 1: theoretical normal distribution"
+```julia
 # Uncertain value represented by a theoretical normal distribution with
 # known parameters μ = 2.2 and σ = 0.3
 uv = UncertainValue(Normal, 2.2, 0.3)
 ```
 
-``` julia tab="Example 2: theoretical gamma distribution"
+```julia
 # Uncertain value represented by a theoretical gamma distribution with
 # known parameters α = 2.1 and θ = 3.1
 uv = UncertainValue(Gamma, 2.1, 3.1)
 ```
 
-``` julia tab="Example 3: theoretical binomial distribution"
+```julia
 # Uncertain value represented by a theoretical binomial distribution with
 # known parameters p = 32 and p = 0.13
 uv = UncertainValue(Binomial, 32, 0.13)
@@ -120,6 +120,6 @@ uv = UncertainValue(Binomial, 32, 0.13)
 
 Scalars with no uncertainty can also be represented. 
 
-```julia 
+```julia
 c1, c2 = UncertainValue(2), UncertainValue(2.2)
 ```

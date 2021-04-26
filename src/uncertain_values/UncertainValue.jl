@@ -14,6 +14,15 @@ UncertainValue(x::T) where T <: Real = CertainValue(x)
 UncertainValue(uval::AbstractUncertainValue) = uval
 
 # From Measurements.jl
+""" 
+    UncertainValue(m::Measurement) → UncertainScalarNormallyDistributed
+
+Convert a `Measurement` instance to an uncertain value compatible with UncertainData.jl.
+
+`Measurement` instances from [Measurements.jl](https://github.com/JuliaPhysics/Measurements.jl)[^1] are 
+treated as normal distributions with known means. Once the conversion is done, the
+functionality provided by Measurements.jl, such as exact error propagation, is lost.
+"""
 UncertainValue(m::Measurement{T}) where T = UncertainValue(Normal, m.val, m.err)
 
 """
@@ -21,6 +30,14 @@ UncertainValue(m::Measurement{T}) where T = UncertainValue(Normal, m.val, m.err)
 
 From a numeric vector, construct an `UncertainPopulation` whose 
 members are scalar values.
+
+## Examples 
+
+```julia
+x = measurement(2.2, 0.21)
+UncertainValue(x)
+```
+
 """
 function UncertainValue(values::Vector{<:Number}, probs::Vector{<:Number})
     UncertainScalarPopulation(float.(values), probs)
@@ -113,8 +130,7 @@ UncertainValue(x::Vector{Array{<:Real, 0}}) = UncertainValue([el[] for el in x])
 
 
 """
-    UncertainValue(empiricaldata::AbstractVector{T},
-        d::Type{D}) where {D <: Distribution}
+    UncertainValue(d::Type{D}, empiricaldata::Vector{T}) where {D<:Distribution, T}
 
 # Constructor for empirical distributions.
 

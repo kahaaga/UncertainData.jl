@@ -1,24 +1,18 @@
-# [Kernel density estimated distributions](@id uncertain_value_kde)
+# [Kernel density estimates (KDE)](@id uncertain_value_kde)
 
 When your data have an empirical distribution that doesn't follow any obvious
 theoretical distribution, the data may be represented by a kernel density
-estimate.
-
-# Generic constructor
-
-```@docs
-UncertainValue(::AbstractVector{<:Real})
-```
-
-# Type documentation
+estimate to the underlying distribution.
 
 ```@docs
 UncertainScalarKDE
 ```
 
-# Examples
+## Examples
 
-``` julia tab="Implicit KDE constructor"
+### Implicit KDE constructor:
+
+``` julia
 using Distributions, UncertainData
 
 # Create a normal distribution
@@ -31,7 +25,10 @@ some_sample = rand(d, 1000)
 uv = UncertainValue(v::Vector)
 ```
 
-``` julia tab="Explicit KDE constructor"
+### Explicit KDE constructor:
+
+
+```julia
 using Distributions, UncertainData, KernelDensity
 
 # Create a normal distribution
@@ -46,7 +43,9 @@ some_sample = rand(d, 1000)
 uv = UncertainValue(UnivariateKDE, v::Vector)
 ```
 
-``` julia tab="Changing the kernel"
+### Changing the kernel
+
+```julia
 using Distributions, UncertainData, KernelDensity
 
 # Create a normal distribution
@@ -62,7 +61,9 @@ some_sample = rand(d, 1000)
 uv = UncertainValue(UnivariateKDE, v::Vector; kernel = Normal)
 ```
 
-``` julia tab="Adjusting number of points"
+### Adjusting number of points
+
+```julia
 using Distributions, UncertainData, KernelDensity
 
 # Create a normal distribution

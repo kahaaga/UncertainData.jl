@@ -13,15 +13,13 @@ The default constructor for a strictly increasing sequential sampling constraint
 
 ```@docs
 resample(udata::AbstractUncertainValueDataset, 
-        constraint::Union{SamplingConstraint, Vector{SamplingConstraint}},
-        sequential_constraint::StrictlyIncreasing{OrderedSamplingAlgorithm};
-        quantiles = [0.0001, 0.9999])
+        sequential_constraint::StrictlyIncreasing{OrderedSamplingAlgorithm},
+        constraint::Union{SamplingConstraint, Vector{SamplingConstraint}})
 ```
 
 
 ```@docs 
-resample(udata::DT, sequential_constraint::StrictlyIncreasing{T};
-        quantiles = [0.0001, 0.9999]) where {DT <: AbstractUncertainValueDataset, T <: StartToEnd}
+resample(udata::DT, sequential_constraint::StrictlyIncreasing{T}) where {DT <: AbstractUncertainValueDataset, T <: StartToEnd}
 ```
 
 ## Examples
