@@ -4,9 +4,16 @@ CI = get(ENV, "CI", nothing) == "true" || get(ENV, "GITHUB_TOKEN", nothing) !== 
 CI && Pkg.activate(@__DIR__)
 CI && Pkg.instantiate()
 CI && (ENV["GKSwstype"] = "100")
+
+using Plots
 using Documenter
-using DocumenterTools
-using DocumenterMarkdown
+using DocumenterTools: Themes
+
+# %% Theme stuff?
+
+# %% Build docs
+cd(@__DIR__)
+ENV["JULIA_DEBUG"] = "Documenter"
 
 using UncertainData
 using Distributions
@@ -119,13 +126,13 @@ ENV["JULIA_DEBUG"] = "Documenter"
 
 makedocs(
     modules = [UncertainData],
-    sitename = "UncertainData.jl documentation",
-    format = format = Documenter.HTML(
+    format = Documenter.HTML(
         prettyurls = CI,
         ),
+    sitename = "UncertainData.jl",
+    authors = "Kristian Agasøster Haaga",
     pages = PAGES
 )
-
 
 if CI
     deploydocs(
