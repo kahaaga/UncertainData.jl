@@ -22,7 +22,7 @@ using KernelDensity
             include("uncertain_values/test_minmax.jl")
         end
 
-        @testset "CertainValue" begin
+        @testset "CertainScalar" begin
             include("uncertain_values/test_certain_values.jl")
         end
 

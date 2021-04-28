@@ -14,7 +14,7 @@ given by `binning.weights[i]` (probability weights are always normalised to 1).
 ## Returns 
 
 Returns an `UncertainIndexValueDataset`. Indices are assumed to be uniformly distributed within each 
-bin, and are represented as `CertainValue`s at the bin centers. Values of the dataset have different 
+bin, and are represented as `CertainScalar`s at the bin centers. Values of the dataset have different 
 representations depending on what `binning` is:
 
 - If `binning isa BinnedWeightedResampling{UncertainScalarKDE}`, then values in each bin are 
@@ -149,7 +149,7 @@ function bin(x::AbstractUncertainIndexValueDataset, binning::BinnedWeightedResam
     
     # Estimate distributions in each bin by kernel density estimation
     n_bins = length(binning.left_bin_edges) - 1
-    estimated_value_dists = Vector{Union{CertainValue, UncertainScalarKDE}}(undef, n_bins)
+    estimated_value_dists = Vector{Union{CertainScalar, UncertainScalarKDE}}(undef, n_bins)
     
     for i in 1:n_bins
         if length(binvecs[i]) > nan_threshold
@@ -178,7 +178,7 @@ function bin(x::AbstractUncertainIndexValueDataset, binning::BinnedWeightedResam
     
     # Estimate distributions in each bin by kernel density estimation
     n_bins = length(binning.left_bin_edges) - 1
-    estimated_value_dists = Vector{Union{CertainValue, UncertainScalarPopulation}}(undef, n_bins)
+    estimated_value_dists = Vector{Union{CertainScalar, UncertainScalarPopulation}}(undef, n_bins)
     
     for i in 1:n_bins
         if length(binvecs[i]) > nan_threshold

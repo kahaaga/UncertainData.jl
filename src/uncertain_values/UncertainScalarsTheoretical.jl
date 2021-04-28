@@ -77,7 +77,9 @@ import Distributions.Gamma
 import Distributions.Frechet
 
 """
-Uncertain value represented by a generic three-parameter distribution.
+    UncertainScalarTheoreticalThreeParameter(d::Distribution, a, b, c)
+
+Uncertain value represented by a generic three-parameter distribution `d` with parameters `a`, `b` and `c`.
 """
 struct UncertainScalarTheoreticalThreeParameter{S<:ValueSupport, T1<:Number, T2<:Number, T3<:Number} <: AbstractUncertainThreeParameterScalarValue{S, T1, T2, T3}
     distribution::Distribution{Univariate, S}
@@ -87,7 +89,9 @@ struct UncertainScalarTheoreticalThreeParameter{S<:ValueSupport, T1<:Number, T2<
 end
 
 """
-Uncertain value represented by a generic two-parameter distribution.
+    UncertainScalarTheoreticalTwoParameter(d::Distribution, a, b)
+
+Uncertain value represented by a generic two-parameter distribution `d` with parameters `a` and `b`.
 """
 struct UncertainScalarTheoreticalTwoParameter{S<:ValueSupport, T1<:Number, T2<:Number} <: AbstractUncertainTwoParameterScalarValue{S, T1, T2}
     distribution::Distribution{Univariate, S}
@@ -96,17 +100,25 @@ struct UncertainScalarTheoreticalTwoParameter{S<:ValueSupport, T1<:Number, T2<:N
 end
 
 """
-Uncertain value represented by a generic one-parameter distribution.
+    UncertainScalarTheoreticalOneParameter(d::Distribution, a)
+
+Uncertain value represented by a generic one-parameter distribution `d` with parameter `a`.
 """
 struct UncertainScalarGenericOneParameter{S<:ValueSupport, T1<:Number} <: AbstractUncertainOneParameterScalarValue{S, T1}
     distribution::Distribution{Univariate, S}
     a::T1
 end
 
-
-
 """
-Uncertain value represented by a normal distribution.
+    UncertainScalarNormallyDistributed(d::Normal, μ, σ)
+
+Uncertain value represented by a normal distribution `d` with mean `μ` and standard deviation `σ`.
+
+## Example 
+
+```julia
+x = UncertainValue(Normal, 1.2, 0.3)
+```
 """
 struct UncertainScalarNormallyDistributed{S<:ValueSupport, T1<:Number, T2<:Number} <: AbstractUncertainTwoParameterScalarValue{S, T1, T2}
     distribution::Distribution{Univariate, S}
@@ -114,9 +126,16 @@ struct UncertainScalarNormallyDistributed{S<:ValueSupport, T1<:Number, T2<:Numbe
     σ::T2
 end
 
-
 """
-Uncertain value represented by a uniform distribution.
+    UncertainScalarUniformlyDistributed(d::Uniform, lower, upper)
+
+Uncertain value represented by a uniform distribution `d` with `lower` and `upper` bounds.
+
+## Example 
+
+```julia
+x = UncertainValue(Uniform, -2.5, 4.5)
+```
 """
 struct UncertainScalarUniformlyDistributed{S<:ValueSupport, T1<:Number, T2<:Number} <: AbstractUncertainTwoParameterScalarValue{S, T1, T2}
     distribution::Distribution{Univariate, S}
@@ -124,9 +143,16 @@ struct UncertainScalarUniformlyDistributed{S<:ValueSupport, T1<:Number, T2<:Numb
     upper::T2
 end
 
-
 """
-Uncertain value represented by a beta distribution.
+    UncertainScalarBetaDistributed(d::Beta, α, β)
+
+Uncertain value represented by a beta distribution `d` with parameters `α` and `β`.
+
+## Example 
+
+```julia
+x = UncertainValue(Beta, 0.5, 3.0)
+```
 """
 struct UncertainScalarBetaDistributed{S<:ValueSupport, T1<:Number, T2<:Number} <: AbstractUncertainTwoParameterScalarValue{S, T1, T2}
     distribution::Distribution{Univariate, S}
@@ -134,9 +160,16 @@ struct UncertainScalarBetaDistributed{S<:ValueSupport, T1<:Number, T2<:Number} <
     β::T2
 end
 
-
 """
-Uncertain value represented by a beta prime distribution.
+    UncertainScalarBetaPrimeDistributed(d::BetaPrime, α, β)
+
+Uncertain value represented by a beta prime distribution `d` with parameters `α` and `β`.
+
+## Example 
+
+```julia
+x = UncertainValue(BetaPrime, 2.1, 3.3)
+```
 """
 struct UncertainScalarBetaPrimeDistributed{S<:ValueSupport, T1<:Number, T2<:Number} <: AbstractUncertainTwoParameterScalarValue{S, T1, T2}
     distribution::Distribution{Univariate, S}
@@ -144,10 +177,16 @@ struct UncertainScalarBetaPrimeDistributed{S<:ValueSupport, T1<:Number, T2<:Numb
     β::T2
 end
 
-
-
 """
-Uncertain value represented by a beta binomial distribution.
+    UncertainScalarBetaBinomialDistributed(d::BetaBinomial, n, α, β)
+
+Uncertain value represented by a beta binomial distribution `d` with parameters `n`, `α` and `β`.
+
+## Example 
+
+```julia
+x = UncertainValue(BetaBinomial, 10, 0.2, 0.7)
+```
 """
 struct UncertainScalarBetaBinomialDistributed{S<:ValueSupport, T1<:Number, T2<:Number, T3<:Number} <: AbstractUncertainThreeParameterScalarValue{S, T1, T2, T3}
     distribution::Distribution{Univariate, S}
@@ -156,11 +195,16 @@ struct UncertainScalarBetaBinomialDistributed{S<:ValueSupport, T1<:Number, T2<:N
     β::T3
 end
 
-
-
-
 """
-Uncertain value represented by a gamma distribution.
+    UncertainScalarGammaDistributed(d::Gamma, α, θ)
+
+Uncertain value represented by a gamma distribution `d` with parameters `α` and `θ`.
+
+## Example 
+
+```julia
+x = UncertainValue(Gamma, 0.2, 0.44)
+```
 """
 struct UncertainScalarGammaDistributed{S<:ValueSupport, T1<:Number, T2<:Number} <: AbstractUncertainTwoParameterScalarValue{S, T1, T2}
     distribution::Distribution{Univariate, S}
@@ -168,11 +212,16 @@ struct UncertainScalarGammaDistributed{S<:ValueSupport, T1<:Number, T2<:Number} 
     θ::T2
 end
 
-
-
-
 """
-Uncertain value represented by a Fréchet distribution.
+    UncertainScalarFrechetDistributed(d::Frechet, α, θ)
+
+Uncertain value represented by a Fréchet distribution `d` with parameters `α` and `θ`.
+
+## Example 
+
+```julia
+x = UncertainValue(Frechet, 2.0, 2.1)
+```
 """
 struct UncertainScalarFrechetDistributed{S<:ValueSupport, T1<:Number, T2<:Number} <: AbstractUncertainTwoParameterScalarValue{S, T1, T2}
     distribution::Distribution{Univariate, S}
@@ -180,20 +229,22 @@ struct UncertainScalarFrechetDistributed{S<:ValueSupport, T1<:Number, T2<:Number
     θ::T2
 end
 
-
-
-
 """
-Uncertain value represented by a binomial distribution.
+    UncertainScalarBinomialDistributed(d::Binomial, n, θ)
+
+Uncertain value represented by a binomial distribution `d` with parameters `n` and `θ`.
+
+## Example 
+
+```julia
+x = UncertainValue(Binomial, 15, 0.5)
+```
 """
 struct UncertainScalarBinomialDistributed{S<:ValueSupport, T1<:Number, T2<:Number} <: AbstractUncertainTwoParameterScalarValue{S, T1, T2}
     distribution::Distribution{Univariate, S}
     n::T1
     p::T2
 end
-
-
-
 
 
 ###################
@@ -310,9 +361,9 @@ Base.show(io::IO, q::UncertainScalarBinomialDistributed) = print(io, summarise(q
 export
 TheoreticalDistributionScalarValue,
 
-AbstractUncertainOneParameterScalarValue,
-AbstractUncertainTwoParameterScalarValue,
-AbstractUncertainThreeParameterScalarValue,
+# AbstractUncertainOneParameterScalarValue,
+# AbstractUncertainTwoParameterScalarValue,
+# AbstractUncertainThreeParameterScalarValue,
 
 ConstrainedUncertainScalarValueOneParameter,
 ConstrainedUncertainScalarValueTwoParameter,

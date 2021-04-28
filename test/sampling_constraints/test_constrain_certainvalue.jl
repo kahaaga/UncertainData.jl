@@ -1,4 +1,4 @@
-x = CertainValue(2.0)
+x = CertainScalar(2.0)
 
 test_constraints = [
     NoConstraint(), 
@@ -12,5 +12,5 @@ test_constraints = [
 ]
 
 for constraint in test_constraints 
-    @test constrain(x, constraint) isa CertainValue
+    @test constrain(x, constraint) isa CertainScalar
 end

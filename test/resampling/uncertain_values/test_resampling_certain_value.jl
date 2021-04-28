@@ -1,4 +1,4 @@
-x = CertainValue(2.0)
+x = CertainScalar(2.0)
 
 test_constraints = [
     NoConstraint(), 

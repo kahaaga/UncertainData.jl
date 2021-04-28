@@ -1,7 +1,7 @@
-import ..UncertainValues.CertainValue
+import ..UncertainValues.CertainScalar
 
-Base.truncate(v::CertainValue) = v
-function Base.truncate(v::CertainValue, constraint::TruncateMaximum)
+Base.truncate(v::CertainScalar) = v
+function Base.truncate(v::CertainScalar, constraint::TruncateMaximum)
     if v.value > constraint.max
         msg = "Truncating $v with $constraint failed\n"
         msg2 = "Need value < constraint.max, got $v < $(constraint.max)"
@@ -11,7 +11,7 @@ function Base.truncate(v::CertainValue, constraint::TruncateMaximum)
     end
 end
 
-function Base.truncate(v::CertainValue, constraint::TruncateMinimum)
+function Base.truncate(v::CertainScalar, constraint::TruncateMinimum)
     if v.value < constraint.min
         msg = "Truncating $v with $constraint failed\n"
         msg2 = "Need value > constraint.min, got $v > $(constraint.min)"
@@ -21,7 +21,7 @@ function Base.truncate(v::CertainValue, constraint::TruncateMinimum)
     end
 end
 
-function Base.truncate(v::CertainValue, constraint::TruncateRange)
+function Base.truncate(v::CertainScalar, constraint::TruncateRange)
     if v.value < constraint.min
         msg = "Truncating $v with $constraint failed\n"
         msg2 = "Need value > constraint.min, got $v > $(constraint.min)"
@@ -35,7 +35,7 @@ function Base.truncate(v::CertainValue, constraint::TruncateRange)
     end
 end
 
-truncate(v::CertainValue, s::TruncateLowerQuantile) = v
-truncate(v::CertainValue, s::TruncateUpperQuantile) = v
-truncate(v::CertainValue, s::TruncateQuantiles) = v
-truncate(v::CertainValue, s::TruncateStd) = v
+truncate(v::CertainScalar, s::TruncateLowerQuantile) = v
+truncate(v::CertainScalar, s::TruncateUpperQuantile) = v
+truncate(v::CertainScalar, s::TruncateQuantiles) = v
+truncate(v::CertainScalar, s::TruncateStd) = v

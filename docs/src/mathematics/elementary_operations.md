@@ -92,6 +92,6 @@ Base.:/(a::AbstractUncertainValue, b::Real, n::Int)
 
 ## Special cases
 
-### `CertainValue`s
+### `CertainScalar`s
 
-Performing elementary operations with `CertainValue`s behaves as for scalars.
+Performing elementary operations with `CertainScalar`s behaves as for scalars.

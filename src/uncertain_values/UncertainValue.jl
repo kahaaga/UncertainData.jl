@@ -3,18 +3,52 @@ import Distributions.Distribution
 import StatsBase: AbstractWeights, Weights
 import Distributions
 
+
 """
-    UncertainValue(x::T) where T <: Real
+    UncertainValue(d::Distribution)
+    UncertainValue(d::Type{Normal}, μ, σ) → UncertainScalarNormallyDistributed
+    UncertainValue(d::Type{Uniform}, lower, upper) → UncertainScalarUniformlyDistributed
+    UncertainValue(d::Type{Beta}, α, β) → UncertainScalarBetaDistributed
+    UncertainValue(d::Type{BetaPrime}, α, β) → UncertainScalarBetaPrimeDistributed
+    UncertainValue(d::Type{Gamma}, α, θ) → UncertainScalarGammaDistributed
+    UncertainValue(d::Type{Frechet}, α, θ) → UncertainScalarFrechetDistributed
+    UncertainValue(d::Type{Binomial, n, p) → UncertainScalarBinomialDistributed
+    UncertainValue(d::Type{BetaBinomial, n, α, β) → UncertainScalarBetaBinomialDistributed
 
-Create a `CertainValue` instance from a scalar with no uncertainty.
-"""
-UncertainValue(x::T) where T <: Real = CertainValue(x)
+Construct an uncertain value represented by a (possibly truncated) 
+theoretical distribution `d`.
 
-# Identity constructor
-UncertainValue(uval::AbstractUncertainValue) = uval
+    UncertainValue(d::Type{<:Distribution}, x::AbstractVector) → UncertainScalarTheoreticalFit
 
-# From Measurements.jl
-""" 
+Construct an uncertain value by fitting a distribution of type `d` to an empirical sample 
+`x`, and use that fitted distribution as the representation of `x`. 
+
+See also: [`UncertainScalarTheoreticalFit`](@ref)
+
+    UncertainValue(x::AbstractVector; 
+        kernel::Type{<:Distribution} = Normal, npoints::Int = 2048) → UncertainScalarKDE
+
+Construct an uncertain value by estimating the underlying distribution to 
+the empirical sample `x` using the kernel density estimation (KDE), then using the resulting 
+KDE-distribution as the representation of `x`. Fast Fourier transforms are used in the kernel density 
+estimation, so the number of points should be a power of 2 (default = 2048).
+
+See also: [`UncertainScalarKDE`](@ref)
+
+    UncertainValue(pop::Vector, probs::Union{Vector, AbstractWeights}) → UncertainScalarPopulation
+
+Construct an uncertain value from a population `pop`, whose sampling 
+probabilities (prior beliefs) are `probs`. The population `pop` can contain any 
+type of uncertain value. Scalars in `pop` are converted to [`CertainScalar`](@ref)s.
+
+See also: [`UncertainScalarPopulation`](@ref)
+
+    UncertainValue(x::T) where {T <: Real} → CertainScalar
+
+Create a `CertainScalar` instance from a scalar with no uncertainty. 
+
+See also: [`CertainScalar`](@ref)
+
     UncertainValue(m::Measurement) → UncertainScalarNormallyDistributed
 
 Convert a `Measurement` instance to an uncertain value compatible with UncertainData.jl.
@@ -22,63 +56,148 @@ Convert a `Measurement` instance to an uncertain value compatible with Uncertain
 `Measurement` instances from [Measurements.jl](https://github.com/JuliaPhysics/Measurements.jl)[^1] are 
 treated as normal distributions with known means. Once the conversion is done, the
 functionality provided by Measurements.jl, such as exact error propagation, is lost.
-"""
-UncertainValue(m::Measurement{T}) where T = UncertainValue(Normal, m.val, m.err)
 
-"""
-    UncertainValue(values::Vector{<:Number}, probs::Vector{<:Number})
+# Examples
 
-From a numeric vector, construct an `UncertainPopulation` whose 
-members are scalar values.
+## Theoretical distributions with known parameters
 
-## Examples 
+Measurements are often given as a mean and an associated standard deviation. 
+Such measurements can be directly represented by the parameters of the distribution.
+
+Assume a data point has a normally distributed uncertainty, with a mean value of 2.2 
+and standard deviation of 4.0. We use the following notation to represent that value.
 
 ```julia
-x = measurement(2.2, 0.21)
-UncertainValue(x)
+using UncertainData, Distributions
+UncertainValue(Normal(2.2, 4.0))
+UncertainValue(Normal, 2.2, 4.0) # alternative constructor
+```
+
+Other distributions, as well as truncated distributions, also work. 
+
+```julia
+using UncertainData
+UncertainValue(Uniform, -5.0, 5.0)
+UncertainValue(Gamma, 3.0, 1.2)
+
+lo, hi = 0.5, 3.5 # truncation limits
+UncertainValue(Truncated(Gamma(4, 5.1), lo, hi))
+```
+
+## Theoretical distributions with parameters estimated from empirical data
+
+In some cases, it might be convenient to represent an empirical sample by a 
+porobability distribution whose parameters are estimated from the sample. 
+Here, we simulate a real dataset by generating a small sample from a 
+normal distribution, then fit a normal distribution to it.
+
+```julia
+using UncertainData, Distributions
+s = rand(Normal(0, 1), 100)
+
+# Represent the sample `s` by a normal distribution with estimated parameters
+x = UncertainValue(Normal, s)
+```
+
+## Distributions estimated using the kernel density approach
+
+For empirical data with non-trivial underlying distributions, one may use 
+kernel density estimation to fit a distribution to the empirical sample.
+
+Below, we simulate a multimodal empirial sample, and represent that 
+sample by a kernel density estimated distribution.
+
+```julia
+using UncertainData, Distributions
+M = MixtureModel(Normal[
+          Normal(-2.0, 1.2),
+          Normal(0.0, 1.0),
+          Normal(3.0, 2.5)], [0.2, 0.5, 0.3])
+# This is our sample
+s = rand(M, 40000)
+
+# `x` is now a kernel density estimated distribution that represents the sample `s`
+x = UncertainValue(s) # or UncertainValue(UnivariateKDE, s) to be explicit
+```
+
+## Populations (discrete sets of values with associated weights)
+
+Sometimes, numerous measurements of the same phenomenon might be available. In such cases, 
+a population may be used to simultaneously represent all data available. Weights 
+representing prior beliefs can be added (set weights equal if all points are 
+equiprobable).
+
+Below, we assume `x1` and `x2` were measured with sophisticated devices, giving 
+both a mean and standard deviation. `x3`, on the other hand, was measured with a 
+primitive device, giving only a mean value. Hence our trust in `x3` is lower than 
+for `x1` and `x2`. The following 
+
+```julia
+x1 = UncertainValue(Normal, 0.1, 0.5)
+x2 = UncertainValue(Gamma, 1.2, 3.1)
+x3 = UncertainValue(0.1)
+pop = [x1, x2, x3] # the population
+wts = [0.45, 0.45, 0.1] # weights; `x1` and `x2` are equiprobable, and more probable than `x3`.
+UncertainValue(pop, wts)
+```
+
+## Values without uncertainties
+
+Numerical values without associated uncertainties must be converted before mixing with 
+uncertain values.
+
+```julia
+x = UncertainValue(2.0)
+```
+
+## Compatibility with Measurements.jl 
+
+`Measurement`s from Measurements.jl are assumed to be normally distributed and errors 
+are propagated using linear error propagation theory. In this package, resampling 
+is used to propagate errors. Thus, `Measurement`s must be converted to normal distributions 
+to be used in conjuction with other uncertain values in this package. 
+
+```julia
+using UncertainData, Measurements
+m = measurement(value, uncertainty)
+x = UncertainValue(m) # now compatible with UncertainData.jl, but drops support for exact error propagation
 ```
 
 """
-function UncertainValue(values::Vector{<:Number}, probs::Vector{<:Number})
-    UncertainScalarPopulation(float.(values), probs)
-end
+function UncertainValue end
 
-"""
-    UncertainValue(values::Vector{<:Number}, probs::Vector{<:Number})
+UncertainValue(x::T) where T <: Real = CertainScalar(x)
 
-From a numeric vector, construct an `UncertainPopulation` whose 
-members are scalar values.
-"""
-function UncertainValue(values::Vector{<:Number}, probs::W) where {W <: AbstractWeights}
-    UncertainScalarPopulation(float.(values), probs)
-end
+# Identity constructor
+UncertainValue(uval::AbstractUncertainValue) = uval
 
-"""
-    UncertainValue(values::Vector, probs::Union{Vector, AbstractWeights})
+# From Measurements.jl
+UncertainValue(m::Measurement{T}) where T = UncertainValue(Normal, m.val, m.err)
 
-Construct a population whose members are given by `values` and whose sampling 
-probabilities are given by `probs`. The elements of `values` can be either 
-numeric or uncertain values of any type.
-"""
-function UncertainValue(values::VT, probs) where VT <: Vector{ELTYPE} where {ELTYPE<:POTENTIAL_UVAL_TYPES}
-    UncertainScalarPopulation(UncertainValue.(values), probs)
-end
+# Populations
+UncertainValue(
+    pop::AbstractVector, 
+    probs::Union{AbstractVector{<:Number}, <:StatsBase.AbstractWeights}) =
+    UncertainScalarPopulation(pop, probs)
 
-function UncertainValue(values::VT, probs::Vector{Number}) where VT <: Vector{ELTYPE} where {ELTYPE<:POTENTIAL_UVAL_TYPES}
-    UncertainScalarPopulation(UncertainValue.(values), probs)
-end
+# function UncertainValue(values::Vector{<:Number}, probs::Vector{<:Number})
+#     UncertainScalarPopulation(float.(values), probs)
+# end
 
-"""
-    UncertainValue(data::Vector{T};
-        kernel::Type{D} = Normal,
-        npoints::Int=2048) where {D <: Distributions.Distribution, T}
+# function UncertainValue(values::Vector{<:Number}, probs::W) where {W <: AbstractWeights}
+#     UncertainScalarPopulation(float.(values), probs)
+# end
 
-Construct an uncertain value by a kernel density estimate to `data`.
+# function UncertainValue(values::VT, probs) where VT <: Vector{ELTYPE} where {ELTYPE<:POTENTIAL_UVAL_TYPES}
+#     UncertainScalarPopulation(UncertainValue.(values), probs)
+# end
 
-Fast Fourier transforms are used in the kernel density estimation, so the
-number of points should be a power of 2 (default = 2048).
-"""
-function UncertainValue(data::Vector{T};
+# function UncertainValue(values::VT, probs::Vector{Number}) where VT <: Vector{ELTYPE} where {ELTYPE<:POTENTIAL_UVAL_TYPES}
+#     UncertainScalarPopulation(UncertainValue.(values), probs)
+# end
+
+#KDE
+function UncertainValue(data::AbstractVector{T};
         kernel::Type{D} = Normal,
         bandwidth = KernelDensity.default_bandwidth(data),
         npoints::Int = 2048) where {D <: Distributions.Distribution, T}
@@ -96,17 +215,6 @@ function UncertainValue(data::Vector{T};
     UncertainScalarKDE(KDE, data, xrange, Weights(density))
 end
 
-
-"""
-    UncertainValue(kerneldensity::Type{K}, data::Vector{T};
-        kernel::Type{D} = Normal,
-        npoints::Int=2048) where {K <: UnivariateKDE, D <: Distribution, T}
-
-Construct an uncertain value by a kernel density estimate to `data`.
-
-Fast Fourier transforms are used in the kernel density estimation, so the
-number of points should be a power of 2 (default = 2048).
-"""
 function UncertainValue(kerneldensity::Type{K}, data::Vector{T};
         kernel::Type{D} = Normal,
         bandwidth = KernelDensity.default_bandwidth(data)/4,
@@ -129,99 +237,86 @@ end
 UncertainValue(x::Vector{Array{<:Real, 0}}) = UncertainValue([el[] for el in x])
 
 
-"""
-    UncertainValue(d::Type{D}, empiricaldata::Vector{T}) where {D<:Distribution, T}
+# Fitted distributions
+# TODO: make TheoreticalFittedUncertainScalar parametric on the input distribution
+function UncertainValue(d::Type{<:Distribution}, data::AbstractVector)
 
-# Constructor for empirical distributions.
-
-Fit a distribution of type `d` to the data and use that as the
-representation of the empirical distribution. Calls `Distributions.fit` behind
-the scenes.
-
-## Arguments
-- **`empiricaldata`**: The data for which to fit the `distribution`.
-- **`distribution`**: A valid univariate distribution from `Distributions.jl`.
-
-"""
-function UncertainValue(d::Type{D},
-        empiricaldata::Vector{T}) where {D<:Distribution, T}
-
-    distribution = FittedDistribution(Distributions.fit(d, empiricaldata))
-    UncertainScalarTheoreticalFit(distribution, empiricaldata)
+    distribution = FittedDistribution(Distributions.fit(d, data))
+    UncertainScalarTheoreticalFit(distribution, data)
 end
 
 
-"""
+# """
 
-    UncertainValue(distribution::Type{D}, a::T1, b::T2;
-        kwargs...) where {T1<:Number, T2 <: Number, D<:Distribution}
+#     UncertainValue(distribution::Type{D}, a::T1, b::T2;
+#         kwargs...) where {T1 <: Number, T2 <: Number, D <: Distribution} → TheoreticalDistributionScalarValue
 
-# Constructor for two-parameter distributions
+# # Constructor for two-parameter distributions
 
-`UncertainValue`s are currently implemented for the following two-parameter
-distributions: `Uniform`, `Normal`, `Binomial`, `Beta`, `BetaPrime`, `Gamma`,
-and `Frechet`.
+# `UncertainValue`s are currently implemented for the following two-parameter
+# distributions: `Uniform`, `Normal`, `Binomial`, `Beta`, `BetaPrime`, `Gamma`,
+# and `Frechet`.
 
-### Arguments
+# ### Arguments
 
-- **`a`, `b`**: Generic parameters whose meaning varies depending
-    on what `distribution` is provided. See the list below.
-- **`distribution`**: A valid univariate distribution from `Distributions.jl`.
+# - **`a`, `b`**: Generic parameters whose meaning varies depending
+#     on what `distribution` is provided. See the list below.
+# - **`distribution`**: A valid univariate distribution from `Distributions.jl`.
 
-Precisely what  `a` and `b` are depends on which distribution is provided.
+# Precisely what  `a` and `b` are depends on which distribution is provided.
 
-- `UncertainValue(Normal, μ, σ)` returns an `UncertainScalarNormallyDistributed` instance.
-- `UncertainValue(Uniform, lower, upper)` returns an `UncertainScalarUniformlyDistributed` instance.
-- `UncertainValue(Beta, α, β)` returns an `UncertainScalarBetaDistributed` instance.
-- `UncertainValue(BetaPrime, α, β)` returns an `UncertainScalarBetaPrimeDistributed` instance.
-- `UncertainValue(Gamma, α, θ)` returns an `UncertainScalarGammaDistributed` instance.
-- `UncertainValue(Frechet, α, θ)` returns an `UncertainScalarFrechetDistributed` instance.
-- `UncertainValue(Binomial, n, p)` returns an `UncertainScalarBinomialDistributed` instance.
+# - `UncertainValue(Normal, μ, σ)` returns an `UncertainScalarNormallyDistributed` instance.
+# - `UncertainValue(Uniform, lower, upper)` returns an `UncertainScalarUniformlyDistributed` instance.
+# - `UncertainValue(Beta, α, β)` returns an `UncertainScalarBetaDistributed` instance.
+# - `UncertainValue(BetaPrime, α, β)` returns an `UncertainScalarBetaPrimeDistributed` instance.
+# - `UncertainValue(Gamma, α, θ)` returns an `UncertainScalarGammaDistributed` instance.
+# - `UncertainValue(Frechet, α, θ)` returns an `UncertainScalarFrechetDistributed` instance.
+# - `UncertainValue(Binomial, n, p)` returns an `UncertainScalarBinomialDistributed` instance.
 
-### Keyword arguments
+# ### Keyword arguments
 
-- **`nσ`**: If `distribution <: Distributions.Normal`, then how many standard
-    deviations away from `μ` does `lower` and `upper` (i.e. both, because
-    they are the same distance away from `μ`) represent?
-- **`tolerance`**: A threshold determining how symmetric the uncertainties
-    must be in order to allow the construction of  Normal distribution
-    (`upper - lower > threshold` is required).
-- **`trunc_lower`**: Lower truncation bound for distributions with infinite
-    support. Defaults to `-Inf`.
-- **`trunc_upper`**: Upper truncation bound for distributions with infinite
-    support. Defaults to `Inf`.
+# - **`nσ`**: If `distribution <: Distributions.Normal`, then how many standard
+#     deviations away from `μ` does `trunc_lower` and `trunc_upper` (i.e. both, because
+#     they are the same distance away from `μ`) represent?
+# - **`tolerance`**: A threshold determining how symmetric the uncertainties
+#     must be in order to allow the construction of  Normal distribution
+#     (`upper - lower > threshold` is required).
+# - **`trunc_lower`**: Lower truncation bound for distributions with infinite
+#     support. Defaults to `-Inf`.
+# - **`trunc_upper`**: Upper truncation bound for distributions with infinite
+#     support. Defaults to `Inf`.
 
-## Examples
+# ## Examples
 
-### Normal distribution
+# ### Normal distribution
 
-Normal distributions are formed by using the constructor
-`UncertainValue(μ, σ, Normal; kwargs...)`. This gives a normal distribution with
-mean μ and standard deviation σ/nσ (nσ must be given as a keyword argument).
+# Normal distributions are formed by using the constructor
+# `UncertainValue(μ, σ, Normal; kwargs...)`. This gives a normal distribution with
+# mean μ and standard deviation σ/nσ (nσ must be given as a keyword argument).
 
-```julia
-# A normal distribution with mean = 2.3 and standard deviation 0.3.
-UncertainValue(2.3, 0.3, Normal)
+# ```julia
+# # A normal distribution with mean = 2.3 and standard deviation 0.3.
+# UncertainValue(2.3, 0.3, Normal)
 
-# A normal distribution with mean 2.3 and standard deviation 0.3/2.
-UncertainValue(2.3, 0.3, Normal, nσ = 2)
+# # A normal distribution with mean 2.3 and standard deviation 0.3/2.
+# UncertainValue(2.3, 0.3, Normal, nσ = 2)
 
-# A normal distribution with mean 2.3 and standard deviation = 0.3,
-truncated to the interval `[1, 3]`.
-UncertainValue(2.3, 0.3, Normal, trunc_lower = 1.0, trunc_upper = 3.0)
-```
+# # A normal distribution with mean 2.3 and standard deviation = 0.3,
+# truncated to the interval `[1, 3]`.
+# UncertainValue(2.3, 0.3, Normal, trunc_lower = 1.0, trunc_upper = 3.0)
+# ```
 
-### Uniform distribution
+# ### Uniform distribution
 
-Uniform distributions are formed using the
-`UncertainValue(lower, upper, Uniform)` constructor.
+# Uniform distributions are formed using the
+# `UncertainValue(lower, upper, Uniform)` constructor.
 
-```julia
-#  A uniform distribution on `[2, 3]`
-UncertainValue(-2, 3, Uniform)
-```
+# ```julia
+# #  A uniform distribution on `[2, 3]`
+# UncertainValue(-2, 3, Uniform)
+# ```
 
-"""
+# """
 function UncertainValue(distribution::Type{D}, a::T1, b::T2;
         kwargs...) where {T1<:Number, T2 <: Number, D<:Distribution}
 
@@ -250,54 +345,11 @@ function UncertainValue(distribution::Type{D}, a::T1, b::T2;
         dist = assigndist_frechet(a, b; kwargs...)
         UncertainScalarFrechetDistributed(dist, a, b)
     else
-        throw(DomainError("Two-parameter $dist is not implemented."))
+        throw(DomainError("Two-parameter $distribution distribution is not implemented"))
     end
 end
 
-
-"""
-    UncertainValue(distribution::Type{D}, a::T1, b::T2, c::T3;
-        kwargs...) where {T1<:Number, T2<:Number, T3<:Number, D<:Distribution}
-
-## Constructor for three-parameter distributions
-
-Currently implemented distributions are `BetaBinomial`.
-
-### Arguments
-- **`a`, `b`, `c`**: Generic parameters whose meaning varies depending
-    on what `distribution` is provided. See the list below.
-- **`distribution`**: A valid univariate distribution from `Distributions.jl`.
-
-Precisely what `a`, `b` and `c` are depends on which distribution is provided.
-
-- `UncertainValue(BetaBinomial, n, α, β)` returns an `UncertainScalarBetaBinomialDistributed` instance.
-
-
-### Keyword arguments
-- **`nσ`**: If `distribution <: Distributions.Normal`, then how many standard
-    deviations away from `μ` does `lower` and `upper` (i.e. both, because
-    they are the same distance away from `μ`) represent?
-- **`tolerance`**: A threshold determining how symmetric the uncertainties
-    must be in order to allow the construction of  Normal distribution
-    (`upper - lower > threshold` is required).
-- **`trunc_lower`**: Lower truncation bound for distributions with infinite
-    support. Defaults to `-Inf`.
-- **`trunc_upper`**: Upper truncation bound for distributions with infinite
-    support. Defaults to `Inf`.
-
-## Examples
-### BetaBinomial distribution
-
-Normal distributions are formed by using the constructor
-`UncertainValue(μ, σ, Normal; kwargs...)`. This gives a normal distribution with
-mean μ and standard deviation σ/nσ (nσ must be given as a keyword argument).
-
-```julia
-# A beta binomial distribution with n = 100 trials and parameters α = 2.3 and
-# β = 5
-UncertainValue(100, 2.3, 5, BetaBinomial)
-```
-"""
+# TODO: make TheoreticalDistributionScalarValue type parametric on the input distribution
 function UncertainValue(distribution::Type{D}, a::T1, b::T2, c::T3;
         kwargs...) where {T1<:Number, T2<:Number, T3<:Number, D<:Distribution}
 
@@ -342,34 +394,7 @@ function untruncated_disttype(t::Distributions.Truncated)
     return typeof(t_untrunc)
 end
 
-"""
-    UncertainValue(t::Distributions.Truncated)
-
-Construct an uncertain value from an instance of a distribution. If a specific
-uncertain value type has not been implemented, the number of parameters is 
-determined from the distribution and an instance of one of the following types
-is returned: 
-
-- `ConstrainedUncertainScalarValueOneParameter`
-- `ConstrainedUncertainScalarValueTwoParameter`
-- `ConstrainedUncertainScalarValueThreeParameter`
-
-## Examples 
-
-```julia
-# Normal distribution truncated to the interval [0.5, 0.7]
-t = truncated(Normal(0, 1), 0.5, 0.7)
-UncertainValue(t)
-
-# Gamma distribution truncated to the interval [0.5, 3.5]
-t = Truncate(Gamma(4, 5.1), 0.5, 3.5)
-UncertainValue(t)
-
-# Binomial distribution truncated to the interval [2, 7]
-t = Truncate(Binomial(10, 0.4), 2, 7)
-UncertainValue(t)
-```
-"""
+#TODO: this is not type-stable.
 function UncertainValue(t::Distributions.Truncated)
     dist_type = untruncated_disttype(t)
     original_dist = untruncated_dist(t)
@@ -386,26 +411,8 @@ function UncertainValue(t::Distributions.Truncated)
     end
 end
 
-"""
-    UncertainValue(d::Distributions.Distribution)
+#TODO: this is not type-stable.
 
-Construct an uncertain value from an instance of a distribution. If a specific
-uncertain value type has not been implemented, the number of parameters is 
-determined from the distribution and an instance of one of the following types
-is returned: 
-
-- `UncertainScalarTheoreticalOneParameter`
-- `UncertainScalarTheoreticalTwoParameter`
-- `UncertainScalarTheoreticalThreeParameter`
-
-## Examples 
-
-```julia
-UncertainValue(Normal(0, 1))
-UncertainValue(Gamma(4, 5.1))
-UncertainValue(Binomial, 8, 0.2)
-```
-"""
 function UncertainValue(d::Distributions.Distribution)    
     params = fieldnames(typeof(d))
     n_params = length(params)
@@ -427,17 +434,21 @@ function UncertainValue(d::Distributions.Distribution)
         UncertainScalarFrechetDistributed(d, param_values...)
     # if no specific type is implemented for this distribution, just create 
     # a generic one
-    else 
-        if n_params == 1
-            return UncertainScalarTheoreticalOneParameter(d, param_values...)
-        elseif n_params == 2
-            return UncertainScalarTheoreticalTwoParameter(d, param_values...)
-        elseif n_params == 3
-            return UncertainScalarTheoreticalThreeParameter(d, param_values...)
-        else
-            msg = "uncertain value type for $n_params-parameter $d not implemented."
+    else
+        # Todo: generic types are not implemented yet
+        msg = "uncertain value type for $n_params-parameter $d not implemented."
             throw(DomainError(msg))
-        end
+        
+        # if n_params == 1
+        #     return UncertainScalarTheoreticalOneParameter(d, param_values...)
+        # elseif n_params == 2
+        #     return UncertainScalarTheoreticalTwoParameter(d, param_values...)
+        # elseif n_params == 3
+        #     return UncertainScalarTheoreticalThreeParameter(d, param_values...)
+        # else
+        #     msg = "uncertain value type for $n_params-parameter $d not implemented."
+        #     throw(DomainError(msg))
+        # end
     end
 end
 

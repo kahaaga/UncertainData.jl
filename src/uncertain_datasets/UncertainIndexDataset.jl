@@ -24,7 +24,7 @@ struct ConstrainedUncertainIndexDataset <: AbstractUncertainIndexDataset
 end
 
 function UncertainIndexDataset(x::AbstractArray{T, 1}) where T
-    UncertainIndexDataset(CertainValue.(x))
+    UncertainIndexDataset(CertainScalar.(x))
 end
 
 export 

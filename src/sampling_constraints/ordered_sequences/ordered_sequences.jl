@@ -58,7 +58,7 @@ is necessary because some distributions may have infinite support).
 """
 function sequence_exists(lqs, uqs, c::StrictlyIncreasing{StartToEnd})
     L = length(lqs)
-    if any(lqs .> uqs) # ties are allowed, because we have `CertainValue`s
+    if any(lqs .> uqs) # ties are allowed, because we have `CertainScalar`s
         error("Not all `lqs[i]` are lower than uqs[i]. Quantile calculations are not meaningful.")
         return false
     end
@@ -73,7 +73,7 @@ end
 
 function sequence_exists(lqs, uqs, c::StrictlyDecreasing{StartToEnd})
     L = length(lqs)
-    if any(lqs .> uqs) # ties are allowed, because we have `CertainValue`s
+    if any(lqs .> uqs) # ties are allowed, because we have `CertainScalar`s
         error("Not all `lqs[i]` are lower than uqs[i]. Quantile calculations are not meaningful.")
         return false
     end

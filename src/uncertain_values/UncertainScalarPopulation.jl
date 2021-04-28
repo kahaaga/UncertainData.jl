@@ -3,7 +3,17 @@ import IntervalArithmetic: interval
 import Distributions 
 import StatsBase
 
-const POTENTIAL_UVAL_TYPES = Union{T1, T2} where {T1<:Number, T2} where  T2 <: AbstractUncertainValue
+const POTENTIAL_UVAL_TYPES = Union{T1, T2} where {T1 <: Number, T2 <: AbstractUncertainValue}
+
+
+convert_elwise(f, x) = map(f, x);
+nested_convert_elwise(f, x) = map(xᵢ -> convert_elwise(f, xᵢ), x)
+
+function verify_pop_and_weights(pop, wts) 
+    if length(pop) != length(wts)
+        throw(ArgumentError("The number of population members and the number of weights do not match."))
+    end
+end
 
 """
     UncertainScalarPopulation(values, probs)
@@ -29,51 +39,93 @@ population members (for example during resampling).
 - If `values` contains one or more uncertain values, then the `values` field 
     will be of type `Vector{AbstractUncertainValue}`
 
-## Example 
+## Examples
+
+### Weighted scalar populations
+
+Weighted scalar populations are defined as follows. Note: Weights must always be provided,
+and scalars must be converted to uncertain values before creating the population.
 
 ```julia
+using UncertainData
+pop = UncertainValue.([1.0, 2.0, 3.0]); wts = rand(3)
 
-# Uncertain population consisting of CertainValues (scalars get promoted to 
-# CertainValue), theoretical distributions and KDE distributions
-pop1 = UncertainScalarPopulation(
-    [3.0, UncertainValue(Normal, 0, 1), UncertainValue(Gamma, 2, 3), 
-    UncertainValue(Uniform, rand(1000))], [0.5, 0.5, 0.5, 0.5])
+# Treat elements of `pop` as equiprobable  
+p = UncertainScalarPopulation(pop, [1, 1, 1]) 
 
-# Uncertain population consisting of scalar values
-pop2 = UncertainScalarPopulation([1, 2, 3], rand(3))
-pop3 = UncertainScalarPopulation([1, 2, 3], Weights(rand(3)))
+# Treat elements of `pop` as inequiprobable  
+p = UncertainScalarPopulation(pop, [2, 3, 1]) 
+```
 
-# Uncertain population consisting of uncertain populations
-pop4 = UncertainScalarPopulation([pop1, pop2], [0.1, 0.5])
+## Populations with mixed-type uncertain values 
 
-# Uncertain population consisting of uncertain populations, a scalar and 
-# a normal distribution. Assign random weights.
-vals = [pop1, pop2, 2, UncertainValue(Normal, 0.3, 0.014)]
-pop5 = UncertainScalarPopulation(vals, Weights(rand(4)))
+Uncertain population can also consist of a mixture of different types of uncertain values.
+Here, we use a population consisting of a scalar, two theoretical distributions
+with known parameters, and a theoretical uniform distribution whose parameters 
+are estimated from a random sample `s`. We assign equal weights to the member 
+of the population.
+
+```julia
+s = rand(1000)
+pop = [
+    3.0, 
+    UncertainValue(Normal, 0, 1), 
+    UncertainValue(Gamma, 2, 3), 
+    UncertainValue(Uniform, s)
+]
+wts = [0.5, 0.5, 0.5, 0.5]
+p = UncertainScalarPopulation(pop, wts)
+```
+
+## Nested populations 
+
+Nested populations are also possible.
+
+```
+using UncertainData, Distributions 
+s = rand(Normal(0.1, 2.0), 8000)
+p1 = [UncertainValue(Normal, 0.5, 0.33), UncertainValue(Gamma, 0.6, 0.9)]
+
+# If including scalars, these must be converted to `CertainScalar`s first,
+# as follows.
+p2 = [UncertainValue(2.2), UncertainValue(Normal, s), UncertainValue(s)]
+
+# Give p1 and p2 relative weights 0.1 and 0.5 (these are normalized, so 
+# do not need to sum to 1).
+p = UncertainScalarPopulation([p1, p2], [0.1, 0.5])
 ```
 """
 struct UncertainScalarPopulation{T, PW <: StatsBase.AbstractWeights} <: AbstractScalarPopulation{T, PW}
-    values::Vector{T}
+    values::AbstractVector{T}
     probs::PW
+
+    function UncertainScalarPopulation(pop, probs::AbstractVector{T}) where {T <: Number}
+        members = nested_convert_elwise(UncertainValue, pop); TT = eltype(members)
+        verify_pop_and_weights(pop, probs)
+        wts = Weights(probs); PW = typeof(wts)
+        new{TT, PW}(members, wts)
+    end
+
+    function UncertainScalarPopulation(pop, probs::PW) where {PW <: StatsBase.AbstractWeights}
+        members = nested_convert_elwise(UncertainValue, pop)
+        verify_pop_and_weights(pop, probs)
+        T = eltype(members)
+        new{T, PW}(members, probs)
+    end
 end
 
-"""
-    UncertainScalarPopulation(values::Vector, probabilities::Vector{Float64})
 
-Construct a population from a vector of values and a vector of probabilities associated 
-to those values."""
-function UncertainScalarPopulation(values::Vector{T1}, probabilities::Vector{T2}) where {T1 <: Number, T2 <: Number}
-    if length(values) != length(probabilities)
-        throw(ArgumentError("Lengths of values and probability vectors do not match."))
-    end
-    UncertainScalarPopulation(values, StatsBase.weights(probabilities))
-end
-function UncertainScalarPopulation(values::VT, probabilities) where VT <: Vector{ELTYPE} where {ELTYPE<:POTENTIAL_UVAL_TYPES}
-    if length(values) != length(probabilities)
-        throw(ArgumentError("Lengths of values and probability vectors do not match."))
-    end
-    UncertainScalarPopulation(UncertainValue.(values), StatsBase.weights(probabilities))
-end
+# function UncertainScalarPopulation(values::Vector{T1}, probabilities::Vector{T2}) where {T1 <: Number, T2 <: Number}
+
+#     UncertainScalarPopulation(
+#         nested_convert_elwise(UncertainValue, values), # in case scalars are provided
+#         StatsBase.weights(probabilities)
+#         )
+# # end
+# function UncertainScalarPopulation(values::VT, probabilities) where VT <: Vector{ELTYPE} where {ELTYPE<:POTENTIAL_UVAL_TYPES}
+
+#     UncertainScalarPopulation(UncertainValue.(values), StatsBase.weights(probabilities))
+# end
 
 
 """

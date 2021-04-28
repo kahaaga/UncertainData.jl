@@ -57,7 +57,7 @@ using Reexport
     include("UncertainScalarPopulation.jl")
     
     # Certain values (i.e. values without uncertainty)
-    include("CertainValue.jl")
+    include("CertainScalar.jl")
 
     ##########################################
     # Composite uncertain vector types

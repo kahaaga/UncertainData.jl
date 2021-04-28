@@ -5,7 +5,7 @@ using Test, UncertainData
     # Create some uncertain data with decreasing magnitude and zero overlap between values, 
     # so we're guaranteed that a strictly decreasing sequence through the dataset exists.
     N = 10
-    t = [i <= N/2 ? CertainValue(float(i)) : UncertainValue(Normal, i, 1) for i = N:-1:1]
+    t = [i <= N/2 ? CertainScalar(float(i)) : UncertainValue(Normal, i, 1) for i = N:-1:1]
     T = UncertainIndexDataset(t)
     iv = UncertainIndexValueDataset(t, t)
 

@@ -8,7 +8,7 @@ x = UncertainValueDataset(x_uncertain)
 y = UncertainValueDataset(y_uncertain)
 
 time_uncertain = [UncertainValue(Normal, i, 1) for i = 1:length(x)];
-time_certain = [CertainValue(i) for i = 1:length(x)];
+time_certain = [CertainScalar(i) for i = 1:length(x)];
 timeinds_x = UncertainIndexDataset(time_uncertain)
 timeinds_y = UncertainIndexDataset(time_certain)
 

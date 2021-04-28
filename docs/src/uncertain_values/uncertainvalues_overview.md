@@ -12,7 +12,7 @@ The following types of uncertain values are currently implemented:
     drawing values are already known, so you can skip kernel density estimation. Populations can be 
     nested, and may contain numerical values, uncertain values or both.
 - [Values without uncertainty](uncertainvalues_certainvalue.md) have their own dedicated 
-    [`CertainValue`](@ref) type, so that you can uncertain values with certain values.
+    [`CertainScalar`](@ref) type, so that you can uncertain values with certain values.
 - [`Measurement` instances](uncertainvalues_Measurements.md) from [Measurements.jl](https://github.com/JuliaPhysics/Measurements.jl) are treated as normal distributions with known mean and standard devation.
 
 ## Some quick examples

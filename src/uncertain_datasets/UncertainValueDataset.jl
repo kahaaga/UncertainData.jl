@@ -26,7 +26,7 @@ struct ConstrainedUncertainValueDataset <: AbstractUncertainValueDataset
 end
 
 function UncertainValueDataset(x::AbstractArray{T, 1}) where T
-    UncertainValueDataset(CertainValue.(x))
+    UncertainValueDataset(CertainScalar.(x))
 end
 
 export

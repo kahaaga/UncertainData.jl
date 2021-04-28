@@ -1,6 +1,22 @@
 # UncertainData changelog
 
-## v.0.14.1
+## v0.15.0
+
+### Breaking changes
+
+- `CertainValue` is renamed to `CertainScalar`.
+- Some abstract types are no longer exported.
+
+### Features
+
+- More flexible inputs to `UncertainValue` constructor.
+
+### Documentation 
+
+- Shortened and improved documentation. 
+- Use regular Documenter.jl style, not mkdocs.
+
+## v0.14.1
 
 ### Features
 
@@ -10,7 +26,7 @@
 
 - Make some methods more generic (non-breaking).
 
-## v.0.14.0
+## v0.14.0
 
 ### Breaking changes 
 

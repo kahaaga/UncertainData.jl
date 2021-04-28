@@ -9,7 +9,7 @@ o2 = UncertainValue(Normal, 2, 0.3)
 o3 = UncertainValue(Uniform, 0, 4)
 o4 = UncertainValue(Uniform, rand(100))
 o5 = UncertainValue(rand(400))
-o7 = CertainValue(2)
+o7 = CertainScalar(2)
 o8 = UncertainValue([2, 3, 4], [4, 5, 2])
 o9 = UncertainValue([2, 4, 5, 2], rand(4))
 
