@@ -6,8 +6,9 @@ import StatsBase
 const POTENTIAL_UVAL_TYPES = Union{T1, T2} where {T1 <: Number, T2 <: AbstractUncertainValue}
 
 
-convert_elwise(f, x) = map(f, x);
-nested_convert_elwise(f, x) = map(xᵢ -> convert_elwise(f, xᵢ), x)
+convert_elwise(f::Function, x) = map(f, x);
+convert_elwise(f::Function, x::AbstractUncertainValue) = x
+nested_convert_elwise(f::Function, x) = map(xᵢ -> convert_elwise(f, xᵢ), x)
 
 function verify_pop_and_weights(pop, wts) 
     if length(pop) != length(wts)
@@ -19,7 +20,6 @@ end
     UncertainScalarPopulation(values, probs)
     UncertainScalarPopulation(values, probs::Vector{Number})
     UncertainScalarPopulation(values, probs::Statsbase.AbstractWeights)
-
 
 An `UncertainScalarPopulation`, which consists of some population members (`values`)
 and some weights (`probs`) that indicate the relative importance of the 
@@ -100,17 +100,19 @@ struct UncertainScalarPopulation{T, PW <: StatsBase.AbstractWeights} <: Abstract
     probs::PW
 
     function UncertainScalarPopulation(pop, probs::AbstractVector{T}) where {T <: Number}
-        members = nested_convert_elwise(UncertainValue, pop); TT = eltype(members)
         verify_pop_and_weights(pop, probs)
+        @show "here"
+        @show pop
+        members = nested_convert_elwise(UncertainValue, pop); TT = eltype(members)
         wts = Weights(probs); PW = typeof(wts)
         new{TT, PW}(members, wts)
     end
 
     function UncertainScalarPopulation(pop, probs::PW) where {PW <: StatsBase.AbstractWeights}
-        members = nested_convert_elwise(UncertainValue, pop)
         verify_pop_and_weights(pop, probs)
-        T = eltype(members)
-        new{T, PW}(members, probs)
+        @show "here2"
+        members = nested_convert_elwise(UncertainValue, pop); TT = eltype(members)
+        new{TT, PW}(members, probs)
     end
 end
 

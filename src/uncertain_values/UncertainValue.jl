@@ -174,25 +174,21 @@ UncertainValue(uval::AbstractUncertainValue) = uval
 # From Measurements.jl
 UncertainValue(m::Measurement{T}) where T = UncertainValue(Normal, m.val, m.err)
 
-# Populations
-UncertainValue(
-    pop::AbstractVector, 
-    probs::Union{AbstractVector{<:Number}, <:StatsBase.AbstractWeights}) =
-    UncertainScalarPopulation(pop, probs)
+#Populations
+# function UncertainValue(
+#         values::AbstractVector{<:Number}, 
+#         probs::Union{Vector{<:Number}, W}) where {W <: AbstractWeights}
 
-# function UncertainValue(values::Vector{<:Number}, probs::Vector{<:Number})
 #     UncertainScalarPopulation(float.(values), probs)
 # end
 
-# function UncertainValue(values::Vector{<:Number}, probs::W) where {W <: AbstractWeights}
-#     UncertainScalarPopulation(float.(values), probs)
-# end
+UncertainValue(values, probs) = UncertainScalarPopulation(values, probs)
 
 # function UncertainValue(values::VT, probs) where VT <: Vector{ELTYPE} where {ELTYPE<:POTENTIAL_UVAL_TYPES}
 #     UncertainScalarPopulation(UncertainValue.(values), probs)
 # end
 
-# function UncertainValue(values::VT, probs::Vector{Number}) where VT <: Vector{ELTYPE} where {ELTYPE<:POTENTIAL_UVAL_TYPES}
+# function UncertainValue(values::VT, probs::Vector{<:Number}) where VT <: Vector{ELTYPE} where {ELTYPE<:POTENTIAL_UVAL_TYPES}
 #     UncertainScalarPopulation(UncertainValue.(values), probs)
 # end
 
