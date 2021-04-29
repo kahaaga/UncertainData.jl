@@ -1,7 +1,6 @@
-# Datasets of uncertain values
+# Types of datasets
 
-## Uncertain value datasets
-
+## `UncertainValueDataset`
 
 `UncertainValueDataset`s is an uncertain dataset type that has no explicit index 
 associated with its uncertain values. This type may come with some extra functionality 
@@ -14,31 +13,14 @@ as opposed to [indices](uncertain_index_dataset.md).
 UncertainValueDataset
 ```
 
-### Example
+## Uncertain index datasets
 
-An `UncertainValueDataset` can be comprised of uncertain values of different types.
+`UncertainIndexDataset`s is an uncertain dataset type that represents the indices 
+corresponding to an [UncertainValueDataset](uncertain_value_dataset.md).
 
-```julia 
-o1 = UncertainValue(Normal, 0, 0.5)
-o2 = UncertainValue(Normal, 2.0, 0.1)
-o3 = UncertainValue(Uniform, 0, 4)
-o4 = UncertainValue(Uniform, rand(100))
-o5 = UncertainValue(Beta, 4, 5)
-o6 = UncertainValue(Gamma, 4, 5)
-o7 = UncertainValue(Frechet, 1, 2)
-o8 = UncertainValue(BetaPrime, 1, 2)
-o9 = UncertainValue(BetaBinomial, 10, 3, 2)
-o10 = UncertainValue(Binomial, 10, 0.3)
+It is meant to be used for the `indices` field in
+[UncertainIndexValueDataset](uncertain_indexvalue_dataset.md)s instances.
 
-uvals = [o1, o2, o3, o4, o5, o6, o7, o8, o9, o10]
-d = UncertainValueDataset(uvals)
+```@docs
+UncertainIndexDataset
 ```
-
-The built-in plot recipes makes it a breeze to plot the dataset. Here, we'll plot the 
-20th to 80th percentile range error bars. 
-
-```julia
-plot(d, [0.2, 0.8])
-```
-
-![](uncertain_value_dataset_example.svg)

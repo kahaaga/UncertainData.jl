@@ -31,11 +31,9 @@ PAGES = [
         "uncertain_values/uncertainvalues_examples.md",
     ],
 	"Uncertain datasets" => [
+        "uncertain_datasets/datasets.md",
         "uncertain_datasets/uncertain_datasets_overview.md",
-        "uncertain_datasets/uncertain_index_dataset.md",
-        "uncertain_datasets/uncertain_value_dataset.md",
         "uncertain_datasets/uncertain_indexvalue_dataset.md",
-        "uncertain_datasets/uncertain_dataset.md",
 	],
     "Uncertain statistics" => [
         "Core statistics" => [

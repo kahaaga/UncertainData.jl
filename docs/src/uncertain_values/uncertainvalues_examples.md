@@ -50,11 +50,6 @@ bar(u, label = "", xlabel = "value", ylabel = "probability density")
 
 ![](figs/uncertainvalue_theoretical_normal.svg)
 
-### Other distributions 
-
-You may define uncertain values following any of the 
-[supported distributions](uncertainvalues_theoreticaldistributions.md). 
-
 ## Kernel density estimated distributions
 
 One may also be given a a distribution of numbers that's not quite normally distributed. 
