@@ -1,12 +1,12 @@
-import ..UncertainValues: CertainValue
+import ..UncertainValues: CertainScalar
 
 
-constrain(v::CertainValue) = v
-constrain(v::CertainValue, s::SamplingConstraint) = v
-constrain(v::CertainValue, s::TruncateLowerQuantile) = v
-constrain(v::CertainValue, s::TruncateUpperQuantile) = v
-constrain(v::CertainValue, s::TruncateQuantiles) = v
-constrain(v::CertainValue, s::TruncateStd) = v
+constrain(v::CertainScalar) = v
+constrain(v::CertainScalar, s::SamplingConstraint) = v
+constrain(v::CertainScalar, s::TruncateLowerQuantile) = v
+constrain(v::CertainScalar, s::TruncateUpperQuantile) = v
+constrain(v::CertainScalar, s::TruncateQuantiles) = v
+constrain(v::CertainScalar, s::TruncateStd) = v
 
 
 export constrain

@@ -10,17 +10,17 @@ An abstract type for population-based uncertain scalar values.
 """
 abstract type AbstractScalarPopulation{T, PW} <: AbstractPopulation end
 
-Base.length(p::AbstractScalarPopulation) = length(p.values)
-Base.getindex(p::AbstractScalarPopulation, i) = p.values[i]
+Base.length(p::AbstractScalarPopulation) = length(p.members)
+Base.getindex(p::AbstractScalarPopulation, i) = p.members[i]
 
 Base.firstindex(p::AbstractScalarPopulation) = 1
-Base.lastindex(p::AbstractScalarPopulation) = length(p.values)
+Base.lastindex(p::AbstractScalarPopulation) = length(p.members)
 Base.eachindex(p::AbstractScalarPopulation) = Base.OneTo(lastindex(p))
-Base.iterate(p::AbstractScalarPopulation, state = 1) = iterate(p.values, state)
+Base.iterate(p::AbstractScalarPopulation, state = 1) = iterate(p.members, state)
 
 function summarise(p::AbstractScalarPopulation)
     _type = typeof(p)
-    l = length(p.values)
+    l = length(p.members)
     summary = "$_type containing $l values"
     return summary
 end
@@ -31,10 +31,10 @@ Base.minimum(p::AbstractScalarPopulation) = minimum(p)
 Base.maximum(p::AbstractScalarPopulation) = maximum(p)
 
 Base.minimum(pop::AbstractScalarPopulation{T, PW} where {T <: Number, PW}) = 
-    minimum(pop.values)
+    minimum(pop.members)
 
 Base.maximum(pop::AbstractScalarPopulation{T, PW} where {T <: Number, PW}) = 
-    maximum(pop.values)
+    maximum(pop.members)
 
 Base.minimum(pop::AbstractScalarPopulation{T, PW} where {T <: AbstractUncertainValue, PW}) = 
     minimum([minimum(uv) for uv in pop])
@@ -45,11 +45,11 @@ Base.maximum(pop::AbstractScalarPopulation{T, PW} where {T <: AbstractUncertainV
 Distributions.support(p::AbstractScalarPopulation) = interval(minimum(p), maximum(p))
 
 function Base.rand(pop::AbstractScalarPopulation{T, PW}) where {T <: Number, PW}
-    StatsBase.sample(pop.values, pop.probs)
+    StatsBase.sample(pop.members, pop.probs)
 end
 
 function Base.rand(pop::AbstractScalarPopulation{T, PW}, n::Int) where {T <: Number, PW}
-    StatsBase.sample(pop.values, pop.probs, n)
+    StatsBase.sample(pop.members, pop.probs, n)
 end
 
 function Base.rand(pop::AbstractScalarPopulation{T, PW}) where {T <: AbstractUncertainValue, PW}

@@ -94,20 +94,20 @@ Base.:*(a::AbstractUncertainValue, b::Real, n::Int) =
 # Special cases 
 #####################################################################################
 
-import ..UncertainValues: CertainValue
+import ..UncertainValues: CertainScalar
 
 ##################
-# `CertainValue`s
+# `CertainScalar`s
 #################
 """
-    Base.:*(a::Union{CertainValue, Real}, b::Union{CertainValue, Real})
+    Base.:*(a::Union{CertainScalar, Real}, b::Union{CertainScalar, Real})
 
 Multiplication of certain values with themselves or scalars acts as regular multiplication, 
-but returns the result wrapped in a `CertainValue` instance.
+but returns the result wrapped in a `CertainScalar` instance.
 """
-Base.:*(a::Union{CertainValue, Real}, b::Union{CertainValue, Real}) 
+Base.:*(a::Union{CertainScalar, Real}, b::Union{CertainScalar, Real}) 
 
-Base.:*(a::CertainValue, b::CertainValue) = CertainValue(a.value * b.value)
-Base.:*(a::CertainValue, b::Real) = CertainValue(a.value * b)
-Base.:*(a::Real, b::CertainValue) = CertainValue(a * b.value)
+Base.:*(a::CertainScalar, b::CertainScalar) = CertainScalar(a.value * b.value)
+Base.:*(a::CertainScalar, b::Real) = CertainScalar(a.value * b)
+Base.:*(a::Real, b::CertainScalar) = CertainScalar(a * b.value)
 

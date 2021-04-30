@@ -3,27 +3,43 @@ import Base.rand
 import StatsBase.quantile
 import StatsBase.median
 import Distributions.support
-
 import Distributions.ecdf
 import Base:
     minimum, maximum,
     max, min
 
+
 """
-    UncertainScalarKDE(d::KernelDensity.UnivariateKDE, values::AbstractVector{T}, range, pdf)
+    UncertainScalarKDE(d::KernelDensity.UnivariateKDE, x::AbstractVector, range, pdf)
 
-An empirical value represented by a distribution estimated from actual data.
+An uncertain value represented by a kernel density estimate `d`,  to the 
+underlying distribution for the empirical sample `x`. 
+    
+`range` are the values for which the pdf is estimated, and `pdf` are the 
+corresponding values of the pdf. Gaussian kernels are used by default.
 
-## Fields
+## Examples
 
-- **`distribution`**: The `UnivariateKDE` estimate for the distribution of `values`.
-- **`values`**: The values from which `distribution` is estimated.
-- **`range`**: The values for which the pdf is estimated.
-- **`pdf`**: The values of the pdf at each point in `range`.
+```julia
+using Distributions, UncertainData, KernelDensity
+
+# Draw a 1000-point sample from a normal distribution.
+s = rand(Normal(), 1000)
+
+# Estimate a distribution to the underlying distribution by using 
+# kernel density estimation on the sample `s` 
+x = UncertainValue(s)
+
+# The explicit constructor allows adjusting the kernel (must be a valid 
+# kernel from Distributions.jl; normal distributions are the default), 
+# and the number of  points used for the estimation (must be a power of 2; 
+# default is 2048 points).
+x = UncertainValue(UnivariateKDE, s; kernel = Normal, npoints = 1024) 
+```
 """
-struct UncertainScalarKDE{T} <: AbstractUncertainScalarKDE{T}
+struct UncertainScalarKDE{T, V <: AbstractVector{T}} <: AbstractUncertainScalarKDE{T}
     distribution::KernelDensity.UnivariateKDE
-    values::AbstractVector{T}
+    values::V
     range
     pdf::StatsBase.Weights
 end
@@ -34,9 +50,9 @@ end
 
 A truncated [`UncertainScalarKDE`](@ref).
 """
-struct TruncatedUncertainScalarKDE{T} <: AbstractUncertainScalarKDE{T}
+struct TruncatedUncertainScalarKDE{T, V <: AbstractVector{T}} <: AbstractUncertainScalarKDE{T}
     distribution::KernelDensity.UnivariateKDE
-    values::AbstractVector{T}
+    values::V
     range
     pdf::StatsBase.Weights
 end
@@ -147,15 +163,12 @@ min(uv::AbstractUncertainScalarKDE) = minimum(uv.range)
 max(uv::AbstractUncertainScalarKDE) = maximum(uv.range)
 
 
-
-
-
 export
-AbstractUncertainScalarKDE,
-UncertainScalarKDE
-ecdf,
-support,
-getquantileindex,
-UnivariateKDE,
-minimum,
-maximum
+    AbstractUncertainScalarKDE,
+    UncertainScalarKDE
+    ecdf,
+    support,
+    getquantileindex,
+    UnivariateKDE,
+    minimum,
+    maximum

@@ -1,8 +1,10 @@
 
 """
-    UncertainValueDataset
+    UncertainValueDataset(values)
 
-A dataset of uncertain values.
+A dataset of uncertain values which have no explicit index associated with its uncertain values. Use this type when you want to be explicit 
+about the values representing data values, as opposed to [`UncertainIndexDataset`](@ref)s. 
+
 
 ## Fields
 
@@ -26,7 +28,7 @@ struct ConstrainedUncertainValueDataset <: AbstractUncertainValueDataset
 end
 
 function UncertainValueDataset(x::AbstractArray{T, 1}) where T
-    UncertainValueDataset(CertainValue.(x))
+    UncertainValueDataset(CertainScalar.(x))
 end
 
 export

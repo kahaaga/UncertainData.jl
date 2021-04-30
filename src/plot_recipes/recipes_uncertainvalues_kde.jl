@@ -6,10 +6,10 @@ import ..SamplingConstraints:
 @recipe function plot_uncertainvalueKDE(uv::AbstractUncertainScalarKDE)
     @series begin
         seriestype := :path
-        fα --> 0.5
-        fc --> :green
-        xlabel --> "Value"
-        ylabel --> "Density"
+        fillalpha --> 0.5
+        fillcolor --> :green
+        xguide --> "Value"
+        yguide --> "Density"
         label --> ""
         uv.distribution.x, uv.distribution.density ./ sum(uv.distribution.density)
     end
@@ -22,10 +22,10 @@ end
     cuv = constrain(uv, constraint)
     @series begin
         seriestype := :path
-        fα --> 0.5
-        fc --> :green
-        xlabel --> "Value"
-        ylabel --> "Density"
+        fillalpha --> 0.5
+        fillcolor --> :green
+        xguide --> "Value"
+        yguide --> "Density"
         label --> ""
         cuv.distribution.x, cuv.distribution.density ./ sum(cuv.distribution.density)
     end

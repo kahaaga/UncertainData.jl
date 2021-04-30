@@ -695,15 +695,15 @@ trigfuncs = [:(cos), :(cosd), :(cosh), :(sin), :(sind), :(sinh), :(tan), :(tand)
     :(secd), :(sech), :(cot), :(cotd), :(coth)]
 
 ##################
-# `CertainValue`s
+# `CertainScalar`s
 #################
-import ..UncertainValues: CertainValue
+import ..UncertainValues: CertainScalar
 
 """
-    Base.:-(a::Union{CertainValue, Real}, b::Union{CertainValue, Real})
+    Base.:-(a::Union{CertainScalar, Real}, b::Union{CertainScalar, Real})
 
 Subtraction of certain values with themselves or scalars acts as regular subtraction, 
-but returns the result wrapped in a `CertainValue` instance.
+but returns the result wrapped in a `CertainScalar` instance.
 """
 
 for trigfunc in trigfuncs
@@ -711,21 +711,21 @@ for trigfunc in trigfuncs
 
     regular_func = quote 
         """ 
-            $($f)(x::CertainValue)
+            $($f)(x::CertainScalar)
         
         Compute `$($trigfunc)(x)`.
         """
-        $(f)(x::CertainValue) = x.value
+        $(f)(x::CertainScalar) = x.value
     end
 
     n_reps_func = quote 
         """ 
-            $($f)(x::CertainValue, n::Int)
+            $($f)(x::CertainScalar, n::Int)
         
         Compute `$($trigfunc)(x)` `n` times and return the result(s) as a vector (just 
         repeating the value `n` times).
         """
-        $(f)(x::CertainValue, n::Int) = [x.value for i = 1:n]
+        $(f)(x::CertainScalar, n::Int) = [x.value for i = 1:n]
     end
 
     eval(regular_func)

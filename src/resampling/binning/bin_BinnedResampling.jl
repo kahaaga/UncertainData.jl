@@ -11,7 +11,7 @@ distribute the values according to their indices, into the bins given by `binnin
 ## Returns 
 
 Returns an `UncertainIndexValueDataset`. Indices are assumed to be uniformly distributed within each 
-bin, and are represented as `CertainValue`s at the bin centers. Values of the dataset have different 
+bin, and are represented as `CertainScalar`s at the bin centers. Values of the dataset have different 
 representations depending on what `binning` is:
 
 - If `binning isa BinnedResampling{UncertainScalarKDE}`, then values in each bin are represented by a 
@@ -118,7 +118,7 @@ function bin(x::AbstractUncertainIndexValueDataset, binning::BinnedResampling{Un
     bin_centers, binvecs = bin(x, BinnedResampling(RawValues, left_bin_edges, n))
     
     # Estimate distributions in each bin by kernel density estimation
-    estimated_value_dists = Vector{Union{CertainValue, UncertainScalarPopulation}}(undef, n_bins)
+    estimated_value_dists = Vector{Union{CertainScalar, UncertainScalarPopulation}}(undef, n_bins)
     binvec_lengths = length.(binvecs)
     
     for i in 1:n_bins        
@@ -153,7 +153,7 @@ function bin(x::AbstractUncertainIndexValueDataset, binning::BinnedResampling{Un
     bin_centers, binvecs = bin(x, BinnedResampling(RawValues, left_bin_edges, n))
     
     # Estimate distributions in each bin by kernel density estimation
-    estimated_value_dists = Vector{Union{CertainValue, UncertainScalarKDE}}(undef, n_bins)
+    estimated_value_dists = Vector{Union{CertainScalar, UncertainScalarKDE}}(undef, n_bins)
     binvec_lengths = length.(binvecs)
     
     for i in 1:n_bins        

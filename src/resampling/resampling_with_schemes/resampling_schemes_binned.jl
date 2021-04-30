@@ -265,7 +265,7 @@ function resample(x::AbstractUncertainIndexValueDataset,
     end
     
     # Estimate distributions in each bin by kernel density estimation
-    estimated_value_dists = Vector{Union{CertainValue, UncertainScalarKDE}}(undef, n_bins)
+    estimated_value_dists = Vector{Union{CertainScalar, UncertainScalarKDE}}(undef, n_bins)
     
     for i in 1:n_bins
         if length(binvecs[i]) > nan_threshold
@@ -327,7 +327,7 @@ function resample(x::AbstractUncertainIndexValueDataset,
     end
 
     # Estimate distributions in each bin by kernel density estimation
-    estimated_value_dists = Vector{Union{CertainValue, UncertainScalarPopulation}}(undef, n_bins)
+    estimated_value_dists = Vector{Union{CertainScalar, UncertainScalarPopulation}}(undef, n_bins)
 
     for i in 1:n_bins
         if length(binvecs[i]) > nan_threshold

@@ -110,7 +110,7 @@ X_binned = resample(X, resampling)
 ```
 
 `X_binned` is still a `UncertainIndexValueDataset`, but the indices have been reduced 
-to `CertainValue` instances placed at the bin midpoints. The values, however, are kept 
+to `CertainScalar` instances placed at the bin midpoints. The values, however, are kept 
 as uncertain values.
 
 Plotting the result:

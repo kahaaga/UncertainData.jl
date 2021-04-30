@@ -1,4 +1,4 @@
-# Uncertain population consisting of CertainValues (scalars get promoted to CertainValue)s
+# Uncertain population consisting of CertainScalars (scalars get promoted to CertainScalar)s
 # theoretical distributions and KDE distributions
 p1 = ConstrainedUncertainScalarPopulation(
         [3.0, UncertainValue(Normal, 0, 1), 

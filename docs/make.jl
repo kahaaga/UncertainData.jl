@@ -4,9 +4,16 @@ CI = get(ENV, "CI", nothing) == "true" || get(ENV, "GITHUB_TOKEN", nothing) !== 
 CI && Pkg.activate(@__DIR__)
 CI && Pkg.instantiate()
 CI && (ENV["GKSwstype"] = "100")
+
+using Plots
 using Documenter
-using DocumenterTools
-using DocumenterMarkdown
+using DocumenterTools: Themes
+
+# %% Theme stuff?
+
+# %% Build docs
+cd(@__DIR__)
+ENV["JULIA_DEBUG"] = "Documenter"
 
 using UncertainData
 using Distributions
@@ -17,24 +24,9 @@ using Interpolations
 
 PAGES = [
     "index.md",
-    "Uncertain values" => [
-        "uncertain_values/uncertainvalues_overview.md",
-        "uncertain_values/uncertainvalues_theoreticaldistributions.md",
-        "uncertain_values/uncertainvalues_kde.md",
-        "uncertain_values/uncertainvalues_fitted.md",
-        "uncertain_values/uncertainvalues_certainvalue.md",
-        "uncertain_values/uncertainvalues_populations.md",
-        "uncertain_values/uncertainvalues_Measurements.md",
-        "uncertain_values/merging.md",
-        "uncertain_values/uncertainvalues_examples.md",
-    ],
-	"Uncertain datasets" => [
-        "uncertain_datasets/uncertain_datasets_overview.md",
-        "uncertain_datasets/uncertain_index_dataset.md",
-        "uncertain_datasets/uncertain_value_dataset.md",
-        "uncertain_datasets/uncertain_indexvalue_dataset.md",
-        "uncertain_datasets/uncertain_dataset.md",
-	],
+    "uncertain_values/uncertain_values.md",
+	"uncertain_datasets/datasets.md",
+    "sampling_constraints/sampling_constraints.md",
     "Uncertain statistics" => [
         "Core statistics" => [
             "uncertain_statistics/core_stats/core_statistics.md",
@@ -56,11 +48,6 @@ PAGES = [
             "uncertain_statistics/hypothesistests/mann_whitney_u_test.md",
             "uncertain_statistics/hypothesistests/anderson_darling_test.md"
         ],
-    ],
-    "Sampling constraints" => [
-        "sampling_constraints/available_constraints.md",
-        "sampling_constraints/constrain_uncertain_values.md",
-        "sampling_constraints/sequential_constraints.md"
     ],
 
     "Binning" => [
@@ -119,13 +106,13 @@ ENV["JULIA_DEBUG"] = "Documenter"
 
 makedocs(
     modules = [UncertainData],
-    sitename = "UncertainData.jl documentation",
-    format = format = Documenter.HTML(
+    format = Documenter.HTML(
         prettyurls = CI,
         ),
+    sitename = "UncertainData.jl",
+    authors = "Kristian Agasøster Haaga",
     pages = PAGES
 )
-
 
 if CI
     deploydocs(

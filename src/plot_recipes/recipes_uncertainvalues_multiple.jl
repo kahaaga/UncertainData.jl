@@ -10,15 +10,15 @@
     @series begin
         label --> "P1, $d1"
         seriestype := :bar
-        fα --> 0.4
-        fc --> :green
+        fillalpha --> 0.4
+        fillcolor --> :green
         fit(Histogram, resample(d1, n_samples), nbins = nbins)
     end
     @series begin
         label --> "P2, $d2"
         seriestype := :bar
-        fc --> :blue
-        fα --> 0.4
+        fillcolor --> :blue
+        fillalpha --> 0.4
         fit(Histogram, resample(d2, n_samples), nbins = nbins)
     end
 
@@ -28,8 +28,8 @@
         @series begin
             label --> "MixtureModel with uniform priors"
             seriestype := :bar
-            fα --> 0.6
-            fc --> :black
+            fillalpha --> 0.6
+            fillcolor --> :black
             fit(Histogram, rand(M, n_samples), nbins = nbins)
         end
     end

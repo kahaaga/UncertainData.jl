@@ -1,16 +1,21 @@
-import ..UncertainValues: CertainValue
+import ..UncertainValues: CertainScalar
 using RecipesBase
 
-@recipe f(::Type{CertainValue{T}}, x::CertainValue{T}) where {T} = [x.value]
+@recipe f(::Type{CertainScalar{T}}, x::CertainScalar{T}) where {T} = [x.value]
 
-@recipe function f(certainvals::Vector{CertainValue})
+@recipe function f(certainvals::Vector{CertainScalar})
     @series begin 
         [val.value for val in certainvals]
     end
 end
 
+@recipe function f(x::CertainScalar)
+    @series begin 
+        x
+    end
+end
 
-@recipe function f(certainvals::Vararg{CertainValue,N}) where {N}
+@recipe function f(certainvals::Vararg{CertainScalar,N}) where {N}
     @series begin 
         [val.value for val in certainvals]
     end
