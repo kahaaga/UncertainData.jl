@@ -26,6 +26,7 @@ PAGES = [
     "index.md",
     "uncertain_values/uncertain_values.md",
 	"uncertain_datasets/datasets.md",
+    "sampling_constraints/sampling_constraints.md",
     "Uncertain statistics" => [
         "Core statistics" => [
             "uncertain_statistics/core_stats/core_statistics.md",
@@ -47,11 +48,6 @@ PAGES = [
             "uncertain_statistics/hypothesistests/mann_whitney_u_test.md",
             "uncertain_statistics/hypothesistests/anderson_darling_test.md"
         ],
-    ],
-    "Sampling constraints" => [
-        "sampling_constraints/available_constraints.md",
-        "sampling_constraints/constrain_uncertain_values.md",
-        "sampling_constraints/sequential_constraints.md"
     ],
 
     "Binning" => [
