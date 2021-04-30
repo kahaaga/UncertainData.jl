@@ -9,6 +9,11 @@ using RecipesBase
     end
 end
 
+@recipe function f(x::CertainScalar)
+    @series begin 
+        x
+    end
+end
 
 @recipe function f(certainvals::Vararg{CertainScalar,N}) where {N}
     @series begin 

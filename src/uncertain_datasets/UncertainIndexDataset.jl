@@ -3,7 +3,11 @@
 
 A dataset containing `indices` that have uncertainties associated with them.
 
-## Examples
+`UncertainIndexDataset`s are meant to contain the indices corresponding to 
+an [`UncertainValueDataset`](@ref), and are used for the `indices` field 
+in [`UncertainIndexValueDataset`](@ref)s.
+
+## Example
 
 Say we had a dataset of 20 values for which the uncertainties are normally distributed 
 with increasing standard deviation through time.

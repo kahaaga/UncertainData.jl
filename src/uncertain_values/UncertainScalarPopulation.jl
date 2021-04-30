@@ -22,17 +22,14 @@ end
 
 An `UncertainScalarPopulation`, which consists of some population `members` 
 with associated weights (`probs`) that indicate the relative importance of the 
-population members (for example during resampling). 
-
-Members can be either numerical values, any type of uncertain value defined 
-in this package (including populations, so nested populations are possible).
+population members (for example during resampling). The `members` can be either 
+numerical values, any type of uncertain value defined in this package 
+(including populations, so nested populations are possible).
 
 ## Examples
 
-### Scalar populations
-
-Weighted scalar populations are defined as follows.* Note: Weights must always be provided,
-and scalars must be converted to uncertain values before creating the population.*
+Weighted scalar populations are defined as follows. Weights must always be provided,
+and scalars must be converted to uncertain values before creating the population.
 
 ```julia
 using UncertainData
@@ -45,8 +42,6 @@ p = UncertainScalarPopulation(members, [1, 1, 1])
 p = UncertainScalarPopulation(members, [2, 3, 1]) 
 ```
 
-## Populations with mixed-type uncertain values 
-
 Uncertain populations can also consist of a mixture of different types of uncertain values.
 Here, we use a population consisting of a scalar, two theoretical distributions
 with known parameters, and a theoretical uniform distribution whose parameters 
@@ -55,32 +50,29 @@ of the population.
 
 ```julia
 s = rand(1000)
-members = [
-    3.0, 
-    UncertainValue(Normal, 0, 1), 
-    UncertainValue(Gamma, 2, 3), 
-    UncertainValue(Uniform, s)
-]
+members = [3.0, UncertainValue(Normal, 0, 1), UncertainValue(Gamma, 2, 3), 
+    UncertainValue(Uniform, s)]
 wts = [0.5, 0.5, 0.5, 0.5]
-p = UncertainScalarPopulation(members, wts)
+p = UncertainValue(members, wts)
 ```
 
-## Nested populations 
-
-Nested populations are also possible.
+Nested populations are also possible, and sub-populations can be given 
+unequal sampling priority.
 
 ```julia
 using UncertainData, Distributions 
 s = rand(Normal(0.1, 2.0), 8000)
-m1 = [UncertainValue(Normal, 0.5, 0.33), UncertainValue(Gamma, 0.6, 0.9)]
+v1, v2 = UncertainValue(Normal, 0.5, 0.33), UncertainValue(Gamma, 0.6, 0.9)
+v3, v4 = 2.2, UncertainValue(Normal, s), UncertainValue(s)
 
-# If including scalars, these must be converted to `CertainScalar`s first,
-# as follows.
-m2 = [2.2, UncertainValue(Normal, s), UncertainValue(s)]
+# When sampling sub-population m1, members v1 and v2 are given relative importance 1 to 3
+# When sampling sub-population m2, members v3 and v4 are given relative importance 2 to 1
+m1 = UncertainValue([v1, v2], [1, 3]) 
+m2 = UncertainValue([v3, v4], [2, 1])
 
-# Give m1 and m2 relative weights 0.1 and 0.5 (these are normalized, so 
-# do not need to sum to 1).
-p = UncertainScalarPopulation([m1, m2], [0.1, 0.5])
+# When sampling the overall population, the sub-populations m1 and m2 
+# are sampled with equal importance.
+p = UncertainValue([m1, m2], [1, 1])
 ```
 """
 struct UncertainScalarPopulation{T, PW <: StatsBase.AbstractWeights} <: AbstractScalarPopulation{T, PW}

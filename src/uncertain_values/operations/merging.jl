@@ -1,22 +1,31 @@
 """
-    combine(uvals::Vector{AbstractUncertainValue}; n = 10000*length(uvals), 
-        bw::Union{Nothing, Real} = nothing)
+    combine(x::Vector{AbstractUncertainValue}; 
+        n = 10000*length(uvals), bw::Union{Nothing, Real} = nothing) → UncertainScalarKDE
+    combine(x::Vector{AbstractUncertainValue}, weights::ProbabilityWeights; kwargs...) → UncertainScalarKDE
+    combine(x::Vector{AbstractUncertainValue}, weights::AnalyticWeights; kwargs...) → UncertainScalarKDE
+    combine(x::Vector{AbstractUncertainValue}, weights::FrequencyWeights; kwargs...) → UncertainScalarKDE
 
-Combine multiple uncertain values into a single uncertain value. This is
-done by resampling each uncertain value in `uvals`, `n` times  each, 
-then pooling these draws together. Finally, a kernel density estimate to the final
-distribution is computed over those draws. 
+Combine multiple uncertain values `x` into a single uncertain value using kernel 
+density estimation (KDE). This is done by resampling each uncertain value in `x`, 
+`n` times  each, then pooling these draws together. Finally, an approximation 
+to the final distribution is computed over those draws using KDE.
 
 The KDE bandwidth is controlled by `bw`. By default, `bw = nothing`; in this case, 
 the bandwidth is determined using the `KernelDensity.default_bandwidth` function.
+Tip: For very wide, close-to-normal distributions, the default bandwidth usually 
+works well.For very peaked distributions or discrete populations, however, 
+a lowering the bandwidth significantly may be a better choice.
 
-!!! tip
+If no weights are provided, the sample pool on which KDE is performed is computed 
+by resampling each of the `N` uncertain values `n/N` times and pooling these values 
+together. If `weights` are provided, then the `weights` control the relative sampling 
+importance of the elements of `x`. `Weights`, `ProbabilityWeights` and  `AnalyticWeights` are 
+functionally the same, and represent relative sampling probabilities. Either 
+may be used depending on whether the weights are assigned subjectively or quantitatively. 
+With `FrequencyWeights`, it is possible to control the exact number of draws from each 
+uncertain value that goes into the draw pool before performing kernel density estimation.
 
-    For very wide, close-to-normal distributions, the default bandwidth may work well. 
-    If you're combining very peaked distributions or discrete populations, however, 
-    you may want to lower the bandwidth significantly.
-
-# Example 
+## Example 
 
 ```julia
 v1 = UncertainValue(Normal, 1, 0.3)
@@ -80,7 +89,6 @@ uvals = [v1, v2, v3, v4];
 combine(uvals, ProbabilityWeights([0.2, 0.1, 0.3, 0.2]))
 combine(uvals, pweights([0.2, 0.1, 0.3, 0.2]), n = 20000) # adjust number of total draws
 ```
-
 """
 function combine(uvals::Vector{AbstractUncertainValue}, weights::ProbabilityWeights; 
         n = 10000*length(uvals), 

@@ -24,17 +24,8 @@ using Interpolations
 
 PAGES = [
     "index.md",
-    "Uncertain values" => [
-        #"uncertain_values/uncertainvalues_overview.md",
-        "uncertain_values/types.md",
-        "uncertain_values/combining_and_merging.md",
-        "uncertain_values/uncertainvalues_examples.md",
-    ],
-	"Uncertain datasets" => [
-        "uncertain_datasets/datasets.md",
-        "uncertain_datasets/uncertain_datasets_overview.md",
-        "uncertain_datasets/uncertain_indexvalue_dataset.md",
-	],
+    "uncertain_values/uncertain_values.md",
+	"uncertain_datasets/datasets.md",
     "Uncertain statistics" => [
         "Core statistics" => [
             "uncertain_statistics/core_stats/core_statistics.md",
