@@ -14,6 +14,15 @@ using Reexport
         UncertainValue,
         AbstractUncertainValue
 
+    """
+        resample(x::AbstractUncertainValue)
+        resample(x::AbstractUncertainValue, n::Int)
+
+    Draw a single sample, or `n` samples, from the uncertain value `x`.
+
+
+    Draw `n` samples from the uncertain value `x`.
+    """
     function resample end
 
     ###################################
@@ -36,6 +45,9 @@ using Reexport
     ###################################
     # Resampling uncertain values
     ###################################
+
+    include("uncertain_values/resample_uncertainvalues.jl")
+
     # Uncertain values based on distributions
     include("uncertain_values/resample_uncertainvalues_distributions.jl")
 

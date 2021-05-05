@@ -22,69 +22,69 @@ import ..SamplingConstraints:
     fallback
 
 
-"""
-    resample(uv::AbstractUncertainScalarKDE, constraint::NoConstraint)
+# """
+#     resample(uv::AbstractUncertainScalarKDE, constraint::NoConstraint)
 
-Resample without contraints (use the full distribution representing the value)
+# Resample without contraints (use the full distribution representing the value)
 
-## Example
+# ## Example
 
-```julia
-some_sample = rand(Normal(), 1000)
+# ```julia
+# some_sample = rand(Normal(), 1000)
 
-# Calling UncertainValue with a single vector of numbers triggers KDE estimation
-uncertainval = UncertainValue(some_sample) # -> UncertainScalarKDE
+# # Calling UncertainValue with a single vector of numbers triggers KDE estimation
+# uncertainval = UncertainValue(some_sample) # -> UncertainScalarKDE
 
-# Resample the uncertain value by resampling the full distribution once.
-resample(uncertainval, NoConstraint())
-```
-"""
+# # Resample the uncertain value by resampling the full distribution once.
+# resample(uncertainval, NoConstraint())
+# ```
+# """
 resample(uv::AbstractUncertainScalarKDE, constraint::NoConstraint) = resample(uv)
 
-"""
-    resample(uv::AbstractUncertainScalarKDE, constraint::NoConstraint, n::Int)
+# """
+#     resample(uv::AbstractUncertainScalarKDE, constraint::NoConstraint, n::Int)
 
-Resample without contraints (use the full distribution representing the value)
+# Resample without contraints (use the full distribution representing the value)
 
-## Example
+# ## Example
 
-```julia
-some_sample = rand(Normal(), 1000)
+# ```julia
+# some_sample = rand(Normal(), 1000)
 
-# Calling UncertainValue with a single vector of numbers triggers KDE estimation
-uncertainval = UncertainValue(some_sample) # -> UncertainScalarKDE
+# # Calling UncertainValue with a single vector of numbers triggers KDE estimation
+# uncertainval = UncertainValue(some_sample) # -> UncertainScalarKDE
 
-# Resample the uncertain value by resampling the full distribution n times
-resample(uncertainval, NoConstraint(), n)
-```
-"""
+# # Resample the uncertain value by resampling the full distribution n times
+# resample(uncertainval, NoConstraint(), n)
+# ```
+# """
 resample(uv::AbstractUncertainScalarKDE, constraint::NoConstraint, n::Int) = resample(uv, n)
 
 
-"""
-    resample(uv::AbstractUncertainScalarKDE, constraint::TruncateLowerQuantile)
+# """
+#     resample(uv::AbstractUncertainScalarKDE, constraint::TruncateLowerQuantile)
 
-Resample `uv` by first truncating below the kernel density estimate of the
-distribution furnishing the value at some lower quantile, then resampling
-it once.
+# Resample `uv` by first truncating below the kernel density estimate of the
+# distribution furnishing the value at some lower quantile, then resampling
+# it once.
 
-## Example
+# ## Example
 
-```julia
-using UncertainData
+# ```julia
+# using UncertainData
 
-some_sample = rand(Normal(), 1000)
+# some_sample = rand(Normal(), 1000)
 
-# Calling UncertainValue with a single vector of numbers triggers KDE estimation
-uncertainval = UncertainValue(some_sample) # -> UncertainScalarKDE
+# # Calling UncertainValue with a single vector of numbers triggers KDE estimation
+# uncertainval = UncertainValue(some_sample) # -> UncertainScalarKDE
 
-constraint = TruncateLowerQuantile(0.16)
+# constraint = TruncateLowerQuantile(0.16)
 
-# Resample the uncertain value by truncating the distribution furnishing it,
-# then resampling the new distribution once.
-resample(uncertainval, constraint)
-```
-"""
+# # Resample the uncertain value by truncating the distribution furnishing it,
+# # then resampling the new distribution once.
+# resample(uncertainval, constraint)
+# ```
+# """
 function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateLowerQuantile)
     # Find the index of the kernel density estimated distribution
     # corresponding to the lower quantile at which we want to truncate.
@@ -104,31 +104,31 @@ function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateLowerQuant
     rand(Uniform(sampled_val, sampled_val + δ))
 end
 
-"""
-    resample(uv::AbstractUncertainScalarKDE, constraint::TruncateLowerQuantile,
-        n::Int)
+# """
+#     resample(uv::AbstractUncertainScalarKDE, constraint::TruncateLowerQuantile,
+#         n::Int)
 
-Resample `uv` by first truncating below the kernel density estimate of the
-distribution furnishing the value at some lower quantile, then resampling
-it `n` times.
+# Resample `uv` by first truncating below the kernel density estimate of the
+# distribution furnishing the value at some lower quantile, then resampling
+# it `n` times.
 
-## Example
+# ## Example
 
-```julia
-using UncertainData
+# ```julia
+# using UncertainData
 
-some_sample = rand(Normal(), 1000)
+# some_sample = rand(Normal(), 1000)
 
-# Calling UncertainValue with a single vector of numbers triggers KDE estimation
-uncertainval = UncertainValue(some_sample) # -> UncertainScalarKDE
+# # Calling UncertainValue with a single vector of numbers triggers KDE estimation
+# uncertainval = UncertainValue(some_sample) # -> UncertainScalarKDE
 
-constraint = TruncateLowerQuantile(0.16)
+# constraint = TruncateLowerQuantile(0.16)
 
-# Resample the uncertain value by truncating the distribution furnishing it,
-# then resampling the new distribution 500 times.
-resample(uncertainval, constraint, 500)
-```
-"""
+# # Resample the uncertain value by truncating the distribution furnishing it,
+# # then resampling the new distribution 500 times.
+# resample(uncertainval, constraint, 500)
+# ```
+# """
 function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateLowerQuantile,
         n::Int)
     # Find the index of the kernel density estimated distribution
@@ -151,30 +151,30 @@ function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateLowerQuant
 end
 
 
-"""
-    resample(uv::AbstractUncertainScalarKDE, constraint::TruncateUpperQuantile)
+# """
+#     resample(uv::AbstractUncertainScalarKDE, constraint::TruncateUpperQuantile)
 
-Resample `uv` by first truncating above the kernel density estimate of the
-distribution furnishing the value at some upper quantile, then resampling
-it once.
+# Resample `uv` by first truncating above the kernel density estimate of the
+# distribution furnishing the value at some upper quantile, then resampling
+# it once.
 
-## Example
+# ## Example
 
-```julia
-using UncertainData
+# ```julia
+# using UncertainData
 
-some_sample = rand(Normal(), 1000)
+# some_sample = rand(Normal(), 1000)
 
-# Calling UncertainValue with a single vector of numbers triggers KDE estimation
-uncertainval = UncertainValue(some_sample) # -> UncertainScalarKDE
+# # Calling UncertainValue with a single vector of numbers triggers KDE estimation
+# uncertainval = UncertainValue(some_sample) # -> UncertainScalarKDE
 
-constraint = TruncateUpperQuantile(0.78)
+# constraint = TruncateUpperQuantile(0.78)
 
-# Resample the uncertain value by truncating the distribution furnishing it,
-# then resampling the new distribution once.
-resample(uncertainval, constraint)
-```
-"""
+# # Resample the uncertain value by truncating the distribution furnishing it,
+# # then resampling the new distribution once.
+# resample(uncertainval, constraint)
+# ```
+# """
 function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateUpperQuantile)
     # Find the index of the kernel density estimated distribution
     # corresponding to the lower quantile at which we want to truncate.
@@ -194,31 +194,31 @@ function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateUpperQuant
     rand(Uniform(sampled_val, sampled_val + δ))
 end
 
-"""
-    resample(uv::AbstractUncertainScalarKDE, constraint::TruncateUpperQuantile,
-        n::Int)
+# """
+#     resample(uv::AbstractUncertainScalarKDE, constraint::TruncateUpperQuantile,
+#         n::Int)
 
-Resample `uv` by first truncating above the kernel density estimate of the
-distribution furnishing the value at some upper quantile, then resampling
-it `n` times.
+# Resample `uv` by first truncating above the kernel density estimate of the
+# distribution furnishing the value at some upper quantile, then resampling
+# it `n` times.
 
-## Example
+# ## Example
 
-```julia
-using UncertainData
+# ```julia
+# using UncertainData
 
-some_sample = rand(Normal(), 1000)
+# some_sample = rand(Normal(), 1000)
 
-# Calling UncertainValue with a single vector of numbers triggers KDE estimation
-uncertainval = UncertainValue(some_sample) # -> UncertainScalarKDE
+# # Calling UncertainValue with a single vector of numbers triggers KDE estimation
+# uncertainval = UncertainValue(some_sample) # -> UncertainScalarKDE
 
-constraint = TruncateLowerQuantile(0.16)
+# constraint = TruncateLowerQuantile(0.16)
 
-# Resample the uncertain value by truncating the distribution furnishing it,
-# then resampling the new distribution 500 times.
-resample(uncertainval, constraint, 500)
-```
-"""
+# # Resample the uncertain value by truncating the distribution furnishing it,
+# # then resampling the new distribution 500 times.
+# resample(uncertainval, constraint, 500)
+# ```
+# """
 function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateUpperQuantile,
         n::Int)
     # Find the index of the kernel density estimated distribution
@@ -242,30 +242,30 @@ end
 
 
 
-"""
-    resample(uv::AbstractUncertainScalarKDE, constraint::TruncateUpperQuantile)
+# """
+#     resample(uv::AbstractUncertainScalarKDE, constraint::TruncateUpperQuantile)
 
-Resample `uv` by first truncating the kernel density estimate of the
-distribution furnishing the value both above and below at some quantile range,
-then resampling it once.
+# Resample `uv` by first truncating the kernel density estimate of the
+# distribution furnishing the value both above and below at some quantile range,
+# then resampling it once.
 
-## Example
+# ## Example
 
-```julia
-using UncertainData
+# ```julia
+# using UncertainData
 
-some_sample = rand(Normal(), 1000)
+# some_sample = rand(Normal(), 1000)
 
-# Calling UncertainValue with a single vector of numbers triggers KDE estimation
-uncertainval = UncertainValue(some_sample) # -> UncertainScalarKDE
+# # Calling UncertainValue with a single vector of numbers triggers KDE estimation
+# uncertainval = UncertainValue(some_sample) # -> UncertainScalarKDE
 
-constraint = TruncateQuantiles(0.1, 0.9)
+# constraint = TruncateQuantiles(0.1, 0.9)
 
-# Resample the uncertain value by truncating the distribution furnishing it,
-# then resampling the new distribution once.
-resample(uncertainval, constraint)
-```
-"""
+# # Resample the uncertain value by truncating the distribution furnishing it,
+# # then resampling the new distribution once.
+# resample(uncertainval, constraint)
+# ```
+# """
 function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateQuantiles)
     # Find the index of the kernel density estimated distribution
     # corresponding to the lower quantile at which we want to truncate.
@@ -288,31 +288,31 @@ end
 
 
 
-"""
-    resample(uv::AbstractUncertainScalarKDE, constraint::TruncateQuantiles,
-        n::Int)
+# """
+#     resample(uv::AbstractUncertainScalarKDE, constraint::TruncateQuantiles,
+#         n::Int)
 
-Resample `uv` by first truncating the kernel density estimate of the
-distribution furnishing the value both above and below at some quantile range,
-then resampling it `n` times.
+# Resample `uv` by first truncating the kernel density estimate of the
+# distribution furnishing the value both above and below at some quantile range,
+# then resampling it `n` times.
 
-## Example
+# ## Example
 
-```julia
-using UncertainData
+# ```julia
+# using UncertainData
 
-some_sample = rand(Normal(), 1000)
+# some_sample = rand(Normal(), 1000)
 
-# Calling UncertainValue with a single vector of numbers triggers KDE estimation
-uncertainval = UncertainValue(some_sample) # -> UncertainScalarKDE
+# # Calling UncertainValue with a single vector of numbers triggers KDE estimation
+# uncertainval = UncertainValue(some_sample) # -> UncertainScalarKDE
 
-constraint = TruncateQuantiles(0.1, 0.9)
+# constraint = TruncateQuantiles(0.1, 0.9)
 
-# Resample the uncertain value by truncating the distribution furnishing it,
-# then resampling the new distribution 500 times.
-resample(uncertainval, constraint, 500)
-```
-"""
+# # Resample the uncertain value by truncating the distribution furnishing it,
+# # then resampling the new distribution 500 times.
+# resample(uncertainval, constraint, 500)
+# ```
+# """
 function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateQuantiles,
         n::Int)
     # Find the index of the kernel density estimated distribution
@@ -337,27 +337,27 @@ end
 
 
 
-"""
-    resample(uv::AbstractUncertainScalarKDE, constraint::TruncateMaximum)
+# """
+#     resample(uv::AbstractUncertainScalarKDE, constraint::TruncateMaximum)
 
-Resample `uv` by first truncating the kernel density estimate of the
-distribution furnishing the value at some maximum value,
-then resampling it once.
+# Resample `uv` by first truncating the kernel density estimate of the
+# distribution furnishing the value at some maximum value,
+# then resampling it once.
 
-## Example
+# ## Example
 
-```julia
-# Uncertain value represented by a normal distribution with mean = 0 and
-# standard deviation = 1.
-uncertainval = UncertainValue(rand(Normal(0, 1), 1000))
+# ```julia
+# # Uncertain value represented by a normal distribution with mean = 0 and
+# # standard deviation = 1.
+# uncertainval = UncertainValue(rand(Normal(0, 1), 1000))
 
-constraint = TruncateMaximum(0.8) # accept no values larger than 1.1
+# constraint = TruncateMaximum(0.8) # accept no values larger than 1.1
 
-# Resample the uncertain value by truncating the distribution furnishing it,
-# then resampling the new distribution 700 times.
-resample(uncertainval, constraint, 700)
-```
-"""
+# # Resample the uncertain value by truncating the distribution furnishing it,
+# # then resampling the new distribution 700 times.
+# resample(uncertainval, constraint, 700)
+# ```
+# """
 function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateMaximum)
     # Box width
     δ = step(uv.range)
@@ -378,28 +378,28 @@ function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateMaximum)
     rand(Uniform(sampled_val, sampled_val + δ))
 end
 
-"""
-    resample(uv::AbstractUncertainScalarKDE, constraint::TruncateMaximum, n::Int)
+# """
+#     resample(uv::AbstractUncertainScalarKDE, constraint::TruncateMaximum, n::Int)
 
-Resample `uv` by first truncating the kernel density estimate of the
-distribution furnishing the value at some minimum value,
-then resampling it `n` times.
+# Resample `uv` by first truncating the kernel density estimate of the
+# distribution furnishing the value at some minimum value,
+# then resampling it `n` times.
 
 
-## Example
+# ## Example
 
-```julia
-# Uncertain value represented by a normal distribution with mean = 0 and
-# standard deviation = 1.
-uncertainval = UncertainValue(rand(Normal(0, 1), 1000))
+# ```julia
+# # Uncertain value represented by a normal distribution with mean = 0 and
+# # standard deviation = 1.
+# uncertainval = UncertainValue(rand(Normal(0, 1), 1000))
 
-constraint = TruncateMaximum(0.8) # accept no values larger than 1.1
+# constraint = TruncateMaximum(0.8) # accept no values larger than 1.1
 
-# Resample the uncertain value by truncating the distribution furnishing it,
-# then resampling the new distribution 700 times.
-resample(uncertainval, constraint, 700)
-```
-"""
+# # Resample the uncertain value by truncating the distribution furnishing it,
+# # then resampling the new distribution 700 times.
+# resample(uncertainval, constraint, 700)
+# ```
+# """
 function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateMaximum, n::Int)
     # Box width
     δ = step(uv.range)
@@ -422,27 +422,27 @@ function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateMaximum, n
 end
 
 
-"""
-    resample(uv::AbstractUncertainScalarKDE, constraint::TruncateMinimum)
+# """
+#     resample(uv::AbstractUncertainScalarKDE, constraint::TruncateMinimum)
 
-Resample `uv` by first truncating the kernel density estimate of the
-distribution furnishing the value at some minimum value,
-then resampling it once.
+# Resample `uv` by first truncating the kernel density estimate of the
+# distribution furnishing the value at some minimum value,
+# then resampling it once.
 
-## Example
+# ## Example
 
-```julia
-# Uncertain value represented by a normal distribution with mean = 0 and
-# standard deviation = 1.
-uncertainval = UncertainValue(rand(Normal(0, 1), 1000))
+# ```julia
+# # Uncertain value represented by a normal distribution with mean = 0 and
+# # standard deviation = 1.
+# uncertainval = UncertainValue(rand(Normal(0, 1), 1000))
 
-constraint = TruncateMinimum(0.2) # accept no values smaller than 0.2
+# constraint = TruncateMinimum(0.2) # accept no values smaller than 0.2
 
-# Resample the uncertain value by truncating the distribution furnishing it,
-# then resampling the new distribution 700 times.
-resample(uncertainval, constraint, 700)
-```
-"""
+# # Resample the uncertain value by truncating the distribution furnishing it,
+# # then resampling the new distribution 700 times.
+# resample(uncertainval, constraint, 700)
+# ```
+# """
 function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateMinimum)
     # Box width
     δ = step(uv.range)
@@ -465,27 +465,27 @@ end
 
 
 
-"""
-    resample(uv::AbstractUncertainScalarKDE, constraint::TruncateMinimum, n::Int)
+# """
+#     resample(uv::AbstractUncertainScalarKDE, constraint::TruncateMinimum, n::Int)
 
-Resample `uv` by first truncating the kernel density estimate of the
-distribution furnishing the value at some minimum value,
-then resampling it `n` times.
+# Resample `uv` by first truncating the kernel density estimate of the
+# distribution furnishing the value at some minimum value,
+# then resampling it `n` times.
 
-## Example
+# ## Example
 
-```julia
-# Uncertain value represented by a normal distribution with mean = 0 and
-# standard deviation = 1.
-uncertainval = UncertainValue(rand(Normal(0, 1), 1000))
+# ```julia
+# # Uncertain value represented by a normal distribution with mean = 0 and
+# # standard deviation = 1.
+# uncertainval = UncertainValue(rand(Normal(0, 1), 1000))
 
-constraint = TruncateMinimum(0.2) # accept no values smaller than 0.2
+# constraint = TruncateMinimum(0.2) # accept no values smaller than 0.2
 
-# Resample the uncertain value by truncating the distribution furnishing it,
-# then resampling the new distribution 700 times.
-resample(uncertainval, constraint, 700)
-```
-"""
+# # Resample the uncertain value by truncating the distribution furnishing it,
+# # then resampling the new distribution 700 times.
+# resample(uncertainval, constraint, 700)
+# ```
+# """
 function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateMinimum, n::Int)
     # Box width
     δ = step(uv.range)
@@ -508,28 +508,28 @@ function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateMinimum, n
 end
 
 
-"""
-    resample(uv::AbstractUncertainScalarKDE, constraint::TruncateRange)
+# """
+#     resample(uv::AbstractUncertainScalarKDE, constraint::TruncateRange)
 
-Resample `uv` by first truncating the kernel density estimate of the
-distribution furnishing the value at some minimum and maximum values,
-then resampling it once.
+# Resample `uv` by first truncating the kernel density estimate of the
+# distribution furnishing the value at some minimum and maximum values,
+# then resampling it once.
 
-## Example
+# ## Example
 
-```julia
-# Uncertain value represented by a normal distribution with mean = 0 and
-# standard deviation = 1.
-uncertainval = UncertainValue(rand(Normal(0, 1), 1000))
+# ```julia
+# # Uncertain value represented by a normal distribution with mean = 0 and
+# # standard deviation = 1.
+# uncertainval = UncertainValue(rand(Normal(0, 1), 1000))
 
-# Only accept values in the range [-0.9, 1.2]
-constraint = TruncateRange(-0.9, 1.2)
+# # Only accept values in the range [-0.9, 1.2]
+# constraint = TruncateRange(-0.9, 1.2)
 
-# Resample the uncertain value by truncating the distribution furnishing it,
-# then resampling the new distribution 300 times.
-resample(uncertainval, constraint, 300)
-```
-"""
+# # Resample the uncertain value by truncating the distribution furnishing it,
+# # then resampling the new distribution 300 times.
+# resample(uncertainval, constraint, 300)
+# ```
+# """
 function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateRange)
     # Box width
     δ = step(uv.range)
@@ -552,28 +552,28 @@ function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateRange)
 end
 
 
-"""
-    resample(uv::AbstractUncertainScalarKDE, constraint::TruncateRange, n::Int)
+# """
+#     resample(uv::AbstractUncertainScalarKDE, constraint::TruncateRange, n::Int)
 
-Resample `uv` by first truncating the kernel density estimate of the
-distribution furnishing the value at some minimum and maximum values,
-then resampling it `n` times.
+# Resample `uv` by first truncating the kernel density estimate of the
+# distribution furnishing the value at some minimum and maximum values,
+# then resampling it `n` times.
 
-## Example
+# ## Example
 
-```julia
-# Uncertain value represented by a normal distribution with mean = 0 and
-# standard deviation = 1.
-uncertainval = UncertainValue(rand(Normal(0, 1), 1000))
+# ```julia
+# # Uncertain value represented by a normal distribution with mean = 0 and
+# # standard deviation = 1.
+# uncertainval = UncertainValue(rand(Normal(0, 1), 1000))
 
-# Only accept values in the range [-0.9, 1.2]
-constraint = TruncateRange(-0.9, 1.2)
+# # Only accept values in the range [-0.9, 1.2]
+# constraint = TruncateRange(-0.9, 1.2)
 
-# Resample the uncertain value by truncating the distribution furnishing it,
-# then resampling the new distribution 300 times.
-resample(uncertainval, constraint, 300)
-```
-"""
+# # Resample the uncertain value by truncating the distribution furnishing it,
+# # then resampling the new distribution 300 times.
+# resample(uncertainval, constraint, 300)
+# ```
+# """
 function resample(uv::AbstractUncertainScalarKDE, constraint::TruncateRange, n::Int)
     # Box width
     δ = step(uv.range)

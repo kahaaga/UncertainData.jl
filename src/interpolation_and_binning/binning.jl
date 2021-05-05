@@ -14,17 +14,25 @@ Returns `N - 1` bin vectors.
 
 ## Examples 
 
-### Getting the values in each bin:
-
-```julia
+```jldoctest
 xs = [1.2, 1.7, 2.2, 3.3, 4.5, 4.6, 7.1]
 ys = [4.2, 5.1, 6.5, 4.2, 3.2, 3.1, 2.5]
 left_bin_edges = 0.0:1.0:6.0
 bin(left_bin_edges, xs, ys)
+
+# output
+6-element Array{Array{Float64,1},1}:
+ []
+ [4.2, 5.1]
+ [6.5]
+ [4.2]
+ [3.2, 3.1]
+ []
 ```
 
+Some example data with unevenly spaced time indices:
+
 ```julia
-# Some example data with unevenly spaced time indices
 npts = 300
 time, vals = sort(rand(1:1000, npts)), rand(npts)
 

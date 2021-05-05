@@ -20,7 +20,6 @@ constraints = [
     :(TruncateStd)
 ]
 
-
 for constraint in constraints
     funcs = quote 
         resample(x::CertainScalar, constraint::$(constraint)) = x.value

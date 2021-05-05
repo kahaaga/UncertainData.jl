@@ -50,29 +50,27 @@ PAGES = [
         ],
     ],
 
-    "Binning" => [
-        "binning/bin.md"
-    ],
-    "Resampling" => [
-        "resampling/resampling_overview.md",
-        "resampling/resampling_uncertain_values.md",
-        "resampling/resampling_uncertain_datasets.md",
-        "resampling/resampling_uncertain_indexvalue_datasets.md",
+    "resampling_and_binning.md",
+    # "Resampling" => [
+    #     "resampling/resampling_overview.md",
+    #     "resampling/resampling_uncertain_values.md",
+    #     "resampling/resampling_uncertain_datasets.md",
+    #     "resampling/resampling_uncertain_indexvalue_datasets.md",
 
-        "resampling/sequential/resampling_uncertaindatasets_sequential.md",
-        "resampling/sequential/resampling_indexvalue_sequential.md",
-        "resampling/sequential/strictly_increasing.md",
-        "resampling/sequential/strictly_decreasing.md",
+    #     "resampling/sequential/resampling_uncertaindatasets_sequential.md",
+    #     "resampling/sequential/resampling_indexvalue_sequential.md",
+    #     "resampling/sequential/strictly_increasing.md",
+    #     "resampling/sequential/strictly_decreasing.md",
 
-        "resampling/interpolation/interpolation.md",
-        "resampling/interpolation/gridded.md",
-        "resampling/resampling_schemes/resampling_schemes_uncertain_value_collections.md",
-        "resampling/resampling_schemes/resampling_schemes_uncertain_indexvalue_collections.md",
-        "resampling/resampling_schemes/resampling_with_schemes_uncertain_value_collections.md",
-        "resampling/resampling_schemes/resampling_with_schemes_uncertain_indexvalue_collections.md",
-        "resampling/resampling_inplace.md"
-        #"resampling/models/resampling_with_models.md"
-    ],
+    #     "resampling/interpolation/interpolation.md",
+    #     "resampling/interpolation/gridded.md",
+    #     "resampling/resampling_schemes/resampling_schemes_uncertain_value_collections.md",
+    #     "resampling/resampling_schemes/resampling_schemes_uncertain_indexvalue_collections.md",
+    #     "resampling/resampling_schemes/resampling_with_schemes_uncertain_value_collections.md",
+    #     "resampling/resampling_schemes/resampling_with_schemes_uncertain_indexvalue_collections.md",
+    #     "resampling/resampling_inplace.md"
+    #     #"resampling/models/resampling_with_models.md"
+    # ],
 
     "Propagation of errors" => [
         "propagation_of_errors/propagation_of_errors.md"
