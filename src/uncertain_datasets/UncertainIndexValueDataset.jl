@@ -13,33 +13,16 @@ The i-th index is assumed to correspond to the i-th value. For example, if
 
 ## Example
 
+Here, we simulate data which were measured with some uncertainty, with some timing error.
+The data were measured by a device with normally distributed measurement uncertainties,
+with fluctuating standard deviations. The clock used to record the times is uncertain, 
+but with uniformly distributed noise whose magnitude is restricted to the interval 
+``[0.1, 0.7]``.
+
 ```julia
-# Simulate some data values measured a specific times.
-times = 1:100
-values = sin.(0.0:0.1:100.0)
-
-# Assume the data were measured by a device with normally distributed
-# measurement uncertainties with fluctuating standard deviations
-σ_range = (0.1, 0.7)
-
-uncertain_values = [UncertainValue(Normal, val, rand(Uniform(σ_range...))) 
-    for val in values]
-
-# Assume the clock used to record the times is uncertain, but with uniformly 
-# distributed noise that doesn't change through time.
-uncertain_times = [UncertainValue(Uniform, t-0.1, t+0.1) for t in times]
-
-# Pair the time-value data. If vectors are provided to the constructor,
-# the first will be interpreted as the indices and the second as the values.
-data = UncertainIndexValueDataset(uncertain_times, uncertain_values)
-
-# A safer option is to first convert to UncertainIndexDataset and 
-# UncertainValueDataset, so you don't accidentally mix the indices 
-# and the values.
-uidxs = UncertainIndexDataset(uncertain_times)
-uvals = UncertainValueDataset(uncertain_values)
-
-data = UncertainIndexValueDataset(uidxs, uvals)
+v = [UncertainValue(Normal, x, rand(Uniform(0.1, 0.7))) for x in sin.(0.0:0.1:100.0)]
+t = [UncertainValue(Uniform, x-0.1, x+0.1) for x in 1:100]
+data = UncertainIndexValueDataset(t, v)
 ```
 """
 struct UncertainIndexValueDataset{IDXTYP <: AbstractUncertainIndexDataset, VALSTYP <: AbstractUncertainValueDataset} <: AbstractUncertainIndexValueDataset
