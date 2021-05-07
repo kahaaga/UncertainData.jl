@@ -49,14 +49,8 @@ import ..UncertainValues: CertainScalar
 ##################
 # `CertainScalar`s
 #################
-"""
-    Base.:/(a::Union{CertainScalar, Real}, b::Union{CertainScalar, Real})
-
-Division of certain values with themselves or scalars acts as regular division, but 
-returns the result wrapped in a `CertainScalar` instance.
-"""
-Base.:/(a::Union{CertainScalar, Real}, b::Union{CertainScalar, Real}) 
-
+# Division of certain values with themselves or scalars acts as regular division, but 
+# returns the result wrapped in a `CertainScalar` instance.
 Base.:/(a::CertainScalar, b::CertainScalar) = CertainScalar(a.value / b.value)
 Base.:/(a::CertainScalar, b::Real) = CertainScalar(a.value / b)
 Base.:/(a::Real, b::CertainScalar) = CertainScalar(a / b.value)
