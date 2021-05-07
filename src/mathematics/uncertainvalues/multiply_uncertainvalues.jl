@@ -8,11 +8,10 @@
     Base.:*(a::Real, b::AbstractUncertainValue; n::Int = 30000) -> UncertainScalarKDE
     Base.:*(a::AbstractUncertainValue, b::AbstractUncertainValue; n::Int = 30000) -> UncertainScalarKDE
 
-Multiplication operator. Multiply `a` by `b` by drawing `n` realizations of the uncertain value(s), 
-then performing element-wise multiplication on the draws. 
-A kernel density estimate to the distribution of sums is returned.
+Multiplication operator. Perform the operation `a * b` by drawing `n` realizations of the uncertain value(s), 
+then performing element-wise multiplication on the draws. Use the `*(a, b, n)` syntax to tune the number of draws.
+A kernel density estimate to the distribution of products is returned.
     
-Use the `*(a, b, n)` syntax to tune the number of draws.
 
 ## Example
 

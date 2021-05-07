@@ -8,11 +8,10 @@
     Base.:+(a::Real, b::AbstractUncertainValue; n::Int = 30000) -> UncertainScalarKDE
     Base.:+(a::AbstractUncertainValue, b::AbstractUncertainValue; n::Int = 30000) -> UncertainScalarKDE
 
-Addition operator. Add `a` and `b` by drawing `n` realizations of the uncertain value(s), 
-then performing element-wise addition on the draws. 
+Addition operator. Perform the operation `a + b` by drawing `n` realizations of the uncertain value(s), 
+then performing element-wise addition on the draws. Use the `+(a, b, n)` syntax to tune the number of draws.
 A kernel density estimate to the distribution of sums is returned.
     
-Use the `+(a, b, n)` syntax to tune the number of draws.
 
 ## Example
 

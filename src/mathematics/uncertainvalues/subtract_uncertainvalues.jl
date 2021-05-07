@@ -12,12 +12,10 @@ import ..Resampling:
     Base.:-(a::Real, b::AbstractUncertainValue; n::Int = 30000) -> UncertainScalarKDE
     Base.:-(a::AbstractUncertainValue, b::AbstractUncertainValue; n::Int = 30000) -> UncertainScalarKDE
 
-Subtraction operator. Subtract `b` from `a` by drawing `n` realizations of the uncertain value(s), 
-then performing element-wise subtraction on the draws. 
-A kernel density estimate to the distribution of sums is returned.
+Subtraction operator. Perform the operation `a - b` by drawing `n` realizations of the uncertain value(s), 
+then performing element-wise subtraction on the draws. Use the `-(a, b, n)` syntax to tune the number of draws.
+A kernel density estimate to the distribution of differences is returned.
     
-Use the `-(a, b, n)` syntax to tune the number of draws.
-
 ## Example
 
 ```julia
