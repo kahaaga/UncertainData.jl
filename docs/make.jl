@@ -77,7 +77,6 @@ PAGES = [
     ],
     
     "Mathematics" => [
-        "mathematics/elementary_operations.md",
         "mathematics/trig_functions.md"
     ],
 

@@ -7,8 +7,7 @@ constrain(uv::AbstractUncertainValue, constraint::SamplingConstraint)
 
 ## Element-wise constraints
 
-
-The following sampling constraintsa are aimed to be used element-wise on uncertain values.
+The following sampling constraints are aimed to be used element-wise on uncertain values.
 
 ```@docs
 TruncateStd
@@ -51,8 +50,7 @@ plot(p_min, p_max, p_range,
 )
 ```
 
-
-## Sequential constraints
+## Dataset (sequential) constraints
 
 Sequential constraints are used when sampling [`UncertainIndexDataset`](@ref)s or 
 [`UncertainIndexValueDataset`](@ref)s.
@@ -60,6 +58,16 @@ Sequential constraints are used when sampling [`UncertainIndexDataset`](@ref)s o
 ```@docs
 StrictlyIncreasing
 StrictlyDecreasing
+```
+
+### Sampling algorithms
+
+```@docs
 StartToEnd
+```
+
+### Utils
+
+```@docs
 sequence_exists
 ```
