@@ -54,7 +54,7 @@ vals = [r1; r2; r3; r4; r5]
 # These are our time indices
 inds = [UncertainValue(Normal, i, rand(Uniform(0, 1))) for i = 1:length(vals)]
 
-# Combine
+# Combine indices and values
 x = UncertainIndexValueDataset(inds, vals)
 
 # Plot 90th percentile range both for indices and values.
@@ -71,7 +71,7 @@ with increasing standard deviation through time. We also have some uncertain val
 that are associated with the indices.
 
 ```@example uivd2
-using UncertainData, Plots
+using UncertainData, Plots, Distributions
 
 # Time indices
 time_inds = 1:13
@@ -82,9 +82,9 @@ inds = UncertainIndexDataset(uvals)
 u1 = UncertainValue(Gamma, rand(Gamma(), 500))
 u2 = UncertainValue(rand(MixtureModel([Normal(1, 0.3), Normal(0.1, 0.1)]), 500))
 uvals3 = [UncertainValue(Normal, rand(), rand()) for i = 1:11]
-measurements = UncertainValueDataset([u1; u2; uvals3])
+measurements = [u1; u2; uvals3]
 
-# Combine
+# Combine indices and values
 x = UncertainIndexValueDataset(inds, measurements)
 
 # Plot the dataset with error bars in both directions, using the 20th to 80th percentile 
