@@ -1,11 +1,5 @@
 # Uncertain value datasets
 
-## Documentation
-
-```@docs
-UncertainValueDataset
-```
-
 ## Description
 
 `UncertainValueDataset`s is an uncertain dataset type that has no explicit index 
